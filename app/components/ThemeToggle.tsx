@@ -16,5 +16,14 @@ export function ThemeToggle() {
     document.documentElement.dataset.theme = next ? "dark" : "light";
     localStorage.setItem("mentor-theme", next ? "dark" : "light");
   }
-  return <button className="icon-btn" onClick={toggle} aria-label="Toggle theme">{dark ? "☀" : "☾"}</button>;
+  return (
+    <button
+      className="icon-btn theme-toggle"
+      onClick={toggle}
+      aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+      title={dark ? "Switch to light mode" : "Switch to dark mode"}
+    >
+      <span className="theme-glyph" aria-hidden="true" />
+    </button>
+  );
 }

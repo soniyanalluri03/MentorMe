@@ -20,7 +20,7 @@ function Header({ page }: { page: Page }) {
   const [notice, setNotice] = useState(false);
   return <header className="public-header"><Link className="brand-link" href="/" aria-label="MentorME home"><MentorMeLogo /></Link>
     <nav aria-label="Primary navigation">{nav.map(n => <Link className={page === n.page ? "active" : ""} href={n.href} key={n.page}>{n.label}</Link>)}</nav>
-    <div className="header-actions"><div className="notice-wrap"><button className="icon-btn bell" onClick={() => setNotice(!notice)} aria-label="Notifications" aria-expanded={notice}><span className="bell-glyph" aria-hidden="true" /><i /></button>
+    <div className="header-actions"><div className="notice-wrap"><button className="icon-btn bell" onClick={() => setNotice(!notice)} aria-label="Notifications" aria-expanded={notice}><span className="notify-glyph" aria-hidden="true"><span /></span><i /></button>
       {notice && <div className="notice-pop"><b>What's new</b><p>New Python career track missions added.</p><p>Levels 1–5 are free.</p><Link href="/roadmap">Explore the new roadmap →</Link></div>}</div>
       <ThemeToggle /><Link className="auth-link login-link" href="/login">Log in</Link><Link className="auth-link signup-link" href="/signup">Sign up</Link></div>
     <button className="mobile-menu" aria-label="Open menu"><span/><span/><span/></button>

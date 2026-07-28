@@ -7,7 +7,7 @@ export function ThemeToggle() {
   useEffect(() => {
     const saved = localStorage.getItem("mentor-theme");
     const value = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
-    setDark(value);
+    queueMicrotask(() => setDark(value));
     document.documentElement.dataset.theme = value ? "dark" : "light";
   }, []);
   function toggle() {

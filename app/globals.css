@@ -149,3 +149,52 @@
   box-shadow:0 0 0 2px #182b4a;
 }
 .bell>i{display:none}
+
+/* Local 3D navbar controls — no external runtime dependencies */
+.notification-button{
+  width:48px;height:48px;position:relative;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(255,255,255,.13);border-radius:50%;
+  cursor:pointer;background:radial-gradient(circle at 35% 25%,#4c5968 0%,#1c2b3b 48%,#0a121c 100%);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.2),0 8px 16px rgba(0,0,0,.28);
+  transition:.3s ease;
+}
+.notification-bell{width:18px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.4))}
+.notification-bell path{fill:#fff}
+.notification-button>i{position:absolute;width:7px;height:7px;border-radius:50%;right:5px;top:4px;background:#e96558;box-shadow:0 0 0 3px rgba(233,101,88,.16)}
+.notification-button:hover{background:radial-gradient(circle at 35% 25%,#697687 0%,#28394b 48%,#101a25 100%);transform:translateY(-3px);box-shadow:inset 0 1px 1px rgba(255,255,255,.25),0 12px 20px rgba(0,0,0,.3)}
+.notification-button:hover .notification-bell{animation:bellRing .9s both}
+.notification-button:active{transform:scale(.88)}
+[data-theme=light] .notification-button{border-color:#d4dce6;background:radial-gradient(circle at 35% 25%,#fff 0%,#dde5ee 55%,#bac7d6 100%);box-shadow:inset 0 1px 1px #fff,0 8px 16px rgba(24,43,74,.18)}
+[data-theme=light] .notification-bell path{fill:#182b4a}
+@keyframes bellRing{0%,100%{transform-origin:top}15%{transform:rotate(10deg)}30%{transform:rotate(-10deg)}45%{transform:rotate(5deg)}60%{transform:rotate(-5deg)}75%{transform:rotate(2deg)}}
+.auth-combo{
+  min-width:150px;height:46px;position:relative;display:flex;align-items:center;justify-content:center;
+  border-radius:8px;overflow:hidden;
+  background:radial-gradient(ellipse at bottom,#47515c 0%,#0b151e 48%);
+  border:1px solid rgba(255,255,255,.11);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 8px 16px rgba(0,0,0,.24);
+  transition:all .55s cubic-bezier(.15,.83,.66,1);
+}
+.auth-combo:before{content:"";position:absolute;width:72%;height:1px;bottom:0;left:14%;background:linear-gradient(90deg,transparent,#fff,transparent);opacity:.25;transition:.55s}
+.auth-combo a{height:100%;display:grid;place-items:center;padding:0 14px;color:rgba(255,255,255,.76);font:750 .82rem var(--font-display);position:relative;z-index:2;transition:.3s}
+.auth-combo>span{width:1px;height:18px;background:rgba(255,255,255,.18)}
+.auth-combo:hover{transform:scale(1.055) translateY(-3px);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 13px 22px rgba(0,0,0,.3)}
+.auth-combo:hover:before{opacity:1}.auth-combo a:hover{color:#fff;background:rgba(255,255,255,.07)}
+[data-theme=light] .auth-combo{background:radial-gradient(ellipse at bottom,#40516a 0%,#15263f 52%);border-color:#8e9caf}
+.sky-toggle{--toggle-w:74px;--toggle-h:36px;display:block;cursor:pointer;filter:drop-shadow(0 7px 8px rgba(0,0,0,.22))}
+.sky-toggle input{position:absolute;opacity:0;pointer-events:none}
+.sky-toggle__scene{width:var(--toggle-w);height:var(--toggle-h);display:block;position:relative;overflow:hidden;border-radius:30px;background:#3d7eae;box-shadow:inset 0 2px 4px rgba(0,0,0,.28),inset 0 -1px 2px rgba(255,255,255,.8);transition:.5s cubic-bezier(0,-.02,.4,1.25)}
+.sky-toggle__orb{position:absolute;z-index:3;width:30px;height:30px;left:3px;top:3px;border-radius:50%;background:#ecca2f;box-shadow:inset 1px 1px 2px #fff4a4,inset -1px -2px 2px #9a7920,0 0 0 5px rgba(255,255,255,.12),0 0 0 10px rgba(255,255,255,.07);transition:.5s cubic-bezier(0,-.02,.35,1.17);overflow:hidden}
+.sky-toggle__moon{display:block;width:100%;height:100%;border-radius:50%;background:#c4c9d1;transform:translateX(100%);transition:.5s;position:relative}
+.sky-toggle__moon i{position:absolute;width:7px;height:7px;border-radius:50%;background:#959db1;left:7px;top:16px;box-shadow:inset 0 1px 1px rgba(0,0,0,.25)}
+.sky-toggle__moon i:nth-child(2){width:4px;height:4px;left:19px;top:12px}.sky-toggle__moon i:nth-child(3){width:3px;height:3px;left:13px;top:6px}
+.sky-toggle__clouds{position:absolute;z-index:2;left:8px;bottom:-7px;transition:.5s}
+.sky-toggle__clouds i{position:absolute;width:20px;height:15px;border-radius:50%;background:#f3fdff;box-shadow:11px 5px #aacadf}
+.sky-toggle__clouds i:nth-child(2){left:20px;top:3px}.sky-toggle__clouds i:nth-child(3){left:40px;top:-1px}
+.sky-toggle__stars{position:absolute;z-index:2;inset:0;opacity:0;transform:translateY(-10px);transition:.5s}
+.sky-toggle__stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;left:12px;top:9px;box-shadow:10px 8px #fff,23px -3px #fff,35px 10px #fff,48px -2px #fff}
+.sky-toggle input:checked+.sky-toggle__scene{background:#1d1f2c}.sky-toggle input:checked+.sky-toggle__scene .sky-toggle__orb{left:41px}.sky-toggle input:checked+.sky-toggle__scene .sky-toggle__moon{transform:translateX(0)}.sky-toggle input:checked+.sky-toggle__scene .sky-toggle__clouds{bottom:-38px}.sky-toggle input:checked+.sky-toggle__scene .sky-toggle__stars{opacity:1;transform:translateY(0)}
+.sky-toggle:hover .sky-toggle__orb{transform:scale(1.07)}
+@media(max-width:1050px){.header-actions .auth-combo{display:none}}
+@media(max-width:700px){.sky-toggle{--toggle-w:64px;--toggle-h:32px}.sky-toggle__orb{width:26px;height:26px}.sky-toggle input:checked+.sky-toggle__scene .sky-toggle__orb{left:35px}.notification-button{width:42px;height:42px}}

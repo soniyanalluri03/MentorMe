@@ -16,14 +16,12 @@ export function ThemeToggle() {
     document.documentElement.dataset.theme = next ? "dark" : "light";
     localStorage.setItem("mentor-theme", next ? "dark" : "light");
   }
-  return (
-    <button
-      className="icon-btn theme-toggle"
-      onClick={toggle}
-      aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
-      title={dark ? "Switch to light mode" : "Switch to dark mode"}
-    >
-      <span className="theme-glyph" aria-hidden="true" />
-    </button>
-  );
+  return <label className="sky-toggle" title={dark ? "Switch to light mode" : "Switch to dark mode"}>
+    <input type="checkbox" checked={dark} onChange={toggle} aria-label={dark ? "Switch to light mode" : "Switch to dark mode"} />
+    <span className="sky-toggle__scene">
+      <span className="sky-toggle__stars"><i/><i/><i/><i/><i/></span>
+      <span className="sky-toggle__clouds"><i/><i/><i/></span>
+      <span className="sky-toggle__orb"><span className="sky-toggle__moon"><i/><i/><i/></span></span>
+    </span>
+  </label>;
 }

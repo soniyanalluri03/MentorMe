@@ -1,0 +1,2 @@
+import { StudentShell } from "./StudentShell";
+export function ProductPlaceholder({title,eyebrow}:{title:string;eyebrow:string}){return <StudentShell title={title}><section className="product-placeholder"><span className="kicker">{eyebrow}</span><h2>Your progress,<br/><em>made visible.</em></h2><p>This space is ready for the next part of your MentorME journey.</p><div className="placeholder-lines"><i/><i/><i/></div></section></StudentShell>}

@@ -1,0 +1,2 @@
+import { ProductPlaceholder } from "../../components/ProductPlaceholder";
+export default function Page(){return <ProductPlaceholder title="Achievements" eyebrow="MOMENTUM REWARDED"/>}

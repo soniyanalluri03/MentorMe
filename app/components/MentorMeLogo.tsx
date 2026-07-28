@@ -5,17 +5,14 @@ export function MentorMeLogo({ compact = false }: { compact?: boolean }) {
     <span className={`brand ${compact ? "brand-compact" : ""}`}>
       <span className="brand-mark">
         <Image
-          src="/mentor-me-logo-black.png"
+          src="/mentor-me-logo-yellow.png"
           alt="MentorME logo"
-          width={100}
-          height={90}
+          width={108}
+          height={108}
           priority
           unoptimized
         />
       </span>
-      {!compact && <span className="brand-word">
-        <span className="brand-mentor">MENTOR</span><span className="brand-me">ME</span>
-      </span>}
     </span>
   );
 }

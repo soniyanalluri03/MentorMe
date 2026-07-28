@@ -5,11 +5,15 @@ import { useState } from "react";
 import { MentorMeLogo } from "./MentorMeLogo";
 import { ThemeToggle } from "./ThemeToggle";
 
-type Page = "home" | "courses" | "roadmap" | "about" | "pricing" | "contact";
+type Page = "home" | "courses" | "roadmap" | "leaderboard" | "about" | "pricing" | "contact";
 const nav: { label: string; href: string; page: Page }[] = [
-  { label: "Home", href: "/", page: "home" }, { label: "Courses", href: "/courses", page: "courses" },
-  { label: "Roadmap", href: "/roadmap", page: "roadmap" }, { label: "About", href: "/about", page: "about" },
-  { label: "Pricing", href: "/pricing", page: "pricing" }, { label: "Contact", href: "/contact", page: "contact" },
+  { label: "Home", href: "/", page: "home" },
+  { label: "Career Tracks", href: "/courses", page: "courses" },
+  { label: "Roadmap", href: "/roadmap", page: "roadmap" },
+  { label: "Leaderboard", href: "/leaderboard", page: "leaderboard" },
+  { label: "Pricing", href: "/pricing", page: "pricing" },
+  { label: "About", href: "/about", page: "about" },
+  { label: "Contact", href: "/contact", page: "contact" },
 ];
 
 function Header({ page }: { page: Page }) {
@@ -84,6 +88,19 @@ function Pricing() {
   <section className="section pricing-grid"><article className="price-card"><small>FREE / FOUNDATION</small><h2>₹0</h2><p>Levels 1–5</p><ul>{["Career awareness","Technology awareness","Skill identification","Fundamentals","Basic assessment","Roadmap preview"].map(x=><li key={x}>✓ {x}</li>)}</ul><Link className="btn btn-outline" href="/signup">Start free →</Link></article>
   <article className="price-card premium"><div className="popular">FULL JOURNEY</div><small>PREMIUM</small><h2>Pricing<br/>coming soon</h2><p>Levels 6–90</p><ul>{["All missions & projects","9 milestone certificates","Monthly group mentor sessions","Resume & LinkedIn support","Mock interviews","Internship eligibility after level 90"].map(x=><li key={x}>✓ {x}</li>)}</ul><Link className="btn btn-light" href="/contact">Join waitlist →</Link></article></section><p className="preserved">Your progress is always preserved if Premium access pauses.</p></>;
 }
+const leaders = [
+  ["01","Ananya Rao","Frontend Developer","8,920 XP","AR"],
+  ["02","Kabir Shah","Frontend Developer","8,640 XP","KS"],
+  ["03","Meera Nair","Frontend Developer","8,410 XP","MN"],
+  ["04","Rahul Sharma","Frontend Developer","2,450 XP","RS"],
+  ["05","Dev Patel","Frontend Developer","2,280 XP","DP"],
+];
+function Leaderboard() {
+  return <><PageHero tag="MENTORME LEADERBOARD" title={<>Momentum deserves<br/><em>to be seen.</em></>} text="A friendly ranking of students turning consistent action into visible career progress." />
+  <section className="section leaderboard"><div className="leaderboard-head"><div><span className="kicker">THIS WEEK</span><h2>Top learners</h2></div><div className="your-rank"><small>YOUR RANK</small><b>#04</b><span>↑ 2 places this week</span></div></div>
+  <div className="podium"><article><span>02</span><i>KS</i><h3>Kabir Shah</h3><b>8,640 XP</b></article><article className="winner"><span>01</span><i>AR</i><h3>Ananya Rao</h3><b>8,920 XP</b></article><article><span>03</span><i>MN</i><h3>Meera Nair</h3><b>8,410 XP</b></article></div>
+  <div className="leader-list">{leaders.map((l)=><article className={l[4]==="RS"?"you":""} key={l[0]}><strong>{l[0]}</strong><i>{l[4]}</i><div><b>{l[1]} {l[4]==="RS"&&<small>YOU</small>}</b><span>{l[2]}</span></div><em>{l[3]}</em></article>)}</div></section></>;
+}
 function Contact() {
   const [sent,setSent]=useState(false);
   return <><PageHero tag="GET IN TOUCH" title={<>Let’s talk about<br/><em>your next step.</em></>} text="Questions about your journey, a college partnership or something bigger? Start here." />
@@ -92,4 +109,4 @@ function Contact() {
 }
 function PageHero({tag,title,text}:{tag:string;title:React.ReactNode;text:string}) {return <section className="page-hero"><span className="kicker">{tag}</span><h1>{title}</h1><p>{text}</p><div className="page-orb"/></section>}
 function Footer(){return <footer className="footer"><MentorMeLogo/><p>From confusion to confidence.</p><div>{nav.map(n=><Link href={n.href} key={n.page}>{n.label}</Link>)}</div><small>© 2026 MentorME. Progress with purpose.</small></footer>}
-export function PublicSite({page}:{page:Page}) { const content={home:<Home/>,courses:<Courses/>,roadmap:<Roadmap/>,about:<About/>,pricing:<Pricing/>,contact:<Contact/>}[page]; return <main><Header page={page}/>{content}<Footer/></main>}
+export function PublicSite({page}:{page:Page}) { const content={home:<Home/>,courses:<Courses/>,roadmap:<Roadmap/>,leaderboard:<Leaderboard/>,about:<About/>,pricing:<Pricing/>,contact:<Contact/>}[page]; return <main><Header page={page}/>{content}<Footer/></main>}

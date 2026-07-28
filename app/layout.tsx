@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
-import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
+import { Cormorant_Garamond, Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
 const display = Outfit({ variable: "--font-display", subsets: ["latin"] });
 const sans = Plus_Jakarta_Sans({ variable: "--font-sans", subsets: ["latin"] });
+const brand = Cormorant_Garamond({
+  variable: "--font-brand",
+  subsets: ["latin"],
+  weight: ["700"],
+  style: ["italic"],
+});
 
 export const metadata: Metadata = {
   title: "MentorME — From Confusion to Confidence",
@@ -25,7 +31,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${display.variable} ${sans.variable}`}>{children}</body>
+      <body className={`${display.variable} ${sans.variable} ${brand.variable}`}>{children}</body>
     </html>
   );
 }

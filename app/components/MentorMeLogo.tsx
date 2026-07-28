@@ -13,7 +13,9 @@ export function MentorMeLogo({ compact = false }: { compact?: boolean }) {
           unoptimized
         />
       </span>
-      {!compact && <span className="brand-word">MENTOR<span>ME</span></span>}
+      {!compact && <span className="brand-word">
+        <span className="brand-mentor">MENTOR</span><span className="brand-me">ME</span>
+      </span>}
     </span>
   );
 }

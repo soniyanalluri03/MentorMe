@@ -198,3 +198,72 @@
 .sky-toggle:hover .sky-toggle__orb{transform:scale(1.07)}
 @media(max-width:1050px){.header-actions .auth-combo{display:none}}
 @media(max-width:700px){.sky-toggle{--toggle-w:64px;--toggle-h:32px}.sky-toggle__orb{width:26px;height:26px}.sky-toggle input:checked+.sky-toggle__scene .sky-toggle__orb{left:35px}.notification-button{width:42px;height:42px}}
+
+/* Premium violet navbar — final design layer */
+.public-header{
+  height:104px;
+  padding:0 32px;
+  display:block;
+  background:linear-gradient(110deg,#402b57 0%,#563970 45%,#65447d 100%);
+  border-bottom:1px solid rgba(232,204,117,.28);
+  box-shadow:0 16px 36px rgba(35,19,50,.26),inset 0 1px 0 rgba(255,255,255,.12);
+}
+[data-theme=light] .public-header,
+:root:not([data-theme]) .public-header{
+  background:linear-gradient(110deg,#fbf8ff 0%,#f3ecfa 50%,#ede4f6 100%);
+  border-bottom-color:rgba(91,61,119,.16);
+  box-shadow:0 14px 34px rgba(91,61,119,.13),inset 0 1px 0 rgba(255,255,255,.9);
+}
+.public-header__inner{
+  width:100%;max-width:1640px;height:100%;margin:0 auto;
+  display:flex;align-items:center;gap:28px;
+}
+.brand-link{padding-right:6px;flex:0 0 auto}
+.brand{gap:12px}
+.brand-mark,.brand-mark img{width:72px;height:72px}
+.brand-mark img{object-fit:contain;filter:drop-shadow(0 6px 9px rgba(18,8,28,.32))}
+.brand-word{
+  display:inline-flex;align-items:baseline;gap:0;
+  font-family:var(--font-brand),Georgia,serif;
+  font-size:31px;font-weight:700;font-style:italic;
+  line-height:1;letter-spacing:-.5px;
+  text-shadow:0 2px 6px rgba(23,11,34,.25);
+}
+.brand-mentor{color:#e0be43}
+.brand-me{color:#fff}
+[data-theme=light] .brand-me,
+:root:not([data-theme]) .brand-me{color:#9ca0aa}
+[data-theme=light] .brand-word,
+:root:not([data-theme]) .brand-word{text-shadow:0 1px 0 #fff}
+.public-header nav{
+  flex:1;justify-content:center;
+  gap:clamp(18px,2vw,38px);
+  margin:0;
+  font-size:.9rem;
+}
+.public-header nav a{padding:14px 4px}
+.public-header nav a.active:after{left:4px;right:4px;bottom:4px}
+.header-actions{flex:0 0 auto;gap:13px}
+@media(max-width:1400px){
+  .public-header{padding-inline:28px}
+  .public-header__inner{gap:18px}
+  .public-header nav{gap:clamp(10px,1.25vw,20px);font-size:.84rem}
+  .brand-word{font-size:27px}
+  .brand-mark,.brand-mark img{width:68px;height:68px}
+}
+@media(max-width:1180px){
+  .public-header{height:98px}
+  .public-header__inner{gap:14px}
+  .brand-word{display:none}
+  .public-header nav{gap:10px}
+}
+@media(max-width:1050px){
+  .public-header{height:92px;padding-inline:24px}
+  .public-header__inner{justify-content:space-between}
+  .brand-mark,.brand-mark img{width:62px;height:62px}
+}
+@media(max-width:700px){
+  .public-header{height:84px;padding-inline:18px}
+  .public-header__inner{gap:8px}
+  .brand-mark,.brand-mark img{width:56px;height:56px}
+}

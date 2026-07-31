@@ -1,0 +1,5418 @@
+"use client";
+
+import Link from "next/link";
+import { motion } from "framer-motion";
+import CareerTransformation from "./CareerTransformation/CareerTransformation";
+import LiveCommunity from "./LiveCommunity/LiveCommunity";
+import {
+  CSSProperties,
+  MouseEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+
+
+const processSteps = [
+  {
+    number: "01",
+    title: "Confusion",
+    icon: "?",
+    headline: "Name the uncertainty",
+    description:
+      "Start by identifying what feels unclear, what you enjoy, and what kind of future you want to build.",
+  },
+  {
+    number: "02",
+    title: "Direction",
+    icon: "⌖",
+    headline: "Choose a clear destination",
+    description:
+      "Select a career direction that fits your strengths, interests, and long-term ambition.",
+  },
+  {
+    number: "03",
+    title: "Learning",
+    icon: "◇",
+    headline: "Build the right skills",
+    description:
+      "Follow a structured sequence of concepts and guided missions instead of jumping between random resources.",
+  },
+  {
+    number: "04",
+    title: "Practice",
+    icon: "</>",
+    headline: "Turn knowledge into ability",
+    description:
+      "Apply every skill through focused challenges that make learning practical, repeatable, and measurable.",
+  },
+  {
+    number: "05",
+    title: "Projects",
+    icon: "▣",
+    headline: "Create work that proves it",
+    description:
+      "Build portfolio-ready projects that show what you can do, not only what you have completed.",
+  },
+  {
+    number: "06",
+    title: "Proof",
+    icon: "✓",
+    headline: "Make progress visible",
+    description:
+      "Collect projects, milestones, certificates, and outcomes that make your growth easy to understand.",
+  },
+  {
+    number: "07",
+    title: "Confidence",
+    icon: "★",
+    headline: "Move forward with confidence",
+    description:
+      "Reach opportunities with a clear story, demonstrated ability, and evidence that you are ready.",
+  },
+];
+
+const firstFiveLevels = [
+  {
+    number: "01",
+    title: "Fundamentals",
+    short: "Learn the core concepts",
+    description:
+      "Build a strong foundation with the essential concepts required for your chosen career path.",
+    icon: "</>",
+  },
+  {
+    number: "02",
+    title: "Guided Mission",
+    short: "Apply it step by step",
+    description:
+      "Complete a guided practical mission that helps you use what you learned with clear support.",
+    icon: "◆",
+  },
+  {
+    number: "03",
+    title: "Skill Test",
+    short: "Check your understanding",
+    description:
+      "Take a focused skill test that confirms your understanding before moving to the next stage.",
+    icon: "✓",
+  },
+  {
+    number: "04",
+    title: "Mentor Review",
+    short: "Get feedback and improve",
+    description:
+      "Receive structured mentor feedback, correct mistakes, and strengthen the way you approach the skill.",
+    icon: "◎",
+  },
+  {
+    number: "05",
+    title: "First Project",
+    short: "Create your first proof",
+    description:
+      "Build a practical mini project that becomes your first visible piece of career-ready proof.",
+    icon: "★",
+  },
+];
+
+function useReveal() {
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+
+    const items = Array.from(
+      root.querySelectorAll<HTMLElement>("[data-reveal]"),
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("hj-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+    );
+
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
+  return rootRef;
+}
+
+function tilt(event: MouseEvent<HTMLElement>) {
+  const element = event.currentTarget;
+  const rect = element.getBoundingClientRect();
+  const x = (event.clientX - rect.left) / rect.width;
+  const y = (event.clientY - rect.top) / rect.height;
+
+  element.style.setProperty("--rx", `${((0.5 - y) * 9).toFixed(2)}deg`);
+  element.style.setProperty("--ry", `${((x - 0.5) * 11).toFixed(2)}deg`);
+  element.style.setProperty("--mx", `${(x * 100).toFixed(1)}%`);
+  element.style.setProperty("--my", `${(y * 100).toFixed(1)}%`);
+}
+
+function resetTilt(event: MouseEvent<HTMLElement>) {
+  const element = event.currentTarget;
+  element.style.setProperty("--rx", "0deg");
+  element.style.setProperty("--ry", "0deg");
+  element.style.setProperty("--mx", "50%");
+  element.style.setProperty("--my", "50%");
+}
+
+function useHomeTheme() {
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  useEffect(() => {
+    const updateTheme = () => {
+      setTheme(
+        document.documentElement.dataset.theme === "dark"
+          ? "dark"
+          : "light",
+      );
+    };
+
+    updateTheme();
+
+    const observer = new MutationObserver(updateTheme);
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  return theme;
+}
+
+export function HomeJourneySections() {
+  const rootRef = useReveal();
+  const theme = useHomeTheme();
+  const [activeStep, setActiveStep] = useState(0);
+  const [activeLevel, setActiveLevel] = useState(0);
+  const [roadmapImpact, setRoadmapImpact] = useState(false);
+  const [roadmapReturning, setRoadmapReturning] = useState(false);
+  const activeProcess = processSteps[activeStep];
+  const selectedLevel = firstFiveLevels[activeLevel];
+
+  useEffect(() => {
+    let cancelled = false;
+    let timer: number | undefined;
+
+    const schedule = (callback: () => void, delay: number) => {
+      timer = window.setTimeout(() => {
+        if (!cancelled) callback();
+      }, delay);
+    };
+
+    const runCycle = (level: number) => {
+      if (cancelled) return;
+
+      if (level < firstFiveLevels.length - 1) {
+        schedule(() => {
+          const nextLevel = level + 1;
+          setActiveLevel(nextLevel);
+          runCycle(nextLevel);
+        }, 2300);
+        return;
+      }
+
+      schedule(() => {
+        setRoadmapImpact(true);
+
+        schedule(() => {
+          setRoadmapImpact(false);
+          setRoadmapReturning(true);
+
+          schedule(() => {
+            setActiveLevel(0);
+
+            schedule(() => {
+              setRoadmapReturning(false);
+              runCycle(0);
+            }, 260);
+          }, 220);
+        }, 1050);
+      }, 2100);
+    };
+
+    runCycle(0);
+
+    return () => {
+      cancelled = true;
+      if (timer) window.clearTimeout(timer);
+    };
+  }, []);
+  const processProgress =
+    processSteps.length <= 1
+      ? 0
+      : (activeStep / (processSteps.length - 1)) * 100;
+
+  const sparkProgress =
+    activeStep === 0 || processSteps.length <= 1
+      ? 0
+      : ((activeStep - 0.5) / (processSteps.length - 1)) * 100;
+
+  return (
+    <div
+      className="hj-root"
+      ref={rootRef}
+      style={
+        {
+          "--process-progress": `${processProgress}%`,
+          "--spark-progress": `${sparkProgress}%`,
+        } as CSSProperties
+      }
+    >
+      <motion.section
+        className="hj-tracks"
+        initial={{ opacity: 0, y: 42, scale: 0.985 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.08 }}
+        transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div className="hj-orb hj-orb-a" />
+        <div className="hj-orb hj-orb-b" />
+
+        <div className="hj-shell">
+          <div className="hj-scroll-cue" aria-hidden="true">
+            <span />
+            <i><b /></i>
+            <span />
+            <small>Scroll</small>
+          </div>
+
+          <div className="hj-intro-layout">
+            <header className="hj-heading" data-reveal>
+              <p>CHOOSE YOUR DIRECTION</p>
+              <h2>
+                <span className="hj-heading-line hj-heading-line--primary">
+                  Choose the path that fits you
+                </span>
+                <span className="hj-heading-line hj-heading-line--secondary">
+                  <span className="hj-heading-wave">Build the proof that opens</span>{" "}
+                  <em>doors</em>
+                </span>
+              </h2>
+            </header>
+          </div>
+
+          <div className="hj-process" data-reveal>
+            <div className="hj-process-line">
+              <span className="hj-process-progress" />
+              <i
+                className={`hj-process-spark ${
+                  activeStep === 0 ? "hj-process-spark--hidden" : ""
+                }`}
+              >
+                <b />
+                <b />
+                <b />
+              </i>
+            </div>
+
+            <div className="hj-process-steps" role="tablist" aria-label="MentorME career journey">
+              {processSteps.map((step, index) => (
+                <button
+                  key={step.title}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeStep === index}
+                  className={activeStep === index ? "hj-process-step is-active" : "hj-process-step"}
+                  onMouseEnter={() => setActiveStep(index)}
+                  onFocus={() => setActiveStep(index)}
+                  onClick={() => setActiveStep(index)}
+                >
+                  <span>{step.number}</span>
+                  <i>{step.icon}</i>
+                  <b>{step.title}</b>
+                </button>
+              ))}
+            </div>
+
+            <div className="hj-process-detail">
+              <div className="hj-process-detail-icon">{activeProcess.icon}</div>
+              <div>
+                <small>{activeProcess.number} / 07</small>
+                <h3>{activeProcess.headline}</h3>
+                <p>{activeProcess.description}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section
+        className="hj-roadmap"
+        initial={{ opacity: 0, y: 46, scale: 0.982 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.07 }}
+        transition={{ duration: 0.76, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div className="hj-grid-texture" />
+
+        <div className="hj-shell">
+          <header className="hj-first-five-heading" data-reveal>
+            <p>YOUR FIRST FIVE LEVELS</p>
+            <h2>
+              Every career begins
+              <br />
+              with one clear <em>step.</em>
+            </h2>
+            <span>
+              Complete the first five levels, create your first proof, and
+              unlock the complete 90-level journey.
+            </span>
+          </header>
+
+          <div
+            className="hj-level-journey"
+            data-reveal
+            style={
+              {
+                "--active-level": activeLevel,
+              } as CSSProperties
+            }
+          >
+            <div className="hj-level-glow hj-level-glow-a" />
+            <div className="hj-level-glow hj-level-glow-b" />
+            <div className="hj-level-stars" />
+
+            <div
+              className={`hj-climb-scene ${
+                roadmapImpact ? "is-impacting" : ""
+              }`}
+            >
+              <div className="hj-climb-status" aria-live="polite">
+                <small>LEVEL {selectedLevel.number} / 05</small>
+                <strong>{selectedLevel.title}</strong>
+                <span>{selectedLevel.description}</span>
+              </div>
+
+              <Link
+                href="/roadmap"
+                className={`hj-climb-goal ${
+                  roadmapImpact ? "is-hit" : ""
+                }`}
+                aria-label="Open the complete MentorME roadmap"
+              >
+                <span className="hj-goal-label">GOAL</span>
+                <strong>FULL ROADMAP</strong>
+                <i className="hj-goal-ring hj-goal-ring-one" />
+                <i className="hj-goal-ring hj-goal-ring-two" />
+                <i className="hj-goal-pulse" />
+                <b className="hj-goal-particle hj-goal-particle-1" />
+                <b className="hj-goal-particle hj-goal-particle-2" />
+                <b className="hj-goal-particle hj-goal-particle-3" />
+                <b className="hj-goal-particle hj-goal-particle-4" />
+                <b className="hj-goal-particle hj-goal-particle-5" />
+                <b className="hj-goal-particle hj-goal-particle-6" />
+                <b className="hj-goal-particle hj-goal-particle-7" />
+                <b className="hj-goal-particle hj-goal-particle-8" />
+              </Link>
+
+              <div
+                className={`hj-climb-runner ${
+                  roadmapImpact ? "is-goal-bound" : ""
+                } ${roadmapReturning ? "is-returning" : ""}`}
+                aria-hidden="true"
+                style={
+                  {
+                    "--runner-step": activeLevel,
+                  } as CSSProperties
+                }
+              >
+                <span>YOU</span>
+                <i />
+              </div>
+
+              <div
+                className="hj-climb-steps"
+                role="tablist"
+                aria-label="First five MentorME levels"
+              >
+                {firstFiveLevels.map((level, index) => (
+                  <button
+                    key={level.number}
+                    type="button"
+                    role="tab"
+                    aria-selected={activeLevel === index}
+                    className={`hj-climb-step ${
+                      activeLevel === index ? "is-active" : ""
+                    } ${index < activeLevel ? "is-complete" : ""}`}
+                    style={
+                      {
+                        "--step": index,
+                        "--delay": `${index * 140}ms`,
+                      } as CSSProperties
+                    }
+                    onMouseEnter={() => {
+                      setRoadmapImpact(false);
+                      setRoadmapReturning(false);
+                      setActiveLevel(index);
+                    }}
+                    onFocus={() => {
+                      setRoadmapImpact(false);
+                      setRoadmapReturning(false);
+                      setActiveLevel(index);
+                    }}
+                    onClick={() => {
+                      setRoadmapImpact(false);
+                      setRoadmapReturning(false);
+                      setActiveLevel(index);
+                    }}
+                  >
+                    <span className="hj-climb-step-number">{level.number}</span>
+                    <span className="hj-climb-step-icon">{level.icon}</span>
+                    <span className="hj-climb-step-copy">
+                      <b>{level.title}</b>
+                      <small>{level.short}</small>
+                    </span>
+                    <i className="hj-step-depth" aria-hidden="true" />
+                    <i className="hj-step-impact" aria-hidden="true" />
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </motion.section>
+
+      <motion.section
+        className="hj-evolution"
+        initial={{ opacity: 0, y: 46, scale: 0.982 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.07 }}
+        transition={{ duration: 0.76, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div className="hj-evolution-orb hj-evolution-orb-a" />
+        <div className="hj-evolution-orb hj-evolution-orb-b" />
+
+        <div className="hj-shell">
+          <header className="hj-evolution-heading" data-reveal>
+            <p>WHAT HAPPENS AFTER LEVEL FIVE?</p>
+            <h2 className="hj-evolution-title">
+              <span>Your journey keeps moving.</span>
+              <span>Every milestone unlocks <em>more.</em></span>
+            </h2>
+            <span>
+              Follow the road from guided learning to XP, projects, mentor
+              feedback, portfolio proof, and real career opportunities.
+            </span>
+          </header>
+
+          <div className="hj-road-game" data-reveal>
+            <div className="hj-road-game-grid" />
+            <div className="hj-road-game-stars" />
+
+            <svg
+              className="hj-road-svg"
+              viewBox="0 0 1500 760"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient id="hjRoadGlow" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#8f5cf7" />
+                  <stop offset="52%" stopColor="#f2d875" />
+                  <stop offset="100%" stopColor="#70d7ff" />
+                </linearGradient>
+
+                <filter id="hjRoadBlur" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="9" />
+                </filter>
+              </defs>
+
+              <path
+                className="hj-road-shadow-path"
+                d="M120 650
+                   C260 650 310 650 390 650
+                   C505 650 540 585 540 520
+                   C540 450 485 420 420 420
+                   C335 420 305 365 305 305
+                   C305 230 370 195 470 195
+                   C590 195 635 250 635 325
+                   C635 410 705 450 800 450
+                   C905 450 950 390 950 320
+                   C950 230 1030 190 1140 190
+                   C1245 190 1320 235 1370 320
+                   C1400 370 1400 430 1370 500"
+              />
+
+              <path
+                className="hj-road-main-path"
+                d="M120 650
+                   C260 650 310 650 390 650
+                   C505 650 540 585 540 520
+                   C540 450 485 420 420 420
+                   C335 420 305 365 305 305
+                   C305 230 370 195 470 195
+                   C590 195 635 250 635 325
+                   C635 410 705 450 800 450
+                   C905 450 950 390 950 320
+                   C950 230 1030 190 1140 190
+                   C1245 190 1320 235 1370 320
+                   C1400 370 1400 430 1370 500"
+              />
+
+              <path
+                className="hj-road-center-path"
+                d="M120 650
+                   C260 650 310 650 390 650
+                   C505 650 540 585 540 520
+                   C540 450 485 420 420 420
+                   C335 420 305 365 305 305
+                   C305 230 370 195 470 195
+                   C590 195 635 250 635 325
+                   C635 410 705 450 800 450
+                   C905 450 950 390 950 320
+                   C950 230 1030 190 1140 190
+                   C1245 190 1320 235 1370 320
+                   C1400 370 1400 430 1370 500"
+              />
+            </svg>
+
+            <div className="hj-road-start">
+              <small>START</small>
+              <strong>LEVEL 06</strong>
+            </div>
+
+            <div className="hj-road-finish">
+              <i>★</i>
+              <div>
+                <small>CAREER READY</small>
+                <strong>Internship unlocked</strong>
+              </div>
+              <b className="hj-road-finish-wave" aria-hidden="true" />
+            </div>
+
+            <div className="hj-road-runner" aria-hidden="true">
+              <span className="hj-runner-head" />
+              <span className="hj-runner-body" />
+              <span className="hj-runner-arm hj-runner-arm-a" />
+              <span className="hj-runner-arm hj-runner-arm-b" />
+              <span className="hj-runner-leg hj-runner-leg-a" />
+              <span className="hj-runner-leg hj-runner-leg-b" />
+              <i className="hj-runner-glow" />
+
+              <div className="hj-runner-float-labels">
+                <b className="hj-runner-float hj-runner-float-1">TRACK CHOSEN</b>
+                <b className="hj-runner-float hj-runner-float-2">MISSION STARTED</b>
+                <b className="hj-runner-float hj-runner-float-3">+120 XP</b>
+                <b className="hj-runner-float hj-runner-float-4">PROJECT BUILT</b>
+                <b className="hj-runner-float hj-runner-float-5">MENTOR APPROVED</b>
+                <b className="hj-runner-float hj-runner-float-6">PORTFOLIO +1</b>
+                <b className="hj-runner-float hj-runner-float-7">INTERNSHIP UNLOCKED</b>
+              </div>
+            </div>
+
+            <div className="hj-road-checkpoints">
+              {[
+                {
+                  number: "01",
+                  title: "Choose Track",
+                  copy: "Pick your direction",
+                  icon: "⌖",
+                  reward: "TRACK CHOSEN",
+                  className: "hj-road-point-1",
+                },
+                {
+                  number: "02",
+                  title: "Guided Mission",
+                  copy: "Learn by doing",
+                  icon: "◆",
+                  reward: "MISSION STARTED",
+                  className: "hj-road-point-2",
+                },
+                {
+                  number: "03",
+                  title: "Earn XP",
+                  copy: "Progress becomes visible",
+                  icon: "+XP",
+                  reward: "+120 XP",
+                  className: "hj-road-point-3",
+                },
+                {
+                  number: "04",
+                  title: "Build Project",
+                  copy: "Create career proof",
+                  icon: "</>",
+                  reward: "PROJECT BUILT",
+                  className: "hj-road-point-4",
+                },
+                {
+                  number: "05",
+                  title: "Mentor Review",
+                  copy: "Improve with feedback",
+                  icon: "◎",
+                  reward: "MENTOR APPROVED",
+                  className: "hj-road-point-5",
+                },
+                {
+                  number: "06",
+                  title: "Portfolio",
+                  copy: "Show what you can do",
+                  icon: "▣",
+                  reward: "PORTFOLIO +1",
+                  className: "hj-road-point-6",
+                },
+                {
+                  number: "07",
+                  title: "Opportunity",
+                  copy: "Unlock the next door",
+                  icon: "★",
+                  reward: "OPPORTUNITY UNLOCKED",
+                  className: "hj-road-point-7",
+                },
+              ].map((point, index) => (
+                <article
+                  key={point.number}
+                  className={`hj-road-point ${point.className}`}
+                  style={{ "--point-index": index } as CSSProperties}
+                >
+                  <span className="hj-road-point-number">{point.number}</span>
+                  <i className="hj-road-point-icon">{point.icon}</i>
+                  <div>
+                    <strong>{point.title}</strong>
+                    <small>{point.copy}</small>
+                  </div>
+                  <b className="hj-road-point-pulse" />
+                  <b className="hj-road-point-reward">{point.reward}</b>
+                </article>
+              ))}
+            </div>
+
+            <div className="hj-road-progress-badge">
+              <span>06 → 90</span>
+              <small>THE JOURNEY CONTINUES</small>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+      <CareerTransformation />
+      <LiveCommunity />
+
+      <motion.section
+        hidden
+        aria-hidden="true"
+        className="hj-dashboard-section"
+        initial={{ opacity: 0, y: 44, scale: 0.984 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.08 }}
+        transition={{ duration: 0.74, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div className="hj-dashboard-glow hj-dashboard-glow-a" />
+        <div className="hj-dashboard-glow hj-dashboard-glow-b" />
+
+        <div className="hj-shell">
+          <header className="hj-dashboard-heading" data-reveal>
+            <p>YOUR PROGRESS, MADE VISIBLE</p>
+            <h2>
+              A dashboard that shows
+              <br />
+              how far you have <em>come.</em>
+            </h2>
+            <span>
+              Levels, XP, projects, mentor reviews, streaks, and readiness—
+              everything in one clear view.
+            </span>
+          </header>
+
+          <div className="hj-dashboard" data-reveal>
+            <div className="hj-dashboard-topbar">
+              <div>
+                <small>MENTORME STUDENT DASHBOARD</small>
+                <strong>Frontend Developer Journey</strong>
+              </div>
+              <span className="hj-dashboard-status">
+                <i />
+                ACTIVE JOURNEY
+              </span>
+            </div>
+
+            <div className="hj-dashboard-grid">
+              <article className="hj-dashboard-level">
+                <small>CURRENT LEVEL</small>
+                <div className="hj-level-number">27</div>
+                <strong>Responsive Applications</strong>
+                <span>63 of 90 missions completed</span>
+
+                <div className="hj-dashboard-progress">
+                  <i />
+                </div>
+
+                <div className="hj-dashboard-progress-meta">
+                  <span>Journey progress</span>
+                  <b>70%</b>
+                </div>
+              </article>
+
+              <article className="hj-dashboard-xp">
+                <small>TOTAL XP</small>
+                <strong>
+                  <span className="hj-counter">4,250</span>
+                  <i>XP</i>
+                </strong>
+                <div className="hj-xp-ring">
+                  <span>+320</span>
+                  <small>THIS WEEK</small>
+                </div>
+              </article>
+
+              <article className="hj-dashboard-readiness">
+                <small>CAREER READINESS</small>
+                <div className="hj-readiness-ring">
+                  <span>87%</span>
+                </div>
+                <strong>Interview ready</strong>
+                <span>Portfolio and skills are on track.</span>
+              </article>
+
+              <article className="hj-dashboard-project">
+                <div className="hj-dashboard-card-head">
+                  <div>
+                    <small>LATEST PROJECT</small>
+                    <strong>Career Analytics Dashboard</strong>
+                  </div>
+                  <span>MENTOR APPROVED</span>
+                </div>
+
+                <div className="hj-project-preview">
+                  <div className="hj-preview-sidebar">
+                    <i />
+                    <i />
+                    <i />
+                    <i />
+                  </div>
+                  <div className="hj-preview-main">
+                    <div className="hj-preview-bars">
+                      <i />
+                      <i />
+                      <i />
+                      <i />
+                      <i />
+                    </div>
+                    <div className="hj-preview-line" />
+                  </div>
+                </div>
+
+                <div className="hj-project-stack">
+                  <span>Next.js</span>
+                  <span>TypeScript</span>
+                  <span>API</span>
+                  <span>Responsive UI</span>
+                </div>
+              </article>
+
+              <article className="hj-dashboard-activity">
+                <small>RECENT ACTIVITY</small>
+
+                <div className="hj-activity-row">
+                  <i>✓</i>
+                  <div>
+                    <strong>Mentor review completed</strong>
+                    <span>Project quality improved to 92%</span>
+                  </div>
+                  <b>+120 XP</b>
+                </div>
+
+                <div className="hj-activity-row">
+                  <i>★</i>
+                  <div>
+                    <strong>Builder badge unlocked</strong>
+                    <span>Completed five practical projects</span>
+                  </div>
+                  <b>NEW</b>
+                </div>
+
+                <div className="hj-activity-row">
+                  <i>↗</i>
+                  <div>
+                    <strong>Portfolio score increased</strong>
+                    <span>Your profile is becoming opportunity-ready</span>
+                  </div>
+                  <b>92%</b>
+                </div>
+              </article>
+
+              <article className="hj-dashboard-stats">
+                <div>
+                  <strong>9</strong>
+                  <span>Projects</span>
+                </div>
+                <div>
+                  <strong>12</strong>
+                  <span>Day streak</span>
+                </div>
+                <div>
+                  <strong>18</strong>
+                  <span>Mentor reviews</span>
+                </div>
+                <div>
+                  <strong>6</strong>
+                  <span>Badges</span>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div className="hj-dashboard-cta" data-reveal>
+            <div>
+              <small>YOUR FIRST FIVE LEVELS ARE FREE</small>
+              <h3>Start with one level. Build toward a career.</h3>
+            </div>
+            <Link href="/signup" className="hj-final-button">
+              Start your journey <span>→</span>
+            </Link>
+          </div>
+        </div>
+      </motion.section>
+
+      <style jsx>{`
+        .hj-root {
+          --bg: #07182a;
+          --bg-2: #0a2238;
+          --surface: rgba(13, 42, 70, 0.84);
+          --surface-strong: rgba(8, 30, 52, 0.96);
+          --border: rgba(130, 188, 232, 0.2);
+          --text: #f6f8ff;
+          --muted: #b5c5d6;
+          --purple: #8f5cf7;
+          --purple-soft: #b58cff;
+          --gold: #e0bd55;
+          --gold-soft: #f2d875;
+          --cyan: #70d7ff;
+          overflow: hidden;
+          color: var(--text);
+          background: var(--bg);
+        }
+
+        :global([data-theme="light"]) .hj-root {
+          --bg: #b88922;
+          --bg-2: #b88922;
+          --surface: rgba(255, 255, 255, 0.72);
+          --surface-strong: rgba(248, 243, 253, 0.96);
+          --border: rgba(91, 61, 119, 0.22);
+          --text: #122c50;
+          --muted: #59647b;
+          --purple: #7650d8;
+          --purple-soft: #9d73f2;
+          --gold: #b88922;
+          --gold-soft: #d2aa43;
+          --cyan: #2b698c;
+        }
+
+        .hj-shell {
+          width: min(1640px, calc(100% - 48px));
+          margin: 0 auto;
+        }
+
+        .hj-tracks,
+        .hj-roadmap,
+        .hj-proof,
+        .hj-final {
+          position: relative;
+          isolation: isolate;
+        }
+
+        .hj-tracks {
+          padding: 0 0 42px;
+          background:
+            radial-gradient(circle at 78% 17%, rgba(142, 91, 246, 0.2), transparent 31%),
+            linear-gradient(180deg, var(--bg), var(--bg-2));
+        }
+
+        .hj-process {
+          position: relative;
+          margin-top: 18px;
+          padding: 26px 0 22px;
+        }
+
+        .hj-process-line {
+          position: absolute;
+          top: 84px;
+          left: 7.15%;
+          right: 7.15%;
+          height: 2px;
+          overflow: visible;
+          border-radius: 999px;
+          background: rgba(130, 188, 232, 0.2);
+          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.025);
+        }
+
+        .hj-process-progress {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          width: var(--process-progress);
+          border-radius: inherit;
+          background: linear-gradient(
+            90deg,
+            var(--purple) 0%,
+            var(--gold-soft) 58%,
+            #fff2a8 100%
+          );
+          box-shadow:
+            0 0 9px rgba(181, 140, 255, 0.5),
+            0 0 18px rgba(224, 189, 85, 0.34);
+          transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .hj-process-spark {
+          position: absolute;
+          z-index: 4;
+          top: 50%;
+          left: var(--spark-progress);
+          width: 13px;
+          height: 13px;
+          border-radius: 50%;
+          background: #fff7bf;
+          box-shadow:
+            0 0 7px 2px rgba(255, 238, 151, 0.95),
+            0 0 17px 7px rgba(224, 189, 85, 0.42),
+            0 0 30px 11px rgba(143, 92, 247, 0.2);
+          transform: translate(-50%, -50%);
+          transition:
+            left 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+            opacity 0.22s ease;
+          animation: hjSparkPulse 1.35s ease-in-out infinite;
+        }
+
+        .hj-process-spark--hidden {
+          opacity: 0;
+        }
+
+        .hj-process-spark > b {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 3px;
+          height: 3px;
+          border-radius: 50%;
+          background: #fff4a6;
+          box-shadow: 0 0 8px rgba(255, 236, 142, 0.9);
+          animation: hjSparkParticle 0.9s ease-out infinite;
+        }
+
+        .hj-process-spark > b:nth-child(1) {
+          animation-delay: -0.12s;
+        }
+
+        .hj-process-spark > b:nth-child(2) {
+          animation-delay: -0.42s;
+        }
+
+        .hj-process-spark > b:nth-child(3) {
+          animation-delay: -0.7s;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-process-line {
+          background: rgba(69, 43, 105, 0.2);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-process-progress {
+          background: linear-gradient(
+            90deg,
+            #7650d8 0%,
+            #b487e9 48%,
+            #d2aa43 100%
+          );
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-process-step > i {
+          color: #f5f7ff;
+          border-color: rgba(255, 255, 255, 0.14);
+          background: linear-gradient(145deg, #172236, #090f1c);
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.08),
+            0 10px 24px rgba(29, 18, 48, 0.2);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-process-step:hover > i,
+        :global([data-theme="light"]) .hj-root .hj-process-step.is-active > i {
+          color: #172033;
+          border-color: rgba(222, 181, 72, 0.92);
+          background: linear-gradient(145deg, #f4dd82, #cfa43b);
+          box-shadow:
+            0 0 0 4px rgba(211, 169, 58, 0.12),
+            0 0 16px rgba(211, 169, 58, 0.46),
+            0 12px 24px rgba(48, 29, 72, 0.18);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-process-detail {
+          color: #f5f7ff;
+          border-color: rgba(255, 255, 255, 0.12);
+          background:
+            radial-gradient(
+              circle at 82% 18%,
+              rgba(119, 79, 180, 0.18),
+              transparent 34%
+            ),
+            linear-gradient(145deg, #172236, #090f1c);
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.08),
+            0 28px 58px rgba(51, 32, 75, 0.24);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-process-detail-icon {
+          color: #f2d875;
+          border-color: rgba(242, 216, 117, 0.22);
+          background: rgba(255, 255, 255, 0.06);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-process-detail h3 {
+          color: #f7f8ff;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-process-detail p {
+          color: #c5cfdd;
+        }
+
+        .hj-process-steps {
+          position: relative;
+          z-index: 2;
+          display: grid;
+          grid-template-columns: repeat(7, minmax(0, 1fr));
+          gap: 12px;
+        }
+
+        .hj-process-step {
+          min-width: 0;
+          padding: 0;
+          border: 0;
+          color: var(--muted);
+          background: transparent;
+          cursor: pointer;
+          text-align: center;
+        }
+
+        .hj-process-step > span {
+          display: block;
+          margin-bottom: 10px;
+          color: var(--cyan);
+          font: 850 0.67rem var(--font-display), sans-serif;
+        }
+
+        .hj-process-step > i {
+          width: 56px;
+          height: 56px;
+          display: grid;
+          place-items: center;
+          margin: 0 auto 14px;
+          border: 1px solid var(--border);
+          border-radius: 50%;
+          color: var(--cyan);
+          background: linear-gradient(145deg, var(--surface), var(--surface-strong));
+          box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
+          font: 700 1.05rem var(--font-display), sans-serif;
+          font-style: normal;
+          transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease, color 0.28s ease;
+        }
+
+        .hj-process-step > b {
+          display: block;
+          font: 760 0.76rem var(--font-display), sans-serif;
+          line-height: 1.25;
+          transition: color 0.28s ease;
+        }
+
+        .hj-process-step:hover > i,
+        .hj-process-step.is-active > i {
+          transform: translateY(-3px) scale(1.035);
+          color: #14233b;
+          border-color: rgba(242, 216, 117, 0.9);
+          background: linear-gradient(145deg, #f3da79, #d1a83d);
+          box-shadow:
+            0 0 0 4px rgba(224, 189, 85, 0.12),
+            0 0 18px rgba(224, 189, 85, 0.42),
+            0 13px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .hj-process-step.is-active > b {
+          color: var(--text);
+        }
+
+        .hj-process-detail {
+          min-height: 152px;
+          display: grid;
+          grid-template-columns: 72px minmax(0, 1fr);
+          align-items: center;
+          gap: 25px;
+          margin-top: 24px;
+          padding: 24px 32px;
+          border: 1px solid var(--border);
+          border-radius: 24px;
+          background: linear-gradient(145deg, var(--surface), var(--surface-strong));
+          box-shadow: 0 28px 65px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+          transition:
+            border-color 0.3s ease,
+            background 0.3s ease,
+            box-shadow 0.3s ease;
+        }
+
+        .hj-process-detail-icon {
+          width: 64px;
+          height: 64px;
+          display: grid;
+          place-items: center;
+          border: 1px solid var(--border);
+          border-radius: 18px;
+          color: var(--cyan);
+          background: rgba(112, 216, 255, 0.08);
+          font: 800 1.3rem var(--font-display), sans-serif;
+        }
+
+        .hj-process-detail small {
+          color: var(--gold-soft);
+          font: 850 0.69rem var(--font-display), sans-serif;
+          letter-spacing: 0.12em;
+        }
+
+        .hj-process-detail h3 {
+          margin: 8px 0 8px;
+          font: 760 1.55rem var(--font-display), sans-serif;
+          letter-spacing: -0.025em;
+        }
+
+        .hj-process-detail p {
+          max-width: 900px;
+          margin: 0;
+          color: var(--muted);
+          line-height: 1.7;
+        }
+
+        .hj-scroll-cue {
+          width: min(100%, 1280px);
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
+          align-items: center;
+          column-gap: 28px;
+          margin: 0 auto;
+          padding-top: 20px;
+          color: var(--muted);
+          text-align: center;
+        }
+
+        .hj-scroll-cue > span {
+          height: 1px;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(112, 215, 255, 0.54)
+          );
+        }
+
+        .hj-scroll-cue > span:nth-of-type(2) {
+          background: linear-gradient(
+            90deg,
+            rgba(112, 215, 255, 0.54),
+            transparent
+          );
+        }
+
+        .hj-scroll-cue > i {
+          position: relative;
+          width: 34px;
+          height: 52px;
+          display: block;
+          border: 1px solid rgba(112, 215, 255, 0.52);
+          border-radius: 18px;
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.08),
+            0 0 22px rgba(112, 215, 255, 0.08);
+        }
+
+        .hj-scroll-cue > i > b {
+          position: absolute;
+          top: 10px;
+          left: 50%;
+          width: 3px;
+          height: 9px;
+          border-radius: 999px;
+          background: var(--cyan);
+          box-shadow: 0 0 8px rgba(112, 215, 255, 0.8);
+          transform: translateX(-50%);
+          animation: hjScrollDot 1.8s ease-in-out infinite;
+        }
+
+        .hj-scroll-cue > small {
+          grid-column: 2;
+          margin-top: 7px;
+          font: 600 0.78rem var(--font-sans), sans-serif;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-scroll-cue {
+          color: #8f6812;
+          filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.15));
+          transition: filter 0.3s ease;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-scroll-cue:hover {
+          filter:
+            brightness(1.08)
+            drop-shadow(0 0 10px rgba(212, 175, 55, 0.18));
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-scroll-cue > span {
+          height: 2px;
+          background: linear-gradient(
+            90deg,
+            rgba(180, 140, 25, 0.15),
+            rgba(212, 175, 55, 0.95),
+            rgba(255, 228, 130, 0.55)
+          );
+          opacity: 0.78;
+          box-shadow: 0 0 8px rgba(212, 175, 55, 0.13);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-scroll-cue > span:nth-of-type(2) {
+          background: linear-gradient(
+            90deg,
+            rgba(255, 228, 130, 0.55),
+            rgba(212, 175, 55, 0.95),
+            rgba(180, 140, 25, 0.15)
+          );
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-scroll-cue > i {
+          width: 36px;
+          height: 54px;
+          border: 1.6px solid rgba(212, 175, 55, 0.95);
+          background: linear-gradient(
+            180deg,
+            rgba(255, 252, 245, 0.82),
+            rgba(248, 241, 228, 0.72)
+          );
+          -webkit-backdrop-filter: blur(18px);
+          backdrop-filter: blur(18px);
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.45),
+            0 0 14px rgba(212, 175, 55, 0.14);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-scroll-cue > i > b {
+          width: 4px;
+          height: 10px;
+          background: linear-gradient(
+            180deg,
+            #fff4b3,
+            #f4d65c,
+            #d4af37,
+            #b8860b
+          );
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.55),
+            0 0 8px rgba(212, 175, 55, 0.32);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-scroll-cue > small {
+          color: #8c6a16;
+          font-weight: 600;
+          letter-spacing: 0.06em;
+          text-transform: none;
+          text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+        }
+
+        .hj-intro-layout {
+          display: grid;
+          place-items: center;
+        }
+
+        .hj-heading {
+          width: min(1080px, 100%);
+          padding: 70px 0 22px;
+          text-align: center;
+        }
+
+        .hj-heading > p,
+        .hj-roadmap-copy > p,
+        .hj-proof-heading > p,
+        .hj-final-copy > p {
+          margin: 0 0 22px;
+          color: var(--cyan);
+          font: 850 0.76rem var(--font-display), sans-serif;
+          letter-spacing: 0.16em;
+        }
+
+        .hj-heading > p {
+          margin-bottom: 30px;
+          font-size: clamp(0.96rem, 1.08vw, 1.16rem);
+          font-weight: 950;
+          letter-spacing: 0.21em;
+          text-shadow: 0 0 16px rgba(112, 215, 255, 0.16);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-heading > p {
+          color: #0f5e83;
+          text-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.8),
+            0 0 12px rgba(43, 105, 140, 0.12);
+        }
+
+        .hj-heading h2,
+        .hj-roadmap-copy h2,
+        .hj-proof-heading h2,
+        .hj-final h2 {
+          margin: 0;
+          font-family: var(--font-display), sans-serif;
+          font-weight: 760;
+          line-height: 0.98;
+          letter-spacing: -0.055em;
+          text-wrap: balance;
+        }
+
+        .hj-heading h2 {
+          width: min(1380px, 100%);
+          max-width: none;
+          margin-inline: auto;
+          line-height: 1;
+          letter-spacing: -0.048em;
+        }
+
+        .hj-heading-line {
+          display: block;
+          width: 100%;
+          text-align: center;
+          white-space: nowrap;
+        }
+
+        .hj-heading-line--primary {
+          color: var(--text);
+          font-size: clamp(2.85rem, 4.15vw, 4.95rem);
+        }
+
+        .hj-heading-line--secondary {
+          margin-top: 10px;
+          font-size: clamp(2.35rem, 3.55vw, 4.2rem);
+          line-height: 1.04;
+        }
+
+        :global([data-theme="dark"]) .hj-root .hj-heading-line--primary {
+          color: #f4f6ff;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-heading-line--primary {
+          color: #172d50;
+        }
+
+        .hj-heading-wave {
+  color: transparent;
+
+  background: linear-gradient(
+    90deg,
+    #f4f6ff 0%,
+    #f4f6ff 47%,
+    #d8b24b 49%,
+    #fff6d2 50%,
+    #d8b24b 51%,
+    #f4f6ff 53%,
+    #f4f6ff 100%
+  );
+
+  background-size: 260% 100%;
+  background-position: 50% 50%;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: hjHeadingGoldWave 12s ease-in-out infinite;
+}
+
+        :global([data-theme="light"]) .hj-root .hj-heading-wave {
+  background: linear-gradient(
+    90deg,
+    #172d50 0%,
+    #172d50 47%,
+    #c99b2f 49%,
+    #ffe7a4 50%,
+    #c99b2f 51%,
+    #172d50 53%,
+    #172d50 100%
+  );
+
+  background-size: 260% 100%;
+
+          background-position: 0% 50%;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        .hj-heading em,
+        .hj-roadmap-copy em,
+        .hj-proof-heading em,
+        .hj-final em {
+          color: transparent;
+          font-family: Georgia, "Times New Roman", serif;
+          font-weight: 500;
+          font-style: italic;
+          background: linear-gradient(
+            110deg,
+            var(--purple),
+            var(--purple-soft) 52%,
+            var(--gold-soft)
+          );
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        .hj-heading em {
+          display: inline-block;
+          transform-origin: center;
+          animation: hjProveBreath 3.4s ease-in-out infinite;
+          will-change: transform, filter;
+        }
+
+        .hj-roadmap-copy > span {
+          display: block;
+          max-width: 760px;
+          margin: 18px auto 0;
+          color: var(--muted);
+          font-size: 1.02rem;
+          line-height: 1.75;
+        }
+
+        .hj-roadmap {
+          padding: 78px 0 120px;
+          background:
+            radial-gradient(circle at 50% 36%, rgba(143, 92, 247, 0.18), transparent 30%),
+            radial-gradient(circle at 18% 62%, rgba(224, 189, 85, 0.1), transparent 24%),
+            linear-gradient(180deg, var(--bg-2), var(--bg));
+        }
+
+        .hj-first-five-heading {
+          max-width: 980px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        .hj-first-five-heading > p {
+          margin: 0 0 24px;
+          color: var(--cyan);
+          font: 950 clamp(1rem, 1.14vw, 1.16rem) var(--font-display), sans-serif;
+          letter-spacing: 0.21em;
+          text-shadow: 0 0 18px rgba(112, 215, 255, 0.16);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-first-five-heading > p {
+          color: #0f5e83;
+          text-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.86),
+            0 0 12px rgba(43, 105, 140, 0.12);
+        }
+
+        .hj-first-five-heading h2 {
+          margin: 0;
+          overflow: visible;
+          font: 760 clamp(3.25rem, 5.25vw, 5.9rem) / 1.04 var(--font-display), sans-serif;
+          letter-spacing: -0.052em;
+        }
+
+        .hj-first-five-heading h2 em {
+          display: inline-block;
+          padding: 0 0 0.12em;
+          margin-bottom: -0.12em;
+          overflow: visible;
+          color: transparent;
+          font-family: Georgia, "Times New Roman", serif;
+          font-weight: 500;
+          font-style: italic;
+          background: linear-gradient(110deg, var(--purple), var(--purple-soft), var(--gold-soft));
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          transform-origin: center;
+          animation: hjStepBreath 3.6s ease-in-out infinite;
+          will-change: transform, filter;
+        }
+
+        .hj-first-five-heading > span {
+          display: block;
+          max-width: 880px;
+          margin: 26px auto 0;
+          color: var(--muted);
+          font: 760 clamp(1.05rem, 1.22vw, 1.2rem) / 1.62 var(--font-sans), sans-serif;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-first-five-heading > span {
+          color: #263a59;
+        }
+
+        .hj-level-journey {
+          position: relative;
+          margin-top: 58px;
+          padding: 28px;
+          overflow: hidden;
+          border: 1px solid rgba(224, 189, 85, 0.34);
+          border-radius: 34px;
+          background:
+            radial-gradient(circle at 76% 18%, rgba(224, 189, 85, 0.08), transparent 24%),
+            radial-gradient(circle at 18% 80%, rgba(143, 92, 247, 0.16), transparent 32%),
+            linear-gradient(145deg, rgba(7, 27, 48, 0.98), rgba(2, 13, 25, 0.99));
+          box-shadow:
+            0 42px 90px rgba(0, 0, 0, 0.28),
+            inset 0 1px 0 rgba(255, 255, 255, 0.07);
+        }
+
+        .hj-level-journey::before {
+          content: "";
+          position: absolute;
+          z-index: 20;
+          inset: 0;
+          padding: 2px;
+          pointer-events: none;
+          border-radius: inherit;
+          background: conic-gradient(
+            from var(--journey-border-angle),
+            transparent 0deg,
+            transparent 258deg,
+            rgba(242, 216, 117, 0.16) 288deg,
+            rgba(255, 247, 191, 1) 318deg,
+            rgba(224, 189, 85, 0.3) 346deg,
+            transparent 360deg
+          );
+          -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          animation: hjJourneyBorderTravel 8s linear infinite;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-level-journey {
+          border-color: rgba(184, 137, 34, 0.58);
+          background:
+            radial-gradient(circle at 76% 18%, rgba(204, 160, 49, 0.09), transparent 24%),
+            radial-gradient(circle at 18% 80%, rgba(118, 80, 216, 0.12), transparent 32%),
+            linear-gradient(145deg, rgba(255,255,255,.94), rgba(232,219,246,.98));
+          box-shadow:
+            0 34px 72px rgba(70, 45, 99, 0.18),
+            inset 0 1px 0 rgba(255, 255, 255, 0.92);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-level-journey::before {
+          background: conic-gradient(
+            from var(--journey-border-angle),
+            transparent 0deg,
+            transparent 246deg,
+            rgba(184, 137, 34, 0.2) 280deg,
+            rgba(255, 225, 121, 1) 312deg,
+            rgba(184, 137, 34, 0.52) 344deg,
+            transparent 360deg
+          );
+          filter: drop-shadow(0 0 7px rgba(184, 137, 34, 0.42));
+        }
+
+        .hj-level-glow {
+          position: absolute;
+          pointer-events: none;
+          border-radius: 50%;
+          filter: blur(14px);
+          opacity: 0.6;
+        }
+
+        .hj-level-glow-a {
+          width: 360px;
+          height: 360px;
+          top: -200px;
+          right: 8%;
+          background: radial-gradient(circle, rgba(224,189,85,.2), transparent 70%);
+          animation: hjOrbit 9s ease-in-out infinite;
+        }
+
+        .hj-level-glow-b {
+          width: 320px;
+          height: 320px;
+          left: 8%;
+          bottom: -190px;
+          background: radial-gradient(circle, rgba(143,92,247,.26), transparent 70%);
+          animation: hjOrbit 12s ease-in-out infinite reverse;
+        }
+
+        .hj-level-stars {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          opacity: 0.24;
+          background-image:
+            radial-gradient(circle, rgba(255,255,255,.72) 0 1px, transparent 1.5px),
+            radial-gradient(circle, rgba(181,140,255,.64) 0 1px, transparent 1.7px);
+          background-size: 64px 64px, 91px 91px;
+          background-position: 0 0, 34px 30px;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-level-stars {
+          opacity: .1;
+          filter: invert(1);
+        }
+
+        .hj-climb-scene {
+          position: relative;
+          min-height: 760px;
+          overflow: hidden;
+          border: 1px solid rgba(130,188,232,.14);
+          border-radius: 28px;
+          background:
+            linear-gradient(rgba(255,255,255,.024) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,.024) 1px, transparent 1px);
+          background-size: 48px 48px;
+          perspective: 1400px;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-climb-scene {
+          border-color: rgba(70,43,105,.14);
+          background:
+            linear-gradient(rgba(38,20,62,.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(38,20,62,.035) 1px, transparent 1px);
+          background-size: 48px 48px;
+        }
+
+        .hj-climb-steps {
+          position: absolute;
+          inset: 0;
+        }
+
+        .hj-climb-step {
+          --step: 0;
+          position: absolute;
+          left: calc(8.5% + var(--step) * 15.9%);
+          bottom: calc(8% + var(--step) * 13.8%);
+          width: clamp(220px, 18vw, 282px);
+          min-height: 112px;
+          display: grid;
+          grid-template-columns: 34px 54px minmax(0, 1fr);
+          align-items: center;
+          gap: 13px;
+          padding: 18px 20px 20px;
+          overflow: visible;
+          border: 1px solid rgba(130,188,232,.34);
+          border-radius: 17px;
+          color: var(--text);
+          background:
+            linear-gradient(150deg, rgba(23, 63, 101, .99), rgba(5, 22, 39, 1));
+          box-shadow:
+            0 10px 0 #0a2943,
+            0 20px 0 #03111f,
+            0 32px 48px rgba(0,0,0,.34),
+            inset 0 1px 0 rgba(255,255,255,.13),
+            inset 0 -1px 0 rgba(0,0,0,.42);
+          cursor: pointer;
+          text-align: left;
+          transform:
+            perspective(1100px)
+            rotateX(18deg)
+            rotateZ(-2deg)
+            translateZ(0);
+          transform-origin: center bottom;
+          animation: hjClimbStepIn .85s cubic-bezier(.2,.8,.2,1) both;
+          animation-delay: var(--delay);
+          transition:
+            transform .42s cubic-bezier(.2,.8,.2,1),
+            border-color .3s ease,
+            box-shadow .3s ease,
+            filter .3s ease;
+        }
+
+        .hj-climb-step::before {
+          content: "";
+          position: absolute;
+          inset: 7px 9px auto;
+          height: 1px;
+          border-radius: 999px;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.3),
+            transparent
+          );
+          pointer-events: none;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-climb-step {
+          color: #132b4d;
+          border-color: rgba(89,57,123,.24);
+          background: linear-gradient(150deg, rgba(255,255,255,.99), rgba(226,211,243,.99));
+          box-shadow:
+            0 9px 0 #d8c9e7,
+            0 18px 0 #aa94c2,
+            0 30px 42px rgba(74,45,103,.2),
+            inset 0 1px 0 rgba(255,255,255,.96),
+            inset 0 -1px 0 rgba(77,50,105,.15);
+        }
+
+        .hj-step-depth {
+          position: absolute;
+          left: 10px;
+          right: 10px;
+          bottom: -17px;
+          height: 17px;
+          z-index: -1;
+          border-radius: 0 0 14px 14px;
+          background: linear-gradient(180deg, #0c2a45, #020b14);
+          transform: skewX(-8deg);
+          box-shadow: 0 12px 18px rgba(0,0,0,.24);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-step-depth {
+          background: linear-gradient(180deg, #cdbbde, #9b84b3);
+        }
+
+        .hj-step-impact {
+          position: absolute;
+          left: 12%;
+          right: 12%;
+          bottom: -11px;
+          height: 5px;
+          border-radius: 999px;
+          opacity: 0;
+          background: linear-gradient(90deg, transparent, #f2d875, #fff3b0, #f2d875, transparent);
+          box-shadow: 0 0 16px rgba(224,189,85,.7);
+        }
+
+        .hj-climb-step:hover,
+        .hj-climb-step.is-active {
+          z-index: 8;
+          border-color: rgba(242,216,117,.86);
+          transform:
+            perspective(1100px)
+            rotateX(12deg)
+            rotateZ(-1deg)
+            translateY(-11px)
+            translateZ(18px)
+            scale(1.035);
+          box-shadow:
+            0 12px 0 #0d304d,
+            0 23px 0 #061728,
+            0 40px 60px rgba(0,0,0,.36),
+            0 0 34px rgba(143,92,247,.2),
+            inset 0 1px 0 rgba(255,255,255,.16);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-climb-step:hover,
+        :global([data-theme="light"]) .hj-root .hj-climb-step.is-active {
+          box-shadow:
+            0 11px 0 #cfbce0,
+            0 21px 0 #a88fbe,
+            0 36px 52px rgba(68,40,94,.22),
+            0 0 30px rgba(181,140,255,.18),
+            inset 0 1px 0 rgba(255,255,255,.98);
+        }
+
+        .hj-climb-step.is-active .hj-step-impact {
+          animation: hjStepImpact 1.15s ease-out infinite;
+        }
+
+        .hj-climb-step.is-complete {
+          border-color: rgba(224,189,85,.5);
+          filter: saturate(1.12);
+        }
+
+        .hj-climb-step-number {
+          color: var(--gold-soft);
+          font: 900 .72rem/1 var(--font-display), sans-serif;
+          letter-spacing: .08em;
+          text-shadow: 0 1px 8px rgba(224,189,85,.18);
+        }
+
+        .hj-climb-step-icon {
+          width: 52px;
+          height: 52px;
+          display: grid;
+          place-items: center;
+          border: 1px solid rgba(242,216,117,.42);
+          border-radius: 15px;
+          color: #17233a;
+          background: linear-gradient(145deg, #fff0a0, #d0a239);
+          box-shadow:
+            0 5px 0 #8f6818,
+            0 10px 20px rgba(0,0,0,.22),
+            0 0 18px rgba(224,189,85,.24),
+            inset 0 1px 0 rgba(255,255,255,.7);
+          font: 900 1rem/1 var(--font-display), sans-serif;
+        }
+
+        .hj-climb-step-copy {
+          min-width: 0;
+          align-self: center;
+          transform: translateZ(1px);
+        }
+
+        .hj-climb-step-copy b,
+        .hj-climb-step-copy small {
+          display: block;
+        }
+
+        .hj-climb-step-copy b {
+          overflow: hidden;
+          color: var(--text);
+          font: 800 clamp(.9rem, .96vw, 1.02rem)/1.12 var(--font-display), sans-serif;
+          letter-spacing: -.015em;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          text-shadow: 0 1px 8px rgba(0,0,0,.24);
+        }
+
+        .hj-climb-step-copy small {
+          min-height: 2.5em;
+          margin-top: 6px;
+          overflow: hidden;
+          color: var(--muted);
+          font: 600 clamp(.58rem, .61vw, .66rem)/1.28 var(--font-sans), sans-serif;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-climb-step-copy b {
+          color: #132b4d;
+          text-shadow: none;
+        }
+
+        .hj-climb-runner {
+          --runner-step: 0;
+          position: absolute;
+          z-index: 14;
+          left: calc(12.3% + var(--runner-step) * 15.8%);
+          bottom: calc(17.2% + var(--runner-step) * 13.8%);
+          width: 70px;
+          height: 70px;
+          display: grid;
+          place-items: center;
+          border: 2px solid rgba(255,255,255,.9);
+          border-radius: 50%;
+          color: #11233a;
+          background:
+            radial-gradient(circle at 34% 28%, #fff9c8, #e7bc42 61%, #9e7216);
+          box-shadow:
+            0 0 0 10px rgba(224,189,85,.08),
+            0 0 30px rgba(224,189,85,.68),
+            0 20px 38px rgba(0,0,0,.3);
+          transform: translate(-50%, 50%);
+          transition:
+            left .78s cubic-bezier(.2,.8,.2,1),
+            bottom .78s cubic-bezier(.2,.8,.2,1),
+            opacity .28s ease;
+          animation: hjRunnerBounce .78s cubic-bezier(.2,.75,.2,1) infinite alternate;
+        }
+
+        .hj-climb-runner.is-goal-bound {
+          left: 87.6%;
+          bottom: 76%;
+          animation: hjGoalHit 1.15s cubic-bezier(.2,.8,.2,1) forwards;
+        }
+
+        .hj-climb-runner.is-returning {
+          opacity: 0;
+          animation: none;
+          transition:
+            left .01ms linear,
+            bottom .01ms linear,
+            opacity .16s ease;
+        }
+
+        .hj-climb-runner:not(.is-returning):not(.is-goal-bound) {
+          opacity: 1;
+          transition:
+            left .78s cubic-bezier(.2,.8,.2,1),
+            bottom .78s cubic-bezier(.2,.8,.2,1),
+            opacity .28s ease;
+        }
+
+        .hj-climb-runner span {
+          position: relative;
+          z-index: 2;
+          font: 900 .66rem var(--font-display), sans-serif;
+        }
+
+        .hj-climb-runner i {
+          position: absolute;
+          left: 50%;
+          bottom: -38px;
+          width: 11px;
+          height: 44px;
+          border-radius: 999px;
+          opacity: .42;
+          background: linear-gradient(to bottom, rgba(255,242,169,.9), transparent);
+          filter: blur(4px);
+          transform: translateX(-50%);
+        }
+
+        .hj-climb-goal {
+          position: absolute;
+          z-index: 6;
+          top: 7%;
+          right: 5.5%;
+          width: 122px;
+          height: 122px;
+          display: grid;
+          place-items: center;
+          align-content: center;
+          gap: 7px;
+          border: 1px solid rgba(242,216,117,.52);
+          border-radius: 50%;
+          color: #f7f8ff;
+          background:
+            radial-gradient(circle at 50% 48%, rgba(255,255,255,.16), rgba(224,189,85,.1) 34%, rgba(9,27,47,.92) 68%);
+          box-shadow:
+            0 0 0 10px rgba(224,189,85,.035),
+            0 0 24px rgba(224,189,85,.24),
+            inset 0 0 28px rgba(242,216,117,.12);
+          overflow: visible;
+          text-decoration: none;
+          cursor: pointer;
+          animation: hjGoalBreath 3.4s ease-in-out infinite;
+          transition:
+            border-color 0.28s ease,
+            box-shadow 0.28s ease,
+            filter 0.28s ease;
+        }
+
+        .hj-climb-goal:hover,
+        .hj-climb-goal:focus-visible {
+          border-color: rgba(255, 232, 145, 0.9);
+          box-shadow:
+            0 0 0 12px rgba(224, 189, 85, 0.06),
+            0 0 38px rgba(224, 189, 85, 0.38),
+            inset 0 0 30px rgba(242, 216, 117, 0.16);
+          outline: none;
+          filter: brightness(1.08);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-climb-goal {
+          color: #ffffff;
+          border-color: rgba(236, 201, 92, 0.82);
+          background:
+            radial-gradient(circle at 34% 28%, #314258 0%, #162236 43%, #070d17 100%);
+          box-shadow:
+            0 0 0 10px rgba(226, 189, 78, 0.08),
+            0 0 0 22px rgba(181, 140, 255, 0.045),
+            0 0 28px 8px rgba(226, 189, 78, 0.34),
+            0 0 56px 18px rgba(143, 92, 247, 0.16),
+            inset 0 1px 0 rgba(255, 255, 255, 0.12),
+            inset 0 -14px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-climb-goal .hj-goal-ring-one {
+          border-color: rgba(210, 170, 67, 0.5);
+          box-shadow: 0 0 18px rgba(210, 170, 67, 0.22);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-climb-goal .hj-goal-ring-two {
+          border-color: rgba(118, 80, 216, 0.34);
+          box-shadow: 0 0 26px rgba(118, 80, 216, 0.14);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-climb-goal .hj-goal-pulse {
+          background: radial-gradient(
+            circle,
+            rgba(255, 236, 157, 0.26),
+            rgba(118, 80, 216, 0.1) 46%,
+            transparent 72%
+          );
+        }
+
+        .hj-goal-label {
+          font: 900 .67rem var(--font-display), sans-serif;
+          letter-spacing: .13em;
+        }
+
+        .hj-climb-goal strong {
+          max-width: 88px;
+          font: 900 .62rem var(--font-display), sans-serif;
+          text-align: center;
+          line-height: 1.25;
+        }
+
+        .hj-goal-ring {
+          position: absolute;
+          inset: -14px;
+          border: 1px solid rgba(242,216,117,.24);
+          border-radius: 50%;
+          pointer-events: none;
+        }
+
+        .hj-goal-ring-two {
+          inset: -28px;
+          border-style: dashed;
+          opacity: .5;
+          animation: hjGoalRing 8s linear infinite reverse;
+        }
+
+        .hj-goal-ring-one {
+          animation: hjGoalRing 6s linear infinite;
+        }
+
+        .hj-goal-pulse {
+          position: absolute;
+          inset: 10px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(242,216,117,.18), transparent 66%);
+          animation: hjGoalPulse 2.5s ease-in-out infinite;
+        }
+
+        .hj-goal-particle {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 6px;
+          height: 6px;
+          margin: -3px;
+          border-radius: 50%;
+          opacity: 0;
+          background: #f6dd75;
+          box-shadow: 0 0 10px rgba(242,216,117,.9);
+          pointer-events: none;
+        }
+
+        .hj-climb-goal.is-hit {
+          animation: hjGoalReact .9s cubic-bezier(.2,.8,.2,1) both;
+        }
+
+        .hj-climb-goal.is-hit .hj-goal-particle {
+          animation: hjNaturalScatter 1.05s cubic-bezier(.1,.7,.2,1) forwards;
+        }
+
+        .hj-climb-goal.is-hit .hj-goal-particle-1 { --px: -54px; --py: -44px; }
+        .hj-climb-goal.is-hit .hj-goal-particle-2 { --px: 46px; --py: -50px; }
+        .hj-climb-goal.is-hit .hj-goal-particle-3 { --px: 64px; --py: 8px; }
+        .hj-climb-goal.is-hit .hj-goal-particle-4 { --px: 44px; --py: 54px; }
+        .hj-climb-goal.is-hit .hj-goal-particle-5 { --px: -8px; --py: 68px; }
+        .hj-climb-goal.is-hit .hj-goal-particle-6 { --px: -58px; --py: 42px; }
+        .hj-climb-goal.is-hit .hj-goal-particle-7 { --px: -70px; --py: -2px; }
+        .hj-climb-goal.is-hit .hj-goal-particle-8 { --px: 8px; --py: -70px; }
+
+        .hj-climb-status {
+          position: absolute;
+          left: 5%;
+          top: 7%;
+          width: min(360px, 31%);
+          display: grid;
+          gap: 8px;
+          padding: 22px 24px;
+          border: 1px solid rgba(130,188,232,.2);
+          border-radius: 18px;
+          background: rgba(4,18,34,.76);
+          box-shadow:
+            0 18px 34px rgba(0,0,0,.18),
+            inset 0 1px 0 rgba(255,255,255,.06);
+          backdrop-filter: blur(12px);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-climb-status {
+          color: #ffffff;
+          border-color: rgba(226, 189, 78, 0.2);
+          background:
+            radial-gradient(circle at 86% 12%, rgba(118, 80, 216, 0.14), transparent 38%),
+            linear-gradient(145deg, #17263a, #09131f);
+          box-shadow:
+            0 20px 42px rgba(24, 16, 38, 0.25),
+            inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-climb-status strong {
+          color: #ffffff;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-climb-status span {
+          color: #c7d2df;
+        }
+
+        .hj-climb-status small {
+          color: var(--gold-soft);
+          font: 850 .65rem var(--font-display), sans-serif;
+          letter-spacing: .12em;
+        }
+
+        .hj-climb-status strong {
+          font: 800 1.45rem var(--font-display), sans-serif;
+        }
+
+        .hj-climb-status span {
+          color: var(--muted);
+          font-size: .82rem;
+          line-height: 1.55;
+        }
+
+        @keyframes hjClimbStepIn {
+          from {
+            opacity: 0;
+            transform:
+              perspective(1100px)
+              rotateX(30deg)
+              rotateZ(-4deg)
+              translateY(54px)
+              scale(.92);
+          }
+          to {
+            opacity: 1;
+            transform:
+              perspective(1100px)
+              rotateX(18deg)
+              rotateZ(-2deg)
+              translateY(0)
+              scale(1);
+          }
+        }
+
+        @keyframes hjRunnerBounce {
+          from {
+            transform: translate(-50%, 50%) translateY(-4px) scaleY(.97);
+          }
+          to {
+            transform: translate(-50%, 50%) translateY(-22px) scaleY(1.035);
+          }
+        }
+
+        @keyframes hjStepImpact {
+          0% {
+            opacity: 0;
+            transform: scaleX(.2);
+          }
+          25% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
+            transform: scaleX(1.45);
+          }
+        }
+
+        @keyframes hjGoalHit {
+          0% {
+            transform: translate(-50%, 50%) translateY(-5px) scale(1);
+            opacity: 1;
+          }
+          42% {
+            transform: translate(-50%, 50%) translateY(-18px) scale(1.03);
+            opacity: 1;
+          }
+          72% {
+            transform: translate(-50%, 50%) translateY(0) scale(.92);
+            opacity: 1;
+          }
+          100% {
+            transform: translate(-50%, 50%) scale(.18);
+            opacity: 0;
+          }
+        }
+
+        @keyframes hjGoalBreath {
+          0%, 100% {
+            transform: scale(.98);
+            filter: brightness(.94);
+          }
+          50% {
+            transform: scale(1.035);
+            filter: brightness(1.08);
+          }
+        }
+
+        @keyframes hjGoalRing {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+
+        @keyframes hjGoalPulse {
+          0%, 100% { transform: scale(.86); opacity: .34; }
+          50% { transform: scale(1.08); opacity: .8; }
+        }
+
+        @keyframes hjGoalReact {
+          0% { transform: scale(1); }
+          30% { transform: scale(.9); }
+          58% { transform: scale(1.16); filter: brightness(1.3); }
+          100% { transform: scale(1); }
+        }
+
+        @keyframes hjNaturalScatter {
+          0% {
+            opacity: 0;
+            transform: translate(0, 0) scale(.4);
+          }
+          18% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
+            transform: translate(var(--px), var(--py)) scale(.9);
+          }
+        }
+
+        .hj-final-button {
+          min-height: 58px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 18px;
+          padding: 0 26px;
+          border: 1px solid rgba(117, 83, 18, 0.35);
+          border-radius: 13px;
+          color: #14233b;
+          background: linear-gradient(145deg, #f5df7b, #cda33b);
+          box-shadow:
+            0 8px 0 #84651d,
+            0 18px 32px rgba(0, 0, 0, 0.22);
+          font: 900 0.86rem var(--font-display), sans-serif;
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .hj-final-button:hover {
+          transform: translateY(-4px);
+          box-shadow:
+            0 12px 0 #84651d,
+            0 25px 42px rgba(0, 0, 0, 0.28);
+        }
+
+        .hj-proof {
+          padding: 140px 0 120px;
+          background:
+            radial-gradient(circle at 72% 30%, rgba(112, 216, 255, 0.12), transparent 30%),
+            var(--bg);
+        }
+
+        .hj-proof-heading h2 {
+          font-size: clamp(3.4rem, 5.4vw, 6.1rem);
+        }
+
+        .hj-proof-grid {
+          display: grid;
+          grid-template-columns: 0.75fr 1.4fr 0.75fr;
+          gap: 22px;
+          margin-top: 66px;
+          perspective: 1200px;
+        }
+
+        .hj-proof-card {
+          min-height: 290px;
+          padding: 32px;
+          border-radius: 24px;
+        }
+
+        .hj-proof-card > * {
+          position: relative;
+          z-index: 1;
+        }
+
+        .hj-proof-stat {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+        }
+
+        .hj-proof-stat > strong {
+          color: transparent;
+          font: 900 4.8rem var(--font-display), sans-serif;
+          background: linear-gradient(145deg, var(--cyan), var(--purple-soft));
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        .hj-proof-card h3 {
+          margin: 10px 0 7px;
+          font: 760 1.45rem var(--font-display), sans-serif;
+        }
+
+        .hj-proof-card p {
+          margin: 0;
+          color: var(--muted);
+        }
+
+        .hj-stat-orbit {
+          position: absolute;
+          top: 34px;
+          right: 30px;
+          width: 76px;
+          height: 76px;
+          border: 1px solid var(--border);
+          border-radius: 50%;
+          box-shadow:
+            0 0 0 12px rgba(143, 92, 247, 0.035),
+            inset 0 0 25px rgba(112, 216, 255, 0.08);
+          animation: hjOrbit 7s ease-in-out infinite;
+        }
+
+        .hj-project-card > small {
+          color: var(--gold-soft);
+          font-size: 0.7rem;
+          font-weight: 900;
+          letter-spacing: 0.1em;
+        }
+
+        .hj-project-screen {
+          position: relative;
+          min-height: 135px;
+          margin: 26px 0 18px;
+          overflow: hidden;
+          border: 1px solid var(--border);
+          border-radius: 16px;
+          background:
+            linear-gradient(135deg, rgba(143, 92, 247, 0.18), rgba(112, 216, 255, 0.1)),
+            rgba(5, 23, 40, 0.45);
+        }
+
+        .hj-project-bar {
+          position: absolute;
+          top: 28px;
+          left: 20px;
+          right: 20px;
+          height: 52px;
+          overflow: hidden;
+          border-radius: 9px;
+          background: rgba(255, 255, 255, 0.07);
+        }
+
+        .hj-project-bar i {
+          display: block;
+          width: 68%;
+          height: 100%;
+          background: linear-gradient(90deg, var(--purple), var(--gold-soft));
+          clip-path: polygon(0 0, 100% 0, 84% 100%, 0 100%);
+          animation: hjProgress 3.2s ease-in-out infinite;
+        }
+
+        .hj-project-dots {
+          position: absolute;
+          left: 24px;
+          right: 24px;
+          bottom: 19px;
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .hj-project-dots span {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: var(--cyan);
+          box-shadow: 0 0 16px var(--cyan);
+        }
+
+        .hj-final {
+          min-height: 580px;
+          display: grid;
+          place-items: center;
+          overflow: hidden;
+          padding: 90px 24px;
+          color: #14233b;
+          text-align: center;
+          background:
+            radial-gradient(circle at 25% 22%, rgba(255, 255, 255, 0.5), transparent 28%),
+            linear-gradient(145deg, #d8c2f3, #a778e7 52%, #e5c661);
+        }
+
+        .hj-final-copy {
+          position: relative;
+          z-index: 2;
+          max-width: 1140px;
+        }
+
+        .hj-final-copy > p {
+          color: #34254d;
+        }
+
+        .hj-final h2 {
+          font-size: clamp(3.2rem, 6vw, 6.7rem);
+        }
+
+        .hj-final-button {
+          margin-top: 46px;
+          background: rgba(255, 255, 255, 0.9);
+          border-color: rgba(35, 24, 57, 0.15);
+          box-shadow:
+            0 8px 0 rgba(59, 42, 84, 0.2),
+            0 18px 36px rgba(38, 24, 60, 0.2);
+        }
+
+        .hj-orb,
+        .hj-final-ring {
+          position: absolute;
+          pointer-events: none;
+          border: 1px solid rgba(182, 140, 255, 0.26);
+          border-radius: 50%;
+        }
+
+        .hj-orb-a {
+          width: 420px;
+          height: 420px;
+          top: 120px;
+          right: -130px;
+          animation: hjOrbit 13s ease-in-out infinite;
+        }
+
+        .hj-orb-b {
+          width: 220px;
+          height: 220px;
+          bottom: 60px;
+          left: -80px;
+          animation: hjOrbit 10s ease-in-out infinite reverse;
+        }
+
+        .hj-final-ring-a {
+          width: 460px;
+          height: 460px;
+          top: -160px;
+          left: -180px;
+          border-color: rgba(45, 27, 75, 0.12);
+          animation: hjOrbit 13s ease-in-out infinite;
+        }
+
+        .hj-final-ring-b {
+          width: 330px;
+          height: 330px;
+          right: -90px;
+          bottom: -120px;
+          border-color: rgba(45, 27, 75, 0.12);
+          animation: hjOrbit 10s ease-in-out infinite reverse;
+        }
+
+        [data-reveal] {
+          opacity: 0;
+          transform: translateY(38px) scale(0.985);
+          transition:
+            opacity 0.75s ease var(--delay, 0ms),
+            transform 0.75s cubic-bezier(0.2, 0.75, 0.2, 1) var(--delay, 0ms);
+        }
+
+        [data-reveal].hj-visible {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+
+        @property --journey-border-angle {
+          syntax: "<angle>";
+          inherits: false;
+          initial-value: 0deg;
+        }
+
+        @keyframes hjScrollDot {
+          0% {
+            opacity: 0;
+            transform: translate(-50%, 0);
+          }
+          25% {
+            opacity: 1;
+          }
+          75% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
+            transform: translate(-50%, 20px);
+          }
+        }
+
+        @keyframes hjJourneyBorderTravel {
+          from {
+            --journey-border-angle: 0deg;
+          }
+          to {
+            --journey-border-angle: 360deg;
+          }
+        }
+
+        @keyframes hjRunnerPulse {
+          0%,
+          100% {
+            transform: translate(-50%, -50%) scale(0.94);
+          }
+
+          50% {
+            transform: translate(-50%, -50%) scale(1.06);
+          }
+        }
+
+        @keyframes hjSparkPulse {
+          0%,
+          100% {
+            transform: translate(-50%, -50%) scale(0.82);
+            opacity: 0.76;
+          }
+
+          50% {
+            transform: translate(-50%, -50%) scale(1.18);
+            opacity: 1;
+          }
+        }
+
+        @keyframes hjSparkParticle {
+          0% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.4);
+          }
+
+          30% {
+            opacity: 1;
+          }
+
+          100% {
+            opacity: 0;
+            transform:
+              translate(
+                calc(-50% + 17px),
+                calc(-50% - 12px)
+              )
+              scale(1);
+          }
+        }
+
+        @keyframes hjDetailIn {
+          from {
+            opacity: 0;
+            transform: translateY(16px) scale(0.985);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+
+        @keyframes hjHeadingGoldWave {
+          0%,
+          100% {
+            background-position: 0% 50%;
+          }
+
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+
+        @keyframes hjStepBreath {
+          0%,
+          100% {
+            transform: translateY(0) scale(1);
+            filter:
+              drop-shadow(0 0 0 rgba(181, 140, 255, 0))
+              drop-shadow(0 0 0 rgba(224, 189, 85, 0));
+          }
+
+          50% {
+            transform: translateY(-2px) scale(1.055);
+            filter:
+              drop-shadow(0 8px 18px rgba(143, 92, 247, 0.22))
+              drop-shadow(0 0 15px rgba(224, 189, 85, 0.2));
+          }
+        }
+
+        @keyframes hjProveBreath {
+          0%,
+          100% {
+            transform: scale(1);
+            filter: drop-shadow(0 0 0 rgba(181, 140, 255, 0));
+          }
+
+          50% {
+            transform: scale(1.055);
+            filter:
+              drop-shadow(0 8px 18px rgba(143, 92, 247, 0.24))
+              drop-shadow(0 0 16px rgba(224, 189, 85, 0.16));
+          }
+        }
+
+        @keyframes hjFloat {
+          0%,
+          100% {
+            transform: translateY(0) rotateX(0deg);
+          }
+          50% {
+            transform: translateY(-12px) rotateX(5deg);
+          }
+        }
+
+        @keyframes hjParticle {
+          0% {
+            opacity: 0;
+            transform: translate3d(0, 24px, 0) rotate(45deg);
+          }
+          25% {
+            opacity: 0.8;
+          }
+          100% {
+            opacity: 0;
+            transform: translate3d(16px, -65px, 0) rotate(150deg);
+          }
+        }
+
+        @keyframes hjOrbit {
+          0%,
+          100% {
+            transform: translate3d(0, 0, 0) scale(0.96);
+          }
+          50% {
+            transform: translate3d(-20px, 18px, 0) scale(1.05);
+          }
+        }
+
+        @keyframes hjProgress {
+          0%,
+          100% {
+            filter: brightness(0.92);
+            transform: scaleX(0.96);
+            transform-origin: left;
+          }
+          50% {
+            filter: brightness(1.16);
+            transform: scaleX(1);
+            transform-origin: left;
+          }
+        }
+
+
+        .hj-evolution,
+        .hj-dashboard-section {
+          position: relative;
+          isolation: isolate;
+          overflow: hidden;
+        }
+
+        .hj-evolution {
+          padding: 138px 0 132px;
+          background:
+            radial-gradient(circle at 14% 26%, rgba(143, 92, 247, 0.17), transparent 28%),
+            radial-gradient(circle at 86% 72%, rgba(224, 189, 85, 0.1), transparent 24%),
+            linear-gradient(180deg, var(--bg), var(--bg-2));
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-evolution {
+          background:
+            radial-gradient(circle at 14% 26%, rgba(118, 80, 216, 0.15), transparent 28%),
+            radial-gradient(circle at 86% 72%, rgba(184, 137, 34, 0.11), transparent 24%),
+            linear-gradient(180deg, #eee4f8, #e2d5f1);
+        }
+
+        .hj-evolution-heading,
+        .hj-dashboard-heading {
+          max-width: 1080px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        .hj-evolution-heading > p,
+        .hj-dashboard-heading > p {
+          margin: 0 0 24px;
+          color: var(--cyan);
+          font: 950 clamp(0.94rem, 1.08vw, 1.12rem) var(--font-display), sans-serif;
+          letter-spacing: 0.2em;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-evolution-heading > p,
+        :global([data-theme="light"]) .hj-root .hj-dashboard-heading > p {
+          color: #0f5e83;
+        }
+
+        .hj-evolution-heading h2,
+        .hj-dashboard-heading h2 {
+          margin: 0;
+          font: 780 clamp(3.25rem, 5vw, 5.75rem) / 1.02 var(--font-display), sans-serif;
+          letter-spacing: -0.052em;
+          text-wrap: balance;
+        }
+
+        .hj-evolution-heading {
+          max-width: 1280px;
+          transform: translateY(-20px);
+        }
+
+        .hj-evolution-title {
+          width: 100%;
+          font-size: clamp(3rem, 4.55vw, 5.2rem) !important;
+          line-height: 1.04 !important;
+        }
+
+        .hj-evolution-title > span {
+          display: block;
+          white-space: nowrap;
+        }
+
+        .hj-evolution-title > span + span {
+          margin-top: 8px;
+          font-size: .82em;
+        }
+
+        .hj-evolution-heading h2 em,
+        .hj-dashboard-heading h2 em {
+          color: transparent;
+          font-family: Georgia, "Times New Roman", serif;
+          font-weight: 500;
+          font-style: italic;
+          background: linear-gradient(110deg, var(--purple), var(--purple-soft), var(--gold-soft));
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: hjProveBreath 3.8s ease-in-out infinite;
+        }
+
+        .hj-evolution-heading > span,
+        .hj-dashboard-heading > span {
+          display: block;
+          max-width: 820px;
+          margin: 26px auto 0;
+          color: var(--muted);
+          font: 700 clamp(1rem, 1.15vw, 1.14rem) / 1.7 var(--font-sans), sans-serif;
+        }
+
+        .hj-evolution-heading > span {
+          position: relative;
+          max-width: 960px;
+          margin-top: 28px;
+          padding: 16px 28px;
+          border-radius: 999px;
+          background:
+            radial-gradient(circle at 50% 50%, rgba(112,215,255,.12), transparent 72%);
+          text-shadow: 0 0 18px rgba(112,215,255,.15);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-evolution-heading > span {
+          background:
+            radial-gradient(circle at 50% 50%, rgba(118,80,216,.11), transparent 72%);
+          text-shadow: 0 0 14px rgba(118,80,216,.1);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-evolution-heading > span,
+        :global([data-theme="light"]) .hj-root .hj-dashboard-heading > span {
+          color: #2d405d;
+        }
+
+        .hj-evolution-orb,
+        .hj-dashboard-glow {
+          position: absolute;
+          pointer-events: none;
+          border-radius: 50%;
+          filter: blur(2px);
+        }
+
+        .hj-evolution-orb-a {
+          width: 420px;
+          height: 420px;
+          top: 150px;
+          left: -220px;
+          border: 1px solid rgba(143, 92, 247, 0.22);
+          box-shadow: inset 0 0 80px rgba(143, 92, 247, 0.08);
+          animation: hjOrbit 12s ease-in-out infinite;
+        }
+
+        .hj-evolution-orb-b {
+          width: 330px;
+          height: 330px;
+          right: -150px;
+          bottom: 70px;
+          border: 1px solid rgba(224, 189, 85, 0.18);
+          box-shadow: inset 0 0 70px rgba(224, 189, 85, 0.06);
+          animation: hjOrbit 10s ease-in-out infinite reverse;
+        }
+
+        .hj-road-game {
+  position: relative;
+  min-height: 790px;
+  margin-top: 68px;
+  overflow: hidden;
+  border: 1px solid rgba(224, 189, 85, 0.34);
+  border-radius: 36px;
+  background:
+    radial-gradient(
+      circle at 48% 45%,
+      rgba(143, 92, 247, 0.13),
+      transparent 27%
+    ),
+    radial-gradient(
+      circle at 82% 20%,
+      rgba(224, 189, 85, 0.09),
+      transparent 24%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(7, 27, 48, 0.99),
+      rgba(2, 13, 25, 1)
+    );
+  box-shadow:
+    0 46px 96px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.hj-road-game::before {
+  content: "";
+  position: absolute;
+  z-index: 30;
+  inset: 0;
+  padding: 2px;
+  pointer-events: none;
+  border-radius: inherit;
+
+  background: conic-gradient(
+    from var(--road-border-angle),
+    transparent 0deg,
+    transparent 250deg,
+    rgba(242, 216, 117, 0.16) 280deg,
+    rgba(255, 248, 194, 1) 315deg,
+    rgba(224, 189, 85, 0.42) 346deg,
+    transparent 360deg
+  );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  filter: drop-shadow(
+    0 0 7px rgba(224, 189, 85, 0.42)
+  );
+
+  animation: hjRoadBorderTravel 8s linear infinite;
+}
+
+        :global([data-theme="light"]) .hj-root .hj-road-game {
+  border-color: rgba(184, 137, 34, 0.52);
+
+  background:
+    radial-gradient(
+      circle at 48% 45%,
+      rgba(118, 80, 216, 0.11),
+      transparent 27%
+    ),
+    radial-gradient(
+      circle at 82% 20%,
+      rgba(184, 137, 34, 0.09),
+      transparent 24%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.97),
+      rgba(232, 219, 246, 0.99)
+    );
+
+  box-shadow:
+    0 38px 78px rgba(70, 45, 99, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.94);
+}
+
+:global([data-theme="light"]) .hj-root .hj-road-game::before {
+  background: conic-gradient(
+    from var(--road-border-angle),
+    transparent 0deg,
+    transparent 244deg,
+    rgba(184, 137, 34, 0.18) 278deg,
+    rgba(255, 229, 134, 1) 312deg,
+    rgba(184, 137, 34, 0.58) 345deg,
+    transparent 360deg
+  );
+
+  filter: drop-shadow(
+    0 0 8px rgba(184, 137, 34, 0.5)
+  );
+}
+
+        .hj-road-game-grid,
+        .hj-road-game-stars {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+        }
+
+        .hj-road-game-grid {
+          opacity: 0.28;
+          background:
+            linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+          background-size: 54px 54px;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-road-game-grid {
+          opacity: 0.36;
+          background:
+            linear-gradient(rgba(38, 20, 62, 0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(38, 20, 62, 0.04) 1px, transparent 1px);
+          background-size: 54px 54px;
+        }
+
+        .hj-road-game-stars {
+          opacity: 0.34;
+          background-image:
+            radial-gradient(circle, rgba(255,255,255,.78) 0 1px, transparent 1.5px),
+            radial-gradient(circle, rgba(181,140,255,.72) 0 1px, transparent 1.7px);
+          background-size: 76px 76px, 109px 109px;
+          background-position: 0 0, 28px 38px;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-road-game-stars {
+          opacity: 0.08;
+          filter: invert(1);
+        }
+
+        .hj-road-svg {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: visible;
+        }
+
+        .hj-road-shadow-path,
+        .hj-road-main-path,
+        .hj-road-center-path {
+          fill: none;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+        }
+
+        .hj-road-shadow-path {
+          stroke: rgba(0, 0, 0, 0.72);
+          stroke-width: 88;
+          filter: drop-shadow(0 24px 20px rgba(0, 0, 0, 0.36));
+        }
+
+        .hj-road-main-path {
+          stroke: url(#hjRoadGlow);
+          stroke-width: 70;
+          opacity: 0.95;
+          filter: drop-shadow(0 0 22px rgba(224, 189, 85, 0.22));
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-road-main-path {
+          opacity: 0.88;
+        }
+
+        .hj-road-center-path {
+          stroke: rgba(255, 255, 255, 0.88);
+          stroke-width: 4;
+          stroke-dasharray: 16 18;
+          animation: hjRoadDash 1.5s linear infinite;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-road-center-path {
+          stroke: rgba(23, 45, 80, 0.62);
+        }
+
+        .hj-road-start {
+          position: absolute;
+          z-index: 8;
+          left: 4.4%;
+          bottom: 1.7%;
+          display: grid;
+          gap: 5px;
+          color: var(--text);
+        }
+
+        .hj-road-start small {
+          color: var(--cyan);
+          font: 900 0.68rem var(--font-display), sans-serif;
+          letter-spacing: 0.15em;
+        }
+
+        .hj-road-start strong {
+          font: 900 1.2rem var(--font-display), sans-serif;
+        }
+
+        .hj-road-finish {
+  position: absolute;
+  z-index: 9;
+
+  right: 0.9%;
+  top: 68.2%;
+
+  width: 225px;
+  min-height: 96px;
+
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+
+  padding: 16px 20px;
+  overflow: visible;
+
+  border: 1px solid rgba(242, 216, 117, 0.62);
+  border-radius: 999px;
+
+  color: var(--text);
+
+  background:
+    radial-gradient(
+      circle at 88% 8%,
+      rgba(224, 189, 85, 0.2),
+      transparent 38%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(14, 45, 74, 0.98),
+      rgba(5, 20, 35, 1)
+    );
+
+  box-shadow:
+    0 9px 0 rgba(5, 26, 44, 0.92),
+    0 22px 42px rgba(0, 0, 0, 0.28),
+    0 0 30px rgba(224, 189, 85, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  transform: perspective(900px) rotateX(4deg);
+  animation: hjFinishVisit 18s linear infinite;
+}
+
+        .hj-road-finish::before {
+  content: "";
+  position: absolute;
+
+  left: 50%;
+  bottom: 100%;
+
+  width: 18px;
+  height: 58px;
+
+  border: 1px solid rgba(242, 216, 117, 0.58);
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+
+  background:
+    radial-gradient(
+      circle at 50% 8px,
+      #fff4a9 0 4px,
+      #d5a936 5px 8px,
+      transparent 9px
+    ),
+    linear-gradient(
+      0deg,
+      rgba(181, 132, 28, 0.9),
+      rgba(255, 242, 164, 0.98)
+    );
+
+  box-shadow:
+    0 0 18px rgba(224, 189, 85, 0.4),
+    inset 0 0 8px rgba(255, 255, 255, 0.42);
+
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+        .hj-road-finish::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          padding: 2px;
+          border-radius: inherit;
+          pointer-events: none;
+          background: conic-gradient(
+            from var(--finish-border-angle),
+            transparent 0deg,
+            transparent 260deg,
+            rgba(242,216,117,.22) 286deg,
+            rgba(255,247,191,1) 318deg,
+            rgba(224,189,85,.45) 346deg,
+            transparent 360deg
+          );
+          -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          animation: hjFinishBorderTravel 4.8s linear infinite;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-road-finish {
+          color: #132b4d;
+          border-color: rgba(184, 137, 34, 0.56);
+          background:
+            radial-gradient(circle at 88% 8%, rgba(184, 137, 34, 0.14), transparent 38%),
+            linear-gradient(145deg, rgba(255,255,255,.99), rgba(228,216,244,.99));
+          box-shadow:
+            0 9px 0 #cfbce0,
+            0 21px 40px rgba(70,45,99,.18),
+            0 0 28px rgba(184,137,34,.16),
+            inset 0 1px 0 rgba(255,255,255,.96);
+        }
+
+        .hj-road-finish > i {
+          width: 52px;
+          height: 52px;
+          display: grid;
+          place-items: center;
+          border-radius: 50%;
+          color: #17233a;
+          background: linear-gradient(145deg, #fff0a0, #d0a239);
+          box-shadow:
+            0 5px 0 #8f6818,
+            0 10px 20px rgba(0,0,0,.2),
+            0 0 20px rgba(224,189,85,.28);
+          font-style: normal;
+        }
+
+        .hj-road-finish small,
+        .hj-road-finish strong {
+          display: block;
+        }
+
+        .hj-road-finish small {
+          color: var(--gold-soft);
+          font: 900 .68rem var(--font-display), sans-serif;
+          letter-spacing: .1em;
+        }
+
+        .hj-road-finish strong {
+          margin-top: 5px;
+          font: 850 .98rem/1.18 var(--font-display), sans-serif;
+        }
+
+        .hj-road-finish-wave {
+          position: absolute;
+          z-index: 4;
+          inset: -1px;
+          overflow: hidden;
+          border-radius: inherit;
+          pointer-events: none;
+        }
+
+        .hj-road-finish-wave::before {
+          content: "";
+          position: absolute;
+          left: -48%;
+          top: -54%;
+          width: 34%;
+          height: 210%;
+          opacity: 0;
+          border-radius: 999px;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,247,191,.35),
+            #fff4a9 42%,
+            #e0bd55 58%,
+            rgba(255,247,191,.28),
+            transparent
+          );
+          box-shadow:
+            0 0 16px rgba(224,189,85,.9),
+            0 0 30px rgba(224,189,85,.46);
+          transform: rotate(22deg);
+          animation: hjFinishWave 18s linear infinite;
+        }
+
+        .hj-road-runner {
+          position: absolute;
+          z-index: 12;
+          left: 8%;
+          top: 85.5%;
+          width: 52px;
+          height: 84px;
+          transform: translate(-50%, -88%);
+          transform-origin: 50% 88%;
+          filter:
+            drop-shadow(0 0 8px rgba(255, 241, 167, 0.9))
+            drop-shadow(0 0 16px rgba(224, 189, 85, 0.55));
+          animation: hjRoadRunner 18s linear infinite;
+          will-change: left, top, transform, opacity;
+        }
+
+        .hj-runner-head,
+        .hj-runner-body,
+        .hj-runner-arm,
+        .hj-runner-leg {
+          position: absolute;
+          display: block;
+          background: linear-gradient(145deg, #fff7c9, #e0bd55);
+          box-shadow: 0 0 10px rgba(224, 189, 85, 0.35);
+        }
+
+        .hj-runner-head {
+          left: 18px;
+          top: 0;
+          width: 17px;
+          height: 17px;
+          border-radius: 50%;
+        }
+
+        .hj-runner-body {
+          left: 22px;
+          top: 17px;
+          width: 9px;
+          height: 33px;
+          border-radius: 999px;
+          transform: rotate(-8deg);
+        }
+
+        .hj-runner-arm,
+        .hj-runner-leg {
+          width: 6px;
+          border-radius: 999px;
+          transform-origin: top center;
+        }
+
+        .hj-runner-arm {
+          top: 23px;
+          height: 28px;
+        }
+
+        .hj-runner-arm-a {
+          left: 22px;
+          animation: hjRunnerArmA 0.36s ease-in-out infinite alternate;
+        }
+
+        .hj-runner-arm-b {
+          left: 27px;
+          animation: hjRunnerArmB 0.36s ease-in-out infinite alternate;
+        }
+
+        .hj-runner-leg {
+          top: 48px;
+          height: 34px;
+        }
+
+        .hj-runner-leg-a {
+          left: 22px;
+          animation: hjRunnerLegA 0.36s ease-in-out infinite alternate;
+        }
+
+        .hj-runner-leg-b {
+          left: 27px;
+          animation: hjRunnerLegB 0.36s ease-in-out infinite alternate;
+        }
+
+        .hj-runner-glow {
+          position: absolute;
+          left: -34px;
+          top: 38px;
+          width: 56px;
+          height: 13px;
+          border-radius: 999px;
+          background: linear-gradient(90deg, transparent, rgba(255, 238, 151, 0.9));
+          filter: blur(5px);
+          transform: rotate(180deg);
+        }
+
+        .hj-road-point {
+          --point-index: 0;
+          --connector-size: 52px;
+          position: absolute;
+          z-index: 7;
+          width: min(238px, 15.5vw);
+          min-height: 92px;
+          display: grid;
+          grid-template-columns: 48px minmax(0, 1fr);
+          align-items: center;
+          gap: 13px;
+          padding: 15px 18px;
+          overflow: visible;
+          border: 1px solid rgba(130, 188, 232, 0.25);
+          border-radius: 999px;
+          color: var(--text);
+          background:
+            radial-gradient(circle at 84% 10%, rgba(143, 92, 247, 0.16), transparent 38%),
+            linear-gradient(145deg, rgba(14, 45, 74, 0.98), rgba(5, 20, 35, 0.99));
+          box-shadow:
+            0 9px 0 rgba(4, 20, 35, .92),
+            0 20px 38px rgba(0, 0, 0, 0.24),
+            inset 0 1px 0 rgba(255, 255, 255, 0.09);
+          transform: perspective(900px) rotateX(5deg);
+          animation: hjRoadPointVisit 18s linear infinite;
+          animation-delay: calc(var(--point-index) * 2.16s + 2.3s);
+          will-change: transform, filter, box-shadow;
+        }
+
+        .hj-road-point::before {
+          content: "";
+          position: absolute;
+          z-index: 3;
+          inset: 0;
+          padding: 2px;
+          border-radius: inherit;
+          pointer-events: none;
+          background: conic-gradient(
+            from var(--card-border-angle),
+            transparent 0deg,
+            transparent 264deg,
+            rgba(242,216,117,.16) 288deg,
+            rgba(255,247,191,.98) 320deg,
+            rgba(224,189,85,.36) 346deg,
+            transparent 360deg
+          );
+          -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          animation: hjCardBorderTravel 5.2s linear infinite;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-road-point {
+          color: #132b4d;
+          border-color: rgba(91, 61, 119, 0.2);
+          background:
+            radial-gradient(circle at 84% 10%, rgba(118, 80, 216, 0.12), transparent 38%),
+            linear-gradient(145deg, rgba(255,255,255,.98), rgba(228,216,244,.98));
+          box-shadow:
+            0 9px 0 #cdb9de,
+            0 20px 38px rgba(70,45,99,.16),
+            inset 0 1px 0 rgba(255,255,255,.94);
+        }
+
+        /* Cards remain outside the road; each gold connector reaches the road edge. */
+        .hj-road-point-1 {
+          left: 4.6%;
+          bottom: 21.8%;
+          --connector-size: 58px;
+        }
+
+        .hj-road-point-2 {
+          left: 25.4%;
+          bottom: 19.8%;
+          --connector-size: 48px;
+        }
+
+        .hj-road-point-3 {
+          left: 14.3%;
+          top: 0.7%;
+          --connector-size: 62px;
+        }
+
+        .hj-road-point-4 {
+          left: 39.2%;
+          top: 13.5%;
+          --connector-size: 70px;
+        }
+
+        .hj-road-point-5 {
+          left: 57.8%;
+          top: 55.5%;
+          --connector-size: 92px;
+        }
+
+        .hj-road-point-6 {
+          left: 66.5%;
+          top: 0.4%;
+          --connector-size: 64px;
+        }
+
+        .hj-road-point-7 {
+          right: 3.4%;
+          top: 13.8%;
+          --connector-size: 70px;
+        }
+
+        .hj-road-point-number {
+          position: absolute;
+          top: 10px;
+          left: 17px;
+          color: var(--gold-soft);
+          font: 900 0.64rem var(--font-display), sans-serif;
+        }
+
+        .hj-road-point-icon {
+          width: 48px;
+          height: 48px;
+          display: grid;
+          place-items: center;
+          border-radius: 50%;
+          color: #17233a;
+          background: linear-gradient(145deg, #fff0a0, #d0a239);
+          box-shadow:
+            0 5px 0 #8f6818,
+            0 10px 18px rgba(0, 0, 0, 0.2);
+          font: 900 0.8rem var(--font-display), sans-serif;
+          font-style: normal;
+        }
+
+        .hj-road-point strong,
+        .hj-road-point small {
+          display: block;
+        }
+
+        .hj-road-point strong {
+          font: 850 0.93rem/1.1 var(--font-display), sans-serif;
+        }
+
+        .hj-road-point small {
+          margin-top: 5px;
+          color: var(--muted);
+          font: 650 0.65rem / 1.3 var(--font-sans), sans-serif;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-road-point small {
+          color: #536078;
+        }
+
+        .hj-road-point::after {
+          content: "";
+          position: absolute;
+          left: 50%;
+          width: 18px;
+          height: var(--connector-size);
+          border: 1px solid rgba(242, 216, 117, 0.56);
+          background:
+            radial-gradient(circle at 50% calc(100% - 8px), #fff4a9 0 4px, #d5a936 5px 8px, transparent 9px),
+            linear-gradient(180deg, rgba(255,242,164,.96), rgba(181,132,28,.9));
+          box-shadow:
+            0 0 18px rgba(224, 189, 85, 0.34),
+            inset 0 0 8px rgba(255,255,255,.42);
+          transform: translateX(-50%);
+          pointer-events: none;
+        }
+
+        .hj-road-point-1::after,
+        .hj-road-point-2::after,
+        .hj-road-point-3::after,
+        .hj-road-point-4::after,
+        .hj-road-point-6::after,
+        .hj-road-point-7::after {
+          top: 100%;
+          border-radius: 0 0 999px 999px;
+        }
+
+        .hj-road-point-5::after {
+          bottom: 100%;
+          border-radius: 999px 999px 0 0;
+          background:
+            radial-gradient(circle at 50% 8px, #fff4a9 0 4px, #d5a936 5px 8px, transparent 9px),
+            linear-gradient(0deg, rgba(255,242,164,.96), rgba(181,132,28,.9));
+        }
+
+        .hj-road-point-pulse {
+          position: absolute;
+          z-index: 4;
+          inset: -1px;
+          overflow: hidden;
+          border-radius: inherit;
+          opacity: 1;
+          pointer-events: none;
+        }
+
+        .hj-road-point-pulse::before {
+          content: "";
+          position: absolute;
+          left: -48%;
+          top: -54%;
+          width: 34%;
+          height: 210%;
+          opacity: 0;
+          border-radius: 999px;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,247,191,.35),
+            #fff4a9 42%,
+            #e0bd55 58%,
+            rgba(255,247,191,.28),
+            transparent
+          );
+          box-shadow:
+            0 0 16px rgba(224,189,85,.9),
+            0 0 30px rgba(224,189,85,.46);
+          transform: rotate(22deg);
+          animation: hjCardWave 18s linear infinite;
+          animation-delay: calc(var(--point-index) * 2.16s + 2.3s);
+        }
+
+        .hj-road-point-reward {
+          position: absolute;
+          z-index: 12;
+          left: 50%;
+          top: -12px;
+          width: max-content;
+          padding: 7px 12px;
+          border: 1px solid rgba(242,216,117,.58);
+          border-radius: 999px;
+          color: #17233a;
+          background: linear-gradient(145deg, #fff2a7, #d2a73b);
+          box-shadow:
+            0 8px 20px rgba(0,0,0,.2),
+            0 0 20px rgba(224,189,85,.42);
+          font: 900 .58rem var(--font-display), sans-serif;
+          letter-spacing: .04em;
+          opacity: 0;
+          transform: translate(-50%, 8px) scale(.82);
+          animation: hjCardReward 18s ease-out infinite;
+          animation-delay: calc(var(--point-index) * 2.16s + 2.3s);
+          pointer-events: none;
+        }
+
+        .hj-runner-float-labels {
+          position: absolute;
+          left: 50%;
+          top: -16px;
+          width: 1px;
+          height: 1px;
+          pointer-events: none;
+        }
+
+        .hj-runner-float {
+          position: absolute;
+          left: 50%;
+          bottom: 0;
+          width: max-content;
+          padding: 7px 12px;
+          border: 1px solid rgba(242,216,117,.54);
+          border-radius: 999px;
+          color: #17233a;
+          background: linear-gradient(145deg, #fff2a7, #d2a73b);
+          box-shadow:
+            0 8px 20px rgba(0,0,0,.2),
+            0 0 20px rgba(224,189,85,.4);
+          font: 900 .58rem var(--font-display), sans-serif;
+          letter-spacing: .04em;
+          opacity: 0;
+          transform: translate(-50%, 8px) scale(.82);
+          animation: hjRunnerFloat 18s ease-out infinite;
+        }
+
+        .hj-runner-float-1 { animation-delay: 0s; }
+        .hj-runner-float-2 { animation-delay: 2.16s; }
+        .hj-runner-float-3 { animation-delay: 4.32s; }
+        .hj-runner-float-4 { animation-delay: 6.48s; }
+        .hj-runner-float-5 { animation-delay: 8.64s; }
+        .hj-runner-float-6 { animation-delay: 10.8s; }
+        .hj-runner-float-7 { animation-delay: 12.96s; }
+
+        .hj-road-progress-badge {
+          position: absolute;
+          left: 50%;
+          bottom: 1.7%;
+          display: grid;
+          place-items: center;
+          gap: 6px;
+          padding: 14px 20px;
+          border: 1px solid rgba(130, 188, 232, 0.18);
+          border-radius: 16px;
+          background: rgba(5, 21, 37, 0.7);
+          backdrop-filter: blur(12px);
+          transform: translateX(-50%);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-road-progress-badge {
+          background: rgba(255, 255, 255, 0.7);
+        }
+
+        .hj-road-progress-badge span {
+          color: var(--gold-soft);
+          font: 900 1.05rem var(--font-display), sans-serif;
+        }
+
+        .hj-road-progress-badge small {
+          color: var(--muted);
+          font: 800 0.6rem var(--font-display), sans-serif;
+          letter-spacing: 0.1em;
+        }
+
+        @property --card-border-angle {
+          syntax: "<angle>";
+          inherits: false;
+          initial-value: 0deg;
+        }
+
+        @property --finish-border-angle {
+          syntax: "<angle>";
+          inherits: false;
+          initial-value: 0deg;
+        }
+        @property --road-border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+        @keyframes hjRoadBorderTravel {
+  to {
+    --road-border-angle: 360deg;
+  }
+}
+        @keyframes hjCardBorderTravel {
+          to { --card-border-angle: 360deg; }
+        }
+
+        @keyframes hjFinishBorderTravel {
+          to { --finish-border-angle: 360deg; }
+        }
+
+        @keyframes hjRoadDash {
+          to {
+            stroke-dashoffset: -34;
+          }
+        }
+
+        @keyframes hjRoadRunner {
+          0% {
+            left: 8%;
+            top: 85.5%;
+            opacity: 0;
+            transform: translate(-50%, -88%) scale(.92);
+          }
+          2% { opacity: 1; }
+          9% {
+            left: 26%;
+            top: 85.5%;
+            transform: translate(-50%, -88%) scale(1);
+          }
+          18% {
+            left: 36%;
+            top: 68.5%;
+            transform: translate(-50%, -88%) scale(1);
+          }
+          27% {
+            left: 28%;
+            top: 55.3%;
+            transform: translate(-50%, -88%) scale(1);
+          }
+          36% {
+            left: 20.3%;
+            top: 40%;
+            transform: translate(-50%, -88%) scale(1);
+          }
+          45% {
+            left: 31.3%;
+            top: 25.7%;
+            transform: translate(-50%, -88%) scale(1);
+          }
+          54% {
+            left: 42.3%;
+            top: 42.8%;
+            transform: translate(-50%, -88%) scale(1);
+          }
+          63% {
+            left: 53.3%;
+            top: 59.2%;
+            transform: translate(-50%, -88%) scale(1);
+          }
+          72% {
+            left: 63.3%;
+            top: 42.1%;
+            transform: translate(-50%, -88%) scale(1);
+          }
+          81% {
+            left: 76%;
+            top: 25%;
+            transform: translate(-50%, -88%) scale(1);
+          }
+          90% {
+            left: 88%;
+            top: 42%;
+            transform: translate(-50%, -88%) scale(1);
+          }
+          96% {
+            left: 91.3%;
+            top: 65.8%;
+            opacity: 1;
+            transform: translate(-50%, -88%) scale(.96);
+          }
+          98% {
+            left: 91.3%;
+            top: 65.8%;
+            opacity: 0;
+            transform: translate(-50%, -88%) scale(.28);
+          }
+          99% {
+            left: 8%;
+            top: 85.5%;
+            opacity: 0;
+            transform: translate(-50%, -88%) scale(.28);
+          }
+          100% {
+            left: 8%;
+            top: 85.5%;
+            opacity: 1;
+            transform: translate(-50%, -88%) scale(.92);
+          }
+        }
+
+        @keyframes hjRunnerArmA {
+          from { transform: rotate(62deg); }
+          to { transform: rotate(-52deg); }
+        }
+
+        @keyframes hjRunnerArmB {
+          from { transform: rotate(-52deg); }
+          to { transform: rotate(62deg); }
+        }
+
+        @keyframes hjRunnerLegA {
+          from { transform: rotate(48deg); }
+          to { transform: rotate(-42deg); }
+        }
+
+        @keyframes hjRunnerLegB {
+          from { transform: rotate(-42deg); }
+          to { transform: rotate(48deg); }
+        }
+
+        @keyframes hjRoadPointVisit {
+          0%,
+          2%,
+          16%,
+          100% {
+            border-color: rgba(130,188,232,.24);
+            filter: brightness(.98);
+            transform: perspective(900px) rotateX(5deg) translateY(0) scale(1);
+          }
+          5% {
+            border-color: rgba(242,216,117,.98);
+            filter: brightness(1.18);
+            transform: perspective(900px) rotateX(1deg) translateY(-10px) scale(1.045);
+            box-shadow:
+              0 12px 0 rgba(4,20,35,.92),
+              0 27px 48px rgba(0,0,0,.28),
+              0 0 38px rgba(224,189,85,.38),
+              inset 0 1px 0 rgba(255,255,255,.14);
+          }
+          11% {
+            border-color: rgba(242,216,117,.76);
+            transform: perspective(900px) rotateX(3deg) translateY(-4px) scale(1.02);
+          }
+        }
+
+        @keyframes hjCardWave {
+          0%,
+          2%,
+          16%,
+          100% {
+            left: -48%;
+            opacity: 0;
+          }
+          4% { opacity: 1; }
+          13% {
+            left: 116%;
+            opacity: 0;
+          }
+        }
+
+        @keyframes hjCardReward {
+          0%,
+          2%,
+          100% {
+            opacity: 0;
+            transform: translate(-50%, 8px) scale(.82);
+          }
+          5% {
+            opacity: 1;
+            transform: translate(-50%, -6px) scale(1);
+          }
+          10% { opacity: 1; }
+          15% {
+            opacity: 0;
+            transform: translate(-50%, -44px) scale(1.05);
+          }
+        }
+
+        @keyframes hjFinishVisit {
+          0%,
+          88%,
+          100% {
+            filter: brightness(.99);
+            transform: perspective(900px) rotateX(4deg) translateY(0) scale(1);
+          }
+          92% {
+            filter: brightness(1.18);
+            transform: perspective(900px) rotateX(1deg) translateY(-9px) scale(1.04);
+            box-shadow:
+              0 11px 0 rgba(5,26,44,.92),
+              0 27px 46px rgba(0,0,0,.3),
+              0 0 38px rgba(224,189,85,.38),
+              inset 0 1px 0 rgba(255,255,255,.13);
+          }
+          96% {
+            transform: perspective(900px) rotateX(3deg) translateY(-2px) scale(1.012);
+          }
+        }
+
+        @keyframes hjFinishWave {
+          0%,
+          88%,
+          98%,
+          100% {
+            left: -48%;
+            opacity: 0;
+          }
+          91% { opacity: 1; }
+          96% {
+            left: 116%;
+            opacity: 0;
+          }
+        }
+
+        @keyframes hjRunnerFloat {
+          0%,
+          2%,
+          100% {
+            opacity: 0;
+            transform: translate(-50%, 8px) scale(.82);
+          }
+          4% {
+            opacity: 1;
+            transform: translate(-50%, -4px) scale(1);
+          }
+          9% { opacity: 1; }
+          14% {
+            opacity: 0;
+            transform: translate(-50%, -44px) scale(1.05);
+          }
+        }
+
+        @keyframes hjRoadReward {
+          0%,
+          72% {
+            opacity: 0;
+            transform: translateY(14px) scale(0.82);
+          }
+          77% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+          88% {
+            opacity: 0;
+            transform: translateY(-34px) scale(1.06);
+          }
+          100% {
+            opacity: 0;
+          }
+        }
+
+        .hj-dashboard-section {
+          position: relative;
+          isolation: isolate;
+          overflow: hidden;
+        }
+
+        .hj-evolution {
+          padding: 138px 0 132px;
+          background:
+            radial-gradient(circle at 16% 22%, rgba(143, 92, 247, 0.17), transparent 28%),
+            radial-gradient(circle at 84% 74%, rgba(224, 189, 85, 0.1), transparent 24%),
+            linear-gradient(180deg, var(--bg), var(--bg-2));
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-evolution {
+          background:
+            radial-gradient(circle at 16% 22%, rgba(118, 80, 216, 0.15), transparent 28%),
+            radial-gradient(circle at 84% 74%, rgba(184, 137, 34, 0.11), transparent 24%),
+            linear-gradient(180deg, #eee4f8, #e2d5f1);
+        }
+
+        .hj-evolution-heading,
+        .hj-dashboard-heading {
+          max-width: 1080px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        .hj-evolution-heading > p,
+        .hj-dashboard-heading > p {
+          margin: 0 0 24px;
+          color: var(--cyan);
+          font: 950 clamp(0.94rem, 1.08vw, 1.12rem) var(--font-display), sans-serif;
+          letter-spacing: 0.2em;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-evolution-heading > p,
+        :global([data-theme="light"]) .hj-root .hj-dashboard-heading > p {
+          color: #0f5e83;
+        }
+
+        .hj-evolution-heading h2,
+        .hj-dashboard-heading h2 {
+          margin: 0;
+          font: 780 clamp(3.25rem, 5vw, 5.75rem) / 1.02 var(--font-display), sans-serif;
+          letter-spacing: -0.052em;
+          text-wrap: balance;
+        }
+
+        .hj-evolution-heading h2 em,
+        .hj-dashboard-heading h2 em {
+          color: transparent;
+          font-family: Georgia, "Times New Roman", serif;
+          font-weight: 500;
+          font-style: italic;
+          background: linear-gradient(110deg, var(--purple), var(--purple-soft), var(--gold-soft));
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: hjProveBreath 3.8s ease-in-out infinite;
+        }
+
+        .hj-evolution-heading > span,
+        .hj-dashboard-heading > span {
+          display: block;
+          max-width: 820px;
+          margin: 26px auto 0;
+          color: var(--muted);
+          font: 700 clamp(1rem, 1.15vw, 1.14rem) / 1.7 var(--font-sans), sans-serif;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-evolution-heading > span,
+        :global([data-theme="light"]) .hj-root .hj-dashboard-heading > span {
+          color: #2d405d;
+        }
+
+        .hj-evolution-orb,
+        .hj-dashboard-glow {
+          position: absolute;
+          pointer-events: none;
+          border-radius: 50%;
+          filter: blur(2px);
+        }
+
+        .hj-evolution-orb-a {
+          width: 420px;
+          height: 420px;
+          top: 150px;
+          left: -220px;
+          border: 1px solid rgba(143, 92, 247, 0.22);
+          box-shadow: inset 0 0 80px rgba(143, 92, 247, 0.08);
+          animation: hjOrbit 12s ease-in-out infinite;
+        }
+
+        .hj-evolution-orb-b {
+          width: 330px;
+          height: 330px;
+          right: -150px;
+          bottom: 70px;
+          border: 1px solid rgba(224, 189, 85, 0.18);
+          box-shadow: inset 0 0 70px rgba(224, 189, 85, 0.06);
+          animation: hjOrbit 10s ease-in-out infinite reverse;
+        }
+
+        .hj-career-loop {
+          position: relative;
+          min-height: 730px;
+          margin-top: 68px;
+          overflow: hidden;
+          border: 1px solid rgba(130, 188, 232, 0.22);
+          border-radius: 34px;
+          background:
+            radial-gradient(circle at 46% 44%, rgba(143, 92, 247, 0.14), transparent 26%),
+            radial-gradient(circle at 82% 22%, rgba(224, 189, 85, 0.08), transparent 22%),
+            linear-gradient(145deg, rgba(7, 27, 48, 0.98), rgba(2, 13, 25, 0.99));
+          box-shadow:
+            0 42px 90px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.07);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-career-loop {
+          border-color: rgba(91, 61, 119, 0.22);
+          background:
+            radial-gradient(circle at 46% 44%, rgba(118, 80, 216, 0.11), transparent 27%),
+            radial-gradient(circle at 82% 22%, rgba(184, 137, 34, 0.08), transparent 22%),
+            linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(232, 219, 246, 0.98));
+          box-shadow:
+            0 36px 76px rgba(70, 45, 99, 0.18),
+            inset 0 1px 0 rgba(255, 255, 255, 0.92);
+        }
+
+        .hj-loop-grid {
+          position: absolute;
+          inset: 0;
+          opacity: 0.28;
+          background:
+            linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+          background-size: 54px 54px;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-loop-grid {
+          opacity: 0.34;
+          background:
+            linear-gradient(rgba(38, 20, 62, 0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(38, 20, 62, 0.04) 1px, transparent 1px);
+          background-size: 54px 54px;
+        }
+
+        .hj-loop-track {
+          position: absolute;
+          left: 9%;
+          right: 9%;
+          top: 50%;
+          height: 3px;
+          border-radius: 999px;
+          background: linear-gradient(
+            90deg,
+            rgba(143, 92, 247, 0.34),
+            rgba(181, 140, 255, 0.88),
+            rgba(224, 189, 85, 0.9),
+            rgba(112, 215, 255, 0.46)
+          );
+          box-shadow:
+            0 0 14px rgba(143, 92, 247, 0.34),
+            0 0 22px rgba(224, 189, 85, 0.18);
+        }
+
+        .hj-loop-nodes {
+          position: absolute;
+          inset: 0;
+        }
+
+        .hj-loop-node {
+          --loop-index: 0;
+          position: absolute;
+          z-index: 3;
+          left: calc(7% + var(--loop-index) * 13.8%);
+          top: calc(50% + (var(--loop-index) % 2) * 142px - 70px);
+          width: min(190px, 13vw);
+          min-height: 126px;
+          display: grid;
+          grid-template-columns: 44px 1fr;
+          align-items: center;
+          gap: 12px;
+          padding: 18px;
+          border: 1px solid rgba(130, 188, 232, 0.25);
+          border-radius: 20px;
+          color: var(--text);
+          background:
+            radial-gradient(circle at 84% 10%, rgba(143, 92, 247, 0.16), transparent 38%),
+            linear-gradient(145deg, rgba(14, 45, 74, 0.96), rgba(5, 20, 35, 0.98));
+          box-shadow:
+            0 18px 40px rgba(0, 0, 0, 0.24),
+            inset 0 1px 0 rgba(255, 255, 255, 0.08);
+          transform: translateX(-50%) perspective(900px) rotateX(5deg);
+          animation: hjLoopNodePulse 14s ease-in-out infinite;
+          animation-delay: calc(var(--loop-index) * -2s);
+        }
+
+        .hj-loop-node:nth-child(even) {
+          top: calc(50% - 176px);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-loop-node {
+          color: #132b4d;
+          border-color: rgba(91, 61, 119, 0.2);
+          background:
+            radial-gradient(circle at 84% 10%, rgba(118, 80, 216, 0.12), transparent 38%),
+            linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(228, 216, 244, 0.98));
+          box-shadow:
+            0 18px 38px rgba(70, 45, 99, 0.16),
+            inset 0 1px 0 rgba(255, 255, 255, 0.94);
+        }
+
+        .hj-loop-node > small {
+          position: absolute;
+          top: 11px;
+          left: 14px;
+          color: var(--gold-soft);
+          font: 900 0.65rem var(--font-display), sans-serif;
+        }
+
+        .hj-loop-node > i {
+          width: 44px;
+          height: 44px;
+          display: grid;
+          place-items: center;
+          border-radius: 14px;
+          color: #17233a;
+          background: linear-gradient(145deg, #fff0a0, #d0a239);
+          box-shadow:
+            0 5px 0 #8f6818,
+            0 10px 18px rgba(0, 0, 0, 0.2);
+          font: 900 0.82rem var(--font-display), sans-serif;
+          font-style: normal;
+        }
+
+        .hj-loop-node strong,
+        .hj-loop-node span {
+          display: block;
+        }
+
+        .hj-loop-node strong {
+          font: 800 0.92rem var(--font-display), sans-serif;
+        }
+
+        .hj-loop-node span {
+          margin-top: 6px;
+          color: var(--muted);
+          font: 600 0.67rem / 1.35 var(--font-sans), sans-serif;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-loop-node span {
+          color: #536078;
+        }
+
+        .hj-loop-runner {
+          position: absolute;
+          z-index: 8;
+          left: 8%;
+          top: 50%;
+          width: 72px;
+          height: 72px;
+          display: grid;
+          place-items: center;
+          border: 2px solid rgba(255, 255, 255, 0.94);
+          border-radius: 50%;
+          color: #11233a;
+          background: radial-gradient(circle at 34% 28%, #fff9c8, #e7bc42 61%, #9e7216);
+          box-shadow:
+            0 0 0 10px rgba(224, 189, 85, 0.08),
+            0 0 30px rgba(224, 189, 85, 0.7),
+            0 20px 38px rgba(0, 0, 0, 0.28);
+          transform: translate(-50%, -50%);
+          animation: hjCareerTravel 14s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
+        }
+
+        .hj-loop-runner span {
+          position: relative;
+          z-index: 2;
+          font: 900 0.66rem var(--font-display), sans-serif;
+        }
+
+        .hj-loop-runner i {
+          position: absolute;
+          right: 62px;
+          width: 64px;
+          height: 10px;
+          border-radius: 999px;
+          background: linear-gradient(90deg, transparent, rgba(255, 238, 151, 0.88));
+          filter: blur(4px);
+        }
+
+        .hj-loop-result {
+          position: absolute;
+          z-index: 4;
+          right: 4%;
+          top: 50%;
+          width: 190px;
+          height: 190px;
+          display: grid;
+          place-items: center;
+          align-content: center;
+          gap: 8px;
+          border: 1px solid rgba(242, 216, 117, 0.5);
+          border-radius: 50%;
+          color: var(--text);
+          text-align: center;
+          background:
+            radial-gradient(circle, rgba(224, 189, 85, 0.18), rgba(9, 27, 47, 0.96) 68%);
+          box-shadow:
+            0 0 0 14px rgba(224, 189, 85, 0.04),
+            0 0 48px rgba(224, 189, 85, 0.24),
+            inset 0 0 32px rgba(242, 216, 117, 0.12);
+          transform: translateY(-50%);
+          animation: hjGoalBreath 3.4s ease-in-out infinite;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-loop-result {
+          color: #ffffff;
+          background:
+            radial-gradient(circle at 35% 28%, #314258, #162236 45%, #070d17 100%);
+          box-shadow:
+            0 0 0 14px rgba(184, 137, 34, 0.06),
+            0 0 44px rgba(184, 137, 34, 0.3),
+            inset 0 0 32px rgba(242, 216, 117, 0.12);
+        }
+
+        .hj-loop-result span {
+          color: var(--gold-soft);
+          font: 900 0.72rem var(--font-display), sans-serif;
+          letter-spacing: 0.12em;
+        }
+
+        .hj-loop-result strong {
+          max-width: 135px;
+          font: 800 0.9rem / 1.35 var(--font-display), sans-serif;
+        }
+
+        .hj-loop-result i {
+          position: absolute;
+          inset: -18px;
+          border: 1px dashed rgba(242, 216, 117, 0.26);
+          border-radius: 50%;
+          animation: hjGoalRing 8s linear infinite;
+        }
+
+        .hj-loop-xp {
+          position: absolute;
+          z-index: 9;
+          color: var(--gold-soft);
+          font: 900 0.78rem var(--font-display), sans-serif;
+          opacity: 0;
+          text-shadow: 0 0 14px rgba(224, 189, 85, 0.6);
+          animation: hjLoopReward 14s ease-out infinite;
+        }
+
+        .hj-loop-xp-a {
+          left: 33%;
+          top: 31%;
+          animation-delay: 3.5s;
+        }
+
+        .hj-loop-xp-b {
+          left: 58%;
+          top: 66%;
+          animation-delay: 7.2s;
+        }
+
+        .hj-loop-xp-c {
+          left: 73%;
+          top: 27%;
+          animation-delay: 9.4s;
+        }
+
+        .hj-dashboard-section {
+          padding: 138px 0 120px;
+          background:
+            radial-gradient(circle at 82% 18%, rgba(143, 92, 247, 0.16), transparent 28%),
+            radial-gradient(circle at 12% 82%, rgba(112, 215, 255, 0.09), transparent 24%),
+            linear-gradient(180deg, var(--bg-2), var(--bg));
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-dashboard-section {
+          background:
+            radial-gradient(circle at 82% 18%, rgba(118, 80, 216, 0.14), transparent 28%),
+            radial-gradient(circle at 12% 82%, rgba(43, 105, 140, 0.08), transparent 24%),
+            linear-gradient(180deg, #e2d5f1, #eee4f8);
+        }
+
+        .hj-dashboard-glow-a {
+          width: 420px;
+          height: 420px;
+          left: -160px;
+          top: 250px;
+          background: radial-gradient(circle, rgba(112, 215, 255, 0.1), transparent 70%);
+        }
+
+        .hj-dashboard-glow-b {
+          width: 480px;
+          height: 480px;
+          right: -180px;
+          bottom: 40px;
+          background: radial-gradient(circle, rgba(143, 92, 247, 0.15), transparent 70%);
+        }
+
+        .hj-dashboard {
+          margin-top: 66px;
+          overflow: hidden;
+          border: 1px solid rgba(130, 188, 232, 0.22);
+          border-radius: 32px;
+          background:
+            radial-gradient(circle at 86% 12%, rgba(143, 92, 247, 0.12), transparent 32%),
+            linear-gradient(145deg, rgba(8, 30, 52, 0.98), rgba(3, 15, 28, 0.99));
+          box-shadow:
+            0 42px 90px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-dashboard {
+          border-color: rgba(91, 61, 119, 0.22);
+          background:
+            radial-gradient(circle at 86% 12%, rgba(118, 80, 216, 0.11), transparent 32%),
+            linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(231, 220, 245, 0.98));
+          box-shadow:
+            0 36px 76px rgba(70, 45, 99, 0.18),
+            inset 0 1px 0 rgba(255, 255, 255, 0.94);
+        }
+
+        .hj-dashboard-topbar {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 24px;
+          padding: 26px 30px;
+          border-bottom: 1px solid rgba(130, 188, 232, 0.15);
+          background: rgba(255, 255, 255, 0.025);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-dashboard-topbar {
+          border-color: rgba(91, 61, 119, 0.14);
+          background: rgba(255, 255, 255, 0.38);
+        }
+
+        .hj-dashboard-topbar small,
+        .hj-dashboard-topbar strong {
+          display: block;
+        }
+
+        .hj-dashboard-topbar small {
+          color: var(--cyan);
+          font: 900 0.7rem var(--font-display), sans-serif;
+          letter-spacing: 0.14em;
+        }
+
+        .hj-dashboard-topbar strong {
+          margin-top: 7px;
+          font: 800 1.3rem var(--font-display), sans-serif;
+        }
+
+        .hj-dashboard-status {
+          display: inline-flex;
+          align-items: center;
+          gap: 9px;
+          padding: 9px 14px;
+          border: 1px solid rgba(112, 215, 255, 0.22);
+          border-radius: 999px;
+          color: var(--cyan);
+          font: 850 0.68rem var(--font-display), sans-serif;
+        }
+
+        .hj-dashboard-status i {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #66e7a7;
+          box-shadow: 0 0 14px rgba(102, 231, 167, 0.8);
+          animation: hjSparkPulse 1.5s ease-in-out infinite;
+        }
+
+        .hj-dashboard-grid {
+          display: grid;
+          grid-template-columns: 1.08fr 0.82fr 0.82fr;
+          gap: 18px;
+          padding: 24px;
+        }
+
+        .hj-dashboard-grid article {
+          position: relative;
+          overflow: hidden;
+          border: 1px solid rgba(130, 188, 232, 0.17);
+          border-radius: 22px;
+          background:
+            linear-gradient(145deg, rgba(19, 53, 84, 0.72), rgba(7, 25, 43, 0.82));
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.06),
+            0 20px 40px rgba(0, 0, 0, 0.16);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-dashboard-grid article {
+          color: #132b4d;
+          border-color: rgba(91, 61, 119, 0.16);
+          background:
+            linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(224, 211, 241, 0.86));
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.94),
+            0 18px 36px rgba(70, 45, 99, 0.12);
+        }
+
+        .hj-dashboard-grid article > small,
+        .hj-dashboard-card-head small {
+          color: var(--gold-soft);
+          font: 900 0.68rem var(--font-display), sans-serif;
+          letter-spacing: 0.12em;
+        }
+
+        .hj-dashboard-level,
+        .hj-dashboard-xp,
+        .hj-dashboard-readiness {
+          min-height: 290px;
+          padding: 28px;
+        }
+
+        .hj-level-number {
+          margin-top: 20px;
+          color: transparent;
+          font: 900 5.5rem / 0.9 var(--font-display), sans-serif;
+          background: linear-gradient(145deg, var(--cyan), var(--purple-soft), var(--gold-soft));
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        .hj-dashboard-level > strong,
+        .hj-dashboard-level > span {
+          display: block;
+        }
+
+        .hj-dashboard-level > strong {
+          margin-top: 18px;
+          font: 800 1.2rem var(--font-display), sans-serif;
+        }
+
+        .hj-dashboard-level > span {
+          margin-top: 7px;
+          color: var(--muted);
+          font-size: 0.84rem;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-dashboard-level > span,
+        :global([data-theme="light"]) .hj-root .hj-dashboard-readiness > span {
+          color: #536078;
+        }
+
+        .hj-dashboard-progress {
+          height: 11px;
+          margin-top: 24px;
+          overflow: hidden;
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.08);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-dashboard-progress {
+          background: rgba(18, 44, 80, 0.09);
+        }
+
+        .hj-dashboard-progress i {
+          display: block;
+          width: 70%;
+          height: 100%;
+          border-radius: inherit;
+          background: linear-gradient(90deg, var(--purple), var(--purple-soft), var(--gold-soft));
+          box-shadow: 0 0 20px rgba(143, 92, 247, 0.4);
+          animation: hjDashboardProgress 4s ease-in-out infinite;
+        }
+
+        .hj-dashboard-progress-meta {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 10px;
+          color: var(--muted);
+          font-size: 0.76rem;
+        }
+
+        .hj-dashboard-progress-meta b {
+          color: var(--gold-soft);
+        }
+
+        .hj-dashboard-xp > strong {
+          display: flex;
+          align-items: flex-end;
+          gap: 8px;
+          margin-top: 30px;
+        }
+
+        .hj-dashboard-xp > strong span {
+          font: 900 clamp(3rem, 4vw, 4.8rem) / 0.9 var(--font-display), sans-serif;
+        }
+
+        .hj-dashboard-xp > strong i {
+          color: var(--gold-soft);
+          font: 900 0.85rem var(--font-display), sans-serif;
+          font-style: normal;
+        }
+
+        .hj-xp-ring {
+          width: 128px;
+          height: 128px;
+          display: grid;
+          place-items: center;
+          align-content: center;
+          gap: 5px;
+          margin-top: 30px;
+          border: 10px solid rgba(143, 92, 247, 0.18);
+          border-top-color: var(--gold-soft);
+          border-right-color: var(--purple-soft);
+          border-radius: 50%;
+          box-shadow:
+            0 0 30px rgba(143, 92, 247, 0.16),
+            inset 0 0 28px rgba(224, 189, 85, 0.06);
+          animation: hjXpRing 7s linear infinite;
+        }
+
+        .hj-xp-ring span,
+        .hj-xp-ring small {
+          transform: rotate(0deg);
+        }
+
+        .hj-xp-ring span {
+          font: 900 1.3rem var(--font-display), sans-serif;
+        }
+
+        .hj-xp-ring small {
+          color: var(--muted);
+          font: 800 0.58rem var(--font-display), sans-serif;
+          letter-spacing: 0.08em;
+        }
+
+        .hj-dashboard-readiness {
+          text-align: center;
+        }
+
+        .hj-readiness-ring {
+          width: 142px;
+          height: 142px;
+          display: grid;
+          place-items: center;
+          margin: 22px auto 18px;
+          border-radius: 50%;
+          background:
+            radial-gradient(circle at center, var(--surface-strong) 58%, transparent 60%),
+            conic-gradient(var(--gold-soft) 0 87%, rgba(255, 255, 255, 0.08) 87% 100%);
+          box-shadow: 0 0 34px rgba(224, 189, 85, 0.14);
+        }
+
+        .hj-readiness-ring span {
+          font: 900 2.1rem var(--font-display), sans-serif;
+        }
+
+        .hj-dashboard-readiness > strong,
+        .hj-dashboard-readiness > span {
+          display: block;
+        }
+
+        .hj-dashboard-readiness > strong {
+          font: 800 1.05rem var(--font-display), sans-serif;
+        }
+
+        .hj-dashboard-readiness > span {
+          margin-top: 7px;
+          color: var(--muted);
+          font-size: 0.76rem;
+        }
+
+        .hj-dashboard-project {
+          grid-column: 1 / span 2;
+          min-height: 330px;
+          padding: 28px;
+        }
+
+        .hj-dashboard-card-head {
+          display: flex;
+          justify-content: space-between;
+          gap: 20px;
+        }
+
+        .hj-dashboard-card-head small,
+        .hj-dashboard-card-head strong {
+          display: block;
+        }
+
+        .hj-dashboard-card-head strong {
+          margin-top: 7px;
+          font: 800 1.28rem var(--font-display), sans-serif;
+        }
+
+        .hj-dashboard-card-head > span {
+          height: fit-content;
+          padding: 8px 11px;
+          border: 1px solid rgba(102, 231, 167, 0.25);
+          border-radius: 999px;
+          color: #66e7a7;
+          font: 850 0.62rem var(--font-display), sans-serif;
+        }
+
+        .hj-project-preview {
+          min-height: 170px;
+          display: grid;
+          grid-template-columns: 72px 1fr;
+          margin-top: 24px;
+          overflow: hidden;
+          border: 1px solid rgba(130, 188, 232, 0.14);
+          border-radius: 18px;
+          background:
+            radial-gradient(circle at 70% 24%, rgba(143, 92, 247, 0.18), transparent 36%),
+            rgba(2, 14, 26, 0.42);
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-project-preview {
+          border-color: rgba(91, 61, 119, 0.13);
+          background:
+            radial-gradient(circle at 70% 24%, rgba(118, 80, 216, 0.13), transparent 36%),
+            rgba(255, 255, 255, 0.45);
+        }
+
+        .hj-preview-sidebar {
+          display: grid;
+          align-content: start;
+          gap: 13px;
+          padding: 25px 20px;
+          border-right: 1px solid rgba(130, 188, 232, 0.12);
+        }
+
+        .hj-preview-sidebar i {
+          width: 28px;
+          height: 7px;
+          border-radius: 999px;
+          background: var(--muted);
+          opacity: 0.42;
+        }
+
+        .hj-preview-main {
+          position: relative;
+          padding: 26px;
+        }
+
+        .hj-preview-bars {
+          height: 92px;
+          display: flex;
+          align-items: flex-end;
+          gap: 18px;
+        }
+
+        .hj-preview-bars i {
+          flex: 1;
+          height: 45%;
+          border-radius: 7px 7px 0 0;
+          background: linear-gradient(to top, var(--purple), var(--purple-soft));
+          animation: hjPreviewBars 2.8s ease-in-out infinite alternate;
+        }
+
+        .hj-preview-bars i:nth-child(2) {
+          height: 72%;
+          animation-delay: -0.5s;
+        }
+
+        .hj-preview-bars i:nth-child(3) {
+          height: 54%;
+          animation-delay: -1s;
+        }
+
+        .hj-preview-bars i:nth-child(4) {
+          height: 86%;
+          background: linear-gradient(to top, var(--gold), var(--gold-soft));
+          animation-delay: -1.5s;
+        }
+
+        .hj-preview-bars i:nth-child(5) {
+          height: 66%;
+          animation-delay: -2s;
+        }
+
+        .hj-preview-line {
+          position: absolute;
+          left: 26px;
+          right: 26px;
+          bottom: 24px;
+          height: 2px;
+          background: linear-gradient(90deg, var(--cyan), var(--purple-soft), var(--gold-soft));
+          box-shadow: 0 0 14px rgba(112, 215, 255, 0.22);
+        }
+
+        .hj-project-stack {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-top: 16px;
+        }
+
+        .hj-project-stack span {
+          padding: 7px 10px;
+          border: 1px solid rgba(130, 188, 232, 0.16);
+          border-radius: 999px;
+          color: var(--muted);
+          font-size: 0.68rem;
+        }
+
+        .hj-dashboard-activity {
+          grid-column: 3;
+          padding: 28px;
+        }
+
+        .hj-activity-row {
+          display: grid;
+          grid-template-columns: 36px minmax(0, 1fr) auto;
+          align-items: center;
+          gap: 12px;
+          padding: 17px 0;
+          border-bottom: 1px solid rgba(130, 188, 232, 0.12);
+        }
+
+        .hj-activity-row:last-child {
+          border-bottom: 0;
+        }
+
+        .hj-activity-row > i {
+          width: 36px;
+          height: 36px;
+          display: grid;
+          place-items: center;
+          border-radius: 12px;
+          color: #17233a;
+          background: linear-gradient(145deg, #fff0a0, #d0a239);
+          font-style: normal;
+          font-weight: 900;
+        }
+
+        .hj-activity-row strong,
+        .hj-activity-row span {
+          display: block;
+        }
+
+        .hj-activity-row strong {
+          font: 800 0.78rem var(--font-display), sans-serif;
+        }
+
+        .hj-activity-row span {
+          margin-top: 5px;
+          color: var(--muted);
+          font-size: 0.66rem;
+          line-height: 1.35;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-activity-row span {
+          color: #536078;
+        }
+
+        .hj-activity-row > b {
+          color: var(--gold-soft);
+          font: 900 0.66rem var(--font-display), sans-serif;
+        }
+
+        .hj-dashboard-stats {
+          grid-column: 1 / -1;
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .hj-dashboard-stats > div {
+          padding: 24px;
+          border-right: 1px solid rgba(130, 188, 232, 0.12);
+          text-align: center;
+        }
+
+        .hj-dashboard-stats > div:last-child {
+          border-right: 0;
+        }
+
+        .hj-dashboard-stats strong,
+        .hj-dashboard-stats span {
+          display: block;
+        }
+
+        .hj-dashboard-stats strong {
+          color: transparent;
+          font: 900 2.4rem var(--font-display), sans-serif;
+          background: linear-gradient(145deg, var(--cyan), var(--purple-soft), var(--gold-soft));
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        .hj-dashboard-stats span {
+          margin-top: 7px;
+          color: var(--muted);
+          font-size: 0.74rem;
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-dashboard-stats span {
+          color: #536078;
+        }
+
+        .hj-dashboard-cta {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 28px;
+          margin-top: 34px;
+          padding: 32px 36px;
+          border: 1px solid rgba(130, 188, 232, 0.18);
+          border-radius: 24px;
+          background:
+            radial-gradient(circle at 82% 18%, rgba(224, 189, 85, 0.12), transparent 32%),
+            linear-gradient(145deg, rgba(13, 42, 70, 0.88), rgba(5, 22, 38, 0.96));
+        }
+
+        :global([data-theme="light"]) .hj-root .hj-dashboard-cta {
+          border-color: rgba(91, 61, 119, 0.17);
+          background:
+            radial-gradient(circle at 82% 18%, rgba(184, 137, 34, 0.11), transparent 32%),
+            linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(226, 213, 243, 0.96));
+        }
+
+        .hj-dashboard-cta small {
+          color: var(--cyan);
+          font: 900 0.7rem var(--font-display), sans-serif;
+          letter-spacing: 0.14em;
+        }
+
+        .hj-dashboard-cta h3 {
+          margin: 10px 0 0;
+          font: 800 clamp(1.5rem, 2.2vw, 2.2rem) var(--font-display), sans-serif;
+          letter-spacing: -0.03em;
+        }
+
+        @keyframes hjCareerTravel {
+          0%,
+          5% {
+            left: 8%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1);
+          }
+          12% {
+            left: 20.8%;
+            top: 34%;
+            transform: translate(-50%, -50%) translateY(-18px) scale(1.04);
+          }
+          18% {
+            left: 20.8%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1);
+          }
+          26% {
+            left: 34.6%;
+            top: 66%;
+            transform: translate(-50%, -50%) translateY(-20px) scale(1.04);
+          }
+          32% {
+            left: 34.6%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1);
+          }
+          40% {
+            left: 48.4%;
+            top: 34%;
+            transform: translate(-50%, -50%) translateY(-18px) scale(1.04);
+          }
+          46% {
+            left: 48.4%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1);
+          }
+          54% {
+            left: 62.2%;
+            top: 66%;
+            transform: translate(-50%, -50%) translateY(-20px) scale(1.04);
+          }
+          60% {
+            left: 62.2%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1);
+          }
+          68% {
+            left: 76%;
+            top: 34%;
+            transform: translate(-50%, -50%) translateY(-18px) scale(1.04);
+          }
+          74% {
+            left: 76%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1);
+          }
+          84% {
+            left: 89%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(0.88);
+          }
+          90% {
+            left: 89%;
+            top: 50%;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.15);
+          }
+          94% {
+            left: 8%;
+            top: 50%;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.15);
+          }
+          100% {
+            left: 8%;
+            top: 50%;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+          }
+        }
+
+        @keyframes hjLoopNodePulse {
+          0%,
+          100% {
+            border-color: rgba(130, 188, 232, 0.22);
+            filter: brightness(0.96);
+          }
+          12%,
+          18% {
+            border-color: rgba(242, 216, 117, 0.75);
+            filter: brightness(1.12);
+            box-shadow:
+              0 22px 46px rgba(0, 0, 0, 0.25),
+              0 0 28px rgba(224, 189, 85, 0.18),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+          }
+        }
+
+        @keyframes hjLoopReward {
+          0%,
+          72% {
+            opacity: 0;
+            transform: translateY(12px) scale(0.85);
+          }
+          77% {
+            opacity: 1;
+          }
+          88% {
+            opacity: 0;
+            transform: translateY(-32px) scale(1.05);
+          }
+          100% {
+            opacity: 0;
+          }
+        }
+
+        @keyframes hjDashboardProgress {
+          0%,
+          100% {
+            width: 62%;
+            filter: brightness(0.95);
+          }
+          50% {
+            width: 70%;
+            filter: brightness(1.15);
+          }
+        }
+
+        @keyframes hjXpRing {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        @keyframes hjPreviewBars {
+          from {
+            filter: brightness(0.9);
+            transform: scaleY(0.88);
+            transform-origin: bottom;
+          }
+          to {
+            filter: brightness(1.14);
+            transform: scaleY(1.04);
+            transform-origin: bottom;
+          }
+        }
+
+        @media (min-width: 1101px) {
+          .hj-roadmap {
+            padding-bottom: 64px;
+          }
+
+          .hj-evolution {
+            padding-top: 76px;
+          }
+
+          .hj-level-journey {
+            width: min(1320px, calc(100% - 56px));
+            margin: 34px auto 0;
+            padding: 18px;
+          }
+
+          .hj-climb-scene {
+            min-height: 540px;
+          }
+
+          .hj-climb-step {
+            width: clamp(184px, 14vw, 220px);
+            min-height: 88px;
+            grid-template-columns: 26px 44px minmax(0, 1fr);
+            gap: 9px;
+            padding: 12px 14px 14px;
+          }
+
+          .hj-climb-goal {
+            width: 92px;
+            height: 92px;
+          }
+
+          .hj-climb-status {
+            width: min(290px, 27%);
+            padding: 15px 17px;
+          }
+
+          .hj-road-game {
+            width: min(1380px, calc(100% - 56px));
+            min-height: 600px;
+            margin: 46px auto 0;
+            border-radius: 30px;
+          }
+
+          .hj-road-point {
+            width: min(200px, 13.5vw);
+            min-height: 78px;
+            grid-template-columns: 40px minmax(0, 1fr);
+            gap: 10px;
+            padding: 12px 14px;
+          }
+
+          .hj-road-point-icon {
+            width: 40px;
+            height: 40px;
+          }
+
+          .hj-road-start {
+            left: 4.8%;
+            bottom: 0.8%;
+          }
+
+          .hj-road-point-1 {
+            left: 4.8%;
+            bottom: 22.5%;
+            --connector-size: 54px;
+            animation-delay: 0s;
+          }
+
+          .hj-road-point-1 .hj-road-point-pulse::before,
+          .hj-road-point-1 .hj-road-point-reward {
+            animation-delay: 0s;
+          }
+
+          .hj-road-point-2 {
+            left: calc(47% - 100px);
+            top: auto;
+            bottom: 17%;
+            --connector-size: 70px;
+            animation-delay: 2.16s;
+          }
+
+          .hj-road-point-2 .hj-road-point-pulse::before,
+          .hj-road-point-2 .hj-road-point-reward {
+            animation-delay: 2.16s;
+          }
+
+          .hj-road-point-2::after {
+            left: auto;
+            right: 100%;
+            top: 50%;
+            bottom: auto;
+            width: var(--connector-size);
+            height: 18px;
+            border-radius: 999px 0 0 999px;
+            background:
+              radial-gradient(circle at 8px 50%, #fff4a9 0 4px, #d5a936 5px 8px, transparent 9px),
+              linear-gradient(90deg, rgba(255, 242, 164, 0.96), rgba(181, 132, 28, 0.9));
+            transform: translateY(-50%);
+          }
+
+          .hj-road-point-3 {
+            left: 14.8%;
+            top: 3.5%;
+            --connector-size: 84px;
+          }
+
+          .hj-road-point-4 {
+            left: 44%;
+            top: 14%;
+            --connector-size: 190px;
+          }
+
+          .hj-road-point-5 {
+            left: 55%;
+            top: 65%;
+            --connector-size: 86px;
+          }
+
+          .hj-road-point-5::after {
+            left: 50%;
+            transform: translateX(-50%);
+            transform-origin: 50% 100%;
+          }
+
+          .hj-road-point-6 {
+            left: 64%;
+            top: 3.5%;
+            --connector-size: 60px;
+          }
+
+          .hj-road-point-7 {
+            right: 4.8%;
+            top: 3.5%;
+            --connector-size: 100px;
+          }
+
+          .hj-road-finish {
+            right: 2.4%;
+            top: auto;
+            bottom: 2.8%;
+            width: 190px;
+            min-height: 82px;
+            grid-template-columns: 44px minmax(0, 1fr);
+            gap: 10px;
+            padding: 12px 15px;
+          }
+
+          .hj-road-finish::before {
+            height: 110px;
+          }
+
+          .hj-road-finish > i {
+            width: 44px;
+            height: 44px;
+          }
+
+          .hj-road-runner {
+            filter: none;
+          }
+
+          .hj-road-runner span {
+            box-shadow: none;
+          }
+
+          .hj-runner-glow {
+            display: none;
+          }
+
+          .hj-runner-float-labels {
+            display: none;
+          }
+        }
+
+        @media (max-width: 1100px) {
+          .hj-proof-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+
+          .hj-project-card {
+            grid-column: 1 / -1;
+          }
+
+          .hj-road-point {
+            width: 180px;
+          }
+
+          .hj-dashboard-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+
+          .hj-dashboard-project,
+          .hj-dashboard-activity {
+            grid-column: auto;
+          }
+
+          .hj-dashboard-stats {
+            grid-column: 1 / -1;
+          }
+
+        }
+
+        @media (max-width: 820px) {
+          .hj-shell {
+            width: min(100% - 28px, 720px);
+          }
+
+          .hj-scroll-cue {
+            column-gap: 16px;
+          }
+
+          .hj-process-steps {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            row-gap: 26px;
+          }
+
+          .hj-process-line {
+            display: none;
+          }
+
+          .hj-intro-layout {
+            grid-template-columns: 1fr;
+          }
+
+          .hj-proof-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .hj-level-journey {
+            padding: 16px;
+          }
+
+          .hj-climb-scene {
+            min-height: 900px;
+          }
+
+          .hj-climb-goal {
+            top: 28px;
+            right: 7%;
+            width: 102px;
+            height: 102px;
+          }
+
+          .hj-climb-status {
+            left: 6%;
+            top: 4%;
+            width: 53%;
+            padding: 16px;
+          }
+
+          .hj-climb-step {
+            left: 7%;
+            bottom: calc(5% + var(--step) * 16%);
+            width: min(76vw, 300px);
+            min-height: 104px;
+            transform:
+              perspective(900px)
+              rotateX(16deg)
+              rotateZ(-2deg);
+          }
+
+          .hj-climb-step:nth-child(even) {
+            left: auto;
+            right: 7%;
+          }
+
+          .hj-climb-step:hover,
+          .hj-climb-step.is-active {
+            transform:
+              perspective(900px)
+              rotateX(10deg)
+              rotateZ(0deg)
+              translateY(-8px)
+              scale(1.025);
+          }
+
+          .hj-climb-runner {
+            left: 18%;
+            bottom: calc(13% + var(--runner-step) * 16%);
+            width: 58px;
+            height: 58px;
+          }
+
+          .hj-climb-runner.is-goal-bound {
+            left: 83%;
+            bottom: 79%;
+          }
+
+          .hj-project-card {
+            grid-column: auto;
+          }
+
+          .hj-heading {
+            padding: 58px 0 22px;
+          }
+
+          .hj-heading h2 {
+            width: 100%;
+          }
+
+          .hj-heading-line {
+            white-space: normal;
+          }
+
+          .hj-process {
+            margin-top: 10px;
+          }
+
+          .hj-tracks,
+          .hj-roadmap,
+          .hj-proof,
+          .hj-evolution,
+          .hj-dashboard-section {
+            padding-bottom: 90px;
+          }
+
+          .hj-evolution-heading {
+            transform: none;
+          }
+
+          .hj-evolution-title > span {
+            white-space: normal;
+          }
+
+          .hj-road-game {
+            min-height: 1120px;
+          }
+
+          .hj-road-svg,
+          .hj-road-runner {
+            display: none;
+          }
+
+          .hj-road-checkpoints {
+            position: absolute;
+            inset: 0;
+          }
+
+          .hj-road-point,
+          .hj-road-point-1,
+          .hj-road-point-2,
+          .hj-road-point-3,
+          .hj-road-point-4,
+          .hj-road-point-5,
+          .hj-road-point-6,
+          .hj-road-point-7 {
+            left: 50%;
+            right: auto;
+            top: calc(6% + var(--point-index) * 12.2%);
+            bottom: auto;
+            width: min(80vw, 330px);
+            transform: translateX(-50%);
+          }
+
+          .hj-road-point::after {
+            top: 100%;
+            bottom: auto;
+            width: 4px;
+            height: 42px;
+            border: 0;
+            border-radius: 999px;
+            background: linear-gradient(var(--purple), var(--gold-soft));
+            box-shadow: none;
+            transform: translateX(-50%);
+          }
+
+          .hj-road-point-7::after {
+            display: none;
+          }
+
+          .hj-road-finish {
+  right: auto;
+  left: 50%;
+  top: auto;
+  bottom: 20px;
+
+  width: min(82vw, 280px);
+  min-height: 96px;
+  height: auto;
+
+  transform: translateX(-50%);
+}
+
+.hj-road-finish::before {
+  display: none;
+}
+
+          .hj-road-start,
+          .hj-road-reward,
+          .hj-road-progress-badge {
+            display: none;
+          }
+
+          .hj-dashboard-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .hj-dashboard-project,
+          .hj-dashboard-activity,
+          .hj-dashboard-stats {
+            grid-column: auto;
+          }
+
+          .hj-dashboard-stats {
+            grid-template-columns: 1fr 1fr;
+          }
+
+          .hj-dashboard-cta {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+        }
+
+        @media (max-width: 560px) {
+          .hj-process-steps {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .hj-process-detail {
+            grid-template-columns: 1fr;
+            padding: 24px;
+          }
+
+          .hj-heading h2,
+          .hj-roadmap-copy h2,
+          .hj-proof-heading h2,
+          .hj-final h2 {
+            letter-spacing: -0.045em;
+          }
+
+          .hj-roadmap,
+          .hj-proof {
+            padding-top: 100px;
+          }
+
+          .hj-proof-card {
+            min-height: 250px;
+            padding: 24px;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          *,
+          *::before,
+          *::after {
+            animation: none !important;
+            transition-duration: 0.01ms !important;
+          }
+
+          [data-reveal] {
+            opacity: 1;
+            transform: none;
+          }
+        }
+      `}</style>
+    </div>
+  );
+}

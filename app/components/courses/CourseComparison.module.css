@@ -1999,3 +1999,202 @@
     margin-top: 26px;
   }
 }
+
+/* =========================================================
+   LIGHT MODE — PURPLE + CREAM MENTORME CARD
+   Replaces the heavy gold card surface while retaining
+   metallic-gold borders, icons and important accents.
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard,
+:global(html[data-theme="light"]) .mentorCard,
+:global([data-theme="light"]) .mentorCard,
+:global(.light) .mentorCard {
+  color: #20283a;
+
+  border-color: transparent;
+
+  background:
+    radial-gradient(
+      circle at 13% 8%,
+      rgba(197, 169, 235, 0.92),
+      transparent 37%
+    ),
+    radial-gradient(
+      circle at 88% 88%,
+      rgba(255, 248, 226, 0.98),
+      rgba(247, 233, 205, 0.76) 34%,
+      transparent 60%
+    ),
+    linear-gradient(
+      145deg,
+      #e5d5f7 0%,
+      #f4ecfc 34%,
+      #fffaf0 67%,
+      #f3e5c9 100%
+    );
+
+  box-shadow:
+    0 34px 82px rgba(76, 48, 108, 0.22),
+    0 0 42px rgba(175, 141, 213, 0.17),
+    0 0 46px rgba(212, 175, 55, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset -24px -30px 48px rgba(171, 139, 87, 0.045);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard:hover,
+:global(html[data-theme="light"]) .mentorCard:hover,
+:global([data-theme="light"]) .mentorCard:hover,
+:global(.light) .mentorCard:hover {
+  box-shadow:
+    0 44px 100px rgba(76, 48, 108, 0.29),
+    0 0 58px rgba(175, 141, 213, 0.23),
+    0 0 54px rgba(212, 175, 55, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* Softer purple-and-cream shine */
+:global(html:not(.dark):not([data-theme="dark"])) .mentorShine,
+:global(html[data-theme="light"]) .mentorShine,
+:global([data-theme="light"]) .mentorShine,
+:global(.light) .mentorShine {
+  background:
+    linear-gradient(
+      110deg,
+      transparent 34%,
+      rgba(255, 255, 255, 0.74) 47%,
+      rgba(226, 207, 247, 0.34) 52%,
+      transparent 65%
+    );
+}
+
+/* Header remains dark and readable */
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .mentorEyebrow,
+:global(html[data-theme="light"]) .mentorCard .mentorEyebrow,
+:global([data-theme="light"]) .mentorCard .mentorEyebrow,
+:global(.light) .mentorCard .mentorEyebrow {
+  color: #865f12;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .cardHeader h3,
+:global(html[data-theme="light"]) .mentorCard .cardHeader h3,
+:global([data-theme="light"]) .mentorCard .cardHeader h3,
+:global(.light) .mentorCard .cardHeader h3,
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard blockquote,
+:global(html[data-theme="light"]) .mentorCard blockquote,
+:global([data-theme="light"]) .mentorCard blockquote,
+:global(.light) .mentorCard blockquote {
+  color: #20283a;
+}
+
+/* Flow chips remain gold but less saturated */
+:global(html:not(.dark):not([data-theme="dark"])) .mentorFlow > div > span,
+:global(html[data-theme="light"]) .mentorFlow > div > span,
+:global([data-theme="light"]) .mentorFlow > div > span,
+:global(.light) .mentorFlow > div > span {
+  color: #3f2a05;
+
+  border-color:
+    rgba(139, 91, 8, 0.32);
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff3b8,
+      #ebc85b 58%,
+      #c18a17
+    );
+
+  box-shadow:
+    0 8px 18px rgba(99, 61, 4, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+/* Proof panel becomes cream with a slight lavender cast */
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .proofPanel,
+:global(html[data-theme="light"]) .mentorCard .proofPanel,
+:global([data-theme="light"]) .mentorCard .proofPanel,
+:global(.light) .mentorCard .proofPanel {
+  border-color:
+    rgba(123, 91, 145, 0.18);
+
+  background:
+    radial-gradient(
+      circle at 10% 0%,
+      rgba(229, 213, 247, 0.48),
+      transparent 42%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.84),
+      rgba(255, 248, 230, 0.76)
+    );
+
+  box-shadow:
+    0 13px 30px rgba(76, 48, 108, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.98);
+}
+
+/* Proof stat boxes */
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .proofStats span,
+:global(html[data-theme="light"]) .mentorCard .proofStats span,
+:global([data-theme="light"]) .mentorCard .proofStats span,
+:global(.light) .mentorCard .proofStats span {
+  color: #655f70;
+
+  border-color:
+    rgba(109, 80, 133, 0.14);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.72),
+      rgba(244, 236, 250, 0.58)
+    );
+}
+
+/* Feature list separators become purple-neutral */
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .pointList li,
+:global(html[data-theme="light"]) .mentorCard .pointList li,
+:global([data-theme="light"]) .mentorCard .pointList li,
+:global(.light) .mentorCard .pointList li {
+  color: #566174;
+
+  border-color:
+    rgba(103, 77, 127, 0.13);
+}
+
+/* Outcome badge uses cream and purple instead of gold fill */
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .outcomeBadge,
+:global(html[data-theme="light"]) .mentorCard .outcomeBadge,
+:global([data-theme="light"]) .mentorCard .outcomeBadge,
+:global(.light) .mentorCard .outcomeBadge {
+  color: #8a6212;
+
+  border-color:
+    rgba(132, 95, 20, 0.2);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.7),
+      rgba(235, 221, 247, 0.62)
+    );
+
+  box-shadow:
+    0 9px 22px rgba(76, 48, 108, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+/* Orbit becomes cream-purple, with gold nodes retained */
+:global(html:not(.dark):not([data-theme="dark"])) .mentorOrbit,
+:global(html[data-theme="light"]) .mentorOrbit,
+:global([data-theme="light"]) .mentorOrbit,
+:global(.light) .mentorOrbit {
+  border-color:
+    rgba(128, 96, 154, 0.16);
+
+  box-shadow:
+    0 0 0 46px rgba(226, 211, 242, 0.07),
+    0 0 0 92px rgba(249, 240, 220, 0.05);
+}

@@ -1,14 +1,12 @@
 "use client";
-
 import type { ReactNode } from "react";
-
+import styles from "./highlight-card.module.css";
 interface HighlightCardProps {
   number: string;
   title: string;
   description: string[];
   icon?: ReactNode;
 }
-
 export default function HighlightCard({
   number,
   title,
@@ -16,35 +14,38 @@ export default function HighlightCard({
   icon,
 }: HighlightCardProps) {
   return (
-    <article className="method-highlight-card">
+    <article className={styles.card}>
       <div
-        className="method-highlight-card__border"
+        className={styles.border}
         aria-hidden="true"
       />
 
       <div
-        className="method-highlight-card__shine"
+        className={styles.shine}
         aria-hidden="true"
       />
 
       <div
-        className="method-highlight-card__glow"
+        className={styles.glow}
         aria-hidden="true"
       />
 
-      <div className="method-highlight-card__top">
-        <span className="method-highlight-card__number">
+      <div className={styles.top}>
+        <span className={styles.number}>
           {number}
         </span>
 
-        <div className="method-highlight-card__icon">
+        <div className={styles.icon}>
           {icon}
         </div>
       </div>
 
-      <div className="method-highlight-card__rule" />
+      <div
+        className={styles.rule}
+        aria-hidden="true"
+      />
 
-      <div className="method-highlight-card__content">
+      <div className={styles.content}>
         <h3>{title}</h3>
 
         {description.map((line, index) => (
@@ -55,7 +56,7 @@ export default function HighlightCard({
       </div>
 
       <div
-        className="method-highlight-card__footer"
+        className={styles.footer}
         aria-hidden="true"
       >
         <span />

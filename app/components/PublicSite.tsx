@@ -12,6 +12,7 @@ import CourseStats from "./courses/CourseStats";
 import CoursesHero from "./courses/CoursesHero";
 import FeaturedTrack from "./courses/FeaturedTrack";
 import MentorMethod from "./courses/MentorMethod";
+import RoadmapExperience from "./roadmap/RoadmapExperience";
 
 type Page =
   | "home"
@@ -889,7 +890,7 @@ export function PublicSite({
   const content = {
     home: <Home />,
     courses: <Courses />,
-    roadmap: <Roadmap />,
+    roadmap: <RoadmapExperience />,
     leaderboard: <Leaderboard />,
     about: <About />,
     pricing: <Pricing />,

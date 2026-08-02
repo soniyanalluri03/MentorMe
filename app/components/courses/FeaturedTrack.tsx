@@ -347,9 +347,9 @@ export default function FeaturedTrack() {
         </div>
 
         <div className={styles.actions}>
-          <Link
+          <Link 
             href={activeTrack.primaryHref}
-            className={styles.primaryButton}
+            className="navbar-sign-in"
           >
             {activeTrack.primaryLabel}
             <ArrowRight size={18} />

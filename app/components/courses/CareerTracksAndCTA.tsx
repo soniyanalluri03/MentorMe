@@ -248,7 +248,7 @@ export default function CareerTracksAndCTA() {
         </p>
 
         <Link
-          className={styles.goldButton}
+          className="navbar-sign-in"
           href="/signup"
         >
           Start your journey

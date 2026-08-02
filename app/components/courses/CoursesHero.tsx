@@ -104,7 +104,7 @@ export default function CoursesHero() {
         <div className={styles.actions}>
           <Link
             href="/roadmap"
-            className={styles.primaryButton}
+            className="navbar-sign-in"
           >
             Explore the roadmap
             <ArrowRight size={19} />

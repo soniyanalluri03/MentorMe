@@ -1,13 +1,7 @@
 ﻿html[data-theme=dark] .mh-root{background:radial-gradient(circle at 35% 25%,#173654 0%,#0b223b 48%,#061321 100%)!important}
-html[data-theme=light] .mh-root{
-  background:linear-gradient(
-    135deg,
-    rgba(245,240,252,.96) 0%,
-    rgba(239,232,249,.95) 18%,
-    rgba(250,246,241,.97) 42%,
-    rgba(255,251,244,.96) 68%,
-    rgba(252,245,231,.96) 100%
-  )!important
+html[data-theme=light] .mh-root,
+html.light .mh-root{
+  background:#f8f3f1!important
 }
 html[data-theme=light] .hj-root,
 html.light .hj-root{
@@ -24,27 +18,43 @@ html.light .hj-root{
   --gold-soft:#d2aa43!important;
   --cyan:#2b698c!important;
   color:var(--text)!important;
-  background:linear-gradient(
-    135deg,
-    rgba(245,240,252,.96) 0%,
-    rgba(239,232,249,.95) 18%,
-    rgba(250,246,241,.97) 42%,
-    rgba(255,251,244,.96) 68%,
-    rgba(252,245,231,.96) 100%
-  )!important
+  background:#f8f3f1!important
 }
 html[data-theme=light] .hj-root .hj-tracks,
-html.light .hj-root .hj-tracks{
-  background:
-    radial-gradient(circle at 78% 17%,rgba(180,135,233,.12),transparent 31%),
-    linear-gradient(
-      135deg,
-      rgba(245,240,252,.96) 0%,
-      rgba(239,232,249,.95) 18%,
-      rgba(250,246,241,.97) 42%,
-      rgba(255,251,244,.96) 68%,
-      rgba(252,245,231,.96) 100%
-    )!important
+html[data-theme=light] .hj-root .hj-roadmap,
+html[data-theme=light] .hj-root .hj-evolution,
+html[data-theme=light] .hj-root .hj-dashboard-section,
+html.light .hj-root .hj-tracks,
+html.light .hj-root .hj-roadmap,
+html.light .hj-root .hj-evolution,
+html.light .hj-root .hj-dashboard-section{
+  background:transparent!important
+}
+
+/* Keep consecutive homepage sections on one uninterrupted light canvas. */
+html[data-theme=light] body,
+html.light body,
+html[data-theme=light] main,
+html.light main{
+  background:#f8f3f1!important
+}
+
+html[data-theme=light] .hj-root .hj-evolution,
+html.light .hj-root .hj-evolution{
+  padding-bottom:clamp(18px,1.8vw,28px)!important
+}
+
+html[data-theme=light] .mh-root + .hj-root,
+html.light .mh-root + .hj-root{
+  margin-top:0!important;
+  border-top:0!important
+}
+
+html[data-theme=light] .hj-root .hj-evolution-orb,
+html[data-theme=light] .hj-root .hj-dashboard-glow,
+html.light .hj-root .hj-evolution-orb,
+html.light .hj-root .hj-dashboard-glow{
+  display:none!important
 }
 html[data-theme=light] .hj-root .hj-scroll-cue,
 html.light .hj-root .hj-scroll-cue{
@@ -55,7 +65,7 @@ html[data-theme=light] .hj-root .hj-scroll-cue:hover,
 html.light .hj-root .hj-scroll-cue:hover{
   filter:brightness(1.08) drop-shadow(0 0 10px rgba(212,175,55,.18))!important
 }
-html[data-theme=light] .hj-root .hj-scroll-cue>span,
+html[data-theme=light] .hj-root .hj-scroll-cue>span,  
 html.light .hj-root .hj-scroll-cue>span{
   background:linear-gradient(
     90deg,
@@ -100,12 +110,76 @@ html.light .hj-root .hj-scroll-cue>i>b{
     inset 0 1px 0 rgba(255,255,255,.55),
     0 0 8px rgba(212,175,55,.32)!important
 }
+html[data-theme=light] .hj-root .hj-scroll-cue,
+html.light .hj-root .hj-scroll-cue{
+  color:#654600!important;
+  filter:drop-shadow(0 0 10px rgba(101,70,0,.15))!important
+}
+
+html[data-theme=light] .hj-root .hj-scroll-cue:hover,
+html.light .hj-root .hj-scroll-cue:hover{
+  filter:brightness(1.08) drop-shadow(0 0 10px rgba(101,70,0,.18))!important
+}
+
+/* Horizontal lines */
+html[data-theme=light] .hj-root .hj-scroll-cue>span,
+html.light .hj-root .hj-scroll-cue>span{
+  background:linear-gradient(
+    90deg,
+    rgba(101,70,0,.15),
+    rgba(118,84,7,.95),
+    rgba(138,98,13,.55)
+  )!important;
+  opacity:.78!important;
+  box-shadow:0 0 8px rgba(101,70,0,.16)!important
+}
+
+html[data-theme=light] .hj-root .hj-scroll-cue>span:nth-of-type(2),
+html.light .hj-root .hj-scroll-cue>span:nth-of-type(2){
+  background:linear-gradient(
+    90deg,
+    rgba(138,98,13,.55),
+    rgba(118,84,7,.95),
+    rgba(101,70,0,.15)
+  )!important
+}
+
+/* Mouse outline */
+html[data-theme=light] .hj-root .hj-scroll-cue>i,
+html.light .hj-root .hj-scroll-cue>i{
+  border-color:#654600!important;
+  background:linear-gradient(
+    180deg,
+    rgba(255,252,245,.82),
+    rgba(248,241,228,.72)
+  )!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.45),
+    0 0 14px rgba(101,70,0,.18)!important
+}
+
+/* Animated mouse wheel: colour only */
+html[data-theme=light] .hj-root .hj-scroll-cue>i>b,
+html.light .hj-root .hj-scroll-cue>i>b{
+  background:linear-gradient(
+    180deg,
+    #9b7415,
+    #765407,
+    #654600,
+    #402b00,
+  )!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.3),
+    0 0 8px rgba(101,70,0,.36)!important
+}
+
+/* Scroll text */
 html[data-theme=light] .hj-root .hj-scroll-cue>small,
 html.light .hj-root .hj-scroll-cue>small{
-  color:#8c6a16!important;
+  color:#654600!important;
   letter-spacing:.06em!important;
   text-transform:none!important;
-  text-shadow:0 1px 0 rgba(255,255,255,.45)!important
+  text-shadow:none!important
 }
 html[data-theme=light] .mh-root .mh-bottom-fade,
 html.light .mh-root .mh-bottom-fade{
@@ -283,11 +357,23 @@ html.light .hj-root .hj-dashboard-section{
 }
 html[data-theme=light] .hj-root .hj-evolution,
 html.light .hj-root .hj-evolution{
-  padding-bottom:clamp(48px,4.5vw,64px)!important
+  padding-bottom:clamp(18px,1.8vw,28px)!important
 }
 html[data-theme=dark] .mh-description strong{color:#f4f8ff!important}
 html[data-theme=dark] .mh-description span{color:#bccbdd!important}
-html[data-theme=light] .mh-content h1{color:#122c50!important;-webkit-text-stroke:0!important}
+html[data-theme="light"] .mh-root .mh-content h1,
+html.light .mh-root .mh-content h1{
+  color:#122c50!important;
+  -webkit-text-fill-color:#122c50!important;
+  -webkit-text-stroke:0!important;
+  text-shadow:none!important;
+}
+html[data-theme="light"] .mh-root .mh-light-center-wash,
+html.light .mh-root .mh-light-center-wash{
+  display:none!important;
+  opacity:0!important;
+  background:none!important;
+}
 html[data-theme=dark] .mh-button--secondary{color:#f3f7ff!important;background:rgba(12,33,56,.78)!important;border-color:rgba(217,182,75,.38)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 15px 32px rgba(0,0,0,.3)!important}
 html[data-theme=dark] .mh-metrics article{color:#eef5ff!important;background:linear-gradient(145deg,rgba(18,43,70,.92),rgba(8,25,43,.9))!important;border-color:rgba(221,181,66,.72)!important}
 html[data-theme=dark] .mh-metrics b,

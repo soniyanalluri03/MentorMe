@@ -44,7 +44,7 @@ export default function LiveCommunity(){
     <div className={styles.shell}>
       <motion.header className={styles.heading} initial={reducedMotion?false:{opacity:0,y:28}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.45}} transition={{duration:.65,ease:[.22,1,.36,1]}}>
         <p>LIVE COMMUNITY. REAL PROGRESS.</p>
-        <h2 id="community-title">See learners build, grow, and win—together.</h2>
+ <h2 id="community-title">See learners build, grow, and <span className={styles.waveText}>win—</span><span className={styles.colorfulText}>together.</span></h2>
         <p className={styles.subtitle}>A living stream of projects, milestones, mentor feedback, and momentum from the Mentor Me community.</p>
       </motion.header>
       <div className={styles.streamFrame}>

@@ -223,6 +223,8 @@ function PageStack({
   theme: ThemeMode;
 }) {
   const pageCount = 11;
+  const layerStep = theme === "light" ? 0.015 : 0.012;
+  const layerHeight = theme === "light" ? 0.024 : 0.021;
 
   const pagePrimary =
     theme === "dark"
@@ -253,7 +255,7 @@ function PageStack({
                   index *
                     0.002),
               0.02 +
-                index * 0.012,
+                index * layerStep,
               index * 0.0015,
             ]}
             castShadow
@@ -264,7 +266,7 @@ function PageStack({
                 1.39 -
                   index *
                     0.008,
-                0.021,
+                layerHeight,
                 0.97 -
                   index *
                     0.004,
@@ -291,125 +293,93 @@ function PageStack({
    TURNING PAGE
 ========================================================= */
 
-function TurningPage({
+function TurningPages({
   theme,
   phaseRef,
 }: {
   theme: ThemeMode;
   phaseRef: MutableRefObject<AnimationPhase>;
 }) {
-  const pageRef =
-    useRef<THREE.Group>(null);
+  const pageRefs = useRef<Array<THREE.Group | null>>([]);
+  const sequenceStartRef = useRef<number | null>(null);
 
   useFrame((state) => {
-    if (!pageRef.current) {
-      return;
-    }
-
     const enabled =
       phaseRef.current.bookOpen >
       0.98;
 
     if (!enabled) {
-      pageRef.current.visible =
-        false;
-
-      pageRef.current.rotation.y =
-        0;
-
+      sequenceStartRef.current = null;
+      pageRefs.current.forEach((page) => {
+        if (!page) return;
+        page.visible = false;
+        page.position.y = 0;
+        page.rotation.set(0, 0, 0);
+      });
       return;
     }
 
-    pageRef.current.visible =
-      true;
-
-    const elapsed =
-      state.clock.getElapsedTime();
-
-    const cycleDuration = 9;
-
-    const localTime =
-      (elapsed -
-        3 +
-        cycleDuration * 20) %
-      cycleDuration;
-
-    const progress =
-      localTime /
-      cycleDuration;
-
-    let rotationY = 0;
-    let lift = 0;
-
-    if (
-      progress >= 0.1 &&
-      progress <= 0.48
-    ) {
-      const pageProgress =
-        (progress - 0.1) /
-        0.38;
-
-      const eased =
-        easeInOutCubic(
-          pageProgress,
-        );
-
-      rotationY =
-        -eased * Math.PI;
-
-      lift =
-        Math.sin(
-          eased * Math.PI,
-        ) * 0.12;
-    } else if (
-      progress > 0.48
-    ) {
-      rotationY = -Math.PI;
+    const now = state.clock.getElapsedTime();
+    if (sequenceStartRef.current === null) {
+      sequenceStartRef.current = now + 0.45;
     }
 
-    pageRef.current.rotation.y =
-      rotationY;
+    const pageDuration = 1.55;
+    const pageGap = 0.32;
+    const sequenceDuration = pageRefs.current.length * (pageDuration + pageGap) + 1.35;
+    const sequenceTime =
+      ((now - sequenceStartRef.current) % sequenceDuration + sequenceDuration) %
+      sequenceDuration;
 
-    pageRef.current.position.y =
-      lift;
+    pageRefs.current.forEach((page, index) => {
+      if (!page) return;
+      const start = index * (pageDuration + pageGap);
+      const rawProgress = THREE.MathUtils.clamp(
+        (sequenceTime - start) / pageDuration,
+        0,
+        1,
+      );
+      const active = sequenceTime >= start && sequenceTime <= start + pageDuration;
 
-    pageRef.current.rotation.z =
-      Math.sin(
-        progress * Math.PI,
-      ) * 0.025;
+      page.visible = active;
+      if (!active) {
+        page.position.y = 0;
+        page.rotation.set(0, 0, 0);
+        return;
+      }
+
+      const eased = easeInOutCubic(rawProgress);
+      page.rotation.y = -eased * Math.PI;
+      page.rotation.z = Math.sin(eased * Math.PI) * (0.018 + index * 0.003);
+      page.position.y = Math.sin(eased * Math.PI) * (0.1 + index * 0.008);
+    });
   });
 
   return (
-    <group
-      ref={pageRef}
-      visible={false}
-    >
-      <mesh
-        position={[0.67, 0, 0]}
-        castShadow
-      >
-        <planeGeometry
-          args={[
-            1.34,
-            0.94,
-            26,
-            16,
-          ]}
-        />
-
-        <meshStandardMaterial
-          color={
-            theme === "dark"
-              ? "#fff8e9"
-              : "#fffefa"
-          }
-          side={
-            THREE.DoubleSide
-          }
-          roughness={0.94}
-          metalness={0}
-        />
-      </mesh>
+    <group>
+      {[0, 1, 2, 3].map((index) => (
+        <group
+          key={index}
+          ref={(page) => {
+            pageRefs.current[index] = page;
+          }}
+          visible={false}
+        >
+          <mesh position={[0.67, index * 0.004, -index * 0.004]} castShadow>
+            <planeGeometry args={[1.34 - index * 0.008, 0.94 - index * 0.006, 26, 16]} />
+            <meshStandardMaterial
+              color={
+                theme === "dark"
+                  ? index % 2 === 0 ? "#fff8e9" : "#eee2c9"
+                  : index % 2 === 0 ? "#fffefa" : "#f5ecdc"
+              }
+              side={THREE.DoubleSide}
+              roughness={0.94}
+              metalness={0}
+            />
+          </mesh>
+        </group>
+      ))}
     </group>
   );
 }
@@ -470,6 +440,7 @@ function MentorBook({
 
     const progress =
       phaseRef.current.bookOpen;
+    const idleMotion = THREE.MathUtils.smoothstep(progress, 0.98, 1);
 
     /*
      * Closed book:
@@ -496,14 +467,14 @@ function MentorBook({
 
     rootRef.current.position.y =
       THREE.MathUtils.lerp(
-        0.15,
-        -1.16,
+         0.15,
+          -0.82,
         progress,
       ) +
       Math.sin(
         elapsed * 0.5,
       ) *
-        0.015;
+        0.015 * idleMotion;
 
     rootRef.current.position.z =
       THREE.MathUtils.lerp(
@@ -515,7 +486,7 @@ function MentorBook({
     rootRef.current.rotation.x =
       THREE.MathUtils.lerp(
         -0.04,
-        -0.42,
+        -0.62,
         progress,
       );
 
@@ -529,7 +500,7 @@ function MentorBook({
     rootRef.current.rotation.z =
       Math.sin(
         elapsed * 0.28,
-      ) * 0.005;
+      ) * 0.005 * idleMotion;
   });
 
   return (
@@ -545,7 +516,7 @@ function MentorBook({
         -0.34,
         0,
       ]}
-      scale={1.15}
+     scale={1.08}
     >
       {/* Gold central spine */}
 
@@ -730,7 +701,7 @@ function MentorBook({
           0,
         ]}
       >
-        <TurningPage
+        <TurningPages
           theme={theme}
           phaseRef={phaseRef}
         />
@@ -894,7 +865,7 @@ function FloatingCodeItem({
       >
         <Text
           ref={textRef}
-          fontSize={0.24}
+          fontSize={theme === "light" ? 0.14 : 0.24}
           color={color}
           anchorX="center"
           anchorY="middle"
@@ -1675,12 +1646,16 @@ function LearningVisualScene({
   theme,
   selectedPanel,
   onSelectPanel,
+  isReady,
+  onReady,
 }: {
   theme: ThemeMode;
   selectedPanel: SelectedPanel;
   onSelectPanel: (
     id: PanelId,
   ) => void;
+  isReady: boolean;
+  onReady: () => void;
 }) {
   const rootRef =
     useRef<THREE.Group>(null);
@@ -1693,6 +1668,8 @@ function LearningVisualScene({
       bookOpen: 0,
       contentReveal: 0,
     });
+  const timelineStartRef = useRef<number | null>(null);
+  const readyNotifiedRef = useRef(false);
 
   const panels =
     useMemo<
@@ -1759,8 +1736,8 @@ function LearningVisualScene({
             "Status: In progress",
           progress: "72%",
           position: [
-            1.6,
-            0.9,
+            1.82,
+            0.76,
             -0.28,
           ],
           rotation: [
@@ -1780,8 +1757,22 @@ function LearningVisualScene({
       return;
     }
 
-    const elapsed =
-      state.clock.getElapsedTime();
+    const canvasElapsed = state.clock.getElapsedTime();
+
+    if (timelineStartRef.current === null) {
+      timelineStartRef.current = canvasElapsed;
+      phaseRef.current.bookOpen = 0;
+      phaseRef.current.contentReveal = 0;
+      rootRef.current.rotation.set(0, 0, 0);
+      rootRef.current.position.set(0, 0, 0);
+
+      if (!readyNotifiedRef.current) {
+        readyNotifiedRef.current = true;
+        onReady();
+      }
+    }
+
+    const elapsed = canvasElapsed - timelineStartRef.current;
 
     /*
      * Faster and cleaner sequence:
@@ -1799,17 +1790,19 @@ function LearningVisualScene({
     phaseRef.current.bookOpen =
       timedProgress(
         elapsed,
-        1.4,
-        1.8,
+        0.55,
+        2.2,
       );
 
     phaseRef.current
       .contentReveal =
       timedProgress(
         elapsed,
-        2.9,
+        2.35,
         1.3,
       );
+
+    const interactionReveal = phaseRef.current.contentReveal;
 
     rootRef.current.rotation.y =
       THREE.MathUtils.lerp(
@@ -1818,7 +1811,7 @@ function LearningVisualScene({
         selectedPanel
           ? 0
           : pointerRef.current.x *
-              0.07,
+              0.07 * interactionReveal,
         0.04,
       );
 
@@ -1829,14 +1822,14 @@ function LearningVisualScene({
         selectedPanel
           ? 0
           : -pointerRef.current.y *
-              0.023,
+              0.023 * interactionReveal,
         0.04,
       );
 
     rootRef.current.position.y =
       Math.sin(
         elapsed * 0.36,
-      ) * 0.014;
+      ) * 0.014 * interactionReveal;
   });
 
   const anotherSelected =
@@ -1858,7 +1851,7 @@ function LearningVisualScene({
         groundColor={
           theme === "dark"
             ? "#071e39"
-            : "#9177b5"
+            : "#f3eadf"
         }
       />
 
@@ -1879,7 +1872,7 @@ function LearningVisualScene({
         color={
           theme === "dark"
             ? "#74d8ff"
-            : "#c4a8ef"
+            : "#fff4d8"
         }
       />
 
@@ -1893,11 +1886,11 @@ function LearningVisualScene({
         color={
           theme === "dark"
             ? "#2875ca"
-            : "#7752b6"
+            : "#ffffff"
         }
       />
 
-      <group ref={rootRef}>
+      <group ref={rootRef} visible={isReady}>
         <MentorBook
           theme={theme}
           phaseRef={phaseRef}
@@ -2073,6 +2066,13 @@ function FormulaBackground({
         <span
           key={item.className}
           className={`mh-formula ${item.className}`}
+          style={{
+            fontSize:
+              item.text.length > 12
+                ? "clamp(0.72rem, 1vw, 1.05rem)"
+                : "clamp(0.52rem, 0.72vw, 0.82rem)",
+            ...(theme === "light" ? { opacity: 0.56 } : {}),
+          }}
         >
           {item.text}
         </span>
@@ -2172,6 +2172,9 @@ function AnimatedHeroWord({ theme }: { theme: ThemeMode }) {
 export function LearningHero() {
   const theme =
     useThemeMode();
+  const [isMounted, setIsMounted] = useState(false);
+  const [readyTheme, setReadyTheme] = useState<ThemeMode | null>(null);
+  const isReady = readyTheme === theme;
 
   const [
     selectedPanel,
@@ -2223,6 +2226,8 @@ export function LearningHero() {
   }
 
   useEffect(() => {
+    setIsMounted(true);
+
     return () => {
       clearAutoClose();
     };
@@ -2232,6 +2237,7 @@ export function LearningHero() {
     <section
       className="mh-root"
     >
+      {theme === "light" && <div className="mh-light-center-wash" aria-hidden="true" />}
       <FormulaBackground theme={theme} />
       <div className="mh-grid" />
       <div className="mh-glow mh-glow--left" />
@@ -2306,7 +2312,7 @@ export function LearningHero() {
             </article>
 
             <article>
-              <strong>9</strong>
+              <strong>09</strong>
 
               <div>
                 <b>
@@ -2330,7 +2336,7 @@ export function LearningHero() {
           </div>
 
           <div className="mh-canvas">
-            <Canvas
+            {isMounted && <Canvas
               shadows
               dpr={[1, 1.5]}
               onPointerMissed={() => {
@@ -2339,7 +2345,7 @@ export function LearningHero() {
               camera={{
                 position: [
                   0,
-                  0.48,
+                  theme === "light" ? 0.9 : 0.48,
                   7.6,
                 ],
                 fov: 37,
@@ -2365,6 +2371,7 @@ export function LearningHero() {
                 fallback={null}
               >
                 <LearningVisualScene
+                  key={theme}
                   theme={theme}
                   selectedPanel={
                     selectedPanel
@@ -2372,9 +2379,13 @@ export function LearningHero() {
                   onSelectPanel={
                     handlePanelSelect
                   }
+                  isReady={isReady}
+                  onReady={() => {
+                    setReadyTheme(theme);
+                  }}
                 />
               </Suspense>
-            </Canvas>
+            </Canvas>}
           </div>
 
           <div className="mh-hint">
@@ -2431,10 +2442,31 @@ export function LearningHero() {
           position: relative;
           isolation: isolate;
           width: 100%;
-          min-height: calc(100vh - 108px);
-          height: 790px;
+
+          min-height: 690px;
+          height: clamp(
+            690px,
+            calc(100svh - 128px),
+            750px
+          );
+
           overflow: hidden;
           transition: background 0.35s ease;
+        }
+
+        .mh-light-center-wash {
+          position: absolute;
+          inset: 0 0 0 auto;
+          z-index: -2;
+          width: 62%;
+          pointer-events: none;
+          background: radial-gradient(
+            circle at 50% 58%,
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(250, 247, 241, 0.68) 35%,
+            rgba(250, 247, 241, 0.28) 56%,
+            transparent 73%
+          );
         }
 
 
@@ -2449,6 +2481,7 @@ export function LearningHero() {
         }
 
         .mh-formula-bg--light {
+          z-index: -1;
           opacity: 0.92;
           filter: saturate(0.96) contrast(1.12);
         }
@@ -3154,18 +3187,18 @@ export function LearningHero() {
             );
           align-items: center;
           gap: clamp(
-            28px,
-            3.8vw,
-            70px
+            20px,
+            2.8vw,
+            48px
           );
           padding:
-            38px
+            22px
             clamp(
               38px,
               5vw,
               92px
             )
-            52px;
+            24px;
         }
 
         .mh-grid {
@@ -3264,24 +3297,7 @@ export function LearningHero() {
           height: 720px;
           right: -80px;
           top: -20px;
-          background: radial-gradient(
-            circle,
-            rgba(
-                255,
-                255,
-                255,
-                0.62
-              )
-              0%,
-            rgba(
-                178,
-                148,
-                222,
-                0.22
-              )
-              40%,
-            transparent 72%
-          );
+          background: transparent;
         }
 
         :global(
@@ -3336,7 +3352,7 @@ export function LearningHero() {
           color: #e3e8ef;
           font-family: var(--font-display), sans-serif;
           font-size: clamp(3.15rem, 4.25vw, 5.15rem);
-          font-weight: 900;
+          font-weight: 760;
           line-height: 0.98;
           letter-spacing: -0.055em;
           overflow: visible;
@@ -3437,7 +3453,7 @@ export function LearningHero() {
 
         .mh-description {
           max-width: 640px;
-          margin: 26px 0 0;
+          margin: 18px 0 0;
           display: flex;
           flex-direction: column;
           gap: 7px;
@@ -3445,24 +3461,48 @@ export function LearningHero() {
           line-height: 1.62;
           letter-spacing: 0.003em;
         }
+          .mh-description strong {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 12px 16px;
 
-        .mh-description strong {
-          color: #1a3153;
-          font-size: 1.05rem;
-          font-weight: 850;
-          letter-spacing: -0.01em;
-        }
+            color: #52627a;
+            font-size: 1.05rem;
+            font-weight: 500;
+            line-height: 1.62;
+            letter-spacing: 0.003em;
+            text-align: left !important;
+
+            border-radius: 0;
+            background: linear-gradient(
+              90deg,
+              rgba(232, 235, 244, 0.12) 0%,
+              rgba(218, 227, 241, 0.55) 50%,
+              rgba(232, 235, 244, 0.12) 100%
+            );
+
+            text-shadow: none;
+          }
 
         .mh-description span {
           color: #52627a;
           font-size: 0.96rem;
           font-weight: 620;
         }
-
         :global([data-theme="dark"]) .mh-description strong {
-          color: #f1f6ff;
-        }
+          color: #b9c7dc;
 
+          background: linear-gradient(
+            90deg,
+            rgba(15, 42, 70, 0.18) 0%,
+            rgba(43, 72, 119, 0.66) 50%,
+            rgba(15, 42, 70, 0.18) 100%
+          );
+
+          text-shadow: none;
+        }
         :global([data-theme="dark"]) .mh-description span {
           color: #b8c8d9;
         }
@@ -3471,7 +3511,7 @@ export function LearningHero() {
           display: flex;
           align-items: center;
           gap: 17px;
-          margin-top: 28px;
+          margin-top: 20px;
         }
 
         .mh-button {
@@ -3679,12 +3719,19 @@ export function LearningHero() {
             minmax(0, 1fr)
           );
           gap: 11px;
-          margin-top: 34px;
+          margin-top: 20px;
         }
+          @property --metric-gold-angle {
+            syntax: "<angle>";
+            inherits: false;
+            initial-value: 0deg;
+}
 
         .mh-metrics article {
+        --metric-gold-angle: 0deg;
           position: relative;
-          min-height: 96px;
+          isolation: isolate;
+          min-height: 84px;
           overflow: hidden;
           display: grid;
           grid-template-columns: auto 1fr;
@@ -3692,7 +3739,7 @@ export function LearningHero() {
           gap: 12px;
           padding: 15px;
           overflow: hidden;
-          border: 1px solid rgba(190, 148, 38, 0.64);
+          border: 1px solid transparent;
           border-radius: 16px;
           background:
             linear-gradient(
@@ -3728,13 +3775,50 @@ export function LearningHero() {
         }
 
         .mh-metrics article::after {
-          content: "";
-          position: absolute;
-          inset: 0;
-          border-radius: inherit;
-          box-shadow: inset 0 0 0 1px rgba(255, 239, 178, 0.18);
-          pointer-events: none;
-        }
+        content: "";
+
+        position: absolute;
+        z-index: 5;
+        inset: 0;
+
+        padding: 2px;
+        border-radius: inherit;
+
+        pointer-events: none;
+
+        background: conic-gradient(
+          from var(--metric-gold-angle),
+          #b8860b 0deg,
+          #d4af37 58deg,
+          #f4e27a 92deg,
+          #ffd95a 112deg,
+          #d4af37 152deg,
+          #b8860b 220deg,
+          #d4af37 302deg,
+          #f4e27a 338deg,
+          #b8860b 360deg
+        );
+
+        -webkit-mask:
+          linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
+
+        -webkit-mask-composite: xor;
+
+        mask:
+          linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
+
+        mask-composite: exclude;
+
+        opacity: 0.9;
+
+        filter: drop-shadow(
+          0 0 7px rgba(212, 175, 55, 0.3)
+        );
+
+        animation: mhMetricGoldLoop 5.5s linear infinite;
+      }
 
         .mh-metrics article:hover {
           transform: perspective(760px) translateY(-7px) rotateX(0) scale(1.025);
@@ -3825,7 +3909,7 @@ export function LearningHero() {
 
         .mh-visual {
           position: relative;
-          height: 670px;
+          height: 610px;
           min-width: 0;
           overflow: visible;
         }
@@ -3840,16 +3924,9 @@ export function LearningHero() {
           transform: translate(-50%, -50%);
           pointer-events: none;
           border-radius: 44%;
-          background: radial-gradient(
-            ellipse at center,
-            rgba(18, 48, 79, 0.32) 0%,
-            rgba(31, 65, 99, 0.2) 28%,
-            rgba(57, 70, 105, 0.1) 50%,
-            rgba(92, 76, 125, 0.05) 63%,
-            transparent 76%
-          );
-          filter: blur(28px);
-          animation: lightVisualGlow 6s ease-in-out infinite;
+          background: transparent;
+          filter: none;
+          animation: none;
         }
 
         .mh-halo::before,
@@ -3891,9 +3968,9 @@ export function LearningHero() {
         .mh-canvas {
           position: absolute;
           inset:
-            -40px
-            -70px
-            -20px;
+             -20px
+              -55px
+              -5px;
           z-index: 3;
           mask-image: linear-gradient(
             to bottom,
@@ -4109,6 +4186,14 @@ export function LearningHero() {
         @media (
           max-width: 700px
         ) {
+          .mh-light-center-wash {
+            width: 100%;
+          }
+
+          .mh-formula-bg--light .mh-formula:nth-of-type(3n) {
+            display: none;
+          }
+
           .mh-root {
             min-height: 1140px;
           }
@@ -4185,48 +4270,6 @@ export function LearningHero() {
           }
         }
 
-        /* Light-mode animated word: keep it dark navy/black with a restrained gold finish. */
-//         :global([data-theme="light"]) .mh-root .mh-changing {
-//   background: linear-gradient(
-//     110deg,
-//     #3d73c4 0%,
-//     #6d4ed6 25%,
-//     #7c5cff 45%,
-//     #b88a2d 78%,
-//     #e0bf57 100%
-//   );
-
-//   background-size: 220% 100%;
-//   background-position: 0% 50%;
-
-//   color: transparent !important;
-//   -webkit-text-fill-color: transparent !important;
-//   -webkit-background-clip: text;
-//   background-clip: text;
-//   -webkit-text-stroke: 0;
-
-//   text-shadow: none;
-
-//   filter: drop-shadow(
-//     0 10px 20px rgba(109, 78, 214, 0.18)
-//   );
-
-//   animation: lightHeadingShine 5s ease-in-out infinite;
-// }
-
-//         :global([data-theme="light"]) .mh-root .mh-changing--visible {
-//           filter:
-//             blur(0)
-//             drop-shadow(0 7px 14px rgba(7, 21, 34, 0.18));
-//         }
-
-//         /* Theme-state overrides: these use a local class so styled-jsx cannot miss them. */
-//         :global([data-theme="dark"]) .mh-root .mh-content h1 {
-//           color: #f7f9ff;
-//           -webkit-text-stroke: 0;
-//           text-shadow: 0 16px 38px rgba(0, 0, 0, 0.48);
-//         }
-
         :global([data-theme="dark"]) .mh-root .mh-changing {
           background: linear-gradient(110deg, #62ccff 0%, #92e4ff 48%, #d7f1fb 70%, #f2cf63 100%);
           background-clip: text;
@@ -4236,7 +4279,14 @@ export function LearningHero() {
         }
 
         :global([data-theme="dark"]) .mh-root .mh-description strong {
-          color: #f4f8ff;
+          color: #b8c8d9;
+
+          background: linear-gradient(
+            90deg,
+            rgba(10, 31, 52, 0.18) 0%,
+            rgba(42, 70, 113, 0.64) 50%,
+            rgba(10, 31, 52, 0.18) 100%
+          );
         }
 
         :global([data-theme="dark"]) .mh-root .mh-description span {
@@ -4345,6 +4395,83 @@ export function LearningHero() {
             transition: none;
           }
         }
+
+
+        /* Explore roadmap: moving dark-gold edge light only */
+      @property --mh-roadmap-loop-angle {
+        syntax: "<angle>";
+        inherits: false;
+        initial-value: 0deg;
+      }
+
+      .mh-button--secondary {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+      }
+
+      /*
+        Only a small gold light travels around the edge.
+        This does not create a permanent gold border.
+      */
+      .mh-button--secondary::after {
+        content: "";
+
+        position: absolute;
+        z-index: 3;
+        inset: 0;
+
+        padding: 2px;
+        border-radius: inherit;
+
+        pointer-events: none;
+
+        background: conic-gradient(
+          from var(--mh-roadmap-loop-angle),
+
+          transparent 0deg,
+          transparent 280deg,
+
+          rgba(96, 66, 0, 0) 288deg,
+          #604200 304deg,
+          #765407 318deg,
+          #b8860b 330deg,
+          #d4af37 338deg,
+          #8a620d 348deg,
+
+          transparent 360deg
+        );
+
+        -webkit-mask:
+          linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
+
+        -webkit-mask-composite: xor;
+
+        mask:
+          linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
+
+        mask-composite: exclude;
+
+        filter: drop-shadow(
+          0 0 5px rgba(111, 79, 8, 0.42)
+        );
+
+        animation:
+          mhRoadmapGoldLoop
+          4s linear infinite;
+      }
+
+      @keyframes mhRoadmapGoldLoop {
+        from {
+          --mh-roadmap-loop-angle: 0deg;
+        }
+
+        to {
+          --mh-roadmap-loop-angle: 360deg;
+        }
+      }
       `}</style>
     </section>
   );

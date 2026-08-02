@@ -363,7 +363,12 @@ export function HomeJourneySections() {
             <h2>
               Every career begins
               <br />
-              with one clear <em>step.</em>
+
+              <span className="hj-heading-wave">
+                with one clear
+              </span>{" "}
+
+              <em>step.</em>
             </h2>
             <span>
               Complete the first five levels, create your first proof, and
@@ -500,7 +505,12 @@ export function HomeJourneySections() {
             <p>WHAT HAPPENS AFTER LEVEL FIVE?</p>
             <h2 className="hj-evolution-title">
               <span>Your journey keeps moving.</span>
-              <span>Every milestone unlocks <em>more.</em></span>
+              <span>
+              <span className="hj-heading-wave">
+                Every milestone unlocks
+              </span>{" "}
+              <em>more.</em>
+            </span>
             </h2>
             <span>
               Follow the road from guided learning to XP, projects, mentor
@@ -1191,17 +1201,19 @@ export function HomeJourneySections() {
         }
 
         .hj-scroll-cue {
+          position: relative;
+          z-index: 5;
           width: min(100%, 1280px);
           display: grid;
           grid-template-columns: 1fr auto 1fr;
           align-items: center;
           column-gap: 28px;
           margin: 0 auto;
-          padding-top: 20px;
+          padding-top: 8px;
           color: var(--muted);
           text-align: center;
+          overflow: visible;
         }
-
         .hj-scroll-cue > span {
           height: 1px;
           background: linear-gradient(
@@ -1537,17 +1549,38 @@ export function HomeJourneySections() {
           will-change: transform, filter;
         }
 
-        .hj-first-five-heading > span {
-          display: block;
-          max-width: 880px;
-          margin: 26px auto 0;
-          color: var(--muted);
-          font: 760 clamp(1.05rem, 1.22vw, 1.2rem) / 1.62 var(--font-sans), sans-serif;
-        }
+          .hj-first-five-heading > span {
+            position: relative;
+            display: block;
+            max-width: 960px;
+            margin: 28px auto 0;
+            padding: 16px 28px;
 
-        :global([data-theme="light"]) .hj-root .hj-first-five-heading > span {
-          color: #263a59;
-        }
+            color: var(--muted);
+            font: 760 clamp(1.05rem, 1.22vw, 1.2rem) / 1.62
+              var(--font-sans), sans-serif;
+
+            border-radius: 999px;
+
+            background: radial-gradient(
+              circle at 50% 50%,
+              rgba(112, 215, 255, 0.12),
+              transparent 72%
+            );
+
+            text-shadow: 0 0 18px rgba(112, 215, 255, 0.15);
+          }
+          :global([data-theme="light"]) .hj-root .hj-first-five-heading > span {
+            color: #263a59;
+
+            background: radial-gradient(
+              circle at 50% 50%,
+              rgba(118, 80, 216, 0.11),
+              transparent 72%
+            );
+
+            text-shadow: 0 0 14px rgba(118, 80, 216, 0.1);
+          }
 
         .hj-level-journey {
           position: relative;
@@ -5412,6 +5445,7 @@ export function HomeJourneySections() {
             transform: none;
           }
         }
+          
       `}</style>
     </div>
   );

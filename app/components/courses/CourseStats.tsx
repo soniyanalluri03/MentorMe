@@ -1,3 +1,5 @@
+import styles from "./CourseStats.module.css";
+
 const stats = [
   {
     value: "90",
@@ -20,14 +22,37 @@ const stats = [
 export default function CourseStats() {
   return (
     <section
-      className="stats-wrap"
+      className={styles.section}
       aria-label="Career track statistics"
     >
-      <div className="stats-panel">
-        {stats.map((stat) => (
-          <article key={stat.label}>
+      <div className={styles.panel}>
+        <div
+          className={styles.ambient}
+          aria-hidden="true"
+        />
+
+        {stats.map((stat, index) => (
+          <article
+            className={styles.stat}
+            key={stat.label}
+          >
+            <span
+              className={styles.index}
+              aria-hidden="true"
+            >
+              {String(index + 1).padStart(2, "0")}
+            </span>
+
             <strong>{stat.value}</strong>
-            <span>{stat.label}</span>
+
+            <span className={styles.label}>
+              {stat.label}
+            </span>
+
+            <div
+              className={styles.line}
+              aria-hidden="true"
+            />
           </article>
         ))}
       </div>

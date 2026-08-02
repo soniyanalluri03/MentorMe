@@ -362,105 +362,6 @@
   opacity: 0.58;
 }
 
-/* Folded note corner */
-
-.fold {
-  width: 68px;
-  height: 68px;
-
-  position: absolute;
-  right: -1px;
-  bottom: -1px;
-  z-index: 7;
-
-  clip-path:
-    polygon(
-      100% 0,
-      100% 100%,
-      0 100%
-    );
-
-  border-bottom-right-radius: 27px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(84, 56, 6, 0.2) 0%,
-      #9c6a0d 34%,
-      #d9b33b 67%,
-      #fff0a1 100%
-    );
-
-  box-shadow:
-    -10px -10px 24px rgba(0, 0, 0, 0.25),
-    inset 8px 8px 18px rgba(255, 255, 255, 0.24);
-
-  pointer-events: none;
-
-  transition:
-    width 320ms ease,
-    height 320ms ease,
-    filter 320ms ease;
-}
-
-.fold::before {
-  content: "";
-
-  position: absolute;
-  inset: 13px 9px 9px 13px;
-
-  clip-path:
-    polygon(
-      100% 0,
-      100% 100%,
-      0 100%
-    );
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0.03) 56%,
-      rgba(66, 42, 3, 0.22)
-    );
-}
-
-.fold::after {
-  content: "";
-
-  width: 92px;
-  height: 1px;
-
-  position: absolute;
-  right: -7px;
-  top: 7px;
-
-  transform: rotate(-45deg);
-  transform-origin: right center;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 247, 199, 0.9),
-      rgba(126, 83, 7, 0.55)
-    );
-
-  box-shadow:
-    0 1px 4px rgba(0, 0, 0, 0.28);
-}
-
-.card:hover .fold {
-  width: 78px;
-  height: 78px;
-
-  filter:
-    brightness(1.08)
-    drop-shadow(
-      -5px -5px 12px rgba(212, 175, 55, 0.2)
-    );
-}
-
 /* Light mode:
    Keep the cards navy + gold for premium contrast */
 
@@ -797,7 +698,126 @@
   background: #d4af37;
 }
 
-/* Cream, purple and gold folded corner */
+/* =========================================================
+   DOCUMENT-STYLE FOLDED CORNER
+   The complete bottom-right area is covered and folded.
+   ========================================================= */
+
+.fold {
+  width: 66px;
+  height: 66px;
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 12;
+
+  overflow: hidden;
+  pointer-events: none;
+
+  border-bottom-right-radius: 27px;
+
+  /*
+   * This full square covers the original card corner,
+   * so none of the unfurled card surface remains visible.
+   */
+  background:
+    linear-gradient(
+      135deg,
+      #6f4a08 0%,
+      #a87310 32%,
+      #d8b340 64%,
+      #fff0a4 100%
+    );
+
+  box-shadow:
+    -9px -9px 21px rgba(0, 0, 0, 0.24),
+    inset 6px 6px 14px rgba(255, 255, 255, 0.25);
+
+  transform-origin: bottom right;
+
+  transition:
+    width 320ms ease,
+    height 320ms ease,
+    transform 320ms ease,
+    filter 320ms ease;
+}
+
+/* The visible page flap */
+.fold::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  clip-path:
+    polygon(
+      100% 0,
+      100% 100%,
+      0 100%
+    );
+
+  background:
+    linear-gradient(
+      315deg,
+      #fff8cd 0%,
+      #efd373 46%,
+      #bd8112 76%,
+      rgba(63, 39, 3, 0.42) 100%
+    );
+
+  box-shadow:
+    inset 10px 10px 17px rgba(255, 255, 255, 0.4),
+    -7px -7px 15px rgba(0, 0, 0, 0.16);
+}
+
+/* Diagonal paper crease */
+.fold::after {
+  content: "";
+
+  width: 94px;
+  height: 1.5px;
+
+  position: absolute;
+  right: -11px;
+  top: 8px;
+
+  transform:
+    rotate(-45deg);
+
+  transform-origin:
+    right center;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 251, 220, 0.96),
+      rgba(120, 77, 4, 0.54)
+    );
+
+  box-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover .fold {
+  width: 76px;
+  height: 76px;
+
+  transform:
+    translate(-1px, -1px);
+
+  filter:
+    brightness(1.06)
+    drop-shadow(
+      -5px -5px 11px rgba(212, 175, 55, 0.18)
+    );
+}
+
+/* =========================================================
+   LIGHT MODE FOLD
+   Cream paper with a subtle lavender underside.
+   ========================================================= */
 
 :global(html:not(.dark):not([data-theme="dark"])) .fold,
 :global(html[data-theme="light"]) .fold,
@@ -806,15 +826,15 @@
   background:
     linear-gradient(
       135deg,
-      rgba(151, 124, 176, 0.14) 0%,
-      #c7b4e3 24%,
-      #ead99c 58%,
-      #fff3bb 100%
+      #f4e8cf 0%,
+      #ead9b7 42%,
+      #ddc9ef 74%,
+      rgba(104, 75, 131, 0.28) 100%
     );
 
   box-shadow:
-    -10px -10px 24px rgba(78, 57, 111, 0.12),
-    inset 8px 8px 18px rgba(255, 255, 255, 0.52);
+    -9px -9px 21px rgba(78, 57, 111, 0.13),
+    inset 6px 6px 14px rgba(255, 255, 255, 0.68);
 }
 
 :global(html:not(.dark):not([data-theme="dark"])) .fold::before,
@@ -823,11 +843,16 @@
 :global(.light) .fold::before {
   background:
     linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.64),
-      rgba(246, 235, 255, 0.22) 52%,
-      rgba(142, 102, 17, 0.12)
+      315deg,
+      #ffffff 0%,
+      #fffaf0 42%,
+      #f0dfb3 68%,
+      #dcc8ee 100%
     );
+
+  box-shadow:
+    inset 10px 10px 17px rgba(255, 255, 255, 0.76),
+    -7px -7px 15px rgba(78, 57, 111, 0.08);
 }
 
 :global(html:not(.dark):not([data-theme="dark"])) .fold::after,
@@ -838,10 +863,31 @@
     linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.96),
-      rgba(177, 132, 28, 0.42)
+      rgba(255, 255, 255, 1),
+      rgba(202, 177, 112, 0.7),
+      rgba(157, 123, 184, 0.35)
     );
 
   box-shadow:
-    0 1px 4px rgba(78, 57, 111, 0.14);
+    0 1px 4px rgba(78, 57, 111, 0.12);
+}
+
+/* =========================================================
+   RESPONSIVE FOLD
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .fold {
+    width: 54px;
+    height: 54px;
+  }
+
+  .fold::after {
+    width: 78px;
+  }
+
+  .card:hover .fold {
+    width: 61px;
+    height: 61px;
+  }
 }

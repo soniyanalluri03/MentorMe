@@ -1,18 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import {useEffect,useRef,useState,} from "react";
 import { MentorMeLogo } from "./MentorMeLogo";
 import { ThemeToggle } from "./ThemeToggle";
-import { LearningHero } from "./LearningHero";
-import { HomeJourneySections } from "./HomeJourneySections";
+import { LearningHero } from "./home/LearningHero";
+import { HomeJourneySections } from "./home/HomeJourneySections";
 import CareerTracksAndCTA from "./courses/CareerTracksAndCTA";
 import CourseComparison from "./courses/CourseComparison";
 import CourseStats from "./courses/CourseStats";
 import CoursesHero from "./courses/CoursesHero";
 import FeaturedTrack from "./courses/FeaturedTrack";
 import MentorMethod from "./courses/MentorMethod";
-
+import RoadmapExperience from "./roadmap/RoadmapExperience";
+import styles from "../../app/home.module.css";
 type Page =
   | "home"
   | "courses"
@@ -72,98 +73,185 @@ function Header({
   const [notice, setNotice] =
     useState(false);
 
+  const [navbarVisible, setNavbarVisible] =
+    useState(true);
+
+  const previousScrollY = useRef(0);
+  const ticking = useRef(false);
+
+  useEffect(() => {
+    previousScrollY.current =
+      window.scrollY;
+
+    const handleScroll = () => {
+      if (ticking.current) return;
+
+      ticking.current = true;
+
+      window.requestAnimationFrame(() => {
+        const currentScrollY =
+          window.scrollY;
+
+        const scrollDifference =
+          currentScrollY -
+          previousScrollY.current;
+
+        /*
+         * Always show the navbar
+         * near the top of the page.
+         */
+        if (currentScrollY <= 20) {
+          setNavbarVisible(true);
+        }
+
+        /*
+         * Scrolling down:
+         * hide the navbar.
+         */
+        else if (scrollDifference > 6) {
+          setNavbarVisible(false);
+          setNotice(false);
+        }
+
+        /*
+         * Scrolling upward:
+         * show the navbar again.
+         */
+        else if (scrollDifference < -6) {
+          setNavbarVisible(true);
+        }
+
+        previousScrollY.current =
+          currentScrollY;
+
+        ticking.current = false;
+      });
+    };
+
+    window.addEventListener(
+      "scroll",
+      handleScroll,
+      {
+        passive: true,
+      },
+    );
+
+    return () => {
+      window.removeEventListener(
+        "scroll",
+        handleScroll,
+      );
+    };
+  }, []);
+
   return (
-    <header className="public-header">
-      <div className="public-header__inner">
-        <Link
-          className="brand-link"
-          href="/"
-          aria-label="MentorME home"
-        >
-          <MentorMeLogo />
-        </Link>
+    <div className="public-header-slot">
+      <header
+        className={`public-header ${
+          navbarVisible
+            ? "navbar-visible"
+            : "navbar-hidden"
+        }`}
+      >
+        <div className="public-header__inner">
+          <Link
+            className="brand-link"
+            href="/"
+            aria-label="MentorME home"
+          >
+            <MentorMeLogo />
+          </Link>
 
-        <nav aria-label="Primary navigation">
-          {nav.map((item) => (
+          <nav aria-label="Primary navigation">
+            {nav.map((item) => (
+              <Link
+                className={
+                  page === item.page
+                    ? "active"
+                    : ""
+                }
+                href={item.href}
+                key={item.page}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="header-actions">
+            <div className="notice-wrap">
+              <button
+                className="notification-button"
+                onClick={() =>
+                  setNotice(
+                    (current) => !current,
+                  )
+                }
+                aria-label="Notifications"
+                aria-expanded={notice}
+                type="button"
+              >
+                <svg
+                  viewBox="0 0 448 512"
+                  className="notification-bell"
+                  aria-hidden="true"
+                >
+                  <path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z" />
+                </svg>
+
+                <i />
+              </button>
+
+              {notice && (
+                <div className="notice-pop">
+                  <b>What&apos;s new</b>
+
+                  <p>
+                    New Python career track
+                    missions added.
+                  </p>
+
+                  <p>
+                    Levels 1–5 are free.
+                  </p>
+
+                  <Link href="/roadmap">
+                    Explore the new roadmap →
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            <ThemeToggle />
+
             <Link
-              className={
-                page === item.page
-                  ? "active"
-                  : ""
-              }
-              href={item.href}
-              key={item.page}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="header-actions">
-          <div className="notice-wrap">
-            <button
-              className="notification-button"
-              onClick={() =>
-                setNotice(
-                  (current) => !current,
-                )
-              }
-              aria-label="Notifications"
-              aria-expanded={notice}
-              type="button"
+              className="navbar-sign-in"
+              href="/login"
             >
               <svg
-                viewBox="0 0 448 512"
-                className="notification-bell"
+                className="navbar-sign-in__icon"
+                viewBox="0 0 24 24"
                 aria-hidden="true"
               >
-                <path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z" />
+                <path d="M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" />
               </svg>
 
-              <i />
-            </button>
-
-            {notice && (
-              <div className="notice-pop">
-                <b>What&apos;s new</b>
-
-                <p>
-                  New Python career track
-                  missions added.
-                </p>
-
-                <p>
-                  Levels 1–5 are free.
-                </p>
-
-                <Link href="/roadmap">
-                  Explore the new roadmap →
-                </Link>
-              </div>
-            )}
+              <span>Sign in</span>
+            </Link>
           </div>
 
-          <ThemeToggle />
-
-          <Link className="navbar-sign-in" href="/login">
-            <svg className="navbar-sign-in__icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" />
-            </svg>
-            <span>Sign in</span>
-          </Link>
+          <button
+            className="mobile-menu"
+            aria-label="Open menu"
+            type="button"
+          >
+            <span />
+            <span />
+            <span />
+          </button>
         </div>
-
-        <button
-          className="mobile-menu"
-          aria-label="Open menu"
-          type="button"
-        >
-          <span />
-          <span />
-          <span />
-        </button>
-      </div>
-    </header>
+      </header>
+    </div>
   );
 }
 
@@ -197,14 +285,7 @@ function JourneyStrip() {
   );
 }
 
-function Home() {
-  return (
-    <>
-      <LearningHero />
-      <HomeJourneySections />
-    </>
-  );
-}
+
 
 const worlds = [
   [
@@ -300,6 +381,14 @@ export default function Courses() {
       <CourseComparison />
       <CareerTracksAndCTA />
     </main>
+  );
+}
+function Home() {
+  return (
+    <>
+      <LearningHero />
+      <HomeJourneySections />
+    </>
   );
 }
 
@@ -889,7 +978,7 @@ export function PublicSite({
   const content = {
     home: <Home />,
     courses: <Courses />,
-    roadmap: <Roadmap />,
+    roadmap: <RoadmapExperience />,
     leaderboard: <Leaderboard />,
     about: <About />,
     pricing: <Pricing />,
@@ -897,12 +986,18 @@ export function PublicSite({
   }[page];
 
   return (
-    <main>
-      <Header page={page} />
+  <main
+    className={
+      page === "home"
+        ? styles.homePage
+        : undefined
+    }
+  >
+    <Header page={page} />
 
-      {content}
+    {content}
 
-      <Footer />
-    </main>
-  );
+    <Footer />
+  </main>
+);
 }

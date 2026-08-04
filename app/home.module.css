@@ -1,0 +1,93 @@
+.homePage {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Dark mode — left to right */
+:global(html[data-theme="dark"]) .homePage,
+:global(html.dark) .homePage {
+  color: #f7f9fd;
+
+  background:
+    radial-gradient(
+      circle at 8% 50%,
+      rgba(69, 95, 135, 0.3),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 92% 50%,
+      rgba(212, 175, 55, 0.1),
+      transparent 30%
+    ),
+    linear-gradient(
+      90deg,
+      #112139 0%,
+      #091525 52%,
+      #050d17 100%
+    );
+
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Light mode — left to right */
+/* Light mode — stronger purple on the left, cream on the right */
+:global(html:not(.dark):not([data-theme="dark"])) .homePage,
+:global(html[data-theme="light"]) .homePage,
+:global(html.light) .homePage {
+  color: #1b2435;
+
+  background:
+    /* Strong lavender glow on the left */
+    radial-gradient(
+      ellipse 48% 34% at 8% 8%,
+      rgba(180, 145, 232, 0.38) 0%,
+      rgba(209, 188, 239, 0.24) 48%,
+      transparent 78%
+    ),
+
+    /* Soft champagne glow on the right */
+    radial-gradient(
+      ellipse 42% 30% at 90% 18%,
+      rgba(231, 190, 77, 0.16) 0%,
+      rgba(255, 237, 190, 0.12) 48%,
+      transparent 76%
+    ),
+
+    /* Main left-to-right background */
+    linear-gradient(
+      90deg,
+      #d8c4f3 0%,
+#e3d3f6 22%,
+      #f1e8f7 34%,
+      #faf3f4 52%,
+      #fffaf0 72%,
+      #fbf1dc 100%
+    );
+
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/* Make the main homepage components transparent */
+.homePage :global(.mh-root),
+.homePage :global(.hj-root),
+.homePage :global(.hj-tracks),
+.homePage :global(.hj-roadmap),
+.homePage :global(.hj-evolution),
+.homePage :global(.hj-dashboard-section),
+.homePage :global(.hj-proof),
+.homePage :global(.hj-final) {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* Remove old hero fades and washes */
+.homePage :global(.mh-light-center-wash),
+.homePage :global(.mh-bottom-fade) {
+  display: none !important;
+  background: none !important;
+}

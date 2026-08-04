@@ -137,6 +137,14 @@
 
   font-size: 0.92rem;
   line-height: 1.78;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(112, 215, 255, 0.12),
+    transparent 72%
+  );
+
+  text-shadow: 0 0 18px rgba(112, 215, 255, 0.15);
+
 }
 
 .trackList {
@@ -2529,4 +2537,77 @@
     0 0 38px rgba(177, 146, 199, 0.16),
     0 0 24px rgba(212, 175, 55, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* =========================================================
+   CAREER TRACKS + FINAL CTA — SHARED COURSES PAGE BACKGROUND
+   Removes only the outer component backgrounds.
+   Track cards, CTA border, CTA orbit, animations and internal
+   visual styling remain unchanged.
+   ========================================================= */
+
+/* Career tracks outer section */
+.tracksSection {
+  background: transparent;
+  box-shadow: none;
+}
+
+.tracksSection::before {
+  content: none;
+  background: none;
+  background-image: none;
+}
+
+.tracksAmbient {
+  display: none;
+}
+
+/* Final CTA outer section */
+.finalCta {
+  background: transparent;
+  box-shadow: none;
+}
+
+.ctaGrid {
+  display: none;
+  background: none;
+  background-image: none;
+}
+
+/* Light mode */
+:global(html:not(.dark):not([data-theme="dark"])) .tracksSection,
+:global(html[data-theme="light"]) .tracksSection,
+:global([data-theme="light"]) .tracksSection,
+:global(.light) .tracksSection,
+:global(html:not(.dark):not([data-theme="dark"])) .finalCta,
+:global(html[data-theme="light"]) .finalCta,
+:global([data-theme="light"]) .finalCta,
+:global(.light) .finalCta {
+  background: transparent;
+  box-shadow: none;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .tracksSection::before,
+:global(html[data-theme="light"]) .tracksSection::before,
+:global([data-theme="light"]) .tracksSection::before,
+:global(.light) .tracksSection::before {
+  content: none;
+  background: none;
+  background-image: none;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .tracksAmbient,
+:global(html[data-theme="light"]) .tracksAmbient,
+:global([data-theme="light"]) .tracksAmbient,
+:global(.light) .tracksAmbient {
+  display: none;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .ctaGrid,
+:global(html[data-theme="light"]) .ctaGrid,
+:global([data-theme="light"]) .ctaGrid,
+:global(.light) .ctaGrid {
+  display: none;
+  background: none;
+  background-image: none;
 }

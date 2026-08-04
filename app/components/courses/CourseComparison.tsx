@@ -86,7 +86,7 @@ export default function CourseComparison() {
         <p>
           Compare passive course consumption with a
           guided system built around practice, projects
-          and visible career proof.
+          and visible career proof
         </p>
       </header>
 

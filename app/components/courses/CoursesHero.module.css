@@ -2466,3 +2466,67 @@
     box-shadow: none;
   }
 }
+
+/* =========================================================
+   HERO SECTION — USE THE SHARED COURSES PAGE BACKGROUND
+   Only the outer hero background layer is removed.
+   Dashboard, selector cards, stats, buttons and all other
+   component styling remain unchanged.
+   ========================================================= */
+
+.hero {
+  background: transparent;
+}
+
+/* Remove the hero-only grid/background overlay so the
+   courses-page background is visible without another layer. */
+.hero::before {
+  content: none;
+  background: none;
+  background-image: none;
+}
+
+/* Prevent the light-mode hero rule above from adding its own
+   purple/cream background over the shared page background. */
+:global(html:not(.dark):not([data-theme="dark"])) .hero,
+:global(html[data-theme="light"]) .hero,
+:global([data-theme="light"]) .hero,
+:global(.light) .hero {
+  background: transparent;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .hero::before,
+:global(html[data-theme="light"]) .hero::before,
+:global([data-theme="light"]) .hero::before,
+:global(.light) .hero::before {
+  content: none;
+  background: none;
+  background-image: none;
+}
+
+/* Remove the Hero section surface completely */
+.hero {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.hero::before,
+.hero::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .hero,
+:global(html[data-theme="light"]) .hero,
+:global([data-theme="light"]) .hero,
+:global(.light) .hero {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}

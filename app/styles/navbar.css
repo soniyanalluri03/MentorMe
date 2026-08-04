@@ -1457,3 +1457,72 @@ html.dark .public-header-slot {
     ) !important;
 }
 
+/* =====================================================
+   FINAL NAVBAR — USE THE PAGE BACKGROUND
+   Keeps navbar content and animated gold border.
+===================================================== */
+
+/* Remove the background area reserved behind the navbar */
+.public-header-slot,
+:root:not([data-theme]) .public-header-slot,
+html[data-theme="light"] .public-header-slot,
+html[data-theme="dark"] .public-header-slot,
+html.light .public-header-slot,
+html.dark .public-header-slot {
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove the navbar container surface */
+/* Restore navbar surface inside the gold border */
+
+/* Dark mode */
+html[data-theme="dark"] .public-header,
+html.dark .public-header {
+  background:
+    linear-gradient(
+      120deg,
+      rgba(235, 240, 247, 0.16) 0%,
+      rgba(199, 211, 225, 0.07) 25%,
+      rgba(199, 211, 225, 0) 48%
+    ),
+    linear-gradient(
+      145deg,
+      #173a5b 0%,
+      #0d2b49 50%,
+      #071a30 100%
+    ) !important;
+
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.35) !important;
+
+  -webkit-backdrop-filter:
+    blur(18px) saturate(140%) !important;
+  backdrop-filter:
+    blur(18px) saturate(140%) !important;
+}
+
+/* Light mode */
+:root:not([data-theme]) .public-header,
+html[data-theme="light"] .public-header,
+html.light .public-header {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(245, 240, 252, 0.96) 0%,
+      rgba(239, 232, 249, 0.95) 18%,
+      rgba(250, 246, 241, 0.97) 42%,
+      rgba(255, 251, 244, 0.96) 68%,
+      rgba(252, 245, 231, 0.96) 100%
+    ) !important;
+
+  box-shadow:
+    0 18px 40px rgba(68, 52, 86, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72) !important;
+
+  -webkit-backdrop-filter:
+    blur(24px) saturate(140%) !important;
+  backdrop-filter:
+    blur(24px) saturate(140%) !important;
+}

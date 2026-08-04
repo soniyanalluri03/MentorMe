@@ -710,3 +710,26 @@
     0 8px 22px rgba(0, 0, 0, 0.28),
     0 0 12px rgba(232, 197, 71, 0.1);
 }
+
+/* =====================================================
+   LIVE COMMUNITY — USE SHARED HOME PAGE BACKGROUND
+===================================================== */
+
+.section,
+:global(html:not(.dark):not([data-theme="dark"])) .section,
+:global(html[data-theme="light"]) .section,
+:global(html.light) .section,
+:global(html[data-theme="dark"]) .section,
+:global(html.dark) .section {
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove the dotted section overlay */
+.section::before {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  background-image: none !important;
+}

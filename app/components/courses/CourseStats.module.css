@@ -22,28 +22,10 @@
 
   color: #f7f9fd;
 
-  background:
-    radial-gradient(
-      circle at 8% 10%,
-      rgba(91, 124, 171, 0.22),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 92% 88%,
-      rgba(212, 175, 55, 0.1),
-      transparent 26%
-    ),
-    linear-gradient(
-      145deg,
-      rgba(17, 35, 58, 0.96),
-      rgba(8, 18, 31, 0.98)
-    );
+  background: transparent;
 
-  box-shadow:
-    0 24px 68px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.055);
-
-  backdrop-filter: blur(18px);
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 .panel::before {
@@ -87,45 +69,13 @@
 }
 
 .panel::after {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-
-  opacity: 0.08;
-
-  background-image:
-    linear-gradient(
-      rgba(255, 255, 255, 0.05) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.05) 1px,
-      transparent 1px
-    );
-
-  background-size: 46px 46px;
+  content: none;
+  background: none;
+  background-image: none;
 }
 
 .ambient {
-  width: 290px;
-  height: 290px;
-
-  position: absolute;
-  right: -130px;
-  bottom: -170px;
-  z-index: -1;
-
-  border-radius: 50%;
-
-  background:
-    rgba(212, 175, 55, 0.13);
-
-  filter: blur(42px);
-
-  pointer-events: none;
+  display: none;
 }
 
 .stat {
@@ -294,46 +244,26 @@
   border-color:
     rgba(166, 111, 10, 0.24);
 
-  background:
-    radial-gradient(
-      circle at 8% 10%,
-      rgba(220, 205, 244, 0.84),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 92% 88%,
-      rgba(212, 175, 55, 0.18),
-      transparent 28%
-    ),
-    linear-gradient(
-      145deg,
-      #f1e8fb 0%,
-      #fffaf0 54%,
-      #f3e2ac 100%
-    );
+  background: transparent;
 
-  box-shadow:
-    0 24px 64px rgba(61, 45, 88, 0.15),
-    0 0 28px rgba(212, 175, 55, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.96);
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 :global(html:not(.dark):not([data-theme="dark"])) .panel::after,
 :global(html[data-theme="light"]) .panel::after,
 :global([data-theme="light"]) .panel::after,
 :global(.light) .panel::after {
-  opacity: 0.06;
+  content: none;
+  background: none;
+  background-image: none;
+}
 
-  background-image:
-    linear-gradient(
-      rgba(89, 66, 117, 0.08) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(89, 66, 117, 0.08) 1px,
-      transparent 1px
-    );
+:global(html:not(.dark):not([data-theme="dark"])) .ambient,
+:global(html[data-theme="light"]) .ambient,
+:global([data-theme="light"]) .ambient,
+:global(.light) .ambient {
+  display: none;
 }
 
 :global(html:not(.dark):not([data-theme="dark"])) .stat:not(:last-child),

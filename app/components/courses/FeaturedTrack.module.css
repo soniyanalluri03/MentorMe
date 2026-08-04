@@ -114,8 +114,50 @@
   color: #97a6ba;
   font-size: 0.9rem;
   line-height: 1.75;
-}
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(112, 215, 255, 0.12),
+    transparent 72%
+  );
 
+  text-shadow: 0 0 18px rgba(112, 215, 255, 0.15);
+
+}
+  .mh-description {
+          max-width: 640px;
+         
+          display: flex;
+          flex-direction: column;
+          gap: 7px;
+          color: #40516b;
+          line-height: 1.62;
+          letter-spacing: 0.003em;
+        }
+          
+          .mh-description strong {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  box-sizing: border-box;
+  padding: 16px 28px;
+
+  color: var(--muted);
+  font: 760 clamp(1.05rem, 1.22vw, 1.2rem) / 1.62
+    var(--font-sans), sans-serif;
+
+  text-align: left !important;
+
+  border-radius: 999px;
+
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(112, 215, 255, 0.12),
+    transparent 72%
+  );
+
+  text-shadow: 0 0 18px rgba(112, 215, 255, 0.15);
+}
 .controls {
   display: flex;
   align-items: center;
@@ -1889,4 +1931,80 @@
   box-shadow:
     0 0 0 35px rgba(255, 247, 228, 0.11),
     0 0 0 70px rgba(240, 226, 198, 0.07);
+}
+
+/* =========================================================
+   FEATURED TRACK SECTION — USE SHARED COURSES PAGE BACKGROUND
+   Removes only the component-level section background.
+   Cards, detail panel, carousel effects and animations remain.
+   ========================================================= */
+
+.section {
+  background: transparent;
+  box-shadow: none;
+}
+
+.section::before {
+  content: none;
+  background: none;
+  background-image: none;
+}
+
+.ambient {
+  display: none;
+}
+
+/* Light mode */
+:global(html:not(.dark):not([data-theme="dark"])) .section,
+:global(html[data-theme="light"]) .section,
+:global([data-theme="light"]) .section,
+:global(.light) .section {
+  background: transparent;
+  box-shadow: none;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .section::before,
+:global(html[data-theme="light"]) .section::before,
+:global([data-theme="light"]) .section::before,
+:global(.light) .section::before {
+  content: none;
+  background: none;
+  background-image: none;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .ambient,
+:global(html[data-theme="light"]) .ambient,
+:global([data-theme="light"]) .ambient,
+:global(.light) .ambient {
+  display: none;
+}
+/* Remove the Featured Track section surface completely */
+.section {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.section::before,
+.section::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.ambient {
+  display: none !important;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .section,
+:global(html[data-theme="light"]) .section,
+:global([data-theme="light"]) .section,
+:global(.light) .section {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
 }

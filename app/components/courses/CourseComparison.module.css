@@ -153,6 +153,14 @@
 
   font-size: 0.92rem;
   line-height: 1.78;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(112, 215, 255, 0.12),
+    transparent 72%
+  );
+
+  text-shadow: 0 0 18px rgba(112, 215, 255, 0.15);
+
 }
 
 .comparisonGrid {
@@ -2197,4 +2205,103 @@
   box-shadow:
     0 0 0 46px rgba(226, 211, 242, 0.07),
     0 0 0 92px rgba(249, 240, 220, 0.05);
+}
+
+/* =========================================================
+   COURSE COMPARISON SECTION — USE SHARED COURSES BACKGROUND
+   Removes only the component-level outer background layers.
+   Cards, VS badge, animations, proof panels and interactions
+   remain unchanged.
+   ========================================================= */
+
+.section {
+  background: transparent;
+  box-shadow: none;
+}
+
+.section::before {
+  content: none;
+  background: none;
+  background-image: none;
+}
+
+.ambientOne,
+.ambientTwo {
+  display: none;
+}
+
+/* Light mode */
+:global(html:not(.dark):not([data-theme="dark"])) .section,
+:global(html[data-theme="light"]) .section,
+:global([data-theme="light"]) .section,
+:global(.light) .section {
+  background: transparent;
+  box-shadow: none;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .section::before,
+:global(html[data-theme="light"]) .section::before,
+:global([data-theme="light"]) .section::before,
+:global(.light) .section::before {
+  content: none;
+  background: none;
+  background-image: none;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .ambientOne,
+:global(html:not(.dark):not([data-theme="dark"])) .ambientTwo,
+:global(html[data-theme="light"]) .ambientOne,
+:global(html[data-theme="light"]) .ambientTwo,
+:global([data-theme="light"]) .ambientOne,
+:global([data-theme="light"]) .ambientTwo,
+:global(.light) .ambientOne,
+:global(.light) .ambientTwo {
+  display: none;
+}
+/* =========================================================
+   LIGHT MODE — REMOVE SHADOW SPILL BETWEEN SECTIONS
+   Keeps the cards and borders but stops their shadows from
+   creating a horizontal band above Career Tracks.
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"])) .traditionalCard,
+:global(html[data-theme="light"]) .traditionalCard,
+:global([data-theme="light"]) .traditionalCard,
+:global(.light) .traditionalCard {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85) !important;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard,
+:global(html[data-theme="light"]) .mentorCard,
+:global([data-theme="light"]) .mentorCard,
+:global(.light) .mentorCard {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset -24px -30px 48px rgba(171, 139, 87, 0.045) !important;
+}
+
+/* Prevent large hover shadows from returning */
+:global(html:not(.dark):not([data-theme="dark"])) .traditionalCard:hover,
+:global(html[data-theme="light"]) .traditionalCard:hover,
+:global([data-theme="light"]) .traditionalCard:hover,
+:global(.light) .traditionalCard:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard:hover,
+:global(html[data-theme="light"]) .mentorCard:hover,
+:global([data-theme="light"]) .mentorCard:hover,
+:global(.light) .mentorCard:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset -24px -30px 48px rgba(171, 139, 87, 0.05) !important;
+}
+.section {
+  filter: none !important;
+}
+
+.comparisonGrid {
+  filter: none !important;
 }

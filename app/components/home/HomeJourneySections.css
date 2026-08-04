@@ -12,7 +12,8 @@
           --gold-soft: #f2d875;
           --cyan: #70d7ff;
 
-          overflow: hidden;
+           overflow-x: hidden;
+  overflow-y: clip;
           color: var(--text);
 
           background:
@@ -4193,6 +4194,7 @@
 
           .hj-evolution {
             padding-top: 76px;
+            padding-bottom: 52px;
           }
 
           .hj-level-journey {
@@ -4694,4 +4696,94 @@ html.light .hj-root .hj-proof,
 html.light .hj-root .hj-final {
   background: transparent !important;
   background-image: none !important;
+}
+/* =========================================================
+   FINAL HOME JOURNEY END FIX
+   Removes the section-edge shadow and unnecessary end space.
+   ========================================================= */
+
+.hj-root {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* Remove any outer shadow from the final section */
+.hj-final {
+  min-height: auto !important;
+
+  margin: 0 !important;
+  padding:
+    72px
+    24px
+    56px !important;
+
+  background: transparent !important;
+  background-image: none !important;
+
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* Prevent generated layers from making a bottom band */
+.hj-final::before,
+.hj-final::after,
+.hj-root::before,
+.hj-root::after {
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* Dark mode */
+html[data-theme="dark"] .hj-root,
+html.dark .hj-root {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+html[data-theme="dark"] .hj-final,
+html.dark .hj-final {
+  min-height: auto !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 56px !important;
+
+  background: transparent !important;
+  background-image: none !important;
+
+  box-shadow: none !important;
+  filter: none !important;
+}
+/* =========================================================
+   ROADMAP → TRANSFORMATION SEAM FIX
+   Removes the large shadow band and excess section gap.
+   ========================================================= */
+
+/* Reduce the empty space below the road component */
+.hj-evolution {
+  padding-bottom: 52px !important;
+}
+
+/* Dark mode — keep border and internal depth, remove shadow spill */
+html[data-theme="dark"] .hj-root .hj-road-game,
+html.dark .hj-root .hj-road-game {
+  margin-bottom: 0 !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Light mode — remove the large purple shadow below the card */
+html[data-theme="light"] .hj-root .hj-road-game,
+html.light .hj-root .hj-road-game {
+  margin-bottom: 0 !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.94) !important;
+}
+
+/* Make sure the outer section itself creates no shadow */
+.hj-evolution {
+  box-shadow: none !important;
+  filter: none !important;
 }

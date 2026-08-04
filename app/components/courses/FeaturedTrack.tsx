@@ -181,10 +181,10 @@ export default function FeaturedTrack() {
         </div>
 
         <div className={styles.headingAside}>
-          <p>
+          <p >
             Every track follows one system: guided
             levels, practical missions, real projects
-            and visible proof.
+            and visible proof
           </p>
 
           <div

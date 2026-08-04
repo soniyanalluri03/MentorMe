@@ -8,57 +8,18 @@
   border: 1px solid rgba(255, 255, 255, 0.075);
   border-radius: 36px;
   color: #f7f9fd;
-  background:
-    radial-gradient(
-      circle at 10% 8%,
-      rgba(75, 103, 143, 0.25),
-      transparent 31%
-    ),
-    radial-gradient(
-      circle at 92% 86%,
-      rgba(212, 175, 55, 0.09),
-      transparent 27%
-    ),
-    linear-gradient(
-      145deg,
-      #102039,
-      #091525 55%,
-      #050d17
-    );
-  box-shadow:
-    0 30px 82px rgba(0, 0, 0, 0.32),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  background: transparent;
+  box-shadow: none;
 }
 
 .section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -3;
-  opacity: 0.1;
-  background-image:
-    linear-gradient(
-      rgba(255, 255, 255, 0.045) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.045) 1px,
-      transparent 1px
-    );
-  background-size: 54px 54px;
+  content: none;
+  background: none;
+  background-image: none;
 }
 
 .ambient {
-  width: 390px;
-  height: 390px;
-  position: absolute;
-  right: -170px;
-  bottom: -210px;
-  z-index: -2;
-  border-radius: 50%;
-  background: rgba(212, 175, 55, 0.11);
-  filter: blur(38px);
+  display: none;
 }
 
 .heading {
@@ -107,6 +68,13 @@
   color: #9fadc0;
   font-size: 0.92rem;
   line-height: 1.78;
+   background: radial-gradient(
+    circle at 50% 50%,
+    rgba(112, 215, 255, 0.12),
+    transparent 72%
+  );
+
+  text-shadow: 0 0 18px rgba(112, 215, 255, 0.15);
 }
 
 .processLine {
@@ -146,7 +114,9 @@
   margin-top: 32px;
 }
 
-/* Light mode */
+/* =========================================================
+   LIGHT MODE
+   ========================================================= */
 
 :global(html:not(.dark):not([data-theme="dark"])) .section,
 :global(html[data-theme="light"]) .section,
@@ -154,26 +124,24 @@
 :global(.light) .section {
   color: #182235;
   border-color: rgba(75, 61, 103, 0.14);
-  background:
-    radial-gradient(
-      circle at 12% 8%,
-      rgba(222, 212, 244, 0.84),
-      transparent 31%
-    ),
-    radial-gradient(
-      circle at 90% 82%,
-      rgba(212, 175, 55, 0.12),
-      transparent 27%
-    ),
-    linear-gradient(
-      145deg,
-      #f3eefb,
-      #fffaf1 55%,
-      #f7f3ed
-    );
-  box-shadow:
-    0 28px 74px rgba(61, 45, 88, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  background: transparent;
+  box-shadow: none;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .section::before,
+:global(html[data-theme="light"]) .section::before,
+:global([data-theme="light"]) .section::before,
+:global(.light) .section::before {
+  content: none;
+  background: none;
+  background-image: none;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .ambient,
+:global(html[data-theme="light"]) .ambient,
+:global([data-theme="light"]) .ambient,
+:global(.light) .ambient {
+  display: none;
 }
 
 :global(html:not(.dark):not([data-theme="dark"])) .intro,
@@ -244,7 +212,6 @@
 
 /* =========================================================
    FULL-BLEED / FULL-SCREEN MENTORME METHOD SECTION
-   Removes the outer rounded container appearance.
    ========================================================= */
 
 .section {
@@ -261,11 +228,14 @@
   border: 0;
   border-radius: 0;
 
+  background: transparent;
   box-shadow: none;
 }
 
 .section::before {
-  border-radius: 0;
+  content: none;
+  background: none;
+  background-image: none;
 }
 
 /* Keep the main content balanced on very wide screens */
@@ -281,7 +251,7 @@
   margin-top: 42px;
 }
 
-/* Light mode must also remain full width and borderless */
+/* Light mode must also remain transparent and full width */
 :global(html:not(.dark):not([data-theme="dark"])) .section,
 :global(html[data-theme="light"]) .section,
 :global([data-theme="light"]) .section,
@@ -294,6 +264,7 @@
   border: 0;
   border-radius: 0;
 
+  background: transparent;
   box-shadow: none;
 }
 
@@ -320,6 +291,7 @@
     border: 0;
     border-radius: 0;
 
+    background: transparent;
     box-shadow: none;
   }
 
@@ -344,6 +316,7 @@
     border: 0;
     border-radius: 0;
 
+    background: transparent;
     box-shadow: none;
   }
 }

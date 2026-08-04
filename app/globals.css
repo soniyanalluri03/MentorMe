@@ -10,6 +10,7 @@
 @import "./styles/responsive.css";
 @import "./styles/leaderboard.css";
 @import "./styles/navbar.css";
+@import "../app/courses/courses.css";
 /* =========================================================
    COMPLETE HOME PAGE BACKGROUND — LIGHT MODE
 ========================================================= */

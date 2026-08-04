@@ -67,7 +67,7 @@ export default function MentorMethod() {
           Every level moves you through one repeatable
           system. Learn with direction, practise
           immediately, build something real and prove
-          the result before moving forward.
+          the result before moving forward
         </p>
       </div>
 

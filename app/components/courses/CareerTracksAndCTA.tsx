@@ -100,7 +100,7 @@ export default function CareerTracksAndCTA() {
             Each new track will use the same
             level-based roadmap, project gates,
             milestone certificates and portfolio
-            evidence.
+            evidence
           </p>
         </div>
 
@@ -188,9 +188,9 @@ export default function CareerTracksAndCTA() {
                   className={styles.trackVisual}
                   aria-hidden="true"
                 >
+                  {/* <span />
                   <span />
-                  <span />
-                  <span />
+                  <span /> */}
                   <b />
                 </div>
               </article>

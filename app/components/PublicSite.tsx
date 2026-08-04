@@ -990,7 +990,9 @@ export function PublicSite({
     className={
       page === "home"
         ? styles.homePage
-        : undefined
+        : page === "courses"
+          ? "courses-page"
+          : undefined
     }
   >
     <Header page={page} />

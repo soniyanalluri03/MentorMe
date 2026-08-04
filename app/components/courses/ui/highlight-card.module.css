@@ -891,3 +891,80 @@
     height: 61px;
   }
 }
+
+/* =========================================================
+   FOLD BORDER CONNECTION
+   Continues the gold card border along the folded corner.
+   ========================================================= */
+
+/* Diagonal line automatically follows the fold size */
+.fold::after {
+  content: "";
+
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 4;
+
+  /* Automatically scales while the fold animates */
+  width: 141.5%;
+  height: 1.5px;
+
+  transform: rotate(-45deg);
+  transform-origin: right center;
+
+  background:
+    linear-gradient(
+      90deg,
+      #8f5d08 0%,
+      #d4af37 35%,
+      #fff4b5 58%,
+      #f4df83 76%,
+      #9b6a0a 100%
+    );
+
+  box-shadow:
+    0 0 5px rgba(212, 175, 55, 0.45),
+    0 1px 2px rgba(0, 0, 0, 0.2);
+
+  pointer-events: none;
+}
+
+/* Keep the diagonal border connected when the fold grows */
+/* .card:hover .fold::after {
+ 
+  width: 107.48px;
+} */
+
+/* Light mode */
+:global(html:not(.dark):not([data-theme="dark"])) .fold::after,
+:global(html[data-theme="light"]) .fold::after,
+:global([data-theme="light"]) .fold::after,
+:global(.light) .fold::after {
+  background:
+    linear-gradient(
+      90deg,
+      #9b6a0a 0%,
+      #d4af37 38%,
+      #fff3b0 58%,
+      #d4af37 78%,
+      #a97812 100%
+    );
+
+  box-shadow:
+    0 0 5px rgba(177, 132, 28, 0.32),
+    0 1px 2px rgba(78, 57, 111, 0.12);
+}
+
+/* Mobile fold */
+@media (max-width: 700px) {
+  /* .fold::after {
+    
+    width: 76.37px;
+  }
+
+  .card:hover .fold::after {
+   
+    width: 86.27px;
+  } */
+}

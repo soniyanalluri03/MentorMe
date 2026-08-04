@@ -30,18 +30,18 @@ interface CareerTrack {
 
 const tracks: CareerTrack[] = [
   {
-    number: "02",
+    number: "01",
     icon: Database,
     title: "Backend Developer",
     description:
       "Design secure APIs, dependable databases and scalable services through production-style missions.",
-    status: "Coming soon",
+    status: "Available",
     category: "Systems & APIs",
     skills: ["Python", "FastAPI", "PostgreSQL", "System design"],
     tone: "blue",
   },
   {
-    number: "03",
+    number: "02",
     icon: Palette,
     title: "UI/UX Designer",
     description:
@@ -52,7 +52,7 @@ const tracks: CareerTrack[] = [
     tone: "purple",
   },
   {
-    number: "04",
+    number: "03",
     icon: Layers3,
     title: "Data Analyst",
     description:
@@ -151,10 +151,7 @@ export default function CareerTracksAndCTA() {
                     {track.number}
                   </span>
 
-                  <span className={styles.trackStatus}>
-                    <Clock3 size={13} />
-                    {track.status}
-                  </span>
+
                 </div>
 
                 <div className={styles.trackIcon}>

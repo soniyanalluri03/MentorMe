@@ -243,9 +243,6 @@ export default function FeaturedTrack() {
                 {track.number}
               </span>
 
-              <span className={styles.cardStatus}>
-                {track.status}
-              </span>
 
               <span className={styles.cardIcon}>
                 <TrackIcon
@@ -301,7 +298,7 @@ export default function FeaturedTrack() {
           </div>
 
           <div>
-            <small>{activeTrack.status}</small>
+        
 
             <h3>
               {activeTrack.title}{" "}

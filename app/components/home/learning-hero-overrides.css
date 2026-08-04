@@ -1,8 +1,4 @@
-﻿html[data-theme=dark] .mh-root{background:radial-gradient(circle at 35% 25%,#173654 0%,#0b223b 48%,#061321 100%)!important}
-html[data-theme=light] .mh-root,
-html.light .mh-root{
-  background:#f8f3f1!important
-}
+﻿
 html[data-theme=light] .hj-root,
 html.light .hj-root{
   --bg:#f5f0fc!important;
@@ -18,7 +14,6 @@ html.light .hj-root{
   --gold-soft:#d2aa43!important;
   --cyan:#2b698c!important;
   color:var(--text)!important;
-  background:#f8f3f1!important
 }
 html[data-theme=light] .hj-root .hj-tracks,
 html[data-theme=light] .hj-root .hj-roadmap,
@@ -32,12 +27,6 @@ html.light .hj-root .hj-dashboard-section{
 }
 
 /* Keep consecutive homepage sections on one uninterrupted light canvas. */
-html[data-theme=light] body,
-html.light body,
-html[data-theme=light] main,
-html.light main{
-  background:#f8f3f1!important
-}
 
 html[data-theme=light] .hj-root .hj-evolution,
 html.light .hj-root .hj-evolution{
@@ -378,3 +367,63 @@ html[data-theme=dark] .mh-button--secondary{color:#f3f7ff!important;background:r
 html[data-theme=dark] .mh-metrics article{color:#eef5ff!important;background:linear-gradient(145deg,rgba(18,43,70,.92),rgba(8,25,43,.9))!important;border-color:rgba(221,181,66,.72)!important}
 html[data-theme=dark] .mh-metrics b,
 html[data-theme=dark] .mh-metrics span{color:#c2d0df!important}
+
+/* =====================================================
+   REMOVE ALL HOME COMPONENT PAGE BACKGROUNDS
+   Keep cards, buttons and internal panels unchanged
+===================================================== */
+
+/* Main component wrappers */
+html[data-theme="light"] .mh-root,
+html.light .mh-root,
+html[data-theme="dark"] .mh-root,
+html.dark .mh-root,
+html[data-theme="light"] .hj-root,
+html.light .hj-root,
+html[data-theme="dark"] .hj-root,
+html.dark .hj-root {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* HomeJourney page sections */
+html[data-theme="light"] .hj-root .hj-tracks,
+html[data-theme="light"] .hj-root .hj-roadmap,
+html[data-theme="light"] .hj-root .hj-evolution,
+html[data-theme="light"] .hj-root .hj-dashboard-section,
+html[data-theme="light"] .hj-root .hj-proof,
+html[data-theme="light"] .hj-root .hj-final,
+html.light .hj-root .hj-tracks,
+html.light .hj-root .hj-roadmap,
+html.light .hj-root .hj-evolution,
+html.light .hj-root .hj-dashboard-section,
+html.light .hj-root .hj-proof,
+html.light .hj-root .hj-final,
+html[data-theme="dark"] .hj-root .hj-tracks,
+html[data-theme="dark"] .hj-root .hj-roadmap,
+html[data-theme="dark"] .hj-root .hj-evolution,
+html[data-theme="dark"] .hj-root .hj-dashboard-section,
+html[data-theme="dark"] .hj-root .hj-proof,
+html[data-theme="dark"] .hj-root .hj-final,
+html.dark .hj-root .hj-tracks,
+html.dark .hj-root .hj-roadmap,
+html.dark .hj-root .hj-evolution,
+html.dark .hj-root .hj-dashboard-section,
+html.dark .hj-root .hj-proof,
+html.dark .hj-root .hj-final {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* Remove hero background washes */
+html[data-theme="light"] .mh-root .mh-light-center-wash,
+html.light .mh-root .mh-light-center-wash,
+html[data-theme="dark"] .mh-root .mh-light-center-wash,
+html.dark .mh-root .mh-light-center-wash,
+html[data-theme="light"] .mh-root .mh-bottom-fade,
+html.light .mh-root .mh-bottom-fade,
+html[data-theme="dark"] .mh-root .mh-bottom-fade,
+html.dark .mh-root .mh-bottom-fade {
+  display: none !important;
+  background: none !important;
+}

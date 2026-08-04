@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { MentorMeLogo } from "./MentorMeLogo";
 import { ThemeToggle } from "./ThemeToggle";
-import { LearningHero } from "./LearningHero";
-import { HomeJourneySections } from "./HomeJourneySections";
+import { LearningHero } from "./home/LearningHero";
+import { HomeJourneySections } from "./home/HomeJourneySections";
 import CareerTracksAndCTA from "./courses/CareerTracksAndCTA";
 import CourseComparison from "./courses/CourseComparison";
 import CourseStats from "./courses/CourseStats";
@@ -13,7 +13,7 @@ import CoursesHero from "./courses/CoursesHero";
 import FeaturedTrack from "./courses/FeaturedTrack";
 import MentorMethod from "./courses/MentorMethod";
 import RoadmapExperience from "./roadmap/RoadmapExperience";
-
+import styles from "../../app/home.module.css";
 type Page =
   | "home"
   | "courses"
@@ -198,14 +198,7 @@ function JourneyStrip() {
   );
 }
 
-function Home() {
-  return (
-    <>
-      <LearningHero />
-      <HomeJourneySections />
-    </>
-  );
-}
+
 
 const worlds = [
   [
@@ -301,6 +294,14 @@ export default function Courses() {
       <CourseComparison />
       <CareerTracksAndCTA />
     </main>
+  );
+}
+function Home() {
+  return (
+    <>
+      <LearningHero />
+      <HomeJourneySections />
+    </>
   );
 }
 
@@ -898,12 +899,18 @@ export function PublicSite({
   }[page];
 
   return (
-    <main>
-      <Header page={page} />
+  <main
+    className={
+      page === "home"
+        ? styles.homePage
+        : undefined
+    }
+  >
+    <Header page={page} />
 
-      {content}
+    {content}
 
-      <Footer />
-    </main>
-  );
+    <Footer />
+  </main>
+);
 }

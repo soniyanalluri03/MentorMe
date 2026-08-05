@@ -56,10 +56,23 @@ export default function MentorMethod() {
           <div className={styles.kicker}>
             The MentorMe method
           </div>
-
           <h2 id="mentor-method-heading">
-            Learning becomes powerful when{" "}
-            <span>progress becomes proof.</span>
+            <span
+              className={`${styles.headingLine} ${styles.headingLinePrimary}`}
+            >
+              Learning becomes powerful
+            </span>
+
+            <span
+              className={`${styles.headingLine} ${styles.headingLineSecondary}`}
+            >
+              <span className={styles.headingWave}>
+                when progress becomes
+              </span>{" "}
+              <em className={styles.proofWord}>
+                proof
+              </em>
+            </span>
           </h2>
         </div>
 

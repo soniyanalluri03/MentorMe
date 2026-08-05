@@ -74,7 +74,7 @@
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  color: #dfc45f;
+  color: #d9ba4d;
   font-size: 0.68rem;
   font-weight: 900;
   letter-spacing: 0.14em;
@@ -82,25 +82,128 @@
 }
 
 .heading h2 {
-  max-width: 860px;
+  max-width: 980px;
+
   margin: 15px 0 0;
-  font-size: clamp(2.9rem, 4.7vw, 5.5rem);
-  line-height: 0.94;
+  padding-bottom: 0.18em;
+
+  overflow: visible;
+
+  line-height: 0.96;
   letter-spacing: -0.055em;
 }
 
-.heading h2 span {
+/* =========================================================
+   FEATURED TRACK ANIMATED HEADING
+   ========================================================= */
+
+.headingLine {
+  display: block;
+  width: 100%;
+
+  overflow: visible;
+
+  text-align: left;
+  white-space: nowrap;
+}
+
+.headingLinePrimary {
+  color: #f4f6ff;
+
+  font-size:
+    clamp(2.9rem, 4.7vw, 5.5rem);
+
+  line-height: 1;
+}
+
+.headingLineSecondary {
+  margin-top: 10px;
+  padding-bottom: 0.16em;
+
+  overflow: visible;
+
+  font-size:
+    clamp(2.4rem, 3.9vw, 4.65rem);
+
+  line-height: 1.18;
+}
+
+.headingWave {
+  display: inline-block;
+
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+
+  overflow: visible;
+
   color: transparent;
+
   background:
     linear-gradient(
-      100deg,
-      #fff1aa,
-      #d4af37 55%,
-      #a66f0a
+      90deg,
+      #f4f6ff 0%,
+      #f4f6ff 47%,
+      #d8b24b 49%,
+      #fff6d2 50%,
+      #d8b24b 51%,
+      #f4f6ff 53%,
+      #f4f6ff 100%
     );
+
+  background-size: 260% 100%;
+  background-position: 0% 50%;
+
   background-clip: text;
   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation:
+    featuredHeadingGoldWave
+    12s ease-in-out infinite;
 }
+
+.proofWord {
+  display: inline-block;
+
+  padding:
+    0.04em
+    0.04em
+    0.18em;
+
+  margin-bottom: -0.18em;
+
+  overflow: visible;
+  vertical-align: baseline;
+
+  color: transparent;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-weight: 500;
+  font-style: italic;
+
+  background:
+    linear-gradient(
+      110deg,
+      #8f5cf7,
+      #b58cff 52%,
+      #f2d875
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  transform-origin: center;
+
+  animation:
+    featuredAmbitionBreath
+    3.8s ease-in-out infinite;
+}
+
 
 .headingAside {
   display: flex;
@@ -110,54 +213,28 @@
 }
 
 .headingAside p {
+  max-width: 610px;
   margin: 0;
+  padding: 12px 16px;
+
   color: #97a6ba;
+
   font-size: 0.9rem;
   line-height: 1.75;
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(112, 215, 255, 0.12),
-    transparent 72%
-  );
 
-  text-shadow: 0 0 18px rgba(112, 215, 255, 0.15);
+  border-radius: 24px;
 
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(112, 215, 255, 0.12),
+      transparent 72%
+    );
+
+  text-shadow:
+    0 0 18px rgba(112, 215, 255, 0.15);
 }
-  .mh-description {
-          max-width: 640px;
-         
-          display: flex;
-          flex-direction: column;
-          gap: 7px;
-          color: #40516b;
-          line-height: 1.62;
-          letter-spacing: 0.003em;
-        }
-          
-          .mh-description strong {
-  position: relative;
-  display: block;
-  width: 100%;
-  max-width: 960px;
-  box-sizing: border-box;
-  padding: 16px 28px;
 
-  color: var(--muted);
-  font: 760 clamp(1.05rem, 1.22vw, 1.2rem) / 1.62
-    var(--font-sans), sans-serif;
-
-  text-align: left !important;
-
-  border-radius: 999px;
-
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(112, 215, 255, 0.12),
-    transparent 72%
-  );
-
-  text-shadow: 0 0 18px rgba(112, 215, 255, 0.15);
-}
 .controls {
   display: flex;
   align-items: center;
@@ -641,6 +718,42 @@
   transform: translateY(-3px);
 }
 
+
+@keyframes featuredHeadingGoldWave {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes featuredAmbitionBreath {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+
+    filter:
+      drop-shadow(
+        0 0 0 rgba(181, 140, 255, 0)
+      );
+  }
+
+  50% {
+    transform: translateY(-2px) scale(1.045);
+
+    filter:
+      drop-shadow(
+        0 8px 18px rgba(143, 92, 247, 0.2)
+      )
+      drop-shadow(
+        0 0 14px rgba(224, 189, 85, 0.14)
+      );
+  }
+}
+
 @keyframes detailIn {
   from {
     opacity: 0;
@@ -651,6 +764,80 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+
+/* =========================================================
+   LIGHT MODE — FEATURED TRACK HEADING
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"])) .headingLinePrimary,
+:global(html[data-theme="light"]) .headingLinePrimary,
+:global(html.light) .headingLinePrimary,
+:global([data-theme="light"]) .headingLinePrimary,
+:global(.light) .headingLinePrimary {
+  color: #172d50;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .headingWave,
+:global(html[data-theme="light"]) .headingWave,
+:global(html.light) .headingWave,
+:global([data-theme="light"]) .headingWave,
+:global(.light) .headingWave {
+  background:
+    linear-gradient(
+      90deg,
+      #172d50 0%,
+      #172d50 47%,
+      #c99b2f 49%,
+      #ffe7a4 50%,
+      #c99b2f 51%,
+      #172d50 53%,
+      #172d50 100%
+    );
+
+  background-size: 260% 100%;
+  background-position: 0% 50%;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .proofWord,
+:global(html[data-theme="light"]) .proofWord,
+:global(html.light) .proofWord,
+:global([data-theme="light"]) .proofWord,
+:global(.light) .proofWord {
+  background:
+    linear-gradient(
+      110deg,
+      #7650d8,
+      #9d73f2 52%,
+      #b88922
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .headingAside p,
+:global(html[data-theme="light"]) .headingAside p,
+:global(html.light) .headingAside p,
+:global([data-theme="light"]) .headingAside p,
+:global(.light) .headingAside p {
+  color: #667085;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(118, 80, 216, 0.1),
+      transparent 72%
+    );
+
+  text-shadow:
+    0 0 14px rgba(118, 80, 216, 0.1);
 }
 
 /* Light mode */
@@ -693,7 +880,12 @@
 :global(.light) .detailIdentity h3 {
   color: #1b2435;
 }
-
+:global(html:not(.dark):not([data-theme="dark"])) .kicker,
+:global(html[data-theme="light"]) .kicker,
+:global([data-theme="light"]) .kicker,
+:global(.light) .kicker {
+  color: #8e6810;
+}
 :global(html:not(.dark):not([data-theme="dark"])) .headingAside p,
 :global(html[data-theme="light"]) .headingAside p,
 :global([data-theme="light"]) .headingAside p,
@@ -1978,33 +2170,101 @@
 :global(.light) .ambient {
   display: none;
 }
-/* Remove the Featured Track section surface completely */
+
+/* =========================================================
+   FINAL FEATURED TRACK HEADING + SHARED BACKGROUND FIXES
+   ========================================================= */
+
+.heading,
+.heading > div,
+.heading h2,
+.headingLine,
+.headingLineSecondary,
+.headingWave,
+.proofWord {
+  overflow: visible;
+}
+
+/* Use the continuous Courses page background outside the cards */
 .section {
   background: transparent !important;
   background-image: none !important;
+
   border: 0 !important;
   box-shadow: none !important;
+  filter: none !important;
 }
 
 .section::before,
 .section::after {
   content: none !important;
   display: none !important;
+
   background: none !important;
   background-image: none !important;
+
   box-shadow: none !important;
+  filter: none !important;
 }
 
 .ambient {
   display: none !important;
 }
 
-:global(html:not(.dark):not([data-theme="dark"])) .section,
-:global(html[data-theme="light"]) .section,
-:global([data-theme="light"]) .section,
-:global(.light) .section {
-  background: transparent !important;
-  background-image: none !important;
-  border: 0 !important;
-  box-shadow: none !important;
+/* Keep the carousel and detail panel centered */
+.heading,
+.carousel,
+.detailPanel {
+  width: 100%;
+  max-width: 1600px;
+  margin-inline: auto;
+}
+
+.detailPanel {
+  margin-top: 22px;
+}
+
+@media (max-width: 1120px) {
+  .headingLine {
+    white-space: normal;
+  }
+
+  .headingAside p {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 860px) {
+  .headingLine {
+    white-space: normal;
+  }
+
+  .headingLinePrimary {
+    font-size:
+      clamp(2.45rem, 11vw, 3.8rem);
+  }
+
+  .headingLineSecondary {
+    margin-top: 8px;
+
+    font-size:
+      clamp(2.1rem, 9.5vw, 3.3rem);
+  }
+
+  .headingAside p {
+    max-width: 100%;
+    padding: 10px 0;
+
+    font-size: 0.87rem;
+
+    background: none;
+    text-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .headingWave,
+  .proofWord {
+    animation: none;
+  }
 }

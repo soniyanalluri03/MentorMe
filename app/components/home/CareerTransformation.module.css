@@ -4,14 +4,6 @@
   padding: clamp(4.5rem, 7vw, 7rem) 0;
   color: #102d52;
 
-  background: linear-gradient(
-    90deg,
-    rgba(245, 240, 252, 0.96) 0%,
-    rgba(239, 232, 249, 0.95) 20%,
-    rgba(250, 246, 241, 0.97) 48%,
-    rgba(255, 251, 244, 0.96) 72%,
-    rgba(252, 245, 231, 0.96) 100%
-  );
 }
 
 .section :global(*) {
@@ -117,11 +109,29 @@
 }
 
 .subtitle {
-  max-width: 720px;
-  margin: 0 auto;
-  color: #4e5d74;
-  font-size: clamp(1rem, 1.45vw, 1.18rem);
-  line-height: 1.7;
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 960px;
+
+  margin: 28px auto 0;
+  padding: 16px 28px;
+  box-sizing: border-box;
+
+  color: var(--muted);
+  font: 700 clamp(1rem, 1.15vw, 1.14rem) / 1.7
+    var(--font-sans), sans-serif;
+
+  text-align: center;
+  border-radius: 999px;
+
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(112, 215, 255, 0.12),
+    transparent 72%
+  );
+
+  text-shadow: 0 0 18px rgba(112, 215, 255, 0.15);
 }
 
 /* =====================================================
@@ -639,12 +649,7 @@
 :global(html.dark) .section {
   color: #f5f7ff;
 
-  background: linear-gradient(
-    135deg,
-    #06192c 0%,
-    #0b2441 46%,
-    #101d3c 100%
-  );
+  
 }
 
 :global([data-theme="dark"]) .heading h2,
@@ -1209,4 +1214,22 @@
   .number{
     transition:none!important;
   }
+}
+
+/* =====================================================
+   REMOVE CAREER TRANSFORMATION SECTION BACKGROUND
+   The global homepage background will remain visible
+===================================================== */
+
+.section {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+:global(html[data-theme="light"]) .section,
+:global(html.light) .section,
+:global(html[data-theme="dark"]) .section,
+:global(html.dark) .section {
+  background: transparent !important;
+  background-image: none !important;
 }

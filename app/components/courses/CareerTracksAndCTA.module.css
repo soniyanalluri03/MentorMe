@@ -105,38 +105,150 @@
 }
 
 .sectionHeading h2 {
-  max-width: 910px;
+  max-width: 980px;
+
   margin: 16px 0 0;
+  padding-bottom: 0.18em;
 
-  font-size:
-    clamp(2.8rem, 4.5vw, 5.3rem);
+  overflow: visible;
 
-  line-height: 0.94;
+  line-height: 0.96;
   letter-spacing: -0.052em;
 }
 
-.sectionHeading h2 span {
+/* =========================================================
+   CAREER TRACKS ANIMATED HEADING
+   ========================================================= */
+
+.headingLine {
+  display: block;
+  width: 100%;
+
+  overflow: visible;
+
+  text-align: left;
+  white-space: nowrap;
+}
+
+.headingLinePrimary {
+  color: #f4f6ff;
+
+  font-size:
+    clamp(2.85rem, 4.15vw, 4.95rem);
+
+  line-height: 1;
+}
+
+.headingLineSecondary {
+  margin-top: 10px;
+  padding-bottom: 0.16em;
+
+  overflow: visible;
+
+  font-size:
+    clamp(2.35rem, 3.55vw, 4.2rem);
+
+  line-height: 1.18;
+}
+
+.headingWave {
+  display: inline-block;
+
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+
+  overflow: visible;
+
   color: transparent;
 
   background:
     linear-gradient(
-      100deg,
-      #fff4b5,
-      #d4af37 55%,
-      #a97812
+      90deg,
+      #f4f6ff 0%,
+      #f4f6ff 47%,
+      #d8b24b 49%,
+      #fff6d2 50%,
+      #d8b24b 51%,
+      #f4f6ff 53%,
+      #f4f6ff 100%
+    );
+
+  background-size: 260% 100%;
+  background-position: 0% 50%;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation:
+    careerHeadingGoldWave
+    12s ease-in-out infinite;
+}
+
+.proofWord {
+  display: inline-block;
+
+  padding:
+    0.04em
+    0.04em
+    0.18em;
+
+  margin-bottom: -0.18em;
+
+  overflow: visible;
+  vertical-align: baseline;
+
+  color: transparent;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-weight: 500;
+  font-style: italic;
+
+  background:
+    linear-gradient(
+      110deg,
+      #8f5cf7,
+      #b58cff 52%,
+      #f2d875
     );
 
   background-clip: text;
   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  transform-origin: center;
+
+  animation:
+    careerSystemBreath
+    3.8s ease-in-out infinite;
 }
 
+
 .sectionHeading > p {
+  max-width: 610px;
   margin: 0;
+  padding: 12px 16px;
 
   color: #9fadc0;
 
   font-size: 0.92rem;
   line-height: 1.78;
+
+  border-radius: 24px;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(112, 215, 255, 0.12),
+      transparent 72%
+    );
+
+  text-shadow:
+    0 0 18px rgba(112, 215, 255, 0.15);
 }
 
 .trackList {
@@ -691,6 +803,80 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.72);
 }
 
+
+/* =========================================================
+   LIGHT MODE — CAREER TRACKS HEADING
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"])) .headingLinePrimary,
+:global(html[data-theme="light"]) .headingLinePrimary,
+:global(html.light) .headingLinePrimary,
+:global([data-theme="light"]) .headingLinePrimary,
+:global(.light) .headingLinePrimary {
+  color: #172d50;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .headingWave,
+:global(html[data-theme="light"]) .headingWave,
+:global(html.light) .headingWave,
+:global([data-theme="light"]) .headingWave,
+:global(.light) .headingWave {
+  background:
+    linear-gradient(
+      90deg,
+      #172d50 0%,
+      #172d50 47%,
+      #c99b2f 49%,
+      #ffe7a4 50%,
+      #c99b2f 51%,
+      #172d50 53%,
+      #172d50 100%
+    );
+
+  background-size: 260% 100%;
+  background-position: 0% 50%;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .proofWord,
+:global(html[data-theme="light"]) .proofWord,
+:global(html.light) .proofWord,
+:global([data-theme="light"]) .proofWord,
+:global(.light) .proofWord {
+  background:
+    linear-gradient(
+      110deg,
+      #7650d8,
+      #9d73f2 52%,
+      #b88922
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .sectionHeading > p,
+:global(html[data-theme="light"]) .sectionHeading > p,
+:global(html.light) .sectionHeading > p,
+:global([data-theme="light"]) .sectionHeading > p,
+:global(.light) .sectionHeading > p {
+  color: #667085;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(118, 80, 216, 0.1),
+      transparent 72%
+    );
+
+  text-shadow:
+    0 0 14px rgba(118, 80, 216, 0.1);
+}
+
 /* =========================================================
    LIGHT MODE
    ========================================================= */
@@ -873,6 +1059,42 @@
 /* =========================================================
    ANIMATIONS
    ========================================================= */
+
+
+@keyframes careerHeadingGoldWave {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes careerSystemBreath {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+
+    filter:
+      drop-shadow(
+        0 0 0 rgba(181, 140, 255, 0)
+      );
+  }
+
+  50% {
+    transform: translateY(-2px) scale(1.045);
+
+    filter:
+      drop-shadow(
+        0 8px 18px rgba(143, 92, 247, 0.2)
+      )
+      drop-shadow(
+        0 0 14px rgba(224, 189, 85, 0.14)
+      );
+  }
+}
 
 @keyframes ctaBorderSpin {
   to {
@@ -2388,5 +2610,671 @@
 
   .ctaBorder {
     border-radius: 0;
+  }
+}
+
+/* =========================================================
+   LIGHT MODE — CREAM BOTTOM-RIGHT CARD FINISH
+   Replaces the strong gold corner on every career-track card.
+   Purple highlights and metallic-gold accents remain unchanged.
+   ========================================================= */
+
+/* Shared light-mode cards */
+:global(html:not(.dark):not([data-theme="dark"])) .trackCard,
+:global(html[data-theme="light"]) .trackCard,
+:global([data-theme="light"]) .trackCard,
+:global(.light) .trackCard {
+  background:
+    radial-gradient(
+      circle at 12% 8%,
+      rgba(211, 192, 241, 0.76),
+      transparent 36%
+    ),
+    radial-gradient(
+      circle at 91% 91%,
+      rgba(255, 249, 233, 0.98),
+      rgba(246, 235, 214, 0.72) 34%,
+      transparent 60%
+    ),
+    linear-gradient(
+      145deg,
+      #eee3fb 0%,
+      #f8f1fc 38%,
+      #fffaf1 68%,
+      #f4ead7 100%
+    );
+
+  box-shadow:
+    0 27px 66px rgba(61, 45, 88, 0.16),
+    0 0 25px rgba(177, 146, 199, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.98),
+    inset -22px -28px 45px rgba(181, 145, 86, 0.035);
+}
+
+/* Featured Backend card */
+:global(html:not(.dark):not([data-theme="dark"])) .trackCardFeatured,
+:global(html[data-theme="light"]) .trackCardFeatured,
+:global([data-theme="light"]) .trackCardFeatured,
+:global(.light) .trackCardFeatured {
+  background:
+    radial-gradient(
+      circle at 10% 7%,
+      rgba(197, 170, 234, 0.92),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 92% 92%,
+      rgba(255, 248, 227, 1),
+      rgba(245, 232, 206, 0.8) 36%,
+      transparent 61%
+    ),
+    linear-gradient(
+      145deg,
+      #dec9f5 0%,
+      #f5eafd 36%,
+      #fff9ed 69%,
+      #f1e3cc 100%
+    );
+
+  box-shadow:
+    0 38px 88px rgba(61, 45, 88, 0.22),
+    0 0 40px rgba(177, 146, 199, 0.14),
+    0 0 26px rgba(212, 175, 55, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset -28px -34px 52px rgba(181, 145, 86, 0.04);
+}
+
+/* Right-side cards */
+:global(html:not(.dark):not([data-theme="dark"])) .trackCardSide,
+:global(html[data-theme="light"]) .trackCardSide,
+:global([data-theme="light"]) .trackCardSide,
+:global(.light) .trackCardSide {
+  background:
+    radial-gradient(
+      circle at 13% 8%,
+      rgba(207, 188, 238, 0.76),
+      transparent 37%
+    ),
+    radial-gradient(
+      circle at 91% 91%,
+      rgba(255, 250, 236, 0.98),
+      rgba(246, 237, 219, 0.7) 35%,
+      transparent 60%
+    ),
+    linear-gradient(
+      145deg,
+      #eadff7 0%,
+      #f6effb 42%,
+      #fffaf1 72%,
+      #f3e9d8 100%
+    );
+}
+
+/* Remove the remaining gold glow from the lower-right corner */
+:global(html:not(.dark):not([data-theme="dark"])) .trackGlow,
+:global(html[data-theme="light"]) .trackGlow,
+:global([data-theme="light"]) .trackGlow,
+:global(.light) .trackGlow {
+  background:
+    rgba(247, 235, 211, 0.82);
+
+  filter: blur(48px);
+}
+
+/* Softer cream hover surface */
+:global(html:not(.dark):not([data-theme="dark"])) .trackCard:hover,
+:global(html[data-theme="light"]) .trackCard:hover,
+:global([data-theme="light"]) .trackCard:hover,
+:global(.light) .trackCard:hover {
+  background:
+    radial-gradient(
+      circle at 12% 8%,
+      rgba(204, 180, 237, 0.86),
+      transparent 37%
+    ),
+    radial-gradient(
+      circle at 92% 92%,
+      rgba(255, 252, 241, 1),
+      rgba(248, 239, 220, 0.78) 36%,
+      transparent 62%
+    ),
+    linear-gradient(
+      145deg,
+      #e5d6f7 0%,
+      #f8f0fc 40%,
+      #fffaf0 71%,
+      #f4e8d2 100%
+    );
+
+  box-shadow:
+    0 37px 86px rgba(61, 45, 88, 0.23),
+    0 0 38px rgba(177, 146, 199, 0.16),
+    0 0 24px rgba(212, 175, 55, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* =========================================================
+   CAREER TRACKS + FINAL CTA — SHARED COURSES PAGE BACKGROUND
+   Removes only the outer component backgrounds.
+   Track cards, CTA border, CTA orbit, animations and internal
+   visual styling remain unchanged.
+   ========================================================= */
+
+/* Career tracks outer section */
+.tracksSection {
+  background: transparent;
+  box-shadow: none;
+}
+
+.tracksSection::before {
+  content: none;
+  background: none;
+  background-image: none;
+}
+
+.tracksAmbient {
+  display: none;
+}
+
+/* Final CTA outer section */
+.finalCta {
+  background: transparent;
+  box-shadow: none;
+}
+
+.ctaGrid {
+  display: none;
+  background: none;
+  background-image: none;
+}
+
+/* Light mode */
+:global(html:not(.dark):not([data-theme="dark"])) .tracksSection,
+:global(html[data-theme="light"]) .tracksSection,
+:global([data-theme="light"]) .tracksSection,
+:global(.light) .tracksSection,
+:global(html:not(.dark):not([data-theme="dark"])) .finalCta,
+:global(html[data-theme="light"]) .finalCta,
+:global([data-theme="light"]) .finalCta,
+:global(.light) .finalCta {
+  background: transparent;
+  box-shadow: none;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .tracksSection::before,
+:global(html[data-theme="light"]) .tracksSection::before,
+:global([data-theme="light"]) .tracksSection::before,
+:global(.light) .tracksSection::before {
+  content: none;
+  background: none;
+  background-image: none;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .tracksAmbient,
+:global(html[data-theme="light"]) .tracksAmbient,
+:global([data-theme="light"]) .tracksAmbient,
+:global(.light) .tracksAmbient {
+  display: none;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .ctaGrid,
+:global(html[data-theme="light"]) .ctaGrid,
+:global([data-theme="light"]) .ctaGrid,
+:global(.light) .ctaGrid {
+  display: none;
+  background: none;
+  background-image: none;
+}
+
+/* =========================================================
+   FINAL CAREER HEADING + SHARED BACKGROUND FIXES
+   ========================================================= */
+
+.sectionHeading,
+.sectionHeading > div,
+.sectionHeading h2,
+.headingLine,
+.headingLineSecondary,
+.headingWave,
+.proofWord {
+  overflow: visible;
+}
+
+/* Use the continuous Courses page background outside cards */
+.tracksSection,
+.finalCta {
+  background: transparent !important;
+  background-image: none !important;
+
+  border: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.tracksSection::before,
+.tracksSection::after {
+  content: none !important;
+  display: none !important;
+
+  background: none !important;
+  background-image: none !important;
+
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.tracksAmbient,
+.ctaGrid {
+  display: none !important;
+
+  background: none !important;
+  background-image: none !important;
+}
+
+/* Preserve the CTA's animated border and internal orbit */
+.ctaBorder {
+  display: block;
+}
+
+/* Prevent card shadows from creating a full-width seam in light mode */
+:global(html:not(.dark):not([data-theme="dark"])) .trackCard,
+:global(html[data-theme="light"]) .trackCard,
+:global(html.light) .trackCard,
+:global([data-theme="light"]) .trackCard,
+:global(.light) .trackCard {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.98),
+    inset -22px -28px 45px rgba(181, 145, 86, 0.035) !important;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .trackCardFeatured,
+:global(html[data-theme="light"]) .trackCardFeatured,
+:global(html.light) .trackCardFeatured,
+:global([data-theme="light"]) .trackCardFeatured,
+:global(.light) .trackCardFeatured {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset -28px -34px 52px rgba(181, 145, 86, 0.04) !important;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .trackCard:hover,
+:global(html[data-theme="light"]) .trackCard:hover,
+:global(html.light) .trackCard:hover,
+:global([data-theme="light"]) .trackCard:hover,
+:global(.light) .trackCard:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset -24px -30px 48px rgba(181, 145, 86, 0.045) !important;
+}
+
+@media (max-width: 1050px) {
+  .headingLine {
+    white-space: normal;
+  }
+
+  .sectionHeading > p {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 760px) {
+  .headingLine {
+    white-space: normal;
+  }
+
+  .headingLinePrimary {
+    font-size:
+      clamp(2.45rem, 11vw, 3.7rem);
+  }
+
+  .headingLineSecondary {
+    margin-top: 8px;
+
+    font-size:
+      clamp(2.1rem, 9.5vw, 3.25rem);
+  }
+
+  .sectionHeading > p {
+    max-width: 100%;
+    padding: 10px 0;
+
+    font-size: 0.87rem;
+
+    background: none;
+    text-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .headingWave,
+  .proofWord {
+    animation: none;
+  }
+}
+
+
+/* =========================================================
+   FINAL CTA — NO OUTER GOLD BORDER + MATCHING HEADING STYLE
+   ========================================================= */
+
+/* The animated outer frame is removed completely. */
+.ctaBorder {
+  display: none !important;
+  animation: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* Keep the CTA connected to the shared Courses background. */
+.finalCta {
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* Prevent pseudo-elements from recreating an outer line. */
+.finalCta::before,
+.finalCta::after {
+  content: none !important;
+  display: none !important;
+  border: 0 !important;
+  background: none !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* =========================================================
+   FINAL CTA HEADING
+   Same visual language as the previous Courses headings.
+   ========================================================= */
+
+.finalCta h2 {
+  width: min(1120px, 100%);
+  max-width: 1120px;
+
+  margin: 24px auto 20px;
+  padding-bottom: 0.2em;
+
+  overflow: visible;
+
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.ctaHeadingLine {
+  display: block;
+  width: 100%;
+
+  overflow: visible;
+
+  text-align: center;
+  white-space: nowrap;
+}
+
+.ctaHeadingPrimary {
+  color: #f4f6ff;
+
+  font-size:
+    clamp(3rem, 5.25vw, 6rem);
+
+  line-height: 1;
+}
+
+.ctaHeadingSecondary {
+  margin-top: 10px;
+  padding-bottom: 0.18em;
+
+  overflow: visible;
+
+  font-size:
+    clamp(2.65rem, 4.75vw, 5.45rem);
+
+  line-height: 1.15;
+}
+
+.ctaHeadingWave {
+  display: inline-block;
+
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+
+  overflow: visible;
+
+  color: transparent;
+
+  background:
+    linear-gradient(
+      90deg,
+      #f4f6ff 0%,
+      #f4f6ff 47%,
+      #d8b24b 49%,
+      #fff6d2 50%,
+      #d8b24b 51%,
+      #f4f6ff 53%,
+      #f4f6ff 100%
+    );
+
+  background-size: 260% 100%;
+  background-position: 0% 50%;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation:
+    finalCtaHeadingGoldWave
+    12s ease-in-out infinite;
+}
+
+.ctaProofWord {
+  display: inline-block;
+
+  padding:
+    0.04em
+    0.05em
+    0.2em;
+
+  margin-bottom: -0.2em;
+
+  overflow: visible;
+  vertical-align: baseline;
+
+  color: transparent;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-weight: 500;
+  font-style: italic;
+
+  background:
+    linear-gradient(
+      110deg,
+      #8f5cf7,
+      #b58cff 52%,
+      #f2d875
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  transform-origin: center;
+
+  animation:
+    finalCtaVisibleBreath
+    3.8s ease-in-out infinite;
+}
+.ctaJoinWord {
+  display: inline-block;
+
+  padding-inline: 0.03em;
+
+  color: #f4f6ff;
+  -webkit-text-fill-color: #f4f6ff;
+
+  font-family: inherit;
+  font-weight: inherit;
+  font-style: normal;
+
+  line-height: inherit;
+  vertical-align: baseline;
+}
+/* Override the older generic CTA em styling. */
+.finalCta h2 .ctaProofWord {
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* =========================================================
+   LIGHT MODE — FINAL CTA HEADING
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"])) .ctaHeadingPrimary,
+:global(html[data-theme="light"]) .ctaHeadingPrimary,
+:global(html.light) .ctaHeadingPrimary,
+:global([data-theme="light"]) .ctaHeadingPrimary,
+:global(.light) .ctaHeadingPrimary {
+  color: #172d50;
+}
+:global(html:not(.dark):not([data-theme="dark"]))
+  .ctaJoinWord,
+:global(html[data-theme="light"])
+  .ctaJoinWord,
+:global(html.light)
+  .ctaJoinWord,
+:global([data-theme="light"])
+  .ctaJoinWord,
+:global(.light)
+  .ctaJoinWord {
+  color: #172d50;
+  -webkit-text-fill-color: #172d50;
+}
+:global(html:not(.dark):not([data-theme="dark"])) .ctaHeadingWave,
+:global(html[data-theme="light"]) .ctaHeadingWave,
+:global(html.light) .ctaHeadingWave,
+:global([data-theme="light"]) .ctaHeadingWave,
+:global(.light) .ctaHeadingWave {
+  background:
+    linear-gradient(
+      90deg,
+      #172d50 0%,
+      #172d50 47%,
+      #c99b2f 49%,
+      #ffe7a4 50%,
+      #c99b2f 51%,
+      #172d50 53%,
+      #172d50 100%
+    );
+
+  background-size: 260% 100%;
+  background-position: 0% 50%;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .ctaProofWord,
+:global(html[data-theme="light"]) .ctaProofWord,
+:global(html.light) .ctaProofWord,
+:global([data-theme="light"]) .ctaProofWord,
+:global(.light) .ctaProofWord {
+  background:
+    linear-gradient(
+      110deg,
+      #7650d8,
+      #9d73f2 52%,
+      #b88922
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================================================
+   FINAL CTA HEADING ANIMATIONS
+   ========================================================= */
+
+@keyframes finalCtaHeadingGoldWave {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes finalCtaVisibleBreath {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+
+    filter:
+      drop-shadow(
+        0 0 0 rgba(181, 140, 255, 0)
+      );
+  }
+
+  50% {
+    transform: translateY(-2px) scale(1.045);
+
+    filter:
+      drop-shadow(
+        0 8px 18px rgba(143, 92, 247, 0.2)
+      )
+      drop-shadow(
+        0 0 14px rgba(224, 189, 85, 0.14)
+      );
+  }
+}
+
+/* =========================================================
+   RESPONSIVE FINAL CTA HEADING
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  .ctaHeadingLine {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 760px) {
+  .finalCta h2 {
+    margin-top: 22px;
+    padding-bottom: 0.22em;
+  }
+
+  .ctaHeadingLine {
+    white-space: normal;
+  }
+
+  .ctaHeadingPrimary {
+    font-size:
+      clamp(2.65rem, 12vw, 4.25rem);
+  }
+
+  .ctaHeadingSecondary {
+    margin-top: 8px;
+
+    font-size:
+      clamp(2.25rem, 10.5vw, 3.75rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctaHeadingWave,
+  .ctaProofWord {
+    animation: none;
   }
 }

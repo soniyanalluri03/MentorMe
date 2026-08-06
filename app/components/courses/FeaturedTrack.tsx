@@ -174,24 +174,34 @@ export default function FeaturedTrack() {
           </div>
 
           <h2 id="featured-track-heading">
-            Find the path that
-            <br />
-            fits your <span>ambition.</span>
+            <span
+              className={`${styles.headingLine} ${styles.headingLinePrimary}`}
+            >
+              Find the path that
+            </span>
+            <span
+              className={`${styles.headingLine} ${styles.headingLineSecondary}`}
+            >
+              <span className={styles.headingWave}>
+                fits your</span>{" "}
+              <em className={styles.proofWord}>
+                ambition
+              </em>
+            </span>
           </h2>
         </div>
 
         <div className={styles.headingAside}>
-          <p>
+          <p >
             Every track follows one system: guided
             levels, practical missions, real projects
-            and visible proof.
+            and visible proof
           </p>
 
           <div
             className={styles.trackCounter}
-            aria-label={`Track ${activeIndex + 1} of ${
-              tracks.length
-            }`}
+            aria-label={`Track ${activeIndex + 1} of ${tracks.length
+              }`}
           >
             <span>
               {String(activeIndex + 1).padStart(
@@ -227,13 +237,12 @@ export default function FeaturedTrack() {
             <button
               key={track.id}
               type="button"
-              className={`${styles.trackCard} ${
-                position === "active"
+              className={`${styles.trackCard} ${position === "active"
                   ? styles.trackCardActive
                   : position === "previous"
                     ? styles.trackCardPrevious
                     : styles.trackCardNext
-              }`}
+                }`}
               onClick={() =>
                 setActiveIndex(index)
               }
@@ -243,9 +252,6 @@ export default function FeaturedTrack() {
                 {track.number}
               </span>
 
-              <span className={styles.cardStatus}>
-                {track.status}
-              </span>
 
               <span className={styles.cardIcon}>
                 <TrackIcon
@@ -301,7 +307,7 @@ export default function FeaturedTrack() {
           </div>
 
           <div>
-            <small>{activeTrack.status}</small>
+
 
             <h3>
               {activeTrack.title}{" "}
@@ -349,7 +355,7 @@ export default function FeaturedTrack() {
         <div className={styles.actions}>
           <Link
             href={activeTrack.primaryHref}
-            className={styles.primaryButton}
+            className="navbar-sign-in"
           >
             {activeTrack.primaryLabel}
             <ArrowRight size={18} />

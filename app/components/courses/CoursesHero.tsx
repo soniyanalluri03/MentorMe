@@ -85,9 +85,9 @@ export default function CoursesHero() {
         </div>
 
         <h1>
-          Build the skill.
+          Build the skill
           <br />
-          Show the <span>proof.</span>
+          Show the <span>proof</span>
         </h1>
 
         <h2>
@@ -104,7 +104,7 @@ export default function CoursesHero() {
         <div className={styles.actions}>
           <Link
             href="/roadmap"
-            className={styles.primaryButton}
+            className="navbar-sign-in"
           >
             Explore the roadmap
             <ArrowRight size={19} />

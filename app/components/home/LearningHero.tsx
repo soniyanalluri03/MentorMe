@@ -64,7 +64,7 @@ type PanelDefinition = {
 
 function useThemeMode(): ThemeMode {
   const [theme, setTheme] =
-    useState<ThemeMode>("light");
+  useState<ThemeMode>("dark");
 
   useEffect(() => {
     function updateTheme() {
@@ -865,7 +865,7 @@ function FloatingCodeItem({
       >
         <Text
           ref={textRef}
-          fontSize={theme === "light" ? 0.14 : 0.24}
+          fontSize={0.14}
           color={color}
           anchorX="center"
           anchorY="middle"
@@ -2067,12 +2067,15 @@ function FormulaBackground({
           key={item.className}
           className={`mh-formula ${item.className}`}
           style={{
-            fontSize:
-              item.text.length > 12
-                ? "clamp(0.72rem, 1vw, 1.05rem)"
-                : "clamp(0.52rem, 0.72vw, 0.82rem)",
-            ...(theme === "light" ? { opacity: 0.56 } : {}),
-          }}
+  fontSize:
+    item.text.length > 12
+      ? "clamp(0.48rem, 0.62vw, 0.7rem)"
+      : "clamp(0.4rem, 0.5vw, 0.58rem)",
+
+  fontWeight: 400,
+fontStyle: "normal",
+opacity: theme === "light" ? 0.34 : 0.4,
+}}
         >
           {item.text}
         </span>
@@ -2394,47 +2397,45 @@ export function LearningHero() {
           </div>
         </div>
       </div>
-
-      <div className="mh-bottom-fade" />
-
+      {theme === "light" && <div className="mh-bottom-fade" />}
       <style jsx>{`
-        :global([data-theme="dark"]) .mh-root {
-          background: radial-gradient(
-            circle at 35% 25%,
-            #173654 0%,
-            #0b223b 48%,
-            #061321 100%
-          ) !important;
-        }
-
-        :global([data-theme="light"]) .mh-root {
+:global([data-theme="dark"]) .mh-root {
           background:
             radial-gradient(
-              circle at 72% 32%,
-              rgba(199, 174, 245, 0.52) 0%,
-              rgba(226, 211, 250, 0.68) 34%,
-              rgba(238, 226, 252, 0.94) 66%,
-              rgba(229, 214, 248, 0.98) 100%
+              circle at 12% 8%,
+              rgba(69, 95, 135, 0.28),
+              transparent 31%
+            ),
+            radial-gradient(
+              circle at 88% 78%,
+              rgba(212, 175, 55, 0.08),
+              transparent 26%
+            ),
+            linear-gradient(
+              145deg,
+              #112139,
+              #091525 52%,
+              #050d17
             ) !important;
         }
 
-        :global([data-theme="dark"]) .mh-root {
-          background: radial-gradient(
-            circle at 35% 25%,
-            #173654 0%,
-            #0b223b 48%,
-            #061321 100%
-          ) !important;
-        }
-
         :global([data-theme="light"]) .mh-root {
           background:
             radial-gradient(
-              circle at 72% 32%,
-              rgba(199, 174, 245, 0.52) 0%,
-              rgba(226, 211, 250, 0.68) 34%,
-              rgba(238, 226, 252, 0.94) 66%,
-              rgba(229, 214, 248, 0.98) 100%
+              circle at 12% 8%,
+              rgba(223, 214, 245, 0.92),
+              transparent 32%
+            ),
+            radial-gradient(
+              circle at 88% 78%,
+              rgba(212, 175, 55, 0.12),
+              transparent 27%
+            ),
+            linear-gradient(
+              145deg,
+              #f1ebfa,
+              #fffaf1 54%,
+              #f7f2ea
             ) !important;
         }
 
@@ -2455,20 +2456,12 @@ export function LearningHero() {
         }
 
         .mh-light-center-wash {
-          position: absolute;
-          inset: 0 0 0 auto;
-          z-index: -2;
-          width: 62%;
-          pointer-events: none;
-          background: radial-gradient(
-            circle at 50% 58%,
-            rgba(255, 255, 255, 0.9) 0%,
-            rgba(250, 247, 241, 0.68) 35%,
-            rgba(250, 247, 241, 0.28) 56%,
-            transparent 73%
-          );
+          display: none !important;
         }
-
+          :global([data-theme="dark"]) .mh-light-center-wash {
+            display: none !important;
+            background: none !important;
+          }
 
         .mh-formula-bg {
           position: absolute;
@@ -2518,29 +2511,42 @@ export function LearningHero() {
         }
 
         .mh-formula {
-          position: absolute;
-          display: block;
-          color: rgba(229, 221, 255, 0.48);
-          font-family: "Times New Roman", Georgia, serif;
-          font-weight: 500;
-          line-height: 1;
-          white-space: nowrap;
-          text-shadow:
-            0 0 14px rgba(128, 77, 255, 0.22),
-            0 0 34px rgba(104, 53, 224, 0.14);
-          transform-style: preserve-3d;
-          will-change: transform, opacity, filter;
-          animation: mhFormulaApproach 18s ease-in-out infinite;
-        }
+  position: absolute;
+  display: block;
 
-        .mh-formula-bg--light .mh-formula {
-  color: rgba(15, 15, 27, 0.62);
-  font-weight: 700;
-  opacity: 0.95;
+  color: rgba(229, 221, 255, 0.48);
 
-  text-shadow:
-    0 1px 0 rgba(255,255,255,0.18);
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: inherit;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.01em;
 
+  white-space: nowrap;
+  text-shadow: none;
+
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
+
+  animation: mhFormulaApproach 18s ease-in-out infinite;
+}
+  .mh-formula-bg--dark .mh-formula {
+  color: rgba(229, 221, 255, 0.44);
+
+  font-family: "Times New Roman", Georgia, serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+
+  text-shadow: none;
+}
+
+      .mh-formula-bg--light .mh-formula {
+  color: rgba(15, 15, 27, 0.42);
+  font-weight: 400;
+  opacity: 0.62;
+  text-shadow: none;
   filter: none;
 }
 
@@ -3453,7 +3459,7 @@ export function LearningHero() {
 
         .mh-description {
           max-width: 640px;
-          margin: 18px 0 0;
+         
           display: flex;
           flex-direction: column;
           gap: 7px;
@@ -3461,48 +3467,38 @@ export function LearningHero() {
           line-height: 1.62;
           letter-spacing: 0.003em;
         }
+          
           .mh-description strong {
-            display: block;
-            width: 100%;
-            box-sizing: border-box;
-            margin: 0;
-            padding: 12px 16px;
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  box-sizing: border-box;
+  padding: 16px 28px;
 
-            color: #52627a;
-            font-size: 1.05rem;
-            font-weight: 500;
-            line-height: 1.62;
-            letter-spacing: 0.003em;
-            text-align: left !important;
+  color: var(--muted);
+  font: 760 clamp(1.05rem, 1.22vw, 1.2rem) / 1.62
+    var(--font-sans), sans-serif;
 
-            border-radius: 0;
-            background: linear-gradient(
-              90deg,
-              rgba(232, 235, 244, 0.12) 0%,
-              rgba(218, 227, 241, 0.55) 50%,
-              rgba(232, 235, 244, 0.12) 100%
-            );
+  text-align: left !important;
 
-            text-shadow: none;
-          }
+  border-radius: 999px;
+
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(112, 215, 255, 0.12),
+    transparent 72%
+  );
+
+  text-shadow: 0 0 18px rgba(112, 215, 255, 0.15);
+}
 
         .mh-description span {
           color: #52627a;
           font-size: 0.96rem;
           font-weight: 620;
         }
-        :global([data-theme="dark"]) .mh-description strong {
-          color: #b9c7dc;
 
-          background: linear-gradient(
-            90deg,
-            rgba(15, 42, 70, 0.18) 0%,
-            rgba(43, 72, 119, 0.66) 50%,
-            rgba(15, 42, 70, 0.18) 100%
-          );
-
-          text-shadow: none;
-        }
         :global([data-theme="dark"]) .mh-description span {
           color: #b8c8d9;
         }
@@ -4278,16 +4274,15 @@ export function LearningHero() {
           -webkit-text-stroke: 0;
         }
 
-        :global([data-theme="dark"]) .mh-root .mh-description strong {
-          color: #b8c8d9;
-
-          background: linear-gradient(
-            90deg,
-            rgba(10, 31, 52, 0.18) 0%,
-            rgba(42, 70, 113, 0.64) 50%,
-            rgba(10, 31, 52, 0.18) 100%
-          );
-        }
+          :global([data-theme="dark"]) .mh-root .mh-description strong {
+            background: radial-gradient(
+              ellipse at center,
+              rgba(42, 63, 105, 0.78) 0%,
+              rgba(28, 50, 85, 0.62) 38%,
+              rgba(15, 38, 66, 0.38) 70%,
+              rgba(9, 31, 52, 0) 100%
+            ) !important;
+          }
 
         :global([data-theme="dark"]) .mh-root .mh-description span {
           color: #bccbdd;
@@ -4323,7 +4318,7 @@ export function LearningHero() {
         }
 
         :global([data-theme="dark"]) .mh-root .mh-bottom-fade {
-          background: linear-gradient(to bottom, transparent, rgba(7, 19, 33, 0.98));
+          display: none;
         }
 
         :global([data-theme="light"]) .mh-root .mh-content h1 {
@@ -4472,7 +4467,15 @@ export function LearningHero() {
           --mh-roadmap-loop-angle: 360deg;
         }
       }
-      `}</style>
+
+      /* Same full-width background as the 90-level journey text section */
+      :global([data-theme="dark"]) .mh-root .mh-description strong {
+        position: relative;
+        z-index: 0;
+        isolation: isolate;
+        background: transparent !important;
+      }
+`}</style>
     </section>
   );
 }

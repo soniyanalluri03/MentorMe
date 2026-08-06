@@ -1343,3 +1343,186 @@ html.dark .public-header{
   }
 }
 
+
+/* =====================================================
+   NAVBAR SHOW/HIDE ON SCROLL
+===================================================== */
+
+.public-header-slot {
+  position: relative;
+  z-index: 100;
+  height: 108px;
+}
+.public-header.navbar-visible,
+.public-header.navbar-hidden {
+  position: fixed !important;
+  z-index: 1000;
+
+  top: 20px;
+  left: 50%;
+
+  width: min(
+    calc(100% - 48px),
+    1850px
+  );
+
+  margin: 0;
+  translate: -50% 0;
+
+  transition:
+    transform 360ms
+      cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 260ms ease;
+
+  will-change: transform, opacity;
+}
+
+.public-header.navbar-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.public-header.navbar-hidden {
+  transform: translateY(
+    calc(-100% - 40px)
+  );
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 1180px) {
+  .public-header-slot {
+    height: 100px;
+  }
+
+  .public-header.navbar-visible,
+  .public-header.navbar-hidden {
+    top: 16px;
+    width: calc(100% - 32px);
+  }
+}
+
+@media (max-width: 760px) {
+  .public-header-slot {
+    height: 90px;
+  }
+
+  .public-header.navbar-visible,
+  .public-header.navbar-hidden {
+    top: 12px;
+    width: calc(100% - 24px);
+  }
+}
+
+/* =====================================================
+   NAVBAR SURROUND — MATCH PAGE BACKGROUND
+===================================================== */
+
+/* Default and light theme */
+:root:not([data-theme]) .public-header-slot,
+html[data-theme="light"] .public-header-slot,
+html.light .public-header-slot {
+  background:
+    radial-gradient(
+      circle at 8% 30%,
+      rgba(218, 204, 247, 0.94) 0%,
+      rgba(236, 226, 249, 0.72) 32%,
+      transparent 58%
+    ),
+    radial-gradient(
+      circle at 90% 28%,
+      rgba(250, 224, 139, 0.48) 0%,
+      rgba(255, 246, 215, 0.3) 34%,
+      transparent 62%
+    ),
+    linear-gradient(
+      110deg,
+      #f3ecfb 0%,
+      #fffaf5 50%,
+      #fff8e8 100%
+    ) !important;
+}
+
+/* Dark theme */
+html[data-theme="dark"] .public-header-slot,
+html.dark .public-header-slot {
+  background:
+    radial-gradient(
+      circle at 35% 25%,
+      #173654 0%,
+      #0b223b 48%,
+      #061321 100%
+    ) !important;
+}
+
+/* =====================================================
+   FINAL NAVBAR — USE THE PAGE BACKGROUND
+   Keeps navbar content and animated gold border.
+===================================================== */
+
+/* Remove the background area reserved behind the navbar */
+.public-header-slot,
+:root:not([data-theme]) .public-header-slot,
+html[data-theme="light"] .public-header-slot,
+html[data-theme="dark"] .public-header-slot,
+html.light .public-header-slot,
+html.dark .public-header-slot {
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove the navbar container surface */
+/* Restore navbar surface inside the gold border */
+
+/* Dark mode */
+html[data-theme="dark"] .public-header,
+html.dark .public-header {
+  background:
+    linear-gradient(
+      120deg,
+      rgba(235, 240, 247, 0.16) 0%,
+      rgba(199, 211, 225, 0.07) 25%,
+      rgba(199, 211, 225, 0) 48%
+    ),
+    linear-gradient(
+      145deg,
+      #173a5b 0%,
+      #0d2b49 50%,
+      #071a30 100%
+    ) !important;
+
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.35) !important;
+
+  -webkit-backdrop-filter:
+    blur(18px) saturate(140%) !important;
+  backdrop-filter:
+    blur(18px) saturate(140%) !important;
+}
+
+/* Light mode */
+:root:not([data-theme]) .public-header,
+html[data-theme="light"] .public-header,
+html.light .public-header {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(245, 240, 252, 0.96) 0%,
+      rgba(239, 232, 249, 0.95) 18%,
+      rgba(250, 246, 241, 0.97) 42%,
+      rgba(255, 251, 244, 0.96) 68%,
+      rgba(252, 245, 231, 0.96) 100%
+    ) !important;
+
+  box-shadow:
+    0 18px 40px rgba(68, 52, 86, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72) !important;
+
+  -webkit-backdrop-filter:
+    blur(24px) saturate(140%) !important;
+  backdrop-filter:
+    blur(24px) saturate(140%) !important;
+}

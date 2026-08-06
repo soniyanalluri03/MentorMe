@@ -1,12 +1,16 @@
 "use client";
+
 import type { ReactNode } from "react";
+
 import styles from "./highlight-card.module.css";
+
 interface HighlightCardProps {
   number: string;
   title: string;
   description: string[];
   icon?: ReactNode;
 }
+
 export default function HighlightCard({
   number,
   title,
@@ -64,6 +68,11 @@ export default function HighlightCard({
         <i />
         <i />
       </div>
+
+      <span
+        className={styles.fold}
+        aria-hidden="true"
+      />
     </article>
   );
 }

@@ -120,39 +120,150 @@
 }
 
 .heading h2 {
-  max-width: 920px;
+  max-width: 980px;
 
   margin: 16px 0 0;
+  padding-bottom: 0.18em;
 
-  font-size:
-    clamp(2.8rem, 4.5vw, 5.3rem);
+  overflow: visible;
 
-  line-height: 0.94;
+  line-height: 0.96;
   letter-spacing: -0.052em;
 }
 
-.heading h2 span {
+/* =========================================================
+   COURSE COMPARISON ANIMATED HEADING
+   ========================================================= */
+
+.headingLine {
+  display: block;
+  width: 100%;
+
+  overflow: visible;
+
+  text-align: left;
+  white-space: nowrap;
+}
+
+.headingLinePrimary {
+  color: #f4f6ff;
+
+  font-size:
+    clamp(2.85rem, 4.15vw, 4.95rem);
+
+  line-height: 1;
+}
+
+.headingLineSecondary {
+  margin-top: 10px;
+  padding-bottom: 0.16em;
+
+  overflow: visible;
+
+  font-size:
+    clamp(2.35rem, 3.55vw, 4.2rem);
+
+  line-height: 1.18;
+}
+
+.headingWave {
+  display: inline-block;
+
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+
+  overflow: visible;
+
   color: transparent;
 
   background:
     linear-gradient(
-      100deg,
-      #fff4b5,
-      #d4af37 55%,
-      #a97812
+      90deg,
+      #f4f6ff 0%,
+      #f4f6ff 47%,
+      #d8b24b 49%,
+      #fff6d2 50%,
+      #d8b24b 51%,
+      #f4f6ff 53%,
+      #f4f6ff 100%
+    );
+
+  background-size: 260% 100%;
+  background-position: 0% 50%;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation:
+    comparisonHeadingGoldWave
+    12s ease-in-out infinite;
+}
+
+.proofWord {
+  display: inline-block;
+
+  padding:
+    0.04em
+    0.04em
+    0.18em;
+
+  margin-bottom: -0.18em;
+
+  overflow: visible;
+  vertical-align: baseline;
+
+  color: transparent;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-weight: 500;
+  font-style: italic;
+
+  background:
+    linear-gradient(
+      110deg,
+      #8f5cf7,
+      #b58cff 52%,
+      #f2d875
     );
 
   background-clip: text;
   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  transform-origin: center;
+
+  animation:
+    comparisonMomentumBreath
+    3.8s ease-in-out infinite;
 }
 
+
 .heading p {
+  max-width: 610px;
   margin: 0;
+  padding: 12px 16px;
 
   color: #9fadc0;
 
   font-size: 0.92rem;
   line-height: 1.78;
+
+  border-radius: 24px;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(112, 215, 255, 0.12),
+      transparent 72%
+    );
+
+  text-shadow:
+    0 0 18px rgba(112, 215, 255, 0.15);
 }
 
 .comparisonGrid {
@@ -1060,6 +1171,80 @@
   background: #596779;
 }
 
+
+/* =========================================================
+   LIGHT MODE — COMPARISON HEADING
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"])) .headingLinePrimary,
+:global(html[data-theme="light"]) .headingLinePrimary,
+:global(html.light) .headingLinePrimary,
+:global([data-theme="light"]) .headingLinePrimary,
+:global(.light) .headingLinePrimary {
+  color: #172d50;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .headingWave,
+:global(html[data-theme="light"]) .headingWave,
+:global(html.light) .headingWave,
+:global([data-theme="light"]) .headingWave,
+:global(.light) .headingWave {
+  background:
+    linear-gradient(
+      90deg,
+      #172d50 0%,
+      #172d50 47%,
+      #c99b2f 49%,
+      #ffe7a4 50%,
+      #c99b2f 51%,
+      #172d50 53%,
+      #172d50 100%
+    );
+
+  background-size: 260% 100%;
+  background-position: 0% 50%;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .proofWord,
+:global(html[data-theme="light"]) .proofWord,
+:global(html.light) .proofWord,
+:global([data-theme="light"]) .proofWord,
+:global(.light) .proofWord {
+  background:
+    linear-gradient(
+      110deg,
+      #7650d8,
+      #9d73f2 52%,
+      #b88922
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .heading p,
+:global(html[data-theme="light"]) .heading p,
+:global(html.light) .heading p,
+:global([data-theme="light"]) .heading p,
+:global(.light) .heading p {
+  color: #667085;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(118, 80, 216, 0.1),
+      transparent 72%
+    );
+
+  text-shadow:
+    0 0 14px rgba(118, 80, 216, 0.1);
+}
+
 /* Light mode */
 
 :global(html:not(.dark):not([data-theme="dark"])) .section,
@@ -1183,6 +1368,42 @@
 }
 
 /* Animations */
+
+
+@keyframes comparisonHeadingGoldWave {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes comparisonMomentumBreath {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+
+    filter:
+      drop-shadow(
+        0 0 0 rgba(181, 140, 255, 0)
+      );
+  }
+
+  50% {
+    transform: translateY(-2px) scale(1.045);
+
+    filter:
+      drop-shadow(
+        0 8px 18px rgba(143, 92, 247, 0.2)
+      )
+      drop-shadow(
+        0 0 14px rgba(224, 189, 85, 0.14)
+      );
+  }
+}
 
 @keyframes rotateComparisonBorder {
   to {
@@ -1997,5 +2218,385 @@
 
   .comparisonGrid {
     margin-top: 26px;
+  }
+}
+
+/* =========================================================
+   LIGHT MODE — PURPLE + CREAM MENTORME CARD
+   Replaces the heavy gold card surface while retaining
+   metallic-gold borders, icons and important accents.
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard,
+:global(html[data-theme="light"]) .mentorCard,
+:global([data-theme="light"]) .mentorCard,
+:global(.light) .mentorCard {
+  color: #20283a;
+
+  border-color: transparent;
+
+  background:
+    radial-gradient(
+      circle at 13% 8%,
+      rgba(197, 169, 235, 0.92),
+      transparent 37%
+    ),
+    radial-gradient(
+      circle at 88% 88%,
+      rgba(255, 248, 226, 0.98),
+      rgba(247, 233, 205, 0.76) 34%,
+      transparent 60%
+    ),
+    linear-gradient(
+      145deg,
+      #e5d5f7 0%,
+      #f4ecfc 34%,
+      #fffaf0 67%,
+      #f3e5c9 100%
+    );
+
+  box-shadow:
+    0 34px 82px rgba(76, 48, 108, 0.22),
+    0 0 42px rgba(175, 141, 213, 0.17),
+    0 0 46px rgba(212, 175, 55, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset -24px -30px 48px rgba(171, 139, 87, 0.045);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard:hover,
+:global(html[data-theme="light"]) .mentorCard:hover,
+:global([data-theme="light"]) .mentorCard:hover,
+:global(.light) .mentorCard:hover {
+  box-shadow:
+    0 44px 100px rgba(76, 48, 108, 0.29),
+    0 0 58px rgba(175, 141, 213, 0.23),
+    0 0 54px rgba(212, 175, 55, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* Softer purple-and-cream shine */
+:global(html:not(.dark):not([data-theme="dark"])) .mentorShine,
+:global(html[data-theme="light"]) .mentorShine,
+:global([data-theme="light"]) .mentorShine,
+:global(.light) .mentorShine {
+  background:
+    linear-gradient(
+      110deg,
+      transparent 34%,
+      rgba(255, 255, 255, 0.74) 47%,
+      rgba(226, 207, 247, 0.34) 52%,
+      transparent 65%
+    );
+}
+
+/* Header remains dark and readable */
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .mentorEyebrow,
+:global(html[data-theme="light"]) .mentorCard .mentorEyebrow,
+:global([data-theme="light"]) .mentorCard .mentorEyebrow,
+:global(.light) .mentorCard .mentorEyebrow {
+  color: #865f12;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .cardHeader h3,
+:global(html[data-theme="light"]) .mentorCard .cardHeader h3,
+:global([data-theme="light"]) .mentorCard .cardHeader h3,
+:global(.light) .mentorCard .cardHeader h3,
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard blockquote,
+:global(html[data-theme="light"]) .mentorCard blockquote,
+:global([data-theme="light"]) .mentorCard blockquote,
+:global(.light) .mentorCard blockquote {
+  color: #20283a;
+}
+
+/* Flow chips remain gold but less saturated */
+:global(html:not(.dark):not([data-theme="dark"])) .mentorFlow > div > span,
+:global(html[data-theme="light"]) .mentorFlow > div > span,
+:global([data-theme="light"]) .mentorFlow > div > span,
+:global(.light) .mentorFlow > div > span {
+  color: #3f2a05;
+
+  border-color:
+    rgba(139, 91, 8, 0.32);
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff3b8,
+      #ebc85b 58%,
+      #c18a17
+    );
+
+  box-shadow:
+    0 8px 18px rgba(99, 61, 4, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+/* Proof panel becomes cream with a slight lavender cast */
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .proofPanel,
+:global(html[data-theme="light"]) .mentorCard .proofPanel,
+:global([data-theme="light"]) .mentorCard .proofPanel,
+:global(.light) .mentorCard .proofPanel {
+  border-color:
+    rgba(123, 91, 145, 0.18);
+
+  background:
+    radial-gradient(
+      circle at 10% 0%,
+      rgba(229, 213, 247, 0.48),
+      transparent 42%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.84),
+      rgba(255, 248, 230, 0.76)
+    );
+
+  box-shadow:
+    0 13px 30px rgba(76, 48, 108, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.98);
+}
+
+/* Proof stat boxes */
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .proofStats span,
+:global(html[data-theme="light"]) .mentorCard .proofStats span,
+:global([data-theme="light"]) .mentorCard .proofStats span,
+:global(.light) .mentorCard .proofStats span {
+  color: #655f70;
+
+  border-color:
+    rgba(109, 80, 133, 0.14);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.72),
+      rgba(244, 236, 250, 0.58)
+    );
+}
+
+/* Feature list separators become purple-neutral */
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .pointList li,
+:global(html[data-theme="light"]) .mentorCard .pointList li,
+:global([data-theme="light"]) .mentorCard .pointList li,
+:global(.light) .mentorCard .pointList li {
+  color: #566174;
+
+  border-color:
+    rgba(103, 77, 127, 0.13);
+}
+
+/* Outcome badge uses cream and purple instead of gold fill */
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .outcomeBadge,
+:global(html[data-theme="light"]) .mentorCard .outcomeBadge,
+:global([data-theme="light"]) .mentorCard .outcomeBadge,
+:global(.light) .mentorCard .outcomeBadge {
+  color: #8a6212;
+
+  border-color:
+    rgba(132, 95, 20, 0.2);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.7),
+      rgba(235, 221, 247, 0.62)
+    );
+
+  box-shadow:
+    0 9px 22px rgba(76, 48, 108, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+/* Orbit becomes cream-purple, with gold nodes retained */
+:global(html:not(.dark):not([data-theme="dark"])) .mentorOrbit,
+:global(html[data-theme="light"]) .mentorOrbit,
+:global([data-theme="light"]) .mentorOrbit,
+:global(.light) .mentorOrbit {
+  border-color:
+    rgba(128, 96, 154, 0.16);
+
+  box-shadow:
+    0 0 0 46px rgba(226, 211, 242, 0.07),
+    0 0 0 92px rgba(249, 240, 220, 0.05);
+}
+
+/* =========================================================
+   COURSE COMPARISON SECTION — USE SHARED COURSES BACKGROUND
+   Removes only the component-level outer background layers.
+   Cards, VS badge, animations, proof panels and interactions
+   remain unchanged.
+   ========================================================= */
+
+.section {
+  background: transparent;
+  box-shadow: none;
+}
+
+.section::before {
+  content: none;
+  background: none;
+  background-image: none;
+}
+
+.ambientOne,
+.ambientTwo {
+  display: none;
+}
+
+/* Light mode */
+:global(html:not(.dark):not([data-theme="dark"])) .section,
+:global(html[data-theme="light"]) .section,
+:global([data-theme="light"]) .section,
+:global(.light) .section {
+  background: transparent;
+  box-shadow: none;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .section::before,
+:global(html[data-theme="light"]) .section::before,
+:global([data-theme="light"]) .section::before,
+:global(.light) .section::before {
+  content: none;
+  background: none;
+  background-image: none;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .ambientOne,
+:global(html:not(.dark):not([data-theme="dark"])) .ambientTwo,
+:global(html[data-theme="light"]) .ambientOne,
+:global(html[data-theme="light"]) .ambientTwo,
+:global([data-theme="light"]) .ambientOne,
+:global([data-theme="light"]) .ambientTwo,
+:global(.light) .ambientOne,
+:global(.light) .ambientTwo {
+  display: none;
+}
+
+/* =========================================================
+   FINAL COMPARISON HEADING + SECTION FIXES
+   ========================================================= */
+
+.heading,
+.heading > div,
+.heading h2,
+.headingLine,
+.headingLineSecondary,
+.headingWave,
+.proofWord {
+  overflow: visible;
+}
+
+/* Keep the component on the shared Courses page background */
+.section {
+  background: transparent !important;
+  background-image: none !important;
+
+  border: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.section::before,
+.section::after {
+  content: none !important;
+  display: none !important;
+
+  background: none !important;
+  background-image: none !important;
+
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.ambientOne,
+.ambientTwo {
+  display: none !important;
+}
+
+/* Prevent light-mode card shadows from spilling into the next section */
+:global(html:not(.dark):not([data-theme="dark"])) .traditionalCard,
+:global(html[data-theme="light"]) .traditionalCard,
+:global(html.light) .traditionalCard,
+:global([data-theme="light"]) .traditionalCard,
+:global(.light) .traditionalCard {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85) !important;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard,
+:global(html[data-theme="light"]) .mentorCard,
+:global(html.light) .mentorCard,
+:global([data-theme="light"]) .mentorCard,
+:global(.light) .mentorCard {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset -24px -30px 48px rgba(171, 139, 87, 0.045) !important;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .traditionalCard:hover,
+:global(html[data-theme="light"]) .traditionalCard:hover,
+:global(html.light) .traditionalCard:hover,
+:global([data-theme="light"]) .traditionalCard:hover,
+:global(.light) .traditionalCard:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .mentorCard:hover,
+:global(html[data-theme="light"]) .mentorCard:hover,
+:global(html.light) .mentorCard:hover,
+:global([data-theme="light"]) .mentorCard:hover,
+:global(.light) .mentorCard:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset -24px -30px 48px rgba(171, 139, 87, 0.05) !important;
+}
+
+.comparisonGrid {
+  filter: none !important;
+}
+
+@media (max-width: 1100px) {
+  .headingLine {
+    white-space: normal;
+  }
+
+  .heading p {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 700px) {
+  .headingLine {
+    white-space: normal;
+  }
+
+  .headingLinePrimary {
+    font-size:
+      clamp(2.45rem, 11vw, 3.7rem);
+  }
+
+  .headingLineSecondary {
+    margin-top: 8px;
+
+    font-size:
+      clamp(2.1rem, 9.5vw, 3.25rem);
+  }
+
+  .heading p {
+    max-width: 100%;
+    padding: 10px 0;
+
+    font-size: 0.87rem;
+
+    background: none;
+    text-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .headingWave,
+  .proofWord {
+    animation: none;
   }
 }

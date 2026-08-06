@@ -77,16 +77,27 @@ export default function CourseComparison() {
           </div>
 
           <h2 id="course-comparison-heading">
-            Content gives information.
-            <br />
-            <span>MentorMe creates momentum.</span>
+            <span
+              className={`${styles.headingLine} ${styles.headingLinePrimary}`}
+            >
+              Content gives information.
+            </span>
+            <span
+              className={`${styles.headingLine} ${styles.headingLineSecondary}`}
+            >
+              <span className={styles.headingWave}>
+                MentorMe creates </span>{" "}
+              <em className={styles.proofWord}>
+                momentum
+              </em>
+            </span>
           </h2>
         </div>
 
         <p>
           Compare passive course consumption with a
           guided system built around practice, projects
-          and visible career proof.
+          and visible career proof
         </p>
       </header>
 
@@ -122,8 +133,8 @@ export default function CourseComparison() {
 
                 {index <
                   traditionalFlow.length - 1 && (
-                  <ArrowRight size={15} />
-                )}
+                    <ArrowRight size={15} />
+                  )}
               </div>
             ))}
           </div>
@@ -168,7 +179,7 @@ export default function CourseComparison() {
             <span>VS</span>
           </div>
 
-          
+
         </div>
 
         <article className={styles.mentorCard}>
@@ -226,8 +237,8 @@ export default function CourseComparison() {
 
                   {index <
                     mentorFlow.length - 1 && (
-                    <ArrowRight size={15} />
-                  )}
+                      <ArrowRight size={15} />
+                    )}
                 </div>
               );
             })}

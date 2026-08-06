@@ -56,10 +56,23 @@ export default function MentorMethod() {
           <div className={styles.kicker}>
             The MentorMe method
           </div>
-
           <h2 id="mentor-method-heading">
-            Learning becomes powerful when{" "}
-            <span>progress becomes proof.</span>
+            <span
+              className={`${styles.headingLine} ${styles.headingLinePrimary}`}
+            >
+              Learning becomes powerful
+            </span>
+
+            <span
+              className={`${styles.headingLine} ${styles.headingLineSecondary}`}
+            >
+              <span className={styles.headingWave}>
+                when progress becomes
+              </span>{" "}
+              <em className={styles.proofWord}>
+                proof
+              </em>
+            </span>
           </h2>
         </div>
 
@@ -67,7 +80,7 @@ export default function MentorMethod() {
           Every level moves you through one repeatable
           system. Learn with direction, practise
           immediately, build something real and prove
-          the result before moving forward.
+          the result before moving forward
         </p>
       </div>
 

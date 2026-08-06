@@ -3,7 +3,6 @@ import Link from "next/link";
 import {
   ArrowRight,
   ArrowUpRight,
-  Clock3,
   Database,
   Layers3,
   Palette,
@@ -30,41 +29,57 @@ interface CareerTrack {
 
 const tracks: CareerTrack[] = [
   {
-    number: "02",
+    number: "01",
     icon: Database,
     title: "Backend Developer",
     description:
       "Design secure APIs, dependable databases and scalable services through production-style missions.",
-    status: "Coming soon",
+    status: "Available",
     category: "Systems & APIs",
-    skills: ["Python", "FastAPI", "PostgreSQL", "System design"],
+    skills: [
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "System design",
+    ],
     tone: "blue",
   },
   {
-    number: "03",
+    number: "02",
     icon: Palette,
     title: "UI/UX Designer",
     description:
       "Turn user problems into polished interfaces, design systems and portfolio-ready case studies.",
     status: "Coming soon",
     category: "Product design",
-    skills: ["Research", "Figma", "Prototyping"],
+    skills: [
+      "Research",
+      "Figma",
+      "Prototyping",
+    ],
     tone: "purple",
   },
   {
-    number: "04",
+    number: "03",
     icon: Layers3,
     title: "Data Analyst",
     description:
       "Transform raw information into useful dashboards, insights and business-focused decisions.",
     status: "Planned",
     category: "Data & insights",
-    skills: ["SQL", "Analytics", "Visualisation"],
+    skills: [
+      "SQL",
+      "Analytics",
+      "Visualisation",
+    ],
     tone: "slate",
   },
 ];
 
-const toneClasses: Record<TrackTone, string> = {
+const toneClasses: Record<
+  TrackTone,
+  string
+> = {
   blue: styles.toneBlue,
   purple: styles.tonePurple,
   slate: styles.toneSlate,
@@ -89,9 +104,21 @@ export default function CareerTracksAndCTA() {
             </div>
 
             <h2 id="expanding-career-tracks">
-              More career directions.{" "}
-              <span>
-                The same proof-first system.
+              <span
+                className={`${styles.headingLine} ${styles.headingLinePrimary}`}
+              >
+                More career directions.
+              </span>
+
+              <span
+                className={`${styles.headingLine} ${styles.headingLineSecondary}`}
+              >
+                <span className={styles.headingWave}>
+                  The same proof-first
+                </span>{" "}
+                <em className={styles.proofWord}>
+                  system
+                </em>
               </span>
             </h2>
           </div>
@@ -150,11 +177,6 @@ export default function CareerTracksAndCTA() {
                   <span className={styles.trackNumber}>
                     {track.number}
                   </span>
-
-                  <span className={styles.trackStatus}>
-                    <Clock3 size={13} />
-                    {track.status}
-                  </span>
                 </div>
 
                 <div className={styles.trackIcon}>
@@ -174,7 +196,9 @@ export default function CareerTracksAndCTA() {
 
                 <div className={styles.skillList}>
                   {track.skills.map((skill) => (
-                    <span key={skill}>{skill}</span>
+                    <span key={skill}>
+                      {skill}
+                    </span>
                   ))}
                 </div>
 
@@ -191,9 +215,6 @@ export default function CareerTracksAndCTA() {
                   className={styles.trackVisual}
                   aria-hidden="true"
                 >
-                  <span />
-                  <span />
-                  <span />
                   <b />
                 </div>
               </article>
@@ -206,11 +227,6 @@ export default function CareerTracksAndCTA() {
         className={styles.finalCta}
         aria-labelledby="career-journey-cta"
       >
-        <div
-          className={styles.ctaBorder}
-          aria-hidden="true"
-        />
-
         <div
           className={styles.ctaGrid}
           aria-hidden="true"
@@ -237,18 +253,33 @@ export default function CareerTracksAndCTA() {
         </span>
 
         <h2 id="career-journey-cta">
-          A career goal becomes real when the{" "}
-          <em>next step is visible.</em>
+          <span
+            className={`${styles.ctaHeadingLine} ${styles.ctaHeadingPrimary}`}
+          >
+            A career goal becomes real
+          </span>
+
+          <span
+            className={`${styles.ctaHeadingLine} ${styles.ctaHeadingSecondary}`}
+          >
+            <span className={styles.ctaHeadingWave}>
+  when the next step is
+</span>{" "}
+
+<em className={styles.ctaProofWord}>
+  visible
+</em>
+          </span>
         </h2>
 
         <p>
           Choose the Frontend Engineer track and
           begin building measurable progress from
-          your very first level.
+          your very first level
         </p>
 
         <Link
-          className={styles.goldButton}
+          className="navbar-sign-in"
           href="/signup"
         >
           Start your journey

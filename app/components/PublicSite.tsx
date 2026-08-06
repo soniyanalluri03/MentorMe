@@ -14,6 +14,7 @@ import FeaturedTrack from "./courses/FeaturedTrack";
 import MentorMethod from "./courses/MentorMethod";
 import RoadmapExperience from "./roadmap/RoadmapExperience";
 import styles from "../../app/home.module.css";
+
 type Page =
   | "home"
   | "courses"

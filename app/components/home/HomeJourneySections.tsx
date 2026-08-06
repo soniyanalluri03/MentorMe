@@ -369,11 +369,11 @@ export function HomeJourneySections() {
                 with one clear
               </span>{" "}
 
-              <em>step.</em>
+              <em>step</em>
             </h2>
             <span>
               Complete the first five levels, create your first proof, and
-              unlock the complete 90-level journey.
+              unlock the complete 90-level journey
             </span>
           </header>
 
@@ -510,12 +510,12 @@ export function HomeJourneySections() {
               <span className="hj-heading-wave">
                 Every milestone unlocks
               </span>{" "}
-              <em>more.</em>
+              <em>more</em>
             </span>
             </h2>
             <span>
               Follow the road from guided learning to XP, projects, mentor
-              feedback, portfolio proof, and real career opportunities.
+              feedback, portfolio proof, and real career opportunities
             </span>
           </header>
 

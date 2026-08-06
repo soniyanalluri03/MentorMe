@@ -117,7 +117,7 @@ export default function CareerTracksAndCTA() {
                   The same proof-first
                 </span>{" "}
                 <em className={styles.proofWord}>
-                  system.
+                  system
                 </em>
               </span>
             </h2>
@@ -267,7 +267,7 @@ export default function CareerTracksAndCTA() {
 </span>{" "}
 
 <em className={styles.ctaProofWord}>
-  visible.
+  visible
 </em>
           </span>
         </h2>
@@ -275,7 +275,7 @@ export default function CareerTracksAndCTA() {
         <p>
           Choose the Frontend Engineer track and
           begin building measurable progress from
-          your very first level.
+          your very first level
         </p>
 
         <Link

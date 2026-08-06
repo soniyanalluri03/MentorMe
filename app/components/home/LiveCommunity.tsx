@@ -227,7 +227,7 @@ useEffect(() => {
             <span
               className={styles.colorfulText}
             >
-              together.
+              together
             </span>
           </h2>
 
@@ -235,7 +235,7 @@ useEffect(() => {
             A living stream of projects,
             milestones, mentor feedback, and
             momentum from the Mentor Me
-            community.
+            community
           </p>
         </motion.header>
  </div>       

@@ -7,6 +7,8 @@ import {
 
 import HighlightCard from "@/app/components/courses/ui/highlight-card";
 
+import styles from "./MentorMethod.module.css";
+
 const steps = [
   {
     number: "01",
@@ -40,27 +42,46 @@ const steps = [
 
 export default function MentorMethod() {
   return (
-    <section className="method section-shell">
-      <div className="section-heading">
-        <div>
-          <div className="section-kicker">
-            THE MENTORME METHOD
+    <section
+      className={styles.section}
+      aria-labelledby="mentor-method-heading"
+    >
+      <div
+        className={styles.ambient}
+        aria-hidden="true"
+      />
+
+      <div className={styles.heading}>
+        <div className={styles.headingCopy}>
+          <div className={styles.kicker}>
+            The MentorMe method
           </div>
 
-          <h2>
+          <h2 id="mentor-method-heading">
             Learning becomes powerful when{" "}
             <span>progress becomes proof.</span>
           </h2>
         </div>
 
-        <p>
-          Every level moves you through one repeatable system. Learn
-          with direction, practise immediately, build something real
-          and prove the result before moving forward.
+        <p className={styles.intro}>
+          Every level moves you through one repeatable
+          system. Learn with direction, practise
+          immediately, build something real and prove
+          the result before moving forward.
         </p>
       </div>
 
-      <div className="method-grid">
+      <div className={styles.processLine}>
+        <span>Learn</span>
+        <i aria-hidden="true" />
+        <span>Practice</span>
+        <i aria-hidden="true" />
+        <span>Build</span>
+        <i aria-hidden="true" />
+        <span>Prove</span>
+      </div>
+
+      <div className={styles.grid}>
         {steps.map((step) => {
           const Icon = step.icon;
 

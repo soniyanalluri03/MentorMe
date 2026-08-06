@@ -1398,3 +1398,1071 @@
     transform: translateY(-2px);
   }
 }
+
+/* =========================================================
+   LIGHT MODE — LEFT FLOATING ACTIVE TRACK CARD ONLY
+   Layered purple + cream + soft-gold treatment
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1),
+:global(html[data-theme="light"])
+  .selector:nth-child(1),
+:global([data-theme="light"])
+  .selector:nth-child(1) {
+  color: #263044;
+
+  border-color:
+    rgba(177, 132, 28, 0.42);
+
+  background:
+    radial-gradient(
+      circle at 12% 12%,
+      rgba(219, 205, 245, 0.82),
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 92% 88%,
+      rgba(212, 175, 55, 0.2),
+      transparent 36%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.96) 0%,
+      rgba(248, 242, 255, 0.94) 42%,
+      rgba(255, 249, 235, 0.96) 72%,
+      rgba(247, 232, 186, 0.9) 100%
+    );
+
+  box-shadow:
+    0 18px 40px rgba(76, 52, 109, 0.16),
+    0 0 25px rgba(212, 175, 55, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.98),
+    inset -16px -18px 28px rgba(212, 175, 55, 0.05);
+
+  backdrop-filter:
+    blur(18px)
+    saturate(1.08);
+}
+
+/* More visible gold edge */
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1)::before,
+:global(html[data-theme="light"])
+  .selector:nth-child(1)::before,
+:global([data-theme="light"])
+  .selector:nth-child(1)::before {
+  content: "";
+
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8e8a0,
+      #d4af37 42%,
+      #fff4bf 68%,
+      #a97812
+    );
+
+  box-shadow:
+    0 0 15px rgba(212, 175, 55, 0.14);
+
+  opacity: 0.92;
+}
+
+/* Inner cream layer keeps the border visible */
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1)::after,
+:global(html[data-theme="light"])
+  .selector:nth-child(1)::after,
+:global([data-theme="light"])
+  .selector:nth-child(1)::after {
+  content: "";
+
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+
+  border-radius:
+    calc(14px - 1px);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.97),
+      rgba(246, 239, 253, 0.94) 48%,
+      rgba(255, 248, 230, 0.96)
+    );
+}
+
+/* Cream and gold icon tile */
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1) .selectorIcon,
+:global(html[data-theme="light"])
+  .selector:nth-child(1) .selectorIcon,
+:global([data-theme="light"])
+  .selector:nth-child(1) .selectorIcon {
+  color: #946b11;
+
+  border-color:
+    rgba(177, 132, 28, 0.36);
+
+  background:
+    radial-gradient(
+      circle at 24% 18%,
+      rgba(255, 255, 255, 0.98),
+      transparent 36%
+    ),
+    linear-gradient(
+      145deg,
+      #fffaf0 0%,
+      #f7edcd 52%,
+      #e8ca6b 100%
+    );
+
+  box-shadow:
+    5px 6px 0 rgba(91, 66, 119, 0.07),
+    0 10px 20px rgba(76, 52, 109, 0.11),
+    0 0 18px rgba(212, 175, 55, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+
+  transition:
+    transform 260ms ease,
+    box-shadow 260ms ease,
+    filter 260ms ease;
+}
+
+/* Text */
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1) small,
+:global(html[data-theme="light"])
+  .selector:nth-child(1) small,
+:global([data-theme="light"])
+  .selector:nth-child(1) small {
+  color: #8a6a24;
+}
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1) strong,
+:global(html[data-theme="light"])
+  .selector:nth-child(1) strong,
+:global([data-theme="light"])
+  .selector:nth-child(1) strong {
+  color: #252f43;
+}
+
+/* Status dot */
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1) > i,
+:global(html[data-theme="light"])
+  .selector:nth-child(1) > i,
+:global([data-theme="light"])
+  .selector:nth-child(1) > i {
+  background: #c7921a;
+
+  box-shadow:
+    0 0 0 4px rgba(212, 175, 55, 0.12),
+    0 0 12px rgba(212, 175, 55, 0.36);
+}
+
+/* Premium hover and active state */
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1):hover,
+:global(html[data-theme="light"])
+  .selector:nth-child(1):hover,
+:global([data-theme="light"])
+  .selector:nth-child(1):hover,
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1).selectorActive,
+:global(html[data-theme="light"])
+  .selector:nth-child(1).selectorActive,
+:global([data-theme="light"])
+  .selector:nth-child(1).selectorActive {
+  border-color:
+    rgba(177, 132, 28, 0.58);
+
+  box-shadow:
+    0 23px 50px rgba(76, 52, 109, 0.21),
+    0 0 32px rgba(212, 175, 55, 0.16),
+    0 0 54px rgba(197, 177, 231, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1):hover .selectorIcon,
+:global(html[data-theme="light"])
+  .selector:nth-child(1):hover .selectorIcon,
+:global([data-theme="light"])
+  .selector:nth-child(1):hover .selectorIcon,
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1).selectorActive .selectorIcon,
+:global(html[data-theme="light"])
+  .selector:nth-child(1).selectorActive .selectorIcon,
+:global([data-theme="light"])
+  .selector:nth-child(1).selectorActive .selectorIcon {
+  transform:
+    rotate(-4deg)
+    scale(1.06);
+
+  filter: brightness(1.04);
+
+  box-shadow:
+    5px 6px 0 rgba(91, 66, 119, 0.06),
+    0 14px 25px rgba(76, 52, 109, 0.15),
+    0 0 22px rgba(212, 175, 55, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* =========================================================
+   LIGHT MODE — CENTRAL DASHBOARD
+   Layered light-purple + cream + soft-gold
+   ========================================================= */
+
+@property --hero-dashboard-border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .dashboard,
+:global(html[data-theme="light"]) .dashboard,
+:global([data-theme="light"]) .dashboard,
+:global(.light) .dashboard {
+  color: #1d273a;
+
+  border-color: transparent;
+
+  background:
+    radial-gradient(
+      circle at 18% 10%,
+      rgba(220, 205, 245, 0.9),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 88% 90%,
+      rgba(212, 175, 55, 0.2),
+      transparent 34%
+    ),
+    linear-gradient(
+      145deg,
+      #ffffff 0%,
+      #f6effd 42%,
+      #fff9eb 72%,
+      #f5e7bb 100%
+    );
+
+  box-shadow:
+    0 30px 70px rgba(73, 50, 105, 0.2),
+    0 0 34px rgba(212, 175, 55, 0.12),
+    0 0 78px rgba(196, 174, 232, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset -22px -28px 44px rgba(212, 175, 55, 0.05);
+}
+
+/* More visible rotating metallic-gold border */
+:global(html:not(.dark):not([data-theme="dark"])) .dashboard::after,
+:global(html[data-theme="light"]) .dashboard::after,
+:global([data-theme="light"]) .dashboard::after,
+:global(.light) .dashboard::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+
+  padding: 2px;
+
+  border-radius: inherit;
+
+  background:
+    conic-gradient(
+      from var(--hero-dashboard-border-angle),
+      #8d5d08 0deg,
+      #d4af37 55deg,
+      #fff2b4 105deg,
+      #b77b0c 160deg,
+      #f4df83 225deg,
+      #a46e0a 295deg,
+      #8d5d08 360deg
+    );
+
+  filter:
+    drop-shadow(
+      0 0 8px rgba(212, 175, 55, 0.28)
+    );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  animation:
+    heroDashboardBorderSpin
+    7s linear infinite;
+
+  pointer-events: none;
+}
+
+/* Softer inner line */
+:global(html:not(.dark):not([data-theme="dark"])) .dashboard::before,
+:global(html[data-theme="light"]) .dashboard::before,
+:global([data-theme="light"]) .dashboard::before,
+:global(.light) .dashboard::before {
+  border-color:
+    rgba(166, 111, 10, 0.16);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+/* Dashboard top metadata */
+:global(html:not(.dark):not([data-theme="dark"])) .dashboardTop,
+:global(html[data-theme="light"]) .dashboardTop,
+:global([data-theme="light"]) .dashboardTop,
+:global(.light) .dashboardTop {
+  color: #776c86;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .dashboardTop b,
+:global(html[data-theme="light"]) .dashboardTop b,
+:global([data-theme="light"]) .dashboardTop b,
+:global(.light) .dashboardTop b {
+  color: #a8730d;
+}
+
+/* Status pill */
+:global(html:not(.dark):not([data-theme="dark"])) .status,
+:global(html[data-theme="light"]) .status,
+:global([data-theme="light"]) .status,
+:global(.light) .status {
+  color: #8f6813;
+
+  border-color:
+    rgba(177, 132, 28, 0.3);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 250, 234, 0.9),
+      rgba(245, 232, 190, 0.74)
+    );
+
+  box-shadow:
+    0 8px 18px rgba(73, 50, 105, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .status i,
+:global(html[data-theme="light"]) .status i,
+:global([data-theme="light"]) .status i,
+:global(.light) .status i {
+  background: #d4af37;
+
+  box-shadow:
+    0 0 0 4px rgba(212, 175, 55, 0.12),
+    0 0 12px rgba(212, 175, 55, 0.4);
+}
+
+/* Cream-and-gold main icon tile */
+:global(html:not(.dark):not([data-theme="dark"])) .mainIcon,
+:global(html[data-theme="light"]) .mainIcon,
+:global([data-theme="light"]) .mainIcon,
+:global(.light) .mainIcon {
+  color: #8f6813;
+
+  border-color:
+    rgba(177, 132, 28, 0.42);
+
+  background:
+    radial-gradient(
+      circle at 24% 18%,
+      rgba(255, 255, 255, 0.98),
+      transparent 36%
+    ),
+    linear-gradient(
+      145deg,
+      #fffaf0 0%,
+      #f8edc8 50%,
+      #e8ca67 100%
+    );
+
+  box-shadow:
+    7px 9px 0 rgba(86, 60, 117, 0.08),
+    0 18px 34px rgba(73, 50, 105, 0.16),
+    0 0 28px rgba(212, 175, 55, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* Dashboard copy */
+:global(html:not(.dark):not([data-theme="dark"])) .dashboard > small,
+:global(html[data-theme="light"]) .dashboard > small,
+:global([data-theme="light"]) .dashboard > small,
+:global(.light) .dashboard > small {
+  color: #7e728d;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .dashboard h3,
+:global(html[data-theme="light"]) .dashboard h3,
+:global([data-theme="light"]) .dashboard h3,
+:global(.light) .dashboard h3 {
+  color: #202a3d;
+
+  text-shadow: none;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .dashboard > p,
+:global(html[data-theme="light"]) .dashboard > p,
+:global([data-theme="light"]) .dashboard > p,
+:global(.light) .dashboard > p {
+  color: #667085;
+}
+
+/* Skill tags */
+:global(html:not(.dark):not([data-theme="dark"])) .tags span,
+:global(html[data-theme="light"]) .tags span,
+:global([data-theme="light"]) .tags span,
+:global(.light) .tags span {
+  color: #5d687b;
+
+  border-color:
+    rgba(145, 111, 180, 0.16);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.84),
+      rgba(240, 231, 250, 0.7)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Progress card */
+:global(html:not(.dark):not([data-theme="dark"])) .progressCard,
+:global(html[data-theme="light"]) .progressCard,
+:global([data-theme="light"]) .progressCard,
+:global(.light) .progressCard {
+  border-color:
+    rgba(130, 96, 157, 0.14);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.76),
+      rgba(242, 232, 250, 0.64)
+    );
+
+  box-shadow:
+    0 10px 24px rgba(73, 50, 105, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .progressCard > div:first-child,
+:global(html[data-theme="light"]) .progressCard > div:first-child,
+:global([data-theme="light"]) .progressCard > div:first-child,
+:global(.light) .progressCard > div:first-child {
+  color: #766b84;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .progressCard b,
+:global(html[data-theme="light"]) .progressCard b,
+:global([data-theme="light"]) .progressCard b,
+:global(.light) .progressCard b {
+  color: #9a6c10;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .progressTrack,
+:global(html[data-theme="light"]) .progressTrack,
+:global([data-theme="light"]) .progressTrack,
+:global(.light) .progressTrack {
+  background:
+    rgba(113, 83, 142, 0.15);
+}
+
+/* Richer hover */
+:global(html:not(.dark):not([data-theme="dark"])) .dashboard:hover,
+:global(html[data-theme="light"]) .dashboard:hover,
+:global([data-theme="light"]) .dashboard:hover,
+:global(.light) .dashboard:hover {
+  box-shadow:
+    0 38px 84px rgba(73, 50, 105, 0.25),
+    0 0 42px rgba(212, 175, 55, 0.17),
+    0 0 90px rgba(196, 174, 232, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .dashboard:hover .mainIcon,
+:global(html[data-theme="light"]) .dashboard:hover .mainIcon,
+:global([data-theme="light"]) .dashboard:hover .mainIcon,
+:global(.light) .dashboard:hover .mainIcon {
+  filter: brightness(1.05);
+
+  box-shadow:
+    6px 8px 0 rgba(86, 60, 117, 0.07),
+    0 23px 42px rgba(73, 50, 105, 0.2),
+    0 0 34px rgba(212, 175, 55, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+@keyframes heroDashboardBorderSpin {
+  to {
+    --hero-dashboard-border-angle: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html:not(.dark):not([data-theme="dark"])) .dashboard::after,
+  :global(html[data-theme="light"]) .dashboard::after,
+  :global([data-theme="light"]) .dashboard::after,
+  :global(.light) .dashboard::after {
+    animation: none;
+  }
+}
+
+/* =========================================================
+   LIGHT MODE — HIGH-CONTRAST CHAMPAGNE GOLD DASHBOARD
+   Makes the dashboard stand clearly apart from the hero.
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"])) .dashboard,
+:global(html[data-theme="light"]) .dashboard,
+:global([data-theme="light"]) .dashboard,
+:global(.light) .dashboard {
+  color: #20283a;
+
+  border-color: transparent;
+
+  background:
+    radial-gradient(
+      circle at 18% 8%,
+      rgba(255, 255, 255, 0.96),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 84% 88%,
+      rgba(184, 119, 7, 0.28),
+      transparent 38%
+    ),
+    linear-gradient(
+      145deg,
+      #fff9e8 0%,
+      #f8e5ad 34%,
+      #e8c45f 68%,
+      #c58a13 100%
+    );
+
+  box-shadow:
+    0 34px 74px rgba(126, 78, 5, 0.24),
+    0 0 38px rgba(212, 175, 55, 0.22),
+    0 0 88px rgba(113, 73, 139, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.98),
+    inset -24px -32px 50px rgba(110, 67, 3, 0.12);
+}
+
+/* Stronger metallic frame */
+:global(html:not(.dark):not([data-theme="dark"])) .dashboard::after,
+:global(html[data-theme="light"]) .dashboard::after,
+:global([data-theme="light"]) .dashboard::after,
+:global(.light) .dashboard::after {
+  padding: 3px;
+
+  background:
+    conic-gradient(
+      from var(--hero-dashboard-border-angle),
+      #6f4202 0deg,
+      #b97808 42deg,
+      #f0c94f 78deg,
+      #fff4b1 110deg,
+      #d4af37 152deg,
+      #8b5605 210deg,
+      #f7df78 268deg,
+      #a76806 324deg,
+      #6f4202 360deg
+    );
+
+  filter:
+    drop-shadow(
+      0 0 9px rgba(180, 119, 9, 0.4)
+    )
+    drop-shadow(
+      0 0 22px rgba(212, 175, 55, 0.18)
+    );
+}
+
+/* Cream inner plate creates separation from the gold shell */
+:global(html:not(.dark):not([data-theme="dark"])) .dashboard::before,
+:global(html[data-theme="light"]) .dashboard::before,
+:global([data-theme="light"]) .dashboard::before,
+:global(.light) .dashboard::before {
+  z-index: 0;
+
+  border-color:
+    rgba(132, 83, 5, 0.2);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.78),
+      rgba(255, 248, 222, 0.58)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    inset 0 0 24px rgba(212, 175, 55, 0.05);
+}
+
+/* Metadata */
+:global(html:not(.dark):not([data-theme="dark"])) .dashboardTop,
+:global(html[data-theme="light"]) .dashboardTop,
+:global([data-theme="light"]) .dashboardTop,
+:global(.light) .dashboardTop {
+  color: #6f6179;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .dashboardTop b,
+:global(html[data-theme="light"]) .dashboardTop b,
+:global([data-theme="light"]) .dashboardTop b,
+:global(.light) .dashboardTop b {
+  color: #724703;
+}
+
+/* Stronger status pill */
+:global(html:not(.dark):not([data-theme="dark"])) .status,
+:global(html[data-theme="light"]) .status,
+:global([data-theme="light"]) .status,
+:global(.light) .status {
+  color: #6f4705;
+
+  border-color:
+    rgba(142, 86, 4, 0.34);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 251, 231, 0.96),
+      rgba(239, 210, 118, 0.82)
+    );
+
+  box-shadow:
+    0 9px 20px rgba(112, 69, 3, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.94);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .status i,
+:global(html[data-theme="light"]) .status i,
+:global([data-theme="light"]) .status i,
+:global(.light) .status i {
+  background: #c6860d;
+
+  box-shadow:
+    0 0 0 4px rgba(212, 175, 55, 0.15),
+    0 0 14px rgba(181, 116, 7, 0.48);
+}
+
+/* Rich gold icon tile */
+:global(html:not(.dark):not([data-theme="dark"])) .mainIcon,
+:global(html[data-theme="light"]) .mainIcon,
+:global([data-theme="light"]) .mainIcon,
+:global(.light) .mainIcon {
+  color: #4d3002;
+
+  border-color:
+    rgba(123, 74, 2, 0.42);
+
+  background:
+    radial-gradient(
+      circle at 24% 18%,
+      rgba(255, 255, 255, 0.98),
+      transparent 34%
+    ),
+    linear-gradient(
+      145deg,
+      #fff5c5 0%,
+      #efce66 48%,
+      #c88b13 100%
+    );
+
+  box-shadow:
+    7px 9px 0 rgba(88, 52, 3, 0.13),
+    0 20px 36px rgba(112, 69, 3, 0.24),
+    0 0 30px rgba(212, 175, 55, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* Copy */
+:global(html:not(.dark):not([data-theme="dark"])) .dashboard > small,
+:global(html[data-theme="light"]) .dashboard > small,
+:global([data-theme="light"]) .dashboard > small,
+:global(.light) .dashboard > small {
+  color: #73667f;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .dashboard h3,
+:global(html[data-theme="light"]) .dashboard h3,
+:global([data-theme="light"]) .dashboard h3,
+:global(.light) .dashboard h3 {
+  color: #1f293b;
+
+  text-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.5);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .dashboard > p,
+:global(html[data-theme="light"]) .dashboard > p,
+:global([data-theme="light"]) .dashboard > p,
+:global(.light) .dashboard > p {
+  color: #596579;
+}
+
+/* Tags */
+:global(html:not(.dark):not([data-theme="dark"])) .tags span,
+:global(html[data-theme="light"]) .tags span,
+:global([data-theme="light"]) .tags span,
+:global(.light) .tags span {
+  color: #4e596b;
+
+  border-color:
+    rgba(126, 81, 8, 0.2);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.86),
+      rgba(248, 231, 177, 0.72)
+    );
+
+  box-shadow:
+    0 4px 10px rgba(105, 64, 3, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+/* Progress card */
+:global(html:not(.dark):not([data-theme="dark"])) .progressCard,
+:global(html[data-theme="light"]) .progressCard,
+:global([data-theme="light"]) .progressCard,
+:global(.light) .progressCard {
+  border-color:
+    rgba(123, 74, 2, 0.22);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.82),
+      rgba(255, 241, 197, 0.74)
+    );
+
+  box-shadow:
+    0 12px 26px rgba(112, 69, 3, 0.11),
+    inset 0 1px 0 rgba(255, 255, 255, 0.94);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .progressCard > div:first-child,
+:global(html[data-theme="light"]) .progressCard > div:first-child,
+:global([data-theme="light"]) .progressCard > div:first-child,
+:global(.light) .progressCard > div:first-child {
+  color: #6d6279;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .progressCard b,
+:global(html[data-theme="light"]) .progressCard b,
+:global([data-theme="light"]) .progressCard b,
+:global(.light) .progressCard b {
+  color: #7e4e03;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .progressTrack,
+:global(html[data-theme="light"]) .progressTrack,
+:global([data-theme="light"]) .progressTrack,
+:global(.light) .progressTrack {
+  background:
+    rgba(92, 61, 106, 0.14);
+}
+
+/* Stronger hover separation */
+:global(html:not(.dark):not([data-theme="dark"])) .dashboard:hover,
+:global(html[data-theme="light"]) .dashboard:hover,
+:global([data-theme="light"]) .dashboard:hover,
+:global(.light) .dashboard:hover {
+  box-shadow:
+    0 42px 92px rgba(126, 78, 5, 0.3),
+    0 0 50px rgba(212, 175, 55, 0.28),
+    0 0 104px rgba(113, 73, 139, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .dashboard:hover .mainIcon,
+:global(html[data-theme="light"]) .dashboard:hover .mainIcon,
+:global([data-theme="light"]) .dashboard:hover .mainIcon,
+:global(.light) .dashboard:hover .mainIcon {
+  filter:
+    brightness(1.08)
+    saturate(1.05);
+
+  box-shadow:
+    6px 8px 0 rgba(88, 52, 3, 0.11),
+    0 25px 44px rgba(112, 69, 3, 0.28),
+    0 0 38px rgba(212, 175, 55, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* =========================================================
+   LIGHT MODE — MAKE ACTIVE TRACK MATCH THE RIGHT-SIDE CARDS
+   Same white/cream surface, icon tile, typography and dot.
+   Only a subtle gold outline remains for the active state.
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1),
+:global(html[data-theme="light"])
+  .selector:nth-child(1),
+:global([data-theme="light"])
+  .selector:nth-child(1),
+:global(.light)
+  .selector:nth-child(1) {
+  color: #243047;
+
+  border-color:
+    rgba(72, 57, 98, 0.13);
+
+  background:
+    rgba(255, 255, 255, 0.78);
+
+  box-shadow:
+    0 13px 29px rgba(61, 45, 88, 0.1);
+
+  backdrop-filter:
+    blur(16px)
+    saturate(1.04);
+}
+
+/* Remove the custom gold/purple layers from the first card */
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1)::before,
+:global(html[data-theme="light"])
+  .selector:nth-child(1)::before,
+:global([data-theme="light"])
+  .selector:nth-child(1)::before,
+:global(.light)
+  .selector:nth-child(1)::before,
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1)::after,
+:global(html[data-theme="light"])
+  .selector:nth-child(1)::after,
+:global([data-theme="light"])
+  .selector:nth-child(1)::after,
+:global(.light)
+  .selector:nth-child(1)::after {
+  content: none;
+}
+
+/* Match the right-side icon tiles */
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1) .selectorIcon,
+:global(html[data-theme="light"])
+  .selector:nth-child(1) .selectorIcon,
+:global([data-theme="light"])
+  .selector:nth-child(1) .selectorIcon,
+:global(.light)
+  .selector:nth-child(1) .selectorIcon {
+  color: #9a7018;
+
+  border-color:
+    rgba(166, 111, 10, 0.22);
+
+  background:
+    rgba(212, 175, 55, 0.1);
+
+  box-shadow: none;
+
+  transform: none;
+  filter: none;
+}
+
+/* Match right-side text colors */
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1) small,
+:global(html[data-theme="light"])
+  .selector:nth-child(1) small,
+:global([data-theme="light"])
+  .selector:nth-child(1) small,
+:global(.light)
+  .selector:nth-child(1) small {
+  color: #7a8497;
+}
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1) strong,
+:global(html[data-theme="light"])
+  .selector:nth-child(1) strong,
+:global([data-theme="light"])
+  .selector:nth-child(1) strong,
+:global(.light)
+  .selector:nth-child(1) strong {
+  color: #263044;
+}
+
+/* Match the grey status dot used by the right-side cards */
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1) > i,
+:global(html[data-theme="light"])
+  .selector:nth-child(1) > i,
+:global([data-theme="light"])
+  .selector:nth-child(1) > i,
+:global(.light)
+  .selector:nth-child(1) > i {
+  background: #9aa4b4;
+
+  box-shadow: none;
+}
+
+/* Keep active state visible without changing the card surface */
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1).selectorActive,
+:global(html[data-theme="light"])
+  .selector:nth-child(1).selectorActive,
+:global([data-theme="light"])
+  .selector:nth-child(1).selectorActive,
+:global(.light)
+  .selector:nth-child(1).selectorActive {
+  border-color:
+    rgba(166, 111, 10, 0.5);
+
+  background:
+    rgba(255, 255, 255, 0.84);
+
+  box-shadow:
+    0 16px 34px rgba(61, 45, 88, 0.12),
+    0 0 18px rgba(212, 175, 55, 0.1);
+}
+
+/* Keep icon identical even when the first card is active */
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1).selectorActive .selectorIcon,
+:global(html[data-theme="light"])
+  .selector:nth-child(1).selectorActive .selectorIcon,
+:global([data-theme="light"])
+  .selector:nth-child(1).selectorActive .selectorIcon,
+:global(.light)
+  .selector:nth-child(1).selectorActive .selectorIcon {
+  color: #9a7018;
+
+  border-color:
+    rgba(166, 111, 10, 0.22);
+
+  background:
+    rgba(212, 175, 55, 0.1);
+
+  box-shadow: none;
+
+  transform: none;
+  filter: none;
+}
+
+/* Same hover language as the right-side cards */
+:global(html:not(.dark):not([data-theme="dark"]))
+  .selector:nth-child(1):hover,
+:global(html[data-theme="light"])
+  .selector:nth-child(1):hover,
+:global([data-theme="light"])
+  .selector:nth-child(1):hover,
+:global(.light)
+  .selector:nth-child(1):hover {
+  border-color:
+    rgba(166, 111, 10, 0.34);
+
+  background:
+    rgba(255, 255, 255, 0.92);
+
+  box-shadow:
+    0 16px 34px rgba(61, 45, 88, 0.13);
+}
+
+/* =========================================================
+   FULL-BLEED / FULL-SCREEN HERO
+   Removes the rounded container appearance around the hero.
+   ========================================================= */
+
+.hero {
+  width: 100%;
+  max-width: none;
+  min-height: 100svh;
+
+  margin: 0;
+
+  padding:
+    clamp(48px, 5.5vw, 88px)
+    clamp(24px, 5.5vw, 96px);
+
+  border: 0;
+  border-radius: 0;
+
+  box-shadow: none;
+}
+
+.hero::before {
+  border-radius: 0;
+}
+
+.copy {
+  width: 100%;
+  max-width: 720px;
+}
+
+.visual {
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+@media (min-width: 1500px) {
+  .hero {
+    grid-template-columns:
+      minmax(0, 0.95fr)
+      minmax(520px, 0.75fr);
+
+    padding-inline:
+      clamp(80px, 7vw, 150px);
+  }
+}
+
+@media (max-width: 1100px) {
+  .hero {
+    width: 100%;
+    min-height: auto;
+
+    margin: 0;
+
+    padding:
+      56px
+      clamp(24px, 5vw, 58px);
+
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    width: 100%;
+    min-height: auto;
+
+    margin: 0;
+
+    padding:
+      40px
+      17px
+      28px;
+
+    border: 0;
+    border-radius: 0;
+
+    box-shadow: none;
+  }
+}

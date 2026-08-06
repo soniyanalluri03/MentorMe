@@ -126,7 +126,8 @@ export default function FeaturedTrack() {
 
   const getRelativePosition = (index: number) => {
     const difference =
-      (index - activeIndex + tracks.length) % tracks.length;
+      (index - activeIndex + tracks.length) %
+      tracks.length;
 
     if (difference === 0) {
       return "active";
@@ -141,13 +142,17 @@ export default function FeaturedTrack() {
 
   const showPrevious = () => {
     setActiveIndex((current) =>
-      current === 0 ? tracks.length - 1 : current - 1,
+      current === 0
+        ? tracks.length - 1
+        : current - 1,
     );
   };
 
   const showNext = () => {
     setActiveIndex((current) =>
-      current === tracks.length - 1 ? 0 : current + 1,
+      current === tracks.length - 1
+        ? 0
+        : current + 1,
     );
   };
 
@@ -156,7 +161,10 @@ export default function FeaturedTrack() {
       className={styles.section}
       aria-labelledby="featured-track-heading"
     >
-      <div className={styles.ambient} aria-hidden="true" />
+      <div
+        className={styles.ambient}
+        aria-hidden="true"
+      />
 
       <header className={styles.heading}>
         <div>
@@ -174,41 +182,46 @@ export default function FeaturedTrack() {
 
         <div className={styles.headingAside}>
           <p>
-            Every track follows one system: guided levels,
-            practical missions, real projects and visible proof.
+            Every track follows one system: guided
+            levels, practical missions, real projects
+            and visible proof.
           </p>
 
-          <div className={styles.controls}>
+          <div
+            className={styles.trackCounter}
+            aria-label={`Track ${activeIndex + 1} of ${
+              tracks.length
+            }`}
+          >
             <span>
-              {String(activeIndex + 1).padStart(2, "0")} /{" "}
-              {String(tracks.length).padStart(2, "0")}
+              {String(activeIndex + 1).padStart(
+                2,
+                "0",
+              )}
             </span>
 
-            <button
-              type="button"
-              onClick={showPrevious}
-              aria-label="Show previous career track"
-            >
-              <ArrowLeft size={19} />
-            </button>
+            <i aria-hidden="true" />
 
-            <button
-              type="button"
-              onClick={showNext}
-              aria-label="Show next career track"
-            >
-              <ArrowRight size={19} />
-            </button>
+            <span>
+              {String(tracks.length).padStart(
+                2,
+                "0",
+              )}
+            </span>
           </div>
         </div>
       </header>
 
       <div className={styles.carousel}>
-        <div className={styles.carouselGlow} aria-hidden="true" />
+        <div
+          className={styles.carouselGlow}
+          aria-hidden="true"
+        />
 
         {tracks.map((track, index) => {
           const TrackIcon = track.icon;
-          const position = getRelativePosition(index);
+          const position =
+            getRelativePosition(index);
 
           return (
             <button
@@ -221,7 +234,9 @@ export default function FeaturedTrack() {
                     ? styles.trackCardPrevious
                     : styles.trackCardNext
               }`}
-              onClick={() => setActiveIndex(index)}
+              onClick={() =>
+                setActiveIndex(index)
+              }
               aria-pressed={index === activeIndex}
             >
               <span className={styles.cardNumber}>
@@ -233,7 +248,10 @@ export default function FeaturedTrack() {
               </span>
 
               <span className={styles.cardIcon}>
-                <TrackIcon size={36} strokeWidth={1.65} />
+                <TrackIcon
+                  size={36}
+                  strokeWidth={1.65}
+                />
               </span>
 
               <span className={styles.cardTitle}>
@@ -276,11 +294,15 @@ export default function FeaturedTrack() {
       >
         <div className={styles.detailIdentity}>
           <div className={styles.detailIcon}>
-            <ActiveIcon size={30} strokeWidth={1.65} />
+            <ActiveIcon
+              size={30}
+              strokeWidth={1.65}
+            />
           </div>
 
           <div>
             <small>{activeTrack.status}</small>
+
             <h3>
               {activeTrack.title}{" "}
               <span>{activeTrack.accent}.</span>

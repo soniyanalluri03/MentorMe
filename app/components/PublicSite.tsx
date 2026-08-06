@@ -11,7 +11,7 @@ import CourseComparison from "./courses/CourseComparison";
 import CourseStats from "./courses/CourseStats";
 import CoursesHero from "./courses/CoursesHero";
 import FeaturedTrack from "./courses/FeaturedTrack";
-import MentorMethod from "./MentorMethod";
+import MentorMethod from "./courses/MentorMethod";
 
 type Page =
   | "home"
@@ -295,7 +295,7 @@ export default function Courses() {
     <main className="courses-page">
       <CoursesHero />
       <FeaturedTrack />
-      <CourseStats />
+      {/* <CourseStats /> */}
       <MentorMethod />
       <CourseComparison />
       <CareerTracksAndCTA />

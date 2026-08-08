@@ -14,6 +14,7 @@ import FeaturedTrack from "./courses/FeaturedTrack";
 import MentorMethod from "./courses/MentorMethod";
 import RoadmapExperience from "./roadmap/RoadmapExperience";
 import styles from "../../app/home.module.css";
+import { LeaderboardExperience } from "./leaderboard/LeaderboardExperience";
 
 type Page =
   | "home"
@@ -980,7 +981,7 @@ export function PublicSite({
     home: <Home />,
     courses: <Courses />,
     roadmap: <RoadmapExperience />,
-    leaderboard: <Leaderboard />,
+    leaderboard: <LeaderboardExperience />,
     about: <About />,
     pricing: <Pricing />,
     contact: <Contact />,

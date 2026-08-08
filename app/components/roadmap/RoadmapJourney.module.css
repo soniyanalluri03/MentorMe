@@ -1,0 +1,133 @@
+.journeySection {
+  position: relative;
+  padding:
+    clamp(4.5rem, 7vw, 6.5rem)
+    clamp(1rem, 4vw, 4rem)
+    clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--line);
+}
+
+.journeyHeader {
+  display: flex;
+  max-width: 940px;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.journeyHeader > span {
+  color: var(--gold);
+  font-size: 0.68rem;
+  font-weight: 950;
+  letter-spacing: 0.17em;
+}
+
+.journeyHeader h2 {
+  margin: 0.55rem 0 0;
+  overflow: visible;
+  padding-bottom: 0.12em;
+  color: var(--text);
+  font-size: clamp(3.2rem, 5.6vw, 5.9rem);
+  font-weight: 950;
+  letter-spacing: -0.075em;
+  line-height: 0.88;
+}
+
+.journeyHeader h2 em {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 0.08em;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0.04em 0.08em 0.18em;
+  overflow: visible;
+  color: transparent;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  line-height: 1.12;
+  background-image:
+    linear-gradient(
+      105deg,
+      #805400 0%,
+      #b77b00 11%,
+      #e4b11d 23%,
+      #fff5b6 34%,
+      #f5cd4e 42%,
+      #bb7f00 53%,
+      #7e5100 63%,
+      #f5c936 75%,
+      #fff8ce 84%,
+      #d29b09 92%,
+      #805400 100%
+    );
+  background-size: 360% 100%;
+  background-position: 0% 50%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 5px 12px rgba(181, 124, 0, 0.13));
+  animation: completeGoldTextWave 4.8s linear infinite;
+}
+
+:global(html[data-theme="dark"]) .journeyHeader h2 em {
+  background-image:
+    linear-gradient(
+      105deg,
+      #9a6800 0%,
+      #e1a909 14%,
+      #ffe063 27%,
+      #fff8c9 37%,
+      #e5ad0f 49%,
+      #9b6500 61%,
+      #ffd74b 75%,
+      #fff7bc 85%,
+      #d09300 94%,
+      #9a6800 100%
+    );
+  background-size: 360% 100%;
+  filter: drop-shadow(0 4px 14px rgba(255, 204, 56, 0.17));
+}
+
+.journeyHeader p {
+  max-width: 680px;
+  margin: 1.15rem auto 0;
+  color: var(--muted);
+  font-size: 0.87rem;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.journeyLayout {
+  display: grid;
+  grid-template-columns: minmax(240px, 285px) minmax(0, 1fr);
+  width: min(100%, 1560px);
+  gap: clamp(1.4rem, 3vw, 3rem);
+  margin: 0 auto;
+}
+
+@keyframes completeGoldTextWave {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 360% 50%; }
+}
+
+@media (max-width: 1180px) {
+  .journeyLayout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .journeySection {
+    padding: 4rem 0.7rem 4.5rem;
+  }
+
+  .journeyHeader h2 {
+    font-size: clamp(3rem, 14vw, 4.6rem);
+  }
+
+  .journeyHeader h2 em {
+    padding-bottom: 0.22em;
+  }
+}

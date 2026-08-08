@@ -1,0 +1,183 @@
+.trackShell {
+  min-width: 0;
+}
+
+.trackLegend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.85rem;
+  margin-bottom: 0.8rem;
+}
+
+.trackLegend span {
+  display: flex;
+  align-items: center;
+  gap: 0.42rem;
+  color: var(--muted);
+  font-size: 0.62rem;
+  font-weight: 850;
+}
+
+.trackLegend i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.freeLegend {
+  background: var(--purple);
+  box-shadow: 0 0 0 4px rgba(137, 97, 215, 0.13);
+}
+
+.milestoneLegend {
+  background: var(--gold);
+  box-shadow: 0 0 0 4px rgba(214, 165, 20, 0.13);
+}
+
+.trackViewport {
+  width: 100%;
+  overflow: visible;
+  padding: 0.5rem 0.4rem 1.5rem;
+}
+
+.trackCanvas {
+  position: relative;
+  width: 100%;
+  min-width: 900px;
+  height: 980px;
+  overflow: visible;
+  border: 1px solid var(--line-strong);
+  border-radius: 34px;
+  background: var(--map-background);
+  box-shadow: 0 31px 70px rgba(27, 33, 65, 0.13);
+  backdrop-filter: blur(22px);
+}
+
+.mapGrid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: inherit;
+  opacity: 0.38;
+  background-image:
+    linear-gradient(rgba(111, 86, 159, 0.11) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(111, 86, 159, 0.11) 1px, transparent 1px),
+    radial-gradient(circle, rgba(115, 88, 161, 0.3) 1px, transparent 1px);
+  background-size:
+    54px 54px,
+    54px 54px,
+    29px 29px;
+}
+
+.trackSvg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.trackSvg path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.trackShadow {
+  stroke: rgba(27, 29, 55, 0.19);
+  stroke-width: 23;
+  filter: blur(5px);
+  transform: translateY(9px);
+}
+
+.trackBase {
+  stroke: rgba(255, 255, 255, 0.92);
+  stroke-width: 15;
+}
+
+:global(html[data-theme="dark"]) .trackBase {
+  stroke: rgba(220, 229, 242, 0.77);
+}
+
+.trackStripe {
+  stroke: var(--purple);
+  stroke-width: 9;
+  stroke-dasharray: 22 18;
+  filter: drop-shadow(0 0 6px rgba(140, 96, 220, 0.4));
+  animation: candyPathMove 2.8s linear infinite;
+}
+
+.zoneLabel {
+  position: absolute;
+  top: var(--zone-y);
+  left: var(--zone-x);
+  z-index: 4;
+  padding: 0.4rem 0.72rem;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-strong);
+  box-shadow: 0 8px 18px rgba(26, 31, 61, 0.08);
+  font-size: 0.52rem;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+  transform: translate(-50%, -50%);
+}
+
+.finishMarker {
+  position: absolute;
+  right: 8%;
+  bottom: 3%;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--muted);
+}
+
+.finishMarker span {
+  font-size: 0.56rem;
+  font-weight: 950;
+  letter-spacing: 0.13em;
+}
+
+.finishMarker strong {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  color: #17233a;
+  border: 1px solid rgba(127, 88, 0, 0.6);
+  border-radius: 50%;
+  background: var(--gold-light);
+  box-shadow: 0 5px 0 var(--gold-deep);
+  place-items: center;
+}
+
+@keyframes candyPathMove {
+  to { stroke-dashoffset: -80; }
+}
+
+@media (max-width: 1180px) {
+  .trackViewport {
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+}
+
+@media (max-width: 700px) {
+  .trackLegend {
+    justify-content: flex-start;
+  }
+
+  .trackViewport {
+    margin-inline: -0.7rem;
+    padding-inline: 0.7rem;
+  }
+
+  .trackCanvas {
+    min-width: 900px;
+  }
+}

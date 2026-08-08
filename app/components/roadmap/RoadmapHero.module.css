@@ -1,0 +1,230 @@
+.hero {
+  position: relative;
+  display: flex;
+  min-height: 555px;
+  align-items: center;
+  justify-content: center;
+  padding:
+    clamp(4.5rem, 7vw, 6.5rem)
+    1.2rem
+    clamp(3rem, 5vw, 4.5rem);
+  text-align: center;
+}
+
+.heroGrid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.28;
+  background-image:
+    linear-gradient(rgba(110, 89, 154, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(110, 89, 154, 0.08) 1px, transparent 1px),
+    radial-gradient(circle, rgba(105, 83, 150, 0.24) 1px, transparent 1px);
+  background-size:
+    62px 62px,
+    62px 62px,
+    28px 28px;
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 20%,
+      black 70%,
+      transparent
+    );
+}
+
+.hero::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(92vw, 1080px);
+  height: 430px;
+  pointer-events: none;
+  content: "";
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle,
+      rgba(150, 105, 224, 0.13),
+      transparent 67%
+    );
+  transform: translate(-50%, -50%);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: min(100%, 1050px);
+  align-items: center;
+  flex-direction: column;
+}
+
+.heroEyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 1.45rem;
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 950;
+  letter-spacing: 0.18em;
+}
+
+.heroEyebrow i {
+  width: 36px;
+  height: 2px;
+  background:
+    linear-gradient(
+      90deg,
+      var(--purple),
+      var(--gold-light)
+    );
+}
+
+.hero h1 {
+  max-width: 1020px;
+  margin: 0;
+  overflow: visible;
+  padding-bottom: 0.12em;
+  color: var(--text);
+  font-size: clamp(4rem, 7.4vw, 7.8rem);
+  font-weight: 950;
+  letter-spacing: -0.08em;
+  line-height: 0.84;
+}
+
+.hero h1 em {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 0.12em;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0.04em 0.08em 0.18em;
+  overflow: visible;
+  color: transparent;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.72em;
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 1.12;
+  background-image:
+    linear-gradient(
+      105deg,
+      #805400 0%,
+      #b77b00 11%,
+      #e4b11d 23%,
+      #fff5b6 34%,
+      #f5cd4e 42%,
+      #bb7f00 53%,
+      #7e5100 63%,
+      #f5c936 75%,
+      #fff8ce 84%,
+      #d29b09 92%,
+      #805400 100%
+    );
+  background-size: 360% 100%;
+  background-position: 0% 50%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 5px 12px rgba(181, 124, 0, 0.13));
+  animation: completeGoldTextWave 4.8s linear infinite;
+}
+
+:global(html[data-theme="dark"]) .hero h1 em {
+  background-image:
+    linear-gradient(
+      105deg,
+      #9a6800 0%,
+      #e1a909 14%,
+      #ffe063 27%,
+      #fff8c9 37%,
+      #e5ad0f 49%,
+      #9b6500 61%,
+      #ffd74b 75%,
+      #fff7bc 85%,
+      #d09300 94%,
+      #9a6800 100%
+    );
+  background-size: 360% 100%;
+  filter: drop-shadow(0 4px 14px rgba(255, 204, 56, 0.17));
+}
+
+.heroContent > p {
+  max-width: 780px;
+  margin: 1.8rem auto 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.35vw, 1.18rem);
+  font-weight: 750;
+  line-height: 1.8;
+}
+
+.heroPills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-top: 1.45rem;
+}
+
+.heroPills span {
+  padding: 0.5rem 0.85rem;
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: 0 8px 22px rgba(32, 37, 68, 0.07);
+  font-size: 0.62rem;
+  font-weight: 950;
+  letter-spacing: 0.1em;
+  backdrop-filter: blur(18px);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem;
+  margin-top: 1.7rem;
+}
+
+@keyframes completeGoldTextWave {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 360% 50%; }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    min-height: auto;
+    padding: 4rem 1rem 3.5rem;
+  }
+
+  .heroEyebrow {
+    font-size: 0.56rem;
+  }
+
+  .heroEyebrow i {
+    width: 18px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.6rem, 16vw, 5.2rem);
+  }
+
+  .hero h1 em {
+    padding-bottom: 0.22em;
+  }
+
+  .heroContent > p {
+    font-size: 0.89rem;
+  }
+
+  .heroActions {
+    display: grid;
+    width: 100%;
+  }
+}

@@ -9,7 +9,7 @@ import {
   CosmicLink,
   TiltSurface,
 } from "./RoadmapUI";
-
+import Link from "next/link";
 export default function JourneyAside({
   checkpoint,
 }: {
@@ -78,13 +78,12 @@ export default function JourneyAside({
           </div>
         </div>
 
-        <CosmicLink
+        <Link
           href="/signup"
-          arrow="→"
-          className={styles.asideButton}
+          className="navbar-sign-in"
         >
           Start your journey
-        </CosmicLink>
+        </Link>
       </TiltSurface>
     </aside>
   );

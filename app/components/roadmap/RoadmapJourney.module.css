@@ -236,28 +236,144 @@
    JOURNEY CONTENT
    ========================================================= */
 
+/* =========================================================
+   JOURNEY MAIN LAYOUT
+   Aside left + roadmap filling remaining space
+   ========================================================= */
+
+/* =========================================================
+   JOURNEY MAIN LAYOUT
+   Sidebar + roadmap perfectly aligned
+   ========================================================= */
+
 .journeyLayout {
-  width: min(100%, 1560px);
+  position: relative;
+
+  display: grid;
+
+  width: min(100%, 1600px);
+
+  grid-template-columns:
+    clamp(300px, 19vw, 340px)
+    minmax(0, 1fr);
+
+  column-gap: clamp(22px, 1.8vw, 30px);
+
+  /*
+   * IMPORTANT:
+   * Stretch both columns to the same row height.
+   */
+  align-items: stretch;
 
   margin:
     clamp(3.8rem, 5vw, 5rem)
     auto
     0;
+}
 
-  display: grid;
 
-  grid-template-columns:
-    minmax(240px, 285px)
-    minmax(0, 1fr);
+/* =========================================================
+   ROADMAP TRACK COLUMN
+   ========================================================= */
 
-  align-items: start;
+.trackColumn {
+  position: relative;
 
-  gap:
-    clamp(
-      1.4rem,
-      3vw,
-      3rem
-    );
+  display: flex;
+
+  width: 100%;
+  min-width: 0;
+
+  margin: 0;
+  padding: 0;
+
+  align-self: stretch;
+  justify-self: stretch;
+
+  overflow: visible;
+}
+
+.trackColumn > * {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+
+  flex: 1 1 auto;
+
+  margin: 0;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1180px) {
+  .journeyLayout {
+    width: min(100%, 1000px);
+
+    grid-template-columns: 1fr;
+
+    align-items: start;
+
+    row-gap: 34px;
+  }
+
+  .trackColumn {
+    width: 100%;
+    min-width: 0;
+
+    display: block;
+
+    align-self: start;
+    justify-self: stretch;
+  }
+
+  .trackColumn > * {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   ROADMAP TRACK COLUMN
+   ========================================================= */
+
+.trackColumn {
+  width: 100%;
+  min-width: 0;
+
+  margin: 0;
+  padding: 0;
+
+  position: relative;
+
+  align-self: start;
+  justify-self: stretch;
+
+  overflow: visible;
+}
+
+/*
+ * Make the immediate RoadmapTrack root consume
+ * the entire second grid column.
+ */
+.trackColumn > * {
+  width: 100%;
+  max-width: none;
+
+  margin-left: 0;
+  margin-right: 0;
+
+  min-width: 0;
+}
+@media (min-width: 1181px) {
+  .journeyLayout {
+    align-items: start;
+  }
+
+  .trackColumn {
+    align-self: start;
+  }
 }
 
 /* =========================================================
@@ -322,10 +438,23 @@
 
 @media (max-width: 1180px) {
   .journeyLayout {
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
 
-    max-width: 900px;
+    width: min(100%, 1000px);
+
+    row-gap: 34px;
+  }
+
+  .trackColumn {
+    width: 100%;
+
+    min-width: 0;
+
+    justify-self: stretch;
+  }
+
+  .trackColumn > * {
+    width: 100%;
   }
 }
 
@@ -400,4 +529,142 @@
 
   filter:
     none !important;
+}
+
+/* =========================================================
+   ROADMAP JOURNEY KICKER
+   YOUR ROAD TO CAREER READINESS
+   ========================================================= */
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  margin:
+    0
+    auto
+    24px;
+
+  color: #d9ba4d;
+
+  font-family:
+    var(--font-display),
+    sans-serif;
+
+  font-size: 0.68rem;
+  font-weight: 900;
+
+  line-height: 1.4;
+
+  letter-spacing: 0.14em;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 16px
+    rgba(217, 186, 77, 0.16);
+}
+
+/* Sparkles */
+
+.kicker svg {
+  width: 15px;
+  height: 15px;
+
+  flex: 0 0 auto;
+
+  color: #f0d36d;
+
+  filter:
+    drop-shadow(
+      0 0 7px
+      rgba(240, 211, 109, 0.24)
+    );
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+:global(html[data-theme="dark"])
+  .kicker,
+:global(html.dark)
+  .kicker {
+  color: #d9ba4d;
+}
+
+:global(html[data-theme="dark"])
+  .kicker svg,
+:global(html.dark)
+  .kicker svg {
+  color: #f0d36d;
+}
+
+/* =========================================================
+   LIGHT MODE
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .kicker,
+:global(html[data-theme="light"])
+  .kicker,
+:global(html.light)
+  .kicker,
+:global([data-theme="light"])
+  .kicker,
+:global(.light)
+  .kicker {
+  color: #8e6810;
+
+  text-shadow:
+    0 1px 0
+      rgba(255, 255, 255, 0.8),
+    0 0 10px
+      rgba(177, 132, 28, 0.1);
+}
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .kicker svg,
+:global(html[data-theme="light"])
+  .kicker svg,
+:global(html.light)
+  .kicker svg,
+:global([data-theme="light"])
+  .kicker svg,
+:global(.light)
+  .kicker svg {
+  color: #b78313;
+
+  filter:
+    drop-shadow(
+      0 0 5px
+      rgba(177, 132, 28, 0.13)
+    );
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .kicker {
+    gap: 7px;
+
+    margin-bottom: 18px;
+
+    font-size: 0.6rem;
+
+    letter-spacing: 0.12em;
+  }
+
+  .kicker svg {
+    width: 14px;
+    height: 14px;
+  }
 }

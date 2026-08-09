@@ -1,16 +1,29 @@
 .journeyAside {
-  position: sticky;
-  top: 1.5rem;
+  position: relative;
+
+  top: auto;
+
   z-index: 30;
-  height: max-content;
-  align-self: start;
+
+  width: 100%;
+  min-width: 0;
+
+  height: 100%;
+
+  align-self: stretch;
+
   perspective: 1450px;
 }
 
 .journeyTilt {
   position: relative;
+
+  width: 100%;
+  height: 100%;
+
   transform-style: preserve-3d;
   will-change: transform;
+
   animation:
     journeyPanelAutomaticMove
     6.4s

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "./RoadmapHero.module.css";
 import { CosmicLink } from "./RoadmapUI";
+import { Sparkles } from "lucide-react";
 
 export default function RoadmapHero() {
   return (
@@ -14,26 +15,29 @@ export default function RoadmapHero() {
       />
 
       <div className={styles.heroContent}>
-        
-        <header className="hj-first-five-heading pt-20">
-            <p>THE MENTORME 90-LEVEL JOURNEY</p>
-            <h2>
-              Every next step.
-              <br />
 
-              <span className="hj-heading-wave">
-                Already
-              </span>{" "}
+        <header className="hj-first-five-heading pt-10">
+          <div className={styles.kicker}>
+            <Sparkles size={15} />
+            THE MENTORME 90-LEVEL JOURNEY
+          </div>
+          <h2>
+            Every next step.
+            <br />
 
-              <em>mapped.</em>
-            </h2>
-            <span>
-              Explore the complete journey from career
-          discovery to practical projects,
-          professional certificates, portfolio
-          building and internship readiness.
-            </span>
-          </header>
+            <span className="hj-heading-wave">
+              Already
+            </span>{" "}
+
+            <em>mapped.</em>
+          </h2>
+          <span>
+            Explore the complete journey from career
+            discovery to practical projects,
+            professional certificates, portfolio
+            building and internship readiness.
+          </span>
+        </header>
 
         <div
           className={styles.heroPills}

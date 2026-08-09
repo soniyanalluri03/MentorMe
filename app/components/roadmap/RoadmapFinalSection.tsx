@@ -1,9 +1,10 @@
+import { Sparkles } from "lucide-react";
 import styles from "./RoadmapFinalSection.module.css";
 import {
   CheckpointIcon,
   CosmicLink,
 } from "./RoadmapUI";
-
+import Link from "next/link";
 export default function RoadmapFinalSection() {
   return (
     <section className={styles.finalSection}>
@@ -20,21 +21,28 @@ export default function RoadmapFinalSection() {
           <div className={styles.finalIcon}>
             <CheckpointIcon type="internship" />
           </div>
-
-          <span className={styles.finalEyebrow}>
+          <header className="hj-first-five-heading ">
+            <div className={styles.kicker}>
+            <Sparkles size={15} />
             LEVEL 90 COMPLETED
-          </span>
+          </div>
+        
+            <h2>
+              Career ready
+              <br />
 
-          <h2>
-            Career ready.
-            <em>Opportunity unlocked.</em>
-          </h2>
+              <span className="hj-heading-wave">
+                Opportunity
+              </span>{" "}
 
-          <p>
-            Complete the full journey with practical skills,
-            real projects, milestone certificates, portfolio
-            proof and career preparation.
-          </p>
+              <em>unlocked</em>
+            </h2>
+            <span>
+              Complete the full journey with practical skills,
+              real projects, milestone certificates, portfolio
+              proof and career preparation.
+            </span>
+          </header>
 
           <div className={styles.finalPills}>
             <span>PORTFOLIO READY</span>
@@ -42,13 +50,12 @@ export default function RoadmapFinalSection() {
             <span>INTERNSHIP ELIGIBLE</span>
           </div>
 
-          <CosmicLink
+          <Link
             href="/signup"
-            arrow="→"
-            className={styles.finalButton}
+            className="navbar-sign-in"
           >
             Begin at Level 01
-          </CosmicLink>
+          </Link>
         </div>
       </article>
     </section>

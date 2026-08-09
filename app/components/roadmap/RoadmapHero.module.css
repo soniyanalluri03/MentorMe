@@ -1521,3 +1521,117 @@
   border: 0 !important;
   box-shadow: none !important;
 }
+
+/* =========================================================
+   ROADMAP HERO KICKER
+   THE MENTORME 90-LEVEL JOURNEY
+   ========================================================= */
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  margin: 0 auto 24px;
+
+  color: #d9ba4d;
+
+  font-family:
+    var(--font-display),
+    sans-serif;
+
+  font-size: 0.68rem;
+  font-weight: 900;
+
+  line-height: 1.4;
+
+  letter-spacing: 0.14em;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 16px
+    rgba(217, 186, 77, 0.16);
+}
+
+/* Sparkles icon */
+
+.kicker svg {
+  flex: 0 0 auto;
+
+  color: #f0d36d;
+
+  filter:
+    drop-shadow(
+      0 0 7px
+      rgba(240, 211, 109, 0.24)
+    );
+}
+
+/* =========================================================
+   LIGHT MODE
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .kicker,
+:global(html[data-theme="light"])
+  .kicker,
+:global(html.light)
+  .kicker,
+:global([data-theme="light"])
+  .kicker,
+:global(.light)
+  .kicker {
+  color: #8e6810;
+
+  text-shadow:
+    0 1px 0
+      rgba(255, 255, 255, 0.8),
+    0 0 10px
+      rgba(177, 132, 28, 0.1);
+}
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .kicker svg,
+:global(html[data-theme="light"])
+  .kicker svg,
+:global(html.light)
+  .kicker svg,
+:global([data-theme="light"])
+  .kicker svg,
+:global(.light)
+  .kicker svg {
+  color: #b78313;
+
+  filter:
+    drop-shadow(
+      0 0 5px
+      rgba(177, 132, 28, 0.13)
+    );
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .kicker {
+    gap: 7px;
+
+    margin-bottom: 18px;
+
+    font-size: 0.6rem;
+
+    letter-spacing: 0.12em;
+  }
+
+  .kicker svg {
+    width: 14px;
+    height: 14px;
+  }
+}

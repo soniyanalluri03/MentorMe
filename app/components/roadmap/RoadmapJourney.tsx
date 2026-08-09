@@ -17,6 +17,7 @@ import {
 
 import JourneyAside from "./JourneyAside";
 import RoadmapTrack from "./RoadmapTrack";
+import { Sparkles } from "lucide-react";
 
 export default function RoadmapJourney() {
   const [activeCheckpoint, setActiveCheckpoint] =
@@ -27,10 +28,11 @@ export default function RoadmapJourney() {
       id="journey-map"
       className={styles.journeySection}
     >
-      <header className="hj-first-five-heading pt-20">
-        <p>
-          YOUR ROAD TO CAREER READINESS
-        </p>
+      <header className="hj-first-five-heading ">
+        <div className={styles.kicker}>
+            <Sparkles size={15} />
+            YOUR ROAD TO CAREER READINESS
+          </div>
 
         <h2>
           Follow the path.
@@ -51,15 +53,17 @@ export default function RoadmapJourney() {
       </header>
 
       <div className={styles.journeyLayout}>
-        <JourneyAside
-          checkpoint={activeCheckpoint}
-        />
+  <JourneyAside
+    checkpoint={activeCheckpoint}
+  />
 
-        <RoadmapTrack
-          activeCheckpoint={activeCheckpoint}
-          onSelect={setActiveCheckpoint}
-        />
-      </div>
+  <div className={styles.trackColumn}>
+    <RoadmapTrack
+      activeCheckpoint={activeCheckpoint}
+      onSelect={setActiveCheckpoint}
+    />
+  </div>
+</div>
     </section>
   );
 }

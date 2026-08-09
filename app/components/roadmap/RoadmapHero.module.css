@@ -1,0 +1,1637 @@
+/* =========================================================
+   IMPORTED ROADMAP HEADING STYLE
+   Used by:
+   hj-first-five-heading
+   hj-heading-wave
+   ========================================================= */
+
+:global(.hj-first-five-heading) {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  position: relative;
+  z-index: 2;
+
+  text-align: center;
+}
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+:global(.hj-first-five-heading > p) {
+  margin:
+    0
+    0
+    24px;
+
+  color:
+    var(
+      --cyan,
+      #70d7ff
+    );
+
+  font:
+    950
+    clamp(
+      0.9rem,
+      1.05vw,
+      1.08rem
+    )
+    var(
+      --font-display
+    ),
+    sans-serif;
+
+  line-height: 1.4;
+
+  letter-spacing: 0.21em;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 18px
+    rgba(
+      112,
+      215,
+      255,
+      0.16
+    );
+}
+
+/* =========================================================
+   MAIN HEADING
+   ========================================================= */
+
+:global(.hj-first-five-heading h2) {
+  width: 100%;
+  max-width: 1180px;
+
+  margin:
+    0
+    auto;
+
+  padding:
+    0
+    0
+    0.14em;
+
+  overflow: visible;
+
+  color:
+    var(
+      --text,
+      #f4f6ff
+    );
+
+  font:
+    760
+    clamp(
+      3.25rem,
+      5.25vw,
+      5.9rem
+    )
+    /
+    1.04
+    var(
+      --font-display
+    ),
+    sans-serif;
+
+  letter-spacing:
+    -0.052em;
+
+  text-align: center;
+
+  text-wrap: balance;
+}
+
+/* =========================================================
+   GOLD WAVE — "Already"
+   ========================================================= */
+
+:global(.hj-heading-wave) {
+  display: inline-block;
+
+  padding:
+    0
+    0.02em
+    0.08em;
+
+  color: transparent;
+
+  background:
+    linear-gradient(
+      90deg,
+
+      #f4f6ff 0%,
+      #f4f6ff 47%,
+
+      #d8b24b 49%,
+      #fff6d2 50%,
+      #d8b24b 51%,
+
+      #f4f6ff 53%,
+      #f4f6ff 100%
+    );
+
+  background-size:
+    260% 100%;
+
+  background-position:
+    0% 50%;
+
+  background-clip:
+    text;
+
+  -webkit-background-clip:
+    text;
+
+  -webkit-text-fill-color:
+    transparent;
+
+  animation:
+    hjHeadingGoldWave
+    12s
+    ease-in-out
+    infinite;
+}
+
+/* =========================================================
+   ITALIC PURPLE/GOLD — "mapped."
+   ========================================================= */
+
+:global(.hj-first-five-heading h2 em) {
+  display: inline-block;
+
+  margin:
+    0
+    0
+    -0.12em;
+
+  padding:
+    0
+    0.04em
+    0.15em;
+
+  overflow: visible;
+
+  color: transparent;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-weight: 500;
+  font-style: italic;
+
+  line-height: 1.08;
+
+  background:
+    linear-gradient(
+      110deg,
+
+      var(
+        --purple,
+        #8f5cf7
+      ),
+
+      var(
+        --purple-soft,
+        #b58cff
+      )
+      52%,
+
+      var(
+        --gold-soft,
+        #f2d875
+      )
+    );
+
+  background-clip:
+    text;
+
+  -webkit-background-clip:
+    text;
+
+  -webkit-text-fill-color:
+    transparent;
+
+  transform-origin:
+    center;
+
+  animation:
+    hjStepBreath
+    3.6s
+    ease-in-out
+    infinite;
+
+  will-change:
+    transform,
+    filter;
+}
+
+/* =========================================================
+   DESCRIPTION UNDER HEADING
+   ========================================================= */
+
+:global(.hj-first-five-heading > span) {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+  max-width: 960px;
+
+  margin:
+    28px
+    auto
+    0;
+
+  padding:
+    16px
+    28px;
+
+  box-sizing:
+    border-box;
+
+  color:
+    var(
+      --muted,
+      #b5c5d6
+    );
+
+  font:
+    760
+    clamp(
+      1.05rem,
+      1.22vw,
+      1.2rem
+    )
+    /
+    1.62
+    var(
+      --font-sans
+    ),
+    sans-serif;
+
+  text-align: center;
+
+  border-radius:
+    999px;
+
+  background:
+    radial-gradient(
+      circle
+      at
+      50%
+      50%,
+
+      rgba(
+        112,
+        215,
+        255,
+        0.12
+      ),
+
+      transparent
+      72%
+    );
+
+  text-shadow:
+    0 0 18px
+    rgba(
+      112,
+      215,
+      255,
+      0.15
+    );
+}
+
+/* =========================================================
+   LIGHT MODE HEADING
+   ========================================================= */
+
+:global(
+  [data-theme="light"]
+  .hj-first-five-heading
+  > p
+) {
+  color:
+    #0f5e83;
+
+  text-shadow:
+    0 1px 0
+      rgba(
+        255,
+        255,
+        255,
+        0.86
+      ),
+    0 0 12px
+      rgba(
+        43,
+        105,
+        140,
+        0.12
+      );
+}
+
+:global(
+  [data-theme="light"]
+  .hj-first-five-heading
+  h2
+) {
+  color:
+    #172d50;
+}
+
+:global(
+  [data-theme="light"]
+  .hj-heading-wave
+) {
+  background:
+    linear-gradient(
+      90deg,
+
+      #172d50 0%,
+      #172d50 47%,
+
+      #c99b2f 49%,
+      #ffe7a4 50%,
+      #c99b2f 51%,
+
+      #172d50 53%,
+      #172d50 100%
+    );
+
+  background-size:
+    260% 100%;
+
+  background-position:
+    0% 50%;
+
+  background-clip:
+    text;
+
+  -webkit-background-clip:
+    text;
+
+  -webkit-text-fill-color:
+    transparent;
+}
+
+:global(
+  [data-theme="light"]
+  .hj-first-five-heading
+  h2
+  em
+) {
+  background:
+    linear-gradient(
+      110deg,
+
+      #7650d8,
+
+      #9d73f2
+      52%,
+
+      #d2aa43
+    );
+
+  background-clip:
+    text;
+
+  -webkit-background-clip:
+    text;
+
+  -webkit-text-fill-color:
+    transparent;
+}
+
+:global(
+  [data-theme="light"]
+  .hj-first-five-heading
+  > span
+) {
+  color:
+    #263a59;
+
+  background:
+    radial-gradient(
+      circle
+      at
+      50%
+      50%,
+
+      rgba(
+        118,
+        80,
+        216,
+        0.11
+      ),
+
+      transparent
+      72%
+    );
+
+  text-shadow:
+    0 0 14px
+    rgba(
+      118,
+      80,
+      216,
+      0.1
+    );
+}
+
+/* =========================================================
+   HOME HERO SECONDARY BUTTON STYLE
+   Imported for:
+   mh-button
+   mh-button--secondary
+   ========================================================= */
+
+:global(.mh-button) {
+  min-height:
+    54px;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    18px;
+
+  padding:
+    0
+    23px;
+
+  border-radius:
+    12px;
+
+  font-family:
+    var(
+      --font-display
+    ),
+    sans-serif;
+
+  font-size:
+    0.84rem;
+
+  font-weight:
+    820;
+
+  line-height:
+    1;
+
+  text-decoration:
+    none;
+
+  white-space:
+    nowrap;
+
+  cursor:
+    pointer;
+
+  transition:
+    transform
+      250ms ease,
+    border-color
+      250ms ease,
+    box-shadow
+      250ms ease,
+    background
+      250ms ease,
+    color
+      250ms ease;
+}
+
+/* =========================================================
+   SECONDARY BUTTON
+   ========================================================= */
+
+:global(.mh-button--secondary) {
+  position:
+    relative;
+
+  isolation:
+    isolate;
+
+  overflow:
+    hidden;
+
+  color:
+    #1a2c49;
+
+  border:
+    1px solid
+    rgba(
+      83,
+      61,
+      120,
+      0.2
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.62
+    );
+
+  backdrop-filter:
+    blur(
+      14px
+    );
+
+  -webkit-backdrop-filter:
+    blur(
+      14px
+    );
+
+  box-shadow:
+    inset
+      0
+      1px
+      0
+      #ffffff,
+
+    0
+      12px
+      28px
+      rgba(
+        74,
+        55,
+        109,
+        0.12
+      );
+}
+
+:global(.mh-button--secondary:hover) {
+  transform:
+    translateY(
+      -4px
+    );
+
+  border-color:
+    rgba(
+      180,
+      143,
+      34,
+      0.5
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.85
+    );
+
+  box-shadow:
+    inset
+      0
+      1px
+      0
+      #ffffff,
+
+    0
+      16px
+      32px
+      rgba(
+        74,
+        55,
+        109,
+        0.16
+      );
+}
+
+:global(.mh-button--secondary > span) {
+  transition:
+    transform
+    220ms ease;
+}
+
+:global(.mh-button--secondary:hover > span) {
+  transform:
+    translate(
+      3px,
+      -2px
+    );
+}
+
+/* =========================================================
+   DARK MODE SECONDARY BUTTON
+   ========================================================= */
+
+:global(
+  [data-theme="dark"]
+  .mh-button--secondary
+) {
+  color:
+    #f2f7ff;
+
+  border-color:
+    rgba(
+      101,
+      182,
+      238,
+      0.25
+    );
+
+  background:
+    rgba(
+      12,
+      40,
+      70,
+      0.68
+    );
+
+  box-shadow:
+    inset
+      0
+      1px
+      0
+      rgba(
+        255,
+        255,
+        255,
+        0.1
+      ),
+
+    0
+      15px
+      32px
+      rgba(
+        0,
+        0,
+        0,
+        0.28
+      );
+}
+
+:global(
+  [data-theme="dark"]
+  .mh-button--secondary:hover
+) {
+  border-color:
+    rgba(
+      244,
+      223,
+      131,
+      0.38
+    );
+
+  background:
+    rgba(
+      18,
+      50,
+      83,
+      0.86
+    );
+}
+
+/* =========================================================
+   SMALL MOVING GOLD LIGHT
+   Around secondary button
+   ========================================================= */
+
+@property --mh-roadmap-loop-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+:global(.mh-button--secondary::after) {
+  content:
+    "";
+
+  position:
+    absolute;
+
+  z-index:
+    3;
+
+  inset:
+    0;
+
+  padding:
+    2px;
+
+  border-radius:
+    inherit;
+
+  pointer-events:
+    none;
+
+  background:
+    conic-gradient(
+      from
+      var(
+        --mh-roadmap-loop-angle
+      ),
+
+      transparent
+      0deg,
+
+      transparent
+      280deg,
+
+      rgba(
+        96,
+        66,
+        0,
+        0
+      )
+      288deg,
+
+      #604200
+      304deg,
+
+      #765407
+      318deg,
+
+      #b8860b
+      330deg,
+
+      #d4af37
+      338deg,
+
+      #8a620d
+      348deg,
+
+      transparent
+      360deg
+    );
+
+  -webkit-mask:
+    linear-gradient(
+      #000
+      0
+      0
+    )
+    content-box,
+
+    linear-gradient(
+      #000
+      0
+      0
+    );
+
+  -webkit-mask-composite:
+    xor;
+
+  mask:
+    linear-gradient(
+      #000
+      0
+      0
+    )
+    content-box,
+
+    linear-gradient(
+      #000
+      0
+      0
+    );
+
+  mask-composite:
+    exclude;
+
+  filter:
+    drop-shadow(
+      0
+      0
+      5px
+      rgba(
+        111,
+        79,
+        8,
+        0.42
+      )
+    );
+
+  animation:
+    mhRoadmapGoldLoop
+    4s
+    linear
+    infinite;
+}
+
+/* =========================================================
+   BUTTON ALIGNMENT INSIDE ROADMAP HERO
+   ========================================================= */
+
+.heroActions {
+  width:
+    100%;
+
+  margin-top:
+    30px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    14px;
+}
+
+.heroActions :global(.navbar-sign-in),
+.heroActions :global(.mh-button) {
+  min-height:
+    54px;
+
+  min-width:
+    220px;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes hjHeadingGoldWave {
+  0%,
+  100% {
+    background-position:
+      0% 50%;
+  }
+
+  50% {
+    background-position:
+      100% 50%;
+  }
+}
+
+@keyframes hjStepBreath {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter:
+      drop-shadow(
+        0
+        0
+        0
+        rgba(
+          181,
+          140,
+          255,
+          0
+        )
+      );
+  }
+
+  50% {
+    transform:
+      translateY(
+        -2px
+      )
+      scale(
+        1.055
+      );
+
+    filter:
+      drop-shadow(
+        0
+        8px
+        18px
+        rgba(
+          143,
+          92,
+          247,
+          0.22
+        )
+      )
+      drop-shadow(
+        0
+        0
+        15px
+        rgba(
+          224,
+          189,
+          85,
+          0.2
+        )
+      );
+  }
+}
+
+@keyframes mhRoadmapGoldLoop {
+  from {
+    --mh-roadmap-loop-angle:
+      0deg;
+  }
+
+  to {
+    --mh-roadmap-loop-angle:
+      360deg;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  :global(.hj-first-five-heading) {
+    max-width:
+      100%;
+  }
+
+  :global(.hj-first-five-heading > p) {
+    margin-bottom:
+      18px;
+
+    font-size:
+      0.62rem;
+
+    letter-spacing:
+      0.15em;
+  }
+
+  :global(.hj-first-five-heading h2) {
+    font-size:
+      clamp(
+        2.8rem,
+        13vw,
+        4.2rem
+      );
+
+    line-height:
+      1;
+  }
+
+  :global(.hj-first-five-heading > span) {
+    margin-top:
+      22px;
+
+    padding:
+      10px
+      8px;
+
+    border-radius:
+      0;
+
+    font-size:
+      0.88rem;
+
+    background:
+      transparent;
+  }
+
+  .heroActions {
+    display:
+      grid;
+
+    grid-template-columns:
+      1fr;
+
+    width:
+      100%;
+  }
+
+  .heroActions :global(.navbar-sign-in),
+  .heroActions :global(.mh-button) {
+    width:
+      100%;
+
+    min-width:
+      0;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  :global(.hj-heading-wave),
+  :global(.hj-first-five-heading h2 em),
+  :global(.mh-button--secondary::after) {
+    animation:
+      none !important;
+  }
+}
+
+/* =========================================================
+   ROADMAP HERO HIGHLIGHT PILLS
+   LEVELS 1–10 FREE
+   FULL 90-LEVEL PREVIEW
+   100+ OPPORTUNITIES
+   ========================================================= */
+
+.heroPills {
+  width: 100%;
+
+  margin-top: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 11px;
+
+  position: relative;
+  z-index: 3;
+}
+
+.heroPills > span {
+  min-height: 38px;
+
+  padding:
+    0
+    16px;
+
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  border:
+    1px solid
+    rgba(244, 223, 131, 0.22);
+
+  border-radius: 999px;
+
+  color: #d9c568;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.018)
+    ),
+    rgba(12, 31, 51, 0.58);
+
+  box-shadow:
+    inset
+      0
+      1px
+      0
+      rgba(255, 255, 255, 0.07),
+    0
+      8px
+      22px
+      rgba(0, 0, 0, 0.16);
+
+  backdrop-filter:
+    blur(15px);
+
+  -webkit-backdrop-filter:
+    blur(15px);
+
+  font-family:
+    var(--font-display),
+    sans-serif;
+
+  font-size: 0.58rem;
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+
+  cursor: default;
+
+  transition:
+    transform 300ms
+      cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 300ms ease,
+    color 300ms ease,
+    background 300ms ease,
+    box-shadow 300ms ease;
+}
+
+/* =========================================================
+   SMALL LIGHT SWEEP
+   ========================================================= */
+
+.heroPills > span::before {
+  content: "";
+
+  position: absolute;
+
+  width: 70px;
+  height: 120%;
+
+  left: -100px;
+  top: -10%;
+
+  z-index: -1;
+
+  transform:
+    skewX(-22deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 243, 181, 0.14),
+      transparent
+    );
+
+  transition:
+    left 650ms ease;
+
+  pointer-events: none;
+}
+
+.heroPills > span:hover::before {
+  left: calc(100% + 35px);
+}
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.heroPills > span:hover {
+  transform:
+    translateY(-4px);
+
+  color: #f2db79;
+
+  border-color:
+    rgba(244, 223, 131, 0.48);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(212, 175, 55, 0.1),
+      rgba(255, 255, 255, 0.025)
+    ),
+    rgba(13, 34, 56, 0.74);
+
+  box-shadow:
+    inset
+      0
+      1px
+      0
+      rgba(255, 255, 255, 0.09),
+    0
+      12px
+      28px
+      rgba(0, 0, 0, 0.22),
+    0
+      0
+      20px
+      rgba(212, 175, 55, 0.08);
+}
+
+/* =========================================================
+   INDIVIDUAL PILL ACCENTS
+   ========================================================= */
+
+/* Free levels */
+.heroPills > span:nth-child(1) {
+  border-color:
+    rgba(244, 223, 131, 0.32);
+
+  color: #f0d36d;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(212, 175, 55, 0.1),
+      rgba(255, 255, 255, 0.02)
+    ),
+    rgba(13, 32, 52, 0.68);
+}
+
+/* 90-level preview */
+.heroPills > span:nth-child(2) {
+  border-color:
+    rgba(181, 140, 255, 0.24);
+
+  color: #c6a6ff;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(143, 92, 247, 0.075),
+      rgba(255, 255, 255, 0.018)
+    ),
+    rgba(13, 32, 52, 0.64);
+}
+
+/* Opportunities */
+.heroPills > span:nth-child(3) {
+  border-color:
+    rgba(112, 215, 255, 0.22);
+
+  color: #8ddfff;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(112, 215, 255, 0.065),
+      rgba(255, 255, 255, 0.018)
+    ),
+    rgba(13, 32, 52, 0.64);
+}
+
+/* =========================================================
+   LIGHT MODE
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .heroPills > span,
+:global(html[data-theme="light"])
+  .heroPills > span,
+:global(html.light)
+  .heroPills > span,
+:global([data-theme="light"])
+  .heroPills > span,
+:global(.light)
+  .heroPills > span {
+  color: #735e82;
+
+  border-color:
+    rgba(98, 72, 126, 0.15);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.85),
+      rgba(248, 241, 253, 0.64)
+    );
+
+  box-shadow:
+    inset
+      0
+      1px
+      0
+      rgba(255, 255, 255, 1),
+    0
+      9px
+      22px
+      rgba(72, 50, 98, 0.07);
+}
+
+/* FREE */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .heroPills > span:nth-child(1),
+:global(html[data-theme="light"])
+  .heroPills > span:nth-child(1),
+:global(html.light)
+  .heroPills > span:nth-child(1),
+:global([data-theme="light"])
+  .heroPills > span:nth-child(1),
+:global(.light)
+  .heroPills > span:nth-child(1) {
+  color: #8b650d;
+
+  border-color:
+    rgba(177, 132, 28, 0.25);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 253, 244, 0.96),
+      rgba(248, 232, 184, 0.56)
+    );
+}
+
+/* 90 LEVELS */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .heroPills > span:nth-child(2),
+:global(html[data-theme="light"])
+  .heroPills > span:nth-child(2),
+:global(html.light)
+  .heroPills > span:nth-child(2),
+:global([data-theme="light"])
+  .heroPills > span:nth-child(2),
+:global(.light)
+  .heroPills > span:nth-child(2) {
+  color: #704cba;
+
+  border-color:
+    rgba(118, 80, 216, 0.2);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.94),
+      rgba(230, 215, 248, 0.64)
+    );
+}
+
+/* OPPORTUNITIES */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .heroPills > span:nth-child(3),
+:global(html[data-theme="light"])
+  .heroPills > span:nth-child(3),
+:global(html.light)
+  .heroPills > span:nth-child(3),
+:global([data-theme="light"])
+  .heroPills > span:nth-child(3),
+:global(.light)
+  .heroPills > span:nth-child(3) {
+  color: #176384;
+
+  border-color:
+    rgba(44, 125, 162, 0.18);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.94),
+      rgba(218, 241, 249, 0.55)
+    );
+}
+
+/* =========================================================
+   LIGHT MODE HOVER
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .heroPills > span:hover,
+:global(html[data-theme="light"])
+  .heroPills > span:hover,
+:global(html.light)
+  .heroPills > span:hover,
+:global([data-theme="light"])
+  .heroPills > span:hover,
+:global(.light)
+  .heroPills > span:hover {
+  transform:
+    translateY(-4px);
+
+  box-shadow:
+    inset
+      0
+      1px
+      0
+      #ffffff,
+    0
+      14px
+      30px
+      rgba(72, 50, 98, 0.12),
+    0
+      0
+      20px
+      rgba(212, 175, 55, 0.07);
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .heroPills {
+    margin-top: 22px;
+
+    gap: 8px;
+  }
+
+  .heroPills > span {
+    min-height: 35px;
+
+    padding:
+      0
+      12px;
+
+    font-size: 0.5rem;
+
+    letter-spacing: 0.08em;
+  }
+}
+
+@media (max-width: 460px) {
+  .heroPills {
+    display: grid;
+
+    grid-template-columns:
+      1fr;
+
+    width: min(100%, 300px);
+
+    margin:
+      22px
+      auto
+      0;
+  }
+
+  .heroPills > span {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .heroPills > span,
+  .heroPills > span::before {
+    transition: none;
+  }
+}
+/* =========================================================
+   ROADMAP HERO — SHARED PAGE BACKGROUND
+   Hero itself must never create its own background.
+   ========================================================= */
+
+.hero {
+  background: transparent !important;
+  background-image: none !important;
+
+  border: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.hero::before,
+.hero::after {
+  content: none !important;
+  display: none !important;
+
+  background: none !important;
+  background-image: none !important;
+
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* Light mode */
+:global(html[data-theme="light"]) .hero,
+:global(html.light) .hero,
+:global(html:not(.dark):not([data-theme="dark"])) .hero {
+  background: transparent !important;
+  background-image: none !important;
+
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Dark mode */
+:global(html[data-theme="dark"]) .hero,
+:global(html.dark) .hero {
+  background: transparent !important;
+  background-image: none !important;
+
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* =========================================================
+   ROADMAP HERO KICKER
+   THE MENTORME 90-LEVEL JOURNEY
+   ========================================================= */
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  margin: 0 auto 24px;
+
+  color: #d9ba4d;
+
+  font-family:
+    var(--font-display),
+    sans-serif;
+
+  font-size: 0.68rem;
+  font-weight: 900;
+
+  line-height: 1.4;
+
+  letter-spacing: 0.14em;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 16px
+    rgba(217, 186, 77, 0.16);
+}
+
+/* Sparkles icon */
+
+.kicker svg {
+  flex: 0 0 auto;
+
+  color: #f0d36d;
+
+  filter:
+    drop-shadow(
+      0 0 7px
+      rgba(240, 211, 109, 0.24)
+    );
+}
+
+/* =========================================================
+   LIGHT MODE
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .kicker,
+:global(html[data-theme="light"])
+  .kicker,
+:global(html.light)
+  .kicker,
+:global([data-theme="light"])
+  .kicker,
+:global(.light)
+  .kicker {
+  color: #8e6810;
+
+  text-shadow:
+    0 1px 0
+      rgba(255, 255, 255, 0.8),
+    0 0 10px
+      rgba(177, 132, 28, 0.1);
+}
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .kicker svg,
+:global(html[data-theme="light"])
+  .kicker svg,
+:global(html.light)
+  .kicker svg,
+:global([data-theme="light"])
+  .kicker svg,
+:global(.light)
+  .kicker svg {
+  color: #b78313;
+
+  filter:
+    drop-shadow(
+      0 0 5px
+      rgba(177, 132, 28, 0.13)
+    );
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .kicker {
+    gap: 7px;
+
+    margin-bottom: 18px;
+
+    font-size: 0.6rem;
+
+    letter-spacing: 0.12em;
+  }
+
+  .kicker svg {
+    width: 14px;
+    height: 14px;
+  }
+}

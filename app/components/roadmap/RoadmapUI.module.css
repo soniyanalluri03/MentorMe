@@ -1,0 +1,237 @@
+.cosmicButton {
+  position: relative;
+  display: inline-flex;
+  width: 15rem;
+  min-height: 3.3rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 4px;
+  cursor: pointer;
+  border: 0;
+  border-radius: 5rem;
+  background-image:
+    linear-gradient(var(--navy-deep), var(--navy-deep)),
+    linear-gradient(
+      137deg,
+      #ffdb3b 10%,
+      #fe8a53 39%,
+      #8f51ea 68%,
+      #4d7dff 88%
+    );
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  background-size: 300% 300%;
+  box-shadow: 0 13px 31px rgba(21, 25, 53, 0.18);
+  text-decoration: none;
+  animation: cosmicGradient 5s ease infinite;
+  transition:
+    transform 350ms ease,
+    box-shadow 350ms ease;
+}
+
+.cosmicButtonSecondary {
+  background-image:
+    linear-gradient(var(--navy), var(--navy)),
+    linear-gradient(
+      137deg,
+      #a5f3fc 10%,
+      #60a5fa 40%,
+      #a78bfa 70%,
+      #ffe16b 95%
+    );
+}
+
+.cosmicButton:hover {
+  box-shadow: 0 17px 40px rgba(45, 32, 94, 0.26);
+  transform: scale(1.055);
+}
+
+.cosmicButton:active {
+  transform: scale(0.98);
+}
+
+.cosmicButtonText {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0 1.25rem;
+  color: #ffffff;
+}
+
+.cosmicButtonText strong {
+  font-size: 0.68rem;
+  font-weight: 950;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.45);
+}
+
+.cosmicButtonText b {
+  transition: transform 250ms ease;
+}
+
+.cosmicButton:hover .cosmicButtonText b {
+  transform: translateX(4px);
+}
+
+.cosmicStars {
+  position: absolute;
+  inset: 4px;
+  z-index: 2;
+  overflow: hidden;
+  border-radius: 5rem;
+}
+
+.cosmicStars::before,
+.cosmicStars::after {
+  position: absolute;
+  width: 170%;
+  height: 500%;
+  content: "";
+  background-image: radial-gradient(#ffffff 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+.cosmicStars::before {
+  top: 0;
+  left: -50%;
+  opacity: 0.45;
+  animation: starsMove 55s linear infinite;
+}
+
+.cosmicStars::after {
+  top: -100px;
+  left: -100%;
+  opacity: 0.8;
+  animation: starsRotate 85s linear infinite;
+}
+
+.cosmicGlow {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+.cosmicGlow i {
+  width: 55%;
+  height: 34px;
+  border-radius: 50%;
+  filter: blur(1.8rem);
+  animation: cosmicPulse 4s ease-in-out infinite;
+}
+
+.cosmicGlow i:first-child {
+  background: rgba(255, 204, 65, 0.56);
+}
+
+.cosmicGlow i:last-child {
+  background: rgba(142, 81, 234, 0.67);
+  animation-delay: -2s;
+}
+
+.tiltAuto {
+  --tilt-delay: 0s;
+  height: 100%;
+  perspective: 1250px;
+  animation: automaticTilt 6.5s ease-in-out infinite var(--tilt-delay);
+}
+
+.tiltSurface {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --glow-x: 50%;
+  --glow-y: 50%;
+
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  transform:
+    rotateX(var(--tilt-x))
+    rotateY(var(--tilt-y));
+  transform-style: preserve-3d;
+  transition:
+    transform 190ms ease-out,
+    border-color 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.tiltSurface::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0;
+  background:
+    radial-gradient(
+      330px circle at var(--glow-x) var(--glow-y),
+      rgba(255, 224, 105, 0.25),
+      rgba(142, 97, 218, 0.13) 45%,
+      transparent 72%
+    );
+  transition: opacity 250ms ease;
+}
+
+.tiltSurface:hover::before {
+  opacity: 1;
+}
+
+.tiltSurface > * {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes cosmicGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes starsMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(-110rem); }
+}
+
+@keyframes starsRotate {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes cosmicPulse {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.76);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes automaticTilt {
+  0%, 100% {
+    transform: translateY(0) rotateX(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: translateY(-4px) rotateX(1.2deg) rotateY(-1.6deg);
+  }
+  50% {
+    transform: translateY(-7px) rotateX(-1deg) rotateY(1.8deg);
+  }
+  75% {
+    transform: translateY(-3px) rotateX(1deg) rotateY(0.7deg);
+  }
+}
+
+@media (max-width: 700px) {
+  .cosmicButton {
+    width: 100%;
+  }
+}

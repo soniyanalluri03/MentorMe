@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import {useEffect,useRef,useState,} from "react";
 import { MentorMeLogo } from "./MentorMeLogo";
@@ -12,10 +11,12 @@ import CourseStats from "./courses/CourseStats";
 import CoursesHero from "./courses/CoursesHero";
 import FeaturedTrack from "./courses/FeaturedTrack";
 import MentorMethod from "./courses/MentorMethod";
-import RoadmapExperience from "./roadmap/RoadmapExperience";
 import styles from "../../app/home.module.css";
 import { LeaderboardExperience } from "./leaderboard/LeaderboardExperience";
-
+import RoadmapHero from "./roadmap/RoadmapHero";
+import RoadmapStats from "./roadmap/RoadmapStats";
+import RoadmapJourney from "./roadmap/RoadmapJourney";
+import RoadmapFinalSection from "./roadmap/RoadmapFinalSection"; 
 type Page =
   | "home"
   | "courses"
@@ -397,39 +398,12 @@ function Home() {
 function Roadmap() {
   return (
     <>
-      <PageHero
-        tag="THE 90-LEVEL ROADMAP"
-        title={
-          <>
-            Every next step.
-            <br />
-            <em>
-              Already mapped.
-            </em>
-          </>
-        }
-        text="A sequential career journey across six professional worlds. Complete the mission. Earn the XP. Unlock what’s next."
-      />
-
-      <section className="roadmap-section">
-        <aside>
-          <b>
-            FRONTEND DEVELOPER
-          </b>
-
-          <span>90 levels</span>
-
-          <span>
-            9 certificates
-          </span>
-
-          <span>
-            Level 1 unlocked
-          </span>
-        </aside>
-
-        <WorldMap />
-      </section>
+      <main className="roadmap-page">
+      <RoadmapHero/>
+      <RoadmapStats />
+      <RoadmapJourney />
+      <RoadmapFinalSection />
+    </main>
     </>
   );
 }
@@ -978,15 +952,14 @@ export function PublicSite({
   page: Page;
 }) {
   const content = {
-    home: <Home />,
-    courses: <Courses />,
-    roadmap: <RoadmapExperience />,
-    leaderboard: <LeaderboardExperience />,
-    about: <About />,
-    pricing: <Pricing />,
-    contact: <Contact />,
-  }[page];
-
+  home: <Home />,
+  courses: <Courses />,
+  roadmap: <Roadmap />,
+  leaderboard: <LeaderboardExperience />,
+  about: <About />,
+  pricing: <Pricing />,
+  contact: <Contact />,
+}[page];
   return (
   <main
     className={

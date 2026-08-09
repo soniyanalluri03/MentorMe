@@ -1,0 +1,904 @@
+@property --roadmap-stat-border {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* =========================================================
+   ROADMAP STATS SECTION
+   ========================================================= */
+
+.statsSection {
+  width: 100%;
+  max-width: none;
+
+  margin: 0;
+
+  padding:
+    clamp(24px, 3vw, 42px)
+    clamp(24px, 5.5vw, 104px)
+    clamp(50px, 5vw, 72px);
+
+  position: relative;
+  overflow: visible;
+
+  border: 0;
+  border-radius: 0;
+
+  background: transparent !important;
+  background-image: none !important;
+
+  box-shadow: none !important;
+}
+
+.statsSection::before,
+.statsSection::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.grid {
+  width: 100%;
+  max-width: 1600px;
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  align-items: stretch;
+  gap: 16px;
+}
+
+.grid > * {
+  min-width: 0;
+}
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.statCard {
+  min-width: 0;
+  min-height: 205px;
+
+  padding:
+    28px
+    26px
+    22px;
+
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(92px, auto)
+    minmax(0, 1fr);
+
+  grid-template-rows:
+    1fr
+    auto;
+
+  align-items: center;
+
+  column-gap: 23px;
+  row-gap: 18px;
+
+  border:
+    1px solid
+    rgba(244, 223, 131, 0.16);
+
+  border-radius: 26px;
+
+  color: #f7f9fd;
+
+  background:
+    linear-gradient(
+      132deg,
+      rgba(255, 241, 174, 0.18) 0%,
+      rgba(255, 233, 140, 0.05) 19%,
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(85, 126, 184, 0.38),
+      transparent 38%
+    ),
+    linear-gradient(
+      145deg,
+      #1f3c63 0%,
+      #10243d 48%,
+      #091727 76%,
+      #182112 100%
+    );
+
+  box-shadow:
+    0 20px 48px
+      rgba(0, 0, 0, 0.22),
+    0 0 26px
+      rgba(212, 175, 55, 0.05),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.08);
+
+  transform:
+    translateY(0)
+    rotateX(0deg)
+    rotateY(0deg)
+    scale(1);
+
+  transform-origin: center;
+
+  transition:
+    transform 420ms
+      cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 420ms ease,
+    border-color 420ms ease,
+    filter 420ms ease;
+}
+
+/* =========================================================
+   HOVER
+   Same feel as HighlightCard
+   ========================================================= */
+
+.statCard:hover {
+  transform:
+    translateY(-10px)
+    rotateX(1deg)
+    rotateY(-1deg)
+    scale(1.012);
+
+  border-color: transparent;
+
+  filter:
+    brightness(1.04);
+
+  box-shadow:
+    0 34px 92px
+      rgba(0, 0, 0, 0.44),
+    0 0 42px
+      rgba(212, 175, 55, 0.16),
+    0 0 72px
+      rgba(77, 115, 170, 0.08),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.12);
+}
+
+/* =========================================================
+   ROTATING GOLD BORDER
+   ========================================================= */
+
+.animatedBorder {
+  position: absolute;
+  inset: 0;
+
+  z-index: 8;
+
+  padding: 1.5px;
+
+  border-radius: inherit;
+
+  opacity: 0.76;
+
+  background:
+    conic-gradient(
+      from var(--roadmap-stat-border),
+      #6f4705,
+      #b4780b,
+      #f4df83,
+      #fff4b5,
+      #d4af37,
+      #8f5d08,
+      #f7e58c,
+      #6f4705
+    );
+
+  filter:
+    drop-shadow(
+      0 0 8px
+      rgba(212, 175, 55, 0.24)
+    );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  animation:
+    roadmapStatBorder
+    8s linear infinite;
+
+  pointer-events: none;
+
+  transition:
+    opacity 350ms ease,
+    filter 350ms ease;
+}
+
+.statCard:hover .animatedBorder {
+  opacity: 1;
+
+  animation-duration: 4.5s;
+
+  filter:
+    drop-shadow(
+      0 0 11px
+      rgba(212, 175, 55, 0.4)
+    );
+}
+
+/* =========================================================
+   SHINE SWEEP
+   This was missing from the Roadmap version
+   ========================================================= */
+
+.shine {
+  position: absolute;
+
+  inset: -30%;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      110deg,
+      transparent 34%,
+      rgba(255, 244, 190, 0.14) 48%,
+      transparent 62%
+    );
+
+  transform:
+    translateX(-100%)
+    rotate(8deg);
+
+  transition:
+    transform 900ms ease;
+}
+
+.statCard:hover .shine {
+  transform:
+    translateX(100%)
+    rotate(8deg);
+}
+
+/* =========================================================
+   GLOW
+   ========================================================= */
+
+.cardGlow {
+  width: 235px;
+  height: 235px;
+
+  position: absolute;
+
+  right: -120px;
+  bottom: -135px;
+
+  z-index: -1;
+
+  border-radius: 50%;
+
+  background:
+    rgba(212, 175, 55, 0.13);
+
+  filter:
+    blur(42px);
+
+  opacity: 0.8;
+
+  pointer-events: none;
+
+  transition:
+    transform 500ms ease,
+    opacity 500ms ease;
+}
+
+.statCard:hover .cardGlow {
+  opacity: 1;
+
+  transform:
+    scale(1.35);
+}
+
+/* Decorative rings */
+
+.statCard::before {
+  content: "";
+
+  width: 210px;
+  height: 210px;
+
+  position: absolute;
+
+  right: -120px;
+  bottom: -135px;
+
+  z-index: 0;
+
+  border:
+    1px solid
+    rgba(244, 223, 131, 0.12);
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 34px
+      rgba(212, 175, 55, 0.022),
+    0 0 0 68px
+      rgba(212, 175, 55, 0.014);
+
+  pointer-events: none;
+
+  transition:
+    transform 500ms ease;
+}
+
+.statCard:hover::before {
+  transform:
+    scale(1.12);
+}
+
+/* =========================================================
+   NUMBER
+   ========================================================= */
+
+.number {
+  position: relative;
+  z-index: 3;
+
+  grid-column: 1;
+  grid-row: 1;
+
+  align-self: center;
+
+  display: block;
+
+  margin: 0;
+
+  color: transparent;
+
+  font-size:
+    clamp(3.65rem, 4vw, 5rem);
+
+  font-weight: 950;
+
+  line-height: 0.86;
+  letter-spacing: -0.075em;
+
+  white-space: nowrap;
+
+  background:
+    linear-gradient(
+      105deg,
+      #fff3ac 0%,
+      #f4d35c 28%,
+      #d4af37 53%,
+      #a66d08 100%
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  filter:
+    drop-shadow(
+      0 4px 13px
+      rgba(212, 175, 55, 0.13)
+    );
+
+  transform:
+    translateY(0)
+    scale(1);
+
+  transform-origin: left center;
+
+  transition:
+    transform 420ms
+      cubic-bezier(0.22, 1, 0.36, 1),
+    filter 420ms ease;
+}
+
+.statCard:hover .number {
+  transform:
+    translateY(-4px)
+    scale(1.07);
+
+  filter:
+    drop-shadow(
+      0 7px 19px
+      rgba(240, 211, 109, 0.3)
+    );
+}
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+.content {
+  position: relative;
+  z-index: 3;
+
+  grid-column: 2;
+  grid-row: 1;
+
+  align-self: center;
+
+  min-width: 0;
+
+  transition:
+    transform 420ms
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.statCard:hover .content {
+  transform:
+    translateX(4px);
+}
+
+.content h2 {
+  margin: 0;
+
+  color: #f7f9fd;
+
+  font-size:
+    clamp(1.18rem, 1.45vw, 1.55rem);
+
+  font-weight: 800;
+
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+
+  text-shadow:
+    0 4px 22px
+    rgba(0, 0, 0, 0.24);
+}
+
+.content p {
+  max-width: 250px;
+
+  margin:
+    9px
+    0
+    0;
+
+  color: #aebacd;
+
+  font-size: 0.72rem;
+
+  line-height: 1.56;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+  position: relative;
+  z-index: 4;
+
+  grid-column: 1 / -1;
+  grid-row: 2;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding-top: 16px;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.065);
+}
+
+.footer > span {
+  width: 58px;
+  height: 3px;
+
+  margin-right: 3px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #a36f0d,
+      #d4af37 38%,
+      #fff0a7 72%,
+      transparent
+    );
+
+  transition:
+    width 350ms ease,
+    filter 350ms ease;
+}
+
+.statCard:hover .footer > span {
+  width: 90px;
+
+  filter:
+    drop-shadow(
+      0 0 8px
+      rgba(244, 223, 131, 0.35)
+    );
+}
+
+.footer i {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background:
+    #d4af37;
+
+  opacity: 0.58;
+
+  transition:
+    opacity 350ms ease,
+    transform 350ms ease,
+    box-shadow 350ms ease;
+}
+
+.statCard:hover .footer i {
+  opacity: 0.95;
+
+  transform:
+    scale(1.15);
+
+  box-shadow:
+    0 0 8px
+    rgba(212, 175, 55, 0.4);
+}
+
+/* =========================================================
+   LIGHT MODE
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .statCard,
+:global(html[data-theme="light"])
+  .statCard,
+:global(html.light)
+  .statCard,
+:global([data-theme="light"])
+  .statCard,
+:global(.light)
+  .statCard {
+  color: #202a3d;
+
+  border-color:
+    rgba(177, 132, 28, 0.3);
+
+  background:
+    linear-gradient(
+      132deg,
+      rgba(255, 255, 255, 0.96) 0%,
+      rgba(250, 246, 255, 0.94) 33%,
+      rgba(255, 250, 238, 0.96) 72%,
+      rgba(250, 239, 203, 0.88) 100%
+    ),
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(217, 202, 243, 0.72),
+      transparent 38%
+    );
+
+  box-shadow:
+    0 20px 48px
+      rgba(78, 57, 111, 0.11),
+    0 0 25px
+      rgba(212, 175, 55, 0.06),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.98);
+}
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .statCard:hover,
+:global(html[data-theme="light"])
+  .statCard:hover,
+:global(html.light)
+  .statCard:hover,
+:global([data-theme="light"])
+  .statCard:hover,
+:global(.light)
+  .statCard:hover {
+  border-color: transparent;
+
+  filter: none;
+
+  box-shadow:
+    0 34px 86px
+      rgba(78, 57, 111, 0.18),
+    0 0 40px
+      rgba(212, 175, 55, 0.14),
+    0 0 72px
+      rgba(191, 168, 229, 0.14),
+    inset 0 1px 0
+      rgba(255, 255, 255, 1);
+}
+
+/* Number */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .number,
+:global(html[data-theme="light"])
+  .number,
+:global(html.light)
+  .number,
+:global([data-theme="light"])
+  .number,
+:global(.light)
+  .number {
+  background:
+    linear-gradient(
+      105deg,
+      #805300 0%,
+      #b77b08 28%,
+      #d4af37 54%,
+      #e3bd4a 73%,
+      #895805 100%
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Text */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .content h2,
+:global(html[data-theme="light"])
+  .content h2,
+:global(html.light)
+  .content h2,
+:global([data-theme="light"])
+  .content h2,
+:global(.light)
+  .content h2 {
+  color: #202a3d;
+
+  text-shadow: none;
+}
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .content p,
+:global(html[data-theme="light"])
+  .content p,
+:global(html.light)
+  .content p,
+:global([data-theme="light"])
+  .content p,
+:global(.light)
+  .content p {
+  color: #667085;
+}
+
+/* Shine */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .shine,
+:global(html[data-theme="light"])
+  .shine,
+:global(html.light)
+  .shine,
+:global([data-theme="light"])
+  .shine,
+:global(.light)
+  .shine {
+  background:
+    linear-gradient(
+      110deg,
+      transparent 34%,
+      rgba(255, 255, 255, 0.78) 47%,
+      rgba(230, 216, 249, 0.3) 52%,
+      transparent 64%
+    );
+}
+
+/* Glow */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .cardGlow,
+:global(html[data-theme="light"])
+  .cardGlow,
+:global(html.light)
+  .cardGlow,
+:global([data-theme="light"])
+  .cardGlow,
+:global(.light)
+  .cardGlow {
+  background:
+    radial-gradient(
+      circle,
+      rgba(212, 175, 55, 0.19),
+      rgba(196, 174, 232, 0.13) 48%,
+      transparent 72%
+    );
+
+  filter:
+    blur(38px);
+}
+
+/* Decorative rings */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .statCard::before,
+:global(html[data-theme="light"])
+  .statCard::before,
+:global(html.light)
+  .statCard::before,
+:global([data-theme="light"])
+  .statCard::before,
+:global(.light)
+  .statCard::before {
+  border-color:
+    rgba(177, 132, 28, 0.14);
+
+  box-shadow:
+    0 0 0 34px
+      rgba(191, 168, 229, 0.04),
+    0 0 0 68px
+      rgba(212, 175, 55, 0.022);
+}
+
+/* Footer */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .footer,
+:global(html[data-theme="light"])
+  .footer,
+:global(html.light)
+  .footer,
+:global([data-theme="light"])
+  .footer,
+:global(.light)
+  .footer {
+  border-color:
+    rgba(75, 61, 103, 0.1);
+}
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes roadmapStatBorder {
+  to {
+    --roadmap-stat-border: 360deg;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .statsSection {
+    padding:
+      30px
+      clamp(24px, 5vw, 58px)
+      64px;
+  }
+
+  .grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 17px;
+  }
+}
+
+@media (max-width: 700px) {
+  .statsSection {
+    padding:
+      22px
+      17px
+      54px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+  }
+
+  .statCard {
+    min-height: 185px;
+
+    padding:
+      23px
+      21px
+      19px;
+
+    grid-template-columns:
+      minmax(78px, auto)
+      minmax(0, 1fr);
+
+    column-gap: 18px;
+
+    border-radius: 23px;
+  }
+
+  .number {
+    font-size:
+      clamp(
+        3.3rem,
+        14vw,
+        4.3rem
+      );
+  }
+
+  .content h2 {
+    font-size:
+      clamp(
+        1.18rem,
+        5vw,
+        1.48rem
+      );
+  }
+
+  .content p {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 410px) {
+  .statCard {
+    grid-template-columns:
+      70px
+      minmax(0, 1fr);
+
+    padding:
+      21px
+      17px
+      18px;
+
+    column-gap: 14px;
+  }
+
+  .number {
+    font-size: 3.1rem;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .animatedBorder {
+    animation: none;
+  }
+
+  .statCard,
+  .shine,
+  .cardGlow,
+  .number,
+  .content,
+  .footer > span,
+  .footer i {
+    transition: none;
+  }
+}

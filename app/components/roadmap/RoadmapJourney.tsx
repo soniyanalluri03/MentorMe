@@ -38,11 +38,11 @@ export default function RoadmapJourney() {
           Follow the path.
           <br />
 
-          <span className="hj-heading-wave">
+          <span className="hj-heading-wave text-4xl xl:text-6xl">
             Unlock the
           </span>{" "}
 
-          <em>proof.</em>
+          <em className="text-4xl xl:text-6xl">proof.</em>
         </h2>
 
         <span>

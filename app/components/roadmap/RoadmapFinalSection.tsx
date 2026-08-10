@@ -31,11 +31,11 @@ export default function RoadmapFinalSection() {
               Career ready
               <br />
 
-              <span className="hj-heading-wave">
+              <span className="hj-heading-wave text-4xl xl:text-6xl">
                 Opportunity
               </span>{" "}
 
-              <em>unlocked</em>
+              <em className="text-4xl xl:text-6xl">unlocked</em>
             </h2>
             <span>
               Complete the full journey with practical skills,

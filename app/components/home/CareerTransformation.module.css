@@ -1233,3 +1233,117 @@
   background: transparent !important;
   background-image: none !important;
 }
+
+
+.hj-kicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  width: fit-content;
+
+  margin:
+    0
+    auto
+    24px;
+
+  color: #d9ba4d;
+
+  font-family:
+    var(--font-display),
+    sans-serif;
+
+  font-size: 0.68rem;
+  font-weight: 900;
+
+  line-height: 1.4;
+
+  letter-spacing: 0.14em;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 16px
+    rgba(217, 186, 77, 0.16);
+}
+
+/* Sparkles */
+
+.hj-kicker svg {
+  width: 15px;
+  height: 15px;
+
+  flex: 0 0 auto;
+
+  color: #f0d36d;
+
+  filter:
+    drop-shadow(
+      0 0 7px
+      rgba(240, 211, 109, 0.24)
+    );
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+[data-theme="dark"] .hj-root .hj-kicker,
+html.dark .hj-root .hj-kicker {
+  color: #d9ba4d;
+}
+
+[data-theme="dark"] .hj-root .hj-kicker svg,
+html.dark .hj-root .hj-kicker svg {
+  color: #f0d36d;
+}
+
+/* =========================================================
+   LIGHT MODE
+   ========================================================= */
+
+[data-theme="light"] .hj-root .hj-kicker,
+html.light .hj-root .hj-kicker {
+  color: #8e6810;
+
+  text-shadow:
+    0 1px 0
+      rgba(255, 255, 255, 0.8),
+    0 0 10px
+      rgba(177, 132, 28, 0.1);
+}
+
+[data-theme="light"] .hj-root .hj-kicker svg,
+html.light .hj-root .hj-kicker svg {
+  color: #b78313;
+
+  filter:
+    drop-shadow(
+      0 0 5px
+      rgba(177, 132, 28, 0.13)
+    );
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .hj-kicker {
+    gap: 7px;
+
+    margin-bottom: 18px;
+
+    font-size: 0.6rem;
+
+    letter-spacing: 0.12em;
+  }
+
+  .hj-kicker svg {
+    width: 14px;
+    height: 14px;
+  }
+}

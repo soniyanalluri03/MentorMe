@@ -1,0 +1,670 @@
+/* =========================================================
+   ROADMAP JOURNEY
+   Uses the shared Roadmap page background.
+   No independent section background.
+   ========================================================= */
+
+.journeySection {
+  position: relative;
+
+  width: 100%;
+  max-width: none;
+
+  margin: 0;
+
+  padding:
+    clamp(4.5rem, 7vw, 6.5rem)
+    clamp(1rem, 4vw, 4rem)
+    clamp(4rem, 6vw, 5.5rem);
+
+  overflow: visible;
+
+  border: 0 !important;
+  border-top: 0 !important;
+
+  background: transparent !important;
+  background-image: none !important;
+
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* Never create another section background */
+
+.journeySection::before,
+.journeySection::after {
+  content: none !important;
+  display: none !important;
+
+  background: none !important;
+  background-image: none !important;
+
+  border: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* =========================================================
+   OLD JOURNEY HEADER
+   Not currently used because we're using the shared
+   hj-first-five-heading from RoadmapHero.module.css.
+   Kept only in case you reuse it elsewhere.
+   ========================================================= */
+
+.journeyHeader {
+  display: flex;
+
+  width: 100%;
+  max-width: 940px;
+
+  align-items: center;
+  flex-direction: column;
+
+  margin:
+    0
+    auto
+    2.5rem;
+
+  text-align: center;
+}
+
+.journeyHeader > span {
+  color: var(--gold);
+
+  font-size: 0.68rem;
+  font-weight: 950;
+
+  letter-spacing: 0.17em;
+
+  text-transform: uppercase;
+}
+
+.journeyHeader h2 {
+  margin:
+    0.55rem
+    0
+    0;
+
+  padding-bottom: 0.12em;
+
+  overflow: visible;
+
+  color: var(--text);
+
+  font-size:
+    clamp(
+      3.2rem,
+      5.6vw,
+      5.9rem
+    );
+
+  font-weight: 950;
+
+  letter-spacing: -0.075em;
+
+  line-height: 0.88;
+}
+
+.journeyHeader h2 em {
+  display: block;
+
+  width: fit-content;
+  max-width: 100%;
+
+  margin:
+    0.08em
+    auto
+    0;
+
+  padding:
+    0.04em
+    0.08em
+    0.18em;
+
+  overflow: visible;
+
+  color: transparent;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-weight: 500;
+  font-style: italic;
+
+  line-height: 1.12;
+
+  background:
+    linear-gradient(
+      105deg,
+      #805400 0%,
+      #b77b00 11%,
+      #e4b11d 23%,
+      #fff5b6 34%,
+      #f5cd4e 42%,
+      #bb7f00 53%,
+      #7e5100 63%,
+      #f5c936 75%,
+      #fff8ce 84%,
+      #d29b09 92%,
+      #805400 100%
+    );
+
+  background-size:
+    360% 100%;
+
+  background-position:
+    0% 50%;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  filter:
+    drop-shadow(
+      0
+      5px
+      12px
+      rgba(
+        181,
+        124,
+        0,
+        0.13
+      )
+    );
+
+  animation:
+    completeGoldTextWave
+    4.8s
+    linear
+    infinite;
+}
+
+:global(html[data-theme="dark"])
+  .journeyHeader h2 em {
+  background:
+    linear-gradient(
+      105deg,
+      #9a6800 0%,
+      #e1a909 14%,
+      #ffe063 27%,
+      #fff8c9 37%,
+      #e5ad0f 49%,
+      #9b6500 61%,
+      #ffd74b 75%,
+      #fff7bc 85%,
+      #d09300 94%,
+      #9a6800 100%
+    );
+
+  background-size:
+    360% 100%;
+
+  filter:
+    drop-shadow(
+      0
+      4px
+      14px
+      rgba(
+        255,
+        204,
+        56,
+        0.17
+      )
+    );
+}
+
+.journeyHeader p {
+  max-width: 680px;
+
+  margin:
+    1.15rem
+    auto
+    0;
+
+  color: var(--muted);
+
+  font-size: 0.87rem;
+  font-weight: 700;
+
+  line-height: 1.7;
+}
+
+/* =========================================================
+   JOURNEY CONTENT
+   ========================================================= */
+
+/* =========================================================
+   JOURNEY MAIN LAYOUT
+   Aside left + roadmap filling remaining space
+   ========================================================= */
+
+/* =========================================================
+   JOURNEY MAIN LAYOUT
+   Sidebar + roadmap perfectly aligned
+   ========================================================= */
+
+.journeyLayout {
+  position: relative;
+
+  display: grid;
+
+  width: min(100%, 1600px);
+
+  grid-template-columns:
+    clamp(300px, 19vw, 340px)
+    minmax(0, 1fr);
+
+  column-gap: clamp(22px, 1.8vw, 30px);
+
+  /*
+   * IMPORTANT:
+   * Stretch both columns to the same row height.
+   */
+  align-items: stretch;
+
+  margin:
+    clamp(3.8rem, 5vw, 5rem)
+    auto
+    0;
+}
+
+
+/* =========================================================
+   ROADMAP TRACK COLUMN
+   ========================================================= */
+
+.trackColumn {
+  position: relative;
+
+  display: flex;
+
+  width: 100%;
+  min-width: 0;
+
+  margin: 0;
+  padding: 0;
+
+  align-self: stretch;
+  justify-self: stretch;
+
+  overflow: visible;
+}
+
+.trackColumn > * {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+
+  flex: 1 1 auto;
+
+  margin: 0;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1180px) {
+  .journeyLayout {
+    width: min(100%, 1000px);
+
+    grid-template-columns: 1fr;
+
+    align-items: start;
+
+    row-gap: 34px;
+  }
+
+  .trackColumn {
+    width: 100%;
+    min-width: 0;
+
+    display: block;
+
+    align-self: start;
+    justify-self: stretch;
+  }
+
+  .trackColumn > * {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   ROADMAP TRACK COLUMN
+   ========================================================= */
+
+.trackColumn {
+  width: 100%;
+  min-width: 0;
+
+  margin: 0;
+  padding: 0;
+
+  position: relative;
+
+  align-self: start;
+  justify-self: stretch;
+
+  overflow: visible;
+}
+
+/*
+ * Make the immediate RoadmapTrack root consume
+ * the entire second grid column.
+ */
+.trackColumn > * {
+  width: 100%;
+  max-width: none;
+
+  margin-left: 0;
+  margin-right: 0;
+
+  min-width: 0;
+}
+@media (min-width: 1181px) {
+  .journeyLayout {
+    align-items: start;
+  }
+
+  .trackColumn {
+    align-self: start;
+  }
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+:global(html[data-theme="dark"])
+  .journeySection,
+:global(html.dark)
+  .journeySection {
+  background: transparent !important;
+  background-image: none !important;
+
+  border: 0 !important;
+
+  box-shadow: none !important;
+}
+
+/* =========================================================
+   LIGHT MODE
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .journeySection,
+:global(html[data-theme="light"])
+  .journeySection,
+:global(html.light)
+  .journeySection,
+:global([data-theme="light"])
+  .journeySection,
+:global(.light)
+  .journeySection {
+  background: transparent !important;
+  background-image: none !important;
+
+  border: 0 !important;
+
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes completeGoldTextWave {
+  0% {
+    background-position:
+      0% 50%;
+  }
+
+  100% {
+    background-position:
+      360% 50%;
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1180px) {
+  .journeyLayout {
+    grid-template-columns: 1fr;
+
+    width: min(100%, 1000px);
+
+    row-gap: 34px;
+  }
+
+  .trackColumn {
+    width: 100%;
+
+    min-width: 0;
+
+    justify-self: stretch;
+  }
+
+  .trackColumn > * {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .journeySection {
+    padding:
+      4rem
+      0.7rem
+      4.5rem;
+  }
+
+  .journeyLayout {
+    margin-top: 3rem;
+
+    gap: 1.5rem;
+  }
+
+  .journeyHeader h2 {
+    font-size:
+      clamp(
+        3rem,
+        14vw,
+        4.6rem
+      );
+  }
+
+  .journeyHeader h2 em {
+    padding-bottom:
+      0.22em;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .journeyHeader h2 em {
+    animation:
+      none !important;
+  }
+}
+
+/* =========================================================
+   FINAL SHARED BACKGROUND OVERRIDE
+   ========================================================= */
+
+.journeySection,
+:global(html[data-theme="dark"])
+  .journeySection,
+:global(html[data-theme="light"])
+  .journeySection,
+:global(html.dark)
+  .journeySection,
+:global(html.light)
+  .journeySection {
+  background:
+    transparent !important;
+
+  background-image:
+    none !important;
+
+  border:
+    0 !important;
+
+  box-shadow:
+    none !important;
+
+  filter:
+    none !important;
+}
+
+/* =========================================================
+   ROADMAP JOURNEY KICKER
+   YOUR ROAD TO CAREER READINESS
+   ========================================================= */
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  margin:
+    0
+    auto
+    24px;
+
+  color: #d9ba4d;
+
+  font-family:
+    var(--font-display),
+    sans-serif;
+
+  font-size: 0.68rem;
+  font-weight: 900;
+
+  line-height: 1.4;
+
+  letter-spacing: 0.14em;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 16px
+    rgba(217, 186, 77, 0.16);
+}
+
+/* Sparkles */
+
+.kicker svg {
+  width: 15px;
+  height: 15px;
+
+  flex: 0 0 auto;
+
+  color: #f0d36d;
+
+  filter:
+    drop-shadow(
+      0 0 7px
+      rgba(240, 211, 109, 0.24)
+    );
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+:global(html[data-theme="dark"])
+  .kicker,
+:global(html.dark)
+  .kicker {
+  color: #d9ba4d;
+}
+
+:global(html[data-theme="dark"])
+  .kicker svg,
+:global(html.dark)
+  .kicker svg {
+  color: #f0d36d;
+}
+
+/* =========================================================
+   LIGHT MODE
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .kicker,
+:global(html[data-theme="light"])
+  .kicker,
+:global(html.light)
+  .kicker,
+:global([data-theme="light"])
+  .kicker,
+:global(.light)
+  .kicker {
+  color: #8e6810;
+
+  text-shadow:
+    0 1px 0
+      rgba(255, 255, 255, 0.8),
+    0 0 10px
+      rgba(177, 132, 28, 0.1);
+}
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .kicker svg,
+:global(html[data-theme="light"])
+  .kicker svg,
+:global(html.light)
+  .kicker svg,
+:global([data-theme="light"])
+  .kicker svg,
+:global(.light)
+  .kicker svg {
+  color: #b78313;
+
+  filter:
+    drop-shadow(
+      0 0 5px
+      rgba(177, 132, 28, 0.13)
+    );
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .kicker {
+    gap: 7px;
+
+    margin-bottom: 18px;
+
+    font-size: 0.6rem;
+
+    letter-spacing: 0.12em;
+  }
+
+  .kicker svg {
+    width: 14px;
+    height: 14px;
+  }
+}

@@ -117,6 +117,7 @@ export default function CoursesHero() {
             Start free
             <ArrowRight size={19} />
           </Link>
+          
         </div>
 
         <div className={styles.stats}>

@@ -1,0 +1,66 @@
+.gapMarker {
+  --gap-delay: 0s;
+  position: absolute;
+  top: var(--gap-y);
+  left: var(--gap-x);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  transform: translate(-50%, -50%);
+}
+
+.gapMarker > div {
+  display: flex;
+  align-items: center;
+  gap: 0.34rem;
+}
+
+.gapMarker > div span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--purple);
+  opacity: 0.27;
+  animation: gapDotPulse 1.5s ease-in-out infinite var(--gap-delay);
+}
+
+.gapMarker > div span:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.gapMarker > div span:nth-child(3) {
+  width: 10px;
+  height: 10px;
+  background: var(--gold);
+  opacity: 1;
+  animation-delay: 0.24s;
+}
+
+.gapMarker > div span:nth-child(4) {
+  animation-delay: 0.36s;
+}
+
+.gapMarker > div span:nth-child(5) {
+  animation-delay: 0.48s;
+}
+
+.gapMarker small {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.5rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+@keyframes gapDotPulse {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.75);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}

@@ -107,7 +107,7 @@ export default function CareerTracksAndCTA() {
               <span
                 className={`${styles.headingLine} ${styles.headingLinePrimary}`}
               >
-                More career directions.
+                More career directions
               </span>
 
               <span

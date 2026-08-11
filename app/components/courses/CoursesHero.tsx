@@ -68,7 +68,7 @@ const views: ViewItem[] = [
 
 export default function CoursesHero() {
   const [activeView, setActiveView] =
-    useState<ViewKey>("track");
+  useState<ViewKey>("track");
 
   const currentView =
     views.find((item) => item.key === activeView) ??
@@ -81,32 +81,38 @@ export default function CoursesHero() {
       <div className={styles.copy}>
         <div className={styles.eyebrow}>
           <Sparkles size={15} />
-          Guided learning. Visible proof.
+          FIND YOUR DIRECTION. START WITH CLARITY.
         </div>
 
-        <h1>
-          Build the skill
-          <br />
-          Show the <span>proof</span>
-        </h1>
+      <h1>
+        Don&apos;t just learn
+        <br />
+        Choose where <br />{" "}
+        <span className={styles.waveWord}>
+          you&apos;re
+        </span>{" "}
+        <span className={styles.mappedWord}>
+          going
+        </span>
+      </h1>
+<div className={styles.headingAside}>
+          <p >
+            Frontend. Backend. Design. More paths ahead.
+          </p>
+</div>
 
-        <h2>
-          One clear path from learning to{" "}
-          <span>career-ready work.</span>
-        </h2>
-
-        <p className={styles.description}>
-          Move through focused levels, practical missions and real projects.
-          Every completed step strengthens your skills and builds a portfolio
-          that shows what you can do.
-        </p>
+      <p className={styles.description}>
+        Find the career track that feels right, then follow
+        a clear 90-level journey designed to take you from
+        your first step to real career readiness.
+      </p>
 
         <div className={styles.actions}>
           <Link
             href="/roadmap"
             className="navbar-sign-in"
           >
-            Explore the roadmap
+             Explore career tracks
             <ArrowRight size={19} />
           </Link>
 
@@ -114,30 +120,30 @@ export default function CoursesHero() {
             href="/signup"
             className={styles.secondaryButton}
           >
-            Start free
+            How tracks work
             <ArrowRight size={19} />
           </Link>
           
         </div>
 
-        <div className={styles.stats}>
+       <div className={styles.stats}>
+          <article>
+            <strong>03</strong>
+            <span>Career tracks</span>
+          </article>
+
+          <i aria-hidden="true" />
+
           <article>
             <strong>90</strong>
-            <span>Guided levels</span>
+            <span>Levels per journey</span>
           </article>
 
           <i aria-hidden="true" />
 
           <article>
-            <strong>12+</strong>
-            <span>Real projects</span>
-          </article>
-
-          <i aria-hidden="true" />
-
-          <article>
-            <strong>1</strong>
-            <span>Career-ready portfolio</span>
+            <strong>01</strong>
+            <span>Clear direction</span>
           </article>
         </div>
       </div>

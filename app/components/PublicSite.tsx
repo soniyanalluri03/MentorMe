@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import {useEffect,useRef,useState,} from "react";
 import { MentorMeLogo } from "./MentorMeLogo";
@@ -13,9 +12,7 @@ import CoursesHero from "./courses/CoursesHero";
 import FeaturedTrack from "./courses/FeaturedTrack";
 import MentorMethod from "./courses/MentorMethod";
 import styles from "../../app/home.module.css";
-
 import { LeaderboardExperience } from "./leaderboard/LeaderboardExperience";
-
 import RoadmapHero from "./roadmap/RoadmapHero";
 import RoadmapStats from "./roadmap/RoadmapStats";
 import RoadmapJourney from "./roadmap/RoadmapJourney";
@@ -958,28 +955,28 @@ export function PublicSite({
   const content = {
     home: <Home />,
     courses: <Courses />,
-    roadmap: <Roadmap/>,
+    roadmap: <Roadmap />,
     leaderboard: <LeaderboardExperience />,
-about: <About />,
+    about: <About />,
     pricing: <Pricing />,
     contact: <Contact />,
   }[page];
 
   return (
-  <main
-    className={
-      page === "home"
-        ? styles.homePage
-        : page === "courses"
-          ? "courses-page"
-          : undefined
-    }
-  >
-    <Header page={page} />
+    <main
+      className={
+        page === "home"
+          ? styles.homePage
+          : page === "courses"
+            ? "courses-page"
+            : undefined
+      }
+    >
+      <Header page={page} />
 
-    {content}
+      {content}
 
-    <Footer />
-  </main>
-);
+      <Footer />
+    </main>
+  );
 }

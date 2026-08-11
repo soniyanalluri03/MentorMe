@@ -2045,8 +2045,7 @@ function FormulaBackground({
       className={`mh-formula-bg mh-formula-bg--${theme}`}
       aria-hidden="true"
     >
-      <div className="mh-formula-stars mh-formula-stars--far" />
-      <div className="mh-formula-stars mh-formula-stars--near" />
+
 
       <div className="mh-formula-orbit mh-formula-orbit--one">
         <span />

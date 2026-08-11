@@ -79,11 +79,11 @@ export default function JourneyAside({
         </div>
 
         <Link
-          href="/signup"
-          className="navbar-sign-in"
-        >
-          Start your journey
-        </Link>
+  href="/signup"
+  className={`${styles.asideButton} navbar-sign-in`}
+>
+  Start your journey
+</Link>
       </TiltSurface>
     </aside>
   );

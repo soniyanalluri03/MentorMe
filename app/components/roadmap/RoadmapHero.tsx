@@ -25,11 +25,11 @@ export default function RoadmapHero() {
             Every next step.
             <br />
 
-            <span className="hj-heading-wave">
+            <span className="hj-heading-wave text-4xl xl:text-6xl">
               Already
             </span>{" "}
 
-            <em>mapped.</em>
+            <em className="text-4xl xl:text-6xl">mapped.</em>
           </h2>
           <span>
             Explore the complete journey from career

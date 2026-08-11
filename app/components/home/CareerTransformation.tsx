@@ -17,6 +17,7 @@ import Image from "next/image";
 import {
   ArrowRight,
   Check,
+  Sparkles,
   X,
 } from "lucide-react";
 
@@ -314,10 +315,11 @@ export default function CareerTransformation() {
             ease: [0.22, 1, 0.36, 1],
           }}
         >
-          <p>
+          <div className="hj-kicker">
+            <Sparkles size={15} />
             YOUR JOURNEY. YOUR TRANSFORMATION.
-          </p>
-
+          </div>
+          
           <h2 id="transformation-title">
             <span className={styles.headingWave}>
               From Beginner to

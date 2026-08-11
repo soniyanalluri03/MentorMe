@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { BriefcaseBusiness, CheckCircle2, Code2, FolderKanban, MessageCircleMore, Trophy } from "lucide-react";
+import { BriefcaseBusiness, CheckCircle2, Code2, FolderKanban, MessageCircleMore, Sparkles, Trophy } from "lucide-react";
 import styles from "./LiveCommunity.module.css";
 
 type ActivityType = "project" | "xp" | "mentor" | "milestone";
@@ -214,9 +214,11 @@ useEffect(() => {
             ease: [0.22, 1, 0.36, 1],
           }}
         >
-          <p>
-            LIVE COMMUNITY. REAL PROGRESS.
-          </p>
+          <div className="hj-kicker">
+                      <Sparkles size={15} />
+                      LIVE COMMUNITY. REAL PROGRESS.
+                    </div>
+          
 
           <h2 id="community-title">
             See learners build, grow, and{" "}

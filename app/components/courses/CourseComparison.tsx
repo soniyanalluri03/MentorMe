@@ -80,7 +80,7 @@ export default function CourseComparison() {
             <span
               className={`${styles.headingLine} ${styles.headingLinePrimary}`}
             >
-              Content gives information.
+              Content gives information
             </span>
             <span
               className={`${styles.headingLine} ${styles.headingLineSecondary}`}
@@ -298,7 +298,7 @@ export default function CourseComparison() {
             </span>
           </div>
         </article>
-      </div>
+      </div> 
     </section>
   );
 }

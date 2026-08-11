@@ -716,14 +716,20 @@
 }
 
 .finalCta h2 {
-  max-width: 1050px;
-  margin: 24px 0 20px;
+  width: min(1160px, 100%);
+  max-width: 1160px;
 
-  font-size:
-    clamp(3rem, 5.5vw, 6.2rem);
+  margin: 24px auto 20px;
 
-  line-height: 0.92;
-  letter-spacing: -0.055em;
+  padding:
+    0.06em
+    0.1em
+    0.22em;
+
+  overflow: visible;
+
+  line-height: 1.04;
+  letter-spacing: -0.045em;
 }
 
 .finalCta h2 em {
@@ -3076,12 +3082,18 @@
 
   padding:
     0.04em
-    0.05em
-    0.2em;
+    0.14em
+    0.2em
+    0.1em;
 
-  margin-bottom: -0.2em;
+  margin:
+    0
+    -0.05em
+    -0.2em
+    0.04em;
 
   overflow: visible;
+  vertical-align: baseline;
   vertical-align: baseline;
 
   color: transparent;

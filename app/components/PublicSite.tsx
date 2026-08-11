@@ -958,10 +958,8 @@ export function PublicSite({
   const content = {
     home: <Home />,
     courses: <Courses />,
-    roadmap: <RoadmapExperience/>,
+    roadmap: <Roadmap/>,
     leaderboard: <LeaderboardExperience />,
-    roadmap: <Roadmap />,
-    leaderboard: <Leaderboard />,
 about: <About />,
     pricing: <Pricing />,
     contact: <Contact />,

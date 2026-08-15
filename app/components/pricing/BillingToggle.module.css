@@ -1,0 +1,617 @@
+/* =========================================================
+   ANIMATED GOLD EDGE PROPERTY
+   Same concept as mh-button--secondary
+   ========================================================= */
+
+@property --billing-gold-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+
+/* =========================================================
+   WRAPPER
+   ========================================================= */
+
+.wrapper {
+  width: fit-content;
+
+  min-height: 54px;
+
+  margin: 0 auto;
+
+  padding: 5px;
+
+  position: relative;
+
+  isolation: isolate;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  border:
+    1px solid
+    rgba(
+      212,
+      175,
+      55,
+      0.18
+    );
+
+  border-radius: 15px;
+
+  background:
+    rgba(
+      8,
+      27,
+      47,
+      0.72
+    );
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(
+        255,
+        255,
+        255,
+        0.05
+      ),
+    0 13px 30px
+      rgba(
+        0,
+        0,
+        0,
+        0.15
+      );
+
+  backdrop-filter:
+    blur(16px);
+}
+
+
+/* =========================================================
+   MOVING DARK-GOLD EDGE
+   ========================================================= */
+
+.wrapper::after {
+  content: "";
+
+  position: absolute;
+
+  z-index: 6;
+
+  inset: -1px;
+
+  padding: 2px;
+
+  border-radius:
+    16px;
+
+  pointer-events: none;
+
+  background:
+    conic-gradient(
+      from var(--billing-gold-angle),
+
+      transparent 0deg,
+      transparent 278deg,
+
+      rgba(
+        96,
+        66,
+        0,
+        0
+      ) 288deg,
+
+      #604200 302deg,
+      #765407 315deg,
+      #b8860b 326deg,
+      #d4af37 337deg,
+      #f0d66a 342deg,
+      #b8860b 349deg,
+
+      transparent 360deg
+    );
+
+  -webkit-mask:
+    linear-gradient(
+      #000 0 0
+    )
+    content-box,
+    linear-gradient(
+      #000 0 0
+    );
+
+  -webkit-mask-composite:
+    xor;
+
+  mask:
+    linear-gradient(
+      #000 0 0
+    )
+    content-box,
+    linear-gradient(
+      #000 0 0
+    );
+
+  mask-composite:
+    exclude;
+
+  filter:
+    drop-shadow(
+      0 0 5px
+      rgba(
+        145,
+        103,
+        10,
+        0.45
+      )
+    )
+    drop-shadow(
+      0 0 9px
+      rgba(
+        212,
+        175,
+        55,
+        0.12
+      )
+    );
+
+  animation:
+    billingGoldLoop
+    4s
+    linear
+    infinite;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.wrapper button {
+  min-width: 145px;
+
+  min-height: 44px;
+
+  position: relative;
+
+  z-index: 3;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  padding:
+    0 15px;
+
+  color:
+    #8796aa;
+
+  border: 0;
+
+  background:
+    transparent;
+
+  cursor: pointer;
+
+  font: inherit;
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    850;
+
+  transition:
+    color 200ms ease;
+}
+
+.wrapper button span {
+  padding:
+    4px 6px;
+
+  color:
+    #d8bd59;
+
+  border:
+    1px solid
+    rgba(
+      212,
+      175,
+      55,
+      0.2
+    );
+
+  border-radius:
+    999px;
+
+  background:
+    rgba(
+      212,
+      175,
+      55,
+      0.035
+    );
+
+  font-size:
+    0.41rem;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    0.06em;
+
+  white-space: nowrap;
+}
+
+.wrapper button.active {
+  color:
+    #f9fbff;
+}
+
+
+/* =========================================================
+   SLIDING ACTIVE BACKGROUND
+   ========================================================= */
+
+.wrapper > i {
+  width:
+    calc(
+      50% - 5px
+    );
+
+  height: 44px;
+
+  position: absolute;
+
+  top: 5px;
+
+  z-index: 1;
+
+  border:
+    1px solid
+    rgba(
+      212,
+      175,
+      55,
+      0.31
+    );
+
+  border-radius:
+    11px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        212,
+        175,
+        55,
+        0.13
+      ),
+      rgba(
+        143,
+        92,
+        247,
+        0.07
+      )
+    );
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(
+        255,
+        255,
+        255,
+        0.06
+      ),
+    0 0 14px
+      rgba(
+        212,
+        175,
+        55,
+        0.035
+      );
+
+  transition:
+    left
+      300ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      );
+}
+
+
+/* =========================================================
+   ACTIVE POSITION
+   ========================================================= */
+
+.left {
+  left: 5px;
+}
+
+.right {
+  left:
+    calc(
+      50%
+    );
+}
+
+
+/* =========================================================
+   DARK MODE HOVER
+   ========================================================= */
+
+.wrapper:hover {
+  border-color:
+    rgba(
+      212,
+      175,
+      55,
+      0.26
+    );
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(
+        255,
+        255,
+        255,
+        0.06
+      ),
+    0 13px 30px
+      rgba(
+        0,
+        0,
+        0,
+        0.15
+      ),
+    0 0 18px
+      rgba(
+        212,
+        175,
+        55,
+        0.035
+      );
+}
+
+
+/* =========================================================
+   LIGHT MODE
+   ========================================================= */
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+) .wrapper,
+:global(
+  html[data-theme="light"]
+) .wrapper,
+:global(html.light)
+  .wrapper {
+  border-color:
+    rgba(
+      177,
+      132,
+      28,
+      0.18
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.62
+    );
+
+  box-shadow:
+    inset 0 1px 0
+      white,
+    0 12px 26px
+      rgba(
+        72,
+        52,
+        100,
+        0.08
+      );
+
+  backdrop-filter:
+    blur(16px);
+}
+
+
+/* Slightly softer animated glow in light mode */
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+) .wrapper::after,
+:global(
+  html[data-theme="light"]
+) .wrapper::after,
+:global(html.light)
+  .wrapper::after {
+  background:
+    conic-gradient(
+      from var(--billing-gold-angle),
+
+      transparent 0deg,
+      transparent 280deg,
+
+      rgba(
+        125,
+        86,
+        5,
+        0
+      ) 290deg,
+
+      #8c6408 303deg,
+      #b8860b 317deg,
+      #d4af37 331deg,
+      #f1d96e 340deg,
+      #b8860b 349deg,
+
+      transparent 360deg
+    );
+
+  filter:
+    drop-shadow(
+      0 0 4px
+      rgba(
+        177,
+        132,
+        28,
+        0.25
+      )
+    );
+}
+
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+) .wrapper button,
+:global(
+  html[data-theme="light"]
+) .wrapper button,
+:global(html.light)
+  .wrapper button {
+  color:
+    #677287;
+}
+
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+) .wrapper button.active,
+:global(
+  html[data-theme="light"]
+) .wrapper button.active,
+:global(html.light)
+  .wrapper button.active {
+  color:
+    #172d50;
+}
+
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+) .wrapper > i,
+:global(
+  html[data-theme="light"]
+) .wrapper > i,
+:global(html.light)
+  .wrapper > i {
+  border-color:
+    rgba(
+      177,
+      132,
+      28,
+      0.25
+    );
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        212,
+        175,
+        55,
+        0.1
+      ),
+      rgba(
+        143,
+        92,
+        247,
+        0.06
+      )
+    );
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(
+        255,
+        255,
+        255,
+        0.9
+      );
+}
+
+
+/* =========================================================
+   GOLD EDGE ANIMATION
+   ========================================================= */
+
+@keyframes billingGoldLoop {
+  from {
+    --billing-gold-angle:
+      0deg;
+  }
+
+  to {
+    --billing-gold-angle:
+      360deg;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (
+  max-width: 500px
+) {
+  .wrapper {
+    width: 100%;
+  }
+
+  .wrapper button {
+    min-width: 0;
+
+    padding:
+      0 10px;
+  }
+
+  .wrapper button span {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+  .wrapper::after {
+    animation: none;
+  }
+
+  .wrapper > i {
+    transition: none;
+  }
+}

@@ -7,7 +7,6 @@ import { LearningHero } from "./home/LearningHero";
 import { HomeJourneySections } from "./home/HomeJourneySections";
 import CareerTracksAndCTA from "./courses/CareerTracksAndCTA";
 import CourseComparison from "./courses/CourseComparison";
-import CourseStats from "./courses/CourseStats";
 import CoursesHero from "./courses/CoursesHero";
 import FeaturedTrack from "./courses/FeaturedTrack";
 import MentorMethod from "./courses/MentorMethod";
@@ -17,6 +16,7 @@ import RoadmapHero from "./roadmap/RoadmapHero";
 import RoadmapStats from "./roadmap/RoadmapStats";
 import RoadmapJourney from "./roadmap/RoadmapJourney";
 import RoadmapFinalSection from "./roadmap/RoadmapFinalSection";
+import PricingMain from "./pricing/PricingMain";
 
 type Page =
   | "home"
@@ -485,108 +485,10 @@ function About() {
 }
 
 function Pricing() {
-  const freeFeatures = [
-    "Career awareness",
-    "Technology awareness",
-    "Skill identification",
-    "Fundamentals",
-    "Basic assessment",
-    "Roadmap preview",
-  ];
-
-  const premiumFeatures = [
-    "All missions & projects",
-    "9 milestone certificates",
-    "Monthly group mentor sessions",
-    "Resume & LinkedIn support",
-    "Mock interviews",
-    "Internship eligibility after level 90",
-  ];
-
   return (
-    <>
-      <PageHero
-        tag="SIMPLE ACCESS"
-        title={
-          <>
-            Start with clarity.
-            <br />
-            <em>
-              Grow with momentum.
-            </em>
-          </>
-        }
-        text="Explore your direction before committing. Your first five levels are completely free."
-      />
-
-      <section className="section pricing-grid">
-        <article className="price-card">
-          <small>
-            FREE / FOUNDATION
-          </small>
-
-          <h2>₹0</h2>
-
-          <p>Levels 1–5</p>
-
-          <ul>
-            {freeFeatures.map(
-              (feature) => (
-                <li key={feature}>
-                  ✓ {feature}
-                </li>
-              ),
-            )}
-          </ul>
-
-          <Link
-            className="btn btn-outline"
-            href="/signup"
-          >
-            Start free →
-          </Link>
-        </article>
-
-        <article className="price-card premium">
-          <div className="popular">
-            FULL JOURNEY
-          </div>
-
-          <small>PREMIUM</small>
-
-          <h2>
-            Pricing
-            <br />
-            coming soon
-          </h2>
-
-          <p>Levels 6–90</p>
-
-          <ul>
-            {premiumFeatures.map(
-              (feature) => (
-                <li key={feature}>
-                  ✓ {feature}
-                </li>
-              ),
-            )}
-          </ul>
-
-          <Link
-            className="btn btn-light"
-            href="/contact"
-          >
-            Join waitlist →
-          </Link>
-        </article>
-      </section>
-
-      <p className="preserved">
-        Your progress is always
-        preserved if Premium access
-        pauses.
-      </p>
-    </>
+    <main >
+      <PricingMain/>
+    </main>
   );
 }
 

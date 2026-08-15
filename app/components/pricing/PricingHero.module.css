@@ -1,0 +1,484 @@
+.hero {
+  width: 100%;
+
+  padding:
+    clamp(2.5rem, 4vw, 4rem)
+    clamp(1rem, 4vw, 4rem)
+    clamp(3rem, 5vw, 4.5rem);
+
+  position: relative;
+
+  background: transparent !important;
+}
+
+.content {
+  width:
+    min(
+      100%,
+      1100px
+    );
+
+  margin:
+    0 auto;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    center;
+
+  text-align:
+    center;
+}
+
+.kicker {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  gap: 9px;
+
+  margin-bottom:
+    24px;
+
+  color:
+    #d9ba4d;
+
+  font-size:
+    0.68rem;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.14em;
+
+  text-transform:
+    uppercase;
+}
+
+.kicker svg {
+  color:
+    #f0d36d;
+
+  filter:
+    drop-shadow(
+      0 0 7px
+      rgba(
+        240,
+        211,
+        109,
+        0.22
+      )
+    );
+}
+
+.content h1 {
+  margin: 0;
+
+  color:
+    #f6f8fd;
+
+  font-size:
+    clamp(
+      3.4rem,
+      6vw,
+      6.2rem
+    );
+
+  font-weight:
+    790;
+
+  line-height:
+    0.98;
+
+  letter-spacing:
+    -0.06em;
+}
+
+.waveWord {
+  color:
+    transparent;
+
+  background:
+    linear-gradient(
+      90deg,
+      #f4f6ff 0%,
+      #f4f6ff 46%,
+      #d8b24b 49%,
+      #fff5c0 50%,
+      #d8b24b 51%,
+      #f4f6ff 54%,
+      #f4f6ff 100%
+    );
+
+  background-size:
+    260% 100%;
+
+  background-clip:
+    text;
+
+  -webkit-background-clip:
+    text;
+
+  -webkit-text-fill-color:
+    transparent;
+
+  animation:
+    pricingWave
+    12s
+    ease-in-out
+    infinite;
+}
+
+.content h1 em {
+  color:
+    transparent;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-weight:
+    500;
+
+  font-style:
+    italic;
+
+  background:
+    linear-gradient(
+      110deg,
+      #8f5cf7,
+      #b58cff 55%,
+      #e6c660
+    );
+
+  background-clip:
+    text;
+
+  -webkit-background-clip:
+    text;
+
+  -webkit-text-fill-color:
+    transparent;
+}
+
+/* =========================================================
+   GLOW SUPPORT TEXT
+   ========================================================= */
+
+.headingAside {
+  margin-top:
+    26px;
+}
+
+.headingAside p {
+  width:
+    fit-content;
+
+  max-width:
+    700px;
+
+  margin: 0;
+
+  padding:
+    13px
+    20px;
+
+  color:
+    #a6b4c6;
+
+  border-radius:
+    999px;
+
+  background:
+    radial-gradient(
+      circle at
+      50% 50%,
+      rgba(
+        112,
+        215,
+        255,
+        0.1
+      ),
+      transparent 72%
+    );
+
+  font-size:
+    0.9rem;
+
+  font-weight:
+    700;
+
+  line-height:
+    1.7;
+}
+
+.description {
+  max-width:
+    720px;
+
+  margin:
+    24px
+    auto
+    0;
+
+  color:
+    #98a8ba;
+
+  font-size:
+    0.92rem;
+
+  line-height:
+    1.7;
+}
+
+.actions {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  justify-content:
+    center;
+
+  gap: 12px;
+
+  margin-top:
+    30px;
+}
+
+.actions > a {
+  min-height:
+    52px;
+}
+
+.secondaryButton {
+  min-width:
+    190px;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap: 16px;
+
+  padding:
+    0 21px;
+
+  color:
+    #edf3fa;
+
+  border:
+    1px solid
+    rgba(
+      212,
+      175,
+      55,
+      0.25
+    );
+
+  border-radius:
+    12px;
+
+  background:
+    rgba(
+      8,
+      28,
+      48,
+      0.5
+    );
+
+  font-size:
+    0.77rem;
+
+  font-weight:
+    820;
+
+  text-decoration:
+    none;
+
+  transition:
+    transform
+      220ms ease,
+    border-color
+      220ms ease;
+}
+
+.secondaryButton:hover {
+  transform:
+    translateY(-3px);
+
+  border-color:
+    rgba(
+      212,
+      175,
+      55,
+      0.5
+    );
+}
+
+/* =========================================================
+   LIGHT
+   ========================================================= */
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+) .content h1,
+:global(
+  html[data-theme="light"]
+) .content h1,
+:global(html.light)
+  .content h1 {
+  color:
+    #172d50;
+}
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+) .waveWord,
+:global(
+  html[data-theme="light"]
+) .waveWord,
+:global(html.light)
+  .waveWord {
+  background:
+    linear-gradient(
+      90deg,
+      #172d50 0%,
+      #172d50 46%,
+      #c99b2f 49%,
+      #ffe7a4 50%,
+      #c99b2f 51%,
+      #172d50 54%,
+      #172d50 100%
+    );
+
+  background-size:
+    260% 100%;
+
+  background-clip:
+    text;
+
+  -webkit-background-clip:
+    text;
+
+  -webkit-text-fill-color:
+    transparent;
+}
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+) .headingAside p,
+:global(
+  html[data-theme="light"]
+) .headingAside p,
+:global(html.light)
+  .headingAside p {
+  color:
+    #57647a;
+
+  background:
+    radial-gradient(
+      circle at
+      50% 50%,
+      rgba(
+        118,
+        80,
+        216,
+        0.1
+      ),
+      transparent 72%
+    );
+}
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+) .description,
+:global(
+  html[data-theme="light"]
+) .description,
+:global(html.light)
+  .description {
+  color:
+    #667085;
+}
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+) .secondaryButton,
+:global(
+  html[data-theme="light"]
+) .secondaryButton,
+:global(html.light)
+  .secondaryButton {
+  color:
+    #172d50;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.58
+    );
+}
+
+@keyframes pricingWave {
+  0%,
+  100% {
+    background-position:
+      0% 50%;
+  }
+
+  50% {
+    background-position:
+      100% 50%;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    padding:
+      2.5rem
+      1rem
+      3rem;
+  }
+
+  .content h1 {
+    font-size:
+      clamp(
+        3rem,
+        13vw,
+        4.6rem
+      );
+  }
+
+  .headingAside p {
+    padding: 9px 0;
+    background: transparent;
+    border-radius: 0;
+  }
+}

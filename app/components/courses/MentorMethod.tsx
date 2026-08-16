@@ -53,38 +53,46 @@ export default function MentorMethod() {
       />
 
       <div className={styles.heading}>
-        <div className={styles.headingCopy}>
-          <div className={styles.kicker}>
-            <Sparkles size={15} />
-            Mentor Method
-          </div>
+  {/* LEFT HEADING */}
 
-          <h2 id="mentor-method-heading">
-            <span className="hj-main-heading"> Learning becomes powerful</span>
+  <div className={styles.headingCopy}>
+    <div className={styles.kicker}>
+      <Sparkles size={15} />
+      MENTOR METHOD
+    </div>
 
-            <span
-              className={`${styles.headingLine} ${styles.headingLineSecondary}`}
-            >
-              <span className={styles.headingWave}>
-                when progress becomes
-              </span>{" "}
-              <em className={styles.proofWord}>
-                proof
-              </em>
-            </span>
-          </h2>
-        </div>
+    <h2 id="mentor-method-heading">
+      <span className="hj-main-heading">
+        Learning becomes powerful
+      </span>
 
-        <div className="hj-first-five-heading">
-          <span>
-            Every level moves you through one repeatable
-            system. Learn with direction, practise
-            immediately, build something real and prove
-            the result before moving forward.
-          </span>
-        </div>
-      </div>
+      <span
+        className={`${styles.headingLine} ${styles.headingLineSecondary} text-4xl xl:text-6xl`}
+      >
+        <span className="hj-main-heading hj-heading-wave">
+          when progress becomes
+        </span>{" "}
 
+        <em className="seen-word">
+          proof
+        </em>
+      </span>
+    </h2>
+  </div>
+
+  {/* RIGHT SUPPORTING COPY */}
+
+  <div
+    className={`${styles.headingAside} hj-first-five-heading`}
+  >
+    <span>
+      Every level moves you through one repeatable
+      system. Learn with direction, practise
+      immediately, build something real and prove
+      the result before moving forward.
+    </span>
+  </div>
+</div>
       <div className={styles.processLine}>
         <span>Learn</span>
         <i aria-hidden="true" />

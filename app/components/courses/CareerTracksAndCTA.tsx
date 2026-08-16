@@ -98,40 +98,44 @@ export default function CareerTracksAndCTA() {
         />
 
         <div className={styles.sectionHeading}>
-          <div>
-            <div className={styles.kicker}>
-              Expanding career tracks
-            </div>
+  {/* LEFT HEADING */}
 
-            <h2 id="expanding-career-tracks">
-              <span
-                className={`${styles.headingLine} ${styles.headingLinePrimary}`}
-              >
-                More career directions
-              </span>
+  <div className={styles.sectionHeadingMain}>
+    <div className={styles.kicker}>
+      <Sparkles size={15} />
+      EXPANDING CAREER TRACKS
+    </div>
 
-              <span
-                className={`${styles.headingLine} ${styles.headingLineSecondary}`}
-              >
-                <span className={styles.headingWave}>
-                  The same proof-first
-                </span>{" "}
-                <em className={styles.proofWord}>
-                  system
-                </em>
-              </span>
-            </h2>
-          </div>
-          <div  className="hj-first-five-heading">
-            <span>
-              the same
-              level-based roadmap, project gates,
-              milestone certificates and portfolio
-              evidence.
-            </span>
-          </div>
+    <h2 id="expanding-career-tracks">
+      <span className="hj-main-heading">
+        More career directions
+      </span>
 
-        </div>
+      <span
+        className={`${styles.headingLine} ${styles.headingLineSecondary} text-4xl xl:text-6xl`}
+      >
+        <span className="hj-main-heading hj-heading-wave">
+          The same proof-first
+        </span>{" "}
+
+        <em className="seen-word">
+          system
+        </em>
+      </span>
+    </h2>
+  </div>
+
+  {/* RIGHT SUPPORTING COPY */}
+
+  <div
+    className={`${styles.headingAside} hj-first-five-heading`}
+  >
+    <span>
+      The same level-based roadmap, project gates,
+      milestone certificates and portfolio evidence.
+    </span>
+  </div>
+</div>
 
         <div className={styles.trackList}>
           <div

@@ -70,36 +70,44 @@ export default function CourseComparison() {
       />
 
       <header className={styles.heading}>
-        <div>
-          <div className={styles.kicker}>
-            <Sparkles size={15} />
-            A different learning experience
-          </div>
+  {/* LEFT HEADING */}
 
-          <h2 id="course-comparison-heading">
-            <span
-              className={`${styles.headingLine} ${styles.headingLinePrimary}`}
-            >
-              Content gives information
-            </span>
-            <span
-              className={`${styles.headingLine} ${styles.headingLineSecondary}`}
-            >
-              <span className={styles.headingWave}>
-                MentorMe creates </span>{" "}
-              <em className={styles.proofWord}>
-                momentum
-              </em>
-            </span>
-          </h2>
-        </div>
-        < div className="hj-first-five-heading">
-          <span>
-            Compare passive course consumption with a
-            guided system built around practice. 
-          </span>
-        </div>
-      </header>
+  <div className={styles.headingMain}>
+    <div className={styles.kicker}>
+      <Sparkles size={15} />
+      A different learning experience
+    </div>
+
+    <h2 id="course-comparison-heading">
+      <span className="hj-main-heading">
+        Content gives information
+      </span>
+
+      <span
+        className={`${styles.headingLine} ${styles.headingLineSecondary} text-4xl xl:text-6xl`}
+      >
+        <span className="hj-main-heading hj-heading-wave">
+          MentorMe creates
+        </span>{" "}
+
+        <em className="seen-word">
+          momentum
+        </em>
+      </span>
+    </h2>
+  </div>
+
+  {/* RIGHT SUPPORTING COPY */}
+
+  <div
+    className={`${styles.headingAside} hj-first-five-heading`}
+  >
+    <span>
+      Compare passive course consumption with a
+      guided system built around practice.
+    </span>
+  </div>
+</header>
 
       <div className={styles.comparisonGrid}>
         <article className={styles.traditionalCard}>

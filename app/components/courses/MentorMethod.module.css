@@ -68,7 +68,11 @@
 
 .kicker {
   color: #d9ba4d;
+ width: max-content;
 
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-size: 0.68rem;
   font-weight: 900;
   letter-spacing: 0.15em;

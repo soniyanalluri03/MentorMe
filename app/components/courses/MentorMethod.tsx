@@ -3,6 +3,7 @@ import {
   BookOpen,
   Code2,
   Dumbbell,
+  Sparkles,
 } from "lucide-react";
 
 import HighlightCard from "@/app/components/courses/ui/highlight-card";
@@ -54,14 +55,12 @@ export default function MentorMethod() {
       <div className={styles.heading}>
         <div className={styles.headingCopy}>
           <div className={styles.kicker}>
-            The MentorMe method
+            <Sparkles size={15} />
+            Mentor Method
           </div>
+
           <h2 id="mentor-method-heading">
-            <span
-              className={`${styles.headingLine} ${styles.headingLinePrimary}`}
-            >
-              Learning becomes powerful
-            </span>
+            <span className="hj-main-heading"> Learning becomes powerful</span>
 
             <span
               className={`${styles.headingLine} ${styles.headingLineSecondary}`}
@@ -76,21 +75,26 @@ export default function MentorMethod() {
           </h2>
         </div>
 
-        <p className={styles.intro}>
-          Every level moves you through one repeatable
-          system. Learn with direction, practise
-          immediately, build something real and prove
-          the result before moving forward
-        </p>
+        <div className="hj-first-five-heading">
+          <span>
+            Every level moves you through one repeatable
+            system. Learn with direction, practise
+            immediately, build something real and prove
+            the result before moving forward.
+          </span>
+        </div>
       </div>
 
       <div className={styles.processLine}>
         <span>Learn</span>
         <i aria-hidden="true" />
+
         <span>Practice</span>
         <i aria-hidden="true" />
+
         <span>Build</span>
         <i aria-hidden="true" />
+
         <span>Prove</span>
       </div>
 

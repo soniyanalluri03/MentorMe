@@ -175,28 +175,28 @@ export default function FeaturedTrack() {
 
           <h2 id="featured-track-heading">
             <span
-              className={`${styles.headingLine} ${styles.headingLinePrimary}`}
+              className="hj-main-heading"
             >
               Find the path that
             </span>
             <span
               className={`${styles.headingLine} ${styles.headingLineSecondary}`}
             >
-              <span className={styles.headingWave}>
+              <span className="hj-main-heading  hj-heading-wave">
                 fits your</span>{" "}
-              <em className={styles.proofWord}>
+              <em className="seen-word">
                 ambition
               </em>
             </span>
           </h2>
         </div>
 
-        <div className={styles.headingAside}>
-          <p >
+        <div className="hj-first-five-heading">
+          <span >
             Every track follows one system: guided
             levels, practical missions, real projects
             and visible proof
-          </p>
+          </span>
 
           <div
             className={styles.trackCounter}

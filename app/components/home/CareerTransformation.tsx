@@ -173,11 +173,11 @@ function StageCard({
         reducedMotion
           ? false
           : {
-              opacity: 0,
-              y: 70,
-              scale: 0.93,
-              rotateX: 10,
-            }
+            opacity: 0,
+            y: 70,
+            scale: 0.93,
+            rotateX: 10,
+          }
       }
       whileInView={{
         opacity: 1,
@@ -206,12 +206,12 @@ function StageCard({
           reducedMotion
             ? undefined
             : {
-                rotateX,
-                rotateY,
-                y: lift,
-                scale: cardScale,
-                transformPerspective: 1400,
-              }
+              rotateX,
+              rotateY,
+              y: lift,
+              scale: cardScale,
+              transformPerspective: 1400,
+            }
         }
       >
         <div className={styles.imageWrap}>
@@ -298,9 +298,9 @@ export default function CareerTransformation() {
             reducedMotion
               ? false
               : {
-                  opacity: 0,
-                  y: 30,
-                }
+                opacity: 0,
+                y: 30,
+              }
           }
           whileInView={{
             opacity: 1,
@@ -319,7 +319,7 @@ export default function CareerTransformation() {
             <Sparkles size={15} />
             YOUR JOURNEY. YOUR TRANSFORMATION.
           </div>
-          
+
           <h2 id="transformation-title">
             <span className={styles.headingWave}>
               From Beginner to
@@ -333,12 +333,13 @@ export default function CareerTransformation() {
             className={styles.titleRule}
             aria-hidden="true"
           />
-
-          <p className={styles.subtitle}>
-            See how clear direction, consistent
-            practice, and real proof turn uncertainty
-            into opportunity.
-          </p>
+          <div className="hj-first-five-heading">
+            <span>
+              See how clear direction, consistent
+              practice, and real proof turn uncertainty
+              into opportunity.
+            </span>
+          </div>
         </motion.header>
 
         <div className={styles.cards}>
@@ -360,10 +361,10 @@ export default function CareerTransformation() {
                     reducedMotion
                       ? false
                       : {
-                          opacity: 0,
-                          scale: 0.5,
-                          x: -12,
-                        }
+                        opacity: 0,
+                        scale: 0.5,
+                        x: -12,
+                      }
                   }
                   whileInView={{
                     opacity: 1,

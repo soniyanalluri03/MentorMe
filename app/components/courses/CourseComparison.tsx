@@ -93,12 +93,12 @@ export default function CourseComparison() {
             </span>
           </h2>
         </div>
-
-        <p>
-          Compare passive course consumption with a
-          guided system built around practice, projects
-          and visible career proof
-        </p>
+        < div className="hj-first-five-heading">
+          <span>
+            Compare passive course consumption with a
+            guided system built around practice. 
+          </span>
+        </div>
       </header>
 
       <div className={styles.comparisonGrid}>
@@ -298,7 +298,7 @@ export default function CourseComparison() {
             </span>
           </div>
         </article>
-      </div> 
+      </div>
     </section>
   );
 }

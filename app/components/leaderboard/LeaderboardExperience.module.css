@@ -1,7 +1,6 @@
 /* =========================================================
    ROOT
 ========================================================= */
-
 .page {
   --bg-1: #f1e9fb;
   --bg-2: #fff9ef;
@@ -31,53 +30,18 @@
 
   color: var(--text);
 
-  background:
-    radial-gradient(
-      circle at 82% 7%,
-      rgba(134, 91, 218, 0.15),
-      transparent 31%
-    ),
-    radial-gradient(
-      circle at 10% 58%,
-      rgba(213, 165, 19, 0.08),
-      transparent 30%
-    ),
-    linear-gradient(
-      145deg,
-      var(--bg-1),
-      var(--bg-2) 48%,
-      var(--bg-3)
-    );
+  background: transparent;
 }
 
-:global(html[data-theme="dark"]) .page {
-  --bg-1: #061725;
-  --bg-2: #07131f;
-  --bg-3: #11172a;
-
+:global(html[data-theme="dark"]) .page,
+:global(html.dark) .page {
   --surface: rgba(10, 32, 53, 0.78);
   --surface-strong: rgba(7, 27, 47, 0.97);
 
   --text: #f6f7fc;
   --muted: #acb8ca;
 
-  background:
-    radial-gradient(
-      circle at 78% 6%,
-      rgba(100, 67, 173, 0.22),
-      transparent 32%
-    ),
-    radial-gradient(
-      circle at 11% 55%,
-      rgba(36, 114, 153, 0.12),
-      transparent 30%
-    ),
-    linear-gradient(
-      150deg,
-      #061724,
-      #07131f 52%,
-      #10172a
-    );
+  background: transparent;
 }
 
 /* =========================================================
@@ -94,15 +58,8 @@
   opacity: 0.27;
 
   background-image:
-    linear-gradient(
-      rgba(102, 95, 160, 0.07) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(102, 95, 160, 0.07) 1px,
-      transparent 1px
-    );
+    linear-gradient(rgba(102, 95, 160, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(102, 95, 160, 0.07) 1px, transparent 1px);
 
   background-size: 48px 48px;
 }
@@ -121,25 +78,21 @@
 
   filter: blur(120px);
 
-  animation:
-    ambientMove
-    10s ease-in-out infinite;
+  animation: ambientMove 10s ease-in-out infinite;
 }
 
 .pageGlowOne {
   top: 13%;
   right: -160px;
 
-  background:
-    rgba(123, 84, 211, 0.16);
+  background: rgba(123, 84, 211, 0.16);
 }
 
 .pageGlowTwo {
   top: 56%;
   left: -220px;
 
-  background:
-    rgba(213, 165, 19, 0.08);
+  background: rgba(213, 165, 19, 0.08);
 
   animation-delay: -4s;
 }
@@ -154,17 +107,11 @@
   display: flex;
   align-items: center;
 
-  padding:
-    50px 30px
-    30px;
+  padding: 50px 30px 30px;
 }
 
 .heroInner {
-  width:
-    min(
-      1420px,
-      100%
-    );
+  width: min(1420px, 100%);
 
   margin: auto;
 
@@ -182,69 +129,16 @@
 
   white-space: nowrap;
 
-  font-size:
-    clamp(
-      3.2rem,
-      5.45vw,
-      6.5rem
-    );
+  font-size: clamp(3.2rem, 5.45vw, 6.5rem);
 
   line-height: 0.98;
   letter-spacing: -0.065em;
 }
 
-.hero h1 em,
-.centerHeading h2 em,
-.liveBoardTitle h3 em,
-.finalCopy h2 em {
-  display: inline-block;
-
-  margin: 0;
-
-  padding:
-    0.02em
-    0.05em
-    0.11em;
-
-  color: transparent;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-weight: 500;
-  font-style: italic;
-  line-height: 1;
-
-  background:
-    linear-gradient(
-      100deg,
-      #805500,
-      #d5a414 17%,
-      #fff3a5 31%,
-      #a96f00 46%,
-      #ffd653 61%,
-      #fff8cf 77%,
-      #9b6500 92%
-    );
-
-  background-size: 340% 100%;
-
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  animation:
-    goldText
-    5s linear infinite;
-}
-
 .hero p {
   max-width: 760px;
 
-  margin:
-    30px auto 0;
+  margin: 30px auto 0;
 
   color: var(--muted);
 
@@ -279,38 +173,22 @@
 
   overflow: hidden;
 
-  padding:
-    0 18px;
+  padding: 0 18px;
 
-  border:
-    1px solid transparent;
+  border: 1px solid transparent;
 
   border-radius: 999px;
 
   background:
-    linear-gradient(
-      var(--surface-strong),
-      var(--surface-strong)
-    )
-    padding-box,
-
-    linear-gradient(
-      110deg,
-      #805700,
-      var(--gold),
-      #fff2a0,
-      var(--gold),
-      #805700
-    )
-    border-box;
+    linear-gradient(var(--surface-strong), var(--surface-strong)) padding-box,
+    linear-gradient(110deg, #805700, var(--gold), #fff2a0, var(--gold), #805700)
+      border-box;
 
   background-size:
     100% 100%,
     280% 100%;
 
-  box-shadow:
-    0 8px 25px
-    rgba(29, 30, 68, 0.08);
+  box-shadow: 0 8px 25px rgba(29, 30, 68, 0.08);
 
   font-size: 0.65rem;
   font-weight: 950;
@@ -320,9 +198,7 @@
     transform 240ms ease,
     box-shadow 240ms ease;
 
-  animation:
-    pillGoldBorder
-    4.5s linear infinite;
+  animation: pillGoldBorder 4.5s linear infinite;
 }
 
 .heroPills > span::after {
@@ -338,43 +214,33 @@
 
   border-radius: inherit;
 
-  background:
-    linear-gradient(
-      110deg,
-      transparent 38%,
-      #fff7c8 48%,
-      var(--gold) 54%,
-      transparent 66%
-    );
+  background: linear-gradient(
+    110deg,
+    transparent 38%,
+    #fff7c8 48%,
+    var(--gold) 54%,
+    transparent 66%
+  );
 
-  background-size:
-    260% 100%;
+  background-size: 260% 100%;
 
   -webkit-mask:
-    linear-gradient(#000 0 0)
-    content-box,
+    linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
 
   -webkit-mask-composite: xor;
 
   mask-composite: exclude;
 
-  animation:
-    pillBorderRunner
-    3.2s linear infinite;
+  animation: pillBorderRunner 3.2s linear infinite;
 }
 
 .heroPills > span:hover {
-  transform:
-    translateY(-5px)
-    scale(1.035);
+  transform: translateY(-5px) scale(1.035);
 
   box-shadow:
-    0 16px 34px
-    rgba(29, 30, 68, 0.13),
-
-    0 0 26px
-    rgba(213, 165, 19, 0.16);
+    0 16px 34px rgba(29, 30, 68, 0.13),
+    0 0 26px rgba(213, 165, 19, 0.16);
 }
 
 .heroPills svg {
@@ -385,18 +251,279 @@
 }
 
 /* =========================================================
+   WEEKLY XP — CLEAN PILL
+   Keeps the pill shape/surface, removes gold animation/glow
+   ========================================================= */
+
+.heroPills > span:nth-child(1) {
+  min-height: 38px;
+
+  padding: 0 16px;
+
+  color: #f0d36d;
+
+  border: 1px solid rgba(244, 223, 131, 0.32);
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(255, 255, 255, 0.02)),
+    rgba(13, 32, 52, 0.68);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 8px 22px rgba(0, 0, 0, 0.16);
+
+  font-family: var(--font-display), sans-serif;
+
+  font-size: 0.58rem;
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+
+  animation: none;
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+/* Remove Leaderboard moving border */
+.heroPills > span:nth-child(1)::after {
+  display: none;
+  animation: none;
+}
+
+.heroPills > span:nth-child(1) svg {
+  color: #f0d36d;
+}
+
+/* =========================================================
+   LIGHT MODE
+   Exact Roadmap FREE pill colors
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .heroPills
+  > span:nth-child(1),
+:global(html[data-theme="light"]) .heroPills > span:nth-child(1),
+:global(html.light) .heroPills > span:nth-child(1),
+:global([data-theme="light"]) .heroPills > span:nth-child(1),
+:global(.light) .heroPills > span:nth-child(1) {
+  color: #8b650d;
+
+  border-color: rgba(177, 132, 28, 0.25);
+
+  background: linear-gradient(
+    145deg,
+    rgba(255, 253, 244, 0.96),
+    rgba(248, 232, 184, 0.56)
+  );
+
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 9px 22px rgba(72, 50, 98, 0.07);
+
+  animation: none;
+}
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .heroPills
+  > span:nth-child(1)
+  svg,
+:global(html[data-theme="light"]) .heroPills > span:nth-child(1) svg,
+:global(html.light) .heroPills > span:nth-child(1) svg,
+:global([data-theme="light"]) .heroPills > span:nth-child(1) svg,
+:global(.light) .heroPills > span:nth-child(1) svg {
+  color: #b78313;
+}
+
+/* =========================================================
+   ACTIVE STREAKS
+   Same as Roadmap "FULL 90-LEVEL PREVIEW"
+   No moving gold effect
+   ========================================================= */
+
+.heroPills > span:nth-child(2) {
+  min-height: 38px;
+
+  padding: 0 16px;
+
+  color: #7750cf;
+
+  border: 1px solid rgba(143, 92, 247, 0.24);
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(250, 247, 255, 0.96),
+    rgba(233, 221, 252, 0.72)
+  );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 9px 22px rgba(91, 64, 132, 0.07);
+
+  font-family: var(--font-display), sans-serif;
+
+  font-size: 0.58rem;
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+
+  animation: none;
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+/* Remove the existing moving gold border */
+
+.heroPills > span:nth-child(2)::after {
+  display: none;
+  animation: none;
+}
+
+/* Flame icon */
+
+.heroPills > span:nth-child(2) svg {
+  color: #8f5cf7;
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+:global(html.dark) .heroPills > span:nth-child(2),
+:global(html[data-theme="dark"]) .heroPills > span:nth-child(2),
+:global([data-theme="dark"]) .heroPills > span:nth-child(2) {
+  color: #c5a9ff;
+
+  border-color: rgba(181, 140, 255, 0.3);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(143, 92, 247, 0.11),
+      rgba(255, 255, 255, 0.025)
+    ),
+    rgba(13, 32, 52, 0.68);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 8px 22px rgba(0, 0, 0, 0.14);
+
+  animation: none;
+}
+
+:global(html.dark) .heroPills > span:nth-child(2) svg,
+:global(html[data-theme="dark"]) .heroPills > span:nth-child(2) svg,
+:global([data-theme="dark"]) .heroPills > span:nth-child(2) svg {
+  color: #b58cff;
+}
+
+/* =========================================================
+   LIVE RANKING
+   Same as Roadmap "100+ OPPORTUNITIES"
+   No moving gold effect
+   ========================================================= */
+
+.heroPills > span:nth-child(3) {
+  min-height: 38px;
+
+  padding: 0 16px;
+
+  color: #0f6487;
+
+  border: 1px solid rgba(61, 158, 196, 0.24);
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(250, 254, 255, 0.97),
+    rgba(220, 244, 250, 0.72)
+  );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.96),
+    0 9px 22px rgba(51, 105, 126, 0.07);
+
+  font-family: var(--font-display), sans-serif;
+
+  font-size: 0.58rem;
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+
+  animation: none;
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+/* Remove existing moving gold border */
+
+.heroPills > span:nth-child(3)::after {
+  display: none;
+  animation: none;
+}
+
+/* Arrow icon */
+
+.heroPills > span:nth-child(3) svg {
+  color: #2385ad;
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+:global(html.dark) .heroPills > span:nth-child(3),
+:global(html[data-theme="dark"]) .heroPills > span:nth-child(3),
+:global([data-theme="dark"]) .heroPills > span:nth-child(3) {
+  color: #81d7ef;
+
+  border-color: rgba(80, 213, 236, 0.28);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(80, 213, 236, 0.09),
+      rgba(255, 255, 255, 0.025)
+    ),
+    rgba(13, 32, 52, 0.68);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 8px 22px rgba(0, 0, 0, 0.14);
+
+  animation: none;
+}
+
+:global(html.dark) .heroPills > span:nth-child(3) svg,
+:global(html[data-theme="dark"]) .heroPills > span:nth-child(3) svg,
+:global([data-theme="dark"]) .heroPills > span:nth-child(3) svg {
+  color: #70d7ff;
+}
+
+/* =========================================================
    MOMENTUM
 ========================================================= */
 
 .heroMomentum {
-  width:
-    min(
-      720px,
-      90%
-    );
+  width: min(720px, 90%);
 
-  margin:
-    32px auto 0;
+  margin: 32px auto 0;
 }
 
 .momentumLabels {
@@ -422,43 +549,23 @@
 
   border-radius: 999px;
 
-  background:
-    rgba(93, 81, 129, 0.14);
+  background: rgba(93, 81, 129, 0.14);
 }
 
 .momentumTrail {
   position: absolute;
 
-  inset:
-    0 auto
-    0 0;
+  inset: 0 auto 0 0;
 
   width: 0%;
 
   border-radius: inherit;
 
-  background:
-    linear-gradient(
-      90deg,
-      var(--purple),
-      #efb75c,
-      var(--gold-light)
-    );
+  background: linear-gradient(90deg, var(--purple), #efb75c, var(--gold-light));
 
-  box-shadow:
-    0 0 17px
-    rgba(255, 214, 66, 0.3);
+  box-shadow: 0 0 17px rgba(255, 214, 66, 0.3);
 
-  animation:
-    momentumFill
-    6s
-    cubic-bezier(
-      0.4,
-      0,
-      0.2,
-      1
-    )
-    infinite;
+  animation: momentumFill 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .momentumRunner {
@@ -470,22 +577,9 @@
   width: 42px;
   height: 42px;
 
-  transform:
-    translate(
-      -50%,
-      -50%
-    );
+  transform: translate(-50%, -50%);
 
-  animation:
-    momentumRunnerMove
-    6s
-    cubic-bezier(
-      0.4,
-      0,
-      0.2,
-      1
-    )
-    infinite;
+  animation: momentumRunnerMove 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .runnerIcon {
@@ -502,20 +596,11 @@
 
   color: #172a47;
 
-  background:
-    linear-gradient(
-      145deg,
-      #fff6a8,
-      #e7ac13
-    );
+  background: linear-gradient(145deg, #fff6a8, #e7ac13);
 
-  box-shadow:
-    0 0 22px
-    rgba(255, 218, 63, 0.7);
+  box-shadow: 0 0 22px rgba(255, 218, 63, 0.7);
 
-  animation:
-    runnerTrophy
-    6s ease infinite;
+  animation: runnerTrophy 6s ease infinite;
 }
 
 .runnerIcon svg {
@@ -536,16 +621,11 @@
 
   border-radius: 50%;
 
-  background:
-    var(--gold-light);
+  background: var(--gold-light);
 
-  box-shadow:
-    0 0 13px
-    var(--gold-light);
+  box-shadow: 0 0 13px var(--gold-light);
 
-  animation:
-    runnerSpark
-    6s ease infinite;
+  animation: runnerSpark 6s ease infinite;
 }
 
 .runnerSparkOne {
@@ -573,17 +653,11 @@
 ========================================================= */
 
 .leaderSection {
-  width:
-    min(
-      1440px,
-      calc(100% - 60px)
-    );
+  width: min(1440px, calc(100% - 60px));
 
   margin: auto;
 
-  padding:
-    12px 0
-    100px;
+  padding: 12px 0 100px;
 }
 
 .centerHeading {
@@ -604,20 +678,14 @@
 
   white-space: nowrap;
 
-  font-size:
-    clamp(
-      3rem,
-      4.8vw,
-      5.5rem
-    );
+  font-size: clamp(3rem, 4.8vw, 5.5rem);
 
   line-height: 1;
   letter-spacing: -0.055em;
 }
 
 .centerHeading p {
-  margin:
-    10px 0 0;
+  margin: 10px 0 0;
 
   color: var(--muted);
 
@@ -650,42 +718,20 @@
   width: 920px;
   height: 920px;
 
-  transform:
-    translateX(-50%);
+  transform: translateX(-50%);
 
   pointer-events: none;
 
   opacity: 0.82;
 
-  filter:
-    saturate(1.18)
-    contrast(1.06);
+  filter: saturate(1.18) contrast(1.06);
 }
 
-:global(html[data-theme="light"])
-  .podiumGlobe {
+:global(html[data-theme="light"]) .podiumGlobe {
   opacity: 0.9;
 
-  filter:
-    saturate(1.35)
-    contrast(1.15)
-    drop-shadow(
-      0 20px 45px
-      rgba(13, 54, 94, 0.2)
-    );
-}
-
-:global(html[data-theme="light"])
-  .podiumGlobe {
-  opacity: 0.9;
-
-  filter:
-    saturate(1.35)
-    contrast(1.15)
-    drop-shadow(
-      0 20px 45px
-      rgba(13, 54, 94, 0.2)
-    );
+  filter: saturate(1.35) contrast(1.15)
+    drop-shadow(0 20px 45px rgba(13, 54, 94, 0.2));
 }
 
 .globeAura {
@@ -695,20 +741,16 @@
 
   border-radius: 50%;
 
-  background:
-    radial-gradient(
-      circle,
-      rgba(44, 157, 215, 0.28),
-      rgba(119, 79, 216, 0.18) 39%,
-      transparent 70%
-    );
+  background: radial-gradient(
+    circle,
+    rgba(44, 157, 215, 0.28),
+    rgba(119, 79, 216, 0.18) 39%,
+    transparent 70%
+  );
 
-  filter:
-    blur(38px);
+  filter: blur(38px);
 
-  animation:
-    globeAura
-    4s ease-in-out infinite;
+  animation: globeAura 4s ease-in-out infinite;
 }
 
 .globeBody {
@@ -718,9 +760,7 @@
 
   overflow: hidden;
 
-  border:
-    1px solid
-    rgba(78, 205, 238, 0.72);
+  border: 1px solid rgba(78, 205, 238, 0.72);
 
   border-radius: 50%;
 
@@ -738,21 +778,12 @@
     );
 
   box-shadow:
-    inset -30px -34px 60px
-    rgba(0, 0, 0, 0.55),
+    inset -30px -34px 60px rgba(0, 0, 0, 0.55),
+    inset 15px 10px 35px rgba(83, 210, 245, 0.17),
+    0 0 48px rgba(65, 190, 232, 0.48),
+    0 0 105px rgba(88, 87, 218, 0.24);
 
-    inset 15px 10px 35px
-    rgba(83, 210, 245, 0.17),
-
-    0 0 48px
-    rgba(65, 190, 232, 0.48),
-
-    0 0 105px
-    rgba(88, 87, 218, 0.24);
-
-  animation:
-    globeTurn
-    16s linear infinite;
+  animation: globeTurn 16s linear infinite;
 }
 
 .globeLatitudeOne,
@@ -763,9 +794,7 @@
 .globeLongitudeThree {
   position: absolute;
 
-  border:
-    1px solid
-    rgba(103, 216, 244, 0.38);
+  border: 1px solid rgba(103, 216, 244, 0.38);
 
   border-radius: 50%;
 }
@@ -785,39 +814,29 @@
 .globeLongitudeOne {
   inset: -5% 29%;
 
-  transform:
-    rotate(7deg);
+  transform: rotate(7deg);
 }
 
 .globeLongitudeTwo {
   inset: -5% 29%;
 
-  transform:
-    rotate(60deg);
+  transform: rotate(60deg);
 }
 
 .globeLongitudeThree {
   inset: -5% 29%;
 
-  transform:
-    rotate(-55deg);
+  transform: rotate(-55deg);
 }
 
 .globeLand i {
   position: absolute;
 
-  border:
-    1px solid
-    rgba(83, 218, 247, 0.7);
+  border: 1px solid rgba(83, 218, 247, 0.7);
 
-  background:
-    rgba(65, 180, 218, 0.31);
+  background: rgba(65, 180, 218, 0.31);
 
-  filter:
-    drop-shadow(
-      0 0 10px
-      rgba(58, 207, 242, 0.75)
-    );
+  filter: drop-shadow(0 0 10px rgba(58, 207, 242, 0.75));
 }
 
 .globeLand i:nth-child(1) {
@@ -827,16 +846,15 @@
   width: 31%;
   height: 26%;
 
-  clip-path:
-    polygon(
-      10% 16%,
-      72% 2%,
-      98% 37%,
-      71% 62%,
-      81% 97%,
-      40% 78%,
-      2% 54%
-    );
+  clip-path: polygon(
+    10% 16%,
+    72% 2%,
+    98% 37%,
+    71% 62%,
+    81% 97%,
+    40% 78%,
+    2% 54%
+  );
 }
 
 .globeLand i:nth-child(2) {
@@ -846,14 +864,7 @@
   width: 17%;
   height: 31%;
 
-  clip-path:
-    polygon(
-      8% 0,
-      92% 13%,
-      72% 50%,
-      52% 100%,
-      15% 68%
-    );
+  clip-path: polygon(8% 0, 92% 13%, 72% 50%, 52% 100%, 15% 68%);
 }
 
 .globeLand i:nth-child(3) {
@@ -863,15 +874,7 @@
   width: 26%;
   height: 24%;
 
-  clip-path:
-    polygon(
-      7% 15%,
-      73% 4%,
-      97% 44%,
-      61% 72%,
-      28% 97%,
-      0 56%
-    );
+  clip-path: polygon(7% 15%, 73% 4%, 97% 44%, 61% 72%, 28% 97%, 0 56%);
 }
 
 .globeLand i:nth-child(4) {
@@ -881,14 +884,7 @@
   width: 16%;
   height: 13%;
 
-  clip-path:
-    polygon(
-      10% 8%,
-      88% 0,
-      100% 69%,
-      51% 100%,
-      0 61%
-    );
+  clip-path: polygon(10% 8%, 88% 0, 100% 69%, 51% 100%, 0 61%);
 }
 
 .globeHighlight {
@@ -902,15 +898,13 @@
 
   border-radius: 50%;
 
-  background:
-    radial-gradient(
-      circle,
-      rgba(228, 252, 255, 0.85),
-      transparent 70%
-    );
+  background: radial-gradient(
+    circle,
+    rgba(228, 252, 255, 0.85),
+    transparent 70%
+  );
 
-  filter:
-    blur(7px);
+  filter: blur(7px);
 }
 
 .globeOrbit {
@@ -919,9 +913,7 @@
   top: 50%;
   left: 50%;
 
-  border:
-    1px solid
-    rgba(126, 99, 217, 0.52);
+  border: 1px solid rgba(126, 99, 217, 0.52);
 
   border-radius: 50%;
 }
@@ -934,21 +926,16 @@
 
   border-radius: 50%;
 
-  background:
-    var(--gold-light);
+  background: var(--gold-light);
 
-  box-shadow:
-    0 0 17px
-    var(--gold-light);
+  box-shadow: 0 0 17px var(--gold-light);
 }
 
 .orbitOne {
   width: 86%;
   height: 39%;
 
-  animation:
-    orbitOne
-    10s linear infinite;
+  animation: orbitOne 10s linear infinite;
 }
 
 .orbitOne i {
@@ -960,12 +947,9 @@
   width: 76%;
   height: 55%;
 
-  border-color:
-    rgba(213, 165, 19, 0.46);
+  border-color: rgba(213, 165, 19, 0.46);
 
-  animation:
-    orbitTwo
-    12s linear infinite reverse;
+  animation: orbitTwo 12s linear infinite reverse;
 }
 
 .orbitTwo i {
@@ -977,12 +961,9 @@
   width: 66%;
   height: 92%;
 
-  border-color:
-    rgba(70, 194, 231, 0.45);
+  border-color: rgba(70, 194, 231, 0.45);
 
-  animation:
-    orbitThree
-    14s linear infinite;
+  animation: orbitThree 14s linear infinite;
 }
 
 .orbitThree i {
@@ -997,35 +978,23 @@
 
   border-radius: 50%;
 
-  background:
-    conic-gradient(
-      transparent,
-      var(--cyan),
-      transparent 22%,
-      var(--purple),
-      transparent 51%,
-      var(--gold-light),
-      transparent 73%
-    );
+  background: conic-gradient(
+    transparent,
+    var(--cyan),
+    transparent 22%,
+    var(--purple),
+    transparent 51%,
+    var(--gold-light),
+    transparent 73%
+  );
 
-  mask:
-    radial-gradient(
-      transparent 68%,
-      #000 69% 70%,
-      transparent 71%
-    );
+  mask: radial-gradient(transparent 68%, #000 69% 70%, transparent 71%);
 
-  animation:
-    energySpin
-    8s linear infinite;
+  animation: energySpin 8s linear infinite;
 }
 
 .globeParticle {
-  --angle:
-    calc(
-      var(--p)
-      * 12deg
-    );
+  --angle: calc(var(--p) * 12deg);
 
   position: absolute;
 
@@ -1037,31 +1006,19 @@
 
   border-radius: 50%;
 
-  background:
-    var(--gold-light);
+  background: var(--gold-light);
 
-  box-shadow:
-    0 0 10px
-    var(--gold-light);
+  box-shadow: 0 0 10px var(--gold-light);
 
-  transform:
-    rotate(var(--angle))
-    translateX(350px);
+  transform: rotate(var(--angle)) translateX(350px);
 
-  animation:
-    particlePulse
-    4s ease-in-out
-    var(--delay)
-    infinite;
+  animation: particlePulse 4s ease-in-out var(--delay) infinite;
 }
 
 .globeParticle:nth-of-type(2n) {
-  background:
-    var(--cyan);
+  background: var(--cyan);
 
-  box-shadow:
-    0 0 10px
-    var(--cyan);
+  box-shadow: 0 0 10px var(--cyan);
 }
 
 /* =========================================================
@@ -1074,46 +1031,35 @@
 
   display: grid;
 
-  grid-template-columns:
-    repeat(
-      3,
-      minmax(0, 1fr)
-    );
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 
+  /* important */
   align-items: end;
 
   gap: 22px;
 
-  width:
-    min(
-      1160px,
-      100%
-    );
+  width: min(1160px, 100%);
 
   margin: auto;
 
-  /*
-    Slightly more room above the trophies,
-    while keeping the bottom attached.
-  */
-  /* Move the complete podium group slightly downward
-     so more of the globe remains visible behind it. */
   padding-top: 185px;
+
+  /* cards touch the board border exactly */
+  margin-bottom: 0;
 
   perspective: 1600px;
 }
 
 .podiumItem {
   position: relative;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-
   min-width: 0;
-
   padding-top: 165px;
+  margin-bottom: 0;
+  align-self: end;
 }
 
 /*
@@ -1146,27 +1092,11 @@
 
   opacity: 0;
 
-  transform:
-    translateX(-50%)
-    translate3d(
-      var(--launch-x),
-      -220px,
-      150px
-    )
-    scale(0.18)
-    rotate(-30deg);
+  transform: translateX(-50%) translate3d(var(--launch-x), -220px, 150px)
+    scale(0.18) rotate(-30deg);
 
-  animation:
-    trophyArrive
-    1.7s
-    cubic-bezier(
-      0.17,
-      0.87,
-      0.23,
-      1.1
-    )
-    var(--launch-delay)
-    forwards;
+  animation: trophyArrive 1.7s cubic-bezier(0.17, 0.87, 0.23, 1.1)
+    var(--launch-delay) forwards;
 }
 
 .trophy {
@@ -1175,15 +1105,9 @@
   width: 138px;
   height: 170px;
 
-  filter:
-    drop-shadow(
-      0 20px 17px
-      rgba(0, 0, 0, 0.28)
-    );
+  filter: drop-shadow(0 20px 17px rgba(0, 0, 0, 0.28));
 
-  animation:
-    trophyFloat
-    4s ease-in-out infinite;
+  animation: trophyFloat 4s ease-in-out infinite;
 }
 
 .cup {
@@ -1198,26 +1122,20 @@
   width: 58%;
   height: 66px;
 
-  border-radius:
-    12px 12px
-    37px 37px;
+  border-radius: 12px 12px 37px 37px;
 
-  background:
-    linear-gradient(
-      105deg,
-      #815907,
-      #f6c72b 25%,
-      #fff5a9 44%,
-      #dfa313 65%,
-      #765006
-    );
+  background: linear-gradient(
+    105deg,
+    #815907,
+    #f6c72b 25%,
+    #fff5a9 44%,
+    #dfa313 65%,
+    #765006
+  );
 
   box-shadow:
-    inset 6px 0 10px
-    rgba(255, 255, 255, 0.3),
-
-    inset -7px -5px 10px
-    rgba(69, 41, 0, 0.25);
+    inset 6px 0 10px rgba(255, 255, 255, 0.3),
+    inset -7px -5px 10px rgba(69, 41, 0, 0.25);
 }
 
 .cup::after {
@@ -1231,9 +1149,7 @@
 
   content: "";
 
-  border-radius:
-    0 0
-    50% 50%;
+  border-radius: 0 0 50% 50%;
 
   background: inherit;
 }
@@ -1255,9 +1171,7 @@
   width: 45px;
   height: 49px;
 
-  border:
-    10px solid
-    #d7a513;
+  border: 10px solid #d7a513;
 
   border-radius: 50%;
 
@@ -1283,13 +1197,7 @@
 
   border-radius: 8px;
 
-  background:
-    linear-gradient(
-      90deg,
-      #936204,
-      #ffe376,
-      #9d6905
-    );
+  background: linear-gradient(90deg, #936204, #ffe376, #9d6905);
 }
 
 .foot {
@@ -1303,13 +1211,7 @@
 
   border-radius: 50%;
 
-  background:
-    linear-gradient(
-      90deg,
-      #8f5e04,
-      #ffeb90,
-      #966104
-    );
+  background: linear-gradient(90deg, #8f5e04, #ffeb90, #966104);
 }
 
 .base {
@@ -1321,82 +1223,63 @@
   width: 56%;
   height: 21px;
 
-  border-radius:
-    6px 6px
-    10px 10px;
+  border-radius: 6px 6px 10px 10px;
 
-  background:
-    linear-gradient(
-      105deg,
-      #6d4905,
-      #e8ae13 35%,
-      #fff19b 51%,
-      #a06904
-    );
+  background: linear-gradient(
+    105deg,
+    #6d4905,
+    #e8ae13 35%,
+    #fff19b 51%,
+    #a06904
+  );
 }
 
 /* SILVER */
 
 .silverTrophy .cup,
 .silverTrophy .cup::after {
-  background:
-    linear-gradient(
-      105deg,
-      #596775,
-      #c5d1dc 24%,
-      #f7fbff 44%,
-      #9caab7 65%,
-      #4e5a65
-    );
+  background: linear-gradient(
+    105deg,
+    #596775,
+    #c5d1dc 24%,
+    #f7fbff 44%,
+    #9caab7 65%,
+    #4e5a65
+  );
 }
 
 .silverTrophy .handle {
-  border-color:
-    #aebbc8;
+  border-color: #aebbc8;
 }
 
 .silverTrophy .stem,
 .silverTrophy .foot,
 .silverTrophy .base {
-  background:
-    linear-gradient(
-      90deg,
-      #62717d,
-      #f1f7fb,
-      #8d9ca9
-    );
+  background: linear-gradient(90deg, #62717d, #f1f7fb, #8d9ca9);
 }
 
 /* BRONZE */
 
 .bronzeTrophy .cup,
 .bronzeTrophy .cup::after {
-  background:
-    linear-gradient(
-      105deg,
-      #6b4023,
-      #d88c58 25%,
-      #ffd1ad 44%,
-      #b96e40 65%,
-      #63381f
-    );
+  background: linear-gradient(
+    105deg,
+    #6b4023,
+    #d88c58 25%,
+    #ffd1ad 44%,
+    #b96e40 65%,
+    #63381f
+  );
 }
 
 .bronzeTrophy .handle {
-  border-color:
-    #bb7147;
+  border-color: #bb7147;
 }
 
 .bronzeTrophy .stem,
 .bronzeTrophy .foot,
 .bronzeTrophy .base {
-  background:
-    linear-gradient(
-      90deg,
-      #754326,
-      #efa473,
-      #824828
-    );
+  background: linear-gradient(90deg, #754326, #efa473, #824828);
 }
 
 /* =========================================================
@@ -1404,57 +1287,34 @@
 ========================================================= */
 
 .podiumCard {
+  margin: 0;
+  flex-shrink: 0;
   position: relative;
-
   width: 100%;
   height: 245px;
-
   overflow: hidden;
-
-  padding:
-    37px 25px
-    24px;
-
-  border:
-    1px solid
-    rgba(119, 166, 219, 0.5);
-
-  border-radius:
-    27px 27px
-    8px 8px;
-
+  padding: 37px 25px 24px;
+  border: 1px solid rgba(119, 166, 219, 0.5);
+  border-radius: 27px 27px 8px 8px;
   color: #f7f8fc;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(35, 66, 105, 0.94),
-      rgba(16, 38, 66, 0.95) 51%,
-      rgba(32, 36, 79, 0.95)
-    );
+  background: linear-gradient(
+    145deg,
+    rgba(35, 66, 105, 0.94),
+    rgba(16, 38, 66, 0.95) 51%,
+    rgba(32, 36, 79, 0.95)
+  );
 
   box-shadow:
-    inset 0 1px 0
-    rgba(255, 255, 255, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -35px 65px rgba(4, 13, 31, 0.3),
+    0 30px 55px rgba(4, 18, 36, 0.22),
+    0 0 30px rgba(70, 177, 226, 0.08);
 
-    inset 0 -35px 65px
-    rgba(4, 13, 31, 0.3),
+  backdrop-filter: blur(24px);
 
-    0 30px 55px
-    rgba(4, 18, 36, 0.22),
+  transform-style: preserve-3d;
 
-    0 0 30px
-    rgba(70, 177, 226, 0.08);
-
-  backdrop-filter:
-    blur(24px);
-
-  transform-style:
-    preserve-3d;
-
-  transform:
-    perspective(950px)
-    rotateX(3deg);
+  transform: perspective(950px) rotateX(3deg);
 
   transition:
     transform 300ms ease,
@@ -1466,121 +1326,76 @@
   Prevent faded result.
 */
 
-:global(html[data-theme="light"])
-  .podiumCard {
-  color:
-    #f7f8fc;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(39, 73, 116, 0.98),
-      rgba(18, 43, 75, 0.98) 51%,
-      rgba(39, 39, 89, 0.97)
-    );
-
-  border-color:
-    rgba(87, 177, 225, 0.62);
-
+:global(html[data-theme="light"]) .podiumCard {
+  color: #f7f8fc;
+  background: linear-gradient(
+    145deg,
+    rgba(39, 73, 116, 0.98),
+    rgba(18, 43, 75, 0.98) 51%,
+    rgba(39, 39, 89, 0.97)
+  );
+  border-color: rgba(87, 177, 225, 0.62);
   box-shadow:
-    inset 0 1px 0
-    rgba(255, 255, 255, 0.24),
-
-    inset 0 -35px 65px
-    rgba(3, 14, 33, 0.32),
-
-    0 28px 58px
-    rgba(18, 48, 79, 0.25),
-
-    0 0 34px
-    rgba(67, 181, 230, 0.17);
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    inset 0 -35px 65px rgba(3, 14, 33, 0.32),
+    0 28px 58px rgba(18, 48, 79, 0.25),
+    0 0 34px rgba(67, 181, 230, 0.17);
 }
 
 .podiumCardFirst {
   /* Rank 1 is intentionally taller while all three
      cards still share the same bottom edge. */
   height: 295px;
-
-  border-color:
-    rgba(226, 177, 20, 0.82);
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(46, 74, 110, 0.98),
-      rgba(21, 42, 72, 0.98) 48%,
-      rgba(57, 45, 91, 0.97)
-    );
-
+  border-color: rgba(226, 177, 20, 0.82);
+  background: linear-gradient(
+    145deg,
+    rgba(46, 74, 110, 0.98),
+    rgba(21, 42, 72, 0.98) 48%,
+    rgba(57, 45, 91, 0.97)
+  );
   box-shadow:
-    inset 0 1px 0
-    rgba(255, 255, 255, 0.24),
-
-    inset 0 -35px 65px
-    rgba(5, 13, 31, 0.3),
-
-    0 32px 62px
-    rgba(4, 18, 36, 0.26),
-
-    0 0 38px
-    rgba(213, 165, 19, 0.14);
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    inset 0 -35px 65px rgba(5, 13, 31, 0.3),
+    0 32px 62px rgba(4, 18, 36, 0.26),
+    0 0 38px rgba(213, 165, 19, 0.14);
 }
 
 .podiumCardSecond {
-  border-color:
-    rgba(190, 215, 235, 0.62);
+  border-color: rgba(190, 215, 235, 0.62);
 }
 
 .podiumCardThird {
-  border-color:
-    rgba(219, 133, 81, 0.62);
+  border-color: rgba(219, 133, 81, 0.62);
 }
 
 /* top 3D top plane */
 
 .cardTopPlane {
   position: absolute;
-
   top: -13px;
   left: 4%;
-
   width: 92%;
   height: 38px;
-
-  border:
-    1px solid
-    rgba(174, 213, 245, 0.35);
-
+  border: 1px solid rgba(174, 213, 245, 0.35);
   border-radius: 50%;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(47, 112, 166, 0.1),
-      rgba(255, 255, 255, 0.32),
-      rgba(212, 167, 23, 0.13),
-      rgba(47, 112, 166, 0.1)
-    );
-
-  box-shadow:
-    0 7px 15px
-    rgba(0, 0, 0, 0.15);
-
-  transform:
-    rotateX(66deg)
-    translateZ(12px);
+  background: linear-gradient(
+    90deg,
+    rgba(47, 112, 166, 0.1),
+    rgba(255, 255, 255, 0.32),
+    rgba(212, 167, 23, 0.13),
+    rgba(47, 112, 166, 0.1)
+  );
+  box-shadow: 0 7px 15px rgba(0, 0, 0, 0.15);
+  transform: rotateX(66deg) translateZ(12px);
 }
 
 /* small rank */
 
 .cardRankNumber {
   position: absolute;
-
   top: 13px;
   right: 16px;
-
-  color:
-    var(--gold-light);
+  color: var(--gold-light);
 
   font-size: 0.65rem;
   font-weight: 1000;
@@ -1611,49 +1426,30 @@
   width: 54px;
   height: 54px;
 
-  border:
-    1px solid
-    rgba(255, 255, 255, 0.19);
+  border: 1px solid rgba(255, 255, 255, 0.19);
 
   border-radius: 50%;
 
   color: white;
 
-  background:
-    linear-gradient(
-      145deg,
-      #9872e5,
-      #287fb5
-    );
+  background: linear-gradient(145deg, #9872e5, #287fb5);
 
   box-shadow:
-    inset 0 1px 2px
-    rgba(255, 255, 255, 0.3),
-
-    0 9px 20px
-    rgba(3, 14, 31, 0.22);
+    inset 0 1px 2px rgba(255, 255, 255, 0.3),
+    0 9px 20px rgba(3, 14, 31, 0.22);
 
   font-size: 0.73rem;
   font-weight: 950;
 }
 
-.podiumCardFirst
-  .topAvatar {
+.podiumCardFirst .topAvatar {
   color: #15304e;
 
-  background:
-    linear-gradient(
-      145deg,
-      #fff4a4,
-      #eab516
-    );
+  background: linear-gradient(145deg, #fff4a4, #eab516);
 
   box-shadow:
-    inset 0 1px 2px
-    rgba(255, 255, 255, 0.5),
-
-    0 0 24px
-    rgba(213, 165, 19, 0.18);
+    inset 0 1px 2px rgba(255, 255, 255, 0.5),
+    0 0 24px rgba(213, 165, 19, 0.18);
 }
 
 .profileIdentity {
@@ -1672,15 +1468,13 @@
 .profileIdentity span {
   margin-top: 4px;
 
-  color:
-    rgba(226, 235, 246, 0.67);
+  color: rgba(226, 235, 246, 0.67);
 
   font-size: 0.56rem;
 }
 
 .profileXp {
-  color:
-    var(--gold-light);
+  color: var(--gold-light);
 
   font-size: 0.73rem;
   white-space: nowrap;
@@ -1694,9 +1488,7 @@
 
   gap: 8px;
 
-  margin:
-    22px 0 0
-    66px;
+  margin: 22px 0 0 66px;
 }
 
 .profileMeta span {
@@ -1705,20 +1497,15 @@
 
   gap: 5px;
 
-  padding:
-    6px 9px;
+  padding: 6px 9px;
 
-  border:
-    1px solid
-    rgba(139, 174, 212, 0.29);
+  border: 1px solid rgba(139, 174, 212, 0.29);
 
   border-radius: 999px;
 
-  color:
-    rgba(229, 237, 246, 0.78);
+  color: rgba(229, 237, 246, 0.78);
 
-  background:
-    rgba(5, 22, 42, 0.28);
+  background: rgba(5, 22, 42, 0.28);
 
   font-size: 0.52rem;
   font-weight: 900;
@@ -1727,53 +1514,44 @@
 .profileMeta svg {
   width: 10px;
 
-  color:
-    var(--gold-light);
+  color: var(--gold-light);
 }
 
 /* huge subtle number */
 
 .cardRankWatermark {
   position: absolute;
-
-  right: 20px;
-  bottom: -24px;
-
-  color:
-    rgba(255, 255, 255, 0.07);
-
-  font-size: 8rem;
+  right: 24px;
+  bottom: 8px;
+  display: block;
+  width: auto;
+  height: auto;
+  color: rgba(255, 255, 255, 0.07);
+  font-size: 7.4rem;
   font-weight: 1000;
-  line-height: 1;
-
+  line-height: 0.82;
   pointer-events: none;
+  user-select: none;
+  z-index: 1;
 }
 
-.podiumCardFirst
-  .cardRankWatermark {
-  color:
-    rgba(255, 213, 58, 0.08);
+.podiumCardFirst .cardRankWatermark {
+  color: rgba(255, 213, 58, 0.08);
 }
-
 .cardLeftEdge,
 .cardRightEdge {
   position: absolute;
-
   top: 20px;
-
   width: 3px;
   height: 72%;
-
   opacity: 0.4;
-
   border-radius: 999px;
 
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.66),
-      transparent
-    );
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.66),
+    transparent
+  );
 }
 
 .cardLeftEdge {
@@ -1793,20 +1571,16 @@
   width: 17%;
   height: 300%;
 
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.19),
-      transparent
-    );
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.19),
+    transparent
+  );
 
-  transform:
-    rotate(18deg);
+  transform: rotate(18deg);
 
-  animation:
-    podiumGlassSweep
-    6s ease-in-out infinite;
+  animation: podiumGlassSweep 6s ease-in-out infinite;
 }
 
 .cardBottomGlow {
@@ -1820,12 +1594,11 @@
 
   border-radius: 50%;
 
-  background:
-    radial-gradient(
-      ellipse,
-      rgba(65, 188, 230, 0.2),
-      transparent 70%
-    );
+  background: radial-gradient(
+    ellipse,
+    rgba(65, 188, 230, 0.2),
+    transparent 70%
+  );
 
   filter: blur(10px);
 }
@@ -1838,79 +1611,89 @@
   position: relative;
   z-index: 9;
 
-  width:
-    min(
-      1210px,
-      100%
-    );
+  width: min(1210px, 100%);
 
   /*
     Directly attached to podium.
   */
-  margin:
-    -1px auto 0;
-
+  margin: -1px auto 0;
   overflow: visible;
-
-  padding:
-    29px 28px
-    32px;
-
-  border:
-    1px solid
-    rgba(116, 97, 164, 0.25);
-
-  border-top:
-    2px solid
-    rgba(213, 165, 19, 0.52);
-
-  border-radius:
-    0 0
-    30px 30px;
-
-  background:
-    linear-gradient(
-      145deg,
-      var(--surface-strong),
-      var(--surface)
-    );
-
+  padding: 29px 28px 32px;
+  border: 1px solid rgba(116, 97, 164, 0.25);
+  border-top: 2px solid rgba(213, 165, 19, 0.52);
+  border-radius: 30px;
+  background: linear-gradient(145deg, var(--surface-strong), var(--surface));
   box-shadow:
-    0 35px 75px
-    rgba(27, 29, 68, 0.14),
-
-    inset 0 1px 0
-    rgba(255, 255, 255, 0.17);
-
-  backdrop-filter:
-    blur(24px);
+    0 35px 75px rgba(27, 29, 68, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.17);
+  backdrop-filter: blur(24px);
 }
 
 /*
   Light mode should not look washed out.
 */
 
-:global(html[data-theme="light"])
-  .attachedBoard {
+/* =========================================================
+   ATTACHED BOARD — LIGHT MODE
+   Same background language as Career Track card
+========================================================= */
+/* =========================================================
+   ATTACHED BOARD — LIGHT MODE
+   Same background language as Career Track card
+========================================================= */
+
+:global(html[data-theme="light"]) .attachedBoard,
+:global(html.light) .attachedBoard {
+  border:
+    1.5px solid
+    rgba(196, 148, 20, 0.72);
+
+  border-top:
+    1.5px solid
+    rgba(214, 171, 45, 0.82);
+
+  border-radius: 30px;
+
   background:
+    radial-gradient(
+      circle at 8% 14%,
+      rgba(211, 184, 246, 0.62) 0%,
+      rgba(232, 216, 249, 0.34) 30%,
+      transparent 52%
+    ),
+
+    radial-gradient(
+      circle at 90% 24%,
+      rgba(255, 227, 137, 0.4) 0%,
+      rgba(255, 241, 194, 0.24) 34%,
+      transparent 58%
+    ),
+
+    radial-gradient(
+      circle at 52% 72%,
+      rgba(255, 255, 255, 0.68) 0%,
+      transparent 52%
+    ),
+
     linear-gradient(
-      145deg,
-      rgba(244, 246, 252, 0.96),
-      rgba(230, 232, 246, 0.92)
+      115deg,
+      #f4ecfb 0%,
+      #fffaf6 50%,
+      #fff6dc 100%
     );
 
-  border-color:
-    rgba(70, 101, 149, 0.3);
-
-  border-top-color:
-    rgba(213, 165, 19, 0.72);
-
   box-shadow:
-    0 34px 70px
-    rgba(45, 55, 99, 0.17),
-
     inset 0 1px 0
-    rgba(255, 255, 255, 0.82);
+      rgba(255, 255, 255, 0.96),
+
+    0 28px 60px
+      rgba(72, 50, 98, 0.12),
+
+    0 0 24px
+      rgba(213, 165, 19, 0.07);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 /* =========================================================
@@ -1921,12 +1704,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   gap: 30px;
 
-  padding:
-    3px 4px
-    24px;
+  padding: 3px 4px 24px;
 }
 
 .liveBoardTitle h3 {
@@ -1939,12 +1719,7 @@
 
   white-space: nowrap;
 
-  font-size:
-    clamp(
-      2.4rem,
-      3.7vw,
-      4.3rem
-    );
+  font-size: clamp(2.4rem, 3.7vw, 4.3rem);
 
   line-height: 1;
   letter-spacing: -0.05em;
@@ -1956,18 +1731,13 @@
 
   gap: 8px;
 
-  flex:
-    0 0 auto;
+  flex: 0 0 auto;
 
-  padding:
-    9px 14px;
+  padding: 9px 14px;
 
-  border:
-    1px solid
-    rgba(213, 165, 19, 0.3);
+  border: 1px solid rgba(213, 165, 19, 0.3);
 
-  border-radius:
-    999px;
+  border-radius: 999px;
 
   font-size: 0.63rem;
   font-weight: 950;
@@ -1980,19 +1750,13 @@
 
   border-radius: 50%;
 
-  background:
-    var(--gold-light);
+  background: var(--gold-light);
 
   box-shadow:
-    0 0 0 5px
-    rgba(255, 220, 69, 0.08),
+    0 0 0 5px rgba(255, 220, 69, 0.08),
+    0 0 13px rgba(255, 220, 69, 0.7);
 
-    0 0 13px
-    rgba(255, 220, 69, 0.7);
-
-  animation:
-    livePulse
-    1.5s ease infinite;
+  animation: livePulse 1.5s ease infinite;
 }
 
 .boardContent {
@@ -2022,52 +1786,41 @@
 
   overflow: hidden;
 
-  border:
-    1px solid
-    rgba(82, 120, 171, 0.25);
+  border: 1px solid rgba(82, 120, 171, 0.25);
 
   border-radius: 19px;
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(29, 55, 89, 0.1),
-      rgba(105, 77, 168, 0.04)
-    );
+  background: linear-gradient(
+    145deg,
+    rgba(29, 55, 89, 0.1),
+    rgba(105, 77, 168, 0.04)
+  );
 
-  box-shadow:
-    inset 0 1px 0
-    rgba(255, 255, 255, 0.09);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09);
 
-  scroll-behavior:
-    smooth;
+  scroll-behavior: smooth;
 
-  mask-image:
-    linear-gradient(
-      to bottom,
-      transparent,
-      #000 10%,
-      #000 90%,
-      transparent
-    );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 10%,
+    #000 90%,
+    transparent
+  );
 }
 
-:global(html[data-theme="light"])
-  .rankingViewport {
-  background:
-    linear-gradient(
-      145deg,
-      rgba(217, 226, 242, 0.66),
-      rgba(231, 224, 247, 0.58)
-    );
+:global(html[data-theme="light"]) .rankingViewport {
+  background: linear-gradient(
+    145deg,
+    rgba(217, 226, 242, 0.66),
+    rgba(231, 224, 247, 0.58)
+  );
 
-  border-color:
-    rgba(55, 92, 140, 0.28);
+  border-color: rgba(55, 92, 140, 0.28);
 }
 
 .rankingTrack {
-  padding:
-    96px 10px;
+  padding: 96px 10px;
 }
 
 .rankRow {
@@ -2089,12 +1842,9 @@
 
   min-height: 78px;
 
-  padding:
-    10px 15px;
+  padding: 10px 15px;
 
-  border-bottom:
-    1px solid
-    rgba(109, 89, 148, 0.1);
+  border-bottom: 1px solid rgba(109, 89, 148, 0.1);
 
   opacity: 0.54;
 
@@ -2113,31 +1863,24 @@
 
   opacity: 1;
 
-  transform:
-    scale(1.018);
+  transform: scale(1.018);
 
   border-radius: 16px;
 
-  background:
-    linear-gradient(
-      90deg,
-      rgba(130, 91, 219, 0.19),
-      rgba(213, 165, 19, 0.09),
-      rgba(52, 142, 194, 0.12)
-    );
+  background: linear-gradient(
+    90deg,
+    rgba(130, 91, 219, 0.19),
+    rgba(213, 165, 19, 0.09),
+    rgba(52, 142, 194, 0.12)
+  );
 
   box-shadow:
-    inset 3px 0 0
-    var(--gold),
-
-    0 14px 32px
-    rgba(43, 38, 88, 0.12);
+    inset 3px 0 0 var(--gold),
+    0 14px 32px rgba(43, 38, 88, 0.12);
 }
 
 .currentUser:not(.rankRowActive) {
-  box-shadow:
-    inset 2px 0 0
-    rgba(213, 165, 19, 0.4);
+  box-shadow: inset 2px 0 0 rgba(213, 165, 19, 0.4);
 }
 
 .rowRank {
@@ -2155,29 +1898,18 @@
 
   color: white;
 
-  background:
-    linear-gradient(
-      145deg,
-      var(--purple),
-      var(--blue)
-    );
+  background: linear-gradient(145deg, var(--purple), var(--blue));
 
   font-size: 0.67rem;
   font-weight: 950;
 }
 
-.rankRowActive
-  .rowAvatar {
-  animation:
-    activeAvatar
-    2s ease-in-out infinite;
+.rankRowActive .rowAvatar {
+  animation: activeAvatar 2s ease-in-out infinite;
 
   box-shadow:
-    0 0 0 5px
-    rgba(213, 165, 19, 0.06),
-
-    0 0 18px
-    rgba(139, 98, 220, 0.18);
+    0 0 0 5px rgba(213, 165, 19, 0.06),
+    0 0 18px rgba(139, 98, 220, 0.18);
 }
 
 .rowIdentity > div {
@@ -2196,22 +1928,19 @@
 
   margin-top: 3px;
 
-  color:
-    var(--muted);
+  color: var(--muted);
 
   font-size: 0.56rem;
 }
 
 .youBadge {
-  padding:
-    3px 6px;
+  padding: 3px 6px;
 
   border-radius: 5px;
 
   color: #172a46;
 
-  background:
-    var(--gold-light);
+  background: var(--gold-light);
 
   font-size: 0.48rem;
   font-weight: 950;
@@ -2230,8 +1959,7 @@
 .rowJourney small {
   margin-top: 3px;
 
-  color:
-    var(--muted);
+  color: var(--muted);
 
   font-size: 0.5rem;
 }
@@ -2242,8 +1970,7 @@
 
   gap: 4px;
 
-  color:
-    var(--muted);
+  color: var(--muted);
 
   font-size: 0.55rem;
   font-weight: 900;
@@ -2272,8 +1999,7 @@
   pointer-events: none;
 }
 
-.rankRowActive
-  .rowEnergy::before {
+.rankRowActive .rowEnergy::before {
   position: absolute;
 
   top: 0;
@@ -2284,49 +2010,41 @@
 
   content: "";
 
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(
-        255,
-        237,
-        153,
-        0.16
-      ),
-      transparent
-    );
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 237, 153, 0.16),
+    transparent
+  );
 
-  transform:
-    skewX(-19deg);
+  transform: skewX(-19deg);
 
-  animation:
-    activeRowTravel
-    1.4s ease forwards;
+  animation: activeRowTravel 1.4s ease forwards;
 }
 
 .centerFocus {
   position: sticky;
 
-  top:
-    calc(
-      50% - 40px
-    );
+  top: calc(50% - 40px);
 
   height: 80px;
 
   pointer-events: none;
 
-  background:
-    radial-gradient(
-      ellipse,
-      rgba(213, 165, 19, 0.055),
-      transparent 70%
-    );
+  background: radial-gradient(
+    ellipse,
+    rgba(213, 165, 19, 0.055),
+    transparent 70%
+  );
 }
 
 /* =========================================================
    ACHIEVEMENT
+========================================================= */
+
+/* =========================================================
+   ACHIEVEMENT CARD — PREMIUM GOLD THEME
+   Movement/animation remains unchanged
 ========================================================= */
 
 .achievementCard {
@@ -2340,35 +2058,47 @@
     14px;
 
   border:
-    4px solid transparent;
+    2px solid
+    transparent;
 
   border-radius:
-    24px 24px
-    30px 30px;
+    28px 28px
+    32px 32px;
 
+  /* cream / gold card surface + gold border */
   background:
     linear-gradient(
-      #071827,
-      #081827
+      145deg,
+      rgba(255, 253, 244, 0.98) 0%,
+      rgba(255, 248, 222, 0.98) 48%,
+      rgba(246, 221, 142, 0.94) 100%
     )
     padding-box,
 
     linear-gradient(
-      145deg,
-      #fff568,
-      #ffbf2d,
-      #ff5b40,
-      #9960ef
+      135deg,
+      #9b6808 0%,
+      #d7a513 22%,
+      #fff1a6 48%,
+      #d7a513 72%,
+      #8b5c06 100%
     )
     border-box;
 
   box-shadow:
-    0 0 30px
-    rgba(255, 214, 54, 0.16),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.95),
 
-    0 25px 62px
-    rgba(22, 21, 52, 0.23);
+    inset 0 -22px 44px
+      rgba(214, 165, 19, 0.08),
 
+    0 24px 55px
+      rgba(91, 67, 30, 0.18),
+
+    0 0 26px
+      rgba(213, 165, 19, 0.12);
+
+  /* KEEP YOUR EXISTING MOVEMENT */
   animation:
     achievementPop
     0.7s
@@ -2380,45 +2110,55 @@
     ),
 
     achievementFloat
-    5s ease-in-out
-    0.7s infinite;
+    5s
+    ease-in-out
+    0.7s
+    infinite;
 }
-
 .liveAchievement {
   position: absolute;
 
-  top: -17px;
+  top: -15px;
   left: 50%;
   z-index: 6;
 
-  transform:
-    translateX(-50%);
+  transform: translateX(-50%);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   padding:
-    6px 11px;
+    7px
+    16px;
 
   border:
     2px solid
-    #fff26a;
+    #d7a513;
 
   border-radius: 999px;
 
-  color: white;
+  color: #172d50;
 
   background:
     linear-gradient(
-      90deg,
-      #786000,
-      #9c3157
+      135deg,
+      #fff7b2,
+      #f0c83d
     );
+
+  box-shadow:
+    0 8px 18px
+    rgba(158, 108, 8, 0.18);
 
   white-space: nowrap;
 
   font-size: 0.49rem;
   font-weight: 950;
   letter-spacing: 0.08em;
-}
 
+  text-align: center;
+}
 .achievementVisual {
   position: relative;
 
@@ -2426,42 +2166,56 @@
 
   overflow: hidden;
 
-  border-radius: 14px;
+  border-radius: 18px;
+
+  border:
+    1px solid
+    rgba(193, 143, 20, 0.24);
 
   background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(255, 235, 154, 0.9),
+      transparent 38%
+    ),
+
     linear-gradient(
-      #782d6c,
-      #d94c4d 35%,
-      #ef803c 58%,
-      #172344 59%
+      145deg,
+      #fffdf4 0%,
+      #fff5cf 48%,
+      #f2d173 100%
     );
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.92);
 }
 
 .achievementSun {
   position: absolute;
-
+display: none;
   top: 38px;
   left: 50%;
-
   width: 110px;
   height: 110px;
-
   transform:
     translateX(-50%);
-
   border-radius: 50%;
-
   background:
     radial-gradient(
-      circle,
-      #fff09b,
-      #f9b32b 61%,
-      #dc573e
+      circle at 34% 28%,
+      #fff8bb 0%,
+      #ffe36d 32%,
+      #e3ad13 67%,
+      #9a6504 100%
     );
 
   box-shadow:
     0 0 28px
-    rgba(255, 198, 62, 0.36);
+      rgba(229, 180, 34, 0.34),
+
+    0 14px 28px
+      rgba(145, 95, 8, 0.15);
 }
 
 .achievementVisual > svg {
@@ -2469,26 +2223,16 @@
 
   top: 24px;
   right: 20px;
-
   width: 27px;
-
   color: #fff46e;
-
-  filter:
-    drop-shadow(
-      0 0 8px
-      rgba(255, 241, 94, 0.6)
-    );
-
-  animation:
-    achievementStar
-    5s linear infinite;
+  filter: drop-shadow(0 0 8px rgba(255, 241, 94, 0.6));
+  animation: achievementStar 5s linear infinite;
 }
 
 .achievementAvatar {
   position: absolute;
 
-  top: 68px;
+  top: 48px;
   left: 50%;
   z-index: 4;
 
@@ -2502,32 +2246,39 @@
     translateX(-50%);
 
   border:
-    5px solid
-    rgba(255, 255, 255, 0.74);
+    2px solid
+    rgba(182, 127, 11, 0.42);
 
   border-radius:
     24px 24px
     31px 31px;
 
-  color: #132d4d;
+  color: #172d50;
 
   background:
     linear-gradient(
       145deg,
-      #fff8b5,
-      #efb522
+      #fff8b5 0%,
+      #f5cf55 52%,
+      #dfa90f 100%
     );
 
   box-shadow:
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.88),
+
     0 12px 24px
-    rgba(0, 0, 0, 0.23);
+      rgba(129, 88, 8, 0.2);
 
   font-size: 1.25rem;
   font-weight: 1000;
 
+  /* KEEP EXISTING MOVEMENT */
   animation:
     avatarBounce
-    2.8s ease-in-out infinite;
+    2.8s
+    ease-in-out
+    infinite;
 }
 
 .achievementMountains span {
@@ -2546,80 +2297,60 @@
     );
 
   background:
-    #17274b;
+    rgba(202, 151, 24, 0.12);
 }
 
-.achievementMountains
-  span:nth-child(1) {
+.achievementMountains span:nth-child(1) {
   left: -15px;
 }
 
-.achievementMountains
-  span:nth-child(2) {
+.achievementMountains span:nth-child(2) {
   left: 80px;
 
   height: 60px;
 
   background:
-    #0c1d3b;
+    rgba(143, 92, 247, 0.07);
 }
 
-.achievementMountains
-  span:nth-child(3) {
+.achievementMountains span:nth-child(3) {
   right: -20px;
 
   height: 88px;
 
   background:
-    #1a2446;
+    rgba(213, 165, 19, 0.1);
 }
 
 .achievementContent {
-  padding:
-    15px 13px
-    4px;
+  padding: 15px 13px 4px;
 
   text-align: center;
 }
 
 .achievementContent > span {
-  color:
-    var(--gold-light);
+  color: #a87608;
 
   font-size: 0.48rem;
   font-weight: 950;
   letter-spacing: 0.12em;
 
-  text-transform:
-    uppercase;
+  text-transform: uppercase;
 }
 
 .achievementContent > strong {
   display: block;
-
   margin-top: 6px;
-
-  color: white;
-
+   color: #102b51;
   font-size: 1.2rem;
   font-weight: 1000;
-
-  text-transform:
-    uppercase;
+  text-transform: uppercase;
 }
 
 .achievementContent > p {
-  margin:
-    8px auto 0;
-
+  margin: 8px auto 0;
   color:
-    rgba(
-      255,
-      255,
-      255,
-      0.63
-    );
-
+    rgba(38, 58, 89, 0.7);
   font-size: 0.59rem;
   line-height: 1.45;
 }
@@ -2632,24 +2363,22 @@
 
   border:
     1px solid
-    rgba(255, 225, 89, 0.16);
+    rgba(185, 137, 18, 0.24);
 
-  border-radius: 10px;
+  border-radius: 12px;
 
   background:
-    rgba(
-      255,
-      220,
-      66,
-      0.055
-    );
+    rgba(255, 250, 230, 0.72);
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.86);
 }
 
 .unlockInfo span {
   display: block;
 
-  color:
-    var(--gold-light);
+   color: #a87608;
 
   font-size: 0.43rem;
   font-weight: 950;
@@ -2661,7 +2390,7 @@
 
   margin-top: 4px;
 
-  color: white;
+  color: #172d50;
 
   font-size: 0.56rem;
 }
@@ -2674,23 +2403,11 @@
 
   border-radius: inherit;
 
-  background:
-    radial-gradient(
-      circle,
-      rgba(
-        255,
-        221,
-        65,
-        0.2
-      ),
-      transparent 66%
-    );
+  background: radial-gradient(circle, rgba(255, 221, 65, 0.2), transparent 66%);
 
   filter: blur(16px);
 
-  animation:
-    achievementGlow
-    2.6s ease-in-out infinite;
+  animation: achievementGlow 2.6s ease-in-out infinite;
 }
 
 /* =========================================================
@@ -2698,17 +2415,11 @@
 ========================================================= */
 
 .finalSection {
-  width:
-    min(
-      1400px,
-      calc(100% - 60px)
-    );
+  width: min(1400px, calc(100% - 60px));
 
   margin: auto;
 
-  padding:
-    10px 0
-    110px;
+  padding: 10px 0 110px;
 }
 
 .finalCard {
@@ -2729,53 +2440,39 @@
 
   overflow: hidden;
 
-  padding:
-    45px 55px;
+  padding: 45px 55px;
 
-  border:
-    1px solid
-    transparent;
+  /* same rounded card feeling */
+  border: 2px solid rgba(185, 137, 18, 0.88);
 
-  border-radius:
-    30px;
+  border-radius: 38px;
 
+  /* lavender → cream → soft gold */
   background:
+    radial-gradient(
+      circle at 12% 10%,
+      rgba(205, 170, 245, 0.72),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 88% 74%,
+      rgba(255, 224, 122, 0.42),
+      transparent 48%
+    ),
     linear-gradient(
-      145deg,
-      var(--surface-strong),
-      var(--surface)
-    )
-    padding-box,
-
-    linear-gradient(
-      110deg,
-      var(--purple),
-      var(--gold),
-      transparent,
-      var(--purple),
-      var(--gold)
-    )
-    border-box;
-
-  background-size:
-    100% 100%,
-    300% 300%;
-
-  box-shadow:
-    0 35px 80px
-    rgba(
-      30,
-      30,
-      67,
-      0.14
+      135deg,
+      rgba(244, 236, 253, 0.98) 0%,
+      rgba(255, 251, 243, 0.98) 52%,
+      rgba(255, 245, 211, 0.96) 100%
     );
 
-  animation:
-    finalFloat
-    7s ease-in-out infinite,
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 0 0 1px rgba(255, 225, 132, 0.22),
+    0 26px 60px rgba(82, 60, 111, 0.14),
+    0 0 30px rgba(216, 169, 44, 0.08);
 
-    borderFlow
-    8s linear infinite;
+  animation: finalFloat 7s ease-in-out infinite;
 }
 
 .finalOrb {
@@ -2789,17 +2486,11 @@
 
   border-radius: 50%;
 
-  background:
-    radial-gradient(
-      circle,
-      rgba(
-        111,
-        83,
-        199,
-        0.18
-      ),
-      transparent 62%
-    );
+  background: radial-gradient(
+    circle,
+    rgba(111, 83, 199, 0.18),
+    transparent 62%
+  );
 }
 
 .finalOrb > span {
@@ -2807,43 +2498,25 @@
 
   inset: 14%;
 
-  border:
-    1px solid
-    rgba(
-      127,
-      97,
-      205,
-      0.3
-    );
+  border: 1px solid rgba(127, 97, 205, 0.3);
 
   border-radius: 50%;
 }
 
-.finalOrb
-  > span:nth-child(1) {
-  animation:
-    finalRing
-    7s linear infinite;
+.finalOrb > span:nth-child(1) {
+  animation: finalRing 7s linear infinite;
 }
 
-.finalOrb
-  > span:nth-child(2) {
-  transform:
-    rotateX(65deg);
+.finalOrb > span:nth-child(2) {
+  transform: rotateX(65deg);
 
-  animation:
-    finalRingTwo
-    8s linear infinite;
+  animation: finalRingTwo 8s linear infinite;
 }
 
-.finalOrb
-  > span:nth-child(3) {
-  transform:
-    rotateY(65deg);
+.finalOrb > span:nth-child(3) {
+  transform: rotateY(65deg);
 
-  animation:
-    finalRingThree
-    9s linear infinite;
+  animation: finalRingThree 9s linear infinite;
 }
 
 .finalOrb > strong {
@@ -2860,27 +2533,11 @@
 
   color: #18304e;
 
-  background:
-    radial-gradient(
-      circle at
-      34% 29%,
-      #fff7b4,
-      #ebb51a 54%,
-      #9c6700
-    );
+  background: radial-gradient(circle at 34% 29%, #fff7b4, #ebb51a 54%, #9c6700);
 
-  box-shadow:
-    0 0 30px
-    rgba(
-      213,
-      165,
-      19,
-      0.27
-    );
+  box-shadow: 0 0 30px rgba(213, 165, 19, 0.27);
 
-  animation:
-    finalCore
-    2.7s ease-in-out infinite;
+  animation: finalCore 2.7s ease-in-out infinite;
 }
 
 .sectionEyebrow {
@@ -2900,67 +2557,33 @@
 
   margin-top: 9px;
 
-  padding:
-    6px 9px;
+  padding: 6px 9px;
 
-  border-radius:
-    999px;
+  border-radius: 999px;
 
-  color:
-    var(--gold);
+  color: var(--gold);
 
-  background:
-    rgba(
-      213,
-      165,
-      19,
-      0.06
-    );
+  background: rgba(213, 165, 19, 0.06);
 
   font-size: 0.51rem;
   font-weight: 900;
 
-  animation:
-    textEnter
-    0.5s ease;
+  animation: textEnter 0.5s ease;
 }
 
 .finalCopy h2 {
-  margin:
-    13px 0 0;
+  margin: 13px 0 0;
 
-  font-size:
-    clamp(
-      2.5rem,
-      4vw,
-      4.3rem
-    );
+  font-size: clamp(2.5rem, 4vw, 4.3rem);
 
   line-height: 0.96;
   letter-spacing: -0.055em;
 }
 
-.finalCopy h2 em {
-  display: block;
-
-  width: fit-content;
-
-  margin-top: 0.08em;
-}
-
-.finalCopy p {
-  max-width: 610px;
-
-  color: var(--muted);
-
-  line-height: 1.7;
-}
-
 .finalStats {
   display: grid;
 
-  grid-template-columns:
-    repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 
   gap: 9px;
 
@@ -2970,58 +2593,28 @@
 .dynamicStat {
   min-height: 110px;
 
-  padding:
-    13px 9px;
+  padding: 13px 9px;
 
-  border:
-    1px solid
-    rgba(
-      114,
-      92,
-      159,
-      0.18
-    );
+  border: 1px solid rgba(114, 92, 159, 0.18);
 
   border-radius: 14px;
 
   text-align: center;
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(
-        122,
-        94,
-        191,
-        0.1
-      ),
-      rgba(
-        255,
-        255,
-        255,
-        0.03
-      )
-    );
+  background: linear-gradient(
+    145deg,
+    rgba(122, 94, 191, 0.1),
+    rgba(255, 255, 255, 0.03)
+  );
 
-  transform-origin:
-    center top;
+  transform-origin: center top;
 
-  animation:
-    flipStat
-    0.72s
-    cubic-bezier(
-      0.18,
-      0.84,
-      0.24,
-      1.1
-    )
-    var(--delay)
+  animation: flipStat 0.72s cubic-bezier(0.18, 0.84, 0.24, 1.1) var(--delay)
     both;
 }
 
 .dynamicStat > span {
-  color:
-    var(--muted);
+  color: var(--muted);
 
   font-size: 0.48rem;
   font-weight: 950;
@@ -3058,46 +2651,24 @@
 
   height: 1px;
 
-  background:
-    rgba(
-      111,
-      94,
-      151,
-      0.18
-    );
+  background: rgba(111, 94, 151, 0.18);
 }
 
 .stageStrip {
-  grid-column:
-    1 / -1;
+  grid-column: 1 / -1;
 
   display: flex;
   flex-direction: column;
 
   padding: 10px;
 
-  border:
-    1px solid
-    rgba(
-      213,
-      165,
-      19,
-      0.13
-    );
+  border: 1px solid rgba(213, 165, 19, 0.13);
 
   border-radius: 11px;
 
-  background:
-    rgba(
-      213,
-      165,
-      19,
-      0.05
-    );
+  background: rgba(213, 165, 19, 0.05);
 
-  animation:
-    textEnter
-    0.5s ease;
+  animation: textEnter 0.5s ease;
 }
 
 .stageStrip span {
@@ -3124,32 +2695,25 @@
 
   border-radius: inherit;
 
-  background:
-    linear-gradient(
-      115deg,
-      transparent 36%,
-      #fff7be 48%,
-      var(--gold) 53%,
-      transparent 65%
-    );
+  background: linear-gradient(
+    115deg,
+    transparent 36%,
+    #fff7be 48%,
+    var(--gold) 53%,
+    transparent 65%
+  );
 
-  background-size:
-    280% 100%;
+  background-size: 280% 100%;
 
   -webkit-mask:
-    linear-gradient(#000 0 0)
-    content-box,
+    linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
 
-  -webkit-mask-composite:
-    xor;
+  -webkit-mask-composite: xor;
 
-  mask-composite:
-    exclude;
+  mask-composite: exclude;
 
-  animation:
-    borderTravel
-    4s linear infinite;
+  animation: borderTravel 4s linear infinite;
 }
 
 /* =========================================================
@@ -3158,13 +2722,11 @@
 
 @keyframes goldText {
   from {
-    background-position:
-      0% 50%;
+    background-position: 0% 50%;
   }
 
   to {
-    background-position:
-      340% 50%;
+    background-position: 340% 50%;
   }
 }
 
@@ -3184,13 +2746,11 @@
 
 @keyframes pillBorderRunner {
   from {
-    background-position:
-      -180% 50%;
+    background-position: -180% 50%;
   }
 
   to {
-    background-position:
-      180% 50%;
+    background-position: 180% 50%;
   }
 }
 
@@ -3239,25 +2799,19 @@
   64% {
     opacity: 0;
 
-    transform:
-      scale(0.15)
-      rotate(-20deg);
+    transform: scale(0.15) rotate(-20deg);
   }
 
   72% {
     opacity: 1;
 
-    transform:
-      scale(1.18)
-      rotate(7deg);
+    transform: scale(1.18) rotate(7deg);
   }
 
   80% {
     opacity: 1;
 
-    transform:
-      scale(1)
-      rotate(0);
+    transform: scale(1) rotate(0);
   }
 
   90% {
@@ -3267,8 +2821,7 @@
   100% {
     opacity: 0;
 
-    transform:
-      scale(0.15);
+    transform: scale(0.15);
   }
 }
 
@@ -3277,9 +2830,7 @@
   63% {
     opacity: 0;
 
-    transform:
-      translate(0, 0)
-      scale(0.3);
+    transform: translate(0, 0) scale(0.3);
   }
 
   73% {
@@ -3289,9 +2840,7 @@
   82% {
     opacity: 0;
 
-    transform:
-      translate(-20px, -22px)
-      scale(1.7);
+    transform: translate(-20px, -22px) scale(1.7);
   }
 
   100% {
@@ -3302,28 +2851,24 @@
 @keyframes ambientMove {
   0%,
   100% {
-    transform:
-      translate(0, 0);
+    transform: translate(0, 0);
   }
 
   50% {
-    transform:
-      translate(-30px, 20px);
+    transform: translate(-30px, 20px);
   }
 }
 
 @keyframes globeAura {
   0%,
   100% {
-    transform:
-      scale(0.95);
+    transform: scale(0.95);
 
     opacity: 0.6;
   }
 
   50% {
-    transform:
-      scale(1.07);
+    transform: scale(1.07);
 
     opacity: 1;
   }
@@ -3331,63 +2876,43 @@
 
 @keyframes globeTurn {
   to {
-    transform:
-      rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
 @keyframes orbitOne {
   from {
-    transform:
-      translate(-50%, -50%)
-      rotate(-12deg)
-      rotate(0);
+    transform: translate(-50%, -50%) rotate(-12deg) rotate(0);
   }
 
   to {
-    transform:
-      translate(-50%, -50%)
-      rotate(-12deg)
-      rotate(360deg);
+    transform: translate(-50%, -50%) rotate(-12deg) rotate(360deg);
   }
 }
 
 @keyframes orbitTwo {
   from {
-    transform:
-      translate(-50%, -50%)
-      rotate(54deg)
-      rotate(0);
+    transform: translate(-50%, -50%) rotate(54deg) rotate(0);
   }
 
   to {
-    transform:
-      translate(-50%, -50%)
-      rotate(54deg)
-      rotate(360deg);
+    transform: translate(-50%, -50%) rotate(54deg) rotate(360deg);
   }
 }
 
 @keyframes orbitThree {
   from {
-    transform:
-      translate(-50%, -50%)
-      rotate(81deg)
-      rotate(0);
+    transform: translate(-50%, -50%) rotate(81deg) rotate(0);
   }
 
   to {
-    transform:
-      translate(-50%, -50%)
-      rotate(81deg)
-      rotate(360deg);
+    transform: translate(-50%, -50%) rotate(81deg) rotate(360deg);
   }
 }
 
 @keyframes energySpin {
   to {
-    transform:
-      rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -3396,19 +2921,13 @@
   100% {
     opacity: 0.18;
 
-    transform:
-      rotate(var(--angle))
-      translateX(305px)
-      scale(0.5);
+    transform: rotate(var(--angle)) translateX(305px) scale(0.5);
   }
 
   50% {
     opacity: 1;
 
-    transform:
-      rotate(var(--angle))
-      translateX(370px)
-      scale(1.1);
+    transform: rotate(var(--angle)) translateX(370px) scale(1.1);
   }
 }
 
@@ -3416,15 +2935,8 @@
   0% {
     opacity: 0;
 
-    transform:
-      translateX(-50%)
-      translate3d(
-        var(--launch-x),
-        -220px,
-        150px
-      )
-      scale(0.18)
-      rotate(-30deg);
+    transform: translateX(-50%) translate3d(var(--launch-x), -220px, 150px)
+      scale(0.18) rotate(-30deg);
   }
 
   60% {
@@ -3432,56 +2944,29 @@
   }
 
   84% {
-    transform:
-      translateX(-50%)
-      translate3d(
-        0,
-        7px,
-        0
-      )
-      scale(1.07)
-      rotate(3deg);
+    transform: translateX(-50%) translate3d(0, 7px, 0) scale(1.07) rotate(3deg);
   }
 
   93% {
-    transform:
-      translateX(-50%)
-      translate3d(
-        0,
-        -4px,
-        0
-      )
-      scale(0.98)
+    transform: translateX(-50%) translate3d(0, -4px, 0) scale(0.98)
       rotate(-2deg);
   }
 
   100% {
     opacity: 1;
 
-    transform:
-      translateX(-50%)
-      translate3d(
-        0,
-        0,
-        0
-      )
-      scale(1)
-      rotate(0);
+    transform: translateX(-50%) translate3d(0, 0, 0) scale(1) rotate(0);
   }
 }
 
 @keyframes trophyFloat {
   0%,
   100% {
-    transform:
-      translateY(0)
-      rotateY(-3deg);
+    transform: translateY(0) rotateY(-3deg);
   }
 
   50% {
-    transform:
-      translateY(-8px)
-      rotateY(3deg);
+    transform: translateY(-8px) rotateY(3deg);
   }
 }
 
@@ -3505,28 +2990,24 @@
   100% {
     opacity: 0.4;
 
-    transform:
-      scale(0.75);
+    transform: scale(0.75);
   }
 
   50% {
     opacity: 1;
 
-    transform:
-      scale(1.16);
+    transform: scale(1.16);
   }
 }
 
 @keyframes activeAvatar {
   0%,
   100% {
-    transform:
-      scale(1);
+    transform: scale(1);
   }
 
   50% {
-    transform:
-      scale(1.07);
+    transform: scale(1.07);
   }
 }
 
@@ -3544,67 +3025,47 @@
   from {
     opacity: 0;
 
-    transform:
-      translateY(35px)
-      rotateX(-20deg)
-      scale(0.76);
+    transform: translateY(35px) rotateX(-20deg) scale(0.76);
   }
 
   65% {
     opacity: 1;
 
-    transform:
-      translateY(-7px)
-      rotateX(3deg)
-      scale(1.04);
+    transform: translateY(-7px) rotateX(3deg) scale(1.04);
   }
 
   to {
     opacity: 1;
 
-    transform:
-      translateY(0)
-      rotateX(0)
-      scale(1);
+    transform: translateY(0) rotateX(0) scale(1);
   }
 }
 
 @keyframes achievementFloat {
   0%,
   100% {
-    transform:
-      translateY(0)
-      rotateY(-1deg);
+    transform: translateY(0) rotateY(-1deg);
   }
 
   50% {
-    transform:
-      translateY(-8px)
-      rotateY(1deg);
+    transform: translateY(-8px) rotateY(1deg);
   }
 }
 
 @keyframes avatarBounce {
   0%,
   100% {
-    transform:
-      translateX(-50%)
-      translateY(0)
-      rotate(-2deg);
+    transform: translateX(-50%) translateY(0) rotate(-2deg);
   }
 
   50% {
-    transform:
-      translateX(-50%)
-      translateY(-6px)
-      rotate(2deg);
+    transform: translateX(-50%) translateY(-6px) rotate(2deg);
   }
 }
 
 @keyframes achievementStar {
   to {
-    transform:
-      rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -3613,28 +3074,24 @@
   100% {
     opacity: 0.5;
 
-    transform:
-      scale(0.96);
+    transform: scale(0.96);
   }
 
   50% {
     opacity: 1;
 
-    transform:
-      scale(1.06);
+    transform: scale(1.06);
   }
 }
 
 @keyframes finalFloat {
   0%,
   100% {
-    transform:
-      translateY(0);
+    transform: translateY(0);
   }
 
   50% {
-    transform:
-      translateY(-7px);
+    transform: translateY(-7px);
   }
 }
 
@@ -3654,49 +3111,38 @@
 
 @keyframes finalRing {
   to {
-    transform:
-      rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
 @keyframes finalRingTwo {
   from {
-    transform:
-      rotateX(65deg)
-      rotateZ(0);
+    transform: rotateX(65deg) rotateZ(0);
   }
 
   to {
-    transform:
-      rotateX(65deg)
-      rotateZ(360deg);
+    transform: rotateX(65deg) rotateZ(360deg);
   }
 }
 
 @keyframes finalRingThree {
   from {
-    transform:
-      rotateY(65deg)
-      rotateZ(0);
+    transform: rotateY(65deg) rotateZ(0);
   }
 
   to {
-    transform:
-      rotateY(65deg)
-      rotateZ(-360deg);
+    transform: rotateY(65deg) rotateZ(-360deg);
   }
 }
 
 @keyframes finalCore {
   0%,
   100% {
-    transform:
-      scale(0.95);
+    transform: scale(0.95);
   }
 
   50% {
-    transform:
-      scale(1.07);
+    transform: scale(1.07);
   }
 }
 
@@ -3704,25 +3150,19 @@
   from {
     opacity: 0;
 
-    transform:
-      rotateX(-88deg)
-      translateY(-10px);
+    transform: rotateX(-88deg) translateY(-10px);
   }
 
   60% {
     opacity: 1;
 
-    transform:
-      rotateX(8deg)
-      translateY(2px);
+    transform: rotateX(8deg) translateY(2px);
   }
 
   to {
     opacity: 1;
 
-    transform:
-      rotateX(0)
-      translateY(0);
+    transform: rotateX(0) translateY(0);
   }
 }
 
@@ -3730,27 +3170,23 @@
   from {
     opacity: 0;
 
-    transform:
-      translateY(7px);
+    transform: translateY(7px);
   }
 
   to {
     opacity: 1;
 
-    transform:
-      translateY(0);
+    transform: translateY(0);
   }
 }
 
 @keyframes borderTravel {
   from {
-    background-position:
-      -180% 50%;
+    background-position: -180% 50%;
   }
 
   to {
-    background-position:
-      180% 50%;
+    background-position: 180% 50%;
   }
 }
 
@@ -3771,13 +3207,11 @@
   }
 
   .boardContent {
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
   }
 
   .achievementCard {
-    margin:
-      28px auto 0;
+    margin: 28px auto 0;
   }
 
   .finalCard {
@@ -3787,8 +3221,7 @@
   }
 
   .finalStats {
-    grid-column:
-      1 / -1;
+    grid-column: 1 / -1;
   }
 }
 
@@ -3804,12 +3237,7 @@
 
     white-space: normal;
 
-    font-size:
-      clamp(
-        3.1rem,
-        14vw,
-        5rem
-      );
+    font-size: clamp(3.1rem, 14vw, 5rem);
   }
 
   .hero h1 em {
@@ -3817,16 +3245,12 @@
 
     width: fit-content;
 
-    margin:
-      0.1em auto 0;
+    margin: 0.1em auto 0;
   }
 
   .leaderSection,
   .finalSection {
-    width:
-      calc(
-        100% - 28px
-      );
+    width: calc(100% - 28px);
   }
 
   .centerHeading h2 {
@@ -3838,8 +3262,7 @@
   .centerHeading h2 em {
     display: block;
 
-    margin:
-      0.08em auto 0;
+    margin: 0.08em auto 0;
   }
 
   .podiumGlobe {
@@ -3850,8 +3273,7 @@
   }
 
   .podiumScene {
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
 
     gap: 28px;
 
@@ -3859,11 +3281,7 @@
   }
 
   .podiumItem {
-    width:
-      min(
-        450px,
-        100%
-      );
+    width: min(450px, 100%);
 
     margin: auto;
   }
@@ -3893,10 +3311,7 @@
     grid-template-columns:
       38px
       45px
-      minmax(
-        125px,
-        1fr
-      )
+      minmax(125px, 1fr)
       90px;
   }
 
@@ -3906,11 +3321,9 @@
   }
 
   .finalCard {
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
 
-    padding:
-      38px 22px;
+    padding: 38px 22px;
 
     text-align: center;
   }
@@ -3958,16 +3371,11 @@
   }
 
   .achievementCard {
-    width:
-      min(
-        275px,
-        91vw
-      );
+    width: min(275px, 91vw);
   }
 
   .finalStats {
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
   }
 
   .stageStrip {
@@ -3979,13 +3387,1165 @@
   .page *,
   .page *::before,
   .page *::after {
-    animation-duration:
-      0.01ms !important;
+    animation-duration: 0.01ms !important;
 
-    animation-iteration-count:
-      1 !important;
+    animation-iteration-count: 1 !important;
 
-    scroll-behavior:
-      auto !important;
+    scroll-behavior: auto !important;
   }
+}
+
+/* =========================================================
+   LEADERBOARD HERO — "SEEN."
+   Same style language as Roadmap "mapped."
+   ========================================================= */
+
+.heroSecondLine {
+  display: block;
+
+  overflow: visible;
+
+  color: inherit;
+}
+
+/* "seen." */
+.hero h1 .seenWord {
+  display: inline-block;
+
+  margin: 0 -0.06em -0.12em 0.02em;
+
+  padding: 0.03em 0.12em 0.16em 0.06em;
+
+  overflow: visible;
+
+  color: transparent;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-weight: 500;
+  font-style: italic;
+
+  line-height: 1.08;
+
+  background: linear-gradient(110deg, #8f5cf7 0%, #b58cff 52%, #f2d875 100%);
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  transform-origin: center;
+
+  animation: leaderboardSeenBreath 3.6s ease-in-out infinite;
+
+  will-change: transform, filter;
+}
+@keyframes leaderboardSeenBreath {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+
+    filter: drop-shadow(0 0 0 rgba(181, 140, 255, 0))
+      drop-shadow(0 0 0 rgba(224, 189, 85, 0));
+  }
+
+  50% {
+    transform: translateY(-2px) scale(1.055);
+
+    filter: drop-shadow(0 8px 18px rgba(143, 92, 247, 0.22))
+      drop-shadow(0 0 15px rgba(224, 189, 85, 0.2));
+  }
+}
+
+/* =========================================================
+   LEADERBOARD HERO EYEBROW
+   ========================================================= */
+
+.heroEyebrow {
+  width: max-content;
+  max-width: 100%;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin: 0 auto 22px;
+
+  color: #d9a914;
+
+  font-family: var(--font-display), sans-serif;
+
+  font-size: clamp(0.72rem, 0.9vw, 0.92rem);
+
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+}
+
+.heroEyebrow svg {
+  width: 18px;
+  height: 18px;
+
+  flex: 0 0 auto;
+
+  color: #d9a914;
+
+  filter: drop-shadow(0 0 6px rgba(217, 169, 20, 0.22));
+}
+
+/* DARK MODE */
+
+:global(html.dark) .heroEyebrow,
+:global(html[data-theme="dark"]) .heroEyebrow,
+:global([data-theme="dark"]) .heroEyebrow {
+  color: #f2cf51;
+}
+
+:global(html.dark) .heroEyebrow svg,
+:global(html[data-theme="dark"]) .heroEyebrow svg,
+:global([data-theme="dark"]) .heroEyebrow svg {
+  color: #f2cf51;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .heroEyebrow {
+    margin-bottom: 18px;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+  }
+
+  .heroEyebrow svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.finalEyebrowWrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* =========================================================
+   UNIQUE FINAL STATS
+========================================================= */
+
+/* CURRENT — purple */
+
+.statCurrent {
+  border-color: rgba(143, 92, 247, 0.28);
+
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(181, 140, 255, 0.2),
+      transparent 58%
+    ),
+    rgba(255, 255, 255, 0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 12px 28px rgba(143, 92, 247, 0.08);
+}
+
+.statCurrent > span {
+  color: #7650d8;
+}
+
+.statCurrent strong {
+  color: #7650d8;
+}
+
+/* LEVEL — gold */
+
+.statLevel {
+  border-color: rgba(199, 151, 20, 0.28);
+
+  background:
+    radial-gradient(
+      circle at 75% 12%,
+      rgba(255, 218, 91, 0.22),
+      transparent 58%
+    ),
+    rgba(255, 255, 255, 0.22);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 12px 28px rgba(199, 151, 20, 0.08);
+}
+
+.statLevel > span {
+  color: #9c7410;
+}
+
+.statLevel strong {
+  color: #d6a000;
+}
+
+/* STREAK — cyan */
+
+.statStreak {
+  border-color: rgba(63, 167, 205, 0.26);
+
+  background:
+    radial-gradient(
+      circle at 75% 18%,
+      rgba(112, 215, 255, 0.2),
+      transparent 58%
+    ),
+    rgba(255, 255, 255, 0.22);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.68),
+    0 12px 28px rgba(63, 167, 205, 0.08);
+}
+
+.statStreak > span {
+  color: #237b9d;
+}
+
+.statStreak strong {
+  color: #218daf;
+}
+
+
+/* =========================================================
+   FINAL STATS — DARK MODE ONLY
+   Brighter / premium
+========================================================= */
+
+/* CURRENT — PURPLE */
+
+:global(html[data-theme="dark"]) .statCurrent,
+:global(html.dark) .statCurrent {
+  border-color: rgba(181, 140, 255, 0.58);
+
+  background:
+    radial-gradient(
+      circle at 28% 10%,
+      rgba(143, 92, 247, 0.32),
+      transparent 58%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(56, 49, 94, 0.96),
+      rgba(24, 35, 57, 0.96)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 12px 30px rgba(143, 92, 247, 0.16),
+    0 0 18px rgba(181, 140, 255, 0.1);
+}
+
+:global(html[data-theme="dark"]) .statCurrent > span,
+:global(html.dark) .statCurrent > span {
+  color: #b58cff;
+}
+
+:global(html[data-theme="dark"]) .statCurrent strong,
+:global(html.dark) .statCurrent strong {
+  color: #9b6cff;
+
+  text-shadow:
+    0 0 14px rgba(143, 92, 247, 0.3);
+}
+
+
+/* LEVEL — GOLD */
+
+:global(html[data-theme="dark"]) .statLevel,
+:global(html.dark) .statLevel {
+  border-color: rgba(242, 216, 117, 0.52);
+
+  background:
+    radial-gradient(
+      circle at 72% 10%,
+      rgba(242, 216, 117, 0.22),
+      transparent 58%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(76, 65, 38, 0.96),
+      rgba(27, 37, 52, 0.96)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 12px 30px rgba(213, 165, 19, 0.14),
+    0 0 18px rgba(242, 216, 117, 0.08);
+}
+
+:global(html[data-theme="dark"]) .statLevel > span,
+:global(html.dark) .statLevel > span {
+  color: #e4bd49;
+}
+
+:global(html[data-theme="dark"]) .statLevel strong,
+:global(html.dark) .statLevel strong {
+  color: #f0c419;
+
+  text-shadow:
+    0 0 14px rgba(240, 196, 25, 0.28);
+}
+
+
+/* STREAK — CYAN */
+
+:global(html[data-theme="dark"]) .statStreak,
+:global(html.dark) .statStreak {
+  border-color: rgba(112, 215, 255, 0.48);
+
+  background:
+    radial-gradient(
+      circle at 75% 12%,
+      rgba(80, 213, 236, 0.24),
+      transparent 58%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(37, 68, 82, 0.96),
+      rgba(20, 36, 55, 0.96)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 12px 30px rgba(80, 213, 236, 0.14),
+    0 0 18px rgba(112, 215, 255, 0.08);
+}
+
+:global(html[data-theme="dark"]) .statStreak > span,
+:global(html.dark) .statStreak > span {
+  color: #70d7ff;
+}
+
+:global(html[data-theme="dark"]) .statStreak strong,
+:global(html.dark) .statStreak strong {
+  color: #3fc5eb;
+
+  text-shadow:
+    0 0 14px rgba(63, 197, 235, 0.28);
+}
+
+
+/* Divider lines inside cards */
+
+:global(html[data-theme="dark"]) .dynamicStat i,
+:global(html.dark) .dynamicStat i {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.15),
+      transparent
+    );
+}
+
+/* =========================================================
+   FINAL CARD — DARK MODE ONLY
+   Deep navy + premium gold border
+   Light mode remains unchanged
+   ========================================================= */
+
+:global(html[data-theme="dark"]) .finalCard,
+:global(html.dark) .finalCard {
+  border:
+    2px solid
+    transparent;
+
+  border-radius: 38px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #193653 0%,
+      #102842 40%,
+      #0b1d31 68%,
+      #071522 100%
+    )
+    padding-box,
+
+    linear-gradient(
+      135deg,
+      #9b6808 0%,
+      #d7a513 24%,
+      #fff0a0 50%,
+      #d7a513 72%,
+      #805600 100%
+    )
+    border-box;
+
+  box-shadow:
+    inset
+      0
+      1px
+      0
+      rgba(255, 255, 255, 0.1),
+
+    inset
+      0
+      -45px
+      80px
+      rgba(2, 11, 24, 0.28),
+
+    0
+      28px
+      65px
+      rgba(0, 0, 0, 0.32),
+
+    0
+      0
+      30px
+      rgba(213, 165, 19, 0.1);
+
+  animation:
+    finalFloat
+    7s ease-in-out infinite;
+}
+
+/* =========================================================
+   ACHIEVEMENT CARD — DARK MODE ONLY
+   Career Track navy + gold styling
+   Animations remain unchanged
+========================================================= */
+
+:global(html[data-theme="dark"]) .achievementCard,
+:global(html.dark) .achievementCard {
+  border:
+    2px solid
+    transparent;
+
+  background:
+    linear-gradient(
+      145deg,
+      #183553 0%,
+      #102943 46%,
+      #0b1e33 72%,
+      #071522 100%
+    )
+    padding-box,
+
+    linear-gradient(
+      135deg,
+      #9a6708 0%,
+      #d7a513 24%,
+      #fff1a0 50%,
+      #d7a513 74%,
+      #805600 100%
+    )
+    border-box;
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.1),
+
+    inset 0 -35px 65px
+      rgba(2, 10, 22, 0.25),
+
+    0 24px 55px
+      rgba(0, 0, 0, 0.34),
+
+    0 0 28px
+      rgba(213, 165, 19, 0.1);
+}
+
+
+/* =========================================================
+   LIVE ACHIEVEMENT BADGE — DARK
+========================================================= */
+
+:global(html[data-theme="dark"]) .liveAchievement,
+:global(html.dark) .liveAchievement {
+  color: #f6d75e;
+
+  border-color:
+    rgba(242, 216, 117, 0.72);
+
+  background:
+    linear-gradient(
+      145deg,
+      #273c55 0%,
+      #172c47 55%,
+      #10233b 100%
+    );
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.09),
+
+    0 8px 18px
+      rgba(0, 0, 0, 0.22),
+
+    0 0 14px
+      rgba(213, 165, 19, 0.1);
+}
+
+
+/* =========================================================
+   TOP VISUAL — DARK NAVY
+========================================================= */
+
+:global(html[data-theme="dark"]) .achievementVisual,
+:global(html.dark) .achievementVisual {
+  border-color:
+    rgba(213, 165, 19, 0.2);
+
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(75, 110, 166, 0.26),
+      transparent 42%
+    ),
+
+    linear-gradient(
+      180deg,
+      #1c3c60 0%,
+      #173454 48%,
+      #102b4b 58%,
+      #0d2340 59%,
+      #091b32 100%
+    );
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================================================
+   CIRCLE BEHIND AVATAR — DARK
+========================================================= */
+
+:global(html[data-theme="dark"]) .achievementSun,
+:global(html.dark) .achievementSun {
+  background:
+    radial-gradient(
+      circle at 34% 28%,
+      #fff6a8 0%,
+      #f6d24c 34%,
+      #d7a513 65%,
+      #8a5b05 100%
+    );
+
+  box-shadow:
+    0 0 30px
+      rgba(213, 165, 19, 0.26),
+
+    0 12px 24px
+      rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================================================
+   AVATAR — GOLD
+========================================================= */
+
+:global(html[data-theme="dark"]) .achievementAvatar,
+:global(html.dark) .achievementAvatar {
+  color: #102b51;
+
+  border-color:
+    rgba(255, 244, 185, 0.82);
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff5a4 0%,
+      #f2cd49 52%,
+      #d9a40d 100%
+    );
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.7),
+
+    0 12px 25px
+      rgba(0, 0, 0, 0.26),
+
+    0 0 20px
+      rgba(213, 165, 19, 0.14);
+}
+
+
+/* =========================================================
+   DECORATIVE MOUNTAINS — DARK
+========================================================= */
+
+:global(html[data-theme="dark"])
+  .achievementMountains span,
+:global(html.dark)
+  .achievementMountains span {
+  background: #142d50;
+}
+
+:global(html[data-theme="dark"])
+  .achievementMountains span:nth-child(2),
+:global(html.dark)
+  .achievementMountains span:nth-child(2) {
+  background: #0c213e;
+}
+
+:global(html[data-theme="dark"])
+  .achievementMountains span:nth-child(3),
+:global(html.dark)
+  .achievementMountains span:nth-child(3) {
+  background: #19365b;
+}
+
+
+/* =========================================================
+   STAR — GOLD
+========================================================= */
+
+:global(html[data-theme="dark"])
+  .achievementVisual > svg,
+:global(html.dark)
+  .achievementVisual > svg {
+  color: #f2d875;
+
+  filter:
+    drop-shadow(
+      0 0 8px
+      rgba(242, 216, 117, 0.34)
+    );
+}
+
+
+/* =========================================================
+   CONTENT — DARK
+========================================================= */
+
+:global(html[data-theme="dark"])
+  .achievementContent > span,
+:global(html.dark)
+  .achievementContent > span {
+  color: #e2bd49;
+}
+
+:global(html[data-theme="dark"])
+  .achievementContent > strong,
+:global(html.dark)
+  .achievementContent > strong {
+  color: #f6f7fc;
+}
+
+:global(html[data-theme="dark"])
+  .achievementContent > p,
+:global(html.dark)
+  .achievementContent > p {
+  color:
+    rgba(210, 222, 236, 0.7);
+}
+
+
+/* =========================================================
+   UNLOCKED BOX — DARK
+========================================================= */
+
+:global(html[data-theme="dark"]) .unlockInfo,
+:global(html.dark) .unlockInfo {
+  border-color:
+    rgba(213, 165, 19, 0.24);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(27, 50, 71, 0.8),
+      rgba(13, 34, 54, 0.88)
+    );
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.06);
+}
+
+:global(html[data-theme="dark"]) .unlockInfo span,
+:global(html.dark) .unlockInfo span {
+  color: #e2bd49;
+}
+
+:global(html[data-theme="dark"]) .unlockInfo strong,
+:global(html.dark) .unlockInfo strong {
+  color: #f1f4fa;
+}
+
+/* LIGHT MODE ONLY — moving star */
+:global(html:not(.dark):not([data-theme="dark"]))
+  .achievementVisual > svg,
+:global(html[data-theme="light"])
+  .achievementVisual > svg,
+:global(html.light)
+  .achievementVisual > svg {
+  color: #172d50;
+
+  filter:
+    drop-shadow(
+      0 0 6px rgba(23, 45, 80, 0.18)
+    );
+}
+
+
+/* =========================================================
+   PODIUM CARDS — LIGHT MODE ONLY
+   Cream + Lavender + Gold premium card
+   DARK MODE REMAINS UNCHANGED
+========================================================= */
+
+:global(html[data-theme="light"]) .podiumCard,
+:global(html.light) .podiumCard {
+  color: #172d50;
+
+  border:
+    1.5px solid
+    transparent;
+
+  border-radius: 28px;
+
+  background:
+    radial-gradient(
+      circle at 8% 12%,
+      rgba(218, 204, 247, 0.52),
+      transparent 40%
+    )
+    padding-box,
+
+    radial-gradient(
+      circle at 88% 76%,
+      rgba(250, 224, 139, 0.32),
+      transparent 46%
+    )
+    padding-box,
+
+    linear-gradient(
+      145deg,
+      #fffdf9 0%,
+      #fffaf4 50%,
+      #fff3d2 100%
+    )
+    padding-box,
+
+    linear-gradient(
+      135deg,
+      #a96f08 0%,
+      #d7a513 28%,
+      #fff0a0 52%,
+      #d7a513 74%,
+      #946008 100%
+    )
+    border-box;
+
+  box-shadow:
+    inset
+      0 1px 0
+      rgba(255, 255, 255, 0.98),
+
+    0
+      20px 42px
+      rgba(72, 50, 98, 0.12),
+
+    0
+      0 22px
+      rgba(213, 165, 19, 0.08);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+
+/* All 3 cards use the SAME light-mode surface */
+
+:global(html[data-theme="light"]) .podiumCardFirst,
+:global(html[data-theme="light"]) .podiumCardSecond,
+:global(html[data-theme="light"]) .podiumCardThird,
+:global(html.light) .podiumCardFirst,
+:global(html.light) .podiumCardSecond,
+:global(html.light) .podiumCardThird {
+  border-color: transparent;
+
+  background:
+    radial-gradient(
+      circle at 8% 12%,
+      rgba(218, 204, 247, 0.52),
+      transparent 40%
+    )
+    padding-box,
+
+    radial-gradient(
+      circle at 88% 76%,
+      rgba(250, 224, 139, 0.32),
+      transparent 46%
+    )
+    padding-box,
+
+    linear-gradient(
+      145deg,
+      #fffdf9 0%,
+      #fffaf4 50%,
+      #fff3d2 100%
+    )
+    padding-box,
+
+    linear-gradient(
+      135deg,
+      #a96f08 0%,
+      #d7a513 28%,
+      #fff0a0 52%,
+      #d7a513 74%,
+      #946008 100%
+    )
+    border-box;
+}
+
+
+/* =========================================================
+   NAME / TRACK
+========================================================= */
+
+:global(html[data-theme="light"])
+  .profileIdentity strong,
+:global(html.light)
+  .profileIdentity strong {
+  color: #172d50;
+}
+
+:global(html[data-theme="light"])
+  .profileIdentity span,
+:global(html.light)
+  .profileIdentity span {
+  color: #68758b;
+}
+
+
+/* =========================================================
+   XP — GOLD
+========================================================= */
+
+:global(html[data-theme="light"])
+  .profileXp,
+:global(html.light)
+  .profileXp {
+  color: #b78313;
+}
+
+
+/* =========================================================
+   LEVEL + STREAK PILLS
+========================================================= */
+
+:global(html[data-theme="light"])
+  .profileMeta span,
+:global(html.light)
+  .profileMeta span {
+  color: #44546c;
+
+  border-color:
+    rgba(183, 131, 19, 0.2);
+
+  background:
+    rgba(255, 253, 244, 0.78);
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.92);
+}
+
+:global(html[data-theme="light"])
+  .profileMeta svg,
+:global(html.light)
+  .profileMeta svg {
+  color: #b78313;
+}
+
+
+/* =========================================================
+   SMALL RANK NUMBER
+========================================================= */
+
+:global(html[data-theme="light"])
+  .cardRankNumber,
+:global(html.light)
+  .cardRankNumber {
+  color: #a87608;
+}
+
+
+/* =========================================================
+   LARGE 1 / 2 / 3 WATERMARK
+========================================================= */
+
+:global(html[data-theme="light"])
+  .cardRankWatermark,
+:global(html.light)
+  .cardRankWatermark {
+  color:
+    rgba(183, 131, 19, 0.09);
+}
+
+:global(html[data-theme="light"])
+  .podiumCardFirst
+  .cardRankWatermark,
+:global(html.light)
+  .podiumCardFirst
+  .cardRankWatermark {
+  color:
+    rgba(183, 131, 19, 0.12);
+}
+
+
+/* =========================================================
+   CARD EDGE DETAILS
+========================================================= */
+
+:global(html[data-theme="light"])
+  .cardLeftEdge,
+:global(html[data-theme="light"])
+  .cardRightEdge,
+:global(html.light)
+  .cardLeftEdge,
+:global(html.light)
+  .cardRightEdge {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(215, 165, 19, 0.72),
+      rgba(255, 239, 157, 0.32),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   TOP 3D PLANE
+========================================================= */
+
+:global(html[data-theme="light"])
+  .cardTopPlane,
+:global(html.light)
+  .cardTopPlane {
+  border-color:
+    rgba(201, 155, 47, 0.2);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(218, 204, 247, 0.08),
+      rgba(255, 255, 255, 0.78),
+      rgba(250, 224, 139, 0.16),
+      rgba(218, 204, 247, 0.08)
+    );
+}
+
+
+/* =========================================================
+   BOTTOM GLOW
+========================================================= */
+
+:global(html[data-theme="light"])
+  .cardBottomGlow,
+:global(html.light)
+  .cardBottomGlow {
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(213, 165, 19, 0.12),
+      transparent 70%
+    );
+}
+
+
+/* =========================================================
+   PODIUM CARDS — LIGHT MODE ONLY
+   Change colors only.
+   KEEP existing gold animation/effects unchanged.
+========================================================= */
+
+:global(html[data-theme="light"]) .podiumCard,
+:global(html.light) .podiumCard {
+  color: #172d50;
+
+  /* keep premium gold border */
+  border-color: rgba(199, 151, 20, 0.72);
+
+  /* light card surface */
+  background:
+    radial-gradient(
+      circle at 8% 12%,
+      rgba(218, 204, 247, 0.5),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 88% 76%,
+      rgba(250, 224, 139, 0.3),
+      transparent 46%
+    ),
+    linear-gradient(
+      145deg,
+      #fffdf9 0%,
+      #fffaf4 50%,
+      #fff3d2 100%
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.98),
+    0 20px 42px rgba(72, 50, 98, 0.12),
+    0 0 24px rgba(213, 165, 19, 0.1);
+
+  /* DO NOT change animation here */
+}
+
+
+/* =========================================================
+   PODIUM CARD — LIGHT MODE GOLD HOVER
+   ========================================================= */
+
+:global(html[data-theme="light"]) .podiumCard:hover,
+:global(html.light) .podiumCard:hover {
+  border-color:
+    rgba(235, 208, 120, 0.6);
+
+  transform:
+    perspective(950px)
+    rotateX(3deg)
+    translateY(-3px)
+    scale(1.008);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.92),
+    0 16px 30px rgba(72,50,98,.10),
+    0 0 12px rgba(246,222,140,.10);
+}
+
+/* Golden moving shine */
+
+:global(html[data-theme="light"]) .podiumCard::after,
+:global(html.light) .podiumCard::after {
+  content: "";
+
+  position: absolute;
+
+  top: -45%;
+  left: -30%;
+
+  width: 12%;
+  height: 190%;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 250, 220, 0.12) 20%,
+      rgba(255, 244, 176, 0.34) 44%,
+      rgba(255, 252, 232, 0.52) 52%,
+      rgba(248, 225, 135, 0.28) 62%,
+      transparent 100%
+    );
+
+  transform: rotate(18deg);
+
+  filter:
+    blur(0.4px);
+
+  transition:
+    opacity 180ms ease;
+}
+
+:global(html[data-theme="light"]) .podiumCard:hover::after,
+:global(html.light) .podiumCard:hover::after {
+  opacity: 0.7;
+
+  animation:
+    podiumGoldHoverSweep
+    1.25s ease forwards;
+}
+
+@keyframes podiumGoldHoverSweep {
+  from {
+    left: -30%;
+  }
+
+  to {
+    left: 125%;
+  }
+}
+
+/* =========================================================
+   PODIUM CARD — DARK MODE LIGHT GOLD HOVER
+   Same sweep effect as light mode
+========================================================= */
+
+:global(html[data-theme="dark"]) .podiumCard:hover,
+:global(html.dark) .podiumCard:hover {
+  border-color:
+    rgba(235, 208, 120, 0.6);
+
+  transform:
+    perspective(950px)
+    rotateX(3deg)
+    translateY(-3px)
+    scale(1.008);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 16px 30px rgba(0,0,0,.18),
+    0 0 12px rgba(246,222,140,.12);
+}
+
+
+/* Light champagne sweep */
+
+:global(html[data-theme="dark"]) .podiumCard::after,
+:global(html.dark) .podiumCard::after {
+  content: "";
+
+  position: absolute;
+
+  top: -45%;
+  left: -30%;
+
+  width: 12%;
+  height: 190%;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 250, 220, 0.08) 20%,
+      rgba(255, 244, 176, 0.28) 44%,
+      rgba(255, 252, 232, 0.46) 52%,
+      rgba(248, 225, 135, 0.22) 62%,
+      transparent 100%
+    );
+
+  transform: rotate(18deg);
+
+  filter:
+    blur(0.4px);
+
+  transition:
+    opacity 180ms ease;
+}
+
+:global(html[data-theme="dark"]) .podiumCard:hover::after,
+:global(html.dark) .podiumCard:hover::after {
+  opacity: 0.65;
+
+  animation:
+    podiumGoldHoverSweep
+    1.25s ease forwards;
 }

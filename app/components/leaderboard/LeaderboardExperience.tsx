@@ -10,6 +10,7 @@ import {
 
 import styles from "./LeaderboardExperience.module.css";
 
+
 import {
   currentStudent,
   leaderboardStudents,
@@ -222,9 +223,8 @@ function PodiumItem({
 
   return (
     <article
-      className={`${styles.podiumItem} ${
-        student.rank === 1 ? styles.firstPlace : ""
-      }`}
+      className={`${styles.podiumItem} ${student.rank === 1 ? styles.firstPlace : ""
+        }`}
       style={
         {
           "--launch-x": launchX,
@@ -242,13 +242,12 @@ function PodiumItem({
       </div>
 
       <div
-        className={`${styles.podiumCard} ${
-          student.rank === 1
-            ? styles.podiumCardFirst
-            : student.rank === 2
-              ? styles.podiumCardSecond
-              : styles.podiumCardThird
-        }`}
+        className={`${styles.podiumCard} ${student.rank === 1
+          ? styles.podiumCardFirst
+          : student.rank === 2
+            ? styles.podiumCardSecond
+            : styles.podiumCardThird
+          }`}
       >
         <div className={styles.cardTopPlane} />
 
@@ -378,15 +377,13 @@ function RankingBoard({
                   rowRefs.current[student.rank] =
                     element;
                 }}
-                className={`${styles.rankRow} ${
-                  active
-                    ? styles.rankRowActive
-                    : ""
-                } ${
-                  student.isCurrentUser
+                className={`${styles.rankRow} ${active
+                  ? styles.rankRowActive
+                  : ""
+                  } ${student.isCurrentUser
                     ? styles.currentUser
                     : ""
-                }`}
+                  }`}
               >
                 <strong className={styles.rowRank}>
                   {String(student.rank).padStart(
@@ -508,9 +505,16 @@ function DynamicStat({
   value: string;
   delay: string;
 }) {
+  const tone =
+    label === "CURRENT"
+      ? styles.statCurrent
+      : label === "LEVEL"
+        ? styles.statLevel
+        : styles.statStreak;
+
   return (
     <div
-      className={styles.dynamicStat}
+      className={`${styles.dynamicStat} ${tone}`}
       style={
         {
           "--delay": delay,
@@ -544,24 +548,25 @@ function MomentumCard({
         </div>
 
         <div className={styles.finalCopy}>
-          <span className={styles.sectionEyebrow}>
-            YOUR NEXT MOVE
-          </span>
-
-          <small key={student.rank}>
-            NOW WATCHING · {student.name}
-          </small>
-
+          <div className={styles.finalEyebrowWrap}>
+            <div className="hj-gold-eyebrow">
+              <SparkIcon />
+              WHERE CONSISTENCY BECOMES VISIBLE
+            </div>
+          </div>
           <h2>
-            Your rank is not your finish line.
-            <em>Your next level is.</em>
+            <span className="hj-display-heading">Your progress earns</span>{" "}
+            <span className="hj-heading-wave hj-display-heading">
+              the next
+            </span>{" "}
+            <em className="seen-word"> step</em>
           </h2>
+          <div className="hj-first-five-heading">
+            <span>
+              Keep building momentum. Complete the next challenge, unlock new opportunities, and let every achievement move you closer to what’s next.
+            </span>
+          </div>
 
-          <p>
-            Progress keeps moving. Complete the next
-            mission, unlock the next opportunity and let
-            your proof move you upward.
-          </p>
         </div>
 
         <div
@@ -610,25 +615,44 @@ export function LeaderboardExperience() {
     useState(currentStudent);
 
   return (
-    <main className={styles.page}>
-      <div className={styles.pageGrid} />
-      <div className={styles.pageGlowOne} />
-      <div className={styles.pageGlowTwo} />
+    <main
+      className={`${styles.page} mentorme-page-background`}
+    >
+
 
       {/* HERO */}
 
       <section className={styles.hero}>
         <div className={styles.heroInner}>
+          <div className={styles.heroEyebrowWrap}>
+            <div className="hj-gold-eyebrow">
+              <SparkIcon />
+              WHERE CONSISTENCY BECOMES VISIBLE
+            </div>
+          </div>
+
           <h1>
             <span>Momentum deserves</span>
-            <em>to be seen.</em>
+
+            <span className={styles.heroSecondLine}>
+              <span className="hj-heading-wave">
+                to be
+              </span>{" "}
+
+              <em className="seen-word">
+                seen
+              </em>
+            </span>
           </h1>
 
-          <p>
-            Every mission, project and level leaves a
-            signal. Build proof, earn XP and watch
-            consistent effort become visible momentum.
-          </p>
+          <div className="hj-first-five-heading">
+            <span>
+              Every mission, project and level leaves a
+              signal. Build proof, earn XP and watch
+              consistent effort become visible momentum.
+            </span>
+          </div>
+
 
           <div className={styles.heroPills}>
             <span>
@@ -664,15 +688,23 @@ export function LeaderboardExperience() {
       <section className={styles.leaderSection}>
         <div className={styles.centerHeading}>
           <h2>
-            <span>Top learners.</span>
+            <span className="hj-display-heading">
+              Top learners
+            </span>
 
-            <em>Built by consistency.</em>
+            <span className="hj-heading-wave, hj-display-heading">
+              Built by
+            </span>{" "}
+
+            <span className="seen-word">
+              consistency
+            </span>
           </h2>
-
-          <p>
+          <div className="hj-first-five-heading"><span>
             Consistency creates momentum. Momentum creates
             proof.
-          </p>
+          </span></div>
+
         </div>
 
         <div className={styles.podiumZone}>
@@ -692,9 +724,10 @@ export function LeaderboardExperience() {
           <div className={styles.attachedBoard}>
             <div className={styles.liveBoardTitle}>
               <h3>
-                <span>Keep moving.</span>
-
-                <em>Keep climbing.</em>
+                <span className="hj-display-heading">Keep moving</span>
+                <span className="hj-heading-wave  hj-display-heading">
+                  Keep</span>{" "}
+                <em className="seen-word">climbing</em>
               </h3>
 
               <div className={styles.liveBadge}>

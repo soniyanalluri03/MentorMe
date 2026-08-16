@@ -87,20 +87,20 @@
   gap: 9px;
 
   margin-bottom: 20px;
-  padding: 9px 13px;
 
-  border: 1px solid rgba(244, 223, 131, 0.28);
-  border-radius: 999px;
+  /* no pill/container appearance */
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 
   color: #f0d36d;
-  background: rgba(255, 255, 255, 0.035);
 
   font-size: 0.63rem;
   font-weight: 850;
   letter-spacing: 0.11em;
   text-transform: uppercase;
 }
-
 .copy h1 {
   max-width: 650px;
   margin: 0;
@@ -115,22 +115,43 @@
   line-height: 0.94;
   letter-spacing: -0.052em;
 }
+/* =========================================================
+   CAREER HERO MAIN NAVY
+   Exact navy used by the Momentum heading
+   ========================================================= */
 
-.copy h1 span,
-.copy h2 span {
-  color: transparent;
+.navyHeading {
+  display: inline-block;
 
-  background:
-    linear-gradient(
-      100deg,
-      #fff1aa,
-      #d8ad31 55%,
-      #a66f0a
-    );
+  color: #f4f6ff;
+  -webkit-text-fill-color: #f4f6ff;
 
-  background-clip: text;
-  -webkit-background-clip: text;
+  background: none;
+  background-image: none;
+
+  text-shadow: none;
 }
+
+/* LIGHT MODE */
+:global(html:not(.dark):not([data-theme="dark"]))
+  .navyHeading,
+:global(html[data-theme="light"])
+  .navyHeading,
+:global(html.light)
+  .navyHeading,
+:global([data-theme="light"])
+  .navyHeading {
+  color: #102b51 !important;
+
+  -webkit-text-fill-color:
+    #102b51 !important;
+
+  background: none !important;
+  background-image: none !important;
+
+  text-shadow: none !important;
+}
+
 
 .copy h2 {
   width: 100%;
@@ -1070,22 +1091,24 @@
 
 :global(html:not(.dark):not([data-theme="dark"])) .eyebrow,
 :global(html[data-theme="light"]) .eyebrow,
+:global(html.light) .eyebrow,
 :global([data-theme="light"]) .eyebrow {
   color: #8a640e;
 
-  border-color: rgba(166, 111, 10, 0.24);
-
-  background:
-    rgba(255, 255, 255, 0.58);
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
-:global(html:not(.dark):not([data-theme="dark"])) .copy h1,
-:global(html:not(.dark):not([data-theme="dark"])) .copy h2,
-:global(html[data-theme="light"]) .copy h1,
-:global(html[data-theme="light"]) .copy h2,
-:global([data-theme="light"]) .copy h1,
-:global([data-theme="light"]) .copy h2 {
-  color: #1b2435;
+:global(html:not(.dark):not([data-theme="dark"]))
+  .copy h1,
+:global(html[data-theme="light"])
+  .copy h1,
+:global(html.light)
+  .copy h1,
+:global([data-theme="light"])
+  .copy h1 {
+  color: #102b51;
 }
 
 :global(html:not(.dark):not([data-theme="dark"])) .description,
@@ -3235,4 +3258,84 @@ background:
   .stats article::after {
     animation: none;
   }
+}
+
+
+/* =========================================================
+   SAME STYLE AS LEADERBOARD "MOMENTUM DESERVES"
+========================================================= */
+
+.momentumHeading {
+  display: inline-block;
+
+  color: #f6f7fc;
+
+  font-family:
+    var(--font-display),
+    sans-serif;
+
+  font-size:
+    clamp(
+      3.2rem,
+      5.45vw,
+      6.5rem
+    );
+
+  font-weight: 800;
+
+  line-height: 0.98;
+
+  letter-spacing: -0.065em;
+
+  background: none;
+  background-image: none;
+
+  -webkit-text-fill-color: currentColor;
+
+  text-shadow: none;
+}
+
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .momentumHeading,
+:global(html[data-theme="light"])
+  .momentumHeading,
+:global(html.light)
+  .momentumHeading,
+:global([data-theme="light"])
+  .momentumHeading {
+  color: #102b51;
+
+  -webkit-text-fill-color: #102b51;
+}
+
+:global(html.dark)
+  .momentumHeading,
+:global(html[data-theme="dark"])
+  .momentumHeading,
+:global([data-theme="dark"])
+  .momentumHeading {
+  color: #f6f7fc;
+
+  -webkit-text-fill-color: #f6f7fc;
+}
+
+
+/* Career Track only:
+   keep hj-first-five-heading styling,
+   just align it to the left
+*/
+
+.copy :global(.hj-first-five-heading) {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+
+  text-align: left !important;
+}
+
+.copy :global(.hj-first-five-heading) > span {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+
+  text-align: left !important;
 }

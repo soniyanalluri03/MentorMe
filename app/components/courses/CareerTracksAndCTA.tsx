@@ -122,13 +122,15 @@ export default function CareerTracksAndCTA() {
               </span>
             </h2>
           </div>
+          <div  className="hj-first-five-heading">
+            <span>
+              the same
+              level-based roadmap, project gates,
+              milestone certificates and portfolio
+              evidence.
+            </span>
+          </div>
 
-          <p>
-            Each new track will use the same
-            level-based roadmap, project gates,
-            milestone certificates and portfolio
-            evidence.
-          </p>
         </div>
 
         <div className={styles.trackList}>
@@ -156,11 +158,10 @@ export default function CareerTracksAndCTA() {
 
             return (
               <article
-                className={`${styles.trackCard} ${
-                  isFeatured
+                className={`${styles.trackCard} ${isFeatured
                     ? styles.trackCardFeatured
                     : styles.trackCardSide
-                } ${toneClasses[track.tone]}`}
+                  } ${toneClasses[track.tone]}`}
                 key={track.number}
               >
                 <div
@@ -263,12 +264,12 @@ export default function CareerTracksAndCTA() {
             className={`${styles.ctaHeadingLine} ${styles.ctaHeadingSecondary}`}
           >
             <span className={styles.ctaHeadingWave}>
-  when the next step is
-</span>{" "}
+              when the next step is
+            </span>{" "}
 
-<em className={styles.ctaProofWord}>
-  visible
-</em>
+            <em className={styles.ctaProofWord}>
+              visible
+            </em>
           </span>
         </h2>
 

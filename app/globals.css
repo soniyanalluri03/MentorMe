@@ -91,3 +91,1210 @@ html[data-theme="light"]
   background-clip: padding-box;
 }
 
+/* =========================================================
+   SHARED HIGHLIGHT TEXT
+   Used across Roadmap / Career Tracks / Leaderboard / Home
+   ========================================================= */
+
+.hj-first-five-heading {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  position: relative;
+  z-index: 2;
+
+  text-align: center;
+}
+
+
+/* Eyebrow */
+
+.hj-first-five-heading > p {
+  margin: 0 0 24px;
+
+  color: var(--cyan, #70d7ff);
+
+  font:
+    950
+    clamp(0.9rem, 1.05vw, 1.08rem)
+    var(--font-display, sans-serif);
+
+  line-height: 1.4;
+
+  letter-spacing: 0.21em;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 18px rgba(112, 215, 255, 0.16);
+}
+
+
+/* Main heading */
+
+.hj-first-five-heading h2 {
+  width: 100%;
+  max-width: 1180px;
+
+  margin: 0 auto;
+
+  padding: 0 0 0.14em;
+
+  overflow: visible;
+
+  color: var(--text, #f4f6ff);
+
+  font:
+    760
+    clamp(3.25rem, 5.25vw, 5.9rem)
+    / 1.04
+    var(--font-display, sans-serif);
+
+  letter-spacing: -0.052em;
+
+  text-align: center;
+
+  text-wrap: balance;
+}
+
+
+/* Moving gold-wave word */
+
+.hj-heading-wave {
+  display: inline-block;
+
+  padding:
+    0
+    0.02em
+    0.08em;
+
+  color: transparent;
+
+  background:
+    linear-gradient(
+      90deg,
+
+      #f4f6ff 0%,
+      #f4f6ff 47%,
+
+      #d8b24b 49%,
+      #fff6d2 50%,
+      #d8b24b 51%,
+
+      #f4f6ff 53%,
+      #f4f6ff 100%
+    );
+
+  background-size: 260% 100%;
+  background-position: 0% 50%;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation:
+    hjHeadingGoldWave
+    12s
+    ease-in-out
+    infinite;
+}
+
+
+/* Purple / gold italic word */
+
+.hj-first-five-heading h2 em {
+  display: inline-block;
+
+  margin:
+    0
+    0
+    -0.12em;
+
+  padding:
+    0
+    0.08em
+    0.15em;
+
+  overflow: visible;
+
+  color: transparent;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-weight: 500;
+  font-style: italic;
+
+  line-height: 1.08;
+
+  background:
+    linear-gradient(
+      110deg,
+      var(--purple, #8f5cf7),
+      var(--purple-soft, #b58cff) 52%,
+      var(--gold-soft, #f2d875)
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  transform-origin: center;
+
+  animation:
+    hjStepBreath
+    3.6s
+    ease-in-out
+    infinite;
+
+  will-change:
+    transform,
+    filter;
+}
+
+
+/* =========================================================
+   SHARED DESCRIPTION / FADED TEXT STRIP
+   ========================================================= */
+
+.hj-first-five-heading > span {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+  max-width: 960px;
+
+  margin:
+    28px
+    auto
+    0;
+
+  padding:
+    16px
+    28px;
+
+  box-sizing: border-box;
+
+  color: var(--muted, #b5c5d6);
+
+  font:
+    760
+    clamp(1.05rem, 1.22vw, 1.2rem)
+    / 1.62
+    var(--font-sans, sans-serif);
+
+  text-align: center;
+
+  border-radius: 999px;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(112, 215, 255, 0.12),
+      transparent 72%
+    );
+
+  text-shadow:
+    0 0 18px rgba(112, 215, 255, 0.15);
+}
+
+
+/* =========================================================
+   LIGHT MODE
+   ========================================================= */
+
+:where(
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"]
+) .hj-first-five-heading > p {
+  color: #0f5e83;
+
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.86),
+    0 0 12px rgba(43, 105, 140, 0.12);
+}
+
+
+:where(
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"]
+) .hj-first-five-heading h2 {
+  color: #172d50;
+}
+
+:where(
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"]
+) .hj-heading-wave {
+  background:
+    linear-gradient(
+      90deg,
+      #172d50 0%,
+      #172d50 47%,
+      #c99b2f 49%,
+      #ffe7a4 50%,
+      #c99b2f 51%,
+      #172d50 53%,
+      #172d50 100%
+    );
+
+  background-size: 260% 100%;
+  background-position: 0% 50%;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+:where(
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"]
+) .hj-first-five-heading h2 em {
+  background:
+    linear-gradient(
+      110deg,
+      #7650d8,
+      #9d73f2 52%,
+      #d2aa43
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+:where(
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"]
+) .hj-first-five-heading > span {
+  color: #263a59;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(118, 80, 216, 0.11),
+      transparent 72%
+    );
+
+  text-shadow:
+    0 0 14px rgba(118, 80, 216, 0.1);
+}
+
+
+/* =========================================================
+   SHARED ANIMATIONS
+   ========================================================= */
+
+@keyframes hjHeadingGoldWave {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+
+@keyframes hjStepBreath {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter:
+      drop-shadow(
+        0 0 0 rgba(181, 140, 255, 0)
+      );
+  }
+
+  50% {
+    transform:
+      translateY(-2px)
+      scale(1.055);
+
+    filter:
+      drop-shadow(
+        0 8px 18px rgba(143, 92, 247, 0.22)
+      )
+      drop-shadow(
+        0 0 15px rgba(224, 189, 85, 0.2)
+      );
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .hj-first-five-heading {
+    max-width: 100%;
+  }
+
+  .hj-first-five-heading > p {
+    margin-bottom: 18px;
+
+    font-size: 0.62rem;
+
+    letter-spacing: 0.15em;
+  }
+
+  .hj-first-five-heading h2 {
+    font-size:
+      clamp(
+        2.8rem,
+        13vw,
+        4.2rem
+      );
+
+    line-height: 1;
+  }
+
+  .hj-first-five-heading > span {
+    margin-top: 22px;
+
+    padding:
+      10px
+      8px;
+
+    border-radius: 0;
+
+    font-size: 0.88rem;
+
+    background: transparent;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .hj-heading-wave,
+  .hj-first-five-heading h2 em {
+    animation: none !important;
+  }
+}
+
+
+/* =========================================================
+   GLOBAL PURPLE → GOLD ITALIC WORD
+   Reusable:
+   mapped. / seen. / consistency. / going. / proof. etc.
+   ========================================================= */
+
+.hj-gradient-word {
+  display: inline-block;
+
+  margin:
+    0
+    -0.06em
+    -0.12em
+    0.02em;
+
+  padding:
+    0.03em
+    0.12em
+    0.16em
+    0.06em;
+
+  overflow: visible;
+
+  color: transparent;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-weight: 500;
+  font-style: italic;
+
+  line-height: 1.08;
+
+  background:
+    linear-gradient(
+      110deg,
+      var(--purple, #8f5cf7) 0%,
+      var(--purple-soft, #b58cff) 52%,
+      var(--gold-soft, #f2d875) 100%
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  transform-origin: center;
+
+  animation:
+    hjGradientWordBreath
+    3.6s
+    ease-in-out
+    infinite;
+
+  will-change:
+    transform,
+    filter;
+}
+
+
+/* =========================================================
+   LIGHT MODE
+   ========================================================= */
+
+:where(
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"]
+) .hj-gradient-word {
+  background:
+    linear-gradient(
+      110deg,
+      #7650d8 0%,
+      #9d73f2 52%,
+      #d2aa43 100%
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================================================
+   GLOBAL PURPLE → GOLD GRADIENT WORD
+   Reusable on any page / any word
+   ========================================================= */
+
+.hj-gradient-word {
+  display: inline-block;
+
+  margin:
+    0
+    -0.06em
+    -0.12em
+    0.02em;
+
+  padding:
+    0.03em
+    0.12em
+    0.16em
+    0.06em;
+
+  overflow: visible;
+
+  color: transparent;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-weight: 500;
+  font-style: italic;
+
+  line-height: 1.08;
+
+  background:
+    linear-gradient(
+      110deg,
+      var(--purple, #8f5cf7) 0%,
+      var(--purple-soft, #b58cff) 52%,
+      var(--gold-soft, #f2d875) 100%
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  transform-origin: center;
+
+  animation:
+    hjGradientWordBreath
+    3.6s
+    ease-in-out
+    infinite;
+
+  will-change:
+    transform,
+    filter;
+}
+
+
+/* Light mode */
+
+:where(
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"]
+) .hj-gradient-word {
+  background:
+    linear-gradient(
+      110deg,
+      #7650d8 0%,
+      #9d73f2 52%,
+      #d2aa43 100%
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================================================
+   GLOBAL SEEN WORD STYLE
+   Purple → Lavender → Gold italic effect
+
+   Usage:
+   <span className="seen-word">seen.</span>
+   <span className="seen-word">consistency.</span>
+   <span className="seen-word">mapped.</span>
+   ========================================================= */
+
+.seen-word {
+  display: inline-block;
+
+  margin:
+    0
+    -0.06em
+    -0.12em
+    0.02em;
+
+  padding:
+    0.03em
+    0.12em
+    0.16em
+    0.06em;
+
+  overflow: visible;
+
+  color: transparent;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-weight: 500;
+  font-style: italic;
+
+  line-height: 1.08;
+
+  background:
+    linear-gradient(
+      110deg,
+      #8f5cf7 0%,
+      #b58cff 52%,
+      #f2d875 100%
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  transform-origin: center;
+
+  animation:
+    seenWordBreath
+    3.6s
+    ease-in-out
+    infinite;
+
+  will-change:
+    transform,
+    filter;
+}
+
+
+/* =========================================================
+   SEEN WORD ANIMATION
+   ========================================================= */
+
+@keyframes seenWordBreath {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter:
+      drop-shadow(
+        0 0 0
+        rgba(181, 140, 255, 0)
+      )
+      drop-shadow(
+        0 0 0
+        rgba(224, 189, 85, 0)
+      );
+  }
+
+  50% {
+    transform:
+      translateY(-2px)
+      scale(1.055);
+
+    filter:
+      drop-shadow(
+        0 8px 18px
+        rgba(143, 92, 247, 0.22)
+      )
+      drop-shadow(
+        0 0 15px
+        rgba(224, 189, 85, 0.2)
+      );
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .seen-word {
+    animation: none !important;
+  }
+}
+
+
+/* =========================================================
+   GLOBAL LARGE DISPLAY HEADING
+   Same size/color as "Momentum deserves"
+   ========================================================= */
+
+.hj-display-heading {
+  color: var(--text, #102b51);
+
+  font-size:
+    clamp(
+      3.2rem,
+      5.45vw,
+      6.5rem
+    );
+
+  font-weight: 700;
+
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+}
+
+:where(
+  html.dark,
+  html[data-theme="dark"],
+  [data-theme="dark"]
+) .hj-display-heading {
+  color: #f6f7fc;
+}
+
+
+/* =========================================================
+   GLOBAL PURPLE → GOLD ITALIC WORD
+   seen / consistency / climbing / going / level is
+   ========================================================= */
+
+.seen-word {
+  display: inline-block;
+
+  margin:
+    0
+    -0.06em
+    -0.12em
+    0.02em;
+
+  padding:
+    0.03em
+    0.12em
+    0.16em
+    0.06em;
+
+  overflow: visible;
+
+  color: transparent;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-weight: 500;
+  font-style: italic;
+
+  line-height: 1.08;
+
+  background:
+    linear-gradient(
+      110deg,
+      #8f5cf7 0%,
+      #b58cff 52%,
+      #f2d875 100%
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  transform-origin: center;
+
+  animation:
+    seenWordBreath
+    3.6s
+    ease-in-out
+    infinite;
+
+  will-change:
+    transform,
+    filter;
+}
+
+@keyframes seenWordBreath {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter:
+      drop-shadow(
+        0 0 0 rgba(181, 140, 255, 0)
+      )
+      drop-shadow(
+        0 0 0 rgba(224, 189, 85, 0)
+      );
+  }
+
+  50% {
+    transform:
+      translateY(-2px)
+      scale(1.055);
+
+    filter:
+      drop-shadow(
+        0 8px 18px rgba(143, 92, 247, 0.22)
+      )
+      drop-shadow(
+        0 0 15px rgba(224, 189, 85, 0.2)
+      );
+  }
+}
+
+
+/* =========================================================
+   GLOBAL HIGHLIGHT PILLS
+   Base
+   ========================================================= */
+
+.hj-highlight-pill {
+  min-height: 38px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding:
+    0
+    16px;
+
+  border:
+    1px solid transparent;
+
+  border-radius: 999px;
+
+  font-family:
+    var(--font-display),
+    sans-serif;
+
+  font-size: 0.58rem;
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 9px 22px rgba(72, 50, 98, 0.07);
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+
+/* =========================================================
+   GOLD / CREAM PILL
+   LEVELS 1–10 FREE / WEEKLY XP
+   ========================================================= */
+
+.hj-highlight-pill--gold {
+  color: #8b650d;
+
+  border-color:
+    rgba(177, 132, 28, 0.25);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 253, 244, 0.96),
+      rgba(248, 232, 184, 0.56)
+    );
+}
+
+.hj-highlight-pill--gold svg {
+  color: #b78313;
+}
+
+
+/* =========================================================
+   PURPLE / LAVENDER PILL
+   FULL 90-LEVEL PREVIEW / ACTIVE STREAKS
+   ========================================================= */
+
+.hj-highlight-pill--purple {
+  color: #7750cf;
+
+  border-color:
+    rgba(143, 92, 247, 0.24);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(250, 247, 255, 0.96),
+      rgba(233, 221, 252, 0.72)
+    );
+}
+
+.hj-highlight-pill--purple svg {
+  color: #8f5cf7;
+}
+
+
+/* =========================================================
+   BLUE / CYAN PILL
+   100+ OPPORTUNITIES / LIVE RANKING
+   ========================================================= */
+
+.hj-highlight-pill--blue {
+  color: #0f6487;
+
+  border-color:
+    rgba(61, 158, 196, 0.24);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(250, 254, 255, 0.97),
+      rgba(220, 244, 250, 0.72)
+    );
+}
+
+.hj-highlight-pill--blue svg {
+  color: #2385ad;
+}
+
+
+/* =========================================================
+   DARK MODE — PILLS
+   ========================================================= */
+
+:where(
+  html.dark,
+  html[data-theme="dark"],
+  [data-theme="dark"]
+) .hj-highlight-pill--gold {
+  color: #f0d36d;
+
+  border-color:
+    rgba(244, 223, 131, 0.32);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(212, 175, 55, 0.1),
+      rgba(255, 255, 255, 0.02)
+    ),
+    rgba(13, 32, 52, 0.68);
+}
+
+:where(
+  html.dark,
+  html[data-theme="dark"],
+  [data-theme="dark"]
+) .hj-highlight-pill--purple {
+  color: #c5a9ff;
+
+  border-color:
+    rgba(181, 140, 255, 0.3);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(143, 92, 247, 0.11),
+      rgba(255, 255, 255, 0.025)
+    ),
+    rgba(13, 32, 52, 0.68);
+}
+
+:where(
+  html.dark,
+  html[data-theme="dark"],
+  [data-theme="dark"]
+) .hj-highlight-pill--blue {
+  color: #81d7ef;
+
+  border-color:
+    rgba(80, 213, 236, 0.28);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(80, 213, 236, 0.09),
+      rgba(255, 255, 255, 0.025)
+    ),
+    rgba(13, 32, 52, 0.68);
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .seen-word {
+    animation: none !important;
+  }
+}
+
+
+/* =========================================================
+   GLOBAL GOLD EYEBROW / TAGLINE
+   ========================================================= */
+
+.hj-gold-eyebrow {
+  width: max-content;
+  max-width: 100%;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #9a6a0b;
+
+  font-family:
+    var(--font-display),
+    sans-serif;
+
+  font-size: 0.82rem;
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hj-gold-eyebrow svg {
+  width: 18px;
+  height: 18px;
+
+  flex: 0 0 auto;
+
+  color: #d5a513;
+}
+
+
+/* DARK MODE */
+
+:where(
+  html.dark,
+  html[data-theme="dark"],
+  [data-theme="dark"]
+) .hj-gold-eyebrow {
+  color: #f0cd55;
+}
+
+:where(
+  html.dark,
+  html[data-theme="dark"],
+  [data-theme="dark"]
+) .hj-gold-eyebrow svg {
+  color: #f0cd55;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .hj-gold-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+
+  .hj-gold-eyebrow svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+
+/* =========================================================
+   GLOBAL MENTORME LIGHT PAGE BACKGROUND
+   Home / Career Tracks / Leaderboard / etc.
+   ========================================================= */
+/* =========================================================
+   GLOBAL LIGHT MODE BODY BACKGROUND
+   Starts from top — behind navbar — through entire page
+   ========================================================= */
+
+html[data-theme="light"],
+html:not(.dark):not([data-theme="dark"]) {
+  min-height: 100%;
+  background: #f3ecfb;
+}
+
+html[data-theme="light"] body,
+html:not(.dark):not([data-theme="dark"]) body {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 8% 16%,
+      rgba(218, 204, 247, 0.94) 0%,
+      rgba(236, 226, 249, 0.7) 26%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 88% 28%,
+      rgba(250, 224, 139, 0.52) 0%,
+      rgba(255, 246, 215, 0.34) 31%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 50% 72%,
+      rgba(255, 255, 255, 0.7) 0%,
+      transparent 52%
+    ),
+    linear-gradient(
+      110deg,
+      #f3ecfb 0%,
+      #fffaf5 50%,
+      #fff8e8 100%
+    );
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* =========================================================
+   GLOBAL MENTORME DARK BACKGROUND
+   Same dark background style as Career Tracks
+   ========================================================= */
+
+html[data-theme="dark"],
+html.dark {
+  min-height: 100%;
+
+  background: #07131f;
+}
+
+html[data-theme="dark"] body,
+html.dark body {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 18% 22%,
+      rgba(40, 70, 108, 0.34) 0%,
+      rgba(21, 43, 70, 0.22) 28%,
+      transparent 52%
+    ),
+
+    radial-gradient(
+      circle at 82% 30%,
+      rgba(17, 43, 67, 0.24) 0%,
+      transparent 48%
+    ),
+
+    radial-gradient(
+      circle at 50% 78%,
+      rgba(8, 25, 43, 0.22) 0%,
+      transparent 55%
+    ),
+
+    linear-gradient(
+      115deg,
+      #11243a 0%,
+      #0a1929 48%,
+      #06121e 100%
+    );
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+
+.hj-main-heading {
+  display: inline-block;
+
+  color: var(--text, #f4f6ff);
+
+  font:
+    760
+    clamp(3.25rem, 5.25vw, 5.9rem)
+    / 1.04
+    var(--font-display, sans-serif);
+
+  letter-spacing: -0.052em;
+
+  text-wrap: balance;
+}
+
+/* LIGHT MODE */
+:where(
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"]
+) .hj-main-heading {
+  color: #172d50;
+}
+
+/* DARK MODE */
+:where(
+  html.dark,
+  html[data-theme="dark"]
+) .hj-main-heading {
+  color: #f4f6ff;
+}
+
+@media (max-width: 700px) {
+  .hj-main-heading {
+    font-size:
+      clamp(
+        2.8rem,
+        13vw,
+        4.2rem
+      );
+
+    line-height: 1;
+  }
+}
+
+
+
+
+

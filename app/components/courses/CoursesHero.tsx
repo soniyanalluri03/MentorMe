@@ -1,8 +1,5 @@
 "use client";
-
-import Link from "next/link";
 import {
-  ArrowRight,
   BadgeCheck,
   Code2,
   Sparkles,
@@ -68,7 +65,7 @@ const views: ViewItem[] = [
 
 export default function CoursesHero() {
   const [activeView, setActiveView] =
-  useState<ViewKey>("track");
+    useState<ViewKey>("track");
 
   const currentView =
     views.find((item) => item.key === activeView) ??
@@ -84,49 +81,25 @@ export default function CoursesHero() {
           FIND YOUR DIRECTION. START WITH CLARITY.
         </div>
 
-      <h1>
-        Don&apos;t just learn
-        <br />
-        Choose where <br />{" "}
-        <span className={styles.waveWord}>
-          you&apos;re
-        </span>{" "}
-        <span className={styles.mappedWord}>
-          going
-        </span>
-      </h1>
-<div className={styles.headingAside}>
-          <p >
+        <h1>
+          <span className="hj-main-heading">
+          Choose your path
+          </span>
+          <br />{" "}
+          <span className="hj-heading-wave  hj-main-heading">
+            grow your
+          </span>{" "}
+          <span className="seen-word">
+          future
+          </span>
+        </h1>
+        <div className="hj-first-five-heading">
+          <span >
             Frontend. Backend. Design. More paths ahead.
-          </p>
-</div>
-
-      <p className={styles.description}>
-        Find the career track that feels right, then follow
-        a clear 90-level journey designed to take you from
-        your first step to real career readiness.
-      </p>
-
-        <div className={styles.actions}>
-          <Link
-            href="/roadmap"
-            className="navbar-sign-in"
-          >
-             Explore career tracks
-            <ArrowRight size={19} />
-          </Link>
-
-          <Link
-            href="/signup"
-            className={styles.secondaryButton}
-          >
-            How tracks work
-            <ArrowRight size={19} />
-          </Link>
-          
+          </span>
         </div>
 
-       <div className={styles.stats}>
+        <div className={styles.stats}>
           <article>
             <strong>03</strong>
             <span>Career tracks</span>
@@ -216,11 +189,10 @@ export default function CoursesHero() {
               <button
                 key={item.key}
                 type="button"
-                className={`${styles.selector} ${
-                  isActive
-                    ? styles.selectorActive
-                    : ""
-                }`}
+                className={`${styles.selector} ${isActive
+                  ? styles.selectorActive
+                  : ""
+                  }`}
                 onClick={() =>
                   setActiveView(item.key)
                 }

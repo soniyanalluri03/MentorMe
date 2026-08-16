@@ -14,7 +14,9 @@ import FeaturedTrack from "./courses/FeaturedTrack";
 import MentorMethod from "./courses/MentorMethod";
 import styles from "../../app/home.module.css";
 
+
 import { LeaderboardExperience } from "./leaderboard/LeaderboardExperience";
+import { AboutExperience } from "./about/AboutExperience";
 
 import RoadmapHero from "./roadmap/RoadmapHero";
 import RoadmapStats from "./roadmap/RoadmapStats";
@@ -408,81 +410,6 @@ function Roadmap() {
       <RoadmapJourney />
       <RoadmapFinalSection />
     </main>
-    </>
-  );
-}
-
-function About() {
-  return (
-    <>
-      <PageHero
-        tag="WHY MENTORME EXISTS"
-        title={
-          <>
-            Career confusion isn’t
-            <br />
-            <em>
-              a content problem.
-            </em>
-          </>
-        }
-        text="Students already have videos, blogs, tutorials and advice. The real question is simpler — what should I do next?"
-      />
-
-      <section className="section story">
-        <div className="story-number">
-          01
-        </div>
-
-        <div>
-          <h2>
-            More content created
-            <br />
-            more{" "}
-            <em>confusion.</em>
-          </h2>
-
-          <p>
-            Open tabs. Saved
-            playlists. Half-finished
-            courses. Information was
-            everywhere, but direction
-            was missing.
-          </p>
-        </div>
-      </section>
-
-      <section className="section compare">
-        <h2>
-          We changed the learning
-          loop.
-        </h2>
-
-        <div className="compare-grid">
-          <article>
-            <small>
-              TRADITIONAL LEARNING
-            </small>
-
-            <p>
-              Watch → Watch → Watch →
-              Certificate
-            </p>
-          </article>
-
-          <article className="accent-card">
-            <small>
-              MENTORME
-            </small>
-
-            <p>
-              Understand → Practice
-              → Complete → Build →
-              Prove → Progress
-            </p>
-          </article>
-        </div>
-      </section>
     </>
   );
 }
@@ -960,7 +887,7 @@ export function PublicSite({
     courses: <Courses />,
     roadmap: <Roadmap/>,
     leaderboard: <LeaderboardExperience />,
-about: <About />,
+  about: <AboutExperience />,
     pricing: <Pricing />,
     contact: <Contact />,
   }[page];

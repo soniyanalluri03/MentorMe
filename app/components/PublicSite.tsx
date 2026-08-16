@@ -412,7 +412,7 @@ function Roadmap() {
 
 function Pricing() {
   return (
-    <main >
+    <main className="pricing-page">
       <PricingMain/>
     </main>
   );

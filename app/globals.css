@@ -13,6 +13,7 @@
 @import "./styles/about.css";
 @import "../app/courses/courses.css";
 @import "../app/roadmap/roadmap.css";
+@import "../app/components/pricing/Pricing.module.css";
 /* =========================================================
    COMPLETE HOME PAGE BACKGROUND — LIGHT MODE
 ========================================================= */

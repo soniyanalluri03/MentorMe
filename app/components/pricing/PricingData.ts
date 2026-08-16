@@ -1,19 +1,14 @@
-import type { LucideIcon } from "lucide-react";
+import type {
+  LucideIcon,
+} from "lucide-react";
 
 import {
   BadgeCheck,
   BriefcaseBusiness,
   Building2,
-  CheckCircle2,
   Crown,
-  FileCheck2,
-  GraduationCap,
   Layers3,
-  MessageSquareMore,
   Route,
-  Sparkles,
-  Target,
-  Users,
 } from "lucide-react";
 
 export type BillingCycle =
@@ -37,34 +32,45 @@ export interface PricingPlan {
 
   name: string;
   eyebrow: string;
+
   badge?: string;
 
   description: string;
 
-  monthlyPrice: number | null;
-  annualPrice: number | null;
+  monthlyPrice:
+    number | null;
 
-  annualSaving?: string;
+  annualPrice:
+    number | null;
+
   priceSuffix?: string;
 
-  /* NEW */
   startingFrom?: number;
+
   comingSoon?: boolean;
 
   levelAccess: string;
 
   icon: LucideIcon;
 
-  features: PricingFeature[];
+  features:
+    PricingFeature[];
 
   cta: string;
+
   href: string;
 
   featured?: boolean;
+
   enterprise?: boolean;
 
   note?: string;
 }
+
+
+/* =========================================================
+   PRICING PLANS
+   ========================================================= */
 
 export const pricingPlans:
   PricingPlan[] = [
@@ -72,12 +78,15 @@ export const pricingPlans:
     id: "free",
 
     name: "Free",
-    eyebrow: "START HERE",
+
+    eyebrow:
+      "START HERE",
 
     description:
-      "Explore your direction, understand the MentorMe journey and start building your foundations.",
+      "Explore MentorMe, find your direction and start building strong foundations.",
 
     monthlyPrice: 0,
+
     annualPrice: 0,
 
     levelAccess:
@@ -88,22 +97,22 @@ export const pricingPlans:
     features: [
       {
         label:
-          "Career direction & awareness",
+          "Career direction",
         included: true,
       },
       {
         label:
-          "Starter roadmap access",
+          "Starter roadmap",
         included: true,
       },
       {
         label:
-          "Foundation learning missions",
+          "Foundation missions",
         included: true,
       },
       {
         label:
-          "Basic skills assessment",
+          "Basic assessment",
         included: true,
       },
       {
@@ -118,12 +127,7 @@ export const pricingPlans:
       },
       {
         label:
-          "Mentor sessions",
-        included: false,
-      },
-      {
-        label:
-          "Career preparation",
+          "Access to all 90 levels",
         included: false,
       },
     ],
@@ -139,169 +143,191 @@ export const pricingPlans:
   },
 
   {
-  id: "pro",
+    id: "pro",
 
-  name: "Pro",
-  eyebrow: "BUILD YOUR SKILLS",
+    name: "Pro",
 
-  badge: "MOST POPULAR",
+    eyebrow:
+      "BUILD YOUR SKILLS",
 
-  description:
-    "Unlock the complete structured MentorMe journey with guided levels, missions, assessments, projects and milestone certificates.",
+    badge:
+      "MOST POPULAR",
 
-  monthlyPrice: null,
-  annualPrice: null,
+    description:
+      "Unlock the full structured journey with guided levels, projects and milestone certificates.",
 
-  startingFrom: 2000,
+    monthlyPrice:
+      null,
 
-  levelAccess:
-    "Full 90-level journey",
+    annualPrice:
+      null,
 
-  icon: Layers3,
+    startingFrom:
+      2000,
 
-  featured: true,
+    levelAccess:
+      "Full 90-level journey",
 
-  features: [
-    {
-      label: "Everything in Free",
-      included: true,
-    },
-    {
-      label: "All 90 guided levels",
-      included: true,
-      highlight: true,
-    },
-    {
-      label: "All missions & assessments",
-      included: true,
-    },
-    {
-      label: "12+ real projects",
-      included: true,
-    },
-    {
-      label: "9 milestone certificates",
-      included: true,
-    },
-    {
-      label: "Portfolio proof building",
-      included: true,
-    },
-    {
-      label: "Progress & readiness tracking",
-      included: true,
-    },
-    {
-      label: "Live mentor sessions",
-      included: false,
-    },
-  ],
+    icon:
+      Layers3,
 
-  cta: "Choose Pro",
+    featured:
+      true,
 
-  href: "/signup?plan=pro",
+    features: [
+      {
+        label:
+          "Everything in Free",
+        included: true,
+      },
+      {
+        label:
+          "All 90 guided levels",
+        included: true,
+        highlight: true,
+      },
+      {
+        label:
+          "Missions & assessments",
+        included: true,
+      },
+      {
+        label:
+          "12+ real projects",
+        included: true,
+      },
+      {
+        label:
+          "9 milestone certificates",
+        included: true,
+      },
+      {
+        label:
+          "Portfolio proof building",
+        included: true,
+      },
+      {
+        label:
+          "Live career guide sessions",
+        included: false,
+      },
+    ],
 
-  note:
-    "Starting price may vary depending on the selected career track.",
-},
+    cta:
+      "Choose Pro",
+
+    href:
+      "/signup?plan=pro",
+
+    note:
+      "Price varies by career track.",
+  },
 
   {
-  id: "career",
+    id: "career",
 
-  name: "Career Accelerator",
+    name:
+      "Career Accelerator",
 
-  eyebrow: "BECOME CAREER READY",
+    eyebrow:
+      "BECOME CAREER READY",
 
-  badge: "COMING SOON",
+    badge:
+      "COMING SOON",
 
-  description:
-    "Advanced career preparation with mentor guidance, portfolio reviews, interview support and career-readiness assistance.",
+    description:
+      "Advanced career preparation with mentor guidance, reviews and interview support.",
 
-  monthlyPrice: null,
-  annualPrice: null,
+    monthlyPrice:
+      null,
 
-  comingSoon: true,
+    annualPrice:
+      null,
 
-  levelAccess:
-    "Mentor-led career support",
+    comingSoon:
+      true,
 
-  icon: Crown,
+    levelAccess:
+      "Mentor-led support",
 
-  featured: false,
+    icon:
+      Crown,
 
-  features: [
-    {
-      label: "Everything in Pro",
-      included: true,
-    },
-    {
-      label: "Group mentor sessions",
-      included: true,
-      highlight: true,
-    },
-    {
-      label: "Resume preparation",
-      included: true,
-    },
-    {
-      label: "LinkedIn profile support",
-      included: true,
-    },
-    {
-      label: "Mock interviews",
-      included: true,
-    },
-    {
-      label: "Portfolio review",
-      included: true,
-    },
-    {
-      label: "Career readiness reviews",
-      included: true,
-    },
-    {
-      label: "Internship readiness support",
-      included: true,
-      highlight: true,
-    },
-  ],
+    features: [
+      {
+        label:
+          "Everything in Pro",
+        included: true,
+      },
+      {
+        label:
+          "Group mentor sessions",
+        included: true,
+        highlight: true,
+      },
+      {
+        label:
+          "Resume & LinkedIn support",
+        included: true,
+      },
+      {
+        label:
+          "Mock interviews",
+        included: true,
+      },
+      {
+        label:
+          "Portfolio review",
+        included: true,
+      },
+      {
+        label:
+          "Internship readiness",
+        included: true,
+      },
+    ],
 
-  cta: "Coming soon",
+    cta:
+      "Coming soon",
 
-  href: "#",
-
-  note:
-    "Mentor-led career support is currently being prepared.",
-},
+    href:
+      "#",
+  },
 
   {
     id: "enterprise",
 
-    name: "Enterprise",
+    name:
+      "Enterprise",
 
     eyebrow:
       "FOR INSTITUTIONS",
 
     description:
-      "Bring structured career journeys to colleges, training institutes and learner cohorts.",
+      "Structured MentorMe journeys for colleges, institutes and learner cohorts.",
 
-    monthlyPrice: null,
-    annualPrice: null,
+    monthlyPrice:
+      null,
+
+    annualPrice:
+      null,
 
     priceSuffix:
-      "Custom pricing",
+      "For institutions",
 
     levelAccess:
-      "Multi-user & cohort access",
+      "Cohort access",
 
-    icon: Building2,
+    icon:
+      Building2,
 
-    enterprise: true,
+    enterprise:
+      true,
 
     features: [
       {
         label:
-          "Everything in Career Accelerator",
+          "Career Accelerator access",
         included: true,
       },
       {
@@ -316,22 +342,12 @@ export const pricingPlans:
       },
       {
         label:
-          "Learner progress dashboard",
+          "Progress dashboard",
         included: true,
       },
       {
         label:
-          "Readiness insights",
-        included: true,
-      },
-      {
-        label:
-          "Custom onboarding",
-        included: true,
-      },
-      {
-        label:
-          "Institution-level reporting",
+          "Institution reporting",
         included: true,
       },
       {
@@ -348,9 +364,14 @@ export const pricingPlans:
       "/contact",
 
     note:
-      "Designed for teams and institutions.",
+      "For teams and institutions.",
   },
 ];
+
+
+/* =========================================================
+   BENEFITS
+   ========================================================= */
 
 export interface PricingBenefit {
   title: string;
@@ -365,9 +386,10 @@ export const pricingBenefits:
       "Structured progression",
 
     description:
-      "Move through one connected journey instead of jumping between unrelated courses.",
+      "Follow one connected journey instead of jumping between unrelated courses.",
 
-    icon: Route,
+    icon:
+      Route,
   },
 
   {
@@ -375,9 +397,10 @@ export const pricingBenefits:
       "Proof over completion",
 
     description:
-      "Projects, assessments and milestone certificates create visible evidence of your progress.",
+      "Build visible proof through projects, assessments and milestones.",
 
-    icon: BadgeCheck,
+    icon:
+      BadgeCheck,
   },
 
   {
@@ -385,11 +408,17 @@ export const pricingBenefits:
       "Career preparation",
 
     description:
-      "Higher plans connect learning with resumes, portfolios, interviews and internship readiness.",
+      "Connect learning with portfolios, interviews and career readiness.",
 
-    icon: BriefcaseBusiness,
+    icon:
+      BriefcaseBusiness,
   },
 ];
+
+
+/* =========================================================
+   FAQ
+   ========================================================= */
 
 export interface PricingFAQ {
   question: string;
@@ -403,7 +432,7 @@ export const pricingFAQs:
       "Can I start MentorMe without paying?",
 
     answer:
-      "Yes. The Free plan is designed to help you explore your direction and start the foundation journey before choosing a paid plan.",
+      "Yes. The Free plan lets you explore your direction and begin the foundation journey before choosing a paid plan.",
   },
 
   {
@@ -411,17 +440,24 @@ export const pricingFAQs:
       "What is the difference between Pro and Career Accelerator?",
 
     answer:
-      "Pro focuses on the complete self-paced MentorMe journey, including levels, missions, projects and certificates. Career Accelerator includes everything in Pro plus mentor sessions, resume and LinkedIn support, mock interviews, portfolio review and additional career-readiness support.",
+      "Pro provides the complete structured learning journey. Career Accelerator adds mentor guidance, portfolio reviews, interview preparation and career-readiness support.",
   },
 
   {
     question:
-      "Can I switch between monthly and annual billing?",
+      "What happens to my progress if I change plans?",
 
     answer:
-      "Yes. Monthly billing gives you more flexibility, while annual billing offers a lower effective monthly cost. Your progress remains tied to your MentorMe account.",
+      "Your completed progress, milestones and certificates remain connected to your MentorMe account.",
   },
 
+  {
+    question:
+      "Does a paid plan guarantee an internship?",
+
+    answer:
+      "No. MentorMe helps you build readiness and proof of skills, but internship selection depends on eligibility and the hiring organization.",
+  },
   {
     question:
       "What happens to my progress if I cancel?",
@@ -432,18 +468,10 @@ export const pricingFAQs:
 
   {
     question:
-      "Does paying for a plan guarantee an internship?",
+      "Who is Enterprise for?",
 
     answer:
-      "No. Completing the journey can make you eligible to explore internship opportunities based on readiness and applicable requirements, but it does not guarantee placement or selection.",
-  },
-
-  {
-    question:
-      "Who is the Enterprise plan for?",
-
-    answer:
-      "Enterprise is intended for colleges, training institutes and organizations that want to provide MentorMe journeys to multiple learners while tracking cohort progress and readiness.",
+      "Enterprise is designed for colleges, training institutes and organizations managing multiple learners.",
   },
 
   {
@@ -451,14 +479,6 @@ export const pricingFAQs:
       "Can I upgrade from Free to Pro later?",
 
     answer:
-      "Yes. You can begin on Free and upgrade when you are ready without restarting your journey.",
-  },
-
-  {
-    question:
-      "Are annual plans paid monthly?",
-
-    answer:
-      "No. The annual amount is billed for the full year. The annual option is discounted compared with paying the monthly rate for twelve months.",
+      "Yes. You can start with Free and upgrade later without restarting your journey.",
   },
 ];

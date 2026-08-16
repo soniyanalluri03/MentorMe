@@ -1,3 +1,7 @@
+/* =========================================================
+   PRICING PLANS SECTION
+   ========================================================= */
+
 .section {
   width: 100%;
 
@@ -22,6 +26,11 @@
     transparent !important;
 }
 
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
 .heading {
   width:
     min(
@@ -36,6 +45,12 @@
     center;
 }
 
+
+/* =========================================================
+   KICKER
+   Imported from Roadmap Hero
+   ========================================================= */
+
 .kicker {
   display:
     inline-flex;
@@ -43,20 +58,147 @@
   align-items:
     center;
 
-  gap: 8px;
+  justify-content:
+    center;
+
+  gap:
+    9px;
+
+  margin:
+    0
+    auto
+    24px;
 
   color:
-    #d6b94f;
+    #d9ba4d;
+
+  font-family:
+    var(--font-display),
+    sans-serif;
 
   font-size:
-    0.65rem;
+    0.68rem;
 
   font-weight:
     900;
 
+  line-height:
+    1.4;
+
   letter-spacing:
-    0.13em;
+    0.14em;
+
+  text-align:
+    center;
+
+  text-transform:
+    uppercase;
+
+  text-shadow:
+    0 0 16px
+    rgba(
+      217,
+      186,
+      77,
+      0.16
+    );
 }
+
+
+/* =========================================================
+   KICKER ICON
+   ========================================================= */
+
+.kicker svg {
+  flex:
+    0
+    0
+    auto;
+
+  color:
+    #f0d36d;
+
+  filter:
+    drop-shadow(
+      0
+      0
+      7px
+      rgba(
+        240,
+        211,
+        109,
+        0.24
+      )
+    );
+}
+
+
+/* =========================================================
+   LIGHT MODE — KICKER
+   ========================================================= */
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+) .kicker,
+:global(
+  html[data-theme="light"]
+) .kicker,
+:global(html.light)
+  .kicker {
+  color:
+    #8e6810;
+
+  text-shadow:
+    0 1px 0
+      rgba(
+        255,
+        255,
+        255,
+        0.8
+      ),
+    0 0 10px
+      rgba(
+        177,
+        132,
+        28,
+        0.1
+      );
+}
+
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+) .kicker svg,
+:global(
+  html[data-theme="light"]
+) .kicker svg,
+:global(html.light)
+  .kicker svg {
+  color:
+    #b78313;
+
+  filter:
+    drop-shadow(
+      0
+      0
+      5px
+      rgba(
+        177,
+        132,
+        28,
+        0.13
+      )
+    );
+}
+
+
+/* =========================================================
+   HEADING TEXT
+   ========================================================= */
 
 .heading h2 {
   margin:
@@ -120,7 +262,9 @@
     650px;
 
   margin:
-    20px auto 0;
+    20px
+    auto
+    0;
 
   color:
     #98a7b9;
@@ -132,10 +276,20 @@
     1.7;
 }
 
+
+/* =========================================================
+   BILLING TOGGLE
+   ========================================================= */
+
 .toggle {
   margin-top:
     32px;
 }
+
+
+/* =========================================================
+   PRICING GRID
+   ========================================================= */
 
 .grid {
   width:
@@ -145,7 +299,9 @@
     );
 
   margin:
-    40px auto 0;
+    40px
+    auto
+    0;
 
   display:
     grid;
@@ -166,15 +322,22 @@
     16px;
 }
 
+
+/* =========================================================
+   SECURITY / PROGRESS NOTE
+   ========================================================= */
+
 .securityNote {
   width:
     fit-content;
 
   max-width:
-    720px;
+    820px;
 
   margin:
-    30px auto 0;
+    34px
+    auto
+    0;
 
   display:
     flex;
@@ -182,14 +345,18 @@
   align-items:
     center;
 
-  gap: 8px;
+  justify-content:
+    center;
+
+  gap:
+    10px;
 
   padding:
-    10px
-    15px;
+    13px
+    20px;
 
   color:
-    #9baabd;
+    #d9ba4d;
 
   border:
     1px solid
@@ -197,25 +364,200 @@
       212,
       175,
       55,
-      0.12
+      0.2
     );
 
   border-radius:
     999px;
 
   background:
-    rgba(
-      8,
-      28,
-      48,
-      0.36
+    linear-gradient(
+      145deg,
+      rgba(
+        212,
+        175,
+        55,
+        0.055
+      ),
+      rgba(
+        8,
+        28,
+        48,
+        0.4
+      )
     );
 
+  box-shadow:
+    inset
+      0
+      1px
+      0
+      rgba(
+        255,
+        255,
+        255,
+        0.04
+      ),
+    0
+      8px
+      22px
+      rgba(
+        0,
+        0,
+        0,
+        0.1
+      );
+
+  backdrop-filter:
+    blur(12px);
+
+  -webkit-backdrop-filter:
+    blur(12px);
+
+  font-family:
+    var(--font-display),
+    sans-serif;
+
   font-size:
-    0.65rem;
+    clamp(
+      0.82rem,
+      0.9vw,
+      0.94rem
+    );
+
+  font-weight:
+    800;
+
+  line-height:
+    1.5;
+
+  letter-spacing:
+    0.025em;
+
+  text-align:
+    center;
+
+  text-shadow:
+    0
+    0
+    14px
+    rgba(
+      217,
+      186,
+      77,
+      0.14
+    );
 }
 
-/* LIGHT */
+
+/* =========================================================
+   SECURITY NOTE ICON
+   ========================================================= */
+
+.securityNote svg {
+  width:
+    17px;
+
+  height:
+    17px;
+
+  flex:
+    0
+    0
+    auto;
+
+  color:
+    #f0d36d;
+
+  stroke-width:
+    2.2;
+
+  filter:
+    drop-shadow(
+      0
+      0
+      6px
+      rgba(
+        240,
+        211,
+        109,
+        0.22
+      )
+    );
+}
+
+
+/* =========================================================
+   SECURITY NOTE HOVER
+   ========================================================= */
+
+.securityNote {
+  transition:
+    border-color
+      250ms ease,
+    background
+      250ms ease,
+    transform
+      250ms ease,
+    box-shadow
+      250ms ease;
+}
+
+.securityNote:hover {
+  transform:
+    translateY(-2px);
+
+  border-color:
+    rgba(
+      212,
+      175,
+      55,
+      0.33
+    );
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        212,
+        175,
+        55,
+        0.08
+      ),
+      rgba(
+        8,
+        28,
+        48,
+        0.44
+      )
+    );
+
+  box-shadow:
+    inset
+      0
+      1px
+      0
+      rgba(
+        255,
+        255,
+        255,
+        0.05
+      ),
+    0
+      11px
+      26px
+      rgba(
+        0,
+        0,
+        0,
+        0.13
+      );
+}
+
+
+/* =========================================================
+   LIGHT MODE — HEADING
+   ========================================================= */
 
 :global(
   html:not(.dark):not(
@@ -227,6 +569,7 @@
 ) .heading h2,
 :global(html.light)
   .heading h2,
+
 :global(
   html:not(.dark):not(
     [data-theme="dark"]
@@ -234,10 +577,13 @@
 ) .heading h2 span,
 :global(
   html[data-theme="light"]
-) .heading h2 span {
+) .heading h2 span,
+:global(html.light)
+  .heading h2 span {
   color:
     #172d50;
 }
+
 
 :global(
   html:not(.dark):not(
@@ -246,10 +592,17 @@
 ) .heading p,
 :global(
   html[data-theme="light"]
-) .heading p {
+) .heading p,
+:global(html.light)
+  .heading p {
   color:
     #667085;
 }
+
+
+/* =========================================================
+   LIGHT MODE — SECURITY NOTE
+   ========================================================= */
 
 :global(
   html:not(.dark):not(
@@ -258,18 +611,168 @@
 ) .securityNote,
 :global(
   html[data-theme="light"]
-) .securityNote {
+) .securityNote,
+:global(html.light)
+  .securityNote {
   color:
-    #647086;
+    #8e6810;
+
+  border-color:
+    rgba(
+      177,
+      132,
+      28,
+      0.2
+    );
 
   background:
+    linear-gradient(
+      145deg,
+      rgba(
+        255,
+        255,
+        255,
+        0.68
+      ),
+      rgba(
+        249,
+        240,
+        210,
+        0.38
+      )
+    );
+
+  box-shadow:
+    inset
+      0
+      1px
+      0
+      rgba(
+        255,
+        255,
+        255,
+        0.95
+      ),
+    0
+      9px
+      22px
+      rgba(
+        72,
+        50,
+        98,
+        0.07
+      );
+
+  text-shadow:
+    0
+    1px
+    0
     rgba(
       255,
       255,
       255,
-      0.48
+      0.85
+    ),
+    0
+    0
+    10px
+    rgba(
+      177,
+      132,
+      28,
+      0.09
     );
 }
+
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+) .securityNote svg,
+:global(
+  html[data-theme="light"]
+) .securityNote svg,
+:global(html.light)
+  .securityNote svg {
+  color:
+    #b78313;
+
+  filter:
+    drop-shadow(
+      0
+      0
+      5px
+      rgba(
+        177,
+        132,
+        28,
+        0.12
+      )
+    );
+}
+
+
+/* =========================================================
+   LIGHT MODE — SECURITY NOTE HOVER
+   ========================================================= */
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+) .securityNote:hover,
+:global(
+  html[data-theme="light"]
+) .securityNote:hover,
+:global(html.light)
+  .securityNote:hover {
+  border-color:
+    rgba(
+      177,
+      132,
+      28,
+      0.34
+    );
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        255,
+        255,
+        255,
+        0.82
+      ),
+      rgba(
+        248,
+        232,
+        184,
+        0.5
+      )
+    );
+
+  box-shadow:
+    inset
+      0
+      1px
+      0
+      #ffffff,
+    0
+      12px
+      26px
+      rgba(
+        72,
+        50,
+        98,
+        0.09
+      );
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
 
 @media (
   max-width: 1300px
@@ -289,22 +792,142 @@
   }
 }
 
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media (
   max-width: 700px
 ) {
+  .section {
+    padding:
+      3rem
+      1rem
+      4.5rem;
+  }
+
+  .kicker {
+    gap:
+      7px;
+
+    margin-bottom:
+      18px;
+
+    font-size:
+      0.6rem;
+
+    letter-spacing:
+      0.12em;
+  }
+
+  .kicker svg {
+    width:
+      14px;
+
+    height:
+      14px;
+  }
+
+  .toggle {
+    margin-top:
+      26px;
+  }
+
   .grid {
     grid-template-columns:
       1fr;
 
     max-width:
       560px;
+
+    margin-top:
+      34px;
   }
 
   .securityNote {
+    width:
+      min(
+        100%,
+        560px
+      );
+
+    max-width:
+      100%;
+
+    margin-top:
+      28px;
+
+    justify-content:
+      flex-start;
+
+    gap:
+      9px;
+
+    padding:
+      12px
+      14px;
+
     border-radius:
-      15px;
+      14px;
+
+    font-size:
+      0.74rem;
+
+    line-height:
+      1.5;
 
     text-align:
       left;
+  }
+
+  .securityNote svg {
+    width:
+      16px;
+
+    height:
+      16px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (
+  max-width: 430px
+) {
+  .securityNote {
+    align-items:
+      flex-start;
+
+    font-size:
+      0.7rem;
+  }
+
+  .securityNote svg {
+    margin-top:
+      2px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+  .securityNote {
+    transition:
+      none;
+  }
+
+  .securityNote:hover {
+    transform:
+      none;
   }
 }

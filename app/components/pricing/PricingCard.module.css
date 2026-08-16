@@ -3,7 +3,7 @@
    ========================================================= */
 
 .card {
-  min-height: 720px;
+  min-height: 585px;
 
   position: relative;
   isolation: isolate;
@@ -11,110 +11,345 @@
   display: flex;
   flex-direction: column;
 
-  padding: 22px;
+  padding: 20px;
 
   overflow: hidden;
 
   color: #f6f8fd;
 
-  border: 1px solid
-    rgba(112, 147, 181, 0.16);
+  border:
+    1px solid
+    rgba(112, 147, 181, 0.2);
 
-  border-radius: 25px;
+  border-radius: 22px;
 
   background:
     radial-gradient(
       circle at 10% 5%,
-      rgba(67, 111, 160, 0.16),
+      rgba(67, 111, 160, 0.13),
       transparent 34%
     ),
     linear-gradient(
       145deg,
-      rgba(16, 45, 75, 0.93),
-      rgba(7, 26, 45, 0.97)
+      rgba(16, 45, 75, 0.94),
+      rgba(7, 26, 45, 0.98)
     );
 
   box-shadow:
-    0 22px 50px
-      rgba(0, 0, 0, 0.18),
+    0 18px 38px
+      rgba(0, 0, 0, 0.16),
     inset 0 1px 0
       rgba(255, 255, 255, 0.04);
 
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 
   transition:
-    transform 250ms ease,
-    border-color 250ms ease,
-    box-shadow 250ms ease,
-    background 250ms ease;
+    transform 260ms ease,
+    border-color 260ms ease,
+    box-shadow 260ms ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform:
+    translateY(-4px);
 
   border-color:
-    rgba(212, 175, 55, 0.3);
+    rgba(212, 175, 55, 0.36);
 
   box-shadow:
-    0 30px 65px
-      rgba(0, 0, 0, 0.24),
-    0 0 22px
+    0 23px 46px
+      rgba(0, 0, 0, 0.2),
+    0 0 18px
       rgba(212, 175, 55, 0.05);
 }
 
 
 /* =========================================================
-   PRO — FEATURED / MOST POPULAR
+   TOP ROW
+   ========================================================= */
+
+.cardTopRow {
+  width: 100%;
+  min-height: 44px;
+
+  margin-bottom: 20px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 14px;
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.icon {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: grid;
+
+  place-items: center;
+
+  color: #e0c253;
+
+  border:
+    1px solid
+    rgba(212, 175, 55, 0.24);
+
+  border-radius: 11px;
+
+  background:
+    rgba(212, 175, 55, 0.045);
+
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease;
+}
+
+.card:hover .icon {
+  transform:
+    translateY(-2px);
+}
+
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+
+.popular {
+  min-height: 30px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  padding:
+    0 12px;
+
+  color: #14223a;
+
+  border:
+    1px solid
+    rgba(255, 242, 178, 0.88);
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff4b4,
+      #e8cc52,
+      #c89213
+    );
+
+  box-shadow:
+    0 5px 14px
+      rgba(212, 175, 55, 0.18);
+
+  font-size: 0.61rem;
+
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing: 0.07em;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+}
+
+.popular svg {
+  flex-shrink: 0;
+
+  color: #14223a;
+}
+
+
+/* COMING SOON */
+
+.soonBadge {
+  color: #dfc75e;
+
+  border-color:
+    rgba(212, 175, 55, 0.3);
+
+  background:
+    rgba(10, 31, 52, 0.88);
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.035);
+}
+
+.soonBadge svg {
+  color: #dfc75e;
+}
+
+
+/* =========================================================
+   PLAN INFORMATION
+   Important spacing:
+   eyebrow -> title -> description
+   ========================================================= */
+
+.top {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+
+/* BUILD YOUR SKILLS / BECOME CAREER READY */
+
+.eyebrow {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #d2b84e;
+
+  font-size: 0.61rem;
+
+  font-weight: 900;
+
+  line-height: 1.25;
+
+  letter-spacing: 0.105em;
+
+  text-transform: uppercase;
+}
+
+
+/* Free / Pro / Career Accelerator / Enterprise */
+
+.top h3 {
+  margin:
+    0
+    0
+    12px;
+
+  color: #f7f9fd;
+
+  font-size:
+    clamp(
+      1.42rem,
+      1.5vw,
+      1.58rem
+    );
+
+  font-weight: 850;
+
+  line-height: 1.12;
+
+  letter-spacing:
+    -0.035em;
+}
+
+
+.featured .top h3 {
+  font-size:
+    clamp(
+      1.48rem,
+      1.55vw,
+      1.64rem
+    );
+}
+
+
+/* Plan description */
+
+.top p {
+  min-height: 62px;
+
+  margin: 0;
+
+  color: #a8b6c7;
+
+  font-size: 0.78rem;
+
+  font-weight: 520;
+
+  line-height: 1.62;
+
+  letter-spacing:
+    0.002em;
+}
+
+
+/* Extra breathing space specifically for Career */
+
+.comingSoonCard .eyebrow {
+  margin-bottom: 9px;
+}
+
+.comingSoonCard .top h3 {
+  margin-bottom: 13px;
+}
+
+.comingSoonCard .top p {
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   PRO FEATURED
    ========================================================= */
 
 .featured {
   z-index: 3;
 
   transform:
-    translateY(-10px);
+    translateY(-6px);
 
   border:
-    2px solid
-    rgba(232, 195, 62, 0.88);
+    1.5px solid
+    rgba(232, 195, 62, 0.85);
 
   background:
     radial-gradient(
       circle at 8% 5%,
-      rgba(154, 103, 255, 0.26),
+      rgba(154, 103, 255, 0.22),
       transparent 35%
     ),
     radial-gradient(
       circle at 95% 92%,
-      rgba(238, 195, 54, 0.18),
+      rgba(238, 195, 54, 0.14),
       transparent 36%
-    ),
-    radial-gradient(
-      circle at 50% 100%,
-      rgba(212, 175, 55, 0.07),
-      transparent 46%
     ),
     linear-gradient(
       145deg,
       #183f63 0%,
-      #0d2c49 42%,
-      #071d31 72%,
+      #0d2c49 44%,
+      #071d31 75%,
       #061725 100%
     );
 
   box-shadow:
-    0 34px 75px
-      rgba(0, 0, 0, 0.38),
-    0 0 0 1px
-      rgba(255, 228, 126, 0.08),
-    0 0 28px
-      rgba(212, 175, 55, 0.16),
-    0 0 58px
-      rgba(212, 175, 55, 0.08),
-    0 0 80px
-      rgba(143, 92, 247, 0.07),
+    0 26px 55px
+      rgba(0, 0, 0, 0.3),
+    0 0 25px
+      rgba(212, 175, 55, 0.12),
     inset 0 1px 0
-      rgba(255, 255, 255, 0.1);
+      rgba(255, 255, 255, 0.08);
 }
+
 
 .featured::before {
   content: "";
@@ -132,13 +367,14 @@
   background:
     linear-gradient(
       115deg,
-      transparent 0%,
-      transparent 37%,
-      rgba(255, 232, 142, 0.04) 46%,
-      rgba(255, 232, 142, 0.09) 50%,
-      rgba(255, 232, 142, 0.04) 54%,
-      transparent 63%,
-      transparent 100%
+      transparent 38%,
+      rgba(
+        255,
+        232,
+        142,
+        0.08
+      ) 50%,
+      transparent 62%
     );
 
   background-size:
@@ -146,163 +382,48 @@
 
   animation:
     featuredSweep
-    8s ease-in-out
+    8s
+    ease-in-out
     infinite;
 }
 
-.featured::after {
-  content: "";
-
-  position: absolute;
-
-  top: 0;
-  left: 11%;
-
-  width: 78%;
-  height: 2px;
-
-  pointer-events: none;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 232, 132, 0.9),
-      #fff4b4,
-      rgba(255, 232, 132, 0.9),
-      transparent
-    );
-
-  filter:
-    drop-shadow(
-      0 0 6px
-      rgba(255, 222, 92, 0.4)
-    );
-}
 
 .featured:hover {
   transform:
-    translateY(-14px)
-    scale(1.008);
+    translateY(-9px);
 
   border-color:
-    rgba(244, 210, 76, 0.98);
-
-  box-shadow:
-    0 40px 85px
-      rgba(0, 0, 0, 0.4),
-    0 0 36px
-      rgba(212, 175, 55, 0.2),
-    0 0 70px
-      rgba(212, 175, 55, 0.1),
-    inset 0 1px 0
-      rgba(255, 255, 255, 0.12);
-}
-
-
-/* keep content below badge */
-.featured .top,
-.comingSoonCard .top {
-  padding-top: 38px;
+    rgba(244, 210, 76, 0.96);
 }
 
 
 /* =========================================================
-   BADGE
+   PRICE AREA
    ========================================================= */
 
-.popular {
-  position: absolute;
+.price {
+  min-height: 94px;
 
-  top: 18px;
-  right: 18px;
+  margin-top: 18px;
 
-  z-index: 10;
+  display: flex;
 
-  min-height: 32px;
-
-  display: inline-flex;
-
-  align-items: center;
-  justify-content: center;
-
-  gap: 7px;
-
-  margin: 0;
-
-  padding:
-    0 13px;
-
-  color: #14223a;
-
-  border:
-    1px solid
-    rgba(255, 242, 178, 0.9);
-
-  border-radius: 999px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #fff4b4 0%,
-      #f0d260 35%,
-      #dcb631 70%,
-      #c89513 100%
-    );
-
-  box-shadow:
-    0 7px 20px
-      rgba(212, 175, 55, 0.3),
-    0 0 18px
-      rgba(212, 175, 55, 0.1),
-    inset 0 1px 0
-      rgba(255, 255, 255, 0.8);
-
-  font-size: 0.58rem;
-
-  font-weight: 950;
-
-  line-height: 1;
-
-  letter-spacing: 0.085em;
-
-  text-transform: uppercase;
-}
-
-.popular svg {
-  flex-shrink: 0;
-
-  color: #14223a;
-
-  stroke-width: 2.4;
+  align-items: flex-start;
 }
 
 
-/* Career coming-soon badge */
-.soonBadge {
-  color: #d9c568;
+/* More separation after Career description */
 
-  border-color:
-    rgba(212, 175, 55, 0.25);
-
-  background:
-    rgba(212, 175, 55, 0.055);
-
-  box-shadow:
-    inset 0 1px 0
-      rgba(255, 255, 255, 0.035);
-}
-
-.soonBadge svg {
-  color: #d9c568;
+.comingSoonCard .price {
+  margin-top: 25px;
 }
 
 
 /* =========================================================
-   TOP
+   STANDARD PRICE
    ========================================================= */
 
-.top {
+.standardPrice {
   display: flex;
 
   flex-direction: column;
@@ -310,561 +431,370 @@
   align-items: flex-start;
 }
 
-.icon {
-  width: 45px;
-  height: 45px;
 
-  display: grid;
-
-  place-items: center;
-
-  margin-bottom: 17px;
-
-  color: #dfc35f;
-
-  border:
-    1px solid
-    rgba(212, 175, 55, 0.19);
-
-  border-radius: 13px;
-
-  background:
-    rgba(212, 175, 55, 0.035);
-
-  transition:
-    transform 220ms ease,
-    border-color 220ms ease,
-    background 220ms ease;
-}
-
-.featured .icon {
-  color: #f0d25e;
-
-  border-color:
-    rgba(234, 197, 63, 0.32);
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(212, 175, 55, 0.1),
-      rgba(143, 92, 247, 0.07)
-    );
-
-  box-shadow:
-    0 0 18px
-      rgba(212, 175, 55, 0.06);
-}
-
-.card:hover .icon {
-  transform:
-    translateY(-2px);
-}
-
-.eyebrow {
-  color: #c5ae57;
-
-  font-size: 0.51rem;
-
-  font-weight: 900;
-
-  letter-spacing: 0.12em;
-
-  text-transform: uppercase;
-}
-
-.featured .eyebrow {
-  color: #e5c957;
-}
-
-.top h3 {
-  margin:
-    9px
-    0
-    8px;
-
-  color: #f7f9fd;
-
-  font-size: 1.52rem;
-
-  font-weight: 800;
-
-  line-height: 1.15;
-
-  letter-spacing: -0.045em;
-}
-
-.featured .top h3 {
-  font-size: 1.62rem;
-}
-
-.top p {
-  min-height: 76px;
-
-  margin: 0;
-
-  color: #98a8bb;
-
-  font-size: 0.72rem;
-
-  line-height: 1.62;
-}
-
-
-/* =========================================================
-   PRICE — BASE
-   ========================================================= */
-
-.price {
-  min-height: 118px;
-
-  margin-top: 24px;
-}
-
-.price > div {
+.standardPrice > div {
   display: flex;
 
   align-items: flex-start;
 }
 
-.price > div small {
+
+.price small {
   margin:
-    6px
-    3px
-    0 0;
+    5px
+    4px
+    0
+    0;
 
   color: #c8b15d;
 
   font-size: 1rem;
 
-  font-weight: 800;
+  font-weight: 850;
 }
+
 
 .price strong {
   color: #f7f9fd;
 
   font-size:
     clamp(
-      2.7rem,
-      3vw,
-      3.6rem
+      2.35rem,
+      2.7vw,
+      3rem
     );
 
-  font-weight: 850;
+  font-weight: 900;
 
-  line-height: 0.95;
+  line-height: 1;
 
-  letter-spacing: -0.06em;
+  letter-spacing:
+    -0.045em;
 }
 
-.featured .price strong {
-  color: transparent;
 
-  background:
-    linear-gradient(
-      105deg,
-      #fff7c0 0%,
-      #f0d556 38%,
-      #d5ad22 72%,
-      #b67b0e 100%
-    );
-
-  background-clip: text;
-
-  -webkit-background-clip: text;
-
-  -webkit-text-fill-color:
-    transparent;
-}
-
-.price > span {
-  display: block;
-
+.standardPrice > span {
   margin-top: 6px;
 
-  color: #8f9eb1;
+  color: #9eacbd;
 
-  font-size: 0.64rem;
+  font-size: 0.7rem;
 
   font-weight: 750;
-}
-
-.price p {
-  margin:
-    8px
-    0
-    0;
-
-  color: #9eadbf;
-
-  font-size: 0.59rem;
-}
-
-.price b {
-  width: fit-content;
-
-  display: block;
-
-  margin-top: 7px;
-
-  padding:
-    4px
-    7px;
-
-  color: #d7bd5d;
-
-  border:
-    1px solid
-    rgba(212, 175, 55, 0.17);
-
-  border-radius: 999px;
-
-  font-size: 0.48rem;
-
-  font-weight: 850;
 }
 
 
 /* =========================================================
    PRO PRICE
-   Starting from
-   ₹2,000 / course
-   6 months access
    ========================================================= */
 
 .coursePrice {
   width: 100%;
 
-  display: flex !important;
+  display: flex;
 
-  flex-direction: column !important;
+  flex-direction: column;
 
-  align-items: flex-start !important;
+  align-items: flex-start;
+
+  overflow: visible;
 }
 
+
 .priceLabel {
-  display: block;
+  margin-bottom: 9px;
 
-  margin-bottom: 8px;
+  color: #bdc8d5;
 
-  color: #b9c6d5;
+  font-size: 0.7rem;
 
-  font-size: 0.62rem;
+  font-weight: 750;
+
+  line-height: 1.2;
+}
+
+
+.coursePriceRow {
+  width: 100%;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  gap: 10px;
+
+  overflow: visible;
+}
+
+
+.courseAmount {
+  display: flex;
+
+  align-items: flex-start;
+
+  flex-shrink: 0;
+
+  overflow: visible;
+}
+
+
+.courseAmount small {
+  margin:
+    6px
+    5px
+    0
+    0;
+
+  color: #e1c447;
+
+  font-size: 1rem;
+
+  font-weight: 900;
+
+  line-height: 1;
+}
+
+
+.courseAmount strong {
+  display: inline-block;
+
+  padding-right: 8px;
+
+  overflow: visible;
+
+  font-size:
+    clamp(
+      2.7rem,
+      3vw,
+      3.25rem
+    ) !important;
+
+  font-weight: 900;
+
+  line-height:
+    1 !important;
+
+  letter-spacing:
+    -0.035em !important;
+}
+
+
+.featured .courseAmount strong {
+  color: transparent;
+
+  background:
+    linear-gradient(
+      105deg,
+      #fff7c0,
+      #f0d556,
+      #d5ad22,
+      #b67b0e
+    );
+
+  background-clip: text;
+
+  -webkit-background-clip:
+    text;
+
+  -webkit-text-fill-color:
+    transparent;
+}
+
+
+.courseSuffix {
+  flex-shrink: 0;
+
+  margin-bottom: 7px;
+
+  color: #d2dce6;
+
+  font-size: 0.72rem;
 
   font-weight: 800;
 
   line-height: 1;
 
-  letter-spacing: 0.035em;
-}
-
-.featured .priceLabel {
-  color: #d6dce4;
-}
-
-.coursePriceRow {
-  width: 100%;
-
-  display: flex !important;
-
-  align-items: flex-end !important;
-
-  gap: 10px;
-}
-
-.courseAmount {
-  display: flex !important;
-
-  align-items: flex-start !important;
-
-  flex-shrink: 0;
-}
-
-.courseAmount small {
-  margin:
-    7px
-    4px
-    0
-    0 !important;
-
-  color:
-    #e4c752 !important;
-
-  font-size:
-    1rem !important;
-
-  font-weight:
-    900 !important;
-}
-
-.courseAmount strong {
-  font-size:
-    clamp(
-      3rem,
-      3.4vw,
-      4rem
-    ) !important;
-
-  font-weight: 900 !important;
-
-  line-height: 0.9 !important;
-
-  letter-spacing:
-    -0.065em !important;
-}
-
-.courseSuffix {
-  display: inline-block !important;
-
-  margin:
-    0
-    0
-    6px !important;
-
-  color:
-    #d0dae5 !important;
-
-  font-size:
-    0.67rem !important;
-
-  font-weight:
-    800 !important;
-
   white-space: nowrap;
-}
-
-.accessDuration {
-  width: fit-content;
-
-  margin-top: 12px;
-
-  padding:
-    6px
-    10px;
-
-  color: #ead16c;
-
-  border:
-    1px solid
-    rgba(212, 175, 55, 0.25);
-
-  border-radius: 8px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(212, 175, 55, 0.08),
-      rgba(212, 175, 55, 0.03)
-    );
-
-  box-shadow:
-    inset 0 1px 0
-      rgba(255, 255, 255, 0.03);
-
-  font-size: 0.55rem;
-
-  font-weight: 850;
-
-  letter-spacing: 0.03em;
 }
 
 
 /* =========================================================
-   CUSTOM / ENTERPRISE PRICE
+   PRO ACCESS ROW
+   ========================================================= */
+
+.accessRow {
+  width: 100%;
+
+  margin-top: 12px;
+
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+
+.accessDuration,
+.levelAccess {
+  min-height: 30px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding:
+    0 11px;
+
+  border-radius: 8px;
+
+  font-size: 0.66rem;
+
+  font-weight: 800;
+
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+
+.accessDuration {
+  color: #efd465;
+
+  border:
+    1px solid
+    rgba(212, 175, 55, 0.28);
+
+  background:
+    rgba(212, 175, 55, 0.06);
+}
+
+
+.levelAccess {
+  width: fit-content;
+
+  color: #d0dae5;
+
+  border:
+    1px solid
+    rgba(111, 146, 181, 0.2);
+
+  background:
+    rgba(255, 255, 255, 0.025);
+}
+
+
+.featured .levelAccess {
+  color: #e3e9f0;
+
+  border-color:
+    rgba(212, 175, 55, 0.24);
+
+  background:
+    rgba(212, 175, 55, 0.035);
+}
+
+
+/* =========================================================
+   CUSTOM PRICE
    ========================================================= */
 
 .customPrice {
-  width: 100%;
-
-  display: flex !important;
+  display: flex;
 
   flex-direction: column;
 
-  align-items: flex-start !important;
+  align-items: flex-start;
 }
 
-.customPrice strong {
-  display: block;
-}
 
 .customPrice span {
   margin-top: 7px;
 
-  color: #899aad;
+  color: #9aa9ba;
 
-  font-size: 0.6rem;
+  font-size: 0.68rem;
 
   font-weight: 750;
 }
 
 
 /* =========================================================
-   CAREER ACCELERATOR — COMING SOON
+   CAREER ACCELERATOR
    ========================================================= */
 
 .comingSoonCard {
   border-color:
-    rgba(112, 147, 181, 0.18);
-
-  background:
-    radial-gradient(
-      circle at 87% 8%,
-      rgba(135, 90, 220, 0.1),
-      transparent 34%
-    ),
-    radial-gradient(
-      circle at 5% 95%,
-      rgba(212, 175, 55, 0.035),
-      transparent 34%
-    ),
-    linear-gradient(
-      145deg,
-      rgba(16, 45, 75, 0.94),
-      rgba(7, 26, 45, 0.98)
-    );
+    rgba(133, 112, 170, 0.24);
 }
 
-.comingSoonCard:hover {
-  border-color:
-    rgba(157, 129, 202, 0.28);
-}
 
 .launchBlock {
   width: 100%;
 
-  display: flex !important;
+  display: flex;
 
-  flex-direction: column !important;
+  flex-direction: column;
 
-  align-items: flex-start !important;
+  align-items: flex-start;
 }
 
-.launchStatus {
-  width: fit-content;
-
-  display:
-    inline-flex !important;
-
-  align-items:
-    center !important;
-
-  gap: 6px;
-
-  margin-bottom: 12px;
-
-  padding:
-    6px
-    9px;
-
-  color: #ddc65f;
-
-  border:
-    1px solid
-    rgba(212, 175, 55, 0.18);
-
-  border-radius: 999px;
-
-  background:
-    rgba(212, 175, 55, 0.04);
-
-  font-size:
-    0.52rem;
-
-  font-weight: 850;
-
-  line-height: 1;
-
-  letter-spacing: 0.07em;
-
-  text-transform: uppercase;
-}
-
-.launchStatus svg {
-  flex-shrink: 0;
-}
 
 .launchTitle {
-  max-width: 270px;
-
   color:
     #edf4fb !important;
 
   background:
     none !important;
 
-  background-clip:
-    initial !important;
-
-  -webkit-background-clip:
-    initial !important;
-
   -webkit-text-fill-color:
     #edf4fb !important;
 
   font-size:
-    1.45rem !important;
+    1.25rem !important;
 
   font-weight:
-    820 !important;
+    850 !important;
 
   line-height:
-    1.14 !important;
+    1.2 !important;
 
   letter-spacing:
-    -0.035em !important;
+    -0.025em !important;
 }
+
 
 .launchDescription {
-  max-width: 260px;
+  max-width: 280px;
 
   margin-top:
-    10px !important;
+    12px !important;
+
+  margin-bottom:
+    0 !important;
 
   color:
-    #899bad !important;
+    #a0afc0 !important;
 
   font-size:
-    0.62rem !important;
+    0.74rem !important;
+
+  font-weight:
+    520;
 
   line-height:
-    1.55;
+    1.65;
 }
 
 
-/* =========================================================
-   ACCESS CHIP
-   ========================================================= */
+/* Career access chip */
 
-.levelAccess {
-  width: fit-content;
-
-  padding:
-    7px
-    10px;
-
-  color: #c8d4e2;
-
-  border:
-    1px solid
-    rgba(111, 146, 181, 0.13);
-
-  border-radius: 9px;
-
-  background:
-    rgba(255, 255, 255, 0.025);
-
-  font-size: 0.56rem;
-
-  font-weight: 800;
-}
-
-.featured .levelAccess {
-  color: #e4e9ef;
-
-  border-color:
-    rgba(212, 175, 55, 0.21);
-
-  background:
-    rgba(212, 175, 55, 0.045);
+.comingSoonCard .levelAccess {
+  margin-top: 12px;
 }
 
 
@@ -878,25 +808,30 @@
   height: 1px;
 
   margin:
-    21px
+    17px
     0;
 
   background:
     linear-gradient(
       90deg,
-      rgba(212, 175, 55, 0.34),
+      rgba(212, 175, 55, 0.32),
       transparent
     );
 }
 
-.featured .divider {
-  background:
-    linear-gradient(
-      90deg,
-      rgba(238, 205, 76, 0.55),
-      rgba(212, 175, 55, 0.16),
-      transparent
-    );
+
+/* =========================================================
+   FEATURE TITLE
+   ========================================================= */
+
+.featureTitle {
+  margin-bottom: 12px;
+
+  color: #f0f4f9;
+
+  font-size: 0.77rem;
+
+  font-weight: 850;
 }
 
 
@@ -904,20 +839,10 @@
    FEATURES
    ========================================================= */
 
-.featureTitle {
-  margin-bottom: 13px;
-
-  color: #f0f4f9;
-
-  font-size: 0.69rem;
-
-  font-weight: 850;
-}
-
 .features {
   display: grid;
 
-  gap: 10px;
+  gap: 9px;
 
   margin: 0;
 
@@ -926,29 +851,34 @@
   list-style: none;
 }
 
+
 .features li {
   display: grid;
 
   grid-template-columns:
-    23px
-    minmax(0, 1fr);
+    21px
+    minmax(
+      0,
+      1fr
+    );
 
   align-items: center;
 
-  gap: 8px;
+  gap: 9px;
 
-  color: #c8d3df;
+  color: #ced8e3;
 
-  font-size: 0.65rem;
+  font-size: 0.72rem;
 
-  font-weight: 690;
+  font-weight: 650;
 
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
+
 .features li > span {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
 
   display: grid;
 
@@ -958,58 +888,53 @@
 
   border:
     1px solid
-    rgba(212, 175, 55, 0.17);
+    rgba(212, 175, 55, 0.2);
 
-  border-radius: 7px;
-
-  background:
-    rgba(212, 175, 55, 0.035);
-}
-
-.featured .features li > span {
-  border-color:
-    rgba(212, 175, 55, 0.23);
+  border-radius: 6px;
 
   background:
-    rgba(212, 175, 55, 0.045);
+    rgba(212, 175, 55, 0.04);
 }
+
 
 .features .highlight {
   color: #f0d675;
 }
 
-.features .disabled {
-  color: #637186;
 
-  text-decoration: none;
+.features .disabled {
+  color: #748197;
 }
 
+
 .features .disabled > span {
-  color: #677487;
+  color: #748197;
 
   border-color:
-    rgba(119, 133, 150, 0.1);
+    rgba(119, 133, 150, 0.14);
 
-  background: transparent;
+  background:
+    transparent;
 }
 
 
 /* =========================================================
-   BOTTOM / BUTTON
+   BOTTOM
    ========================================================= */
 
 .bottom {
   margin-top: auto;
 
-  padding-top: 25px;
+  padding-top: 20px;
 }
+
 
 .primaryButton,
 .secondaryButton,
 .comingSoonButton {
   width: 100%;
 
-  min-height: 49px;
+  min-height: 45px;
 
   display: flex;
 
@@ -1018,12 +943,11 @@
   justify-content: space-between;
 
   padding:
-    0
-    17px;
+    0 15px;
 
-  border-radius: 11px;
+  border-radius: 10px;
 
-  font-size: 0.7rem;
+  font-size: 0.76rem;
 
   font-weight: 850;
 
@@ -1032,79 +956,38 @@
 
 
 /* =========================================================
-   PRO BUTTON
+   PRIMARY BUTTON
    ========================================================= */
 
 .primaryButton {
-  position: relative;
-
-  overflow: hidden;
-
   color: #14223a;
 
   border:
     1px solid
-    rgba(133, 85, 0, 0.68);
+    rgba(133, 85, 0, 0.65);
 
   background:
     linear-gradient(
       135deg,
-      #fff1a8 0%,
-      #e8cb54 32%,
-      #d9b536 61%,
-      #b87b09 100%
+      #fff1a8,
+      #e8cb54,
+      #b87b09
     );
 
   box-shadow:
     inset 0 1px 0
-      rgba(255, 255, 255, 0.78),
-    0 10px 25px
-      rgba(181, 132, 20, 0.24);
+      rgba(255, 255, 255, 0.75),
+    0 8px 18px
+      rgba(181, 132, 20, 0.2);
 
   transition:
     transform 200ms ease,
     box-shadow 200ms ease;
 }
 
-.primaryButton::before {
-  content: "";
-
-  position: absolute;
-
-  top: -60%;
-  left: -35%;
-
-  width: 30%;
-  height: 220%;
-
-  pointer-events: none;
-
-  transform:
-    rotate(18deg);
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.4),
-      transparent
-    );
-
-  animation:
-    buttonSweep
-    5.5s ease-in-out
-    infinite;
-}
-
-.primaryButton > * {
-  position: relative;
-
-  z-index: 1;
-}
-
 
 /* =========================================================
-   NORMAL BUTTON
+   SECONDARY BUTTON
    ========================================================= */
 
 .secondaryButton {
@@ -1112,7 +995,7 @@
 
   border:
     1px solid
-    rgba(212, 175, 55, 0.2);
+    rgba(212, 175, 55, 0.24);
 
   background:
     rgba(255, 255, 255, 0.025);
@@ -1123,26 +1006,20 @@
     background 200ms ease;
 }
 
-.secondaryButton:hover {
-  border-color:
-    rgba(212, 175, 55, 0.38);
-
-  background:
-    rgba(212, 175, 55, 0.035);
-}
 
 .primaryButton:hover,
 .secondaryButton:hover {
   transform:
-    translateY(-3px);
+    translateY(-2px);
 }
 
-.primaryButton:hover {
-  box-shadow:
-    inset 0 1px 0
-      rgba(255, 255, 255, 0.8),
-    0 14px 30px
-      rgba(181, 132, 20, 0.3);
+
+.secondaryButton:hover {
+  border-color:
+    rgba(212, 175, 55, 0.42);
+
+  background:
+    rgba(212, 175, 55, 0.035);
 }
 
 
@@ -1151,17 +1028,16 @@
    ========================================================= */
 
 .comingSoonButton {
-  color: #9aa8b9;
+  color: #aab6c5;
 
   border:
     1px dashed
-    rgba(212, 175, 55, 0.17);
+    rgba(212, 175, 55, 0.24);
 
   background:
-    rgba(255, 255, 255, 0.018);
-
-  cursor: default;
+    rgba(255, 255, 255, 0.02);
 }
+
 
 .comingSoonButton svg {
   color: #c6ae55;
@@ -1175,24 +1051,22 @@
 .bottom small {
   display: block;
 
-  margin-top: 10px;
+  margin-top: 8px;
 
-  color: #76869a;
+  color: #8997a9;
 
-  font-size: 0.53rem;
+  font-size: 0.61rem;
 
-  line-height: 1.45;
+  font-weight: 550;
+
+  line-height: 1.4;
 
   text-align: center;
 }
 
-.featured .bottom small {
-  color: #8796a7;
-}
-
 
 /* =========================================================
-   LIGHT MODE — BASE CARD
+   LIGHT MODE CARD
    ========================================================= */
 
 :global(
@@ -1203,29 +1077,30 @@
 :global(
   html[data-theme="light"]
 ) .card,
-:global(html.light) .card {
+:global(html.light)
+.card {
   color: #172d50;
 
   border-color:
-    rgba(84, 62, 112, 0.12);
+    rgba(84, 62, 112, 0.15);
 
   background:
     linear-gradient(
       145deg,
-      rgba(255, 255, 255, 0.77),
-      rgba(245, 237, 252, 0.78)
+      rgba(255, 255, 255, 0.8),
+      rgba(245, 237, 252, 0.8)
     );
 
   box-shadow:
-    0 22px 50px
-      rgba(67, 47, 96, 0.08),
+    0 18px 38px
+      rgba(67, 47, 96, 0.07),
     inset 0 1px 0
       #ffffff;
 }
 
 
 /* =========================================================
-   LIGHT MODE — PRO FEATURED
+   LIGHT MODE FEATURED
    ========================================================= */
 
 :global(
@@ -1236,19 +1111,15 @@
 :global(
   html[data-theme="light"]
 ) .featured,
-:global(html.light) .featured {
+:global(html.light)
+.featured {
   border-color:
     rgba(185, 137, 20, 0.72);
 
   background:
     radial-gradient(
       circle at 8% 8%,
-      rgba(183, 147, 232, 0.3),
-      transparent 34%
-    ),
-    radial-gradient(
-      circle at 92% 90%,
-      rgba(221, 183, 71, 0.15),
+      rgba(183, 147, 232, 0.27),
       transparent 34%
     ),
     linear-gradient(
@@ -1258,17 +1129,15 @@
     );
 
   box-shadow:
-    0 30px 65px
-      rgba(95, 71, 119, 0.13),
-    0 0 34px
-      rgba(190, 143, 28, 0.1),
-    inset 0 1px 0
-      rgba(255, 255, 255, 1);
+    0 24px 50px
+      rgba(95, 71, 119, 0.11),
+    0 0 26px
+      rgba(190, 143, 28, 0.08);
 }
 
 
 /* =========================================================
-   LIGHT MODE — TEXT
+   LIGHT MODE TEXT
    ========================================================= */
 
 :global(
@@ -1279,7 +1148,8 @@
 :global(
   html[data-theme="light"]
 ) .top h3,
-:global(html.light) .top h3,
+:global(html.light)
+.top h3,
 
 :global(
   html:not(.dark):not(
@@ -1289,7 +1159,8 @@
 :global(
   html[data-theme="light"]
 ) .price strong,
-:global(html.light) .price strong,
+:global(html.light)
+.price strong,
 
 :global(
   html:not(.dark):not(
@@ -1299,10 +1170,12 @@
 :global(
   html[data-theme="light"]
 ) .featureTitle,
-:global(html.light) .featureTitle {
+:global(html.light)
+.featureTitle {
   color: #172d50;
 }
 
+
 :global(
   html:not(.dark):not(
     [data-theme="dark"]
@@ -1311,7 +1184,8 @@
 :global(
   html[data-theme="light"]
 ) .top p,
-:global(html.light) .top p,
+:global(html.light)
+.top p,
 
 :global(
   html:not(.dark):not(
@@ -1321,41 +1195,67 @@
 :global(
   html[data-theme="light"]
 ) .features li,
-:global(html.light) .features li {
-  color: #57647a;
+:global(html.light)
+.features li {
+  color: #526077;
 }
 
 
-/* keep Pro price gold in light mode */
+/* =========================================================
+   LIGHT MODE EYEBROW
+   ========================================================= */
+
 :global(
   html:not(.dark):not(
     [data-theme="dark"]
   )
-) .featured .courseAmount strong,
+) .eyebrow,
 :global(
   html[data-theme="light"]
-) .featured .courseAmount strong,
+) .eyebrow,
 :global(html.light)
-  .featured
-  .courseAmount strong {
+.eyebrow {
+  color: #94700d;
+}
+
+
+/* =========================================================
+   LIGHT PRO PRICE
+   ========================================================= */
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+) .featured
+.courseAmount strong,
+:global(
+  html[data-theme="light"]
+) .featured
+.courseAmount strong,
+:global(html.light)
+.featured
+.courseAmount strong {
   color: transparent;
 
   background:
     linear-gradient(
       105deg,
       #a46f08,
-      #c99918 42%,
+      #c99918,
       #977000
     );
 
   background-clip: text;
 
-  -webkit-background-clip: text;
+  -webkit-background-clip:
+    text;
 
   -webkit-text-fill-color:
     transparent;
 }
 
+
 :global(
   html:not(.dark):not(
     [data-theme="dark"]
@@ -1365,9 +1265,10 @@
   html[data-theme="light"]
 ) .priceLabel,
 :global(html.light)
-  .priceLabel {
-  color: #626f82;
+.priceLabel {
+  color: #5f6c80;
 }
+
 
 :global(
   html:not(.dark):not(
@@ -1378,9 +1279,10 @@
   html[data-theme="light"]
 ) .courseSuffix,
 :global(html.light)
-  .courseSuffix {
-  color: #68758a !important;
+.courseSuffix {
+  color: #68758a;
 }
+
 
 :global(
   html:not(.dark):not(
@@ -1391,19 +1293,39 @@
   html[data-theme="light"]
 ) .accessDuration,
 :global(html.light)
-  .accessDuration {
-  color: #96730d;
+.accessDuration {
+  color: #8c690b;
 
   border-color:
-    rgba(177, 132, 28, 0.22);
+    rgba(177, 132, 28, 0.24);
 
   background:
     rgba(212, 175, 55, 0.07);
 }
 
 
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+) .levelAccess,
+:global(
+  html[data-theme="light"]
+) .levelAccess,
+:global(html.light)
+.levelAccess {
+  color: #59677b;
+
+  border-color:
+    rgba(84, 62, 112, 0.14);
+
+  background:
+    rgba(255, 255, 255, 0.48);
+}
+
+
 /* =========================================================
-   LIGHT MODE — NORMAL BUTTON
+   LIGHT BUTTON
    ========================================================= */
 
 :global(
@@ -1415,7 +1337,7 @@
   html[data-theme="light"]
 ) .secondaryButton,
 :global(html.light)
-  .secondaryButton {
+.secondaryButton {
   color: #172d50;
 
   background:
@@ -1424,45 +1346,19 @@
 
 
 /* =========================================================
-   LIGHT MODE — CAREER COMING SOON
+   LIGHT CAREER ACCELERATOR
    ========================================================= */
 
 :global(
   html:not(.dark):not(
     [data-theme="dark"]
   )
-) .comingSoonCard,
-:global(
-  html[data-theme="light"]
-) .comingSoonCard,
-:global(html.light)
-  .comingSoonCard {
-  border-color:
-    rgba(125, 86, 180, 0.14);
-
-  background:
-    radial-gradient(
-      circle at 88% 8%,
-      rgba(153, 113, 213, 0.13),
-      transparent 34%
-    ),
-    linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.76),
-      rgba(245, 237, 252, 0.77)
-    );
-}
-
-:global(
-  html:not(.dark):not(
-    [data-theme="dark"]
-  )
 ) .launchTitle,
 :global(
   html[data-theme="light"]
 ) .launchTitle,
 :global(html.light)
-  .launchTitle {
+.launchTitle {
   color:
     #172d50 !important;
 
@@ -1470,6 +1366,7 @@
     #172d50 !important;
 }
 
+
 :global(
   html:not(.dark):not(
     [data-theme="dark"]
@@ -1479,11 +1376,12 @@
   html[data-theme="light"]
 ) .launchDescription,
 :global(html.light)
-  .launchDescription {
+.launchDescription {
   color:
     #667085 !important;
 }
 
+
 :global(
   html:not(.dark):not(
     [data-theme="dark"]
@@ -1493,19 +1391,19 @@
   html[data-theme="light"]
 ) .comingSoonButton,
 :global(html.light)
-  .comingSoonButton {
+.comingSoonButton {
   color: #68748a;
 
   border-color:
-    rgba(177, 132, 28, 0.18);
+    rgba(177, 132, 28, 0.2);
 
   background:
-    rgba(255, 255, 255, 0.45);
+    rgba(255, 255, 255, 0.46);
 }
 
 
 /* =========================================================
-   ANIMATIONS
+   ANIMATION
    ========================================================= */
 
 @keyframes featuredSweep {
@@ -1521,47 +1419,36 @@
   }
 }
 
-@keyframes buttonSweep {
-  0%,
-  70%,
-  100% {
-    left: -35%;
-  }
-
-  85% {
-    left: 125%;
-  }
-}
-
 
 /* =========================================================
-   RESPONSIVE
+   TABLET
    ========================================================= */
 
 @media (
   max-width: 1100px
 ) {
-  .courseAmount strong {
-    font-size:
-      clamp(
-        2.65rem,
-        4vw,
-        3.5rem
-      ) !important;
+  .card {
+    min-height: 580px;
   }
 
-  .courseSuffix {
+  .courseAmount strong {
     font-size:
-      0.62rem !important;
+      2.9rem !important;
   }
 }
 
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (
   max-width: 700px
 ) {
   .card {
     min-height: 0;
+
+    padding: 18px;
   }
 
   .featured {
@@ -1570,66 +1457,105 @@
 
   .featured:hover {
     transform:
-      translateY(-5px);
+      translateY(-4px);
+  }
+
+  .cardTopRow {
+    margin-bottom: 18px;
+  }
+
+  .eyebrow {
+    margin-bottom: 7px;
+  }
+
+  .top h3 {
+    margin-bottom: 10px;
   }
 
   .top p {
     min-height: 0;
-  }
 
-  .featured .top,
-  .comingSoonCard .top {
-    padding-top: 42px;
-  }
-
-  .popular {
-    top: 16px;
-    right: 16px;
-
-    min-height: 30px;
-
-    padding:
-      0
-      11px;
-
-    font-size:
-      0.53rem;
+    font-size: 0.76rem;
   }
 
   .price {
     min-height: auto;
 
+    margin-top: 20px;
+  }
+
+  .comingSoonCard .price {
     margin-top: 23px;
   }
 
   .coursePriceRow {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+
+    gap: 8px;
   }
 
   .courseAmount strong {
-    font-size:
-      3.25rem !important;
-  }
-
-  .launchTitle {
-    max-width: 100%;
+    padding-right: 5px;
 
     font-size:
-      1.35rem !important;
+      2.9rem !important;
   }
 
-  .launchDescription {
-    max-width: 100%;
+  .accessRow {
+    gap: 8px;
+  }
+
+  .accessDuration,
+  .levelAccess {
+    min-height: 29px;
+
+    padding:
+      0 9px;
+
+    font-size: 0.62rem;
+  }
+
+  .features li {
+    font-size: 0.74rem;
   }
 }
 
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (
+  max-width: 420px
+) {
+  .cardTopRow {
+    align-items: flex-start;
+  }
+
+  .popular {
+    padding:
+      0 9px;
+
+    font-size: 0.55rem;
+  }
+
+  .accessRow {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
 @media (
   prefers-reduced-motion:
   reduce
 ) {
-  .featured::before,
-  .primaryButton::before {
+  .featured::before {
     animation: none;
   }
 

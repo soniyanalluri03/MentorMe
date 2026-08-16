@@ -122,10 +122,14 @@
 
   overflow: visible;
 
-  font-size:
-    clamp(2.4rem, 3.9vw, 4.65rem);
-
   line-height: 1.18;
+}
+
+/* Make both words use the size from
+   text-4xl xl:text-6xl */
+.headingLineSecondary :global(.hj-main-heading),
+.headingLineSecondary :global(.seen-word) {
+  font-size: inherit !important;
 }
 
 .headingWave {
@@ -2243,13 +2247,9 @@
     font-size:
       clamp(2.45rem, 11vw, 3.8rem);
   }
-
-  .headingLineSecondary {
-    margin-top: 8px;
-
-    font-size:
-      clamp(2.1rem, 9.5vw, 3.3rem);
-  }
+.headingLineSecondary {
+  margin-top: 8px;
+}
 
   .headingAside p {
     max-width: 100%;

@@ -180,14 +180,16 @@ export default function FeaturedTrack() {
               Find the path that
             </span>
             <span
-              className={`${styles.headingLine} ${styles.headingLineSecondary}`}
-            >
-              <span className="hj-main-heading  hj-heading-wave">
-                fits your</span>{" "}
-              <em className="seen-word">
-                ambition
-              </em>
-            </span>
+  className={`${styles.headingLine} ${styles.headingLineSecondary} text-4xl xl:text-6xl`}
+>
+  <span className="hj-main-heading hj-heading-wave">
+    fits your
+  </span>{" "}
+
+  <em className="seen-word">
+    ambition
+  </em>
+</span>
           </h2>
         </div>
 

@@ -486,7 +486,7 @@ function About() {
 
 function Pricing() {
   return (
-    <main >
+    <main className="pricing-page">
       <PricingMain/>
     </main>
   );

@@ -1,4 +1,5 @@
 "use client";
+
 import {
   BadgeCheck,
   Code2,
@@ -6,9 +7,11 @@ import {
   Trophy,
   type LucideIcon,
 } from "lucide-react";
+
 import { useState } from "react";
 
 import styles from "./CoursesHero.module.css";
+import roadmapHeroStyles from "../roadmap/RoadmapHero.module.css";
 
 type ViewKey = "track" | "project" | "level";
 
@@ -37,6 +40,7 @@ const views: ViewItem[] = [
     icon: Code2,
     tags: ["React", "Next.js", "TypeScript"],
   },
+
   {
     key: "project",
     label: "PROJECT STATUS",
@@ -49,6 +53,7 @@ const views: ViewItem[] = [
     icon: BadgeCheck,
     tags: ["Responsive", "Accessible", "Reviewed"],
   },
+
   {
     key: "level",
     label: "CURRENT LEVEL",
@@ -75,29 +80,43 @@ export default function CoursesHero() {
 
   return (
     <section className={styles.hero}>
-      <div className={styles.copy}>
-        <div className={styles.eyebrow}>
-          <Sparkles size={15} />
-          FIND YOUR DIRECTION. START WITH CLARITY.
-        </div>
+      {/* ===================================================
+          LEFT CONTENT
+          =================================================== */}
 
-        <h1>
-          <span className="hj-main-heading">
-          Choose your path
-          </span>
-          <br />{" "}
-          <span className="hj-heading-wave  hj-main-heading">
-            grow your
-          </span>{" "}
-          <span className="seen-word">
-          future
-          </span>
-        </h1>
-        <div className="hj-first-five-heading">
-          <span >
+      <div className={styles.copy}>
+        <header
+          className={`hj-first-five-heading ${styles.heroHeading}`}
+        >
+          <div
+            className={`${roadmapHeroStyles.kicker} ${styles.heroKicker}`}
+          >
+            <Sparkles size={15} />
+
+            <span>
+              FIND YOUR DIRECTION. START WITH CLARITY.
+            </span>
+          </div>
+
+          <h2>
+            Choose your path
+            <br />
+
+            <span className="hj-heading-wave text-4xl xl:text-6xl">
+              grow your
+            </span>{" "}
+
+            <em className="text-4xl xl:text-6xl">future.</em>
+          </h2>
+
+          <span className={styles.heroDescription}>
             Frontend. Backend. Design. More paths ahead.
           </span>
-        </div>
+        </header>
+
+        {/* =================================================
+            HERO STATS
+            ================================================= */}
 
         <div className={styles.stats}>
           <article>
@@ -105,14 +124,10 @@ export default function CoursesHero() {
             <span>Career tracks</span>
           </article>
 
-          <i aria-hidden="true" />
-
           <article>
             <strong>90</strong>
             <span>Levels per journey</span>
           </article>
-
-          <i aria-hidden="true" />
 
           <article>
             <strong>01</strong>
@@ -120,6 +135,10 @@ export default function CoursesHero() {
           </article>
         </div>
       </div>
+
+      {/* ===================================================
+          RIGHT VISUAL
+          =================================================== */}
 
       <div className={styles.visual}>
         <div
@@ -129,6 +148,10 @@ export default function CoursesHero() {
           <span />
           <span />
         </div>
+
+        {/* =================================================
+            MAIN DASHBOARD
+            ================================================= */}
 
         <article
           key={activeView}
@@ -179,6 +202,10 @@ export default function CoursesHero() {
           </div>
         </article>
 
+        {/* =================================================
+            FLOATING SELECTORS
+            ================================================= */}
+
         <div className={styles.selectorGrid}>
           {views.map((item) => {
             const ItemIcon = item.icon;
@@ -189,28 +216,36 @@ export default function CoursesHero() {
               <button
                 key={item.key}
                 type="button"
-                className={`${styles.selector} ${isActive
-                  ? styles.selectorActive
-                  : ""
-                  }`}
+                className={`${styles.selector} ${
+                  isActive
+                    ? styles.selectorActive
+                    : ""
+                }`}
                 onClick={() =>
                   setActiveView(item.key)
                 }
                 aria-pressed={isActive}
               >
-                <span className={styles.selectorIcon}>
+                <span
+                  className={styles.selectorIcon}
+                >
                   <ItemIcon
                     size={19}
                     strokeWidth={1.8}
                   />
                 </span>
 
-                <span>
+                <span
+                  className={styles.selectorCopy}
+                >
                   <small>{item.label}</small>
                   <strong>{item.title}</strong>
                 </span>
 
-                <i aria-hidden="true" />
+                <i
+                  className={styles.selectorDot}
+                  aria-hidden="true"
+                />
               </button>
             );
           })}

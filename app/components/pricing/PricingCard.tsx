@@ -16,11 +16,8 @@ import type {
 import styles from "./PricingCard.module.css";
 
 interface PricingCardProps {
-  plan:
-    PricingPlan;
-
-  billingCycle:
-    BillingCycle;
+  plan: PricingPlan;
+  billingCycle: BillingCycle;
 }
 
 function formatPrice(
@@ -35,56 +32,33 @@ export default function PricingCard({
   plan,
   billingCycle,
 }: PricingCardProps) {
-  const Icon =
-    plan.icon;
+  const Icon = plan.icon;
 
   const price =
-    billingCycle ===
-    "monthly"
+    billingCycle === "monthly"
       ? plan.monthlyPrice
       : plan.annualPrice;
 
-  const monthlyEquivalent =
-    billingCycle ===
-      "annually" &&
-    typeof plan.annualPrice ===
-      "number" &&
-    plan.annualPrice > 0
-      ? Math.round(
-          plan.annualPrice /
-            12,
-        )
-      : null;
-
   return (
     <article
-  className={`${styles.card} ${
-    plan.featured
-      ? styles.featured
-      : ""
-  } ${
-    plan.comingSoon
-      ? styles.comingSoonCard
-      : ""
-  }`}
->
-      {plan.badge && (
-        <div
-          className={
-            styles.popular
-          }
-        >
-          <Crown
-            size={14}
-          />
-
-          {plan.badge}
-        </div>
-      )}
+      className={`${styles.card} ${
+        plan.featured
+          ? styles.featured
+          : ""
+      } ${
+        plan.comingSoon
+          ? styles.comingSoonCard
+          : ""
+      }`}
+    >
+      {/* ===================================================
+          TOP ROW
+          Icon + badge
+          =================================================== */}
 
       <div
         className={
-          styles.top
+          styles.cardTopRow
         }
       >
         <div
@@ -93,13 +67,43 @@ export default function PricingCard({
           }
         >
           <Icon
-            size={21}
-            strokeWidth={
-              1.7
-            }
+            size={20}
+            strokeWidth={1.8}
           />
         </div>
 
+        {plan.badge && (
+          <div
+            className={`${styles.popular} ${
+              plan.comingSoon
+                ? styles.soonBadge
+                : ""
+            }`}
+          >
+            {plan.comingSoon ? (
+              <Sparkles
+                size={13}
+              />
+            ) : (
+              <Crown
+                size={14}
+              />
+            )}
+
+            {plan.badge}
+          </div>
+        )}
+      </div>
+
+      {/* ===================================================
+          PLAN INFORMATION
+          =================================================== */}
+
+      <div
+        className={
+          styles.top
+        }
+      >
         <span
           className={
             styles.eyebrow
@@ -113,113 +117,178 @@ export default function PricingCard({
         </h3>
 
         <p>
-          {
-            plan.description
-          }
+          {plan.description}
         </p>
       </div>
 
-      <div className={styles.price}>
-  {plan.comingSoon ? (
-    <div className={styles.launchBlock}>
-      <span className={styles.launchStatus}>
-        <Sparkles size={13} />
-        Launching soon
-      </span>
+      {/* ===================================================
+          PRICE
+          =================================================== */}
 
-      <strong className={styles.launchTitle}>
-        Career guidance,
-        <br />
-        built around you.
-      </strong>
-
-      <p className={styles.launchDescription}>
-        Mentor sessions, interview preparation and
-        career support are coming next.
-      </p>
-    </div>
-  ) : plan.startingFrom ? (
-    <div className={styles.coursePrice}>
-      <span className={styles.priceLabel}>
-        Starting from
-      </span>
-
-      <div className={styles.coursePriceRow}>
-        <div className={styles.courseAmount}>
-          <small>₹</small>
-
-          <strong>
-            {formatPrice(plan.startingFrom)}
-          </strong>
-        </div>
-
-        <span className={styles.courseSuffix}>
-          / course
-        </span>
-      </div>
-
-      <div className={styles.accessDuration}>
-        6 months access
-      </div>
-    </div>
-  ) : price === null ? (
-    <div className={styles.customPrice}>
-      <strong>
-        Custom
-      </strong>
-
-      <span>
-        {plan.priceSuffix}
-      </span>
-    </div>
-  ) : (
-    <>
-      <div>
-        <small>₹</small>
-
-        <strong>
-          {formatPrice(price)}
-        </strong>
-      </div>
-
-      {price > 0 && (
-        <span>
-          {billingCycle === "monthly"
-            ? "/ month"
-            : "/ year"}
-        </span>
-      )}
-
-      {monthlyEquivalent && (
-        <p>
-          ≈ ₹
-          {formatPrice(monthlyEquivalent)}
-          /month
-        </p>
-      )}
-
-      {billingCycle === "annually" &&
-        plan.annualSaving && (
-          <b>
-            {plan.annualSaving}
-          </b>
-        )}
-    </>
-  )}
-</div>
       <div
         className={
-          styles.levelAccess
+          styles.price
         }
       >
-        {plan.levelAccess}
+        {plan.comingSoon ? (
+          <div
+            className={
+              styles.launchBlock
+            }
+          >
+            <strong
+              className={
+                styles.launchTitle
+              }
+            >
+              Career support
+              <br />
+              is on the way.
+            </strong>
+
+            <p
+              className={
+                styles.launchDescription
+              }
+            >
+              Mentor guidance,
+              interview preparation
+              and portfolio support.
+            </p>
+          </div>
+        ) : plan.startingFrom ? (
+          <div
+            className={
+              styles.coursePrice
+            }
+          >
+            <span
+              className={
+                styles.priceLabel
+              }
+            >
+              Starting from
+            </span>
+
+            <div
+              className={
+                styles.coursePriceRow
+              }
+            >
+              <div
+                className={
+                  styles.courseAmount
+                }
+              >
+                <small>
+                  ₹
+                </small>
+
+                <strong>
+                  {formatPrice(
+                    plan.startingFrom,
+                  )}
+                </strong>
+              </div>
+
+              <span
+                className={
+                  styles.courseSuffix
+                }
+              >
+                / course
+              </span>
+            </div>
+          </div>
+        ) : price === null ? (
+          <div
+            className={
+              styles.customPrice
+            }
+          >
+            <strong>
+              Custom
+            </strong>
+
+            <span>
+              {plan.priceSuffix}
+            </span>
+          </div>
+        ) : (
+          <div
+            className={
+              styles.standardPrice
+            }
+          >
+            <div>
+              <small>
+                ₹
+              </small>
+
+              <strong>
+                {formatPrice(
+                  price,
+                )}
+              </strong>
+            </div>
+
+            {price > 0 && (
+              <span>
+                {billingCycle ===
+                "monthly"
+                  ? "/ month"
+                  : "/ year"}
+              </span>
+            )}
+          </div>
+        )}
       </div>
+
+      {/* ===================================================
+          ACCESS INFORMATION
+          =================================================== */}
+
+      {plan.startingFrom ? (
+        <div
+          className={
+            styles.accessRow
+          }
+        >
+          <div
+            className={
+              styles.accessDuration
+            }
+          >
+            6 months access
+          </div>
+
+          <div
+            className={
+              styles.levelAccess
+            }
+          >
+            {plan.levelAccess}
+          </div>
+        </div>
+      ) : (
+        <div
+          className={
+            styles.levelAccess
+          }
+        >
+          {plan.levelAccess}
+        </div>
+      )}
 
       <div
         className={
           styles.divider
         }
       />
+
+      {/* ===================================================
+          FEATURES
+          =================================================== */}
 
       <div
         className={
@@ -260,13 +329,15 @@ export default function PricingCard({
                 )}
               </span>
 
-              {
-                feature.label
-              }
+              {feature.label}
             </li>
           ),
         )}
       </ul>
+
+      {/* ===================================================
+          BUTTON
+          =================================================== */}
 
       <div
         className={
@@ -274,33 +345,35 @@ export default function PricingCard({
         }
       >
         {plan.comingSoon ? (
-  <div
-    className={
-      styles.comingSoonButton
-    }
-  >
-    <span>
-      Coming soon
-    </span>
+          <div
+            className={
+              styles.comingSoonButton
+            }
+          >
+            <span>
+              Coming soon
+            </span>
 
-    <Sparkles size={16} />
-  </div>
-) : (
-  <Link
-    href={plan.href}
-    className={
-      plan.featured
-        ? styles.primaryButton
-        : styles.secondaryButton
-    }
-  >
-    {plan.cta}
+            <Sparkles
+              size={15}
+            />
+          </div>
+        ) : (
+          <Link
+            href={plan.href}
+            className={
+              plan.featured
+                ? styles.primaryButton
+                : styles.secondaryButton
+            }
+          >
+            {plan.cta}
 
-    <ArrowRight
-      size={17}
-    />
-  </Link>
-)}
+            <ArrowRight
+              size={17}
+            />
+          </Link>
+        )}
 
         {plan.note && (
           <small>

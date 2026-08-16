@@ -3290,3 +3290,289 @@
     animation: none;
   }
 }
+
+
+/* =========================================================
+   FINAL CAREER TRACKS SHARED HEADER
+   Matches Courses / FeaturedTrack / Comparison headings.
+   Uses:
+   hj-main-heading
+   hj-heading-wave
+   seen-word
+   hj-first-five-heading
+   ========================================================= */
+
+.sectionHeading {
+  width: 100%;
+  max-width: 1600px;
+  margin-inline: auto;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.2fr)
+    minmax(300px, 0.58fr);
+
+  align-items: end;
+  gap: clamp(38px, 5vw, 72px);
+
+  overflow: visible;
+  text-align: left;
+}
+
+.sectionHeadingMain {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  overflow: visible;
+  text-align: left;
+}
+
+.kicker {
+  width: fit-content;
+  max-width: 100%;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: 9px;
+
+  color: #d9ba4d;
+
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  line-height: 1.2;
+  text-transform: uppercase;
+
+  text-align: left;
+}
+
+.sectionHeading h2 {
+  width: 100%;
+  max-width: 980px;
+
+  margin: 16px 0 0;
+  padding: 0 0 0.18em;
+
+  overflow: visible;
+
+  line-height: 0.96;
+  letter-spacing: -0.052em;
+
+  text-align: left;
+}
+
+.headingLine {
+  display: block;
+  width: 100%;
+
+  overflow: visible;
+
+  text-align: left;
+  white-space: nowrap;
+}
+
+/*
+  Same visual size requested elsewhere:
+  text-4xl xl:text-6xl
+*/
+.headingLineSecondary {
+  margin-top: 10px;
+  padding-bottom: 0.16em;
+
+  overflow: visible;
+
+  font-size: 2.25rem !important;
+  line-height: 1.18;
+
+  text-align: left;
+}
+
+.headingLineSecondary :global(.hj-main-heading),
+.headingLineSecondary :global(.hj-heading-wave),
+.headingLineSecondary :global(.seen-word) {
+  font-size: inherit !important;
+}
+
+/* =========================================================
+   SUPPORT COPY
+   ========================================================= */
+
+.headingAside {
+  width: 100%;
+  min-width: 0;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  align-items: flex-start !important;
+  justify-content: flex-end !important;
+
+  text-align: left !important;
+}
+
+.headingAside:global(.hj-first-five-heading) {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+
+  text-align: left !important;
+}
+
+.headingAside > span {
+  width: fit-content !important;
+  max-width: 610px !important;
+
+  margin: 0 !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+
+  padding: 12px 16px !important;
+
+  align-self: flex-start !important;
+
+  color: #9fadc0;
+
+  border-radius: 24px;
+
+  background:
+    radial-gradient(
+      circle at 35% 50%,
+      rgba(112, 215, 255, 0.12),
+      transparent 72%
+    );
+
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.78;
+
+  text-align: left !important;
+
+  text-shadow:
+    0 0 18px rgba(112, 215, 255, 0.15);
+}
+
+/* =========================================================
+   LIGHT MODE — SHARED HEADER
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"])) .headingAside > span,
+:global(html[data-theme="light"]) .headingAside > span,
+:global(html.light) .headingAside > span,
+:global([data-theme="light"]) .headingAside > span,
+:global(.light) .headingAside > span {
+  color: #667085;
+
+  background:
+    radial-gradient(
+      circle at 35% 50%,
+      rgba(118, 80, 216, 0.1),
+      transparent 72%
+    );
+
+  text-shadow:
+    0 0 14px rgba(118, 80, 216, 0.1);
+}
+
+/* Tailwind xl:text-6xl equivalent */
+@media (min-width: 1280px) {
+  .headingLineSecondary {
+    font-size: 3.75rem !important;
+  }
+}
+
+/* =========================================================
+   TABLET HEADER
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  .sectionHeading {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 22px;
+  }
+
+  .sectionHeadingMain,
+  .headingAside {
+    width: 100%;
+  }
+
+  .headingAside > span {
+    max-width: 720px !important;
+  }
+
+  .headingLine {
+    white-space: normal;
+  }
+}
+
+/* =========================================================
+   MOBILE HEADER
+   ========================================================= */
+
+@media (max-width: 760px) {
+  .sectionHeading {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    text-align: left;
+  }
+
+  .sectionHeadingMain {
+    width: 100%;
+  }
+
+  .sectionHeading h2 {
+    width: 100%;
+    max-width: 100%;
+
+    margin-left: 0;
+
+    text-align: left;
+  }
+
+  .headingLine {
+    white-space: normal;
+    text-align: left;
+  }
+
+  .headingLineSecondary {
+    margin-top: 8px;
+
+    font-size:
+      clamp(2rem, 9.5vw, 2.6rem) !important;
+  }
+
+  .headingAside {
+    width: 100%;
+
+    align-items: flex-start !important;
+
+    text-align: left !important;
+  }
+
+  .headingAside > span {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    padding: 10px 0 !important;
+
+    background: transparent;
+
+    font-size: 0.87rem;
+
+    text-align: left !important;
+    text-shadow: none;
+  }
+}

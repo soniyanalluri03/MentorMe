@@ -10,6 +10,7 @@
 @import "./styles/responsive.css";
 @import "./styles/leaderboard.css";
 @import "./styles/navbar.css";
+@import "./styles/about.css";
 @import "../app/courses/courses.css";
 @import "../app/roadmap/roadmap.css";
 /* =========================================================

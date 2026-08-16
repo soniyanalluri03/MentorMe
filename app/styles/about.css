@@ -1,0 +1,5041 @@
+/* =========================================================
+   MENTORME ABOUT
+========================================================= */
+
+.about-experience {
+  --mm-gold: #f3bd20;
+  --mm-gold-bright: #ffe06a;
+  --mm-purple: #a45be9;
+  --mm-aqua: #64e7d2;
+
+  position: relative;
+
+  min-height: 100vh;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   THEMES
+========================================================= */
+
+html[data-theme="dark"] .about-experience {
+  --mm-heading-base: #fbf8ef;
+
+  color: #fbf8ef;
+
+  background:
+    radial-gradient(
+      circle at 9% 16%,
+      rgba(13, 87, 126, 0.28),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 92% 23%,
+      rgba(91, 67, 167, 0.17),
+      transparent 38%
+    ),
+    linear-gradient(
+      112deg,
+      #041a29 0%,
+      #082542 49%,
+      #171b3b 100%
+    );
+}
+
+html[data-theme="light"] .about-experience {
+  --mm-heading-base: #102f57;
+
+  color: #102f57;
+
+  background:
+    radial-gradient(
+      circle at 8% 17%,
+      rgba(215, 197, 246, 0.74),
+      transparent 36%
+    ),
+    radial-gradient(
+      circle at 91% 24%,
+      rgba(255, 225, 126, 0.47),
+      transparent 36%
+    ),
+    linear-gradient(
+      112deg,
+      #f1eafb 0%,
+      #fffaf7 49%,
+      #fff8df 100%
+    );
+}
+
+/* =========================================================
+   GLOBAL LAYOUT
+========================================================= */
+
+.mm-about-shell {
+  width:
+    min(
+      1480px,
+      calc(100% - 72px)
+    );
+
+  margin-inline: auto;
+}
+
+.mm-about-section {
+  position: relative;
+
+  padding:
+    72px 0 82px;
+
+  border-top:
+    1px solid
+    rgba(218, 174, 37, 0.1);
+}
+
+.mm-about-section h2,
+.mm-about-hero h1 {
+  margin: 0;
+
+  font-weight: 900;
+
+  letter-spacing:
+    -0.055em;
+}
+
+.mm-about-section h2 {
+  font-size:
+    clamp(
+      48px,
+      4.65vw,
+      79px
+    );
+
+  line-height: 1.07;
+
+  overflow: visible;
+}
+
+.mm-about-section h2 em,
+.mm-about-hero h1 em,
+.mm-story-question em {
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-style: italic;
+
+  font-weight: 400;
+}
+
+/* =========================================================
+   WHOLE TEXT GOLD WAVE
+   NOT AN UNDERLINE
+========================================================= */
+
+.mm-gold-wave-heading {
+  position: relative;
+
+  padding:
+    0.08em 0 0.14em;
+
+  color: transparent !important;
+
+  -webkit-text-fill-color:
+    transparent;
+
+  background-image:
+    linear-gradient(
+      108deg,
+      var(--mm-heading-base) 0%,
+      var(--mm-heading-base) 29%,
+      #ffe48a 39%,
+      #f0af00 45%,
+      #fff0a3 50%,
+      #e9a500 55%,
+      var(--mm-heading-base) 65%,
+      var(--mm-heading-base) 100%
+    );
+
+  background-size:
+    260% 100%;
+
+  background-position:
+    110% 0;
+
+  -webkit-background-clip:
+    text;
+
+  background-clip:
+    text;
+
+  animation:
+    mm-heading-gold-wave
+    5.6s
+    ease-in-out
+    infinite;
+}
+
+.mm-gold-wave-heading em {
+  display: inline;
+
+  color: transparent !important;
+
+  -webkit-text-fill-color:
+    transparent;
+
+  background: none !important;
+}
+
+/* subtle gold light moving behind the heading */
+
+.mm-gold-wave-heading::after {
+  content: "";
+
+  width: 160px;
+  height: 9px;
+
+  position: absolute;
+
+  left: -8%;
+  bottom: -4px;
+
+  pointer-events: none;
+
+  border-radius: 999px;
+
+  opacity: 0.45;
+
+  filter:
+    blur(12px);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #ffd851,
+      transparent
+    );
+
+  animation:
+    mm-heading-light-travel
+    5.6s
+    ease-in-out
+    infinite;
+}
+
+/* normal italic gradient for NON-wave headings */
+
+.mm-about-section h2:not(.mm-gold-wave-heading) em,
+.mm-story-question em,
+.mm-about-hero h1 em {
+  display: inline-block;
+
+  padding:
+    0 0.03em 0.08em;
+
+  background:
+    linear-gradient(
+      105deg,
+      #9d52e6 0%,
+      #d17f34 52%,
+      #ffcc22 100%
+    );
+
+  -webkit-background-clip:
+    text;
+
+  background-clip:
+    text;
+
+  color: transparent;
+}
+
+/* =========================================================
+   FADED COPY
+========================================================= */
+
+.mm-faded-copy {
+  position: relative;
+
+  isolation: isolate;
+}
+
+.mm-faded-copy::before {
+  content: "";
+
+  position: absolute;
+
+  inset:
+    -10px -22px;
+
+  z-index: -1;
+
+  pointer-events: none;
+}
+
+html[data-theme="dark"] .mm-faded-copy::before {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(56, 109, 154, 0.14) 9%,
+      rgba(60, 110, 157, 0.27) 50%,
+      rgba(49, 86, 135, 0.12) 90%,
+      transparent
+    );
+
+  filter:
+    blur(2px);
+}
+
+html[data-theme="light"] .mm-faded-copy::before {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(210, 193, 236, 0.21) 8%,
+      rgba(225, 207, 239, 0.56) 50%,
+      rgba(255, 226, 143, 0.21) 90%,
+      transparent
+    );
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.mm-about-hero {
+  min-height: 565px;
+
+  padding:
+    108px 0 58px;
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  text-align: center;
+}
+
+.mm-about-hero::before {
+  content: "";
+
+  width: 900px;
+  height: 390px;
+
+  position: absolute;
+
+  left: 50%;
+  top: 45%;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  filter:
+    blur(54px);
+}
+
+html[data-theme="dark"] .mm-about-hero::before {
+  background:
+    radial-gradient(
+      circle,
+      rgba(61, 121, 194, 0.14),
+      rgba(112, 68, 192, 0.06) 50%,
+      transparent 72%
+    );
+}
+
+html[data-theme="light"] .mm-about-hero::before {
+  background:
+    radial-gradient(
+      circle,
+      rgba(169, 117, 232, 0.15),
+      rgba(255, 207, 76, 0.09) 47%,
+      transparent 72%
+    );
+}
+
+.mm-about-hero__headline {
+  max-width: 1250px;
+
+  margin-inline:
+    auto !important;
+
+  position: relative;
+
+  z-index: 2;
+
+  font-size:
+    clamp(
+      58px,
+      5.75vw,
+      98px
+    ) !important;
+
+  line-height: 1.01;
+}
+
+.mm-about-hero__statement {
+  width:
+    min(
+      900px,
+      90%
+    );
+
+  margin:
+    36px auto 0;
+
+  position: relative;
+
+  z-index: 3;
+
+  font-size: 17px;
+
+  font-weight: 800;
+
+  line-height: 1.65;
+}
+
+html[data-theme="dark"]
+.mm-about-hero__statement {
+  color: #eaf2ff;
+}
+
+html[data-theme="light"]
+.mm-about-hero__statement {
+  color: #173a66;
+}
+
+/* =========================================================
+   CAREER FLOW
+========================================================= */
+
+.mm-career-flow {
+  width:
+    min(
+      1100px,
+      95%
+    );
+
+  margin:
+    52px auto 0;
+
+  position: relative;
+
+  z-index: 4;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.mm-career-stage {
+  min-width: 132px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 7px;
+
+  opacity: 1;
+}
+
+.mm-career-stage span {
+  color:
+    var(--mm-gold);
+
+  font-size: 11px;
+
+  font-weight: 950;
+
+  letter-spacing: 0.16em;
+}
+
+.mm-career-stage strong {
+  font-size: 13px;
+
+  font-weight: 950;
+
+  letter-spacing: 0.12em;
+}
+
+html[data-theme="dark"]
+.mm-career-stage strong {
+  color: #f5f8ff;
+}
+
+html[data-theme="light"]
+.mm-career-stage strong {
+  color: #11375f;
+}
+
+.mm-career-stage--muted {
+  opacity: 0.75;
+}
+
+.mm-career-stage--focus strong,
+.mm-career-stage--ready strong {
+  color:
+    var(--mm-gold-bright) !important;
+}
+
+.mm-career-stage--focus {
+  animation:
+    mm-stage-focus
+    2.7s
+    ease-in-out
+    infinite;
+}
+
+.mm-career-connector {
+  width: 105px;
+  height: 2px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    rgba(237, 192, 54, 0.26);
+}
+
+.mm-career-connector i {
+  width: 65px;
+  height: 2px;
+
+  position: absolute;
+
+  left: -70px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--mm-gold),
+      transparent
+    );
+
+  animation:
+    mm-career-travel
+    2.6s
+    linear
+    infinite;
+}
+
+/* =========================================================
+   OVERVIEW
+========================================================= */
+
+.mm-overview-section {
+  padding:
+    60px 0 68px;
+}
+
+.mm-overview-shell {
+  width:
+    min(
+      1530px,
+      calc(100% - 52px)
+    );
+}
+
+.mm-overview-layout {
+  min-height: 455px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(760px, 1.42fr)
+    515px;
+
+  gap: 35px;
+
+  align-items: center;
+}
+
+.mm-overview-copy {
+  min-width: 0;
+
+  margin-left: -32px;
+
+  position: relative;
+
+  z-index: 9;
+}
+
+.mm-overview-title {
+  width: max-content;
+
+  max-width: none;
+
+  white-space: nowrap;
+
+  font-size:
+    clamp(
+      43px,
+      3.65vw,
+      64px
+    ) !important;
+
+  line-height: 1.12 !important;
+}
+
+.mm-overview-statement {
+  max-width: 720px;
+
+  margin-top: 38px;
+
+  padding:
+    16px 20px;
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  line-height: 1.72;
+}
+
+html[data-theme="dark"]
+.mm-overview-statement {
+  color: #eef4ff;
+}
+
+html[data-theme="light"]
+.mm-overview-statement {
+  color: #173b67;
+}
+
+/* =========================================================
+   SKILLS VISUAL
+========================================================= */
+
+.mm-skills-open {
+  width: 515px;
+
+  min-height: 455px;
+
+  margin-left: auto;
+
+  position: relative;
+
+  display: grid;
+
+  place-items: center;
+
+  isolation: isolate;
+}
+
+.mm-skills-open__glow {
+  width: 390px;
+  height: 390px;
+
+  position: absolute;
+
+  z-index: -2;
+
+  border-radius: 50%;
+
+  filter:
+    blur(45px);
+
+  animation:
+    mm-skills-breathe
+    5.5s
+    ease-in-out
+    infinite;
+}
+
+html[data-theme="dark"]
+.mm-skills-open__glow {
+  background:
+    radial-gradient(
+      circle,
+      rgba(40, 147, 197, 0.17),
+      rgba(102, 73, 185, 0.08),
+      transparent 74%
+    );
+}
+
+html[data-theme="light"]
+.mm-skills-open__glow {
+  background:
+    radial-gradient(
+      circle,
+      rgba(153, 96, 224, 0.15),
+      rgba(238, 188, 36, 0.09),
+      transparent 74%
+    );
+}
+
+.mm-skills-orbit {
+  position: absolute;
+
+  border-radius: 50%;
+}
+
+.mm-skills-orbit--outer {
+  width: 390px;
+  height: 390px;
+
+  border:
+    1px dashed
+    rgba(91, 181, 220, 0.29);
+
+  animation:
+    mm-orbit-clockwise
+    25s linear infinite;
+}
+
+.mm-skills-orbit--middle {
+  width: 292px;
+  height: 292px;
+
+  border:
+    1px solid
+    rgba(224, 178, 35, 0.31);
+
+  animation:
+    mm-orbit-counter
+    17s linear infinite;
+}
+
+.mm-skills-orbit--inner {
+  width: 202px;
+  height: 202px;
+
+  border:
+    1px solid
+    rgba(161, 89, 225, 0.36);
+
+  animation:
+    mm-orbit-clockwise
+    13s linear infinite;
+}
+
+.mm-skills-orbit::before {
+  content: "";
+
+  width: 8px;
+  height: 8px;
+
+  position: absolute;
+
+  top: -4px;
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    var(--mm-gold);
+
+  box-shadow:
+    0 0 14px
+    rgba(243, 189, 32, 0.75);
+}
+
+.mm-skills-core {
+  width: 168px;
+  height: 168px;
+
+  position: relative;
+
+  z-index: 5;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border:
+    1px solid
+    rgba(226, 179, 35, 0.55);
+
+  border-radius: 50%;
+
+  animation:
+    mm-core-float
+    4s ease-in-out infinite;
+}
+
+html[data-theme="dark"]
+.mm-skills-core {
+  background:
+    rgba(7, 38, 71, 0.93);
+}
+
+html[data-theme="light"]
+.mm-skills-core {
+  background:
+    rgba(255, 255, 255, 0.88);
+}
+
+.mm-skills-core small {
+  font-size: 8px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.2em;
+}
+
+.mm-skills-core strong {
+  margin-top: 8px;
+
+  font-size: 31px;
+
+  font-weight: 950;
+}
+
+.mm-skills-core em {
+  margin-top: 5px;
+
+  color:
+    var(--mm-gold);
+
+  font-family: Georgia, serif;
+
+  font-size: 15px;
+}
+
+.mm-skill-float {
+  min-width: 105px;
+
+  padding:
+    11px 15px;
+
+  position: absolute;
+
+  z-index: 8;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  border:
+    1px solid
+    rgba(218, 173, 35, 0.38);
+
+  border-radius: 999px;
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  animation:
+    mm-skill-drift
+    5s ease-in-out infinite;
+}
+
+html[data-theme="dark"]
+.mm-skill-float {
+  color: #f4f8ff;
+
+  background:
+    rgba(6, 35, 68, 0.9);
+}
+
+html[data-theme="light"]
+.mm-skill-float {
+  color: #17385f;
+
+  background:
+    rgba(255, 255, 255, 0.9);
+}
+
+.mm-skill-float span {
+  color:
+    var(--mm-gold);
+}
+
+.mm-skill-float--learn {
+  left: 0;
+  top: 65px;
+}
+
+.mm-skill-float--practice {
+  top: 5px;
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+}
+
+.mm-skill-float--projects {
+  right: -2%;
+  top: 68px;
+}
+
+.mm-skill-float--direction {
+  left: -2%;
+  bottom: 66px;
+}
+
+.mm-skill-float--proof {
+  left: 50%;
+  bottom: 5px;
+
+  transform:
+    translateX(-50%);
+}
+
+.mm-skill-float--growth {
+  right: -2%;
+  bottom: 63px;
+}
+
+.mm-skill-particle {
+  width: 5px;
+  height: 5px;
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  background:
+    var(--mm-gold);
+
+  box-shadow:
+    0 0 14px
+    rgba(243, 189, 32, 0.7);
+
+  animation:
+    mm-particle-float
+    6s
+    ease-in-out
+    infinite;
+}
+
+.mm-skill-particle--1 {
+  top: 30%;
+  left: 22%;
+}
+
+.mm-skill-particle--2 {
+  top: 28%;
+  right: 18%;
+}
+
+.mm-skill-particle--3 {
+  bottom: 21%;
+  left: 27%;
+}
+
+.mm-skill-particle--4 {
+  bottom: 18%;
+  right: 28%;
+}
+
+/* =========================================================
+   STORY
+========================================================= */
+
+.mm-story-section {
+  padding:
+    68px 0 76px;
+}
+
+.mm-story-heading {
+  text-align: center;
+}
+
+.mm-story-heading h2 {
+  font-size:
+    clamp(
+      50px,
+      4.8vw,
+      82px
+    );
+}
+
+.mm-story-question {
+  margin-top: 14px;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(
+      38px,
+      3.9vw,
+      64px
+    );
+
+  line-height: 1.17;
+}
+
+.mm-story-intro {
+  max-width: 850px;
+
+  margin:
+    31px auto 0;
+
+  padding:
+    14px 25px;
+
+  font-size: 17px;
+
+  font-weight: 760;
+
+  line-height: 1.68;
+}
+
+/* =========================================================
+   STICKY NOTES
+========================================================= */
+
+.mm-sticky-wall {
+  min-height: 430px;
+
+  margin-top: 46px;
+
+  padding:
+    32px 25px;
+
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 52px;
+
+  align-items: center;
+}
+
+.mm-wall-line {
+  height: 2px;
+
+  position: absolute;
+
+  opacity: 0.28;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--mm-gold),
+      transparent
+    );
+}
+
+.mm-wall-line--one {
+  width: 43%;
+
+  top: 48%;
+  left: 16%;
+
+  transform:
+    rotate(6deg);
+}
+
+.mm-wall-line--two {
+  width: 38%;
+
+  top: 52%;
+  right: 15%;
+
+  transform:
+    rotate(-8deg);
+}
+
+.mm-sticky-note {
+  min-height: 270px;
+
+  padding:
+    49px 34px 30px;
+
+  position: relative;
+
+  z-index: 2;
+
+  border-radius:
+    4px 4px 11px 4px;
+
+  box-shadow:
+    0 25px 55px
+    rgba(0, 0, 0, 0.16);
+}
+
+html[data-theme="dark"]
+.mm-sticky-note {
+  background:
+    linear-gradient(
+      145deg,
+      #153a5e,
+      #102d4f
+    );
+
+  border:
+    1px solid
+    rgba(226, 180, 36, 0.3);
+}
+
+html[data-theme="light"]
+.mm-sticky-note {
+  color: #17365c;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff9d9,
+      #ffeaa1
+    );
+
+  border:
+    1px solid
+    rgba(165, 122, 0, 0.22);
+}
+
+.mm-note-pin {
+  width: 15px;
+  height: 15px;
+
+  position: absolute;
+
+  top: 15px;
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff087,
+      #c89100
+    );
+}
+
+.mm-sticky-note small {
+  color:
+    var(--mm-gold);
+
+  font-size: 9px;
+
+  font-weight: 950;
+
+  letter-spacing: 0.16em;
+}
+
+.mm-sticky-note h3 {
+  margin:
+    18px 0 14px;
+
+  font-size: 28px;
+
+  line-height: 1.1;
+}
+
+.mm-sticky-note p {
+  margin: 0;
+
+  font-size: 14px;
+
+  line-height: 1.65;
+
+  opacity: 0.76;
+}
+
+.mm-note-scribble {
+  position: absolute;
+
+  right: 21px;
+  bottom: 15px;
+
+  color:
+    var(--mm-gold);
+
+  font-family: Georgia, serif;
+
+  font-size: 48px;
+
+  opacity: 0.22;
+}
+
+.mm-sticky-note--one {
+  animation:
+    mm-note-one
+    5.4s ease-in-out infinite;
+}
+
+.mm-sticky-note--two {
+  animation:
+    mm-note-two
+    5.9s ease-in-out infinite;
+}
+
+.mm-sticky-note--three {
+  animation:
+    mm-note-three
+    5.3s ease-in-out infinite;
+}
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.mm-progress-section {
+  padding:
+    68px 0 78px;
+}
+
+.mm-progress-heading {
+  text-align: center;
+}
+
+.mm-progress-heading h2 {
+  line-height: 1.13;
+}
+
+.mm-progress-copy {
+  max-width: 870px;
+
+  margin:
+    29px auto 0;
+
+  padding:
+    14px 27px;
+
+  font-size: 17px;
+
+  font-weight: 760;
+
+  line-height: 1.68;
+}
+
+.mm-progress-animation {
+  max-width: 1070px;
+
+  min-height: 385px;
+
+  margin:
+    43px auto 0;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    105px
+    1.35fr;
+
+  gap: 18px;
+
+  align-items: center;
+}
+
+.mm-progress-caption {
+  margin-bottom: 14px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.mm-progress-caption strong {
+  color:
+    var(--mm-gold-bright);
+
+  font-size: 13px;
+
+  font-weight: 950;
+
+  letter-spacing: 0.16em;
+}
+
+.mm-progress-caption span {
+  font-size: 14px;
+
+  font-weight: 800;
+}
+
+html[data-theme="dark"]
+.mm-progress-caption span {
+  color: #e5effa;
+}
+
+html[data-theme="light"]
+.mm-progress-caption span {
+  color: #294665;
+}
+
+.mm-progress-now,
+.mm-progress-later {
+  text-align: center;
+}
+
+/* =========================================================
+   LEFT WATER
+========================================================= */
+
+.mm-drop-zone {
+  width: 210px;
+  height: 235px;
+
+  margin-inline: auto;
+
+  position: relative;
+}
+
+.mm-water-drop {
+  width: 16px;
+  height: 21px;
+
+  position: absolute;
+
+  left:
+    calc(50% - 8px);
+
+  top: -9px;
+
+  z-index: 7;
+
+  border-radius:
+    50% 50% 60% 60%;
+
+  background:
+    linear-gradient(
+      160deg,
+      #a1fff1,
+      #39d7c4
+    );
+
+  box-shadow:
+    0 0 18px
+    rgba(86, 230, 210, 0.65);
+
+  opacity: 0;
+
+  animation:
+    mm-water-drop
+    7s ease-in-out infinite;
+}
+
+.mm-water-drop--2 {
+  animation-delay: 1.25s;
+}
+
+.mm-water-drop--3 {
+  animation-delay: 2.5s;
+}
+
+.mm-water-drop--4 {
+  animation-delay: 3.75s;
+}
+
+.mm-water-drop--5 {
+  animation-delay: 5s;
+}
+
+.mm-progress-jar {
+  width: 150px;
+  height: 180px;
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 8px;
+
+  transform:
+    translateX(-50%);
+
+  overflow: hidden;
+
+  display: grid;
+
+  place-items: center;
+
+  border:
+    3px solid
+    rgba(96, 234, 212, 0.88);
+
+  border-radius:
+    28px 28px 47px 47px;
+
+  box-shadow:
+    inset
+    0 0 29px
+    rgba(80, 224, 203, 0.08),
+    0 0 28px
+    rgba(80, 224, 203, 0.14);
+}
+
+.mm-progress-jar__rim {
+  width: 105px;
+  height: 14px;
+
+  position: absolute;
+
+  top: -2px;
+  left: 50%;
+
+  z-index: 6;
+
+  transform:
+    translateX(-50%);
+
+  border:
+    2px solid #65ead5;
+
+  border-radius: 50%;
+}
+
+.mm-progress-liquid {
+  height: 10%;
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(109, 245, 224, 0.78),
+      rgba(43, 194, 178, 0.48)
+    );
+
+  animation:
+    mm-jar-fill
+    7s ease-in-out infinite;
+}
+
+.mm-progress-liquid::before {
+  content: "";
+
+  height: 14px;
+
+  position: absolute;
+
+  top: -7px;
+  left: -10%;
+  right: -10%;
+
+  border-radius: 50%;
+
+  background:
+    rgba(131, 255, 237, 0.78);
+
+  animation:
+    mm-water-wave
+    2s ease-in-out infinite;
+}
+
+.mm-progress-jar > strong {
+  position: relative;
+
+  z-index: 8;
+
+  font-size: 24px;
+
+  font-weight: 950;
+}
+
+.mm-progress-now > p {
+  margin-top: 5px;
+
+  font-size: 14px;
+
+  font-weight: 800;
+}
+
+/* =========================================================
+   PROGRESS DOTS
+========================================================= */
+
+.mm-progress-flow {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+}
+
+.mm-progress-flow span {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background:
+    var(--mm-gold);
+
+  animation:
+    mm-progress-dot
+    2s ease-in-out infinite;
+}
+
+.mm-progress-flow span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.mm-progress-flow span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.mm-progress-flow span:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.mm-progress-flow span:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+/* =========================================================
+   FULL + OVERFLOWING JARS
+========================================================= */
+
+.mm-overflow-scene {
+  height: 225px;
+
+  position: relative;
+}
+
+.mm-overflow-jars {
+  height: 168px;
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 36px;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  transform:
+    translateX(-50%);
+}
+
+.mm-mini-jar {
+  width: 92px;
+  height: 132px;
+
+  margin-left: -23px;
+
+  position: relative;
+
+  overflow: visible;
+
+  border:
+    2px solid
+    rgba(96, 234, 212, 0.92);
+
+  border-radius:
+    23px 23px 38px 38px;
+
+  box-shadow:
+    0 0 25px
+    rgba(91, 232, 211, 0.15);
+
+  animation:
+    mm-overflow-jar
+    3.4s ease-in-out infinite;
+}
+
+.mm-mini-jar:first-child {
+  margin-left: 0;
+}
+
+.mm-mini-jar > i {
+  position: absolute;
+
+  inset:
+    1px 1px 0;
+
+  overflow: hidden;
+
+  border-radius:
+    20px 20px 35px 35px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(151, 255, 240, 0.92),
+      rgba(44, 199, 180, 0.55)
+    );
+}
+
+.mm-mini-jar > i::before {
+  content: "";
+
+  height: 16px;
+
+  position: absolute;
+
+  left: -10px;
+  right: -10px;
+  top: -7px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(166, 255, 242, 0.98);
+
+  animation:
+    mm-water-wave
+    1.6s ease-in-out infinite;
+}
+
+.mm-jar-overflow {
+  width: 11px;
+  height: 64px;
+
+  position: absolute;
+
+  top: 7px;
+
+  z-index: -1;
+
+  border-radius:
+    50% 50% 70% 70%;
+
+  background:
+    linear-gradient(
+      #9bffef,
+      #65e4d0 50%,
+      rgba(73, 220, 199, 0)
+    );
+
+  filter:
+    drop-shadow(
+      0 0 7px
+      rgba(95, 234, 213, 0.55)
+    );
+
+  animation:
+    mm-side-overflow
+    2.2s
+    ease-in-out
+    infinite;
+}
+
+.mm-jar-overflow--left {
+  left: -7px;
+
+  transform:
+    rotate(10deg);
+}
+
+.mm-jar-overflow--right {
+  right: -7px;
+
+  transform:
+    rotate(-10deg);
+
+  animation-delay:
+    -0.8s;
+}
+
+.mm-falling-overflow {
+  width: 11px;
+  height: 20px;
+
+  position: absolute;
+
+  top: 109px;
+
+  border-radius:
+    50% 50% 65% 65%;
+
+  background:
+    #7cf2df;
+
+  opacity: 0;
+
+  animation:
+    mm-overflow-drop
+    2.1s linear infinite;
+}
+
+.mm-falling-overflow--1 {
+  left: 26%;
+}
+
+.mm-falling-overflow--2 {
+  left: 43%;
+
+  animation-delay:
+    -0.5s;
+}
+
+.mm-falling-overflow--3 {
+  right: 41%;
+
+  animation-delay:
+    -1s;
+}
+
+.mm-falling-overflow--4 {
+  right: 25%;
+
+  animation-delay:
+    -1.55s;
+}
+
+.mm-overflow-puddle {
+  width: 320px;
+  height: 47px;
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  transform:
+    translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(86, 234, 213, 0.56),
+      rgba(86, 234, 213, 0.14) 54%,
+      transparent 73%
+    );
+
+  animation:
+    mm-puddle
+    3s ease-in-out infinite;
+}
+
+.mm-momentum-word {
+  display: block;
+
+  margin-top: 1px;
+
+  color: #75f3df;
+
+  font-size: 29px;
+
+  font-weight: 950;
+}
+
+html[data-theme="light"]
+.mm-momentum-word {
+  color: #087d73;
+}
+
+.mm-momentum-copy {
+  margin-top:
+    5px !important;
+
+  font-size:
+    14px !important;
+
+  font-weight:
+    800 !important;
+}
+
+/* =========================================================
+   TEAM
+========================================================= */
+
+.mm-team-section {
+  padding:
+    70px 0 82px;
+}
+
+.mm-team-heading {
+  max-width: 1160px;
+
+  margin:
+    0 auto 48px;
+
+  text-align: center;
+
+  overflow: visible;
+}
+
+.mm-team-heading h2 {
+  line-height:
+    1.12;
+}
+
+.mm-team-intro {
+  max-width: 850px;
+
+  margin:
+    27px auto 0;
+
+  padding:
+    13px 24px;
+
+  font-size: 17px;
+
+  font-weight: 760;
+
+  line-height: 1.67;
+}
+
+.mm-team-grid {
+  max-width: 1160px;
+
+  margin-inline: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 29px;
+}
+
+/* =========================================================
+   TEAM CARD
+   AUTO HOVER + 3D + GOLD BORDER
+========================================================= */
+
+.mm-profile-card {
+  --profile-card-bg:
+    #0c2b4d;
+
+  height: 430px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  isolation: isolate;
+
+  perspective: 1100px;
+
+  transform-style:
+    preserve-3d;
+
+  border-radius: 31px;
+
+  box-shadow:
+    0 24px 55px
+    rgba(0, 0, 0, 0.12);
+
+  animation:
+    mm-profile-card-auto
+    12s ease-in-out infinite;
+
+  animation-delay:
+    var(--profile-delay);
+}
+
+html[data-theme="light"]
+.mm-profile-card {
+  --profile-card-bg:
+    #fbf5df;
+
+  box-shadow:
+    0 24px 55px
+    rgba(65, 45, 78, 0.1);
+}
+
+/* rotating moving gold border */
+
+.mm-profile-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 180%;
+  height: 180%;
+
+  left: -40%;
+  top: -40%;
+
+  z-index: 0;
+
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 255deg,
+      rgba(255, 211, 62, 0.06) 280deg,
+      #ffcf31 310deg,
+      #fff0a5 325deg,
+      #d99500 340deg,
+      transparent 360deg
+    );
+
+  animation:
+    mm-card-border-spin
+    4.8s linear infinite;
+}
+
+.mm-profile-card::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 1.5px;
+
+  z-index: 0;
+
+  border-radius: 29px;
+
+  background:
+    var(--profile-card-bg);
+
+  pointer-events: none;
+}
+
+.mm-profile-card > * {
+  z-index: 2;
+}
+
+.mm-profile-mark {
+  position: absolute;
+
+  top: 20px;
+  right: 23px;
+
+  color:
+    var(--mm-gold);
+
+  font-size: 17px;
+
+  text-shadow:
+    0 0 13px
+    rgba(243, 189, 32, 0.4);
+}
+
+/* =========================================================
+   TEAM LARGE PHOTO
+========================================================= */
+
+.mm-profile-pic {
+  width:
+    calc(100% - 8px);
+
+  height:
+    calc(100% - 8px);
+
+  position: absolute;
+
+  top: 4px;
+  left: 4px;
+
+  z-index: 2;
+
+  display: grid;
+
+  place-items: center;
+
+  overflow: hidden;
+
+  border-radius: 27px;
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(102, 192, 224, 0.2),
+      transparent 40%
+    );
+
+  transform-style:
+    preserve-3d;
+
+  animation:
+    mm-profile-pic-auto
+    12s ease-in-out infinite;
+
+  animation-delay:
+    var(--profile-delay);
+}
+
+.mm-profile-photo-wrap {
+  width: 155px;
+  height: 155px;
+
+  position: relative;
+
+  z-index: 6;
+
+  overflow: hidden;
+
+  display: grid;
+
+  place-items: center;
+
+  border:
+    3px solid
+    rgba(244, 190, 30, 0.62);
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffe476,
+      #dda704
+    );
+
+  box-shadow:
+    0 18px 45px
+    rgba(0, 0, 0, 0.22);
+}
+
+.mm-profile-photo {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 3;
+
+  object-fit: cover;
+
+  object-position:
+    center top;
+
+  border-radius: inherit;
+}
+
+.mm-profile-fallback {
+  position: relative;
+
+  z-index: 1;
+
+  color: #08294b;
+
+  font-size: 31px;
+
+  font-weight: 950;
+}
+
+.mm-profile-orbit {
+  position: absolute;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(222, 177, 35, 0.25);
+}
+
+.mm-profile-orbit--one {
+  width: 220px;
+  height: 220px;
+
+  animation:
+    mm-profile-orbit
+    17s linear infinite;
+}
+
+.mm-profile-orbit--two {
+  width: 285px;
+  height: 285px;
+
+  border-color:
+    rgba(99, 190, 221, 0.11);
+
+  animation:
+    mm-profile-orbit-reverse
+    22s linear infinite;
+}
+
+.mm-profile-pic > small {
+  position: absolute;
+
+  bottom: 48px;
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.2em;
+
+  opacity: 0.4;
+}
+
+/* =========================================================
+   TEAM REVEAL
+========================================================= */
+
+.mm-profile-bottom {
+  position: absolute;
+
+  top: 79%;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+
+  z-index: 4;
+
+  overflow: visible;
+
+  border-radius: 27px;
+
+  transform-style:
+    preserve-3d;
+
+  perspective:
+    800px;
+
+  animation:
+    mm-profile-bottom-auto
+    12s ease-in-out infinite;
+
+  animation-delay:
+    var(--profile-delay);
+}
+
+html[data-theme="dark"]
+.mm-profile-bottom {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(19, 71, 108, 0.98),
+      rgba(7, 35, 64, 0.98)
+    );
+}
+
+html[data-theme="light"]
+.mm-profile-bottom {
+  background:
+    linear-gradient(
+      145deg,
+      #e8dbff,
+      #f8e9c9 70%,
+      #ffe797
+    );
+}
+
+.mm-profile-content {
+  height: 270px;
+
+  position: absolute;
+
+  left: 30px;
+  right: 30px;
+  bottom: 43px;
+
+  padding-top: 60px;
+
+  transform-style:
+    preserve-3d;
+
+  transform-origin:
+    center center;
+
+  animation:
+    mm-profile-content-auto
+    12s ease-in-out infinite;
+
+  animation-delay:
+    var(--profile-delay);
+}
+
+.mm-profile-role {
+  display: block;
+
+  color:
+    var(--mm-gold);
+
+  font-size: 8px;
+
+  font-weight: 950;
+
+  letter-spacing: 0.16em;
+
+  transform:
+    translateZ(24px);
+}
+
+.mm-profile-name {
+  display: block;
+
+  margin-top: 12px;
+
+  font-size: 28px;
+
+  font-weight: 950;
+
+  letter-spacing:
+    -0.035em;
+
+  transform:
+    translateZ(42px);
+}
+
+.mm-profile-about {
+  display: block;
+
+  margin-top: 15px;
+
+  font-size: 14px;
+
+  line-height: 1.67;
+
+  opacity: 0.82;
+
+  transform:
+    translateZ(58px);
+}
+
+.mm-profile-bottom-row {
+  position: absolute;
+
+  left: 30px;
+  right: 30px;
+  bottom: 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding-top: 12px;
+
+  border-top:
+    1px solid
+    rgba(226, 181, 40, 0.24);
+
+  font-size: 9px;
+
+  font-weight: 950;
+
+  letter-spacing: 0.06em;
+}
+
+.mm-profile-arrow {
+  width: 29px;
+  height: 29px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  color: #082546;
+
+  background:
+    var(--mm-gold);
+}
+
+/* ACTUAL USER HOVER OVERRIDES AUTO ANIMATION */
+
+.mm-profile-card:hover {
+  animation: none;
+
+  transform:
+    translateY(-12px)
+    rotateX(1deg);
+
+  box-shadow:
+    0 42px 80px
+    rgba(0, 0, 0, 0.2);
+}
+
+.mm-profile-card:hover
+.mm-profile-pic {
+  animation: none;
+
+  width: 108px;
+  height: 108px;
+
+  top: 10px;
+  left: 10px;
+
+  border:
+    6px solid
+    rgba(241, 188, 31, 0.82);
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 16px 32px
+    rgba(0, 0, 0, 0.23);
+}
+
+.mm-profile-card:hover
+.mm-profile-photo-wrap {
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+
+  box-shadow: none;
+}
+
+.mm-profile-card:hover
+.mm-profile-orbit,
+.mm-profile-card:hover
+.mm-profile-pic > small {
+  opacity: 0;
+}
+
+.mm-profile-card:hover
+.mm-profile-bottom {
+  animation: none;
+
+  top: 20%;
+
+  border-radius:
+    80px 27px 27px 27px;
+}
+
+.mm-profile-card:hover
+.mm-profile-content {
+  animation: none;
+
+  transform:
+    translateZ(68px)
+    translateY(-6px)
+    rotateX(-2deg);
+}
+
+.mm-profile-card:hover
+.mm-profile-name {
+  text-shadow:
+    0 12px 22px
+    rgba(0, 0, 0, 0.22);
+}
+
+/* =========================================================
+   REVIEWS
+========================================================= */
+
+.mm-reviews-section {
+  padding:
+    70px 0 78px;
+}
+
+.mm-reviews-heading {
+  max-width: 1100px;
+
+  margin-inline: auto;
+
+  text-align: center;
+}
+
+.mm-reviews-heading h2 {
+  line-height:
+    1.15;
+}
+
+.mm-reviews-intro {
+  max-width: 850px;
+
+  margin:
+    28px auto 0;
+
+  padding:
+    13px 24px;
+
+  font-size: 17px;
+
+  font-weight: 760;
+
+  line-height: 1.67;
+}
+
+.mm-review-grid {
+  margin-top: 46px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 22px;
+}
+
+.mm-review-card {
+  min-height: 350px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  display: grid;
+
+  grid-template-columns:
+    108px 1fr;
+
+  border:
+    1px solid
+    rgba(218, 173, 38, 0.28);
+
+  border-radius: 26px;
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+html[data-theme="dark"]
+.mm-review-card {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(16, 55, 91, 0.91),
+      rgba(12, 36, 72, 0.93)
+    );
+}
+
+html[data-theme="light"]
+.mm-review-card {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 247, 221, 0.78)
+    );
+}
+
+.mm-review-card:hover {
+  transform:
+    translateY(-10px);
+
+  box-shadow:
+    0 30px 65px
+    rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================================
+   STUDY ANIMATION
+========================================================= */
+
+.mm-study-visual {
+  position: relative;
+
+  overflow: hidden;
+
+  border-right:
+    1px solid
+    rgba(224, 178, 35, 0.2);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(91, 229, 197, 0.13),
+      rgba(91, 229, 197, 0.02)
+    );
+}
+
+.mm-study-book {
+  width: 67px;
+  height: 80px;
+
+  position: absolute;
+
+  top: 37px;
+  left: 50%;
+
+  z-index: 7;
+
+  transform:
+    translateX(-50%);
+
+  perspective:
+    500px;
+}
+
+.mm-study-book__cover {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 5px;
+
+  border-radius:
+    5px 9px 9px 5px;
+
+  color: #063a36;
+
+  background:
+    linear-gradient(
+      145deg,
+      #a5ffe7,
+      #53dcb9
+    );
+
+  box-shadow:
+    8px 8px 18px
+    rgba(24, 129, 101, 0.23);
+
+  transform-origin:
+    left center;
+
+  transition:
+    transform 0.6s ease;
+}
+
+.mm-study-book__cover span {
+  font-family:
+    Georgia,
+    serif;
+
+  font-size: 23px;
+
+  font-style: italic;
+
+  font-weight: 700;
+}
+
+.mm-study-book__cover small {
+  font-size: 7px;
+
+  font-weight: 950;
+
+  letter-spacing: 0.13em;
+}
+
+.mm-study-book__spine {
+  width: 6px;
+
+  position: absolute;
+
+  inset:
+    0 auto 0 0;
+
+  z-index: 8;
+
+  border-radius:
+    5px 0 0 5px;
+
+  background:
+    #229878;
+}
+
+.mm-study-card {
+  width: 70px;
+  height: 92px;
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 48px;
+
+  padding:
+    12px 9px;
+
+  border-radius: 8px;
+
+  color: #143b56;
+
+  background: #edf8f7;
+
+  box-shadow:
+    0 12px 25px
+    rgba(0, 0, 0, 0.12);
+
+  transition:
+    transform
+    0.6s
+    cubic-bezier(
+      0.2,
+      0.8,
+      0.2,
+      1
+    );
+}
+
+.mm-study-card span {
+  color: #178e75;
+
+  font-size: 8px;
+
+  font-weight: 950;
+}
+
+.mm-study-card strong {
+  display: block;
+
+  margin-top: 6px;
+
+  font-size: 8px;
+
+  font-weight: 950;
+}
+
+.mm-study-card i {
+  display: block;
+
+  height: 4px;
+
+  margin-top: 7px;
+
+  border-radius: 999px;
+
+  background: #9fb4ba;
+}
+
+.mm-study-card--one {
+  transform:
+    translateX(-50%)
+    rotate(-4deg);
+
+  z-index: 5;
+}
+
+.mm-study-card--two {
+  transform:
+    translateX(-50%)
+    translateY(5px)
+    rotate(2deg);
+
+  z-index: 4;
+}
+
+.mm-study-card--three {
+  transform:
+    translateX(-50%)
+    translateY(10px)
+    rotate(5deg);
+
+  z-index: 3;
+}
+
+.mm-study-pencil {
+  width: 58px;
+  height: 8px;
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 28px;
+
+  transform:
+    translateX(-50%)
+    rotate(-12deg);
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #f3be22 0%,
+      #ffd75b 78%,
+      #6a4d20 79%,
+      #6a4d20 88%,
+      #eee1c7 89%
+    );
+}
+
+.mm-review-card:hover
+.mm-study-book__cover {
+  transform:
+    perspective(400px)
+    rotateY(-38deg);
+}
+
+.mm-review-card:hover
+.mm-study-card--one {
+  transform:
+    translateX(-77%)
+    translateY(-8px)
+    rotate(-13deg);
+}
+
+.mm-review-card:hover
+.mm-study-card--two {
+  transform:
+    translateX(-50%)
+    translateY(-21px);
+}
+
+.mm-review-card:hover
+.mm-study-card--three {
+  transform:
+    translateX(-23%)
+    translateY(-6px)
+    rotate(13deg);
+}
+
+.mm-review-card:hover
+.mm-study-pencil {
+  animation:
+    mm-pencil-write
+    1.2s ease-in-out infinite;
+}
+
+/* =========================================================
+   REVIEW TEXT
+========================================================= */
+
+.mm-review-content {
+  padding:
+    31px 27px 26px;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+.mm-review-stars {
+  color:
+    var(--mm-gold);
+
+  font-size: 11px;
+
+  letter-spacing: 4px;
+}
+
+.mm-review-content blockquote {
+  margin:
+    32px 0 25px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 20px;
+
+  font-weight: 600;
+
+  line-height: 1.46;
+}
+
+.mm-review-content footer {
+  margin-top: auto;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+}
+
+.mm-review-content footer > span {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  color: #082747;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffe77a,
+      #e4ac04
+    );
+
+  font-size: 10px;
+
+  font-weight: 950;
+}
+
+.mm-review-content footer div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.mm-review-content footer strong {
+  font-size: 9px;
+
+  font-weight: 950;
+
+  letter-spacing: 0.12em;
+}
+
+.mm-review-content footer small {
+  font-size: 10px;
+
+  opacity: 0.59;
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes mm-heading-gold-wave {
+  0%,
+  15% {
+    background-position:
+      110% 0;
+  }
+
+  55% {
+    background-position:
+      -35% 0;
+  }
+
+  100% {
+    background-position:
+      -35% 0;
+  }
+}
+
+@keyframes mm-heading-light-travel {
+  0%,
+  15% {
+    left: -8%;
+
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.55;
+  }
+
+  55% {
+    left: 92%;
+
+    opacity: 0.5;
+  }
+
+  65%,
+  100% {
+    left: 92%;
+
+    opacity: 0;
+  }
+}
+
+@keyframes mm-career-travel {
+  from {
+    left: -70px;
+  }
+
+  to {
+    left: 115%;
+  }
+}
+
+@keyframes mm-stage-focus {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      scale(1.04);
+  }
+
+  50% {
+    transform:
+      translateY(-6px)
+      scale(1.1);
+  }
+}
+
+@keyframes mm-orbit-clockwise {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mm-orbit-counter {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0);
+  }
+}
+
+@keyframes mm-skills-breathe {
+  0%,
+  100% {
+    transform: scale(0.94);
+
+    opacity: 0.58;
+  }
+
+  50% {
+    transform: scale(1.06);
+
+    opacity: 1;
+  }
+}
+
+@keyframes mm-core-float {
+  0%,
+  100% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(-10px);
+  }
+}
+
+@keyframes mm-skill-drift {
+  0%,
+  100% {
+    margin-top: 0;
+  }
+
+  50% {
+    margin-top: -9px;
+  }
+}
+
+@keyframes mm-particle-float {
+  0%,
+  100% {
+    transform:
+      translate(0, 0);
+  }
+
+  50% {
+    transform:
+      translate(
+        8px,
+        -12px
+      );
+  }
+}
+
+@keyframes mm-note-one {
+  0%,
+  100% {
+    transform:
+      rotate(-3deg)
+      translateY(-9px);
+  }
+
+  50% {
+    transform:
+      rotate(-1.5deg)
+      translateY(-18px);
+  }
+}
+
+@keyframes mm-note-two {
+  0%,
+  100% {
+    transform:
+      rotate(2deg)
+      translateY(20px);
+  }
+
+  50% {
+    transform:
+      rotate(0.5deg)
+      translateY(10px);
+  }
+}
+
+@keyframes mm-note-three {
+  0%,
+  100% {
+    transform:
+      rotate(-1.5deg)
+      translateY(-3px);
+  }
+
+  50% {
+    transform:
+      rotate(0deg)
+      translateY(-13px);
+  }
+}
+
+@keyframes mm-water-drop {
+  0% {
+    top: -9px;
+
+    opacity: 0;
+  }
+
+  9% {
+    opacity: 1;
+  }
+
+  30% {
+    top: 94px;
+
+    opacity: 1;
+  }
+
+  38%,
+  100% {
+    top: 124px;
+
+    opacity: 0;
+  }
+}
+
+@keyframes mm-jar-fill {
+  0% {
+    height: 10%;
+  }
+
+  18% {
+    height: 25%;
+  }
+
+  36% {
+    height: 40%;
+  }
+
+  54% {
+    height: 58%;
+  }
+
+  72% {
+    height: 74%;
+  }
+
+  91%,
+  100% {
+    height: 90%;
+  }
+}
+
+@keyframes mm-water-wave {
+  0%,
+  100% {
+    transform:
+      translateX(-7px);
+  }
+
+  50% {
+    transform:
+      translateX(7px);
+  }
+}
+
+@keyframes mm-progress-dot {
+  0%,
+  100% {
+    opacity: 0.18;
+
+    transform: scale(0.7);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform: scale(1.3);
+  }
+}
+
+@keyframes mm-overflow-jar {
+  0%,
+  100% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(-6px);
+  }
+}
+
+@keyframes mm-side-overflow {
+  0%,
+  100% {
+    height: 25px;
+
+    opacity: 0.3;
+  }
+
+  50% {
+    height: 68px;
+
+    opacity: 0.9;
+  }
+}
+
+@keyframes mm-overflow-drop {
+  0% {
+    transform:
+      translateY(0);
+
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      translateY(85px);
+
+    opacity: 0;
+  }
+}
+
+@keyframes mm-puddle {
+  0%,
+  100% {
+    transform:
+      translateX(-50%)
+      scaleX(0.86);
+
+    opacity: 0.5;
+  }
+
+  50% {
+    transform:
+      translateX(-50%)
+      scaleX(1.09);
+
+    opacity: 0.9;
+  }
+}
+
+/* =========================================================
+   TEAM AUTO HOVER SEQUENCE
+========================================================= */
+
+@keyframes mm-profile-card-auto {
+  0%,
+  7%,
+  34%,
+  100% {
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+  13%,
+  29% {
+    transform:
+      translateY(-11px)
+      scale(1.012);
+  }
+}
+
+@keyframes mm-profile-pic-auto {
+  0%,
+  7%,
+  34%,
+  100% {
+    width:
+      calc(100% - 8px);
+
+    height:
+      calc(100% - 8px);
+
+    top: 4px;
+    left: 4px;
+
+    border-width: 0;
+
+    border-radius: 27px;
+  }
+
+  13%,
+  29% {
+    width: 108px;
+    height: 108px;
+
+    top: 10px;
+    left: 10px;
+
+    border:
+      6px solid
+      rgba(241, 188, 31, 0.82);
+
+    border-radius: 50%;
+  }
+}
+
+@keyframes mm-profile-bottom-auto {
+  0%,
+  7%,
+  34%,
+  100% {
+    top: 79%;
+
+    border-radius:
+      27px;
+  }
+
+  13%,
+  29% {
+    top: 20%;
+
+    border-radius:
+      80px 27px 27px 27px;
+  }
+}
+
+@keyframes mm-profile-content-auto {
+  0%,
+  8%,
+  34%,
+  100% {
+    transform:
+      translateZ(0)
+      translateY(0)
+      rotateX(0deg);
+  }
+
+  14%,
+  29% {
+    transform:
+      translateZ(68px)
+      translateY(-6px)
+      rotateX(-2deg);
+  }
+}
+
+/* =========================================================
+   GOLD BORDER ROTATION
+========================================================= */
+
+@keyframes mm-card-border-spin {
+  from {
+    transform:
+      rotate(0deg);
+  }
+
+  to {
+    transform:
+      rotate(360deg);
+  }
+}
+
+@keyframes mm-profile-orbit {
+  from {
+    transform:
+      rotate(0deg);
+  }
+
+  to {
+    transform:
+      rotate(360deg);
+  }
+}
+
+@keyframes mm-profile-orbit-reverse {
+  from {
+    transform:
+      rotate(360deg);
+  }
+
+  to {
+    transform:
+      rotate(0deg);
+  }
+}
+
+@keyframes mm-pencil-write {
+  0%,
+  100% {
+    transform:
+      translateX(-50%)
+      translateX(-7px)
+      rotate(-12deg);
+  }
+
+  50% {
+    transform:
+      translateX(-50%)
+      translateX(7px)
+      rotate(-7deg);
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1150px) {
+  .mm-about-shell {
+    width:
+      calc(100% - 44px);
+  }
+
+  .mm-overview-shell {
+    width:
+      calc(100% - 34px);
+  }
+
+  .mm-overview-layout {
+    grid-template-columns:
+      1fr;
+
+    gap: 25px;
+  }
+
+  .mm-overview-copy {
+    margin-left: 0;
+
+    text-align: center;
+  }
+
+  .mm-overview-title {
+    width: auto;
+
+    white-space: normal;
+  }
+
+  .mm-overview-statement {
+    margin-inline: auto;
+  }
+
+  .mm-skills-open {
+    margin-inline: auto;
+  }
+
+  .mm-sticky-wall {
+    grid-template-columns: 1fr;
+
+    max-width: 650px;
+
+    margin-inline: auto;
+  }
+
+  .mm-progress-animation {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .mm-progress-flow {
+    height: 55px;
+
+    transform:
+      rotate(90deg);
+  }
+
+  .mm-team-grid,
+  .mm-review-grid {
+    max-width: 620px;
+
+    margin-inline: auto;
+
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 720px) {
+  .mm-about-shell,
+  .mm-overview-shell {
+    width:
+      calc(100% - 28px);
+  }
+
+  .mm-about-section {
+    padding:
+      58px 0 66px;
+  }
+
+  .mm-about-hero {
+    min-height: 550px;
+
+    padding:
+      92px 0 50px;
+  }
+
+  .mm-about-hero__headline {
+    font-size:
+      clamp(
+        43px,
+        12vw,
+        64px
+      ) !important;
+  }
+
+  .mm-career-flow {
+    flex-wrap: wrap;
+
+    gap: 8px;
+  }
+
+  .mm-career-stage {
+    min-width: 66px;
+  }
+
+  .mm-career-stage strong {
+    font-size: 9px;
+  }
+
+  .mm-career-connector {
+    width: 20px;
+  }
+
+  .mm-overview-title {
+    font-size:
+      clamp(
+        38px,
+        10.5vw,
+        55px
+      ) !important;
+  }
+
+  .mm-skills-open {
+    width: 100%;
+
+    transform:
+      scale(0.83);
+  }
+
+  .mm-overview-statement,
+  .mm-story-intro,
+  .mm-progress-copy,
+  .mm-team-intro,
+  .mm-reviews-intro {
+    padding:
+      11px 8px;
+
+    font-size: 15px;
+  }
+
+  .mm-profile-card {
+    height: 420px;
+  }
+
+  .mm-review-card {
+    min-height: 370px;
+
+    grid-template-columns:
+      86px 1fr;
+  }
+
+  .mm-review-content {
+    padding:
+      27px 19px 23px;
+  }
+
+  .mm-review-content blockquote {
+    font-size: 18px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .mm-gold-wave-heading,
+  .mm-gold-wave-heading::after,
+  .mm-career-stage,
+  .mm-career-connector i,
+  .mm-skills-open__glow,
+  .mm-skills-orbit,
+  .mm-skills-core,
+  .mm-skill-float,
+  .mm-skill-particle,
+  .mm-sticky-note,
+  .mm-water-drop,
+  .mm-progress-liquid,
+  .mm-progress-flow span,
+  .mm-mini-jar,
+  .mm-jar-overflow,
+  .mm-falling-overflow,
+  .mm-overflow-puddle,
+  .mm-profile-card,
+  .mm-profile-pic,
+  .mm-profile-bottom,
+  .mm-profile-content,
+  .mm-profile-card::before,
+  .mm-profile-orbit {
+    animation: none !important;
+  }
+}
+
+/* =========================================================
+
+
+/* =========================================================
+   FINAL ABOUT PAGE OVERRIDES
+   Keep the approved heading/overview styling and use one
+   clean team-card implementation only.
+========================================================= */
+
+/* =========================================================
+   HEADING STYLE
+========================================================= */
+
+.mm-gold-wave-heading {
+  position: relative;
+  padding: 0.08em 0 0.12em;
+
+  color: var(--mm-heading-base) !important;
+  -webkit-text-fill-color: var(--mm-heading-base) !important;
+
+  background: none !important;
+  background-image: none !important;
+  background-size: auto !important;
+  background-position: initial !important;
+
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+
+  animation: none !important;
+}
+
+.mm-gold-wave-heading::after {
+  display: none !important;
+  content: none !important;
+}
+
+.mm-gold-wave-heading em {
+  display: inline-block !important;
+  padding: 0 0.03em 0.06em;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 400;
+
+  background:
+    linear-gradient(
+      105deg,
+      #9f52e5 0%,
+      #c56d7d 30%,
+      #dc8335 61%,
+      #ffc31d 100%
+    ) !important;
+
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+
+  animation: none !important;
+  text-decoration: none !important;
+}
+
+/* =========================================================
+   OVERVIEW — KEEP COPY SLIGHTLY RIGHT
+========================================================= */
+
+.mm-overview-layout {
+  grid-template-columns:
+    minmax(760px, 1.42fr)
+    515px;
+  gap: 32px;
+}
+
+.mm-overview-copy {
+  min-width: 0;
+  margin-left: 24px !important;
+  position: relative;
+  z-index: 9;
+}
+
+.mm-overview-title {
+  width: max-content;
+  max-width: 100%;
+  white-space: nowrap;
+
+  font-size:
+    clamp(
+      43px,
+      3.65vw,
+      64px
+    ) !important;
+
+  line-height: 1.12 !important;
+}
+
+.mm-overview-statement {
+  max-width: 710px;
+  margin-top: 34px;
+  margin-left: 0;
+  padding: 15px 18px;
+
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.72;
+}
+
+html[data-theme="dark"] .mm-overview-statement {
+  color: #eef4ff;
+}
+
+html[data-theme="light"] .mm-overview-statement {
+  color: #173b67;
+}
+
+/* =========================================================
+   TEAM GRID
+========================================================= */
+
+.mm-team-grid {
+  max-width: 1210px;
+  margin-inline: auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+}
+
+/* =========================================================
+   TEAM CARD
+   Uiverse-style full photo -> circular photo reveal
+   + moving gold border
+========================================================= */
+
+.mm-profile-card {
+  --mm-team-card-dark: #0b2d50;
+  --mm-team-panel-dark: #123f67;
+  --mm-team-card-light: #fffaf0;
+
+  height: 470px;
+  min-width: 0;
+
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  padding: 3px;
+  border: 0 !important;
+  border-radius: 32px;
+
+  perspective: none !important;
+  transform-style: flat !important;
+
+  animation: none !important;
+
+  transition:
+    transform 0.5s ease,
+    border-radius 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+html[data-theme="dark"] .mm-profile-card {
+  background: var(--mm-team-card-dark);
+  box-shadow: 0 42px 50px -38px rgba(0, 0, 0, 0.54);
+}
+
+html[data-theme="light"] .mm-profile-card {
+  background: var(--mm-team-card-light);
+  box-shadow: 0 42px 50px -38px rgba(74, 53, 91, 0.22);
+}
+
+/* continuous moving gold edge */
+.mm-profile-card::before {
+  content: "";
+
+  position: absolute;
+  width: 190%;
+  height: 190%;
+  left: -45%;
+  top: -45%;
+
+  z-index: 0;
+
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 258deg,
+      rgba(255, 211, 54, 0.08) 276deg,
+      #c98b00 291deg,
+      #ffca22 306deg,
+      #fff0a0 320deg,
+      #f7b900 333deg,
+      transparent 349deg,
+      transparent 360deg
+    );
+
+  animation:
+    mm-team-gold-border-spin
+    4.4s linear infinite !important;
+}
+
+.mm-profile-card::after {
+  content: "";
+
+  position: absolute;
+  inset: 2px;
+
+  z-index: 1;
+
+  pointer-events: none;
+  border-radius: 30px;
+}
+
+html[data-theme="dark"] .mm-profile-card::after {
+  background: var(--mm-team-card-dark);
+}
+
+html[data-theme="light"] .mm-profile-card::after {
+  background: var(--mm-team-card-light);
+}
+
+.mm-profile-card > * {
+  z-index: 2;
+}
+
+.mm-profile-mark {
+  position: absolute !important;
+  top: 19px;
+  right: 21px;
+
+  z-index: 11 !important;
+
+  color: var(--mm-gold);
+  font-size: 16px;
+
+  text-shadow:
+    0 0 14px
+    rgba(243, 189, 32, 0.48);
+}
+
+/* =========================================================
+   PROFILE PHOTO — FULL CARD AT REST
+========================================================= */
+
+.mm-profile-pic {
+  position: absolute !important;
+
+  width: calc(100% - 6px) !important;
+  height: calc(100% - 6px) !important;
+
+  top: 3px !important;
+  left: 3px !important;
+
+  z-index: 3 !important;
+
+  display: block;
+  overflow: hidden;
+
+  border: 0 solid var(--mm-gold) !important;
+  border-radius: 29px !important;
+
+  transform: none !important;
+  transform-style: flat !important;
+
+  animation: none !important;
+
+  transition:
+    all 0.5s ease-in-out 0.18s,
+    z-index 0.5s ease-in-out 0.1s !important;
+}
+
+.mm-profile-photo-wrap {
+  position: absolute !important;
+  inset: 0 !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  z-index: 4;
+
+  display: block;
+  overflow: hidden;
+
+  border: 0 !important;
+  border-radius: inherit !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffe476,
+      #dda704
+    );
+
+  box-shadow: none !important;
+}
+
+/* Only visible if the real photo fails */
+.mm-profile-fallback {
+  position: absolute !important;
+  inset: 0 !important;
+
+  z-index: 1 !important;
+
+  display: grid;
+  place-items: center;
+
+  color: #08294b;
+
+  font-size: 44px;
+  font-weight: 950;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffe476,
+      #dda704
+    );
+}
+
+.mm-profile-photo {
+  position: absolute !important;
+  inset: 0 !important;
+
+  z-index: 4 !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  display: block !important;
+
+  object-fit: cover !important;
+  object-position: center 20% !important;
+
+  border-radius: inherit !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  /* prevents ugly alt text from showing before onError hides a broken image */
+  color: transparent !important;
+  font-size: 0 !important;
+
+  transition:
+    transform 0.5s ease-in-out,
+    object-position 0.5s ease-in-out !important;
+}
+
+.mm-profile-orbit,
+.mm-profile-pic > small {
+  display: none !important;
+}
+
+/* =========================================================
+   BOTTOM NAME STRIP — RESTING STATE
+========================================================= */
+
+.mm-profile-bottom {
+  position: absolute !important;
+
+  top: 79% !important;
+  left: 3px !important;
+  right: 3px !important;
+  bottom: 3px !important;
+
+  z-index: 6 !important;
+
+  overflow: hidden !important;
+
+  border-radius: 29px !important;
+
+  transform: none !important;
+  transform-style: flat !important;
+  perspective: none !important;
+
+  animation: none !important;
+
+  transition:
+    all 0.5s
+    cubic-bezier(0.645, 0.045, 0.355, 1)
+    0s !important;
+}
+
+html[data-theme="dark"] .mm-profile-bottom {
+  color: #f8fbff;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(20, 70, 108, 0.985),
+      rgba(7, 34, 63, 0.99)
+    );
+
+  box-shadow:
+    inset
+    0 5px 8px
+    rgba(2, 19, 37, 0.22);
+}
+
+html[data-theme="light"] .mm-profile-bottom {
+  color: #17365d;
+
+  background:
+    linear-gradient(
+      145deg,
+      #eadcff 0%,
+      #f7e9d8 58%,
+      #ffe590 100%
+    );
+
+  box-shadow:
+    inset
+    0 5px 8px
+    rgba(90, 67, 107, 0.08);
+}
+
+/* Role/name/bio are hidden while the card is closed */
+.mm-profile-content {
+  position: absolute !important;
+
+  top: 74px !important;
+  left: 32px !important;
+  right: 30px !important;
+  bottom: auto !important;
+
+  height: auto !important;
+  padding: 0 !important;
+
+  display: block !important;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateY(20px) !important;
+  transform-style: flat !important;
+
+  animation: none !important;
+
+  transition:
+    opacity 0.28s ease,
+    visibility 0.28s ease,
+    transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+.mm-profile-bottom-row {
+  position: absolute !important;
+
+  left: 26px !important;
+  right: 21px !important;
+  bottom: 17px !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+
+  padding-top: 12px;
+
+  border-top:
+    1px solid
+    rgba(226, 181, 40, 0.30);
+
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease,
+    transform 0.3s ease !important;
+}
+
+.mm-profile-bottom-row > span:first-child {
+  max-width: calc(100% - 48px);
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  font-size: 17px !important;
+  line-height: 1.1;
+
+  font-weight: 950 !important;
+  letter-spacing: -0.025em !important;
+}
+
+.mm-profile-arrow {
+  width: 32px;
+  height: 32px;
+
+  flex: 0 0 32px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  color: #082546;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffe77a,
+      #e3aa00
+    );
+}
+
+/* =========================================================
+   HOVER REVEAL
+========================================================= */
+
+.mm-profile-card:hover {
+  border-top-left-radius: 55px;
+
+  transform:
+    translateY(-8px)
+    scale(1.012) !important;
+
+  box-shadow:
+    0 60px 58px -44px
+    rgba(0, 0, 0, 0.44);
+}
+
+.mm-profile-card:hover .mm-profile-bottom {
+  top: 17% !important;
+
+  border-radius:
+    82px 29px 29px 29px !important;
+
+  transition:
+    all 0.5s
+    cubic-bezier(0.645, 0.045, 0.355, 1)
+    0.15s !important;
+}
+
+.mm-profile-card:hover .mm-profile-pic {
+  width: 116px !important;
+  height: 116px !important;
+
+  aspect-ratio: 1;
+
+  top: 10px !important;
+  left: 10px !important;
+
+  z-index: 9 !important;
+
+  border:
+    7px solid
+    var(--mm-gold) !important;
+
+  border-radius: 50% !important;
+
+  box-shadow:
+    0 11px 26px
+    rgba(0, 0, 0, 0.26);
+}
+
+.mm-profile-card:hover .mm-profile-photo-wrap,
+.mm-profile-card:hover .mm-profile-photo {
+  border-radius: 50% !important;
+}
+
+.mm-profile-card:hover .mm-profile-photo {
+  transform: scale(1.05) !important;
+  object-position: center 16% !important;
+}
+
+.mm-profile-card:hover .mm-profile-content {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transform: translateY(0) !important;
+
+  transition-delay: 0.22s !important;
+}
+
+.mm-profile-card:hover .mm-profile-bottom-row {
+  opacity: 0;
+  visibility: hidden;
+
+  transform:
+    translateY(8px) !important;
+}
+
+/* =========================================================
+   REVEALED TEAM COPY
+========================================================= */
+
+.mm-profile-role {
+  display: block !important;
+
+  margin: 0;
+
+  color: var(--mm-gold);
+
+  font-size: 10px !important;
+  line-height: 1.2;
+
+  font-weight: 950 !important;
+  letter-spacing: 0.15em !important;
+
+  text-transform: uppercase;
+
+  transform: none !important;
+}
+
+.mm-profile-name {
+  display: block !important;
+
+  margin:
+    11px 0 0 !important;
+
+  font-size:
+    clamp(
+      29px,
+      2vw,
+      35px
+    ) !important;
+
+  line-height: 1.03 !important;
+
+  font-weight: 950 !important;
+  letter-spacing: -0.045em !important;
+
+  transform: none !important;
+}
+
+.mm-profile-about {
+  display: block !important;
+
+  max-width: 315px;
+
+  margin:
+    17px 0 0 !important;
+
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+
+  font-weight: 600 !important;
+
+  opacity: 0.94 !important;
+
+  transform: none !important;
+}
+
+html[data-theme="dark"] .mm-profile-name {
+  color: #fffaf0;
+}
+
+html[data-theme="dark"] .mm-profile-about {
+  color: #e7f1fc;
+}
+
+html[data-theme="light"] .mm-profile-name {
+  color: #12345d;
+}
+
+html[data-theme="light"] .mm-profile-about {
+  color: #2f506f;
+}
+
+/* no second photo morph */
+.mm-profile-card:hover .mm-profile-pic:hover {
+  transform: none !important;
+  border-radius: 50% !important;
+}
+
+.mm-profile-card:hover .mm-profile-pic:hover .mm-profile-photo-wrap,
+.mm-profile-card:hover .mm-profile-pic:hover .mm-profile-photo {
+  border-radius: 50% !important;
+}
+
+/* =========================================================
+   TEAM RESPONSIVE
+========================================================= */
+
+@media (max-width: 1150px) {
+  .mm-overview-copy {
+    margin-left: 0 !important;
+    text-align: center;
+  }
+
+  .mm-overview-title {
+    width: auto;
+    white-space: normal;
+  }
+
+  .mm-overview-statement {
+    margin-inline: auto;
+  }
+
+  .mm-team-grid {
+    max-width: 650px;
+    grid-template-columns: 1fr;
+  }
+
+  .mm-profile-card {
+    height: 470px;
+  }
+}
+
+@media (max-width: 720px) {
+  .mm-overview-copy {
+    margin-left: 0 !important;
+  }
+
+  .mm-overview-title {
+    white-space: normal;
+  }
+
+  .mm-profile-card {
+    height: 440px;
+  }
+
+  .mm-profile-content {
+    top: 70px !important;
+    left: 27px !important;
+    right: 24px !important;
+  }
+
+  .mm-profile-name {
+    font-size: 28px !important;
+  }
+
+  .mm-profile-about {
+    font-size: 13.25px !important;
+    line-height: 1.62 !important;
+  }
+
+  .mm-profile-bottom-row > span:first-child {
+    font-size: 15.5px !important;
+  }
+}
+
+@keyframes mm-team-gold-border-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .mm-profile-card::before {
+    animation: none !important;
+    transform: rotate(315deg);
+  }
+
+  .mm-profile-card,
+  .mm-profile-pic,
+  .mm-profile-bottom,
+  .mm-profile-photo,
+  .mm-profile-arrow {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =========================================================
+   TEAM CARD FINAL FIX — CENTERED HOVER + RELIABLE PHOTOS
+   Only overrides the team section. Nothing else is changed.
+========================================================= */
+
+.mm-team-heading {
+  max-width: 1180px;
+  margin: 0 auto 44px;
+}
+
+.mm-team-intro {
+  max-width: 980px;
+  margin: 28px auto 0;
+  padding: 15px 30px;
+  font-size: 17px;
+  font-weight: 760;
+  line-height: 1.72;
+}
+
+.mm-team-grid {
+  max-width: 1240px !important;
+  margin-inline: auto !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 30px !important;
+}
+
+.mm-profile-card {
+  --mm-team-card-dark: #0b2d50;
+  --mm-team-panel-dark: #0e395f;
+  --mm-team-card-light: #fffaf0;
+
+  height: 500px !important;
+  min-width: 0;
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate;
+  padding: 3px !important;
+  border: 0 !important;
+  border-radius: 32px !important;
+  perspective: none !important;
+  transform-style: flat !important;
+  animation: none !important;
+  transition:
+    transform 0.45s ease,
+    border-radius 0.45s ease,
+    box-shadow 0.45s ease !important;
+}
+
+html[data-theme="dark"] .mm-profile-card {
+  background: var(--mm-team-card-dark) !important;
+  box-shadow: 0 42px 54px -38px rgba(0, 0, 0, 0.52) !important;
+}
+
+html[data-theme="light"] .mm-profile-card {
+  background: var(--mm-team-card-light) !important;
+  box-shadow: 0 42px 54px -38px rgba(74, 53, 91, 0.20) !important;
+}
+
+/* moving gold border */
+.mm-profile-card::before {
+  content: "" !important;
+  position: absolute !important;
+  width: 190% !important;
+  height: 190% !important;
+  left: -45% !important;
+  top: -45% !important;
+  z-index: 0 !important;
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 258deg,
+      rgba(255, 211, 54, 0.08) 276deg,
+      #c98b00 291deg,
+      #ffca22 306deg,
+      #fff0a0 320deg,
+      #f7b900 333deg,
+      transparent 349deg,
+      transparent 360deg
+    ) !important;
+  animation: mm-team-gold-border-spin 4.4s linear infinite !important;
+}
+
+.mm-profile-card::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 2px !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  border-radius: 30px !important;
+}
+
+html[data-theme="dark"] .mm-profile-card::after {
+  background: var(--mm-team-card-dark) !important;
+}
+
+html[data-theme="light"] .mm-profile-card::after {
+  background: var(--mm-team-card-light) !important;
+}
+
+.mm-profile-card > * {
+  z-index: 2;
+}
+
+.mm-profile-mark {
+  position: absolute !important;
+  top: 18px !important;
+  right: 20px !important;
+  z-index: 12 !important;
+  color: var(--mm-gold) !important;
+  font-size: 16px !important;
+}
+
+/* ---------------------------------------------------------
+   PHOTO
+   Use background-image instead of <img>; this avoids the
+   broken-image icon while still using /public/team files.
+--------------------------------------------------------- */
+
+.mm-profile-pic {
+  position: absolute !important;
+  width: calc(100% - 6px) !important;
+  height: calc(100% - 6px) !important;
+  top: 3px !important;
+  left: 3px !important;
+  z-index: 3 !important;
+  display: block !important;
+  overflow: hidden !important;
+  border: 0 solid var(--mm-gold) !important;
+  border-radius: 29px !important;
+  transform: none !important;
+  animation: none !important;
+  transition:
+    width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+    height 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+    top 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+    left 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-radius 0.5s ease,
+    border-width 0.5s ease,
+    box-shadow 0.5s ease !important;
+}
+
+.mm-profile-photo-wrap {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  border-radius: inherit !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.mm-profile-fallback {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  display: grid !important;
+  place-items: center !important;
+  color: #08294b !important;
+  font-size: 44px !important;
+  font-weight: 950 !important;
+  background: linear-gradient(135deg, #ffe476, #dda704) !important;
+}
+
+.mm-profile-photo {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 4 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  border-radius: inherit !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center 18% !important;
+  transform: scale(1.001) !important;
+  transition:
+    transform 0.5s ease,
+    background-position 0.5s ease !important;
+}
+
+.mm-profile-orbit,
+.mm-profile-pic > small {
+  display: none !important;
+}
+
+/* ---------------------------------------------------------
+   RESTING NAME STRIP
+--------------------------------------------------------- */
+
+.mm-profile-bottom {
+  position: absolute !important;
+  top: 80% !important;
+  left: 3px !important;
+  right: 3px !important;
+  bottom: 3px !important;
+  z-index: 6 !important;
+  overflow: hidden !important;
+  border-radius: 29px !important;
+  transform: none !important;
+  animation: none !important;
+  transition:
+    top 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-radius 0.5s ease,
+    box-shadow 0.5s ease !important;
+}
+
+html[data-theme="dark"] .mm-profile-bottom {
+  color: #f8fbff !important;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(20, 70, 108, 0.985),
+      rgba(7, 34, 63, 0.99)
+    ) !important;
+  box-shadow: inset 0 5px 8px rgba(2, 19, 37, 0.22) !important;
+}
+
+html[data-theme="light"] .mm-profile-bottom {
+  color: #17365d !important;
+  background:
+    linear-gradient(
+      145deg,
+      #eadcff 0%,
+      #f7e9d8 58%,
+      #ffe590 100%
+    ) !important;
+}
+
+.mm-profile-bottom-row {
+  position: absolute !important;
+  left: 26px !important;
+  right: 22px !important;
+  bottom: 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 14px !important;
+  padding-top: 12px !important;
+  border-top: 1px solid rgba(226, 181, 40, 0.30) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+  transition: opacity 0.24s ease, transform 0.32s ease !important;
+}
+
+.mm-profile-bottom-row > span:first-child {
+  max-width: calc(100% - 50px) !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  font-size: 18px !important;
+  line-height: 1.1 !important;
+  font-weight: 950 !important;
+  letter-spacing: -0.025em !important;
+}
+
+.mm-profile-arrow {
+  width: 32px !important;
+  height: 32px !important;
+  flex: 0 0 32px !important;
+  display: grid !important;
+  place-items: center !important;
+  border-radius: 50% !important;
+  color: #082546 !important;
+  background: linear-gradient(135deg, #ffe77a, #e3aa00) !important;
+}
+
+/* ---------------------------------------------------------
+   HOVER: photo becomes centered portrait, not a left panel
+--------------------------------------------------------- */
+
+.mm-profile-card:hover {
+  border-radius: 36px !important;
+  transform: translateY(-8px) scale(1.012) !important;
+  box-shadow: 0 58px 58px -43px rgba(0, 0, 0, 0.42) !important;
+}
+
+.mm-profile-card:hover .mm-profile-pic {
+  width: 132px !important;
+  height: 132px !important;
+  top: 18px !important;
+  left: calc(50% - 66px) !important;
+  z-index: 9 !important;
+  border: 6px solid var(--mm-gold) !important;
+  border-radius: 50% !important;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28) !important;
+}
+
+.mm-profile-card:hover .mm-profile-photo-wrap,
+.mm-profile-card:hover .mm-profile-photo {
+  border-radius: 50% !important;
+}
+
+.mm-profile-card:hover .mm-profile-photo {
+  transform: scale(1.06) !important;
+  background-position: center 15% !important;
+}
+
+.mm-profile-card:hover .mm-profile-bottom {
+  top: 27% !important;
+  border-radius: 72px 72px 29px 29px !important;
+  box-shadow: inset 0 7px 18px rgba(255, 255, 255, 0.025) !important;
+}
+
+.mm-profile-content {
+  position: absolute !important;
+  top: 86px !important;
+  left: 31px !important;
+  right: 31px !important;
+  bottom: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  display: block !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(18px) !important;
+  animation: none !important;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    transform 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+.mm-profile-card:hover .mm-profile-content {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+  transition-delay: 0.18s !important;
+}
+
+.mm-profile-card:hover .mm-profile-bottom-row {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(10px) !important;
+}
+
+.mm-profile-role {
+  display: block !important;
+  margin: 0 !important;
+  color: var(--mm-gold) !important;
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+  font-weight: 950 !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  transform: none !important;
+}
+
+.mm-profile-name {
+  display: block !important;
+  margin: 10px 0 0 !important;
+  font-size: clamp(29px, 2vw, 35px) !important;
+  line-height: 1.04 !important;
+  font-weight: 950 !important;
+  letter-spacing: -0.045em !important;
+  text-align: center !important;
+  transform: none !important;
+}
+
+.mm-profile-about {
+  display: block !important;
+  max-width: 330px !important;
+  margin: 18px auto 0 !important;
+  font-size: 14.2px !important;
+  line-height: 1.72 !important;
+  font-weight: 600 !important;
+  text-align: left !important;
+  opacity: 0.95 !important;
+  transform: none !important;
+}
+
+html[data-theme="dark"] .mm-profile-name {
+  color: #fffaf0 !important;
+}
+
+html[data-theme="dark"] .mm-profile-about {
+  color: #e7f1fc !important;
+}
+
+html[data-theme="light"] .mm-profile-name {
+  color: #12345d !important;
+}
+
+html[data-theme="light"] .mm-profile-about {
+  color: #2f506f !important;
+}
+
+/* Do not create a second morph when hovering the small portrait */
+.mm-profile-card:hover .mm-profile-pic:hover {
+  transform: none !important;
+  border-radius: 50% !important;
+}
+
+@media (max-width: 1150px) {
+  .mm-team-grid {
+    max-width: 650px !important;
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .mm-profile-card {
+    height: 490px !important;
+  }
+
+  .mm-profile-card:hover .mm-profile-pic {
+    width: 116px !important;
+    height: 116px !important;
+    left: calc(50% - 58px) !important;
+  }
+
+  .mm-profile-content {
+    top: 78px !important;
+    left: 25px !important;
+    right: 25px !important;
+  }
+
+  .mm-profile-about {
+    font-size: 13.4px !important;
+    line-height: 1.65 !important;
+  }
+}
+
+/* =========================================================
+   TEAM CARD SPACING + RESTING ROLE FIX
+   Final team-only override. No other About sections changed.
+========================================================= */
+
+/* Resting strip: show ROLE above the member NAME clearly. */
+.mm-profile-bottom-row {
+  left: 26px !important;
+  right: 22px !important;
+  bottom: 14px !important;
+  min-height: 66px !important;
+  padding-top: 11px !important;
+  align-items: flex-end !important;
+}
+
+.mm-profile-bottom-identity {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.mm-profile-bottom-identity small {
+  display: block;
+  color: var(--mm-gold) !important;
+  font-size: 9px !important;
+  line-height: 1 !important;
+  font-weight: 950 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  white-space: nowrap;
+}
+
+.mm-profile-bottom-identity strong {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 18px !important;
+  line-height: 1.08 !important;
+  font-weight: 950 !important;
+  letter-spacing: -0.025em !important;
+}
+
+html[data-theme="dark"] .mm-profile-bottom-identity strong {
+  color: #f8fbff !important;
+}
+
+html[data-theme="light"] .mm-profile-bottom-identity strong {
+  color: #17365d !important;
+}
+
+/* The old direct-child name rule is no longer used with the new TSX. */
+.mm-profile-bottom-row > span:first-child {
+  max-width: none !important;
+  overflow: visible !important;
+  white-space: normal !important;
+}
+
+/* Hover panel starts slightly higher so the content has more room. */
+.mm-profile-card:hover .mm-profile-bottom {
+  top: 25% !important;
+  border-radius: 72px 72px 29px 29px !important;
+}
+
+/* Move role, name and bio upward. This removes the large empty gap
+   between the circular portrait and the member information. */
+.mm-profile-content {
+  top: 44px !important;
+  left: 31px !important;
+  right: 31px !important;
+}
+
+.mm-profile-role {
+  margin: 0 !important;
+  font-size: 10px !important;
+  line-height: 1.15 !important;
+}
+
+.mm-profile-name {
+  margin-top: 8px !important;
+  font-size: clamp(29px, 2vw, 35px) !important;
+  line-height: 1.02 !important;
+}
+
+.mm-profile-about {
+  max-width: 335px !important;
+  margin-top: 13px !important;
+  font-size: 14px !important;
+  line-height: 1.62 !important;
+  font-weight: 600 !important;
+}
+
+/* Keep the portrait centered exactly as it is now. */
+.mm-profile-card:hover .mm-profile-pic {
+  top: 16px !important;
+}
+
+@media (max-width: 720px) {
+  .mm-profile-bottom-row {
+    left: 22px !important;
+    right: 20px !important;
+    min-height: 62px !important;
+  }
+
+  .mm-profile-bottom-identity small {
+    font-size: 8px !important;
+  }
+
+  .mm-profile-bottom-identity strong {
+    font-size: 16px !important;
+  }
+
+  .mm-profile-content {
+    top: 40px !important;
+    left: 25px !important;
+    right: 25px !important;
+  }
+
+  .mm-profile-about {
+    margin-top: 12px !important;
+    font-size: 13.2px !important;
+    line-height: 1.58 !important;
+  }
+}
+
+
+/* =========================================================
+   FINAL TEAM BOTTOM STRIP ALIGNMENT
+   Desired layout:
+   CO-FOUNDER
+   ------------------------------
+   Talluri Jayanth              ↗
+
+   Team cards only. No other About-page styles changed.
+========================================================= */
+
+.mm-profile-bottom-row {
+  position: absolute !important;
+
+  left: 26px !important;
+  right: 22px !important;
+  bottom: 14px !important;
+
+  min-height: 74px !important;
+
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 34px !important;
+  column-gap: 14px !important;
+
+  align-items: end !important;
+
+  padding: 0 !important;
+
+  /* remove the old line that was appearing above / through the role */
+  border-top: 0 !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+
+  transition:
+    opacity 0.24s ease,
+    visibility 0.24s ease,
+    transform 0.32s ease !important;
+}
+
+
+/* =========================================================
+   ROLE + DIVIDER + NAME
+========================================================= */
+
+.mm-profile-bottom-identity {
+  min-width: 0 !important;
+  width: 100% !important;
+
+  display: grid !important;
+  grid-template-rows: auto 1px auto !important;
+  row-gap: 8px !important;
+
+  align-self: end !important;
+}
+
+
+/* ROLE — above the divider */
+
+.mm-profile-bottom-identity small {
+  grid-row: 1 !important;
+
+  display: block !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: var(--mm-gold) !important;
+
+  font-size: 9px !important;
+  line-height: 1 !important;
+
+  font-weight: 950 !important;
+
+  letter-spacing: 0.14em !important;
+
+  text-transform: uppercase !important;
+
+  white-space: nowrap !important;
+}
+
+
+/* DIVIDER — between role and name */
+
+.mm-profile-bottom-identity::after {
+  content: "";
+
+  grid-row: 2 !important;
+
+  display: block;
+
+  width: 100%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(243, 189, 32, 0.62) 0%,
+      rgba(243, 189, 32, 0.30) 55%,
+      rgba(243, 189, 32, 0.08) 100%
+    );
+}
+
+
+/* NAME — below the divider */
+
+.mm-profile-bottom-identity strong {
+  grid-row: 3 !important;
+
+  display: block !important;
+
+  max-width: 100% !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+
+  font-size: 18px !important;
+  line-height: 1.08 !important;
+
+  font-weight: 950 !important;
+
+  letter-spacing: -0.025em !important;
+}
+
+
+html[data-theme="dark"]
+.mm-profile-bottom-identity strong {
+  color: #f8fbff !important;
+}
+
+
+html[data-theme="light"]
+.mm-profile-bottom-identity strong {
+  color: #17365d !important;
+}
+
+
+/* =========================================================
+   ARROW — align with the NAME row
+========================================================= */
+
+.mm-profile-arrow {
+  grid-column: 2 !important;
+
+  align-self: end !important;
+  justify-self: end !important;
+
+  width: 32px !important;
+  height: 32px !important;
+
+  margin: 0 !important;
+
+  flex: none !important;
+
+  display: grid !important;
+  place-items: center !important;
+
+  border-radius: 50% !important;
+
+  color: #082546 !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffe77a,
+      #e3aa00
+    ) !important;
+}
+
+
+/* old direct-child name rule is not used by the current team JSX */
+
+.mm-profile-bottom-row > span:first-child {
+  max-width: none !important;
+
+  overflow: visible !important;
+
+  text-overflow: clip !important;
+
+  white-space: normal !important;
+}
+
+
+/* =========================================================
+   KEEP CURRENT HOVER BEHAVIOUR UNCHANGED
+========================================================= */
+
+.mm-profile-card:hover
+.mm-profile-bottom-row {
+  opacity: 0 !important;
+
+  visibility: hidden !important;
+
+  transform:
+    translateY(10px) !important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 720px) {
+  .mm-profile-bottom-row {
+    left: 22px !important;
+    right: 20px !important;
+    bottom: 13px !important;
+
+    min-height: 70px !important;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      32px !important;
+
+    column-gap: 12px !important;
+  }
+
+  .mm-profile-bottom-identity {
+    row-gap: 7px !important;
+  }
+
+  .mm-profile-bottom-identity small {
+    font-size: 8px !important;
+  }
+
+  .mm-profile-bottom-identity strong {
+    font-size: 16px !important;
+  }
+
+  .mm-profile-arrow {
+    width: 30px !important;
+    height: 30px !important;
+  }
+}
+

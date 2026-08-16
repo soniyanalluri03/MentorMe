@@ -252,7 +252,7 @@ export default function CareerTracksAndCTA() {
             strokeWidth={1.5}
           />
         </div>
-
+{/* 
         <span className={styles.ctaEyebrow}>
           Your first five levels are free
         </span>
@@ -281,16 +281,37 @@ export default function CareerTracksAndCTA() {
           Choose the Frontend Engineer track and
           begin building measurable progress from
           your very first level
-        </p>
+        </p> */}
+<header className="hj-first-five-heading pt-10">
+          <div className={styles.kicker}>
+            <Sparkles size={15} />
+            Your first five levels are free
+          </div>
+          <h2>
+             A career goal becomes real
+            <br />
 
+            <span className="hj-heading-wave text-4xl xl:text-6xl">
+              when the next step is
+            </span>{" "}
+
+            <em className="text-4xl xl:text-6xl"> visible</em>
+          </h2>
+          <span>
+            Choose the Frontend Engineer track and
+          begin building measurable progress from
+          your very first level
+          </span>
+        </header>
         <Link
-          className="navbar-sign-in"
+          className="navbar-sign-in mt-10"
           href="/signup"
         >
           Start your journey
           <ArrowRight size={18} />
         </Link>
       </section>
+      
     </>
   );
 }

@@ -1,119 +1,270 @@
 "use client";
 
-import type { CSSProperties } from "react";
+import type {
+  CSSProperties,
+} from "react";
 
 import styles from "./LevelCard.module.css";
+
 import {
   getCheckpoint,
   type RoadmapCheckpoint,
 } from "./roadmapData";
+
 import {
   formatLevel,
   type TrackNode,
 } from "./roadmapMapConfig";
-import { CheckpointIcon } from "./RoadmapUI";
+
+import {
+  CheckpointIcon,
+} from "./RoadmapUI";
+
 
 interface LevelCardProps {
-  node: TrackNode;
-  selected: boolean;
-  index: number;
-  onSelect: (checkpoint: RoadmapCheckpoint) => void;
+  node:
+    TrackNode;
+
+  selected:
+    boolean;
+
+  index:
+    number;
+
+  variant:
+    | "purple"
+    | "gold";
+
+  onSelect: (
+    checkpoint:
+      RoadmapCheckpoint,
+  ) => void;
 }
+
 
 export default function LevelCard({
   node,
   selected,
   index,
+  variant,
   onSelect,
 }: LevelCardProps) {
-  const checkpoint = getCheckpoint(node.level);
+  const checkpoint =
+    getCheckpoint(
+      node.level,
+    );
+
+
+  /* =======================================================
+     KEEP EXPANDED CARD INSIDE MAP
+     ======================================================= */
 
   const shiftX =
     node.x < 190
-      ? "92px"
+      ? "108px"
       : node.x > 810
-        ? "-92px"
+        ? "-108px"
         : "0px";
+
 
   const shiftY =
-    node.y < 190
-      ? "112px"
-      : node.y > 850
-        ? "-105px"
+    node.y < 300
+      ? "108px"
+      : node.y > 760
+        ? "-112px"
         : "0px";
 
+
   const nodeStyle = {
-    "--node-x": `${node.x / 10}%`,
-    "--node-y": `${node.y / 10}%`,
-    "--node-delay": `${index * 0.08}s`,
-    "--expand-x": shiftX,
-    "--expand-y": shiftY,
+    "--node-x":
+      `${node.x / 10}%`,
+
+    "--node-y":
+      `${node.y / 10}%`,
+
+    "--node-delay":
+      `${index * 0.08}s`,
+
+    "--expand-x":
+      shiftX,
+
+    "--expand-y":
+      shiftY,
   } as CSSProperties;
+
 
   return (
     <div
       className={[
         styles.nodeSlot,
-        checkpoint.free ? styles.freeNode : "",
-        checkpoint.milestone ? styles.milestoneNode : "",
-        selected ? styles.selectedNode : "",
+
+        checkpoint.free
+          ? styles.freeNode
+          : "",
+
+        checkpoint.milestone
+          ? styles.milestoneNode
+          : "",
+
+        variant === "purple"
+          ? styles.purpleVariant
+          : styles.goldVariant,
+
+        selected
+          ? styles.selectedNode
+          : "",
       ]
         .filter(Boolean)
         .join(" ")}
-      style={nodeStyle}
+      style={
+        nodeStyle
+      }
     >
       <button
         type="button"
-        className={styles.levelCard}
-        aria-label={`Level ${checkpoint.level}: ${checkpoint.title}`}
-        aria-pressed={selected}
-        onMouseEnter={() => onSelect(checkpoint)}
-        onFocus={() => onSelect(checkpoint)}
-        onClick={() => onSelect(checkpoint)}
+        className={
+          styles.levelCard
+        }
+        aria-label={
+          `Level ${checkpoint.level}: ${checkpoint.title}`
+        }
+        aria-pressed={
+          selected
+        }
+        onMouseEnter={() =>
+          onSelect(
+            checkpoint,
+          )
+        }
+        onFocus={() =>
+          onSelect(
+            checkpoint,
+          )
+        }
+        onClick={() =>
+          onSelect(
+            checkpoint,
+          )
+        }
       >
-        <span className={styles.nodeFace}>
-          <strong>{formatLevel(checkpoint.level)}</strong>
+        {/* ===============================================
+            CLOSED CIRCLE
 
-          {checkpoint.free && <small>FREE</small>}
+            Top checkpoint icon removed.
+            =============================================== */}
 
-          {checkpoint.milestone && (
-            <i>
-              <CheckpointIcon type={checkpoint.type} />
-            </i>
+        <span
+          className={
+            styles.nodeFace
+          }
+        >
+          <strong>
+            {formatLevel(
+              checkpoint.level,
+            )}
+          </strong>
+
+          {checkpoint.free && (
+            <small>
+              FREE
+            </small>
           )}
         </span>
 
-        <span className={styles.levelReveal}>
-          <span className={styles.revealLabel}>
-            {checkpoint.label}
-          </span>
 
-          <span className={styles.revealHeading}>
-            <i>
-              <CheckpointIcon type={checkpoint.type} />
-            </i>
+        {/* ===============================================
+            EXPANDED CARD
+            =============================================== */}
 
-            <span>
-              <small>
-                LEVEL {formatLevel(checkpoint.level)}
-              </small>
+        <span
+          className={
+            styles.levelReveal
+          }
+        >
+          <span
+            className={
+              styles.revealTop
+            }
+          >
+            <span
+              className={
+                styles.revealLabel
+              }
+            >
+              {
+                checkpoint.label
+              }
+            </span>
 
-              <strong>{checkpoint.title}</strong>
+            <span
+              className={
+                styles.revealLevel
+              }
+            >
+              LEVEL{" "}
+              {formatLevel(
+                checkpoint.level,
+              )}
             </span>
           </span>
 
-          <span className={styles.revealDescription}>
-            {checkpoint.description}
+
+          <span
+            className={
+              styles.revealHeading
+            }
+          >
+            {/* Icon stays in expanded card */}
+
+            <i>
+              <CheckpointIcon
+                type={
+                  checkpoint.type
+                }
+              />
+            </i>
+
+            <strong>
+              {
+                checkpoint.title
+              }
+            </strong>
           </span>
 
-          <span className={styles.revealOutcome}>
-            <strong>WHAT YOU ACHIEVE</strong>
-            <span>{checkpoint.outcome}</span>
+
+          <span
+            className={
+              styles.revealDescription
+            }
+          >
+            {
+              checkpoint.description
+            }
           </span>
 
-          <span className={styles.revealAction}>
-            Selected in journey panel
-            <b>→</b>
+
+          <span
+            className={
+              styles.revealOutcome
+            }
+          >
+            <span
+              className={
+                styles.outcomeTitle
+              }
+            >
+              WHAT YOU ACHIEVE
+            </span>
+
+            <span
+              className={
+                styles.outcomeCopy
+              }
+            >
+              {
+                checkpoint.outcome
+              }
+            </span>
           </span>
         </span>
       </button>

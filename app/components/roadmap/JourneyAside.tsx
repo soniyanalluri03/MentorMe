@@ -29,9 +29,7 @@ export default function JourneyAside({
         </span>
 
         <h2>
-          Learn.
-          <em>Build.</em>
-          Prove.
+          Learn. <em>Build.</em> Prove.
         </h2>
 
         <div className={styles.levelCylinder}>

@@ -1,322 +1,1774 @@
+/* =========================================================
+   LEVEL CARD — THEME COLORS
+
+   CHANGE COLORS ONLY HERE LATER.
+   You normally do not need to touch the CSS below.
+   ========================================================= */
+
+.nodeSlot {
+  /* -------------------------------------------------------
+     PURPLE + CREAM LEVEL
+     ------------------------------------------------------- */
+
+  --level-purple-light: #eadbff;
+  --level-purple-soft: #c9a7f2;
+  --level-purple-mid: #a976df;
+  --level-purple-deep: #8553c4;
+  --level-purple-dark: #60339b;
+
+  --level-purple-bottom: #59308b;
+
+  --level-purple-border:
+    rgba(226, 208, 255, 0.92);
+
+  --level-purple-glow:
+    rgba(177, 134, 231, 0.2);
+
+  --level-purple-shadow:
+    rgba(76, 48, 108, 0.24);
+
+
+  /* -------------------------------------------------------
+     CREAM SHINE
+     ------------------------------------------------------- */
+
+  --level-cream: #fffaf0;
+  --level-cream-soft: #fff1cc;
+
+  --level-white: #ffffff;
+
+
+  /* -------------------------------------------------------
+     GOLD LEVEL
+     ------------------------------------------------------- */
+
+  --level-gold-light: #fff1a4;
+  --level-gold-soft: #f4d35c;
+  --level-gold-mid: #e4b321;
+  --level-gold-deep: #c68e08;
+  --level-gold-dark: #a16800;
+
+  --level-gold-bottom: #855800;
+
+  --level-gold-border:
+    rgba(255, 237, 151, 0.95);
+
+  --level-gold-glow:
+    rgba(212, 175, 55, 0.17);
+
+  --level-gold-shadow:
+    rgba(82, 58, 4, 0.27);
+
+
+  /* -------------------------------------------------------
+     CLOSED LEVEL TEXT
+     ------------------------------------------------------- */
+
+  --level-purple-text: #ffffff;
+  --level-gold-text: #10233b;
+
+
+  /* -------------------------------------------------------
+     EXPANDED CARD — DARK MODE
+     ------------------------------------------------------- */
+
+  --card-dark-1: #17304f;
+  --card-dark-2: #0d2138;
+  --card-dark-3: #071725;
+
+  --card-dark-text: #f7f9fd;
+  --card-dark-heading: #f4f7fb;
+  --card-dark-muted: #a2b0c2;
+
+  --card-dark-border:
+    rgba(255, 239, 167, 0.4);
+
+  --card-dark-shadow:
+    rgba(0, 0, 0, 0.44);
+
+
+  /* -------------------------------------------------------
+     EXPANDED CARD — LIGHT MODE
+     ------------------------------------------------------- */
+
+  --card-light-purple: #eee3fb;
+  --card-light-base: #fbf7ff;
+  --card-light-cream: #fff8e8;
+  --card-light-gold: #f5ead4;
+
+  --card-light-heading: #202a3d;
+  --card-light-text: #263044;
+  --card-light-muted: #667085;
+
+  --card-light-border:
+    rgba(166, 119, 19, 0.32);
+
+
+  /* -------------------------------------------------------
+     COMMON GOLD ACCENTS
+     ------------------------------------------------------- */
+
+  --accent-gold: #d4af37;
+  --accent-gold-light: #f4df83;
+  --accent-gold-text: #d9ba4d;
+
+  --accent-gold-dark: #8e6810;
+
+
+  /* -------------------------------------------------------
+     NODE POSITION VARIABLES
+     ------------------------------------------------------- */
+
+  --node-delay: 0s;
+  --expand-x: 0px;
+  --expand-y: 0px;
+
+
+  /* -------------------------------------------------------
+     POSITION
+     ------------------------------------------------------- */
+
+  position: absolute;
+
+  top: var(--node-y);
+  left: var(--node-x);
+
+  z-index: 10;
+
+  width: 86px;
+  height: 86px;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  animation: none;
+}
+
+
 .freeNode {
   --free-node: 1;
 }
 
-.nodeSlot {
-  --node-delay: 0s;
-  --expand-x: 0px;
-  --expand-y: 0px;
-  position: absolute;
-  top: var(--node-y);
-  left: var(--node-x);
-  z-index: 10;
-  width: 82px;
-  height: 82px;
-  transform: translate(-50%, -50%);
-  animation: nodeFloat 3.4s ease-in-out infinite var(--node-delay);
-}
+
+/* =========================================================
+   NODE SLOT HOVER
+   ========================================================= */
 
 .nodeSlot:hover,
 .nodeSlot:focus-within {
-  z-index: 150;
-  animation-play-state: paused;
+  z-index: 300;
 }
+
+
+/* =========================================================
+   BASE LEVEL CARD
+   ========================================================= */
 
 .levelCard {
   position: absolute;
+
   top: 50%;
   left: 50%;
+
+  isolation: isolate;
+
   display: block;
-  width: 72px;
-  height: 72px;
+
+  width: 80px;
+  height: 80px;
+
   overflow: hidden;
+
   padding: 0;
+
   cursor: pointer;
-  color: #ffffff;
-  border: 1px solid rgba(76, 43, 143, 0.76);
+
+  color:
+    var(--level-purple-text);
+
+  border:
+    1px solid
+    transparent;
+
   border-radius: 50%;
+
   outline: none;
+
   background:
-    radial-gradient(
-      circle at 32% 22%,
-      rgba(255, 255, 255, 0.86),
-      transparent 21%
-    ),
     linear-gradient(
       145deg,
-      #b899f1,
-      #8b61d9 58%,
-      #5e3ba1
+      var(--level-purple-mid),
+      var(--level-purple-dark)
     );
+
   box-shadow:
-    inset -13px -14px 18px rgba(67, 38, 123, 0.25),
-    inset 8px 8px 14px rgba(255, 255, 255, 0.22),
-    0 8px 0 var(--purple-deep),
-    0 17px 28px rgba(39, 34, 78, 0.27);
-  transform: translate(-50%, -50%);
-  transform-origin: center;
+    0
+    10px
+    24px
+    rgba(0, 0, 0, 0.25);
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  transform-origin:
+    center;
+
   transition:
-    width 420ms cubic-bezier(0.18, 0.89, 0.32, 1.18),
-    height 420ms cubic-bezier(0.18, 0.89, 0.32, 1.18),
-    border-radius 360ms ease,
-    transform 300ms ease,
-    box-shadow 260ms ease;
+    width
+      420ms
+      cubic-bezier(
+        0.18,
+        0.89,
+        0.32,
+        1.18
+      ),
+    height
+      420ms
+      cubic-bezier(
+        0.18,
+        0.89,
+        0.32,
+        1.18
+      ),
+    border-radius
+      360ms ease,
+    transform
+      340ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+    border-color
+      280ms ease,
+    box-shadow
+      280ms ease,
+    filter
+      280ms ease,
+    background
+      280ms ease;
 }
 
-.milestoneNode .levelCard {
-  width: 82px;
-  height: 82px;
-  color: #182338;
-  border-color: rgba(128, 90, 0, 0.75);
+
+/* =========================================================
+   PURPLE + CREAM CLOSED LEVEL
+   ========================================================= */
+
+.purpleVariant
+.levelCard:not(:hover):not(:focus-visible) {
+  color:
+    var(--level-purple-text);
+
+  border-color:
+    var(--level-purple-border);
+
   background:
-    radial-gradient(circle at 32% 22%, #fffbd5, transparent 21%),
-    linear-gradient(145deg, #ffe983, #dfad18 58%, #b78100);
+    /* bright cream reflection */
+    radial-gradient(
+      circle at 27% 17%,
+      rgba(255, 255, 255, 0.98) 0%,
+      rgba(255, 250, 239, 0.78) 7%,
+      rgba(244, 226, 255, 0.34) 15%,
+      transparent 29%
+    ),
+
+    /* soft cream illumination */
+    radial-gradient(
+      circle at 75% 72%,
+      rgba(255, 241, 204, 0.38),
+      transparent 43%
+    ),
+
+    /* main purple gradient */
+    linear-gradient(
+      145deg,
+      var(--level-purple-light) 0%,
+      var(--level-purple-soft) 20%,
+      var(--level-purple-mid) 43%,
+      var(--level-purple-deep) 67%,
+      var(--level-purple-dark) 100%
+    );
+
   box-shadow:
-    inset -14px -15px 19px rgba(132, 90, 0, 0.24),
-    inset 8px 8px 14px rgba(255, 255, 255, 0.31),
-    0 9px 0 var(--gold-deep),
-    0 18px 29px rgba(82, 61, 10, 0.27);
+    inset
+    0
+    0
+    0
+    1px
+    rgba(255, 255, 255, 0.32),
+
+    inset
+    8px
+    9px
+    15px
+    rgba(255, 255, 255, 0.27),
+
+    inset
+    -13px
+    -16px
+    21px
+    rgba(74, 33, 122, 0.3),
+
+    0
+    5px
+    0
+    var(--level-purple-bottom),
+
+    0
+    13px
+    26px
+    var(--level-purple-shadow),
+
+    0
+    0
+    20px
+    var(--level-purple-glow),
+
+    0
+    0
+    32px
+    rgba(255, 231, 183, 0.08);
 }
 
-.selectedNode::before {
-  position: absolute;
-  inset: -10px;
-  pointer-events: none;
-  content: "";
-  border: 2px solid var(--gold-light);
-  border-radius: 50%;
+
+/* =========================================================
+   PREMIUM GOLD CLOSED LEVEL
+   ========================================================= */
+
+.goldVariant
+.levelCard:not(:hover):not(:focus-visible) {
+  color:
+    var(--level-gold-text);
+
+  border-color:
+    var(--level-gold-border);
+
+  background:
+    /* cream reflection */
+    radial-gradient(
+      circle at 27% 17%,
+      rgba(255, 255, 246, 1) 0%,
+      rgba(255, 249, 204, 0.72) 7%,
+      rgba(255, 239, 140, 0.24) 15%,
+      transparent 29%
+    ),
+
+    /* warm depth */
+    radial-gradient(
+      circle at 72% 75%,
+      rgba(160, 99, 0, 0.2),
+      transparent 45%
+    ),
+
+    /* metallic gold */
+    linear-gradient(
+      145deg,
+      var(--level-gold-light) 0%,
+      var(--level-gold-soft) 27%,
+      var(--level-gold-mid) 54%,
+      var(--level-gold-deep) 76%,
+      var(--level-gold-dark) 100%
+    );
+
   box-shadow:
-    0 0 0 8px rgba(139, 97, 215, 0.12),
-    0 0 30px rgba(139, 97, 215, 0.52);
-  animation: selectedRing 1.8s ease-in-out infinite;
+    inset
+    0
+    0
+    0
+    1px
+    rgba(255, 255, 255, 0.35),
+
+    inset
+    8px
+    9px
+    15px
+    rgba(255, 255, 255, 0.3),
+
+    inset
+    -13px
+    -16px
+    20px
+    rgba(109, 67, 0, 0.28),
+
+    0
+    5px
+    0
+    var(--level-gold-bottom),
+
+    0
+    13px
+    26px
+    var(--level-gold-shadow),
+
+    0
+    0
+    19px
+    var(--level-gold-glow);
 }
+
+
+/* =========================================================
+   SAME SIZE FOR MILESTONE NODES
+   ========================================================= */
+
+.milestoneNode
+.levelCard:not(:hover):not(:focus-visible) {
+  width: 80px;
+  height: 80px;
+}
+
+
+/* =========================================================
+   CLOSED NODE FACE
+   ========================================================= */
 
 .nodeFace {
   position: absolute;
+
   inset: 0;
+
+  z-index: 3;
+
   display: grid;
+
   place-items: center;
+
   opacity: 1;
+
   transition:
-    opacity 170ms ease,
-    transform 280ms ease;
+    opacity
+      160ms ease,
+    transform
+      280ms ease;
 }
 
-.nodeFace strong {
-  font-size: 0.75rem;
-  font-weight: 950;
+
+/* =========================================================
+   INNER SHINY RIM
+   ========================================================= */
+
+.nodeFace::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 4px;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.2);
+
+  border-radius: 50%;
+
+  box-shadow:
+    inset
+    0
+    0
+    8px
+    rgba(255, 255, 255, 0.05);
 }
+
+
+.purpleVariant
+.levelCard:not(:hover):not(:focus-visible)
+.nodeFace::before {
+  border-color:
+    rgba(255, 242, 218, 0.42);
+
+  box-shadow:
+    inset
+    0
+    0
+    8px
+    rgba(255, 255, 255, 0.07),
+
+    0
+    0
+    5px
+    rgba(226, 199, 255, 0.08);
+}
+
+
+/* =========================================================
+   TOP SHINY REFLECTION
+   ========================================================= */
+
+.nodeFace::after {
+  content: "";
+
+  width: 35px;
+  height: 15px;
+
+  position: absolute;
+
+  top: 7px;
+  left: 12px;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(255, 255, 255, 0.52) 0%,
+      rgba(255, 242, 210, 0.22) 38%,
+      transparent 72%
+    );
+
+  filter:
+    blur(0.7px);
+
+  transform:
+    rotate(-18deg);
+}
+
+
+.purpleVariant
+.levelCard:not(:hover):not(:focus-visible)
+.nodeFace::after {
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(255, 255, 255, 0.62) 0%,
+      rgba(255, 242, 210, 0.28) 38%,
+      transparent 72%
+    );
+}
+
+
+/* =========================================================
+   LEVEL NUMBER
+   ========================================================= */
+
+.nodeFace strong {
+  position: relative;
+
+  z-index: 4;
+
+  font-size: 0.9rem;
+
+  font-weight: 950;
+
+  line-height: 1;
+
+  letter-spacing:
+    -0.025em;
+}
+
+
+/* =========================================================
+   FREE LABEL
+   ========================================================= */
 
 .nodeFace small {
   position: absolute;
+
   right: 50%;
-  bottom: 7px;
-  font-size: 0.38rem;
+  bottom: 11px;
+
+  z-index: 4;
+
+  font-size: 0.34rem;
+
   font-weight: 950;
-  letter-spacing: 0.08em;
-  transform: translateX(50%);
+
+  line-height: 1;
+
+  letter-spacing: 0.09em;
+
+  transform:
+    translateX(50%);
 }
 
-.nodeFace i {
+
+/* =========================================================
+   PURPLE TEXT
+   ========================================================= */
+
+.purpleVariant
+.levelCard:not(:hover):not(:focus-visible)
+.nodeFace,
+.purpleVariant
+.levelCard:not(:hover):not(:focus-visible)
+.nodeFace strong,
+.purpleVariant
+.levelCard:not(:hover):not(:focus-visible)
+.nodeFace small {
+  color:
+    var(--level-purple-text);
+
+  text-shadow:
+    0
+    1px
+    3px
+    rgba(69, 34, 112, 0.42);
+}
+
+
+/* =========================================================
+   GOLD TEXT
+   ========================================================= */
+
+.goldVariant
+.levelCard:not(:hover):not(:focus-visible)
+.nodeFace,
+.goldVariant
+.levelCard:not(:hover):not(:focus-visible)
+.nodeFace strong,
+.goldVariant
+.levelCard:not(:hover):not(:focus-visible)
+.nodeFace small {
+  color:
+    var(--level-gold-text);
+
+  text-shadow:
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.46);
+}
+
+
+/* =========================================================
+   SELECTED LEVEL RING
+   ========================================================= */
+
+.selectedNode::before {
+  content: "";
+
   position: absolute;
-  top: 5px;
-  right: 5px;
-  display: grid;
-  width: 22px;
-  height: 22px;
-  color: #22314a;
-  border: 1px solid rgba(110, 78, 0, 0.46);
+
+  inset: -9px;
+
+  z-index: -1;
+
+  pointer-events: none;
+
+  border:
+    1.5px solid
+    var(--accent-gold-light);
+
   border-radius: 50%;
-  background: var(--gold-light);
-  box-shadow: 0 3px 0 var(--gold-deep);
-  place-items: center;
+
+  background:
+    transparent;
+
+  box-shadow:
+    0
+    0
+    0
+    5px
+    rgba(212, 175, 55, 0.05),
+
+    0
+    0
+    18px
+    rgba(212, 175, 55, 0.25);
+
+  animation:
+    premiumSelectedRing
+    2.2s
+    ease-in-out
+    infinite;
 }
 
-.nodeFace svg {
-  width: 11px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.8;
+
+/* =========================================================
+   PURPLE SELECTED RING
+   ========================================================= */
+
+.purpleVariant.selectedNode::before {
+  border-color:
+    rgba(241, 218, 255, 0.98);
+
+  box-shadow:
+    0
+    0
+    0
+    5px
+    rgba(181, 140, 231, 0.08),
+
+    0
+    0
+    18px
+    rgba(184, 141, 236, 0.34),
+
+    0
+    0
+    36px
+    rgba(255, 222, 166, 0.18);
 }
+
+
+/* =========================================================
+   GOLD SELECTED RING
+   ========================================================= */
+
+.goldVariant.selectedNode::before {
+  border-color:
+    rgba(255, 239, 164, 0.98);
+
+  box-shadow:
+    0
+    0
+    0
+    5px
+    rgba(212, 175, 55, 0.06),
+
+    0
+    0
+    21px
+    rgba(212, 175, 55, 0.32);
+}
+
+
+/* =========================================================
+   EXPANDED CARD DECORATIVE CIRCLE
+   ========================================================= */
+
+.levelCard::before {
+  content: "";
+
+  width: 180px;
+  height: 180px;
+
+  position: absolute;
+
+  right: -125px;
+  bottom: -125px;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  border:
+    1px solid
+    rgba(212, 175, 55, 0.09);
+
+  border-radius: 50%;
+
+  box-shadow:
+    0
+    0
+    0
+    32px
+    rgba(212, 175, 55, 0.018),
+
+    0
+    0
+    0
+    64px
+    rgba(212, 175, 55, 0.01);
+
+  transition:
+    opacity
+      260ms ease;
+}
+
+
+/* =========================================================
+   EXPANDED CARD BOTTOM ACCENT
+   ========================================================= */
+
+.levelCard::after {
+  content: "";
+
+  width: 90px;
+  height: 3px;
+
+  position: absolute;
+
+  left: 22px;
+  bottom: 12px;
+
+  z-index: 5;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #9b6d0a,
+      var(--accent-gold),
+      var(--accent-gold-light),
+      transparent
+    );
+
+  box-shadow:
+    0
+    0
+    8px
+    rgba(212, 175, 55, 0.12);
+
+  transition:
+    opacity
+      250ms ease,
+    width
+      320ms ease;
+}
+
+
+/* =========================================================
+   EXPANDED CONTENT
+   ========================================================= */
 
 .levelReveal {
   position: absolute;
+
   inset: 0;
+
+  z-index: 3;
+
   display: flex;
-  align-items: stretch;
+
   flex-direction: column;
-  padding: 1rem;
+
+  align-items: stretch;
+
+  padding:
+    22px
+    22px
+    24px;
+
+  overflow: hidden;
+
   text-align: left;
+
   opacity: 0;
-  transform: translateY(18px) scale(0.84);
+
+  transform:
+    translateY(14px)
+    scale(0.95);
+
   transition:
-    opacity 180ms ease,
-    transform 340ms ease;
+    opacity
+      190ms ease,
+    transform
+      350ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      );
 }
 
-.levelCard:is(:hover, :focus-visible) {
-  width: 258px;
-  height: 298px;
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.28);
-  border-radius: 23px;
+
+/* =========================================================
+   EXPANDED CARD
+   ========================================================= */
+
+.levelCard:is(
+  :hover,
+  :focus-visible
+) {
+  width: 292px;
+  height: 310px;
+
+  overflow: hidden;
+
+  color:
+    var(--card-dark-text);
+
+  border:
+    1px solid
+    var(--card-dark-border);
+
+  border-radius: 27px;
+
   background:
+    radial-gradient(
+      circle at 12% 5%,
+      rgba(82, 116, 164, 0.32),
+      transparent 36%
+    ),
+
+    radial-gradient(
+      circle at 94% 96%,
+      rgba(212, 175, 55, 0.055),
+      transparent 35%
+    ),
+
     linear-gradient(
-      270deg,
-      #764ab7,
-      #174f7a,
-      #248b78,
-      #9a5ac5
+      150deg,
+      var(--card-dark-1) 0%,
+      var(--card-dark-2) 45%,
+      var(--card-dark-3) 100%
     );
-  background-size: 700% 700%;
+
   box-shadow:
-    0 29px 60px rgba(15, 23, 48, 0.36),
-    inset 0 1px rgba(255, 255, 255, 0.12);
-  animation: expandedCardGradient 5s ease infinite;
+    0
+    32px
+    72px
+    var(--card-dark-shadow),
+
+    0
+    0
+    30px
+    rgba(212, 175, 55, 0.09),
+
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.075);
+
   transform:
     translate(
-      calc(-50% + var(--expand-x)),
-      calc(-50% + var(--expand-y))
+      calc(
+        -50% +
+        var(--expand-x)
+      ),
+      calc(
+        -50% +
+        var(--expand-y)
+      )
     );
 }
 
-.levelCard:is(:hover, :focus-visible) .nodeFace {
-  opacity: 0;
-  transform: scale(0.3) rotate(-15deg);
+
+/* =========================================================
+   OPEN DECORATION
+   ========================================================= */
+
+.levelCard:is(
+  :hover,
+  :focus-visible
+)::before {
+  opacity: 1;
 }
 
-.levelCard:is(:hover, :focus-visible) .levelReveal {
+
+.levelCard:is(
+  :hover,
+  :focus-visible
+)::after {
   opacity: 1;
-  transform: translateY(0) scale(1);
-  transition-delay: 120ms;
 }
+
+
+/* =========================================================
+   CLOSED FACE HIDE
+   ========================================================= */
+
+.levelCard:is(
+  :hover,
+  :focus-visible
+)
+.nodeFace {
+  opacity: 0;
+
+  transform:
+    scale(0.32)
+    rotate(-12deg);
+}
+
+
+/* =========================================================
+   OPEN CONTENT SHOW
+   ========================================================= */
+
+.levelCard:is(
+  :hover,
+  :focus-visible
+)
+.levelReveal {
+  opacity: 1;
+
+  transform:
+    translateY(0)
+    scale(1);
+
+  transition-delay: 90ms;
+}
+
+
+/* =========================================================
+   TOP ROW
+   ========================================================= */
+
+.revealTop {
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    space-between;
+
+  gap: 12px;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
 
 .revealLabel {
-  align-self: flex-start;
-  padding: 0.28rem 0.52rem;
-  color: var(--gold-light);
-  border: 1px solid rgba(255, 226, 112, 0.25);
+  min-height: 27px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding:
+    0
+    11px;
+
+  color:
+    var(--accent-gold-text);
+
+  border:
+    1px solid
+    rgba(244, 223, 131, 0.2);
+
   border-radius: 999px;
-  background: rgba(255, 220, 93, 0.08);
-  font-size: 0.49rem;
-  font-weight: 950;
-  letter-spacing: 0.1em;
+
+  background:
+    rgba(212, 175, 55, 0.055);
+
+  font-size: 0.48rem;
+
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing: 0.09em;
+
+  text-transform: uppercase;
 }
+
+
+/* =========================================================
+   LEVEL TEXT
+   ========================================================= */
+
+.revealLevel {
+  color: #8292a7;
+
+  font-size: 0.48rem;
+
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing: 0.11em;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
 
 .revealHeading {
   display: grid;
-  grid-template-columns: auto 1fr;
+
+  grid-template-columns:
+    48px
+    minmax(0, 1fr);
+
   align-items: center;
-  gap: 0.7rem;
-  margin-top: 0.75rem;
+
+  gap: 14px;
+
+  margin-top: 20px;
 }
 
+
 .revealHeading > i {
+  width: 48px;
+  height: 48px;
+
   display: grid;
-  width: 41px;
-  height: 41px;
-  color: var(--gold-light);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 13px;
-  background: rgba(255, 255, 255, 0.08);
+
   place-items: center;
+
+  color:
+    var(--accent-gold-light);
+
+  border:
+    1px solid
+    rgba(244, 223, 131, 0.25);
+
+  border-radius: 15px;
+
+  background:
+    rgba(212, 175, 55, 0.055);
+
+  box-shadow:
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.045);
 }
+
 
 .revealHeading svg {
   width: 21px;
+  height: 21px;
+
   fill: none;
+
   stroke: currentColor;
+
   stroke-linecap: round;
+
   stroke-linejoin: round;
+
   stroke-width: 1.8;
 }
 
-.revealHeading small {
-  display: block;
-  color: rgba(255, 255, 255, 0.68);
-  font-size: 0.5rem;
-  font-weight: 900;
-  letter-spacing: 0.1em;
-}
 
 .revealHeading strong {
-  display: block;
-  margin-top: 0.16rem;
-  color: #ffffff;
-  font-size: 0.98rem;
-  line-height: 1.12;
+  min-width: 0;
+
+  color:
+    var(--card-dark-heading);
+
+  font-size: 1.22rem;
+
+  font-weight: 900;
+
+  line-height: 1.1;
+
+  letter-spacing:
+    -0.025em;
 }
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
 
 .revealDescription {
-  margin-top: 0.75rem;
-  color: rgba(255, 255, 255, 0.77);
-  font-size: 0.66rem;
-  line-height: 1.55;
+  margin-top: 18px;
+
+  color:
+    var(--card-dark-muted);
+
+  font-size: 0.7rem;
+
+  font-weight: 600;
+
+  line-height: 1.62;
 }
+
+
+/* =========================================================
+   OUTCOME
+   ========================================================= */
 
 .revealOutcome {
-  display: block;
-  margin-top: 0.72rem;
-  padding: 0.72rem;
-  border: 1px solid rgba(255, 255, 255, 0.17);
-  border-radius: 13px;
-  background: rgba(4, 19, 36, 0.17);
-}
+  position: relative;
 
-.revealOutcome > strong {
   display: block;
-  color: var(--gold-light);
-  font-size: 0.48rem;
-  letter-spacing: 0.1em;
-}
 
-.revealOutcome > span {
-  display: block;
-  margin-top: 0.3rem;
-  color: rgba(255, 255, 255, 0.87);
-  font-size: 0.61rem;
-  line-height: 1.45;
-}
-
-.revealAction {
-  display: flex;
-  min-height: 35px;
-  align-items: center;
-  justify-content: space-between;
   margin-top: auto;
-  padding: 0.5rem 0.65rem;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 11px;
-  background: rgba(255, 255, 255, 0.08);
-  font-size: 0.54rem;
-  font-weight: 850;
+  margin-bottom: 12px;
+
+  padding:
+    13px
+    14px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(244, 223, 131, 0.13);
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(212, 175, 55, 0.055),
+      rgba(255, 255, 255, 0.018)
+    );
+
+  box-shadow:
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.025);
 }
 
-@keyframes nodeFloat {
-  0%, 100% {
-    transform: translate(-50%, -50%) translateY(0) rotate(-0.5deg);
-  }
-  50% {
-    transform: translate(-50%, -50%) translateY(-7px) rotate(0.5deg);
-  }
+
+/* =========================================================
+   OUTCOME GLOW
+   ========================================================= */
+
+.revealOutcome::after {
+  content: "";
+
+  width: 100px;
+  height: 100px;
+
+  position: absolute;
+
+  right: -52px;
+  bottom: -70px;
+
+  pointer-events: none;
+
+  border-radius: 50%;
+
+  background:
+    rgba(212, 175, 55, 0.065);
+
+  filter:
+    blur(8px);
 }
 
-@keyframes selectedRing {
-  0%, 100% {
-    opacity: 0.5;
-    transform: scale(0.92);
+
+.outcomeTitle {
+  position: relative;
+
+  z-index: 2;
+
+  display: block;
+
+  color:
+    var(--accent-gold-text);
+
+  font-size: 0.47rem;
+
+  font-weight: 900;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+}
+
+
+.outcomeCopy {
+  position: relative;
+
+  z-index: 2;
+
+  display: block;
+
+  margin-top: 7px;
+
+  color: #dce4ef;
+
+  font-size: 0.64rem;
+
+  font-weight: 650;
+
+  line-height: 1.48;
+}
+
+
+/* =========================================================
+   LIGHT MODE — THEME VARIABLES
+
+   Change light card colors here if needed.
+   ========================================================= */
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+)
+.nodeSlot,
+
+:global(
+  html[data-theme="light"]
+)
+.nodeSlot,
+
+:global(html.light)
+.nodeSlot {
+  --card-dark-text:
+    var(--card-light-text);
+
+  --card-dark-heading:
+    var(--card-light-heading);
+
+  --card-dark-muted:
+    var(--card-light-muted);
+}
+
+
+/* =========================================================
+   LIGHT MODE — PURPLE + CREAM LEVEL
+   ========================================================= */
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+)
+.purpleVariant
+.levelCard:not(:hover):not(:focus-visible),
+
+:global(
+  html[data-theme="light"]
+)
+.purpleVariant
+.levelCard:not(:hover):not(:focus-visible),
+
+:global(html.light)
+.purpleVariant
+.levelCard:not(:hover):not(:focus-visible) {
+  border-color:
+    rgba(153, 104, 205, 0.5);
+
+  background:
+    radial-gradient(
+      circle at 27% 17%,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 246, 225, 0.84) 7%,
+      rgba(239, 221, 255, 0.4) 16%,
+      transparent 29%
+    ),
+
+    radial-gradient(
+      circle at 76% 72%,
+      rgba(255, 237, 196, 0.38),
+      transparent 43%
+    ),
+
+    linear-gradient(
+      145deg,
+      var(--level-purple-light) 0%,
+      var(--level-purple-soft) 21%,
+      var(--level-purple-mid) 44%,
+      var(--level-purple-deep) 68%,
+      var(--level-purple-dark) 100%
+    );
+
+  box-shadow:
+    inset
+    0
+    0
+    0
+    1px
+    rgba(255, 255, 255, 0.34),
+
+    inset
+    8px
+    9px
+    15px
+    rgba(255, 255, 255, 0.3),
+
+    inset
+    -13px
+    -16px
+    21px
+    rgba(74, 33, 122, 0.28),
+
+    0
+    5px
+    0
+    var(--level-purple-bottom),
+
+    0
+    13px
+    24px
+    rgba(76, 47, 105, 0.17),
+
+    0
+    0
+    19px
+    rgba(177, 137, 224, 0.15);
+}
+
+
+/* =========================================================
+   LIGHT MODE — GOLD LEVEL
+   ========================================================= */
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+)
+.goldVariant
+.levelCard:not(:hover):not(:focus-visible),
+
+:global(
+  html[data-theme="light"]
+)
+.goldVariant
+.levelCard:not(:hover):not(:focus-visible),
+
+:global(html.light)
+.goldVariant
+.levelCard:not(:hover):not(:focus-visible) {
+  border-color:
+    rgba(189, 137, 18, 0.58);
+}
+
+
+/* =========================================================
+   LIGHT MODE — EXPANDED CARD
+   ========================================================= */
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+)
+.levelCard:is(
+  :hover,
+  :focus-visible
+),
+
+:global(
+  html[data-theme="light"]
+)
+.levelCard:is(
+  :hover,
+  :focus-visible
+),
+
+:global(html.light)
+.levelCard:is(
+  :hover,
+  :focus-visible
+) {
+  color:
+    var(--card-light-text);
+
+  border-color:
+    var(--card-light-border);
+
+  background:
+    radial-gradient(
+      circle at 16% 8%,
+      rgba(191, 164, 231, 0.72),
+      transparent 38%
+    ),
+
+    radial-gradient(
+      circle at 90% 92%,
+      rgba(255, 248, 229, 0.98),
+      rgba(248, 236, 210, 0.72) 34%,
+      transparent 58%
+    ),
+
+    linear-gradient(
+      145deg,
+      var(--card-light-purple) 0%,
+      var(--card-light-base) 38%,
+      var(--card-light-cream) 72%,
+      var(--card-light-gold) 100%
+    );
+
+  box-shadow:
+    0
+    30px
+    72px
+    rgba(72, 47, 104, 0.21),
+
+    0
+    0
+    30px
+    rgba(194, 143, 20, 0.09),
+
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.98);
+}
+
+
+/* =========================================================
+   LIGHT LABEL
+   ========================================================= */
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+)
+.revealLabel,
+
+:global(
+  html[data-theme="light"]
+)
+.revealLabel,
+
+:global(html.light)
+.revealLabel {
+  color:
+    var(--accent-gold-dark);
+
+  border-color:
+    rgba(142, 91, 4, 0.24);
+
+  background:
+    rgba(255, 248, 220, 0.65);
+}
+
+
+/* =========================================================
+   LIGHT LEVEL
+   ========================================================= */
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+)
+.revealLevel,
+
+:global(
+  html[data-theme="light"]
+)
+.revealLevel,
+
+:global(html.light)
+.revealLevel {
+  color: #725f88;
+}
+
+
+/* =========================================================
+   LIGHT HEADING ICON
+   ========================================================= */
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+)
+.revealHeading > i,
+
+:global(
+  html[data-theme="light"]
+)
+.revealHeading > i,
+
+:global(html.light)
+.revealHeading > i {
+  color:
+    var(--accent-gold-dark);
+
+  border-color:
+    rgba(177, 132, 28, 0.32);
+
+  background:
+    radial-gradient(
+      circle at 24% 18%,
+      rgba(255, 255, 255, 0.98),
+      transparent 36%
+    ),
+    linear-gradient(
+      145deg,
+      #fffaf0,
+      #f8edc8 50%,
+      #e7c75f
+    );
+}
+
+
+/* =========================================================
+   LIGHT HEADING
+   ========================================================= */
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+)
+.revealHeading strong,
+
+:global(
+  html[data-theme="light"]
+)
+.revealHeading strong,
+
+:global(html.light)
+.revealHeading strong {
+  color:
+    var(--card-light-heading);
+}
+
+
+/* =========================================================
+   LIGHT DESCRIPTION
+   ========================================================= */
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+)
+.revealDescription,
+
+:global(
+  html[data-theme="light"]
+)
+.revealDescription,
+
+:global(html.light)
+.revealDescription {
+  color:
+    var(--card-light-muted);
+}
+
+
+/* =========================================================
+   LIGHT OUTCOME
+   ========================================================= */
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+)
+.revealOutcome,
+
+:global(
+  html[data-theme="light"]
+)
+.revealOutcome,
+
+:global(html.light)
+.revealOutcome {
+  border-color:
+    rgba(166, 111, 10, 0.18);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 249, 228, 0.82),
+      rgba(255, 255, 255, 0.48)
+    );
+
+  box-shadow:
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.86);
+}
+
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+)
+.revealOutcome::after,
+
+:global(
+  html[data-theme="light"]
+)
+.revealOutcome::after,
+
+:global(html.light)
+.revealOutcome::after {
+  background:
+    rgba(212, 175, 55, 0.08);
+}
+
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+)
+.outcomeTitle,
+
+:global(
+  html[data-theme="light"]
+)
+.outcomeTitle,
+
+:global(html.light)
+.outcomeTitle {
+  color:
+    var(--accent-gold-dark);
+}
+
+
+:global(
+  html:not(.dark):not(
+    [data-theme="dark"]
+  )
+)
+.outcomeCopy,
+
+:global(
+  html[data-theme="light"]
+)
+.outcomeCopy,
+
+:global(html.light)
+.outcomeCopy {
+  color:
+    var(--card-light-text);
+}
+
+
+/* =========================================================
+   SELECTED ANIMATION
+   ========================================================= */
+
+@keyframes premiumSelectedRing {
+  0%,
+  100% {
+    opacity: 0.58;
+
+    transform:
+      scale(0.96);
   }
+
   50% {
     opacity: 1;
-    transform: scale(1.1);
+
+    transform:
+      scale(1.035);
   }
 }
 
-@keyframes expandedCardGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+  .levelCard,
+  .levelReveal,
+  .nodeFace,
+  .levelCard::before,
+  .levelCard::after {
+    transition: none;
+  }
+
+  .selectedNode::before {
+    animation: none;
+  }
 }

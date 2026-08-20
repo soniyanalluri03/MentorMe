@@ -1,0 +1,109 @@
+/* =========================================================
+   CONTACT PAGE
+   ========================================================= */
+
+.page {
+  width: 100%;
+  min-height: 100svh;
+
+  position: relative;
+  overflow: hidden;
+
+  color: #f7f9fd;
+
+  background: transparent;
+  background-image: none;
+}
+
+/* =========================================================
+   CONTACT SECTION
+   ========================================================= */
+
+.contactSection {
+  width: 100%;
+
+  padding:
+    clamp(30px, 3vw, 48px)
+    clamp(24px, 5.5vw, 104px)
+    clamp(72px, 8vw, 120px);
+
+  position: relative;
+
+  background: transparent;
+}
+
+.contactLayout {
+  width: 100%;
+  max-width: 1500px;
+
+  margin-inline: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(330px, 0.72fr)
+    minmax(0, 1.28fr);
+
+  /* CHANGE THIS */
+  align-items: stretch;
+
+  gap:
+    clamp(
+      26px,
+      4vw,
+      58px
+    );
+}
+
+/* =========================================================
+   LIGHT MODE
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .page,
+:global(html[data-theme="light"])
+  .page,
+:global(html.light)
+  .page,
+:global([data-theme="light"])
+  .page,
+:global(.light)
+  .page {
+  color: #182235;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  .contactSection {
+    padding:
+      24px
+      clamp(24px, 5vw, 58px)
+      80px;
+  }
+
+  .contactLayout {
+    grid-template-columns: 1fr;
+
+    gap: 34px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .contactSection {
+    padding:
+      14px
+      17px
+      58px;
+  }
+
+  .contactLayout {
+    gap: 26px;
+  }
+}

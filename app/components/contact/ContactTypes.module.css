@@ -1,0 +1,1343 @@
+/* =========================================================
+   CONTACT TYPES PANEL
+   FEATURED TRACK VISUAL STYLE
+   ========================================================= */
+
+.panel {
+  width: 100%;
+
+  padding:
+    clamp(26px, 3vw, 36px);
+
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  color: #f7f9fd;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.1);
+
+  border-radius: 30px;
+
+  background:
+    radial-gradient(
+      circle at 16% 8%,
+      rgba(84, 116, 163, 0.34),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 90% 92%,
+      rgba(212, 175, 55, 0.09),
+      transparent 34%
+    ),
+    linear-gradient(
+      155deg,
+      #172c49,
+      #0a1728 62%,
+      #06101c
+    );
+
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(212, 175, 55, 0.045),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  transition:
+    transform 350ms
+      cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 350ms ease,
+    box-shadow 350ms ease;
+}
+
+
+/* =========================================================
+   DECORATIVE FEATURED-TRACK RINGS
+   ========================================================= */
+
+.panel::before {
+  content: "";
+
+  width: 250px;
+  height: 250px;
+
+  position: absolute;
+
+  right: -125px;
+  bottom: -130px;
+
+  z-index: -1;
+
+  border:
+    1px solid
+    rgba(212, 175, 55, 0.15);
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 40px
+      rgba(212, 175, 55, 0.024),
+    0 0 0 80px
+      rgba(212, 175, 55, 0.016);
+
+  pointer-events: none;
+}
+
+
+/* Top-left ambient glow */
+
+.panel::after {
+  content: "";
+
+  width: 310px;
+  height: 310px;
+
+  position: absolute;
+
+  left: -160px;
+  top: -170px;
+
+  z-index: -1;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(100, 142, 201, 0.16),
+      transparent 68%
+    );
+
+  filter: blur(18px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   PANEL HOVER
+   ========================================================= */
+
+.panel:hover {
+  border-color:
+    rgba(244, 223, 131, 0.3);
+
+  box-shadow:
+    0 34px 82px rgba(0, 0, 0, 0.45),
+    0 0 44px rgba(212, 175, 55, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  transform:
+    translateY(-4px);
+}
+
+
+/* =========================================================
+   PANEL HEADING
+   ========================================================= */
+
+.panelTop {
+  padding-bottom: 28px;
+
+  position: relative;
+  z-index: 2;
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.075);
+}
+
+
+.panelKicker {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #d9ba4d;
+
+  font-size: 0.56rem;
+  font-weight: 900;
+
+  letter-spacing: 0.13em;
+
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 16px
+    rgba(217, 186, 77, 0.13);
+}
+
+
+.panelKicker svg {
+  flex: 0 0 auto;
+
+  color: #f0d36d;
+
+  filter:
+    drop-shadow(
+      0 0 7px
+      rgba(240, 211, 109, 0.2)
+    );
+}
+
+
+.panelTop h3 {
+  margin:
+    16px
+    0
+    13px;
+
+  color: #f7f9fd;
+
+  font-size:
+    clamp(
+      2rem,
+      3vw,
+      3rem
+    );
+
+  line-height: 0.98;
+
+  letter-spacing: -0.045em;
+}
+
+
+.panelTop p {
+  max-width: 440px;
+
+  margin: 0;
+
+  color: #93a2b7;
+
+  font-size: 0.78rem;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   CONTACT LIST
+   ========================================================= */
+
+.list {
+  display: grid;
+
+  margin-top: 10px;
+
+  position: relative;
+  z-index: 2;
+}
+
+
+.item {
+  min-height: 94px;
+
+  padding:
+    17px
+    6px;
+
+  display: grid;
+
+  grid-template-columns:
+    38px
+    46px
+    minmax(0, 1fr)
+    24px;
+
+  align-items: center;
+
+  gap: 12px;
+
+  position: relative;
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+
+  border-radius: 14px;
+
+  transition:
+    transform 300ms ease,
+    background 300ms ease,
+    box-shadow 300ms ease;
+}
+
+
+.item:last-child {
+  border-bottom: 0;
+}
+
+
+.item:hover {
+  transform:
+    translateX(5px);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(212, 175, 55, 0.07),
+      rgba(84, 116, 163, 0.04),
+      transparent
+    );
+
+  box-shadow:
+    inset
+    3px
+    0
+    0
+    rgba(212, 175, 55, 0.35);
+}
+
+
+/* =========================================================
+   CONTACT NUMBER
+   ========================================================= */
+
+.number {
+  color: #667890;
+
+  font-size: 0.58rem;
+
+  font-weight: 900;
+
+  letter-spacing: 0.12em;
+
+  transition:
+    color 300ms ease;
+}
+
+
+.item:hover .number {
+  color: #c8a83d;
+}
+
+
+/* =========================================================
+   CONTACT ICON
+   FEATURED TRACK GOLD TILE
+   ========================================================= */
+
+.icon {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+
+  place-items: center;
+
+  position: relative;
+
+  color: #171307;
+
+  border:
+    1px solid
+    rgba(255, 243, 183, 0.45);
+
+  border-radius: 13px;
+
+  background:
+    radial-gradient(
+      circle at 24% 18%,
+      rgba(255, 255, 255, 0.45),
+      transparent 34%
+    ),
+    linear-gradient(
+      145deg,
+      #fff2ae,
+      #d4af37 58%,
+      #9f6e0c
+    );
+
+  box-shadow:
+    4px 5px 0
+      rgba(0, 0, 0, 0.16),
+    0 10px 20px
+      rgba(0, 0, 0, 0.2),
+    0 0 18px
+      rgba(212, 175, 55, 0.08);
+
+  transition:
+    transform 300ms
+      cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 300ms ease,
+    filter 300ms ease;
+}
+
+
+.item:hover .icon {
+  transform:
+    translateY(-3px)
+    rotate(-3deg)
+    scale(1.04);
+
+  filter:
+    brightness(1.06);
+
+  box-shadow:
+    4px 6px 0
+      rgba(0, 0, 0, 0.14),
+    0 15px 28px
+      rgba(0, 0, 0, 0.25),
+    0 0 22px
+      rgba(212, 175, 55, 0.18);
+}
+
+
+/* =========================================================
+   CONTACT COPY
+   ========================================================= */
+
+.copy {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+
+.copy strong {
+  color: #eef2f8;
+
+  font-size: 0.84rem;
+
+  font-weight: 800;
+
+  transition:
+    color 300ms ease;
+}
+
+
+.copy span {
+  color: #8494aa;
+
+  font-size: 0.65rem;
+
+  line-height: 1.5;
+
+  transition:
+    color 300ms ease;
+}
+
+
+.item:hover .copy strong {
+  color: #ffffff;
+}
+
+
+.item:hover .copy span {
+  color: #9eacc0;
+}
+
+
+/* =========================================================
+   ARROW
+   ========================================================= */
+
+.arrow {
+  color: #738298;
+
+  transition:
+    color 300ms ease,
+    transform 300ms ease;
+}
+
+
+.item:hover .arrow {
+  color: #e6cb69;
+
+  transform:
+    translate(
+      2px,
+      -2px
+    );
+}
+
+
+/* =========================================================
+   SOCIAL MEDIA
+   ========================================================= */
+
+.socialSection {
+  margin-top: 8px;
+
+  padding-top: 22px;
+
+  position: relative;
+  z-index: 2;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+}
+
+
+.socialHeading {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 17px;
+}
+
+
+.socialHeading span {
+  flex: 0 0 auto;
+
+  color: #74869d;
+
+  font-size: 0.55rem;
+
+  font-weight: 900;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+}
+
+
+.socialLine {
+  width: 100%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(244, 223, 131, 0.22),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   SOCIAL LINKS
+   ========================================================= */
+
+.socialLinks {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.socialLink {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  position: relative;
+
+  overflow: hidden;
+
+  color: #9aa9bc;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.1);
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.018)
+    );
+
+  box-shadow:
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.05);
+
+  transition:
+    transform 260ms ease,
+    color 260ms ease,
+    border-color 260ms ease,
+    background 260ms ease,
+    box-shadow 260ms ease;
+}
+
+
+.socialLink::before {
+  content: "";
+
+  width: 40px;
+  height: 70px;
+
+  position: absolute;
+
+  left: -55px;
+  top: -15px;
+
+  transform:
+    rotate(25deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+
+  transition:
+    left 420ms ease;
+
+  pointer-events: none;
+}
+
+
+.socialLink:hover::before {
+  left: 55px;
+}
+
+
+.socialLink:hover {
+  color: #f0d36d;
+
+  border-color:
+    rgba(240, 211, 109, 0.34);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(212, 175, 55, 0.1),
+      rgba(212, 175, 55, 0.035)
+    );
+
+  box-shadow:
+    0 10px 26px
+      rgba(0, 0, 0, 0.18),
+    0 0 20px
+      rgba(212, 175, 55, 0.1),
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.08);
+
+  transform:
+    translateY(-4px)
+    scale(1.04);
+}
+
+
+.socialLink:active {
+  transform:
+    translateY(-1px)
+    scale(0.96);
+}
+
+
+/* =========================================================
+   LIGHT MODE — PANEL
+   FEATURED TRACK PURPLE + CREAM STYLE
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .panel,
+:global(html[data-theme="light"])
+  .panel,
+:global(html.light)
+  .panel,
+:global([data-theme="light"])
+  .panel,
+:global(.light)
+  .panel {
+  color: #202a3d;
+
+  border-color:
+    rgba(166, 119, 19, 0.3);
+
+  background:
+    radial-gradient(
+      circle at 16% 8%,
+      rgba(191, 164, 231, 0.72),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 90% 92%,
+      rgba(255, 248, 229, 0.98),
+      rgba(248, 236, 210, 0.72) 34%,
+      transparent 58%
+    ),
+    linear-gradient(
+      145deg,
+      #eee3fb 0%,
+      #fbf7ff 38%,
+      #fff8e8 72%,
+      #f5ead4 100%
+    );
+
+  box-shadow:
+    0 28px 66px
+      rgba(72, 47, 104, 0.19),
+    0 0 28px
+      rgba(194, 143, 20, 0.08),
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.98),
+    inset
+    0
+    0
+    0
+    1px
+    rgba(255, 255, 255, 0.38),
+    inset
+    -24px
+    -30px
+    46px
+    rgba(181, 145, 86, 0.045);
+}
+
+
+/* =========================================================
+   LIGHT PANEL DECORATIVE RINGS
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .panel::before,
+:global(html[data-theme="light"])
+  .panel::before,
+:global(html.light)
+  .panel::before,
+:global([data-theme="light"])
+  .panel::before,
+:global(.light)
+  .panel::before {
+  border-color:
+    rgba(220, 201, 164, 0.5);
+
+  box-shadow:
+    0 0 0 40px
+      rgba(255, 247, 228, 0.11),
+    0 0 0 80px
+      rgba(240, 226, 198, 0.07);
+}
+
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .panel::after,
+:global(html[data-theme="light"])
+  .panel::after,
+:global(html.light)
+  .panel::after,
+:global([data-theme="light"])
+  .panel::after,
+:global(.light)
+  .panel::after {
+  background:
+    radial-gradient(
+      circle,
+      rgba(176, 148, 215, 0.23),
+      transparent 68%
+    );
+}
+
+
+/* =========================================================
+   LIGHT PANEL HOVER
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .panel:hover,
+:global(html[data-theme="light"])
+  .panel:hover,
+:global(html.light)
+  .panel:hover,
+:global([data-theme="light"])
+  .panel:hover,
+:global(.light)
+  .panel:hover {
+  border-color:
+    rgba(166, 119, 19, 0.43);
+
+  box-shadow:
+    0 35px 80px
+      rgba(72, 47, 104, 0.23),
+    0 0 38px
+      rgba(202, 150, 24, 0.13),
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 1);
+
+  transform:
+    translateY(-4px);
+}
+
+
+/* =========================================================
+   LIGHT PANEL HEADING
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .panelTop,
+:global(html[data-theme="light"])
+  .panelTop,
+:global(html.light)
+  .panelTop,
+:global([data-theme="light"])
+  .panelTop,
+:global(.light)
+  .panelTop {
+  border-color:
+    rgba(75, 61, 103, 0.11);
+}
+
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .panelKicker,
+:global(html[data-theme="light"])
+  .panelKicker,
+:global(html.light)
+  .panelKicker,
+:global([data-theme="light"])
+  .panelKicker,
+:global(.light)
+  .panelKicker {
+  color: #8e6810;
+
+  text-shadow: none;
+}
+
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .panelKicker svg,
+:global(html[data-theme="light"])
+  .panelKicker svg,
+:global(html.light)
+  .panelKicker svg,
+:global([data-theme="light"])
+  .panelKicker svg,
+:global(.light)
+  .panelKicker svg {
+  color: #a9770e;
+}
+
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .panelTop h3,
+:global(html[data-theme="light"])
+  .panelTop h3,
+:global(html.light)
+  .panelTop h3,
+:global([data-theme="light"])
+  .panelTop h3,
+:global(.light)
+  .panelTop h3 {
+  color: #1d2940;
+}
+
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .panelTop p,
+:global(html[data-theme="light"])
+  .panelTop p,
+:global(html.light)
+  .panelTop p,
+:global([data-theme="light"])
+  .panelTop p,
+:global(.light)
+  .panelTop p {
+  color: #667085;
+}
+
+
+/* =========================================================
+   LIGHT CONTACT ITEMS
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .item,
+:global(html[data-theme="light"])
+  .item,
+:global(html.light)
+  .item,
+:global([data-theme="light"])
+  .item,
+:global(.light)
+  .item {
+  border-color:
+    rgba(75, 61, 103, 0.1);
+}
+
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .item:hover,
+:global(html[data-theme="light"])
+  .item:hover,
+:global(html.light)
+  .item:hover,
+:global([data-theme="light"])
+  .item:hover,
+:global(.light)
+  .item:hover {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(212, 175, 55, 0.1),
+      rgba(176, 148, 215, 0.07),
+      transparent
+    );
+
+  box-shadow:
+    inset
+    3px
+    0
+    0
+    rgba(166, 119, 19, 0.3);
+}
+
+
+/* =========================================================
+   LIGHT NUMBER
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .number,
+:global(html[data-theme="light"])
+  .number,
+:global(html.light)
+  .number,
+:global([data-theme="light"])
+  .number,
+:global(.light)
+  .number {
+  color: #79698e;
+}
+
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .item:hover .number,
+:global(html[data-theme="light"])
+  .item:hover .number,
+:global(html.light)
+  .item:hover .number,
+:global([data-theme="light"])
+  .item:hover .number,
+:global(.light)
+  .item:hover .number {
+  color: #8b5904;
+}
+
+
+/* =========================================================
+   LIGHT COPY
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .copy strong,
+:global(html[data-theme="light"])
+  .copy strong,
+:global(html.light)
+  .copy strong,
+:global([data-theme="light"])
+  .copy strong,
+:global(.light)
+  .copy strong {
+  color: #202a3d;
+}
+
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .copy span,
+:global(html[data-theme="light"])
+  .copy span,
+:global(html.light)
+  .copy span,
+:global([data-theme="light"])
+  .copy span,
+:global(.light)
+  .copy span {
+  color: #697587;
+}
+
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .item:hover .copy strong,
+:global(html[data-theme="light"])
+  .item:hover .copy strong,
+:global(html.light)
+  .item:hover .copy strong,
+:global([data-theme="light"])
+  .item:hover .copy strong,
+:global(.light)
+  .item:hover .copy strong {
+  color: #17243a;
+}
+
+
+/* =========================================================
+   LIGHT ICON
+   FEATURED TRACK CREAM + GOLD
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .icon,
+:global(html[data-theme="light"])
+  .icon,
+:global(html.light)
+  .icon,
+:global([data-theme="light"])
+  .icon,
+:global(.light)
+  .icon {
+  color: #694303;
+
+  border-color:
+    rgba(132, 79, 2, 0.36);
+
+  background:
+    radial-gradient(
+      circle at 24% 18%,
+      rgba(255, 255, 255, 0.98),
+      transparent 34%
+    ),
+    linear-gradient(
+      145deg,
+      #fff8d8 0%,
+      #efd374 48%,
+      #c58a12 100%
+    );
+
+  box-shadow:
+    4px 5px 0
+      rgba(75, 48, 101, 0.08),
+    0 12px 23px
+      rgba(72, 47, 104, 0.15),
+    0 0 18px
+      rgba(202, 150, 24, 0.11),
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 1);
+}
+
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .item:hover .icon,
+:global(html[data-theme="light"])
+  .item:hover .icon,
+:global(html.light)
+  .item:hover .icon,
+:global([data-theme="light"])
+  .item:hover .icon,
+:global(.light)
+  .item:hover .icon {
+  box-shadow:
+    4px 6px 0
+      rgba(75, 48, 101, 0.07),
+    0 17px 30px
+      rgba(72, 47, 104, 0.2),
+    0 0 25px
+      rgba(202, 150, 24, 0.2),
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 1);
+}
+
+
+/* =========================================================
+   LIGHT ARROW
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .arrow,
+:global(html[data-theme="light"])
+  .arrow,
+:global(html.light)
+  .arrow,
+:global([data-theme="light"])
+  .arrow,
+:global(.light)
+  .arrow {
+  color: #81738f;
+}
+
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .item:hover .arrow,
+:global(html[data-theme="light"])
+  .item:hover .arrow,
+:global(html.light)
+  .item:hover .arrow,
+:global([data-theme="light"])
+  .item:hover .arrow,
+:global(.light)
+  .item:hover .arrow {
+  color: #9a6a0b;
+}
+
+
+/* =========================================================
+   LIGHT SOCIAL SECTION
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .socialSection,
+:global(html[data-theme="light"])
+  .socialSection,
+:global(html.light)
+  .socialSection,
+:global([data-theme="light"])
+  .socialSection,
+:global(.light)
+  .socialSection {
+  border-color:
+    rgba(75, 61, 103, 0.1);
+}
+
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .socialHeading span,
+:global(html[data-theme="light"])
+  .socialHeading span,
+:global(html.light)
+  .socialHeading span,
+:global([data-theme="light"])
+  .socialHeading span,
+:global(.light)
+  .socialHeading span {
+  color: #756781;
+}
+
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .socialLine,
+:global(html[data-theme="light"])
+  .socialLine,
+:global(html.light)
+  .socialLine,
+:global([data-theme="light"])
+  .socialLine,
+:global(.light)
+  .socialLine {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(166, 119, 19, 0.26),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   LIGHT SOCIAL BUTTONS
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .socialLink,
+:global(html[data-theme="light"])
+  .socialLink,
+:global(html.light)
+  .socialLink,
+:global([data-theme="light"])
+  .socialLink,
+:global(.light)
+  .socialLink {
+  color: #685b78;
+
+  border-color:
+    rgba(101, 76, 132, 0.16);
+
+  background:
+    radial-gradient(
+      circle at 22% 16%,
+      rgba(255, 255, 255, 0.98),
+      transparent 38%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.8),
+      rgba(241, 232, 250, 0.72)
+    );
+
+  box-shadow:
+    0 8px 20px
+      rgba(72, 47, 104, 0.08),
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.96);
+}
+
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .socialLink:hover,
+:global(html[data-theme="light"])
+  .socialLink:hover,
+:global(html.light)
+  .socialLink:hover,
+:global([data-theme="light"])
+  .socialLink:hover,
+:global(.light)
+  .socialLink:hover {
+  color: #704a05;
+
+  border-color:
+    rgba(166, 119, 19, 0.3);
+
+  background:
+    radial-gradient(
+      circle at 24% 18%,
+      rgba(255, 255, 255, 0.98),
+      transparent 34%
+    ),
+    linear-gradient(
+      145deg,
+      #fff9e7,
+      #f4e6b7
+    );
+
+  box-shadow:
+    0 12px 27px
+      rgba(72, 47, 104, 0.12),
+    0 0 20px
+      rgba(202, 150, 24, 0.12),
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 1);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .panel {
+    padding:
+      23px
+      18px;
+
+    border-radius: 24px;
+  }
+
+
+  .panel::before {
+    width: 190px;
+    height: 190px;
+
+    right: -115px;
+    bottom: -95px;
+  }
+
+
+  .panel::after {
+    width: 230px;
+    height: 230px;
+
+    left: -145px;
+    top: -125px;
+  }
+
+
+  .panel:hover {
+    transform: none;
+  }
+
+
+  .panelTop {
+    padding-bottom: 23px;
+  }
+
+
+  .panelTop h3 {
+    font-size:
+      clamp(
+        1.85rem,
+        9vw,
+        2.35rem
+      );
+  }
+
+
+  .item {
+    grid-template-columns:
+      30px
+      42px
+      minmax(0, 1fr);
+
+    min-height: 88px;
+
+    padding:
+      14px
+      4px;
+
+    gap: 10px;
+  }
+
+
+  .item:hover {
+    transform: none;
+  }
+
+
+  .arrow {
+    display: none;
+  }
+
+
+  .socialSection {
+    padding-top: 19px;
+  }
+
+
+  .socialLinks {
+    gap: 9px;
+  }
+
+
+  .socialLink {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 12px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .item,
+  .icon,
+  .arrow,
+  .socialLink,
+  .socialLink::before {
+    transition: none;
+  }
+
+
+  .panel:hover,
+  .item:hover,
+  .item:hover .icon,
+  .socialLink:hover {
+    transform: none;
+  }
+}

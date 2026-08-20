@@ -17,6 +17,8 @@ import RoadmapStats from "./roadmap/RoadmapStats";
 import RoadmapJourney from "./roadmap/RoadmapJourney";
 import RoadmapFinalSection from "./roadmap/RoadmapFinalSection";
 import PricingMain from "./pricing/PricingMain";
+import MainContact from "./contact/MainContact";
+
 
 type Page =
   | "home"
@@ -529,7 +531,6 @@ const leaders = [
     "DP",
   ],
 ];
-
 function Leaderboard() {
   return (
     <>
@@ -653,145 +654,10 @@ function Leaderboard() {
 }
 
 function Contact() {
-  const [sent, setSent] =
-    useState(false);
-
-  const contactTypes = [
-    "Student support",
-    "College partnership",
-    "Corporate partnership",
-    "General enquiry",
-  ];
-
+  
   return (
     <>
-      <PageHero
-        tag="GET IN TOUCH"
-        title={
-          <>
-            Let’s talk about
-            <br />
-            <em>
-              your next step.
-            </em>
-          </>
-        }
-        text="Questions about your journey, a college partnership or something bigger? Start here."
-      />
-
-      <section className="section contact-grid">
-        <div className="contact-types">
-          {contactTypes.map(
-            (contactType, index) => (
-              <div key={contactType}>
-                <span>
-                  0{index + 1}
-                </span>
-
-                <b>
-                  {contactType}
-                </b>
-
-                <i>→</i>
-              </div>
-            ),
-          )}
-        </div>
-
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            setSent(true);
-          }}
-        >
-          <div className="field-row">
-            <label>
-              Name
-
-              <input
-                required
-                placeholder="Your name"
-              />
-            </label>
-
-            <label>
-              Email
-
-              <input
-                required
-                type="email"
-                placeholder="you@example.com"
-              />
-            </label>
-          </div>
-
-          <div className="field-row">
-            <label>
-              Phone
-
-              <input
-                required
-                placeholder="+91"
-              />
-            </label>
-
-            <label>
-              I am a...
-
-              <select required>
-                <option value="">
-                  Select one
-                </option>
-
-                <option>
-                  Student
-                </option>
-
-                <option>
-                  Educator
-                </option>
-
-                <option>
-                  Partner
-                </option>
-              </select>
-            </label>
-          </div>
-
-          <label>
-            Subject
-
-            <input
-              required
-              placeholder="How can we help?"
-            />
-          </label>
-
-          <label>
-            Message
-
-            <textarea
-              required
-              placeholder="Tell us a little more..."
-              rows={5}
-            />
-          </label>
-
-          <button
-            className="btn"
-            type="submit"
-          >
-            Send message →
-          </button>
-
-          {sent && (
-            <p className="success">
-              ✓ Message received.
-              We’ll be in touch soon.
-            </p>
-          )}
-        </form>
-      </section>
+      <MainContact/>
     </>
   );
 }

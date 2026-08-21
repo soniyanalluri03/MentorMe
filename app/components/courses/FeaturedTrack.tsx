@@ -169,8 +169,8 @@ export default function FeaturedTrack() {
       <header className={styles.heading}>
         <div>
           <div className={styles.kicker}>
-            <Sparkles size={15} />
-            Career tracks
+            {/* <Sparkles size={15} />
+            Career tracks */}
           </div>
 
           <h2 id="featured-track-heading">

@@ -30,8 +30,8 @@ export default function RoadmapJourney() {
     >
       <header className="hj-first-five-heading ">
         <div className={styles.kicker}>
-            <Sparkles size={15} />
-            YOUR ROAD TO CAREER READINESS
+            {/* <Sparkles size={15} />
+            YOUR ROAD TO CAREER READINESS */}
           </div>
 
         <h2>

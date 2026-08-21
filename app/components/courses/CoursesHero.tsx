@@ -91,11 +91,11 @@ export default function CoursesHero() {
           <div
             className={`${roadmapHeroStyles.kicker} ${styles.heroKicker}`}
           >
-            <Sparkles size={15} />
+            {/* <Sparkles size={15} />
 
             <span>
               FIND YOUR DIRECTION. START WITH CLARITY.
-            </span>
+            </span> */}
           </div>
 
           <h2>

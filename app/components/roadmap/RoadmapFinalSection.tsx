@@ -23,8 +23,8 @@ export default function RoadmapFinalSection() {
           </div>
           <header className="hj-first-five-heading ">
             <div className={styles.kicker}>
-            <Sparkles size={15} />
-            LEVEL 90 COMPLETED
+            {/* <Sparkles size={15} />
+            LEVEL 90 COMPLETED */}
           </div>
         
             <h2>

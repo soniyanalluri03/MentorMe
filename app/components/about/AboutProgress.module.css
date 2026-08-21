@@ -1,0 +1,57 @@
+.section { width:100%; padding:clamp(62px,6vw,96px) clamp(24px,5.5vw,104px); background:transparent; }
+.content { width:100%; max-width:1400px; margin-inline:auto; }
+.heading { max-width:980px; margin-inline:auto; text-align:center; }
+.kicker { display:inline-flex; align-items:center; justify-content:center; gap:9px; color:#d9ba4d; font-size:.68rem; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
+.heading h2 { margin:16px 0 0; overflow:visible; line-height:.98; letter-spacing:-.052em; }
+.secondaryLine { display:block; margin-top:10px; padding-bottom:.14em; overflow:visible; line-height:1.16; }
+.secondaryLine :global(.hj-main-heading), .secondaryLine :global(.hj-heading-wave), .secondaryLine :global(.seen-word) { font-size:inherit !important; }
+.heading > p { max-width:840px; margin:27px auto 0; padding:13px 18px; color:#9fadc0; border-radius:24px; background:radial-gradient(circle at 50% 50%,rgba(112,215,255,.1),transparent 72%); font-size:.92rem; font-weight:700; line-height:1.78; }
+.progressGrid { max-width:1080px; margin:48px auto 0; display:grid; grid-template-columns:minmax(0,1fr) 88px minmax(0,1fr); align-items:center; gap:18px; }
+.progressCard { min-height:390px; padding:30px; position:relative; overflow:hidden; border:1px solid rgba(112,215,255,.15); border-radius:28px; background:radial-gradient(circle at 12% 8%,rgba(66,174,197,.15),transparent 34%),linear-gradient(145deg,rgba(20,47,73,.94),rgba(7,23,39,.97)); box-shadow:0 24px 58px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.045); text-align:center; }
+.progressCardStrong { border-color:rgba(244,223,131,.2); background:radial-gradient(circle at 88% 88%,rgba(212,175,55,.11),transparent 34%),linear-gradient(145deg,rgba(27,53,82,.96),rgba(8,24,41,.98)); }
+.cardIcon { width:50px; height:50px; margin-inline:auto; display:grid; place-items:center; color:#e2c65f; border:1px solid rgba(244,223,131,.19); border-radius:16px; background:rgba(212,175,55,.055); }
+.progressCard small { display:block; margin-top:18px; color:#d4af37; font-size:.53rem; font-weight:900; letter-spacing:.14em; }
+.progressCard h3 { margin:9px 0 0; color:#f7f9fd; font-size:1.35rem; }
+.progressCard > p { margin:14px 0 0; color:#96a6b9; font-size:.75rem; line-height:1.6; }
+.jarScene { width:160px; height:170px; margin:24px auto 0; position:relative; }
+.jar { width:105px; height:130px; position:absolute; left:50%; bottom:0; overflow:hidden; display:grid; place-items:center; transform:translateX(-50%); border:2px solid rgba(101,234,213,.72); border-radius:20px 20px 34px 34px; }
+.jar i { height:52%; position:absolute; left:0; right:0; bottom:0; background:linear-gradient(180deg,rgba(119,244,226,.72),rgba(48,190,176,.42)); animation:liquidRise 4.8s ease-in-out infinite alternate; }
+.jar strong { position:relative; z-index:2; font-size:1.3rem; }
+.drop { width:12px; height:16px; position:absolute; left:50%; top:0; transform:translateX(-50%); border-radius:50% 50% 65% 65%; background:#77f3df; box-shadow:0 0 14px rgba(119,243,223,.5); animation:dropFall 2.3s ease-in infinite; }
+.bridge { display:flex; align-items:center; color:#d4af37; }
+.bridge span { width:100%; height:1px; background:linear-gradient(90deg,transparent,rgba(212,175,55,.45)); }
+.momentumVisual { height:155px; margin-top:22px; display:flex; align-items:flex-end; justify-content:center; gap:10px; }
+.bar { width:34px; height:var(--bar-height,40%); position:relative; overflow:hidden; border:1px solid rgba(112,215,255,.15); border-radius:12px 12px 5px 5px; background:rgba(255,255,255,.025); }
+.bar:nth-child(1){--bar-height:34%;}.bar:nth-child(2){--bar-height:48%;}.bar:nth-child(3){--bar-height:63%;}.bar:nth-child(4){--bar-height:79%;}.bar:nth-child(5){--bar-height:96%;}
+.bar i { position:absolute; inset:0; background:linear-gradient(180deg,rgba(244,223,131,.92),rgba(112,215,255,.5)); }
+.momentumWord { display:block; margin-top:16px; color:#7cf2df; font-size:1.45rem; font-weight:950; }
+:global(html:not(.dark):not([data-theme="dark"])) .heading > p,
+:global(html[data-theme="light"]) .heading > p,
+:global(html.light) .heading > p,
+:global([data-theme="light"]) .heading > p,
+:global(.light) .heading > p { color:#667085; background:radial-gradient(circle at 50% 50%,rgba(118,80,216,.1),transparent 72%); }
+:global(html:not(.dark):not([data-theme="dark"])) .progressCard,
+:global(html[data-theme="light"]) .progressCard,
+:global(html.light) .progressCard,
+:global([data-theme="light"]) .progressCard,
+:global(.light) .progressCard { border-color:rgba(118,80,216,.15); background:radial-gradient(circle at 12% 8%,rgba(207,188,238,.62),transparent 36%),linear-gradient(145deg,rgba(255,255,255,.94),rgba(255,249,237,.92)); box-shadow:0 22px 54px rgba(61,45,88,.09),inset 0 1px 0 #fff; }
+:global(html:not(.dark):not([data-theme="dark"])) .progressCard h3,
+:global(html[data-theme="light"]) .progressCard h3,
+:global(html.light) .progressCard h3,
+:global([data-theme="light"]) .progressCard h3,
+:global(.light) .progressCard h3 { color:#202a3d; }
+:global(html:not(.dark):not([data-theme="dark"])) .progressCard > p,
+:global(html[data-theme="light"]) .progressCard > p,
+:global(html.light) .progressCard > p,
+:global([data-theme="light"]) .progressCard > p,
+:global(.light) .progressCard > p { color:#667085; }
+:global(html:not(.dark):not([data-theme="dark"])) .momentumWord,
+:global(html[data-theme="light"]) .momentumWord,
+:global(html.light) .momentumWord,
+:global([data-theme="light"]) .momentumWord,
+:global(.light) .momentumWord { color:#087d73; }
+@keyframes liquidRise { from{height:22%;} to{height:78%;} }
+@keyframes dropFall { 0%{top:0;opacity:0;} 20%{opacity:1;} 100%{top:95px;opacity:0;} }
+@media (max-width:900px){ .progressGrid{grid-template-columns:1fr;} .bridge{height:52px;justify-content:center;transform:rotate(90deg);} }
+@media (max-width:700px){ .section{padding:52px 17px;} .heading > p{padding:10px 0;background:transparent;} }
+@media (prefers-reduced-motion:reduce){ .jar i,.drop{animation:none;} }

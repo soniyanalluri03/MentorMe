@@ -23,12 +23,12 @@ export default function PricingHero() {
               styles.kicker
             }
           >
-            <Sparkles
+            {/* <Sparkles
               size={15}
             />
 
             SIMPLE PRICING.
-            SERIOUS PROGRESS.
+            SERIOUS PROGRESS. */}
           </div>
 
 

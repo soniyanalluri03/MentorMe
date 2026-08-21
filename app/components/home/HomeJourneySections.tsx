@@ -293,8 +293,8 @@ export function HomeJourneySections() {
           <div className="hj-intro-layout">
             <header className="hj-heading" data-reveal>
               <div className="hj-kicker">
-            <Sparkles size={15} />
-            CHOOSE YOUR DIRECTION
+            {/* <Sparkles size={15} />
+            CHOOSE YOUR DIRECTION */}
           </div>
               
               <h2>
@@ -367,8 +367,8 @@ export function HomeJourneySections() {
           <header className="hj-first-five-heading" data-reveal>
             
             <div className="hj-kicker">
-            <Sparkles size={15} />
-            YOUR FIRST FIVE LEVELS
+            {/* <Sparkles size={15} />
+            YOUR FIRST FIVE LEVELS */}
           </div>
             <h2>
               Every career begins
@@ -514,8 +514,8 @@ export function HomeJourneySections() {
           <header className="hj-evolution-heading" data-reveal>
             
             <div className="hj-kicker">
-            <Sparkles size={15} />
-            WHAT HAPPENS AFTER LEVEL FIVE?
+            {/* <Sparkles size={15} />
+            WHAT HAPPENS AFTER LEVEL FIVE? */}
           </div>
             <h2 className="hj-evolution-title">
               <span>Your journey keeps moving.</span>

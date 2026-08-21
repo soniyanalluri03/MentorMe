@@ -46,11 +46,11 @@ export default function PricingFAQ() {
             styles.kicker
           }
         >
-          <HelpCircle
+          {/* <HelpCircle
             size={15}
           />
 
-          QUESTIONS, ANSWERED
+          QUESTIONS, ANSWERED */}
         </div>
 
         <h2>
@@ -180,9 +180,9 @@ export default function PricingFAQ() {
           styles.footer
         }
       >
-        <Sparkles
+        {/* <Sparkles
           size={15}
-        />
+        /> */}
 
         Still have a question?
 

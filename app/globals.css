@@ -576,85 +576,6 @@ html[data-theme="light"]
   -webkit-text-fill-color: transparent;
 }
 
-/* =========================================================
-   GLOBAL PURPLE → GOLD GRADIENT WORD
-   Reusable on any page / any word
-   ========================================================= */
-
-.hj-gradient-word {
-  display: inline-block;
-
-  margin:
-    0
-    -0.06em
-    -0.12em
-    0.02em;
-
-  padding:
-    0.03em
-    0.12em
-    0.16em
-    0.06em;
-
-  overflow: visible;
-
-  color: transparent;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-weight: 500;
-  font-style: italic;
-
-  line-height: 1.08;
-
-  background:
-    linear-gradient(
-      110deg,
-      var(--purple, #8f5cf7) 0%,
-      var(--purple-soft, #b58cff) 52%,
-      var(--gold-soft, #f2d875) 100%
-    );
-
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  transform-origin: center;
-
-  animation:
-    hjGradientWordBreath
-    3.6s
-    ease-in-out
-    infinite;
-
-  will-change:
-    transform,
-    filter;
-}
-
-
-/* Light mode */
-
-:where(
-  html:not(.dark):not([data-theme="dark"]),
-  html.light,
-  html[data-theme="light"]
-) .hj-gradient-word {
-  background:
-    linear-gradient(
-      110deg,
-      #7650d8 0%,
-      #9d73f2 52%,
-      #d2aa43 100%
-    );
-
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 
 /* =========================================================
    GLOBAL SEEN WORD STYLE
@@ -755,21 +676,11 @@ html[data-theme="light"]
       )
       drop-shadow(
         0 0 15px
-        rgba(224, 189, 85, 0.2)
+        rgba(224, 189, 85, 0.2)   
       );
   }
 }
 
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-  .seen-word {
-    animation: none !important;
-  }
-}
 
 
 /* =========================================================
@@ -799,97 +710,6 @@ html[data-theme="light"]
   [data-theme="dark"]
 ) .hj-display-heading {
   color: #f6f7fc;
-}
-
-
-/* =========================================================
-   GLOBAL PURPLE → GOLD ITALIC WORD
-   seen / consistency / climbing / going / level is
-   ========================================================= */
-
-.seen-word {
-  display: inline-block;
-
-  margin:
-    0
-    -0.06em
-    -0.12em
-    0.02em;
-
-  padding:
-    0.03em
-    0.12em
-    0.16em
-    0.06em;
-
-  overflow: visible;
-
-  color: transparent;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-weight: 500;
-  font-style: italic;
-
-  line-height: 1.08;
-
-  background:
-    linear-gradient(
-      110deg,
-      #8f5cf7 0%,
-      #b58cff 52%,
-      #f2d875 100%
-    );
-
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  transform-origin: center;
-
-  animation:
-    seenWordBreath
-    3.6s
-    ease-in-out
-    infinite;
-
-  will-change:
-    transform,
-    filter;
-}
-
-@keyframes seenWordBreath {
-  0%,
-  100% {
-    transform:
-      translateY(0)
-      scale(1);
-
-    filter:
-      drop-shadow(
-        0 0 0 rgba(181, 140, 255, 0)
-      )
-      drop-shadow(
-        0 0 0 rgba(224, 189, 85, 0)
-      );
-  }
-
-  50% {
-    transform:
-      translateY(-2px)
-      scale(1.055);
-
-    filter:
-      drop-shadow(
-        0 8px 18px rgba(143, 92, 247, 0.22)
-      )
-      drop-shadow(
-        0 0 15px rgba(224, 189, 85, 0.2)
-      );
-  }
 }
 
 
@@ -1149,17 +969,8 @@ html[data-theme="light"]
     width: 16px;
     height: 16px;
   }
-}
+} 
 
-
-/* =========================================================
-   GLOBAL MENTORME LIGHT PAGE BACKGROUND
-   Home / Career Tracks / Leaderboard / etc.
-   ========================================================= */
-/* =========================================================
-   GLOBAL LIGHT MODE BODY BACKGROUND
-   Starts from top — behind navbar — through entire page
-   ========================================================= */
 
 html[data-theme="light"],
 html:not(.dark):not([data-theme="dark"]) {
@@ -1296,7 +1107,56 @@ html.dark body {
   }
 }
 
+/* =========================================================
+   ROADMAP — REUSE THE EXACT HOME PAGE ROOT BACKGROUND
+   The actual Home background now comes from styles.homePage
+   applied in PublicSite.tsx. Do not recreate a second gradient.
+========================================================= */
+
+.roadmap-page-shell .public-header-slot,
+.roadmap-page-shell .roadmap-page,
+.roadmap-page-shell .roadmap-page section,
+.roadmap-page-shell .footer {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+.roadmap-page-shell .roadmap-page::before,
+.roadmap-page-shell .roadmap-page::after {
+  background: none !important;
+}
+
+/* =========================================================
+   LEADERBOARD — REUSE EXACT HOME PAGE BACKGROUND
+========================================================= */
+
+.leaderboard-page-shell .public-header-slot,
+.leaderboard-page-shell .footer {
+  background: transparent !important;
+  background-image: none !important;
+}
 
 
+/* =========================================================
+   PRICING — REUSE EXACT HOME PAGE BACKGROUND
+========================================================= */
+
+.pricing-page-shell .public-header-slot,
+.pricing-page-shell .pricing-page,
+.pricing-page-shell .pricing-page section,
+.pricing-page-shell .footer {
+  background: transparent !important;
+  background-image: none !important;
+}
 
 
+/* =========================================================
+   ABOUT — REUSE EXACT HOME PAGE BACKGROUND
+========================================================= */
+
+.about-page-shell .public-header-slot,
+.about-page-shell .about-page,
+.about-page-shell .footer {
+  background: transparent !important;
+  background-image: none !important;
+}

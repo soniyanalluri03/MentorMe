@@ -1,0 +1,51 @@
+@property --team-border-angle { syntax:"<angle>"; inherits:false; initial-value:0deg; }
+.section { width:100%; padding:clamp(64px,6.5vw,100px) clamp(24px,5.5vw,104px); background:transparent; }
+.content { width:100%; max-width:1450px; margin-inline:auto; }
+.heading { max-width:1120px; margin-inline:auto; text-align:center; }
+.kicker { display:inline-flex; align-items:center; justify-content:center; gap:9px; color:#d9ba4d; font-size:.68rem; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
+.heading h2 { margin:16px 0 0; overflow:visible; line-height:.98; letter-spacing:-.052em; }
+.secondaryLine { display:block; margin-top:10px; padding-bottom:.14em; overflow:visible; line-height:1.16; }
+.secondaryLine :global(.hj-main-heading), .secondaryLine :global(.hj-heading-wave), .secondaryLine :global(.seen-word) { font-size:inherit !important; }
+.heading > p { max-width:860px; margin:28px auto 0; padding:13px 18px; color:#9fadc0; border-radius:24px; background:radial-gradient(circle at 50% 50%,rgba(112,215,255,.1),transparent 72%); font-size:.92rem; font-weight:700; line-height:1.78; }
+.grid { margin-top:48px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
+.card { min-height:520px; padding:2px; position:relative; overflow:hidden; isolation:isolate; border-radius:30px; background:conic-gradient(from var(--team-border-angle),transparent 0deg,transparent 252deg,#9a6a0d 284deg,#f4df83 316deg,transparent 350deg); animation:teamBorder 9s linear infinite; transition:transform .35s ease,box-shadow .35s ease; }
+.card::after { content:""; position:absolute; inset:2px; z-index:-1; border-radius:28px; background:linear-gradient(145deg,rgba(22,49,78,.98),rgba(7,22,38,.98)); }
+.card:hover { transform:translateY(-8px); box-shadow:0 34px 74px rgba(0,0,0,.28),0 0 30px rgba(212,175,55,.09); }
+.photo { height:285px; position:relative; overflow:hidden; display:flex; align-items:flex-end; padding:20px; border-radius:28px 28px 18px 18px; background-position:center 18%; background-repeat:no-repeat; background-size:cover; isolation:isolate; }
+.photo::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg,transparent 40%,rgba(4,15,27,.82)); }
+.photo span { width:48px; height:48px; display:grid; place-items:center; border-radius:50%; color:#0c2847; background:linear-gradient(135deg,#fff0a7,#d4af37); font-size:.7rem; font-weight:950; }
+.cardBody { padding:24px 25px 22px; }
+.cardBody small { color:#d4af37; font-size:.5rem; font-weight:900; letter-spacing:.13em; }
+.cardBody h3 { margin:10px 0 13px; color:#f7f9fd; font-size:1.55rem; line-height:1.05; letter-spacing:-.035em; }
+.cardBody p { margin:0; color:#97a7ba; font-size:.72rem; line-height:1.68; }
+.cardFooter { margin-top:22px; padding-top:14px; display:flex; align-items:center; justify-content:space-between; border-top:1px solid rgba(255,255,255,.07); color:#d9ba4d; }
+.cardFooter span { font-size:.5rem; font-weight:900; letter-spacing:.1em; text-transform:uppercase; }
+:global(html:not(.dark):not([data-theme="dark"])) .heading > p,
+:global(html[data-theme="light"]) .heading > p,
+:global(html.light) .heading > p,
+:global([data-theme="light"]) .heading > p,
+:global(.light) .heading > p { color:#667085; background:radial-gradient(circle at 50% 50%,rgba(118,80,216,.1),transparent 72%); }
+:global(html:not(.dark):not([data-theme="dark"])) .card::after,
+:global(html[data-theme="light"]) .card::after,
+:global(html.light) .card::after,
+:global([data-theme="light"]) .card::after,
+:global(.light) .card::after { background:linear-gradient(145deg,#eee3fb,#fffaf1 66%,#f3e9d8); }
+:global(html:not(.dark):not([data-theme="dark"])) .cardBody h3,
+:global(html[data-theme="light"]) .cardBody h3,
+:global(html.light) .cardBody h3,
+:global([data-theme="light"]) .cardBody h3,
+:global(.light) .cardBody h3 { color:#202a3d; }
+:global(html:not(.dark):not([data-theme="dark"])) .cardBody p,
+:global(html[data-theme="light"]) .cardBody p,
+:global(html.light) .cardBody p,
+:global([data-theme="light"]) .cardBody p,
+:global(.light) .cardBody p { color:#667085; }
+:global(html:not(.dark):not([data-theme="dark"])) .cardFooter,
+:global(html[data-theme="light"]) .cardFooter,
+:global(html.light) .cardFooter,
+:global([data-theme="light"]) .cardFooter,
+:global(.light) .cardFooter { border-color:rgba(75,61,103,.1); }
+@keyframes teamBorder { to { --team-border-angle:360deg; } }
+@media (max-width:1050px){ .grid{max-width:680px;margin-inline:auto;grid-template-columns:1fr;} }
+@media (max-width:700px){ .section{padding:52px 17px;} .heading > p{padding:10px 0;background:transparent;} .card{min-height:500px;} .photo{height:270px;} }
+@media (prefers-reduced-motion:reduce){ .card{animation:none;} }

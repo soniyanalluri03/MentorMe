@@ -1,0 +1,169 @@
+.hero {
+  width: 100%;
+  min-height: 720px;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(84px, 8vw, 132px) clamp(24px, 5.5vw, 104px) clamp(62px, 6vw, 96px);
+  overflow: hidden;
+  background: transparent;
+  text-align: center;
+}
+
+.content {
+  width: 100%;
+  max-width: 1280px;
+  position: relative;
+  z-index: 2;
+  margin-inline: auto;
+}
+
+.heroGlow {
+  width: min(900px, 78vw);
+  height: 380px;
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(77, 148, 208, 0.13), rgba(143, 92, 247, 0.055) 50%, transparent 74%);
+  filter: blur(52px);
+  pointer-events: none;
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin: 0 auto 24px;
+  color: #d9ba4d;
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.68rem;
+  font-weight: 900;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 0 16px rgba(217, 186, 77, 0.16);
+}
+
+.kicker svg {
+  color: #f0d36d;
+  filter: drop-shadow(0 0 7px rgba(240, 211, 109, 0.24));
+}
+
+.hero :global(.hj-first-five-heading) {
+  width: 100%;
+  max-width: 1160px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.hero :global(.hj-first-five-heading) > span {
+  max-width: 760px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+.careerFlow {
+  width: min(1050px, 100%);
+  margin: 44px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flowItem { display: contents; }
+
+.stage {
+  min-width: 118px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+.stage span {
+  color: #d9ba4d;
+  font-size: 0.62rem;
+  font-weight: 950;
+  letter-spacing: 0.15em;
+}
+
+.stage strong {
+  color: #dce6f4;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.stageActive { transform: translateY(-4px); }
+.stageActive strong { color: #f3d568; text-shadow: 0 0 16px rgba(243, 213, 104, 0.2); }
+
+.connector {
+  width: clamp(48px, 7vw, 92px);
+  height: 24px;
+  display: flex;
+  align-items: center;
+  color: #9b7c24;
+}
+
+.connector i {
+  width: 100%;
+  height: 1px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(212, 175, 55, 0.22);
+}
+
+.connector i::after {
+  content: "";
+  width: 45px;
+  height: 1px;
+  position: absolute;
+  left: -48px;
+  top: 0;
+  background: linear-gradient(90deg, transparent, #f4df83, transparent);
+  animation: careerSignal 3.6s linear infinite;
+}
+
+.connector svg { flex: 0 0 auto; margin-left: -1px; }
+
+:global(html:not(.dark):not([data-theme="dark"])) .kicker,
+:global(html[data-theme="light"]) .kicker,
+:global(html.light) .kicker,
+:global([data-theme="light"]) .kicker,
+:global(.light) .kicker { color: #8e6810; text-shadow: 0 1px 0 rgba(255,255,255,.8), 0 0 10px rgba(177,132,28,.1); }
+
+:global(html:not(.dark):not([data-theme="dark"])) .stage strong,
+:global(html[data-theme="light"]) .stage strong,
+:global(html.light) .stage strong,
+:global([data-theme="light"]) .stage strong,
+:global(.light) .stage strong { color: #53627a; }
+
+:global(html:not(.dark):not([data-theme="dark"])) .stageActive strong,
+:global(html[data-theme="light"]) .stageActive strong,
+:global(html.light) .stageActive strong,
+:global([data-theme="light"]) .stageActive strong,
+:global(.light) .stageActive strong { color: #8e6810; }
+
+@keyframes careerSignal { to { left: 110%; } }
+
+@media (max-width: 760px) {
+  .hero { min-height: auto; padding: 70px 17px 48px; }
+  .kicker { gap: 7px; margin-bottom: 18px; font-size: .6rem; letter-spacing: .12em; }
+  .careerFlow { margin-top: 34px; flex-wrap: wrap; gap: 10px; }
+  .flowItem { display: flex; align-items: center; }
+  .stage { min-width: 66px; }
+  .stage strong { font-size: .57rem; }
+  .connector { width: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connector i::after { animation: none; }
+}

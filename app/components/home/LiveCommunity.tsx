@@ -213,8 +213,8 @@ export default function LiveCommunity() {
           }}
         >
           <div className="hj-kicker">
-            <Sparkles size={15} />
-            LIVE COMMUNITY. REAL PROGRESS.
+            {/* <Sparkles size={15} />
+            LIVE COMMUNITY. REAL PROGRESS. */}
           </div>
 
 

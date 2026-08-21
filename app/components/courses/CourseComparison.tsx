@@ -74,8 +74,8 @@ export default function CourseComparison() {
 
   <div className={styles.headingMain}>
     <div className={styles.kicker}>
-      <Sparkles size={15} />
-      A different learning experience
+      {/* <Sparkles size={15} />
+      A different learning experience */}
     </div>
 
     <h2 id="course-comparison-heading">

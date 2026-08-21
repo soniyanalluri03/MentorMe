@@ -2851,3 +2851,14 @@
     text-shadow: none;
   }
 }
+
+
+.headingMain h2 {
+  width: 100%;
+  max-width: none;
+}
+
+.headingMain h2 > span:first-child {
+  display: inline-block;
+  white-space: nowrap;
+}

@@ -550,8 +550,8 @@ function MomentumCard({
         <div className={styles.finalCopy}>
           <div className={styles.finalEyebrowWrap}>
             <div className="hj-gold-eyebrow">
-              <SparkIcon />
-              WHERE CONSISTENCY BECOMES VISIBLE
+              {/* <SparkIcon />
+              WHERE CONSISTENCY BECOMES VISIBLE */}
             </div>
           </div>
           <h2>
@@ -615,9 +615,7 @@ export function LeaderboardExperience() {
     useState(currentStudent);
 
   return (
-    <main
-      className={`${styles.page} mentorme-page-background`}
-    >
+ <main className={styles.page}>
 
 
       {/* HERO */}
@@ -626,8 +624,8 @@ export function LeaderboardExperience() {
         <div className={styles.heroInner}>
           <div className={styles.heroEyebrowWrap}>
             <div className="hj-gold-eyebrow">
-              <SparkIcon />
-              WHERE CONSISTENCY BECOMES VISIBLE
+              {/* <SparkIcon />
+              WHERE CONSISTENCY BECOMES VISIBLE */}
             </div>
           </div>
 

@@ -316,8 +316,8 @@ export default function CareerTransformation() {
           }}
         >
           <div className="hj-kicker">
-            <Sparkles size={15} />
-            YOUR JOURNEY. YOUR TRANSFORMATION.
+            {/* <Sparkles size={15} />
+            YOUR JOURNEY. YOUR TRANSFORMATION. */}
           </div>
 
           <h2 id="transformation-title">

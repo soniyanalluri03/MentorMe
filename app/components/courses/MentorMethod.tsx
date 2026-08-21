@@ -57,8 +57,8 @@ export default function MentorMethod() {
 
   <div className={styles.headingCopy}>
     <div className={styles.kicker}>
-      <Sparkles size={15} />
-      MENTOR METHOD
+      {/* <Sparkles size={15} />
+      MENTOR METHOD */}
     </div>
 
     <h2 id="mentor-method-heading">
@@ -87,9 +87,8 @@ export default function MentorMethod() {
   >
     <span>
       Every level moves you through one repeatable
-      system. Learn with direction, practise
-      immediately, build something real and prove
-      the result before moving forward.
+      system. Learn with direction.
+      
     </span>
   </div>
 </div>

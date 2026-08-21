@@ -18,8 +18,8 @@ export default function RoadmapHero() {
 
         <header className="hj-first-five-heading pt-10">
           <div className={styles.kicker}>
-            <Sparkles size={15} />
-            THE MENTORME 90-LEVEL JOURNEY
+            {/* <Sparkles size={15} />
+            THE MENTORME 90-LEVEL JOURNEY */}
           </div>
           <h2>
             Every next step.

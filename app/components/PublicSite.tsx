@@ -12,7 +12,7 @@ import FeaturedTrack from "./courses/FeaturedTrack";
 import MentorMethod from "./courses/MentorMethod";
 import styles from "../../app/home.module.css";
 import { LeaderboardExperience } from "./leaderboard/LeaderboardExperience";
-import { AboutExperience } from "./about/AboutExperience";
+import MainAbout from "./about/MainAbout";
 import RoadmapHero from "./roadmap/RoadmapHero";
 import RoadmapStats from "./roadmap/RoadmapStats";
 import RoadmapJourney from "./roadmap/RoadmapJourney";
@@ -785,7 +785,7 @@ export function PublicSite({
     courses: <Courses />,
     roadmap: <Roadmap />,
     leaderboard: <LeaderboardExperience />,
-    about: <AboutExperience />,
+    about: <MainAbout />,
     pricing: <Pricing />,
     contact: <Contact />,
   }[page];
@@ -797,7 +797,16 @@ export function PublicSite({
           ? styles.homePage
           : page === "courses"
             ? "courses-page"
-            : undefined
+          : page === "roadmap"
+            ? `${styles.homePage} roadmap-page-shell`
+             : page === "leaderboard"
+            ? `${styles.homePage} leaderboard-page-shell`
+                : page === "pricing"
+            ? `${styles.homePage} pricing-page-shell`
+            : page === "about"
+            ? `${styles.homePage} about-page-shell`
+          : undefined
+
       }
     >
       <Header page={page} />

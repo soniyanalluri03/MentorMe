@@ -98,44 +98,44 @@ export default function CareerTracksAndCTA() {
         />
 
         <div className={styles.sectionHeading}>
-  {/* LEFT HEADING */}
+          {/* LEFT HEADING */}
 
-  <div className={styles.sectionHeadingMain}>
-    <div className={styles.kicker}>
-      <Sparkles size={15} />
-      EXPANDING CAREER TRACKS
-    </div>
+          <div className={styles.sectionHeadingMain}>
+            <div className={styles.kicker}>
+              {/* <Sparkles size={15} />
+              EXPANDING CAREER TRACKS */}
+            </div>
 
-    <h2 id="expanding-career-tracks">
-      <span className="hj-main-heading">
-        More career directions
-      </span>
+            <h2 id="expanding-career-tracks">
+              <span className="hj-main-heading">
+                More career directions
+              </span>
 
-      <span
-        className={`${styles.headingLine} ${styles.headingLineSecondary} text-4xl xl:text-6xl`}
-      >
-        <span className="hj-main-heading hj-heading-wave">
-          The same proof-first
-        </span>{" "}
+              <span
+                className={`${styles.headingLine} ${styles.headingLineSecondary} text-4xl xl:text-6xl`}
+              >
+                <span className="hj-main-heading hj-heading-wave">
+                  The same proof-first
+                </span>{" "}
 
-        <em className="seen-word">
-          system
-        </em>
-      </span>
-    </h2>
-  </div>
+                <em className="seen-word">
+                  system
+                </em>
+              </span>
+            </h2>
+          </div>
 
-  {/* RIGHT SUPPORTING COPY */}
+          {/* RIGHT SUPPORTING COPY */}
 
-  <div
-    className={`${styles.headingAside} hj-first-five-heading`}
-  >
-    <span>
-      The same level-based roadmap, project gates,
-      milestone certificates and portfolio evidence.
-    </span>
-  </div>
-</div>
+          <div
+            className={`${styles.headingAside} hj-first-five-heading`}
+          >
+            <span>
+              The same level-based roadmap, project gates,
+              milestone certificates and portfolio evidence.
+            </span>
+          </div>
+        </div>
 
         <div className={styles.trackList}>
           <div
@@ -163,8 +163,8 @@ export default function CareerTracksAndCTA() {
             return (
               <article
                 className={`${styles.trackCard} ${isFeatured
-                    ? styles.trackCardFeatured
-                    : styles.trackCardSide
+                  ? styles.trackCardFeatured
+                  : styles.trackCardSide
                   } ${toneClasses[track.tone]}`}
                 key={track.number}
               >
@@ -258,18 +258,18 @@ export default function CareerTracksAndCTA() {
         </span>
 
         <h2 id="career-journey-cta">
-          <span
-            className={`${styles.ctaHeadingLine} ${styles.ctaHeadingPrimary}`}
-          >
+          <span className="hj-main-heading">
             A career goal becomes real
           </span>
+
 
           <span
             className={`${styles.ctaHeadingLine} ${styles.ctaHeadingSecondary}`}
           >
-            <span className={styles.ctaHeadingWave}>
+            <span className="hj-main-heading hj-heading-wave">
               when the next step is
             </span>{" "}
+
 
             <em className={styles.ctaProofWord}>
               visible
@@ -277,17 +277,18 @@ export default function CareerTracksAndCTA() {
           </span>
         </h2>
 
-        <p>
-          Choose the Frontend Engineer track and
-          begin building measurable progress from
-          your very first level
-        </p>
-
-        <Link
+        <div className="hj-first-five-heading">
+          <span >
+            Choose the Frontend Engineer track and
+            begin building measurable progress from
+            your very first level
+          </span>
+        </div>
+        <br />    <Link
           className="navbar-sign-in"
           href="/signup"
         >
-          Start your journey
+          Explore your path
           <ArrowRight size={18} />
         </Link>
       </section>

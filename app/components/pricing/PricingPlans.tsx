@@ -41,11 +41,11 @@ export default function PricingPlans({
                   styles.kicker
                 }
               >
-                <BadgeCheck
+                {/* <BadgeCheck
             size={15}
           />
       
-                 CHOOSE YOUR ACCESS
+                 CHOOSE YOUR ACCESS */}
               </div>
              
       

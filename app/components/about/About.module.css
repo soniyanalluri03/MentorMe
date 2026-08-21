@@ -1,0 +1,17 @@
+.page {
+  width: 100%;
+  min-height: 100svh;
+  position: relative;
+  overflow: hidden;
+  color: #f7f9fd;
+  background: transparent;
+  background-image: none;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .page,
+:global(html[data-theme="light"]) .page,
+:global(html.light) .page,
+:global([data-theme="light"]) .page,
+:global(.light) .page {
+  color: #182235;
+}

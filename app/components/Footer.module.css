@@ -992,3 +992,277 @@
     transform: none;
   }
 }
+
+
+/* =========================================================
+   FINAL FOOTER THEME OVERRIDE
+   Stronger, brighter dark footer in BOTH themes.
+   Keeps the footer visually separate from the page body.
+   ========================================================= */
+
+/* DARK MODE */
+.footer,
+:global(html[data-theme="dark"]) .footer,
+:global(html.dark) .footer,
+:global([data-theme="dark"]) .footer,
+:global(.dark) .footer {
+  color: #f8fbff;
+
+  border-top-color:
+    rgba(116, 188, 255, 0.18);
+
+  background:
+    radial-gradient(
+      circle at 8% 12%,
+      rgba(55, 154, 223, 0.28),
+      transparent 31%
+    ),
+    radial-gradient(
+      circle at 92% 84%,
+      rgba(157, 108, 235, 0.18),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 52% 118%,
+      rgba(212, 175, 55, 0.09),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      #123c63 0%,
+      #0b2c4d 40%,
+      #101f43 72%,
+      #081528 100%
+    );
+}
+
+.footerGlow,
+:global(html[data-theme="dark"]) .footerGlow,
+:global(html.dark) .footerGlow,
+:global([data-theme="dark"]) .footerGlow,
+:global(.dark) .footerGlow {
+  background:
+    rgba(48, 160, 226, 0.2);
+
+  filter:
+    blur(58px);
+}
+
+/* LIGHT MODE — intentionally dark for stronger contrast */
+:global(html:not(.dark):not([data-theme="dark"])) .footer,
+:global(html[data-theme="light"]) .footer,
+:global(html.light) .footer,
+:global([data-theme="light"]) .footer,
+:global(.light) .footer {
+  color: #f9fbff;
+
+  border-top-color:
+    rgba(126, 201, 255, 0.24);
+
+  background:
+    radial-gradient(
+      circle at 8% 12%,
+      rgba(70, 177, 239, 0.34),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 90% 84%,
+      rgba(173, 119, 241, 0.22),
+      transparent 33%
+    ),
+    radial-gradient(
+      circle at 50% 112%,
+      rgba(224, 187, 73, 0.11),
+      transparent 34%
+    ),
+    linear-gradient(
+      145deg,
+      #174b78 0%,
+      #12385f 38%,
+      #17284f 72%,
+      #0c1a31 100%
+    );
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .footerGlow,
+:global(html[data-theme="light"]) .footerGlow,
+:global(html.light) .footerGlow,
+:global([data-theme="light"]) .footerGlow,
+:global(.light) .footerGlow {
+  background:
+    rgba(72, 181, 239, 0.24);
+
+  filter:
+    blur(60px);
+}
+
+/* Light mode text/controls need light colors because footer stays dark */
+:global(html:not(.dark):not([data-theme="dark"])) .brandText,
+:global(html[data-theme="light"]) .brandText,
+:global(html.light) .brandText,
+:global([data-theme="light"]) .brandText,
+:global(.light) .brandText {
+  color: #b7c7d9;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .columnTitle,
+:global(html[data-theme="light"]) .columnTitle,
+:global(html.light) .columnTitle,
+:global([data-theme="light"]) .columnTitle,
+:global(.light) .columnTitle,
+:global(html:not(.dark):not([data-theme="dark"])) .brandTag,
+:global(html[data-theme="light"]) .brandTag,
+:global(html.light) .brandTag,
+:global([data-theme="light"]) .brandTag,
+:global(.light) .brandTag {
+  color: #f0d36d;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .pageLinks a,
+:global(html[data-theme="light"]) .pageLinks a,
+:global(html.light) .pageLinks a,
+:global([data-theme="light"]) .pageLinks a,
+:global(.light) .pageLinks a {
+  color: #c0cfdf;
+
+  border-color:
+    rgba(255, 255, 255, 0.075);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .pageLinks a:hover,
+:global(html[data-theme="light"]) .pageLinks a:hover,
+:global(html.light) .pageLinks a:hover,
+:global([data-theme="light"]) .pageLinks a:hover,
+:global(.light) .pageLinks a:hover {
+  color: #ffffff;
+
+  border-color:
+    rgba(240, 211, 109, 0.24);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .contactIcon,
+:global(html[data-theme="light"]) .contactIcon,
+:global(html.light) .contactIcon,
+:global([data-theme="light"]) .contactIcon,
+:global(.light) .contactIcon {
+  color: #f0d36d;
+
+  border-color:
+    rgba(244, 223, 131, 0.2);
+
+  background:
+    rgba(212, 175, 55, 0.07);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .contactItem span,
+:global(html[data-theme="light"]) .contactItem span,
+:global(html.light) .contactItem span,
+:global([data-theme="light"]) .contactItem span,
+:global(.light) .contactItem span {
+  color: #8799ae;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .contactItem strong,
+:global(html[data-theme="light"]) .contactItem strong,
+:global(html.light) .contactItem strong,
+:global([data-theme="light"]) .contactItem strong,
+:global(.light) .contactItem strong {
+  color: #c7d4e2;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .contactItem:hover strong,
+:global(html[data-theme="light"]) .contactItem:hover strong,
+:global(html.light) .contactItem:hover strong,
+:global([data-theme="light"]) .contactItem:hover strong,
+:global(.light) .contactItem:hover strong {
+  color: #ffffff;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .socialLink,
+:global(html[data-theme="light"]) .socialLink,
+:global(html.light) .socialLink,
+:global([data-theme="light"]) .socialLink,
+:global(.light) .socialLink {
+  color: #b1c4d8;
+
+  border-color:
+    rgba(255, 255, 255, 0.11);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.075),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .socialLink:hover,
+:global(html[data-theme="light"]) .socialLink:hover,
+:global(html.light) .socialLink:hover,
+:global([data-theme="light"]) .socialLink:hover,
+:global(.light) .socialLink:hover {
+  color: #f4df83;
+
+  border-color:
+    rgba(244, 223, 131, 0.3);
+
+  background:
+    rgba(212, 175, 55, 0.085);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .ctaColumn h3,
+:global(html[data-theme="light"]) .ctaColumn h3,
+:global(html.light) .ctaColumn h3,
+:global([data-theme="light"]) .ctaColumn h3,
+:global(.light) .ctaColumn h3 {
+  color: #ffffff;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .ctaColumn p,
+:global(html[data-theme="light"]) .ctaColumn p,
+:global(html.light) .ctaColumn p,
+:global([data-theme="light"]) .ctaColumn p,
+:global(.light) .ctaColumn p {
+  color: #aebfd2;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .footerBottom,
+:global(html[data-theme="light"]) .footerBottom,
+:global(html.light) .footerBottom,
+:global([data-theme="light"]) .footerBottom,
+:global(.light) .footerBottom {
+  border-color:
+    rgba(255, 255, 255, 0.09);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .footerBottom small,
+:global(html[data-theme="light"]) .footerBottom small,
+:global(html.light) .footerBottom small,
+:global([data-theme="light"]) .footerBottom small,
+:global(.light) .footerBottom small,
+:global(html:not(.dark):not([data-theme="dark"])) .legal a,
+:global(html[data-theme="light"]) .legal a,
+:global(html.light) .legal a,
+:global([data-theme="light"]) .legal a,
+:global(.light) .legal a {
+  color: #92a5ba;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .legal a:hover,
+:global(html[data-theme="light"]) .legal a:hover,
+:global(html.light) .legal a:hover,
+:global([data-theme="light"]) .legal a:hover,
+:global(.light) .legal a:hover {
+  color: #f0d36d;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .legal span,
+:global(html[data-theme="light"]) .legal span,
+:global(html.light) .legal span,
+:global([data-theme="light"]) .legal span,
+:global(.light) .legal span {
+  background: #758aa2;
+}

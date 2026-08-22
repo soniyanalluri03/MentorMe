@@ -26,11 +26,67 @@
   text-align: center;
 }
 
-.hero::before,
-.hero::after {
-  content: none;
+/* =========================================================
+   GLASS BACKGROUND IMAGE
+   ========================================================= */
 
-  display: none;
+.hero::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 0;
+
+  background-image:
+    url("./contact.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.18;
+
+  filter:
+    saturate(0.75)
+    contrast(0.92);
+
+  transform: scale(1.025);
+
+  pointer-events: none;
+}
+
+
+/* Glass layer over image */
+.hero::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(10, 24, 42, 0.14),
+      rgba(7, 18, 31, 0.36) 65%,
+      rgba(7, 18, 31, 0.52) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(9, 22, 38, 0.28),
+      rgba(9, 22, 38, 0.1) 45%,
+      rgba(9, 22, 38, 0.38)
+    );
+
+  backdrop-filter:
+    blur(1.5px);
+
+  -webkit-backdrop-filter:
+    blur(1.5px);
+
+  pointer-events: none;
 }
 
 /* =========================================================
@@ -185,7 +241,7 @@
   right: -180px;
   top: 60px;
 
-  z-index: 0;
+  z-index: 2;
 
   border:
     1px solid

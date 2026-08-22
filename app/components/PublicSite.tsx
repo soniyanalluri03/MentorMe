@@ -18,6 +18,25 @@ import RoadmapStats from "./roadmap/RoadmapStats";
 import RoadmapJourney from "./roadmap/RoadmapJourney";
 import RoadmapFinalSection from "./roadmap/RoadmapFinalSection";
 import PricingMain from "./pricing/PricingMain";
+import MainContact from "./contact/MainContact";
+
+import styless from "./Footer.module.css";
+
+
+import {
+  FaInstagram,
+  FaLinkedinIn,
+  FaTwitter,
+  FaWhatsapp,
+} from "react-icons/fa";
+
+import {
+  FiArrowUpRight,
+  FiMail,
+  FiMapPin,
+  FiPhone,
+} from "react-icons/fi";
+
 
 type Page =
   | "home"
@@ -455,7 +474,6 @@ const leaders = [
     "DP",
   ],
 ];
-
 function Leaderboard() {
   return (
     <>
@@ -579,145 +597,10 @@ function Leaderboard() {
 }
 
 function Contact() {
-  const [sent, setSent] =
-    useState(false);
-
-  const contactTypes = [
-    "Student support",
-    "College partnership",
-    "Corporate partnership",
-    "General enquiry",
-  ];
-
+  
   return (
     <>
-      <PageHero
-        tag="GET IN TOUCH"
-        title={
-          <>
-            Let’s talk about
-            <br />
-            <em>
-              your next step.
-            </em>
-          </>
-        }
-        text="Questions about your journey, a college partnership or something bigger? Start here."
-      />
-
-      <section className="section contact-grid">
-        <div className="contact-types">
-          {contactTypes.map(
-            (contactType, index) => (
-              <div key={contactType}>
-                <span>
-                  0{index + 1}
-                </span>
-
-                <b>
-                  {contactType}
-                </b>
-
-                <i>→</i>
-              </div>
-            ),
-          )}
-        </div>
-
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            setSent(true);
-          }}
-        >
-          <div className="field-row">
-            <label>
-              Name
-
-              <input
-                required
-                placeholder="Your name"
-              />
-            </label>
-
-            <label>
-              Email
-
-              <input
-                required
-                type="email"
-                placeholder="you@example.com"
-              />
-            </label>
-          </div>
-
-          <div className="field-row">
-            <label>
-              Phone
-
-              <input
-                required
-                placeholder="+91"
-              />
-            </label>
-
-            <label>
-              I am a...
-
-              <select required>
-                <option value="">
-                  Select one
-                </option>
-
-                <option>
-                  Student
-                </option>
-
-                <option>
-                  Educator
-                </option>
-
-                <option>
-                  Partner
-                </option>
-              </select>
-            </label>
-          </div>
-
-          <label>
-            Subject
-
-            <input
-              required
-              placeholder="How can we help?"
-            />
-          </label>
-
-          <label>
-            Message
-
-            <textarea
-              required
-              placeholder="Tell us a little more..."
-              rows={5}
-            />
-          </label>
-
-          <button
-            className="btn"
-            type="submit"
-          >
-            Send message →
-          </button>
-
-          {sent && (
-            <p className="success">
-              ✓ Message received.
-              We’ll be in touch soon.
-            </p>
-          )}
-        </form>
-      </section>
+      <MainContact/>
     </>
   );
 }
@@ -746,31 +629,241 @@ function PageHero({
   );
 }
 
-function Footer() {
+
+
+const footerLinks = [
+  {
+    label: "Home",
+    href: "/",
+  },
+  {
+    label: "About",
+    href: "/about",
+  },
+  {
+    label: "Career Tracks",
+    href: "/courses",
+  },
+  {
+    label: "Roadmap",
+    href: "/roadmap",
+  },
+  {
+    label: "Pricing",
+    href: "/pricing",
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+  },
+];
+
+const contactDetails = [
+  {
+    label: "Email",
+    value: "hello@mentorme.in",
+    href: "mailto:hello@mentorme.in",
+    icon: FiMail,
+  },
+  {
+    label: "Phone",
+    value: "+91 98765 43210",
+    href: "tel:+919876543210",
+    icon: FiPhone,
+  },
+  {
+    label: "Location",
+    value: "Hyderabad, Telangana",
+    href: "#",
+    icon: FiMapPin,
+  },
+];
+
+const socialLinks = [
+  {
+    name: "LinkedIn",
+    href: "#",
+    icon: FaLinkedinIn,
+  },
+  {
+    name: "Instagram",
+    href: "#",
+    icon: FaInstagram,
+  },
+  {
+    name: "WhatsApp",
+    href: "#",
+    icon: FaWhatsapp,
+  },
+  {
+    name: "Twitter",
+    href: "#",
+    icon: FaTwitter,
+  },
+];
+
+ function Footer() {
   return (
-    <footer className="footer">
-      <MentorMeLogo />
+    <footer className={styless.footer}>
+      <div
+        className={styless.footerGlow}
+        aria-hidden="true"
+      />
 
-      <p>
-        From confusion to
-        confidence.
-      </p>
+      <div className={styless.footerInner}>
+        {/* =====================================================
+            TOP AREA
+        ===================================================== */}
 
-      <div>
-        {nav.map((item) => (
-          <Link
-            href={item.href}
-            key={item.page}
+        <div className={styless.footerGrid}>
+          {/* BRAND */}
+          <div className={styless.brand}>
+            <Link
+              href="/"
+              className={styless.logo}
+              aria-label="MentorME home"
+            >
+              <MentorMeLogo />
+            </Link>
+
+            <p className={styless.brandText}>
+              From confusion to confidence.
+              Build skills, prove your progress
+              and move toward a career with
+              clarity.
+            </p>
+
+            <div className={styless.brandTag}>
+              <span />
+              Progress with purpose.
+            </div>
+
+            <div className={styless.socials}>
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+
+                return (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    className={styless.socialLink}
+                    aria-label={social.name}
+                    title={social.name}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon size={17} />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* PAGES */}
+          <div className={styless.footerColumn}>
+            <span className={styless.columnTitle}>
+              Explore
+            </span>
+
+            <nav
+              className={styless.pageLinks}
+              aria-label="Footer navigation"
+            >
+              {footerLinks.map((item) => (
+                <Link
+                  href={item.href}
+                  key={item.label}
+                >
+                  <span>{item.label}</span>
+
+                  <FiArrowUpRight size={14} />
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          {/* CONTACT */}
+          <div className={styless.footerColumn}>
+            <span className={styless.columnTitle}>
+              Get in touch
+            </span>
+
+            <div className={styless.contactList}>
+              {contactDetails.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className={styless.contactItem}
+                  >
+                    <div className={styless.contactIcon}>
+                      <Icon size={17} />
+                    </div>
+
+                    <div>
+                      <span>{item.label}</span>
+                      <strong>{item.value}</strong>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div
+            className={`${styless.footerColumn} ${styless.ctaColumn}`}
           >
-            {item.label}
-          </Link>
-        ))}
-      </div>
+            <span className={styless.columnTitle}>
+              Start your journey
+            </span>
 
-      <small>
-        © 2026 MentorME. Progress
-        with purpose.
-      </small>
+            <h3>
+              Your next level
+              <br />
+              starts here.
+            </h3>
+
+            <p>
+              Choose a career track and begin
+              building proof that your skills
+              are ready for the real world.
+            </p>
+
+            <Link
+              href="/signup"
+              className="navbar-sign-in"
+            >
+              Get started
+              <FiArrowUpRight size={17} />
+            </Link>
+          </div>
+        </div>
+
+        {/* =====================================================
+            BOTTOM BAR
+        ===================================================== */}
+
+        <div className={styless.footerBottom}>
+          <small>
+            © 2026 MentorME. Progress with purpose.
+          </small>
+
+          <div className={styless.legal}>
+            <Link href="/privacy">
+              Privacy
+            </Link>
+
+            <span />
+
+            <Link href="/terms">
+              Terms
+            </Link>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 }

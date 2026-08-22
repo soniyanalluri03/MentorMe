@@ -1,0 +1,1269 @@
+/* =========================================================
+   CONTACT FORM PANEL
+   FEATURED TRACK VISUAL STYLE
+   ========================================================= */
+
+.formPanel {
+  width: 100%;
+
+  padding:
+    clamp(27px, 3.4vw, 42px);
+
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  color: #f7f9fd;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.1);
+
+  border-radius: 30px;
+
+  background:
+    radial-gradient(
+      circle at 84% 8%,
+      rgba(84, 116, 163, 0.3),
+      transparent 36%
+    ),
+    radial-gradient(
+      circle at 8% 94%,
+      rgba(212, 175, 55, 0.08),
+      transparent 34%
+    ),
+    linear-gradient(
+      155deg,
+      #172c49,
+      #0a1728 62%,
+      #06101c
+    );
+
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(212, 175, 55, 0.045),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  transition:
+    transform 350ms
+      cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 350ms ease,
+    box-shadow 350ms ease;
+}
+
+
+/* =========================================================
+   DECORATIVE FEATURED-TRACK RINGS
+   ========================================================= */
+
+.formPanel::before {
+  content: "";
+
+  width: 260px;
+  height: 260px;
+
+  position: absolute;
+
+  right: -135px;
+  bottom: -135px;
+
+  z-index: -1;
+
+  border:
+    1px solid
+    rgba(212, 175, 55, 0.15);
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 42px
+      rgba(212, 175, 55, 0.024),
+    0 0 0 84px
+      rgba(212, 175, 55, 0.016);
+
+  pointer-events: none;
+}
+
+
+.formPanel::after {
+  content: "";
+
+  width: 330px;
+  height: 330px;
+
+  position: absolute;
+
+  right: -125px;
+  top: -170px;
+
+  z-index: -1;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(120, 92, 200, 0.12),
+      rgba(91, 126, 180, 0.08) 42%,
+      transparent 70%
+    );
+
+  filter: blur(16px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   PANEL HOVER
+   ========================================================= */
+
+.formPanel:hover {
+  border-color:
+    rgba(244, 223, 131, 0.3);
+
+  box-shadow:
+    0 34px 82px rgba(0, 0, 0, 0.45),
+    0 0 44px rgba(212, 175, 55, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  transform:
+    translateY(-4px);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.formHeader {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  padding-bottom: 28px;
+
+  position: relative;
+  z-index: 2;
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.075);
+}
+
+
+.formHeader > div:first-child > span {
+  color: #d9ba4d;
+
+  font-size: 0.56rem;
+  font-weight: 900;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 16px
+    rgba(217, 186, 77, 0.13);
+}
+
+
+.formHeader h3 {
+  margin:
+    13px
+    0
+    0;
+
+  color: #f7f9fd;
+
+  font-size:
+    clamp(
+      2rem,
+      3vw,
+      3rem
+    );
+
+  line-height: 0.98;
+
+  letter-spacing: -0.045em;
+}
+
+
+/* =========================================================
+   HEADER ICON
+   FEATURED TRACK GOLD TILE
+   ========================================================= */
+
+.formIcon {
+  width: 58px;
+  height: 58px;
+
+  flex: 0 0 auto;
+
+  display: grid;
+
+  place-items: center;
+
+  position: relative;
+
+  color: #171307;
+
+  border:
+    1px solid
+    rgba(255, 243, 183, 0.52);
+
+  border-radius: 18px;
+
+  background:
+    radial-gradient(
+      circle at 24% 18%,
+      rgba(255, 255, 255, 0.48),
+      transparent 34%
+    ),
+    linear-gradient(
+      145deg,
+      #fff2ae,
+      #d4af37 58%,
+      #9f6e0c
+    );
+
+  box-shadow:
+    6px 8px 0
+      rgba(0, 0, 0, 0.17),
+    0 18px 32px
+      rgba(0, 0, 0, 0.24),
+    0 0 24px
+      rgba(212, 175, 55, 0.11),
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.7);
+
+  transform:
+    rotate(-4deg);
+
+  transition:
+    transform 320ms
+      cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 320ms ease,
+    filter 320ms ease;
+}
+
+
+.formPanel:hover .formIcon {
+  transform:
+    translateY(-4px)
+    rotate(0deg)
+    scale(1.05);
+
+  filter:
+    brightness(1.06);
+
+  box-shadow:
+    5px 7px 0
+      rgba(0, 0, 0, 0.15),
+    0 24px 40px
+      rgba(0, 0, 0, 0.3),
+    0 0 32px
+      rgba(212, 175, 55, 0.18),
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.75);
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.form {
+  margin-top: 28px;
+
+  display: grid;
+
+  gap: 19px;
+
+  position: relative;
+  z-index: 2;
+}
+
+
+.fieldRow {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 16px;
+}
+
+
+.field {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+
+.field > span {
+  color: #c4cfdd;
+
+  font-size: 0.65rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.03em;
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.1);
+
+  outline: none;
+
+  border-radius: 14px;
+
+  color: #eef3fa;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.02)
+    );
+
+  box-shadow:
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.04);
+
+  font-family: inherit;
+
+  font-size: 0.76rem;
+
+  transition:
+    transform 220ms ease,
+    border-color 250ms ease,
+    background 250ms ease,
+    box-shadow 250ms ease;
+}
+
+
+.field input,
+.field select {
+  min-height: 52px;
+
+  padding:
+    0
+    15px;
+}
+
+
+.field textarea {
+  padding: 15px;
+
+  resize: vertical;
+
+  line-height: 1.65;
+}
+
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #65778e;
+}
+
+
+.field select {
+  color: #9eacc0;
+
+  cursor: pointer;
+}
+
+
+.field select option {
+  color: #172133;
+
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   INPUT HOVER
+   ========================================================= */
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-color:
+    rgba(244, 223, 131, 0.18);
+
+  background:
+    rgba(255, 255, 255, 0.05);
+}
+
+
+/* =========================================================
+   INPUT FOCUS
+   ========================================================= */
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color:
+    rgba(244, 223, 131, 0.5);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.075),
+      rgba(212, 175, 55, 0.025)
+    );
+
+  box-shadow:
+    0
+    0
+    0
+    3px
+    rgba(212, 175, 55, 0.07),
+    0
+    0
+    22px
+    rgba(212, 175, 55, 0.055),
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.05);
+}
+
+
+/* =========================================================
+   FORM BOTTOM
+   ========================================================= */
+
+.formBottom {
+  margin-top: 5px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 18px;
+}
+
+
+.formBottom :global(.navbar-sign-in) {
+  min-width: 185px;
+  min-height: 52px;
+
+  border: 0;
+
+  cursor: pointer;
+
+  transition:
+    transform 260ms ease,
+    box-shadow 260ms ease;
+}
+
+
+.formBottom :global(.navbar-sign-in):hover {
+  transform:
+    translateY(-3px);
+}
+
+
+.privacy {
+  max-width: 280px;
+
+  color: #718299;
+
+  font-size: 0.6rem;
+
+  line-height: 1.55;
+
+  text-align: right;
+}
+
+
+/* =========================================================
+   SUCCESS
+   ========================================================= */
+
+.success {
+  padding:
+    14px
+    16px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  color: #dff7dc;
+
+  border:
+    1px solid
+    rgba(122, 205, 126, 0.23);
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(80, 162, 87, 0.1),
+      rgba(80, 162, 87, 0.045)
+    );
+
+  box-shadow:
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.035);
+}
+
+
+.success svg {
+  flex: 0 0 auto;
+
+  color: #88d88d;
+}
+
+
+.success span {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+
+  font-size: 0.65rem;
+
+  line-height: 1.5;
+}
+
+
+.success strong {
+  color: #e8fae6;
+
+  font-size: 0.7rem;
+}
+
+
+/* =========================================================
+   LIGHT MODE — FORM PANEL
+   FEATURED TRACK PURPLE + CREAM
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .formPanel,
+:global(html[data-theme="light"])
+  .formPanel,
+:global(html.light)
+  .formPanel,
+:global([data-theme="light"])
+  .formPanel,
+:global(.light)
+  .formPanel {
+  color: #202a3d;
+
+  border-color:
+    rgba(166, 119, 19, 0.3);
+
+  background:
+    radial-gradient(
+      circle at 84% 8%,
+      rgba(191, 164, 231, 0.72),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 8% 92%,
+      rgba(255, 248, 229, 0.98),
+      rgba(248, 236, 210, 0.72) 34%,
+      transparent 58%
+    ),
+    linear-gradient(
+      145deg,
+      #eee3fb 0%,
+      #fbf7ff 38%,
+      #fff8e8 72%,
+      #f5ead4 100%
+    );
+
+  box-shadow:
+    0 28px 66px
+      rgba(72, 47, 104, 0.19),
+    0 0 28px
+      rgba(194, 143, 20, 0.08),
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.98),
+    inset
+    0
+    0
+    0
+    1px
+    rgba(255, 255, 255, 0.38),
+    inset
+    -24px
+    -30px
+    46px
+    rgba(181, 145, 86, 0.045);
+}
+
+
+/* =========================================================
+   LIGHT DECORATIVE RINGS
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .formPanel::before,
+:global(html[data-theme="light"])
+  .formPanel::before,
+:global(html.light)
+  .formPanel::before,
+:global([data-theme="light"])
+  .formPanel::before,
+:global(.light)
+  .formPanel::before {
+  border-color:
+    rgba(220, 201, 164, 0.5);
+
+  box-shadow:
+    0 0 0 42px
+      rgba(255, 247, 228, 0.11),
+    0 0 0 84px
+      rgba(240, 226, 198, 0.07);
+}
+
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .formPanel::after,
+:global(html[data-theme="light"])
+  .formPanel::after,
+:global(html.light)
+  .formPanel::after,
+:global([data-theme="light"])
+  .formPanel::after,
+:global(.light)
+  .formPanel::after {
+  background:
+    radial-gradient(
+      circle,
+      rgba(176, 148, 215, 0.22),
+      transparent 68%
+    );
+}
+
+
+/* =========================================================
+   LIGHT PANEL HOVER
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .formPanel:hover,
+:global(html[data-theme="light"])
+  .formPanel:hover,
+:global(html.light)
+  .formPanel:hover,
+:global([data-theme="light"])
+  .formPanel:hover,
+:global(.light)
+  .formPanel:hover {
+  border-color:
+    rgba(166, 119, 19, 0.43);
+
+  box-shadow:
+    0 35px 80px
+      rgba(72, 47, 104, 0.23),
+    0 0 38px
+      rgba(202, 150, 24, 0.13),
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 1);
+
+  transform:
+    translateY(-4px);
+}
+
+
+/* =========================================================
+   LIGHT HEADER
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .formHeader,
+:global(html[data-theme="light"])
+  .formHeader,
+:global(html.light)
+  .formHeader,
+:global([data-theme="light"])
+  .formHeader,
+:global(.light)
+  .formHeader {
+  border-color:
+    rgba(75, 61, 103, 0.11);
+}
+
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .formHeader > div:first-child > span,
+:global(html[data-theme="light"])
+  .formHeader > div:first-child > span,
+:global(html.light)
+  .formHeader > div:first-child > span,
+:global([data-theme="light"])
+  .formHeader > div:first-child > span,
+:global(.light)
+  .formHeader > div:first-child > span {
+  color: #8e6810;
+
+  text-shadow: none;
+}
+
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .formHeader h3,
+:global(html[data-theme="light"])
+  .formHeader h3,
+:global(html.light)
+  .formHeader h3,
+:global([data-theme="light"])
+  .formHeader h3,
+:global(.light)
+  .formHeader h3 {
+  color: #202a3d;
+}
+
+
+/* =========================================================
+   LIGHT FORM ICON
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .formIcon,
+:global(html[data-theme="light"])
+  .formIcon,
+:global(html.light)
+  .formIcon,
+:global([data-theme="light"])
+  .formIcon,
+:global(.light)
+  .formIcon {
+  color: #694303;
+
+  border-color:
+    rgba(132, 79, 2, 0.36);
+
+  background:
+    radial-gradient(
+      circle at 24% 18%,
+      rgba(255, 255, 255, 0.98),
+      transparent 34%
+    ),
+    linear-gradient(
+      145deg,
+      #fff8d8 0%,
+      #efd374 48%,
+      #c58a12 100%
+    );
+
+  box-shadow:
+    6px 8px 0
+      rgba(75, 48, 101, 0.08),
+    0 18px 34px
+      rgba(72, 47, 104, 0.18),
+    0 0 26px
+      rgba(202, 150, 24, 0.13),
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 1);
+}
+
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .formPanel:hover .formIcon,
+:global(html[data-theme="light"])
+  .formPanel:hover .formIcon,
+:global(html.light)
+  .formPanel:hover .formIcon,
+:global([data-theme="light"])
+  .formPanel:hover .formIcon,
+:global(.light)
+  .formPanel:hover .formIcon {
+  box-shadow:
+    5px 7px 0
+      rgba(75, 48, 101, 0.07),
+    0 25px 42px
+      rgba(72, 47, 104, 0.23),
+    0 0 34px
+      rgba(202, 150, 24, 0.2),
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 1);
+}
+
+
+/* =========================================================
+   LIGHT LABELS
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .field > span,
+:global(html[data-theme="light"])
+  .field > span,
+:global(html.light)
+  .field > span,
+:global([data-theme="light"])
+  .field > span,
+:global(.light)
+  .field > span {
+  color: #586579;
+}
+
+
+/* =========================================================
+   LIGHT INPUTS
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .field input,
+:global(html:not(.dark):not([data-theme="dark"]))
+  .field select,
+:global(html:not(.dark):not([data-theme="dark"]))
+  .field textarea,
+
+:global(html[data-theme="light"])
+  .field input,
+:global(html[data-theme="light"])
+  .field select,
+:global(html[data-theme="light"])
+  .field textarea,
+
+:global(html.light)
+  .field input,
+:global(html.light)
+  .field select,
+:global(html.light)
+  .field textarea,
+
+:global([data-theme="light"])
+  .field input,
+:global([data-theme="light"])
+  .field select,
+:global([data-theme="light"])
+  .field textarea,
+
+:global(.light)
+  .field input,
+:global(.light)
+  .field select,
+:global(.light)
+  .field textarea {
+  color: #202a3d;
+
+  border-color:
+    rgba(75, 61, 103, 0.14);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.82),
+      rgba(248, 244, 252, 0.68)
+    );
+
+  box-shadow:
+    0
+    6px
+    16px
+    rgba(72, 47, 104, 0.035),
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 1);
+}
+
+
+/* =========================================================
+   LIGHT INPUT HOVER
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .field input:hover,
+:global(html:not(.dark):not([data-theme="dark"]))
+  .field select:hover,
+:global(html:not(.dark):not([data-theme="dark"]))
+  .field textarea:hover,
+
+:global(html[data-theme="light"])
+  .field input:hover,
+:global(html[data-theme="light"])
+  .field select:hover,
+:global(html[data-theme="light"])
+  .field textarea:hover,
+
+:global(html.light)
+  .field input:hover,
+:global(html.light)
+  .field select:hover,
+:global(html.light)
+  .field textarea:hover,
+
+:global([data-theme="light"])
+  .field input:hover,
+:global([data-theme="light"])
+  .field select:hover,
+:global([data-theme="light"])
+  .field textarea:hover,
+
+:global(.light)
+  .field input:hover,
+:global(.light)
+  .field select:hover,
+:global(.light)
+  .field textarea:hover {
+  border-color:
+    rgba(166, 119, 19, 0.22);
+}
+
+
+/* =========================================================
+   LIGHT INPUT FOCUS
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .field input:focus,
+:global(html:not(.dark):not([data-theme="dark"]))
+  .field select:focus,
+:global(html:not(.dark):not([data-theme="dark"]))
+  .field textarea:focus,
+
+:global(html[data-theme="light"])
+  .field input:focus,
+:global(html[data-theme="light"])
+  .field select:focus,
+:global(html[data-theme="light"])
+  .field textarea:focus,
+
+:global(html.light)
+  .field input:focus,
+:global(html.light)
+  .field select:focus,
+:global(html.light)
+  .field textarea:focus,
+
+:global([data-theme="light"])
+  .field input:focus,
+:global([data-theme="light"])
+  .field select:focus,
+:global([data-theme="light"])
+  .field textarea:focus,
+
+:global(.light)
+  .field input:focus,
+:global(.light)
+  .field select:focus,
+:global(.light)
+  .field textarea:focus {
+  border-color:
+    rgba(166, 119, 19, 0.4);
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #fffaf0
+    );
+
+  box-shadow:
+    0
+    0
+    0
+    3px
+    rgba(202, 150, 24, 0.08),
+    0
+    10px
+    24px
+    rgba(72, 47, 104, 0.07),
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 1);
+}
+
+
+/* =========================================================
+   LIGHT PLACEHOLDERS
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .field input::placeholder,
+:global(html:not(.dark):not([data-theme="dark"]))
+  .field textarea::placeholder,
+
+:global(html[data-theme="light"])
+  .field input::placeholder,
+:global(html[data-theme="light"])
+  .field textarea::placeholder,
+
+:global(html.light)
+  .field input::placeholder,
+:global(html.light)
+  .field textarea::placeholder,
+
+:global([data-theme="light"])
+  .field input::placeholder,
+:global([data-theme="light"])
+  .field textarea::placeholder,
+
+:global(.light)
+  .field input::placeholder,
+:global(.light)
+  .field textarea::placeholder {
+  color: #929bab;
+}
+
+
+/* =========================================================
+   LIGHT SELECT
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .field select,
+:global(html[data-theme="light"])
+  .field select,
+:global(html.light)
+  .field select,
+:global([data-theme="light"])
+  .field select,
+:global(.light)
+  .field select {
+  color: #667085;
+}
+
+
+/* =========================================================
+   LIGHT PRIVACY TEXT
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .privacy,
+:global(html[data-theme="light"])
+  .privacy,
+:global(html.light)
+  .privacy,
+:global([data-theme="light"])
+  .privacy,
+:global(.light)
+  .privacy {
+  color: #7a8597;
+}
+
+
+/* =========================================================
+   LIGHT SUCCESS
+   ========================================================= */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .success,
+:global(html[data-theme="light"])
+  .success,
+:global(html.light)
+  .success,
+:global([data-theme="light"])
+  .success,
+:global(.light)
+  .success {
+  color: #376c39;
+
+  border-color:
+    rgba(66, 140, 70, 0.2);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(236, 251, 235, 0.9),
+      rgba(218, 242, 218, 0.68)
+    );
+
+  box-shadow:
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.9);
+}
+
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .success strong,
+:global(html[data-theme="light"])
+  .success strong,
+:global(html.light)
+  .success strong,
+:global([data-theme="light"])
+  .success strong,
+:global(.light)
+  .success strong {
+  color: #285c2b;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .formPanel {
+    padding:
+      24px
+      18px;
+
+    border-radius: 24px;
+  }
+
+
+  .formPanel:hover {
+    transform: none;
+  }
+
+
+  .formPanel::before {
+    width: 190px;
+    height: 190px;
+
+    right: -115px;
+    bottom: -100px;
+  }
+
+
+  .formPanel::after {
+    width: 240px;
+    height: 240px;
+
+    right: -140px;
+    top: -125px;
+  }
+
+
+  .formHeader {
+    gap: 16px;
+
+    padding-bottom: 23px;
+  }
+
+
+  .formHeader h3 {
+    font-size:
+      clamp(
+        1.85rem,
+        9vw,
+        2.35rem
+      );
+  }
+
+
+  .formIcon {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 15px;
+  }
+
+
+  .formIcon svg {
+    width: 21px;
+    height: 21px;
+  }
+
+
+  .formPanel:hover .formIcon {
+    transform:
+      rotate(-4deg);
+  }
+
+
+  .fieldRow {
+    grid-template-columns: 1fr;
+  }
+
+
+  .formBottom {
+    align-items: stretch;
+
+    flex-direction: column;
+  }
+
+
+  .formBottom :global(.navbar-sign-in) {
+    width: 100%;
+  }
+
+
+  .privacy {
+    max-width: none;
+
+    text-align: left;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .formPanel,
+  .formIcon,
+  .field input,
+  .field select,
+  .field textarea,
+  .formBottom :global(.navbar-sign-in) {
+    transition: none;
+  }
+
+
+  .formPanel:hover,
+  .formPanel:hover .formIcon,
+  .formBottom :global(.navbar-sign-in):hover {
+    transform: none;
+  }
+}

@@ -8,6 +8,23 @@
   background-image: none;
 }
 
+.motionSection {
+  width: 100%;
+  position: relative;
+  transform-origin: center top;
+  will-change: transform, opacity, filter;
+}
+
+.motionSection:last-child {
+  transform-origin: center bottom;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motionSection {
+    will-change: auto;
+  }
+}
+
 :global(html:not(.dark):not([data-theme="dark"])) .page,
 :global(html[data-theme="light"]) .page,
 :global(html.light) .page,

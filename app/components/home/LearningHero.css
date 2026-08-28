@@ -1642,17 +1642,8 @@
         }
 
         .mh-student-scene::after {
-          content: "";
-          position: absolute;
-          z-index: 5;
-          inset: 9% 13% 8%;
-          border-radius: 42%;
-          pointer-events: none;
-          background: linear-gradient(112deg, transparent 30%, rgba(255, 255, 255, 0.16) 47%, rgba(244, 214, 92, 0.1) 53%, transparent 68%);
-          mix-blend-mode: screen;
-          opacity: 0;
-          transform: translateX(-32%) skewX(-8deg);
-          animation: mhStudentLightSweep 7.5s ease-in-out 1.8s infinite;
+          content: none;
+          animation: none;
         }
 
         .mh-student-image {
@@ -2362,19 +2353,19 @@
 
   animation:
     mhOrbitIconFloat
-    4.6s
+    5.8s
     ease-in-out
     infinite;
 }
 
 .mh-orbit-icon--gift {
-  top: 11%;
-  right: 17%;
+  top: 8%;
+  right: 8%;
 }
 
 .mh-orbit-icon--star {
-  top: 31%;
-  right: 29%;
+  top: 29%;
+  right: 4%;
 
   width: 39px;
   height: 39px;
@@ -2383,15 +2374,17 @@
 }
 
 .mh-orbit-icon--code {
-  top: 63%;
-  left: 18%;
+  top: auto;
+  bottom: 15%;
+  left: 9%;
 
   animation-delay: -2.1s;
 }
 
 .mh-orbit-icon--chart {
-  top: 57%;
-  left: 31%;
+  top: auto;
+  bottom: 5%;
+  left: 27%;
 
   width: 39px;
   height: 39px;
@@ -2400,8 +2393,9 @@
 }
 
 .mh-orbit-icon--briefcase {
-  top: 63%;
-  right: 14%;
+  top: auto;
+  right: 7%;
+  bottom: 15%;
 
   width: 41px;
   height: 41px;

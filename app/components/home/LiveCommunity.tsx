@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { BriefcaseBusiness, CheckCircle2, Code2, FolderKanban, MessageCircleMore, Sparkles, Trophy } from "lucide-react";
 import styles from "./LiveCommunity.module.css";
@@ -189,28 +189,8 @@ export default function LiveCommunity() {
       aria-labelledby="community-title"
     >
       <div className={styles.shell}>
-        <motion.header
+        <header
           className={styles.heading}
-          initial={
-            reducedMotion
-              ? false
-              : {
-                opacity: 0,
-                y: 28,
-              }
-          }
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.45,
-          }}
-          transition={{
-            duration: 0.65,
-            ease: [0.22, 1, 0.36, 1],
-          }}
         >
           <div className="hj-kicker">
             {/* <Sparkles size={15} />
@@ -239,7 +219,7 @@ export default function LiveCommunity() {
             </span>
           </div>
 
-        </motion.header>
+        </header>
       </div>
 
       <div className={styles.streamFrame}>
@@ -293,28 +273,8 @@ export default function LiveCommunity() {
         </div>
       </div>
 
-      <motion.div
+      <div
         className={styles.stats}
-        initial={
-          reducedMotion
-            ? false
-            : {
-              opacity: 0,
-              y: 22,
-            }
-        }
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-        viewport={{
-          once: true,
-          amount: 0.7,
-        }}
-        transition={{
-          duration: 0.65,
-          ease: [0.22, 1, 0.36, 1],
-        }}
       >
         {communityStats.map((stat) => (
           <div key={stat.label}>
@@ -327,7 +287,7 @@ export default function LiveCommunity() {
           <i />
           Live activity updates
         </p>
-      </motion.div>
+      </div>
     </section>
   );
 }

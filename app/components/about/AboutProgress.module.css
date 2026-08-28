@@ -55,3 +55,265 @@
 @media (max-width:900px){ .progressGrid{grid-template-columns:1fr;} .bridge{height:52px;justify-content:center;transform:rotate(90deg);} }
 @media (max-width:700px){ .section{padding:52px 17px;} .heading > p{padding:10px 0;background:transparent;} }
 @media (prefers-reduced-motion:reduce){ .jar i,.drop{animation:none;} }
+
+/* Reference card theme shared by both progress cards and both themes. */
+.progressCard,
+.progressCardStrong,
+:global(html:not(.dark):not([data-theme="dark"])) .progressCard,
+:global(html[data-theme="light"]) .progressCard,
+:global(html.light) .progressCard,
+:global([data-theme="light"]) .progressCard,
+:global(.light) .progressCard {
+  isolation: isolate;
+  border: 1.5px solid rgba(217, 175, 48, 0.84);
+  background:
+    radial-gradient(circle at 8% 4%, rgba(137, 179, 219, 0.42), transparent 31%),
+    radial-gradient(circle at 112% 118%, transparent 0 128px, rgba(220, 184, 74, 0.22) 129px 130px, transparent 131px),
+    linear-gradient(145deg, #183451 0%, #102943 48%, #071a2d 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 247, 194, 0.28),
+    0 18px 38px rgba(1, 11, 22, 0.3),
+    0 0 16px rgba(212, 175, 55, 0.08);
+  transition: transform .33s ease, border-color .33s ease, box-shadow .33s ease;
+}
+
+.progressCard::before {
+  content: "";
+  width: 72px;
+  height: 3px;
+  position: absolute;
+  left: 30px;
+  bottom: 25px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #a66d04, #e5b82d 55%, #fff0a7, transparent);
+  box-shadow: 88px 0 0 -1px #b58b28, 100px 0 0 -1px #b58b28, 112px 0 0 -1px #b58b28;
+  opacity: 0.82;
+  pointer-events: none;
+}
+
+.progressCard:hover {
+  transform: translateY(-7px);
+  border-color: #f0cf58;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 247, 194, 0.34),
+    0 28px 58px rgba(1, 11, 22, 0.4),
+    0 0 25px rgba(212, 175, 55, 0.15);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .progressCard h3,
+:global(html[data-theme="light"]) .progressCard h3,
+:global(html.light) .progressCard h3,
+:global([data-theme="light"]) .progressCard h3,
+:global(.light) .progressCard h3 { color:#f7f9fd; }
+
+:global(html:not(.dark):not([data-theme="dark"])) .progressCard > p,
+:global(html[data-theme="light"]) .progressCard > p,
+:global(html.light) .progressCard > p,
+:global([data-theme="light"]) .progressCard > p,
+:global(.light) .progressCard > p { color:#aebbd0; }
+
+:global(html:not(.dark):not([data-theme="dark"])) .momentumWord,
+:global(html[data-theme="light"]) .momentumWord,
+:global(html.light) .momentumWord,
+:global([data-theme="light"]) .momentumWord,
+:global(.light) .momentumWord { color:#7cf2df; }
+
+/* Light theme: white/cream cards retaining all gold details. */
+:global(html:not(.dark):not([data-theme="dark"])) .progressCard,
+:global(html[data-theme="light"]) .progressCard,
+:global(html.light) .progressCard,
+:global([data-theme="light"]) .progressCard,
+:global(.light) .progressCard {
+  border-color: rgba(184, 126, 8, 0.86);
+  background:
+    radial-gradient(circle at 8% 4%, rgba(222, 207, 246, 0.5), transparent 32%),
+    radial-gradient(circle at 112% 118%, transparent 0 128px, rgba(194, 143, 24, 0.2) 129px 130px, transparent 131px),
+    linear-gradient(145deg, #ffffff 0%, #fbf8fc 52%, #fff8e8 100%);
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 18px 38px rgba(72, 49, 99, 0.12),
+    0 0 16px rgba(184, 126, 8, 0.08);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .progressCard:hover,
+:global(html[data-theme="light"]) .progressCard:hover,
+:global(html.light) .progressCard:hover,
+:global([data-theme="light"]) .progressCard:hover,
+:global(.light) .progressCard:hover {
+  border-color: #c79018;
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 26px 52px rgba(72, 49, 99, 0.17),
+    0 0 24px rgba(194, 143, 24, 0.16);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .progressCard h3,
+:global(html[data-theme="light"]) .progressCard h3,
+:global(html.light) .progressCard h3,
+:global([data-theme="light"]) .progressCard h3,
+:global(.light) .progressCard h3 { color:#17243a; }
+
+:global(html:not(.dark):not([data-theme="dark"])) .progressCard > p,
+:global(html[data-theme="light"]) .progressCard > p,
+:global(html.light) .progressCard > p,
+:global([data-theme="light"]) .progressCard > p,
+:global(.light) .progressCard > p { color:#647087; }
+
+:global(html:not(.dark):not([data-theme="dark"])) .momentumWord,
+:global(html[data-theme="light"]) .momentumWord,
+:global(html.light) .momentumWord,
+:global([data-theme="light"]) .momentumWord,
+:global(.light) .momentumWord { color:#087d73; }
+
+/* =========================================================
+   PROGRESS VISUALS — GOLD / CHAMPAGNE / LAVENDER THEME
+   ========================================================= */
+
+.jar {
+  border-color: rgba(224, 183, 54, 0.9);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.04),
+      rgba(212, 175, 55, 0.06)
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.26),
+    0 0 18px rgba(212, 175, 55, 0.12);
+}
+
+.jar i {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 235, 139, 0.92),
+      rgba(218, 174, 45, 0.8) 48%,
+      rgba(151, 111, 195, 0.5) 100%
+    );
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+}
+
+.drop {
+  background: linear-gradient(145deg, #fff1a8, #d6a51d 72%);
+  box-shadow:
+    0 0 5px rgba(123, 75, 2, 0.42),
+    0 0 15px rgba(225, 181, 43, 0.46);
+}
+
+.bar {
+  border-color: rgba(212, 175, 55, 0.35);
+  background: rgba(212, 175, 55, 0.04);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.bar i {
+  background:
+    linear-gradient(
+      180deg,
+      #ffe87d 0%,
+      #ddb02f 38%,
+      #b49bdc 72%,
+      #7399c4 100%
+    );
+}
+
+.momentumWord,
+:global(html:not(.dark):not([data-theme="dark"])) .momentumWord,
+:global(html[data-theme="light"]) .momentumWord,
+:global(html.light) .momentumWord,
+:global([data-theme="light"]) .momentumWord,
+:global(.light) .momentumWord {
+  color: transparent;
+  background: linear-gradient(105deg, #9b6205, #d49c10 42%, #efd04e 76%, #b77a08);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 0 rgba(91, 54, 0, 0.14));
+}
+
+/* Traveling metallic-gold signal between the two cards. */
+.bridge {
+  color: #b98210;
+  filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.18));
+}
+
+.bridge span {
+  position: relative;
+  overflow: hidden;
+  height: 2px;
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(121, 76, 3, 0.18),
+      rgba(212, 175, 55, 0.42),
+      rgba(121, 76, 3, 0.18)
+    );
+}
+
+.bridge span::after {
+  content: "";
+  width: 34px;
+  height: 2px;
+  position: absolute;
+  left: -38px;
+  top: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #7b4b02 16%,
+      #d4af37 42%,
+      #fff0a7 64%,
+      #ffffff 70%,
+      #d9a91e 82%,
+      transparent
+    );
+  box-shadow:
+    0 0 4px rgba(123, 75, 2, 0.58),
+    0 0 10px rgba(212, 175, 55, 0.34);
+  animation: progressBridgeSignal 2.7s linear infinite;
+}
+
+.bridge svg {
+  flex: 0 0 auto;
+  margin-left: -1px;
+  color: #b98210;
+  stroke-width: 2.2;
+}
+
+@keyframes progressBridgeSignal {
+  to {
+    left: 110%;
+  }
+}
+
+/* Slightly deeper contrast on the cream light-mode cards. */
+:global(html:not(.dark):not([data-theme="dark"])) .jar,
+:global(html[data-theme="light"]) .jar,
+:global(html.light) .jar,
+:global([data-theme="light"]) .jar,
+:global(.light) .jar {
+  border-color: #c69018;
+  background: rgba(255, 250, 236, 0.56);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .bridge,
+:global(html[data-theme="light"]) .bridge,
+:global(html.light) .bridge,
+:global([data-theme="light"]) .bridge,
+:global(.light) .bridge,
+:global(html:not(.dark):not([data-theme="dark"])) .bridge svg,
+:global(html[data-theme="light"]) .bridge svg,
+:global(html.light) .bridge svg,
+:global([data-theme="light"]) .bridge svg,
+:global(.light) .bridge svg {
+  color: #8b5905;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bridge span::after {
+    animation: none;
+  }
+}

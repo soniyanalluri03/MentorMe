@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 
 import styles from "./CareerTransformation.module.css";
+import MotionReveal from "../MotionReveal";
 
 const stages = [
   {
@@ -72,13 +73,11 @@ type Stage = (typeof stages)[number];
 
 interface StageCardProps {
   stage: Stage;
-  index: number;
   reducedMotion: boolean | null;
 }
 
 function StageCard({
   stage,
-  index,
   reducedMotion,
 }: StageCardProps) {
   const rawRotateX = useMotionValue(0);
@@ -167,35 +166,8 @@ function StageCard({
   };
 
   return (
-    <motion.div
+    <div
       className={styles.cardSlot}
-      initial={
-        reducedMotion
-          ? false
-          : {
-            opacity: 0,
-            y: 70,
-            scale: 0.93,
-            rotateX: 10,
-          }
-      }
-      whileInView={{
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        rotateX: 0,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.2,
-      }}
-      transition={{
-        duration: 0.82,
-        delay: reducedMotion
-          ? 0
-          : index * 0.16,
-        ease: [0.22, 1, 0.36, 1],
-      }}
     >
       <motion.article
         className={`${styles.card} ${styles[stage.tone]}`}
@@ -269,7 +241,7 @@ function StageCard({
           aria-hidden="true"
         />
       </motion.article>
-    </motion.div>
+    </div>
   );
 }
 
@@ -277,8 +249,11 @@ export default function CareerTransformation() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <section
+    <MotionReveal
+      as="section"
       className={styles.section}
+      x={-18}
+      amount={0.08}
       aria-labelledby="transformation-title"
     >
       <div
@@ -292,28 +267,8 @@ export default function CareerTransformation() {
       />
 
       <div className={styles.shell}>
-        <motion.header
+        <header
           className={styles.heading}
-          initial={
-            reducedMotion
-              ? false
-              : {
-                opacity: 0,
-                y: 30,
-              }
-          }
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.45,
-          }}
-          transition={{
-            duration: 0.65,
-            ease: [0.22, 1, 0.36, 1],
-          }}
         >
           <div className="hj-kicker">
             {/* <Sparkles size={15} />
@@ -340,48 +295,22 @@ export default function CareerTransformation() {
               into opportunity.
             </span>
           </div>
-        </motion.header>
+        </header>
 
         <div className={styles.cards}>
           {stages.map((stage, index) => (
             <Fragment key={stage.number}>
               <StageCard
                 stage={stage}
-                index={index}
                 reducedMotion={reducedMotion}
               />
 
               {index < stages.length - 1 && (
-                <motion.div
+                <div
                   className={
                     styles.flowConnectorWrap
                   }
                   aria-hidden="true"
-                  initial={
-                    reducedMotion
-                      ? false
-                      : {
-                        opacity: 0,
-                        scale: 0.5,
-                        x: -12,
-                      }
-                  }
-                  whileInView={{
-                    opacity: 1,
-                    scale: 1,
-                    x: 0,
-                  }}
-                  viewport={{
-                    once: true,
-                    amount: 0.4,
-                  }}
-                  transition={{
-                    duration: 0.55,
-                    delay: reducedMotion
-                      ? 0
-                      : index * 0.16 + 0.22,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
                 >
                   <span
                     className={
@@ -393,12 +322,12 @@ export default function CareerTransformation() {
                       strokeWidth={2.2}
                     />
                   </span>
-                </motion.div>
+                </div>
               )}
             </Fragment>
           ))}
         </div>
       </div>
-    </section>
+    </MotionReveal>
   );
 }

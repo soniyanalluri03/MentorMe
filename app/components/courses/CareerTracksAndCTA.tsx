@@ -284,7 +284,7 @@ export default function CareerTracksAndCTA() {
         </p> */}
 <header className="hj-first-five-heading pt-10">
           <div className={styles.kicker}>
-            <Sparkles size={15} />
+            {/* <Sparkles size={15} /> */}
             Your first five levels are free
           </div>
           <h2>

@@ -374,11 +374,11 @@ export function HomeJourneySections() {
               Every career begins
               <br />
 
-              <span className="hj-heading-wave">
+              <span className="hj-heading-wave text-4xl xl:text-6xl">
                 with one clear
               </span>{" "}
 
-              <em>step</em>
+              <em className="text-4xl xl:text-6xl">step</em>
             </h2>
             <span>
               Complete the first five levels, create your first proof, and

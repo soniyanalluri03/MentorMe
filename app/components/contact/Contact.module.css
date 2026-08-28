@@ -15,6 +15,7 @@
   background-image: none;
 }
 
+
 /* =========================================================
    CONTACT SECTION
    ========================================================= */
@@ -32,6 +33,11 @@
   background: transparent;
 }
 
+
+/* =========================================================
+   CONTACT LAYOUT
+   ========================================================= */
+
 .contactLayout {
   width: 100%;
   max-width: 1500px;
@@ -44,7 +50,6 @@
     minmax(330px, 0.72fr)
     minmax(0, 1.28fr);
 
-  /* CHANGE THIS */
   align-items: stretch;
 
   gap:
@@ -55,12 +60,42 @@
     );
 }
 
+
+/* =========================================================
+   IMPORTANT
+   MOTIONREVEAL WRAPPERS MUST ALSO STRETCH
+   ========================================================= */
+
+.contactLayout > * {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+
+  display: flex;
+
+  align-self: stretch;
+}
+
+
+/*
+ * ContactTypes / ContactForm root
+ */
+.contactLayout > * > * {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+
+  flex: 1 1 auto;
+}
+
+
 /* =========================================================
    LIGHT MODE
    ========================================================= */
 
-:global(html:not(.dark):not([data-theme="dark"]))
-  .page,
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .page,
 :global(html[data-theme="light"])
   .page,
 :global(html.light)
@@ -71,6 +106,7 @@
   .page {
   color: #182235;
 }
+
 
 /* =========================================================
    TABLET
@@ -89,7 +125,22 @@
 
     gap: 34px;
   }
+
+  /*
+   * Once stacked, each card can return to
+   * its own natural height.
+   */
+  .contactLayout > * {
+    height: auto;
+
+    display: block;
+  }
+
+  .contactLayout > * > * {
+    height: auto;
+  }
 }
+
 
 /* =========================================================
    MOBILE

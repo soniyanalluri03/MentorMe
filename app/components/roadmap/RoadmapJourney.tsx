@@ -30,9 +30,9 @@ export default function RoadmapJourney() {
     >
       <header className="hj-first-five-heading ">
         <div className={styles.kicker}>
-            {/* <Sparkles size={15} />
+          {/* <Sparkles size={15} />
             YOUR ROAD TO CAREER READINESS */}
-          </div>
+        </div>
 
         <h2>
           Follow the path.
@@ -53,17 +53,17 @@ export default function RoadmapJourney() {
       </header>
 
       <div className={styles.journeyLayout}>
-  <JourneyAside
-    checkpoint={activeCheckpoint}
-  />
+        <JourneyAside
+          checkpoint={activeCheckpoint}
+        />
 
-  <div className={styles.trackColumn}>
-    <RoadmapTrack
-      activeCheckpoint={activeCheckpoint}
-      onSelect={setActiveCheckpoint}
-    />
-  </div>
-</div>
+        <div className={styles.trackColumn}>
+          <RoadmapTrack
+            activeCheckpoint={activeCheckpoint}
+            onSelect={setActiveCheckpoint}
+          />
+        </div>
+      </div>
     </section>
   );
 }

@@ -1,15 +1,21 @@
 /* =========================================================
    CONTACT HERO
+   Dark mode  : contact-dark.png
+   Light mode : contact-light.png
+
+   Place images here:
+   public/images/contact/contact-dark.png
+   public/images/contact/contact-light.png
    ========================================================= */
 
 .hero {
   width: 100%;
-  min-height: 560px;
+  min-height: 640px;
 
   padding:
-    clamp(66px, 7vw, 110px)
+    clamp(84px, 8vw, 132px)
     clamp(24px, 5.5vw, 104px)
-    clamp(46px, 5vw, 78px);
+    clamp(92px, 8vw, 126px);
 
   position: relative;
   isolation: isolate;
@@ -20,17 +26,91 @@
 
   overflow: hidden;
 
-  background: transparent;
-  background-image: none;
+  color: #f7f9fd;
 
   text-align: center;
+
+  border-radius:
+    0 0 48% 48%
+    /
+    0 0 14% 14%;
+
+  /* DARK MODE IMAGE */
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(4, 13, 24, 0.18) 0%,
+      rgba(5, 17, 30, 0.34) 46%,
+      rgba(6, 19, 34, 0.66) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(7, 23, 40, 0.24) 0%,
+      rgba(12, 28, 48, 0.06) 42%,
+      rgba(8, 20, 35, 0.24) 100%
+    ),
+    url("/images/contact/contact-dark.png");
+
+  background-size: cover;
+  background-position: center 48%;
+  background-repeat: no-repeat;
+
+  box-shadow:
+    0 34px 80px rgba(0, 0, 0, 0.24),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.07);
 }
 
-.hero::before,
-.hero::after {
-  content: none;
+/* =========================================================
+   SUBTLE COLOR WASH
+   No blurred center oval.
+   ========================================================= */
 
-  display: none;
+.hero::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 0;
+
+  background:
+    radial-gradient(
+      circle at 14% 18%,
+      rgba(82, 152, 211, 0.12),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 86% 22%,
+      rgba(145, 103, 221, 0.09),
+      transparent 35%
+    );
+
+  pointer-events: none;
+}
+
+/* bottom-only haze */
+.hero::after {
+  content: "";
+
+  width: 88%;
+  height: 34%;
+
+  position: absolute;
+  left: 50%;
+  bottom: -22%;
+
+  z-index: 1;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    rgba(212, 175, 55, 0.035);
+
+  filter: blur(38px);
+
+  pointer-events: none;
 }
 
 /* =========================================================
@@ -42,7 +122,7 @@
   max-width: 1120px;
 
   position: relative;
-  z-index: 3;
+  z-index: 4;
 
   display: flex;
   flex-direction: column;
@@ -53,7 +133,6 @@
 
 /* =========================================================
    KICKER
-   SAME LANGUAGE AS ROADMAP HERO
    ========================================================= */
 
 .kicker {
@@ -68,7 +147,7 @@
     auto
     24px;
 
-  color: #d9ba4d;
+  color: #f0d36d;
 
   font-family:
     var(--font-display),
@@ -84,28 +163,24 @@
   text-transform: uppercase;
 
   text-shadow:
-    0
-    0
-    16px
-    rgba(217, 186, 77, 0.16);
+    0 0 16px
+    rgba(217, 186, 77, 0.2);
 }
 
 .kicker svg {
   flex: 0 0 auto;
 
-  color: #f0d36d;
+  color: #ffe481;
 
   filter:
     drop-shadow(
-      0
-      0
-      7px
-      rgba(240, 211, 109, 0.24)
+      0 0 8px
+      rgba(240, 211, 109, 0.28)
     );
 }
 
 /* =========================================================
-   DESCRIPTION WIDTH
+   SHARED HEADING
    ========================================================= */
 
 .hero :global(.hj-first-five-heading) {
@@ -117,11 +192,23 @@
   text-align: center;
 }
 
+.hero :global(.hj-first-five-heading) h2 {
+  text-shadow:
+    0 8px 30px
+    rgba(0, 0, 0, 0.2);
+}
+
 .hero :global(.hj-first-five-heading) > span {
   max-width: 680px;
 
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  color: #d9e4f1;
+
+  text-shadow:
+    0 5px 22px
+    rgba(0, 0, 0, 0.24);
 }
 
 /* =========================================================
@@ -129,13 +216,13 @@
    ========================================================= */
 
 .heroBadge {
-  min-height: 42px;
+  min-height: 43px;
 
   margin-top: 30px;
 
   padding:
     0
-    17px;
+    18px;
 
   display: inline-flex;
   align-items: center;
@@ -143,25 +230,29 @@
 
   gap: 9px;
 
-  color: #cbd6e5;
+  color: #d8e3ef;
 
   border:
     1px solid
-    rgba(244, 223, 131, 0.16);
+    rgba(244, 223, 131, 0.2);
 
   border-radius: 999px;
 
   background:
-    rgba(255, 255, 255, 0.035);
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.105),
+      rgba(255, 255, 255, 0.035)
+    );
 
   box-shadow:
-    inset
-    0
-    1px
-    0
-    rgba(255, 255, 255, 0.05);
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.11),
+    0 12px 32px
+      rgba(0, 0, 0, 0.15);
 
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 
   font-size: 0.69rem;
   font-weight: 750;
@@ -170,38 +261,40 @@
 }
 
 .heroBadge svg {
-  color: #e2c65f;
+  color: #f1d46a;
 }
 
 /* =========================================================
-   DECORATIVE ORBIT
+   ORBIT
    ========================================================= */
 
 .orbit {
-  width: 430px;
-  height: 430px;
+  width: 470px;
+  height: 470px;
 
   position: absolute;
-  right: -180px;
-  top: 60px;
+  right: -205px;
+  top: 42px;
 
-  z-index: 0;
+  z-index: 2;
 
   border:
     1px solid
-    rgba(244, 223, 131, 0.1);
+    rgba(244, 223, 131, 0.13);
 
   border-radius: 50%;
 
-  opacity: 0.68;
+  opacity: 0.5;
 
   box-shadow:
-    0 0 0 55px rgba(212, 175, 55, 0.014),
-    0 0 0 110px rgba(143, 92, 247, 0.012);
+    0 0 0 58px
+      rgba(212, 175, 55, 0.018),
+    0 0 0 116px
+      rgba(143, 92, 247, 0.014);
 
   animation:
     contactOrbitSpin
-    22s
+    24s
     linear
     infinite;
 }
@@ -217,15 +310,10 @@
   background: #f4df83;
 
   box-shadow:
-    0
-    0
-    0
-    5px
-    rgba(212, 175, 55, 0.07),
-    0
-    0
-    16px
-    rgba(244, 223, 131, 0.44);
+    0 0 0 5px
+      rgba(212, 175, 55, 0.07),
+    0 0 16px
+      rgba(244, 223, 131, 0.44);
 }
 
 .orbit i:nth-child(1) {
@@ -244,11 +332,133 @@
 }
 
 /* =========================================================
+   EXPLICIT DARK MODE
+   ========================================================= */
+
+:global(html[data-theme="dark"])
+  .hero,
+:global(html.dark)
+  .hero,
+:global([data-theme="dark"])
+  .hero,
+:global(.dark)
+  .hero {
+  color: #f7f9fd;
+
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(4, 13, 24, 0.18) 0%,
+      rgba(5, 17, 30, 0.34) 46%,
+      rgba(6, 19, 34, 0.66) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(7, 23, 40, 0.24) 0%,
+      rgba(12, 28, 48, 0.06) 42%,
+      rgba(8, 20, 35, 0.24) 100%
+    ),
+    url("/images/contact/contact-dark.png");
+
+  background-size: cover;
+  background-position: center 48%;
+  background-repeat: no-repeat;
+}
+
+/* =========================================================
    LIGHT MODE
    ========================================================= */
 
-:global(html:not(.dark):not([data-theme="dark"]))
-  .kicker,
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .hero,
+:global(html[data-theme="light"])
+  .hero,
+:global(html.light)
+  .hero,
+:global([data-theme="light"])
+  .hero,
+:global(.light)
+  .hero {
+  color: #172d50;
+
+  /* LIGHT MODE IMAGE */
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(255, 250, 244, 0.06) 0%,
+      rgba(248, 241, 250, 0.13) 48%,
+      rgba(246, 238, 247, 0.28) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(239, 230, 248, 0.08) 0%,
+      rgba(255, 251, 244, 0.02) 46%,
+      rgba(245, 233, 222, 0.08) 100%
+    ),
+    url("/images/contact/contact-light.png");
+
+  background-size: cover;
+  background-position: center 48%;
+  background-repeat: no-repeat;
+
+  box-shadow:
+    0 34px 72px
+      rgba(72, 47, 104, 0.12),
+    inset 0 -1px 0
+      rgba(255, 255, 255, 0.9);
+}
+
+/* =========================================================
+   LIGHT MODE COLOR WASH
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .hero::before,
+:global(html[data-theme="light"])
+  .hero::before,
+:global(html.light)
+  .hero::before,
+:global([data-theme="light"])
+  .hero::before,
+:global(.light)
+  .hero::before {
+  background:
+    radial-gradient(
+      circle at 14% 18%,
+      rgba(156, 120, 207, 0.055),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 86% 22%,
+      rgba(196, 147, 51, 0.045),
+      transparent 35%
+    );
+}
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .hero::after,
+:global(html[data-theme="light"])
+  .hero::after,
+:global(html.light)
+  .hero::after,
+:global([data-theme="light"])
+  .hero::after,
+:global(.light)
+  .hero::after {
+  background:
+    rgba(190, 151, 68, 0.025);
+}
+
+/* =========================================================
+   LIGHT KICKER
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .kicker,
 :global(html[data-theme="light"])
   .kicker,
 :global(html.light)
@@ -260,18 +470,15 @@
   color: #8e6810;
 
   text-shadow:
-    0
-    1px
-    0
-    rgba(255, 255, 255, 0.8),
-    0
-    0
-    10px
-    rgba(177, 132, 28, 0.1);
+    0 1px 0
+      rgba(255, 255, 255, 0.8),
+    0 0 10px
+      rgba(177, 132, 28, 0.12);
 }
 
-:global(html:not(.dark):not([data-theme="dark"]))
-  .kicker svg,
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .kicker svg,
 :global(html[data-theme="light"])
   .kicker svg,
 :global(html.light)
@@ -281,10 +488,53 @@
 :global(.light)
   .kicker svg {
   color: #b78313;
+
+  filter:
+    drop-shadow(
+      0 0 5px
+      rgba(177, 132, 28, 0.12)
+    );
 }
 
-:global(html:not(.dark):not([data-theme="dark"]))
-  .heroBadge,
+/* =========================================================
+   LIGHT DESCRIPTION
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .hero
+  :global(.hj-first-five-heading)
+  > span,
+:global(html[data-theme="light"])
+  .hero
+  :global(.hj-first-five-heading)
+  > span,
+:global(html.light)
+  .hero
+  :global(.hj-first-five-heading)
+  > span,
+:global([data-theme="light"])
+  .hero
+  :global(.hj-first-five-heading)
+  > span,
+:global(.light)
+  .hero
+  :global(.hj-first-five-heading)
+  > span {
+  color: #47556d;
+
+  text-shadow:
+    0 1px 0
+      rgba(255, 255, 255, 0.45);
+}
+
+/* =========================================================
+   LIGHT RESPONSE BADGE
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .heroBadge,
 :global(html[data-theme="light"])
   .heroBadge,
 :global(html.light)
@@ -293,24 +543,28 @@
   .heroBadge,
 :global(.light)
   .heroBadge {
-  color: #667085;
+  color: #566278;
 
   border-color:
-    rgba(98, 72, 126, 0.14);
+    rgba(132, 98, 34, 0.2);
 
   background:
-    rgba(255, 255, 255, 0.58);
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.76),
+      rgba(255, 255, 255, 0.42)
+    );
 
   box-shadow:
-    inset
-    0
-    1px
-    0
-    #ffffff;
+    inset 0 1px 0
+      #ffffff,
+    0 10px 28px
+      rgba(72, 48, 97, 0.08);
 }
 
-:global(html:not(.dark):not([data-theme="dark"]))
-  .heroBadge svg,
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .heroBadge svg,
 :global(html[data-theme="light"])
   .heroBadge svg,
 :global(html.light)
@@ -323,17 +577,90 @@
 }
 
 /* =========================================================
+   LIGHT ORBIT
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .orbit,
+:global(html[data-theme="light"])
+  .orbit,
+:global(html.light)
+  .orbit,
+:global([data-theme="light"])
+  .orbit,
+:global(.light)
+  .orbit {
+  border-color:
+    rgba(142, 103, 20, 0.12);
+
+  opacity: 0.34;
+
+  box-shadow:
+    0 0 0 58px
+      rgba(165, 121, 26, 0.014),
+    0 0 0 116px
+      rgba(143, 92, 247, 0.012);
+}
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+) .orbit i,
+:global(html[data-theme="light"])
+  .orbit i,
+:global(html.light)
+  .orbit i,
+:global([data-theme="light"])
+  .orbit i,
+:global(.light)
+  .orbit i {
+  background: #b78313;
+
+  box-shadow:
+    0 0 0 5px
+      rgba(183, 131, 19, 0.06),
+    0 0 13px
+      rgba(183, 131, 19, 0.24);
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+  .hero {
+    min-height: 600px;
+
+    border-radius:
+      0 0 47% 47%
+      /
+      0 0 12% 12%;
+
+    background-position:
+      center 48%;
+  }
+}
+
+/* =========================================================
    MOBILE
    ========================================================= */
 
 @media (max-width: 700px) {
   .hero {
-    min-height: auto;
+    min-height: 540px;
 
     padding:
-      58px
+      72px
       17px
-      38px;
+      88px;
+
+    border-radius:
+      0 0 46% 46%
+      /
+      0 0 8% 8%;
+
+    background-position:
+      58% center;
   }
 
   .kicker {
@@ -342,7 +669,6 @@
     margin-bottom: 18px;
 
     font-size: 0.6rem;
-
     letter-spacing: 0.12em;
   }
 
@@ -352,27 +678,31 @@
   }
 
   .heroBadge {
-    width: 100%;
+    width:
+      min(100%, 410px);
 
     padding:
       11px
       14px;
 
     font-size: 0.65rem;
-
     line-height: 1.4;
   }
 
   .orbit {
-    width: 300px;
-    height: 300px;
+    width: 310px;
+    height: 310px;
 
-    right: -190px;
-    top: 40px;
+    right: -205px;
+    top: 38px;
 
-    opacity: 0.44;
+    opacity: 0.28;
   }
 }
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
   .orbit {
@@ -380,8 +710,13 @@
   }
 }
 
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
 @keyframes contactOrbitSpin {
   to {
-    transform: rotate(360deg);
+    transform:
+      rotate(360deg);
   }
 }

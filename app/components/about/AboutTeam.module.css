@@ -49,3 +49,586 @@
 @media (max-width:1050px){ .grid{max-width:680px;margin-inline:auto;grid-template-columns:1fr;} }
 @media (max-width:700px){ .section{padding:52px 17px;} .heading > p{padding:10px 0;background:transparent;} .card{min-height:500px;} .photo{height:270px;} }
 @media (prefers-reduced-motion:reduce){ .card{animation:none;} }
+
+/* Reference card theme: animated metallic rim with navy layered surface. */
+.card {
+  background:
+    conic-gradient(
+      from var(--team-border-angle),
+      #7c4d03 0deg,
+      #d4af37 54deg,
+      #fff0a7 83deg,
+      #e2b52b 112deg,
+      #8b5704 168deg,
+      rgba(212, 175, 55, 0.48) 238deg,
+      #f3d665 304deg,
+      #7c4d03 360deg
+    );
+  box-shadow:
+    0 18px 38px rgba(1, 11, 22, 0.3),
+    0 0 16px rgba(212, 175, 55, 0.08);
+}
+
+.card::after,
+:global(html:not(.dark):not([data-theme="dark"])) .card::after,
+:global(html[data-theme="light"]) .card::after,
+:global(html.light) .card::after,
+:global([data-theme="light"]) .card::after,
+:global(.light) .card::after {
+  background:
+    radial-gradient(circle at 8% 4%, rgba(137, 179, 219, 0.42), transparent 31%),
+    radial-gradient(circle at 112% 118%, transparent 0 150px, rgba(220, 184, 74, 0.22) 151px 152px, transparent 153px),
+    linear-gradient(145deg, #183451 0%, #102943 48%, #071a2d 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 247, 194, 0.24);
+}
+
+.card::before {
+  content: "";
+  width: 72px;
+  height: 3px;
+  position: absolute;
+  left: 26px;
+  bottom: 22px;
+  z-index: 3;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #a66d04, #e5b82d 55%, #fff0a7, transparent);
+  box-shadow: 88px 0 0 -1px #b58b28, 100px 0 0 -1px #b58b28, 112px 0 0 -1px #b58b28;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.card:hover {
+  box-shadow:
+    0 30px 62px rgba(1, 11, 22, 0.42),
+    0 0 28px rgba(212, 175, 55, 0.16);
+}
+
+.cardFooter {
+  border-color: rgba(212, 175, 55, 0.16);
+  padding-bottom: 18px;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .cardBody h3,
+:global(html[data-theme="light"]) .cardBody h3,
+:global(html.light) .cardBody h3,
+:global([data-theme="light"]) .cardBody h3,
+:global(.light) .cardBody h3 { color:#f7f9fd; }
+
+:global(html:not(.dark):not([data-theme="dark"])) .cardBody p,
+:global(html[data-theme="light"]) .cardBody p,
+:global(html.light) .cardBody p,
+:global([data-theme="light"]) .cardBody p,
+:global(.light) .cardBody p { color:#aebbd0; }
+
+:global(html:not(.dark):not([data-theme="dark"])) .cardFooter,
+:global(html[data-theme="light"]) .cardFooter,
+:global(html.light) .cardFooter,
+:global([data-theme="light"]) .cardFooter,
+:global(.light) .cardFooter { border-color:rgba(212,175,55,.16); }
+
+/* Light theme: cream interior while preserving the animated gold rim. */
+:global(html:not(.dark):not([data-theme="dark"])) .card,
+:global(html[data-theme="light"]) .card,
+:global(html.light) .card,
+:global([data-theme="light"]) .card,
+:global(.light) .card {
+  box-shadow:
+    0 18px 38px rgba(72, 49, 99, 0.12),
+    0 0 16px rgba(184, 126, 8, 0.08);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .card::after,
+:global(html[data-theme="light"]) .card::after,
+:global(html.light) .card::after,
+:global([data-theme="light"]) .card::after,
+:global(.light) .card::after {
+  background:
+    radial-gradient(circle at 8% 4%, rgba(222, 207, 246, 0.5), transparent 32%),
+    radial-gradient(circle at 112% 118%, transparent 0 150px, rgba(194, 143, 24, 0.2) 151px 152px, transparent 153px),
+    linear-gradient(145deg, #ffffff 0%, #fbf8fc 52%, #fff8e8 100%);
+  box-shadow: inset 0 1px 0 #ffffff;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .card:hover,
+:global(html[data-theme="light"]) .card:hover,
+:global(html.light) .card:hover,
+:global([data-theme="light"]) .card:hover,
+:global(.light) .card:hover {
+  box-shadow:
+    0 28px 56px rgba(72, 49, 99, 0.18),
+    0 0 25px rgba(194, 143, 24, 0.16);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .cardBody h3,
+:global(html[data-theme="light"]) .cardBody h3,
+:global(html.light) .cardBody h3,
+:global([data-theme="light"]) .cardBody h3,
+:global(.light) .cardBody h3 { color:#17243a; }
+
+:global(html:not(.dark):not([data-theme="dark"])) .cardBody p,
+:global(html[data-theme="light"]) .cardBody p,
+:global(html.light) .cardBody p,
+:global([data-theme="light"]) .cardBody p,
+:global(.light) .cardBody p { color:#647087; }
+
+:global(html:not(.dark):not([data-theme="dark"])) .cardFooter,
+:global(html[data-theme="light"]) .cardFooter,
+:global(html.light) .cardFooter,
+:global([data-theme="light"]) .cardFooter,
+:global(.light) .cardFooter { border-color:rgba(157,116,21,.18); }
+
+/* =========================================================
+   NAME-FIRST TEAM CARDS — NO PROFILE PHOTOS
+   ========================================================= */
+
+.card {
+  min-height: 510px;
+  cursor: pointer;
+  outline: none;
+  transform-origin: center bottom;
+}
+
+.card:focus-visible {
+  box-shadow:
+    0 0 0 3px rgba(244, 214, 92, 0.3),
+    0 30px 62px rgba(1, 11, 22, 0.42),
+    0 0 28px rgba(212, 175, 55, 0.18);
+}
+
+.identityPanel {
+  min-height: 235px;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+  padding: 34px 28px;
+  border-radius: 28px 28px 20px 20px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+  background:
+    radial-gradient(circle at 14% 16%, rgba(125, 168, 209, 0.28), transparent 38%),
+    radial-gradient(circle at 108% 112%, transparent 0 90px, rgba(212, 175, 55, 0.2) 91px 92px, transparent 93px),
+    linear-gradient(145deg, rgba(24, 52, 81, 0.82), rgba(7, 26, 45, 0.42));
+}
+
+.identityPanel::after {
+  content: "";
+  width: 150px;
+  height: 1px;
+  position: absolute;
+  left: 28px;
+  bottom: 22px;
+  background: linear-gradient(90deg, #a66d04, #e6bb36, rgba(255, 240, 167, 0.1));
+  opacity: 0.72;
+}
+
+.monogram {
+  width: 92px;
+  height: 92px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  transition: transform 420ms cubic-bezier(.2,.8,.2,1), filter 420ms ease;
+}
+
+.monogram > span {
+  width: 78px;
+  height: 78px;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 240, 167, 0.8);
+  border-radius: 50%;
+  color: #10243c;
+  background:
+    radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.76), transparent 30%),
+    linear-gradient(145deg, #fff0a7, #e4b92e 58%, #b87806);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    0 10px 24px rgba(1, 11, 22, 0.26),
+    0 0 18px rgba(212, 175, 55, 0.2);
+  font-size: 1.05rem;
+  font-weight: 950;
+  letter-spacing: 0.04em;
+}
+
+.monogram > i {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border: 1px dashed rgba(244, 214, 92, 0.54);
+  border-radius: 50%;
+  animation: teamMonogramOrbit 14s linear infinite;
+}
+
+.monogram > i::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  left: 50%;
+  top: -4px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #fff0a7;
+  box-shadow: 0 0 10px rgba(244, 214, 92, 0.64);
+}
+
+.identityCopy {
+  min-width: 0;
+}
+
+.identityCopy small {
+  display: block;
+  color: #d4af37;
+  font-size: 0.48rem;
+  font-weight: 950;
+  letter-spacing: 0.14em;
+}
+
+.identityCopy h3 {
+  margin: 10px 0 8px;
+  color: #f7f9fd;
+  font-size: clamp(1.35rem, 2vw, 1.9rem);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+}
+
+.identityCopy em {
+  color: #8799ae;
+  font-family: Georgia, serif;
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+}
+
+.selectHint {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  align-self: start;
+  color: #d9ba4d;
+  border: 1px solid rgba(212, 175, 55, 0.24);
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.06);
+  transition: transform 350ms ease, background 350ms ease, box-shadow 350ms ease;
+}
+
+.cardBody {
+  min-height: 270px;
+  display: flex;
+  flex-direction: column;
+  padding: 27px 29px 24px;
+}
+
+.cardBody > small {
+  color: #d4af37;
+  font-size: 0.52rem;
+}
+
+.cardBody p {
+  margin-top: 15px;
+}
+
+.cardFooter {
+  margin-top: auto;
+}
+
+.cardSignal {
+  width: 38%;
+  height: 180%;
+  position: absolute;
+  left: -80%;
+  top: -42%;
+  z-index: 4;
+  transform: rotate(16deg);
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 231, 122, 0.08),
+      rgba(255, 255, 255, 0.3),
+      rgba(230, 185, 46, 0.12),
+      transparent
+    );
+  pointer-events: none;
+  opacity: 0;
+}
+
+.cardActive {
+  transform: translateY(-10px) scale(1.015);
+  animation-duration: 3.8s;
+  box-shadow:
+    0 34px 70px rgba(1, 11, 22, 0.45),
+    0 0 34px rgba(212, 175, 55, 0.2);
+}
+
+.cardActive .cardSignal {
+  animation: teamCardSweep 850ms ease-out both;
+}
+
+.cardActive .monogram {
+  transform: translateY(-5px) scale(1.08) rotate(-2deg);
+  filter: drop-shadow(0 0 13px rgba(212, 175, 55, 0.24));
+}
+
+.cardActive .selectHint {
+  transform: rotate(45deg) scale(1.06);
+  background: rgba(212, 175, 55, 0.14);
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.16);
+}
+
+@keyframes teamMonogramOrbit {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes teamCardSweep {
+  0% { left: -80%; opacity: 0; }
+  22% { opacity: 1; }
+  100% { left: 145%; opacity: 0; }
+}
+
+/* Cream identity panel and navy typography in light mode. */
+:global(html:not(.dark):not([data-theme="dark"])) .identityPanel,
+:global(html[data-theme="light"]) .identityPanel,
+:global(html.light) .identityPanel,
+:global([data-theme="light"]) .identityPanel,
+:global(.light) .identityPanel {
+  border-bottom-color: rgba(157, 116, 21, 0.18);
+  background:
+    radial-gradient(circle at 14% 16%, rgba(213, 197, 240, 0.58), transparent 40%),
+    radial-gradient(circle at 108% 112%, transparent 0 90px, rgba(194, 143, 24, 0.18) 91px 92px, transparent 93px),
+    linear-gradient(145deg, rgba(255,255,255,.82), rgba(255,248,231,.62));
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .identityCopy h3,
+:global(html[data-theme="light"]) .identityCopy h3,
+:global(html.light) .identityCopy h3,
+:global([data-theme="light"]) .identityCopy h3,
+:global(.light) .identityCopy h3 { color:#17243a; }
+
+:global(html:not(.dark):not([data-theme="dark"])) .identityCopy em,
+:global(html[data-theme="light"]) .identityCopy em,
+:global(html.light) .identityCopy em,
+:global([data-theme="light"]) .identityCopy em,
+:global(.light) .identityCopy em { color:#68768c; }
+
+@media (max-width: 700px) {
+  .identityPanel {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 18px;
+    min-height: 210px;
+    padding: 28px 22px;
+  }
+
+  .selectHint {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+
+  .monogram {
+    width: 78px;
+    height: 78px;
+  }
+
+  .monogram > span {
+    width: 66px;
+    height: 66px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .monogram > i,
+  .cardActive .cardSignal {
+    animation: none;
+  }
+}
+
+/* =========================================================
+   TWO-SIDED TEAM CARD
+   Front: name + role. Back: full profile content.
+   ========================================================= */
+
+.card {
+  perspective: 1400px;
+}
+
+.cardInner {
+  width: 100%;
+  min-height: 506px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 760ms cubic-bezier(.2,.72,.18,1);
+}
+
+.cardFace {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 28px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.cardFront {
+  transform: rotateY(0deg);
+}
+
+.cardBack {
+  display: flex;
+  flex-direction: column;
+  transform: rotateY(180deg);
+}
+
+.card:hover .cardInner,
+.card:focus-visible .cardInner,
+.cardActive .cardInner {
+  transform: rotateY(180deg);
+}
+
+.cardFront .identityPanel {
+  min-height: 506px;
+  height: 100%;
+  grid-template-columns: 1fr;
+  align-content: center;
+  justify-items: center;
+  gap: 22px;
+  padding: 48px 34px;
+  border-bottom: 0;
+  border-radius: 28px;
+  text-align: center;
+}
+
+.cardFront .identityPanel::after {
+  width: 150px;
+  left: 50%;
+  bottom: 42px;
+  transform: translateX(-50%);
+}
+
+.cardFront .monogram {
+  width: 126px;
+  height: 126px;
+}
+
+.cardFront .monogram > span {
+  width: 106px;
+  height: 106px;
+  font-size: 1.35rem;
+}
+
+.cardFront .identityCopy h3 {
+  margin-top: 13px;
+  font-size: clamp(1.75rem, 2.5vw, 2.4rem);
+}
+
+.cardFront .identityCopy small {
+  display: inline-flex;
+  padding: 7px 12px;
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  border-radius: 999px;
+  background: rgba(212, 175, 55, 0.07);
+}
+
+.cardFront .selectHint {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+}
+
+.backHeader {
+  min-height: 165px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+  padding: 28px 29px 24px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+  background:
+    radial-gradient(circle at 10% 10%, rgba(125, 168, 209, 0.25), transparent 45%),
+    linear-gradient(145deg, rgba(24, 52, 81, 0.72), rgba(7, 26, 45, 0.28));
+}
+
+.backHeader > span {
+  width: 68px;
+  height: 68px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 240, 167, 0.78);
+  border-radius: 50%;
+  color: #10243c;
+  background: linear-gradient(145deg, #fff0a7, #e4b92e 58%, #b87806);
+  box-shadow: 0 8px 20px rgba(1, 11, 22, 0.24), 0 0 14px rgba(212, 175, 55, 0.18);
+  font-size: 0.88rem;
+  font-weight: 950;
+}
+
+.backHeader small {
+  color: #d4af37;
+  font-size: 0.48rem;
+  font-weight: 950;
+  letter-spacing: 0.14em;
+}
+
+.backHeader h3 {
+  margin: 9px 0 0;
+  color: #f7f9fd;
+  font-size: clamp(1.35rem, 2vw, 1.85rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.cardBack .cardBody {
+  min-height: 0;
+  flex: 1;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .backHeader,
+:global(html[data-theme="light"]) .backHeader,
+:global(html.light) .backHeader,
+:global([data-theme="light"]) .backHeader,
+:global(.light) .backHeader {
+  border-bottom-color: rgba(157, 116, 21, 0.18);
+  background:
+    radial-gradient(circle at 10% 10%, rgba(213, 197, 240, 0.58), transparent 46%),
+    linear-gradient(145deg, rgba(255,255,255,.84), rgba(255,248,231,.58));
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .backHeader h3,
+:global(html[data-theme="light"]) .backHeader h3,
+:global(html.light) .backHeader h3,
+:global([data-theme="light"]) .backHeader h3,
+:global(.light) .backHeader h3 {
+  color: #17243a;
+}
+
+@media (max-width: 700px) {
+  .cardInner,
+  .cardFront .identityPanel {
+    min-height: 496px;
+  }
+
+  .cardFront .identityPanel {
+    grid-template-columns: 1fr;
+    padding: 42px 26px;
+  }
+
+  .cardFront .monogram {
+    width: 112px;
+    height: 112px;
+  }
+
+  .cardFront .monogram > span {
+    width: 94px;
+    height: 94px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cardInner {
+    transition: none;
+  }
+}

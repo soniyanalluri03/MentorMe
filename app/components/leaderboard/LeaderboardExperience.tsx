@@ -9,6 +9,7 @@ import {
 } from "react";
 
 import styles from "./LeaderboardExperience.module.css";
+import MotionReveal from "../MotionReveal";
 
 
 import {
@@ -620,6 +621,7 @@ export function LeaderboardExperience() {
 
       {/* HERO */}
 
+      <MotionReveal y={24} amount={0.06}>
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <div className={styles.heroEyebrowWrap}>
@@ -680,9 +682,11 @@ export function LeaderboardExperience() {
           </div>
         </div>
       </section>
+      </MotionReveal>
 
       {/* LEADERBOARD */}
 
+      <MotionReveal x={-18}>
       <section className={styles.leaderSection}>
         <div className={styles.centerHeading}>
           <h2>
@@ -747,8 +751,11 @@ export function LeaderboardExperience() {
           </div>
         </div>
       </section>
+      </MotionReveal>
 
-      <MomentumCard student={activeStudent} />
+      <MotionReveal x={18}>
+        <MomentumCard student={activeStudent} />
+      </MotionReveal>
     </main>
   );
 }

@@ -7,6 +7,7 @@ import {
 import PricingFAQ from "./PricingFAQ";
 import PricingHero from "./PricingHero";
 import PricingPlans from "./PricingPlans";
+import MotionReveal from "../MotionReveal";
 
 import type {
   BillingCycle,
@@ -29,18 +30,24 @@ export default function Pricing() {
         styles.pricingPage
       }
     >
-      <PricingHero />
+      <MotionReveal as="section" y={24} amount={0.06}>
+        <PricingHero />
+      </MotionReveal>
 
-      <PricingPlans
-        billingCycle={
-          billingCycle
-        }
-        onBillingChange={
-          setBillingCycle
-        }
-      />
+      <MotionReveal as="section" x={-18}>
+        <PricingPlans
+          billingCycle={
+            billingCycle
+          }
+          onBillingChange={
+            setBillingCycle
+          }
+        />
+      </MotionReveal>
 
-      <PricingFAQ />
+      <MotionReveal as="section" x={18}>
+        <PricingFAQ />
+      </MotionReveal>
     </main>
   );
 }

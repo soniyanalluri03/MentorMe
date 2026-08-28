@@ -19,6 +19,7 @@ import RoadmapJourney from "./roadmap/RoadmapJourney";
 import RoadmapFinalSection from "./roadmap/RoadmapFinalSection";
 import PricingMain from "./pricing/PricingMain";
 import MainContact from "./contact/MainContact";
+import MotionReveal from "./MotionReveal";
 
 import styless from "./Footer.module.css";
 
@@ -398,19 +399,21 @@ function WorldMap({
 export default function Courses() {
   return (
     <main className="courses-page">
-      <CoursesHero />
-      <FeaturedTrack />
+      <MotionReveal as="section" y={24} amount={0.06}><CoursesHero /></MotionReveal>
+      <MotionReveal as="section" x={-18}><FeaturedTrack /></MotionReveal>
       {/* <CourseStats /> */}
-      <MentorMethod />
-      <CourseComparison />
-      <CareerTracksAndCTA />
+      <MotionReveal as="section" x={18}><MentorMethod /></MotionReveal>
+      <MotionReveal as="section" x={-18}><CourseComparison /></MotionReveal>
+      <MotionReveal as="section" x={18}><CareerTracksAndCTA /></MotionReveal>
     </main>
   );
 }
 function Home() {
   return (
     <>
-      <LearningHero />
+      <MotionReveal y={24} amount={0.06}>
+        <LearningHero />
+      </MotionReveal>
       <HomeJourneySections />
     </>
   );
@@ -420,10 +423,10 @@ function Roadmap() {
   return (
     <>
       <main className="roadmap-page">
-      <RoadmapHero/>
-      <RoadmapStats />
-      <RoadmapJourney />
-      <RoadmapFinalSection />
+      <MotionReveal as="section" y={24} amount={0.06}><RoadmapHero /></MotionReveal>
+      <MotionReveal as="section" x={-18}><RoadmapStats /></MotionReveal>
+      <MotionReveal as="section" x={18}><RoadmapJourney /></MotionReveal>
+      <MotionReveal as="section" y={46}><RoadmapFinalSection /></MotionReveal>
     </main>
     </>
   );

@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import "./HomeJourneySections.css";
 import CareerTransformation from "./CareerTransformation";
 import LiveCommunity from "./LiveCommunity";
+import MotionReveal from "../MotionReveal";
 import {
   CSSProperties,
   MouseEvent,
@@ -272,12 +272,11 @@ export function HomeJourneySections() {
         } as CSSProperties
       }
     >
-      <motion.section
+      <MotionReveal
+        as="section"
         className="hj-tracks"
-        initial={{ opacity: 0, y: 42, scale: 0.985 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, amount: 0.08 }}
-        transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+        y={32}
+        amount={0.08}
       >
         <div className="hj-orb hj-orb-a" />
         <div className="hj-orb hj-orb-b" />
@@ -352,14 +351,13 @@ export function HomeJourneySections() {
             </div>
           </div>
         </div>
-      </motion.section>
+      </MotionReveal>
 
-      <motion.section
+      <MotionReveal
+        as="section"
         className="hj-roadmap"
-        initial={{ opacity: 0, y: 46, scale: 0.982 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, amount: 0.07 }}
-        transition={{ duration: 0.76, ease: [0.22, 1, 0.36, 1] }}
+        x={-18}
+        amount={0.07}
       >
         <div className="hj-grid-texture" />
 
@@ -498,14 +496,13 @@ export function HomeJourneySections() {
           </div>
 
         </div>
-      </motion.section>
+      </MotionReveal>
 
-      <motion.section
+      <MotionReveal
+        as="section"
         className="hj-evolution"
-        initial={{ opacity: 0, y: 46, scale: 0.982 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, amount: 0.07 }}
-        transition={{ duration: 0.76, ease: [0.22, 1, 0.36, 1] }}
+        x={18}
+        amount={0.07}
       >
         <div className="hj-evolution-orb hj-evolution-orb-a" />
         <div className="hj-evolution-orb hj-evolution-orb-b" />
@@ -719,19 +716,17 @@ export function HomeJourneySections() {
             </div>
           </div>
         </div>
-      </motion.section>
+      </MotionReveal>
 
       <CareerTransformation />
-      <LiveCommunity />
+      <MotionReveal x={18} amount={0.08}>
+        <LiveCommunity />
+      </MotionReveal>
 
-      <motion.section
+      <section
         hidden
         aria-hidden="true"
         className="hj-dashboard-section"
-        initial={{ opacity: 0, y: 44, scale: 0.984 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, amount: 0.08 }}
-        transition={{ duration: 0.74, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="hj-dashboard-glow hj-dashboard-glow-a" />
         <div className="hj-dashboard-glow hj-dashboard-glow-b" />
@@ -898,7 +893,7 @@ export function HomeJourneySections() {
             </Link>
           </div>
         </div>
-      </motion.section>
+      </section>
     </div>
   );
 }

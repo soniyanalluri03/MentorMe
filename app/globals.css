@@ -10,7 +10,6 @@
 @import "./styles/responsive.css";
 @import "./styles/leaderboard.css";
 @import "./styles/navbar.css";
-@import "./styles/about.css";
 @import "../app/courses/courses.css";
 @import "../app/roadmap/roadmap.css";
 @import "../app/components/pricing/Pricing.module.css";
@@ -20,7 +19,6 @@
 
 html[data-theme="light"] .home-page-background {
   min-height: 100vh;
-
   background:
     radial-gradient(
       circle at 8% 16%,
@@ -39,57 +37,33 @@ html[data-theme="light"] .home-page-background {
       rgba(255, 255, 255, 0.7) 0%,
       transparent 52%
     ),
-    linear-gradient(
-      110deg,
-      #f3ecfb 0%,
-      #fffaf5 50%,
-      #fff8e8 100%
-    );
-
+    linear-gradient(110deg, #f3ecfb 0%, #fffaf5 50%, #fff8e8 100%);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 /* Remove separate backgrounds from every homepage section */
-html[data-theme="light"]
-  .home-page-background
-  .mh-root,
-html[data-theme="light"]
-  .home-page-background
-  .hj-root,
-html[data-theme="light"]
-  .home-page-background
-  section,
-html[data-theme="light"]
-  .home-page-background
-  .footer {
+html[data-theme="light"] .home-page-background .mh-root,
+html[data-theme="light"] .home-page-background .hj-root,
+html[data-theme="light"] .home-page-background section,
+html[data-theme="light"] .home-page-background .footer {
   background: transparent !important;
 }
 
 /* Remove the previous white glow behind the book */
-html[data-theme="light"]
-  .home-page-background
-  .mh-light-center-wash {
+html[data-theme="light"] .home-page-background .mh-light-center-wash {
   display: none !important;
 }
 
 /* Remove bottom shades that can create section divisions */
-html[data-theme="light"]
-  .home-page-background
-  .mh-bottom-fade {
+html[data-theme="light"] .home-page-background .mh-bottom-fade {
   display: none !important;
 }
 
 /* Keep cards and visual components unchanged */
-html[data-theme="light"]
-  .home-page-background
-  article,
-html[data-theme="light"]
-  .home-page-background
-  button,
-html[data-theme="light"]
-  .home-page-background
-  a {
+html[data-theme="light"] .home-page-background article,
+html[data-theme="light"] .home-page-background button,
+html[data-theme="light"] .home-page-background a {
   background-clip: padding-box;
 }
 
@@ -110,7 +84,6 @@ html[data-theme="light"]
   text-align: center;
 }
 
-
 /* Eyebrow */
 
 .hj-first-five-heading > p {
@@ -118,10 +91,7 @@ html[data-theme="light"]
 
   color: var(--cyan, #70d7ff);
 
-  font:
-    950
-    clamp(0.9rem, 1.05vw, 1.08rem)
-    var(--font-display, sans-serif);
+  font: 950 clamp(0.9rem, 1.05vw, 1.08rem) var(--font-display, sans-serif);
 
   line-height: 1.4;
 
@@ -130,10 +100,8 @@ html[data-theme="light"]
   text-align: center;
   text-transform: uppercase;
 
-  text-shadow:
-    0 0 18px rgba(112, 215, 255, 0.16);
+  text-shadow: 0 0 18px rgba(112, 215, 255, 0.16);
 }
-
 
 /* Main heading */
 
@@ -149,10 +117,7 @@ html[data-theme="light"]
 
   color: var(--text, #f4f6ff);
 
-  font:
-    760
-    clamp(3.25rem, 5.25vw, 5.9rem)
-    / 1.04
+  font: 760 clamp(3.25rem, 5.25vw, 5.9rem) / 1.04
     var(--font-display, sans-serif);
 
   letter-spacing: -0.052em;
@@ -162,33 +127,27 @@ html[data-theme="light"]
   text-wrap: balance;
 }
 
-
 /* Moving gold-wave word */
 
 .hj-heading-wave {
   display: inline-block;
 
-  padding:
-    0
-    0.02em
-    0.08em;
+  padding: 0 0.02em 0.08em;
 
   color: transparent;
 
-  background:
-    linear-gradient(
-      90deg,
+  background: linear-gradient(
+    90deg,
+    #f4f6ff 0%,
+    #f4f6ff 47%,
 
-      #f4f6ff 0%,
-      #f4f6ff 47%,
+    #d8b24b 49%,
+    #fff6d2 50%,
+    #d8b24b 51%,
 
-      #d8b24b 49%,
-      #fff6d2 50%,
-      #d8b24b 51%,
-
-      #f4f6ff 53%,
-      #f4f6ff 100%
-    );
+    #f4f6ff 53%,
+    #f4f6ff 100%
+  );
 
   background-size: 260% 100%;
   background-position: 0% 50%;
@@ -197,50 +156,35 @@ html[data-theme="light"]
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  animation:
-    hjHeadingGoldWave
-    12s
-    ease-in-out
-    infinite;
+  animation: hjHeadingGoldWave 12s ease-in-out infinite;
 }
-
 
 /* Purple / gold italic word */
 
 .hj-first-five-heading h2 em {
   display: inline-block;
 
-  margin:
-    0
-    0
-    -0.12em;
+  margin: 0 0 -0.12em;
 
-  padding:
-    0
-    0.08em
-    0.15em;
+  padding: 0 0.08em 0.15em;
 
   overflow: visible;
 
   color: transparent;
 
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+  font-family: Georgia, "Times New Roman", serif;
 
   font-weight: 500;
   font-style: italic;
 
   line-height: 1.08;
 
-  background:
-    linear-gradient(
-      110deg,
-      var(--purple, #8f5cf7),
-      var(--purple-soft, #b58cff) 52%,
-      var(--gold-soft, #f2d875)
-    );
+  background: linear-gradient(
+    110deg,
+    var(--purple, #8f5cf7),
+    var(--purple-soft, #b58cff) 52%,
+    var(--gold-soft, #f2d875)
+  );
 
   background-clip: text;
   -webkit-background-clip: text;
@@ -248,17 +192,10 @@ html[data-theme="light"]
 
   transform-origin: center;
 
-  animation:
-    hjStepBreath
-    3.6s
-    ease-in-out
-    infinite;
+  animation: hjStepBreath 3.6s ease-in-out infinite;
 
-  will-change:
-    transform,
-    filter;
+  will-change: transform, filter;
 }
-
 
 /* =========================================================
    SHARED DESCRIPTION / FADED TEXT STRIP
@@ -272,50 +209,40 @@ html[data-theme="light"]
   width: 100%;
   max-width: 960px;
 
-  margin:
-    28px
-    auto
-    0;
+  margin: 28px auto 0;
 
-  padding:
-    16px
-    28px;
+  padding: 16px 28px;
 
   box-sizing: border-box;
 
   color: var(--muted, #b5c5d6);
 
-  font:
-    760
-    clamp(1.05rem, 1.22vw, 1.2rem)
-    / 1.62
-    var(--font-sans, sans-serif);
+  font: 760 clamp(1.05rem, 1.22vw, 1.2rem) / 1.62 var(--font-sans, sans-serif);
 
   text-align: center;
 
   border-radius: 999px;
 
-  background:
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(112, 215, 255, 0.12),
-      transparent 72%
-    );
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(112, 215, 255, 0.12),
+    transparent 72%
+  );
 
-  text-shadow:
-    0 0 18px rgba(112, 215, 255, 0.15);
+  text-shadow: 0 0 18px rgba(112, 215, 255, 0.15);
 }
-
 
 /* =========================================================
    LIGHT MODE
    ========================================================= */
 
 :where(
-  html:not(.dark):not([data-theme="dark"]),
-  html.light,
-  html[data-theme="light"]
-) .hj-first-five-heading > p {
+    html:not(.dark):not([data-theme="dark"]),
+    html.light,
+    html[data-theme="light"]
+  )
+  .hj-first-five-heading
+  > p {
   color: #0f5e83;
 
   text-shadow:
@@ -323,31 +250,32 @@ html[data-theme="light"]
     0 0 12px rgba(43, 105, 140, 0.12);
 }
 
-
 :where(
-  html:not(.dark):not([data-theme="dark"]),
-  html.light,
-  html[data-theme="light"]
-) .hj-first-five-heading h2 {
+    html:not(.dark):not([data-theme="dark"]),
+    html.light,
+    html[data-theme="light"]
+  )
+  .hj-first-five-heading
+  h2 {
   color: #172d50;
 }
 
 :where(
-  html:not(.dark):not([data-theme="dark"]),
-  html.light,
-  html[data-theme="light"]
-) .hj-heading-wave {
-  background:
-    linear-gradient(
-      90deg,
-      #172d50 0%,
-      #172d50 47%,
-      #c99b2f 49%,
-      #ffe7a4 50%,
-      #c99b2f 51%,
-      #172d50 53%,
-      #172d50 100%
-    );
+    html:not(.dark):not([data-theme="dark"]),
+    html.light,
+    html[data-theme="light"]
+  )
+  .hj-heading-wave {
+  background: linear-gradient(
+    90deg,
+    #172d50 0%,
+    #172d50 47%,
+    #c99b2f 49%,
+    #ffe7a4 50%,
+    #c99b2f 51%,
+    #172d50 53%,
+    #172d50 100%
+  );
 
   background-size: 260% 100%;
   background-position: 0% 50%;
@@ -357,44 +285,38 @@ html[data-theme="light"]
   -webkit-text-fill-color: transparent;
 }
 
-
 :where(
-  html:not(.dark):not([data-theme="dark"]),
-  html.light,
-  html[data-theme="light"]
-) .hj-first-five-heading h2 em {
-  background:
-    linear-gradient(
-      110deg,
-      #7650d8,
-      #9d73f2 52%,
-      #d2aa43
-    );
+    html:not(.dark):not([data-theme="dark"]),
+    html.light,
+    html[data-theme="light"]
+  )
+  .hj-first-five-heading
+  h2
+  em {
+  background: linear-gradient(110deg, #7650d8, #9d73f2 52%, #d2aa43);
 
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-
 :where(
-  html:not(.dark):not([data-theme="dark"]),
-  html.light,
-  html[data-theme="light"]
-) .hj-first-five-heading > span {
+    html:not(.dark):not([data-theme="dark"]),
+    html.light,
+    html[data-theme="light"]
+  )
+  .hj-first-five-heading
+  > span {
   color: #263a59;
 
-  background:
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(118, 80, 216, 0.11),
-      transparent 72%
-    );
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(118, 80, 216, 0.11),
+    transparent 72%
+  );
 
-  text-shadow:
-    0 0 14px rgba(118, 80, 216, 0.1);
+  text-shadow: 0 0 14px rgba(118, 80, 216, 0.1);
 }
-
 
 /* =========================================================
    SHARED ANIMATIONS
@@ -411,35 +333,21 @@ html[data-theme="light"]
   }
 }
 
-
 @keyframes hjStepBreath {
   0%,
   100% {
-    transform:
-      translateY(0)
-      scale(1);
+    transform: translateY(0) scale(1);
 
-    filter:
-      drop-shadow(
-        0 0 0 rgba(181, 140, 255, 0)
-      );
+    filter: drop-shadow(0 0 0 rgba(181, 140, 255, 0));
   }
 
   50% {
-    transform:
-      translateY(-2px)
-      scale(1.055);
+    transform: translateY(-2px) scale(1.055);
 
-    filter:
-      drop-shadow(
-        0 8px 18px rgba(143, 92, 247, 0.22)
-      )
-      drop-shadow(
-        0 0 15px rgba(224, 189, 85, 0.2)
-      );
+    filter: drop-shadow(0 8px 18px rgba(143, 92, 247, 0.22))
+      drop-shadow(0 0 15px rgba(224, 189, 85, 0.2));
   }
 }
-
 
 /* =========================================================
    MOBILE
@@ -459,12 +367,7 @@ html[data-theme="light"]
   }
 
   .hj-first-five-heading h2 {
-    font-size:
-      clamp(
-        2.8rem,
-        13vw,
-        4.2rem
-      );
+    font-size: clamp(2.8rem, 13vw, 4.2rem);
 
     line-height: 1;
   }
@@ -472,9 +375,7 @@ html[data-theme="light"]
   .hj-first-five-heading > span {
     margin-top: 22px;
 
-    padding:
-      10px
-      8px;
+    padding: 10px 8px;
 
     border-radius: 0;
 
@@ -484,14 +385,12 @@ html[data-theme="light"]
   }
 }
 
-
 @media (prefers-reduced-motion: reduce) {
   .hj-heading-wave,
   .hj-first-five-heading h2 em {
     animation: none !important;
   }
 }
-
 
 /* =========================================================
    GLOBAL PURPLE → GOLD ITALIC WORD
@@ -502,39 +401,27 @@ html[data-theme="light"]
 .hj-gradient-word {
   display: inline-block;
 
-  margin:
-    0
-    -0.06em
-    -0.12em
-    0.02em;
+  margin: 0 -0.06em -0.12em 0.02em;
 
-  padding:
-    0.03em
-    0.12em
-    0.16em
-    0.06em;
+  padding: 0.03em 0.12em 0.16em 0.06em;
 
   overflow: visible;
 
   color: transparent;
 
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+  font-family: Georgia, "Times New Roman", serif;
 
   font-weight: 500;
   font-style: italic;
 
   line-height: 1.08;
 
-  background:
-    linear-gradient(
-      110deg,
-      var(--purple, #8f5cf7) 0%,
-      var(--purple-soft, #b58cff) 52%,
-      var(--gold-soft, #f2d875) 100%
-    );
+  background: linear-gradient(
+    110deg,
+    var(--purple, #8f5cf7) 0%,
+    var(--purple-soft, #b58cff) 52%,
+    var(--gold-soft, #f2d875) 100%
+  );
 
   background-clip: text;
   -webkit-background-clip: text;
@@ -542,40 +429,27 @@ html[data-theme="light"]
 
   transform-origin: center;
 
-  animation:
-    hjGradientWordBreath
-    3.6s
-    ease-in-out
-    infinite;
+  animation: hjGradientWordBreath 3.6s ease-in-out infinite;
 
-  will-change:
-    transform,
-    filter;
+  will-change: transform, filter;
 }
-
 
 /* =========================================================
    LIGHT MODE
    ========================================================= */
 
 :where(
-  html:not(.dark):not([data-theme="dark"]),
-  html.light,
-  html[data-theme="light"]
-) .hj-gradient-word {
-  background:
-    linear-gradient(
-      110deg,
-      #7650d8 0%,
-      #9d73f2 52%,
-      #d2aa43 100%
-    );
+    html:not(.dark):not([data-theme="dark"]),
+    html.light,
+    html[data-theme="light"]
+  )
+  .hj-gradient-word {
+  background: linear-gradient(110deg, #7650d8 0%, #9d73f2 52%, #d2aa43 100%);
 
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
 
 /* =========================================================
    GLOBAL SEEN WORD STYLE
@@ -590,39 +464,22 @@ html[data-theme="light"]
 .seen-word {
   display: inline-block;
 
-  margin:
-    0
-    -0.06em
-    -0.12em
-    0.02em;
+  margin: 0 -0.06em -0.12em 0.02em;
 
-  padding:
-    0.03em
-    0.12em
-    0.16em
-    0.06em;
+  padding: 0.03em 0.12em 0.16em 0.06em;
 
   overflow: visible;
 
   color: transparent;
 
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+  font-family: Georgia, "Times New Roman", serif;
 
   font-weight: 500;
   font-style: italic;
 
   line-height: 1.08;
 
-  background:
-    linear-gradient(
-      110deg,
-      #8f5cf7 0%,
-      #b58cff 52%,
-      #f2d875 100%
-    );
+  background: linear-gradient(110deg, #8f5cf7 0%, #b58cff 52%, #f2d875 100%);
 
   background-clip: text;
   -webkit-background-clip: text;
@@ -630,17 +487,10 @@ html[data-theme="light"]
 
   transform-origin: center;
 
-  animation:
-    seenWordBreath
-    3.6s
-    ease-in-out
-    infinite;
+  animation: seenWordBreath 3.6s ease-in-out infinite;
 
-  will-change:
-    transform,
-    filter;
+  will-change: transform, filter;
 }
-
 
 /* =========================================================
    SEEN WORD ANIMATION
@@ -649,39 +499,19 @@ html[data-theme="light"]
 @keyframes seenWordBreath {
   0%,
   100% {
-    transform:
-      translateY(0)
-      scale(1);
+    transform: translateY(0) scale(1);
 
-    filter:
-      drop-shadow(
-        0 0 0
-        rgba(181, 140, 255, 0)
-      )
-      drop-shadow(
-        0 0 0
-        rgba(224, 189, 85, 0)
-      );
+    filter: drop-shadow(0 0 0 rgba(181, 140, 255, 0))
+      drop-shadow(0 0 0 rgba(224, 189, 85, 0));
   }
 
   50% {
-    transform:
-      translateY(-2px)
-      scale(1.055);
+    transform: translateY(-2px) scale(1.055);
 
-    filter:
-      drop-shadow(
-        0 8px 18px
-        rgba(143, 92, 247, 0.22)
-      )
-      drop-shadow(
-        0 0 15px
-        rgba(224, 189, 85, 0.2)   
-      );
+    filter: drop-shadow(0 8px 18px rgba(143, 92, 247, 0.22))
+      drop-shadow(0 0 15px rgba(224, 189, 85, 0.2));
   }
 }
-
-
 
 /* =========================================================
    GLOBAL LARGE DISPLAY HEADING
@@ -691,12 +521,7 @@ html[data-theme="light"]
 .hj-display-heading {
   color: var(--text, #102b51);
 
-  font-size:
-    clamp(
-      3.2rem,
-      5.45vw,
-      6.5rem
-    );
+  font-size: clamp(3.2rem, 5.45vw, 6.5rem);
 
   font-weight: 700;
 
@@ -704,14 +529,10 @@ html[data-theme="light"]
   letter-spacing: -0.065em;
 }
 
-:where(
-  html.dark,
-  html[data-theme="dark"],
-  [data-theme="dark"]
-) .hj-display-heading {
+:where(html.dark, html[data-theme="dark"], [data-theme="dark"])
+  .hj-display-heading {
   color: #f6f7fc;
 }
-
 
 /* =========================================================
    GLOBAL HIGHLIGHT PILLS
@@ -726,18 +547,13 @@ html[data-theme="light"]
   justify-content: center;
   gap: 8px;
 
-  padding:
-    0
-    16px;
+  padding: 0 16px;
 
-  border:
-    1px solid transparent;
+  border: 1px solid transparent;
 
   border-radius: 999px;
 
-  font-family:
-    var(--font-display),
-    sans-serif;
+  font-family: var(--font-display), sans-serif;
 
   font-size: 0.58rem;
   font-weight: 900;
@@ -755,7 +571,6 @@ html[data-theme="light"]
   -webkit-backdrop-filter: blur(15px);
 }
 
-
 /* =========================================================
    GOLD / CREAM PILL
    LEVELS 1–10 FREE / WEEKLY XP
@@ -764,21 +579,18 @@ html[data-theme="light"]
 .hj-highlight-pill--gold {
   color: #8b650d;
 
-  border-color:
-    rgba(177, 132, 28, 0.25);
+  border-color: rgba(177, 132, 28, 0.25);
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255, 253, 244, 0.96),
-      rgba(248, 232, 184, 0.56)
-    );
+  background: linear-gradient(
+    145deg,
+    rgba(255, 253, 244, 0.96),
+    rgba(248, 232, 184, 0.56)
+  );
 }
 
 .hj-highlight-pill--gold svg {
   color: #b78313;
 }
-
 
 /* =========================================================
    PURPLE / LAVENDER PILL
@@ -788,21 +600,18 @@ html[data-theme="light"]
 .hj-highlight-pill--purple {
   color: #7750cf;
 
-  border-color:
-    rgba(143, 92, 247, 0.24);
+  border-color: rgba(143, 92, 247, 0.24);
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(250, 247, 255, 0.96),
-      rgba(233, 221, 252, 0.72)
-    );
+  background: linear-gradient(
+    145deg,
+    rgba(250, 247, 255, 0.96),
+    rgba(233, 221, 252, 0.72)
+  );
 }
 
 .hj-highlight-pill--purple svg {
   color: #8f5cf7;
 }
-
 
 /* =========================================================
    BLUE / CYAN PILL
@@ -812,54 +621,39 @@ html[data-theme="light"]
 .hj-highlight-pill--blue {
   color: #0f6487;
 
-  border-color:
-    rgba(61, 158, 196, 0.24);
+  border-color: rgba(61, 158, 196, 0.24);
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(250, 254, 255, 0.97),
-      rgba(220, 244, 250, 0.72)
-    );
+  background: linear-gradient(
+    145deg,
+    rgba(250, 254, 255, 0.97),
+    rgba(220, 244, 250, 0.72)
+  );
 }
 
 .hj-highlight-pill--blue svg {
   color: #2385ad;
 }
 
-
 /* =========================================================
    DARK MODE — PILLS
    ========================================================= */
 
-:where(
-  html.dark,
-  html[data-theme="dark"],
-  [data-theme="dark"]
-) .hj-highlight-pill--gold {
+:where(html.dark, html[data-theme="dark"], [data-theme="dark"])
+  .hj-highlight-pill--gold {
   color: #f0d36d;
 
-  border-color:
-    rgba(244, 223, 131, 0.32);
+  border-color: rgba(244, 223, 131, 0.32);
 
   background:
-    linear-gradient(
-      145deg,
-      rgba(212, 175, 55, 0.1),
-      rgba(255, 255, 255, 0.02)
-    ),
+    linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(255, 255, 255, 0.02)),
     rgba(13, 32, 52, 0.68);
 }
 
-:where(
-  html.dark,
-  html[data-theme="dark"],
-  [data-theme="dark"]
-) .hj-highlight-pill--purple {
+:where(html.dark, html[data-theme="dark"], [data-theme="dark"])
+  .hj-highlight-pill--purple {
   color: #c5a9ff;
 
-  border-color:
-    rgba(181, 140, 255, 0.3);
+  border-color: rgba(181, 140, 255, 0.3);
 
   background:
     linear-gradient(
@@ -870,15 +664,11 @@ html[data-theme="light"]
     rgba(13, 32, 52, 0.68);
 }
 
-:where(
-  html.dark,
-  html[data-theme="dark"],
-  [data-theme="dark"]
-) .hj-highlight-pill--blue {
+:where(html.dark, html[data-theme="dark"], [data-theme="dark"])
+  .hj-highlight-pill--blue {
   color: #81d7ef;
 
-  border-color:
-    rgba(80, 213, 236, 0.28);
+  border-color: rgba(80, 213, 236, 0.28);
 
   background:
     linear-gradient(
@@ -889,7 +679,6 @@ html[data-theme="light"]
     rgba(13, 32, 52, 0.68);
 }
 
-
 /* =========================================================
    REDUCED MOTION
    ========================================================= */
@@ -899,7 +688,6 @@ html[data-theme="light"]
     animation: none !important;
   }
 }
-
 
 /* =========================================================
    GLOBAL GOLD EYEBROW / TAGLINE
@@ -915,9 +703,7 @@ html[data-theme="light"]
 
   color: #9a6a0b;
 
-  font-family:
-    var(--font-display),
-    sans-serif;
+  font-family: var(--font-display), sans-serif;
 
   font-size: 0.82rem;
   font-weight: 900;
@@ -937,25 +723,18 @@ html[data-theme="light"]
   color: #d5a513;
 }
 
-
 /* DARK MODE */
 
-:where(
-  html.dark,
-  html[data-theme="dark"],
-  [data-theme="dark"]
-) .hj-gold-eyebrow {
+:where(html.dark, html[data-theme="dark"], [data-theme="dark"])
+  .hj-gold-eyebrow {
   color: #f0cd55;
 }
 
-:where(
-  html.dark,
-  html[data-theme="dark"],
-  [data-theme="dark"]
-) .hj-gold-eyebrow svg {
+:where(html.dark, html[data-theme="dark"], [data-theme="dark"])
+  .hj-gold-eyebrow
+  svg {
   color: #f0cd55;
 }
-
 
 /* MOBILE */
 
@@ -969,8 +748,7 @@ html[data-theme="light"]
     width: 16px;
     height: 16px;
   }
-} 
-
+}
 
 html[data-theme="light"],
 html:not(.dark):not([data-theme="dark"]) {
@@ -1000,12 +778,7 @@ html:not(.dark):not([data-theme="dark"]) body {
       rgba(255, 255, 255, 0.7) 0%,
       transparent 52%
     ),
-    linear-gradient(
-      110deg,
-      #f3ecfb 0%,
-      #fffaf5 50%,
-      #fff8e8 100%
-    );
+    linear-gradient(110deg, #f3ecfb 0%, #fffaf5 50%, #fff8e8 100%);
 
   background-repeat: no-repeat;
   background-size: cover;
@@ -1035,41 +808,29 @@ html.dark body {
       rgba(21, 43, 70, 0.22) 28%,
       transparent 52%
     ),
-
     radial-gradient(
       circle at 82% 30%,
       rgba(17, 43, 67, 0.24) 0%,
       transparent 48%
     ),
-
     radial-gradient(
       circle at 50% 78%,
       rgba(8, 25, 43, 0.22) 0%,
       transparent 55%
     ),
-
-    linear-gradient(
-      115deg,
-      #11243a 0%,
-      #0a1929 48%,
-      #06121e 100%
-    );
+    linear-gradient(115deg, #11243a 0%, #0a1929 48%, #06121e 100%);
 
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }
 
-
 .hj-main-heading {
   display: inline-block;
 
   color: var(--text, #f4f6ff);
 
-  font:
-    760
-    clamp(3.25rem, 5.25vw, 5.9rem)
-    / 1.04
+  font: 760 clamp(3.25rem, 5.25vw, 5.9rem) / 1.04
     var(--font-display, sans-serif);
 
   letter-spacing: -0.052em;
@@ -1079,29 +840,22 @@ html.dark body {
 
 /* LIGHT MODE */
 :where(
-  html:not(.dark):not([data-theme="dark"]),
-  html.light,
-  html[data-theme="light"]
-) .hj-main-heading {
+    html:not(.dark):not([data-theme="dark"]),
+    html.light,
+    html[data-theme="light"]
+  )
+  .hj-main-heading {
   color: #172d50;
 }
 
 /* DARK MODE */
-:where(
-  html.dark,
-  html[data-theme="dark"]
-) .hj-main-heading {
+:where(html.dark, html[data-theme="dark"]) .hj-main-heading {
   color: #f4f6ff;
 }
 
 @media (max-width: 700px) {
   .hj-main-heading {
-    font-size:
-      clamp(
-        2.8rem,
-        13vw,
-        4.2rem
-      );
+    font-size: clamp(2.8rem, 13vw, 4.2rem);
 
     line-height: 1;
   }
@@ -1136,7 +890,6 @@ html.dark body {
   background-image: none !important;
 }
 
-
 /* =========================================================
    PRICING — REUSE EXACT HOME PAGE BACKGROUND
 ========================================================= */
@@ -1148,7 +901,6 @@ html.dark body {
   background: transparent !important;
   background-image: none !important;
 }
-
 
 /* =========================================================
    ABOUT — REUSE EXACT HOME PAGE BACKGROUND

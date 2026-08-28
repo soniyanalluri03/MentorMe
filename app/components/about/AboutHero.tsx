@@ -8,7 +8,7 @@ export default function AboutHero() {
       <div className={styles.heroGlow} aria-hidden="true" />
 
       <div className={styles.content}>
-        <header className="hj-first-five-heading pt-10">
+        <header className="hj-first-five-heading ">
           <div className={styles.kicker}>
             {/* <Sparkles size={15} />
             WHY MENTORME EXISTS */}
@@ -36,16 +36,18 @@ export default function AboutHero() {
           {careerStages.map((stage, index) => (
             <div className={styles.flowItem} key={stage.number}>
               <div
-                className={`${styles.stage} ${
-                  index === 2 ? styles.stageActive : ""
-                }`}
+                className={`${styles.stage} ${index === 2 ? styles.stageActive : ""
+                  }`}
               >
                 <span>{stage.number}</span>
                 <strong>{stage.label}</strong>
               </div>
 
               {index < careerStages.length - 1 && (
-                <div className={styles.connector} aria-hidden="true">
+                <div
+                  className={`${styles.connector} mm-career-connector`}
+                  aria-hidden="true"
+                >
                   <i />
                   <ArrowRight size={14} />
                 </div>

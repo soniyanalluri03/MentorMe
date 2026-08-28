@@ -45,3 +45,273 @@
 :global(.light) .review footer strong { color:#48566c; }
 @media (max-width:1050px){ .grid{max-width:680px;margin-inline:auto;grid-template-columns:1fr;} }
 @media (max-width:700px){ .section{padding:52px 17px 72px;} .heading > p{padding:10px 0;background:transparent;} .card{min-height:350px;grid-template-columns:88px minmax(0,1fr);} .review{padding:24px 18px 21px;} .review blockquote{font-size:.95rem;} }
+
+/* Reference card theme for testimonials in light and dark modes. */
+.card,
+:global(html:not(.dark):not([data-theme="dark"])) .card,
+:global(html[data-theme="light"]) .card,
+:global(html.light) .card,
+:global([data-theme="light"]) .card,
+:global(.light) .card {
+  position: relative;
+  isolation: isolate;
+  border: 1.5px solid rgba(217, 175, 48, 0.84);
+  background:
+    radial-gradient(circle at 8% 4%, rgba(137, 179, 219, 0.42), transparent 31%),
+    radial-gradient(circle at 112% 118%, transparent 0 126px, rgba(220, 184, 74, 0.22) 127px 128px, transparent 129px),
+    linear-gradient(145deg, #183451 0%, #102943 48%, #071a2d 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 247, 194, 0.28),
+    0 18px 38px rgba(1, 11, 22, 0.3),
+    0 0 16px rgba(212, 175, 55, 0.08);
+}
+
+.card::before {
+  content: "";
+  width: 62px;
+  height: 3px;
+  position: absolute;
+  right: 25px;
+  bottom: 20px;
+  z-index: 3;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #a66d04, #e5b82d 55%, #fff0a7, transparent);
+  box-shadow: -46px 0 0 -1px #b58b28, -34px 0 0 -1px #b58b28, -22px 0 0 -1px #b58b28;
+  opacity: 0.78;
+  pointer-events: none;
+}
+
+.card:hover {
+  border-color: #f0cf58;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 247, 194, 0.34),
+    0 28px 58px rgba(1, 11, 22, 0.4),
+    0 0 25px rgba(212, 175, 55, 0.15);
+}
+
+.visual {
+  border-right-color: rgba(212, 175, 55, 0.2);
+  background: linear-gradient(180deg, rgba(78, 126, 174, 0.16), rgba(212, 175, 55, 0.04));
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .review blockquote,
+:global(html[data-theme="light"]) .review blockquote,
+:global(html.light) .review blockquote,
+:global([data-theme="light"]) .review blockquote,
+:global(.light) .review blockquote { color:#edf3fa; }
+
+:global(html:not(.dark):not([data-theme="dark"])) .review footer strong,
+:global(html[data-theme="light"]) .review footer strong,
+:global(html.light) .review footer strong,
+:global([data-theme="light"]) .review footer strong,
+:global(.light) .review footer strong { color:#dce5f1; }
+
+/* Light theme: cream reference surface with the same gold frame. */
+:global(html:not(.dark):not([data-theme="dark"])) .card,
+:global(html[data-theme="light"]) .card,
+:global(html.light) .card,
+:global([data-theme="light"]) .card,
+:global(.light) .card {
+  border-color: rgba(184, 126, 8, 0.86);
+  background:
+    radial-gradient(circle at 8% 4%, rgba(222, 207, 246, 0.5), transparent 32%),
+    radial-gradient(circle at 112% 118%, transparent 0 126px, rgba(194, 143, 24, 0.2) 127px 128px, transparent 129px),
+    linear-gradient(145deg, #ffffff 0%, #fbf8fc 52%, #fff8e8 100%);
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 18px 38px rgba(72, 49, 99, 0.12),
+    0 0 16px rgba(184, 126, 8, 0.08);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .card:hover,
+:global(html[data-theme="light"]) .card:hover,
+:global(html.light) .card:hover,
+:global([data-theme="light"]) .card:hover,
+:global(.light) .card:hover {
+  border-color: #c79018;
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 26px 52px rgba(72, 49, 99, 0.17),
+    0 0 24px rgba(194, 143, 24, 0.16);
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .visual,
+:global(html[data-theme="light"]) .visual,
+:global(html.light) .visual,
+:global([data-theme="light"]) .visual,
+:global(.light) .visual {
+  border-right-color: rgba(157, 116, 21, 0.18);
+  background: linear-gradient(180deg, rgba(213, 197, 240, 0.34), rgba(255, 247, 224, 0.38));
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .review blockquote,
+:global(html[data-theme="light"]) .review blockquote,
+:global(html.light) .review blockquote,
+:global([data-theme="light"]) .review blockquote,
+:global(.light) .review blockquote { color:#243149; }
+
+:global(html:not(.dark):not([data-theme="dark"])) .review footer strong,
+:global(html[data-theme="light"]) .review footer strong,
+:global(html.light) .review footer strong,
+:global([data-theme="light"]) .review footer strong,
+:global(.light) .review footer strong { color:#48566c; }
+
+/* =========================================================
+   TESTIMONIAL VISUALS — GOLD / LAVENDER / NAVY THEME
+   ========================================================= */
+
+.book {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #142944;
+  border: 1px solid rgba(255, 240, 167, 0.88);
+  background:
+    radial-gradient(circle at 28% 18%, rgba(255,255,255,.72), transparent 30%),
+    linear-gradient(145deg, #fff0a7 0%, #e6ba35 55%, #b97806 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.7),
+    8px 11px 22px rgba(78, 47, 2, 0.22),
+    0 0 16px rgba(212, 175, 55, 0.16);
+  transform: perspective(500px) rotateY(-5deg);
+  transition:
+    transform 420ms cubic-bezier(.2,.8,.2,1),
+    box-shadow 420ms ease;
+}
+
+.book::before {
+  content: "";
+  width: 5px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, #815002, #d5a41b, #754600);
+  box-shadow: 2px 0 4px rgba(75, 43, 0, 0.18);
+}
+
+.book::after {
+  content: "";
+  width: 36%;
+  height: 150%;
+  position: absolute;
+  left: -70%;
+  top: -25%;
+  z-index: -1;
+  transform: rotate(14deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.5), transparent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.book svg {
+  color: #18314f;
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,.44));
+}
+
+.book strong {
+  color: #18314f;
+}
+
+.book small {
+  color: #714700;
+}
+
+.visualSteps span {
+  color: #d8bd66;
+  text-shadow: 0 0 9px rgba(212, 175, 55, 0.12);
+  transform: translateX(0);
+  transition: color 300ms ease, transform 300ms ease, text-shadow 300ms ease;
+}
+
+.visualSteps span::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  display: inline-block;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: #d4af37;
+  box-shadow: 0 0 7px rgba(212, 175, 55, 0.3);
+  vertical-align: middle;
+}
+
+.review,
+.review blockquote {
+  transition: transform 380ms ease;
+}
+
+.stars {
+  background: linear-gradient(90deg, #a96f05, #d4af37, #fff0a7, #c78b0a);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 7px rgba(212, 175, 55, 0.18));
+}
+
+.card:hover .book {
+  transform: perspective(500px) translateY(-7px) rotateY(0deg) rotate(-1deg) scale(1.04);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.76),
+    10px 16px 28px rgba(78, 47, 2, 0.27),
+    0 0 24px rgba(212, 175, 55, 0.24);
+}
+
+.card:hover .book::after {
+  animation: reviewBookSweep 780ms ease-out both;
+}
+
+.card:hover .visualSteps span {
+  color: #f0d672;
+  transform: translateX(4px);
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.24);
+}
+
+.card:hover .visualSteps span:nth-child(2) {
+  transition-delay: 55ms;
+}
+
+.card:hover .visualSteps span:nth-child(3) {
+  transition-delay: 110ms;
+}
+
+.card:hover .review blockquote {
+  transform: translateY(-3px);
+}
+
+@keyframes reviewBookSweep {
+  0% { left: -70%; opacity: 0; }
+  22% { opacity: 1; }
+  100% { left: 145%; opacity: 0; }
+}
+
+/* Stronger gold contrast on cream light-mode cards. */
+:global(html:not(.dark):not([data-theme="dark"])) .visualSteps span,
+:global(html[data-theme="light"]) .visualSteps span,
+:global(html.light) .visualSteps span,
+:global([data-theme="light"]) .visualSteps span,
+:global(.light) .visualSteps span {
+  color: #95660d;
+  text-shadow: none;
+}
+
+:global(html:not(.dark):not([data-theme="dark"])) .card:hover .visualSteps span,
+:global(html[data-theme="light"]) .card:hover .visualSteps span,
+:global(html.light) .card:hover .visualSteps span,
+:global([data-theme="light"]) .card:hover .visualSteps span,
+:global(.light) .card:hover .visualSteps span {
+  color: #704600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book,
+  .visualSteps span,
+  .review blockquote {
+    transition: none;
+  }
+
+  .card:hover .book::after {
+    animation: none;
+  }
+}

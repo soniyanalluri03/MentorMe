@@ -516,6 +516,10 @@
    SUCCESS
    ========================================================= */
 
+/* =========================================================
+   SUCCESS — PREMIUM GOLD
+   ========================================================= */
+
 .success {
   padding:
     14px
@@ -527,36 +531,61 @@
 
   gap: 11px;
 
-  color: #dff7dc;
+  /* Main success text */
+  color: #e8c958;
 
   border:
     1px solid
-    rgba(122, 205, 126, 0.23);
+    rgba(212, 175, 55, 0.42);
 
   border-radius: 14px;
 
   background:
+    radial-gradient(
+      circle at 8% 20%,
+      rgba(255, 230, 120, 0.08),
+      transparent 34%
+    ),
     linear-gradient(
       145deg,
-      rgba(80, 162, 87, 0.1),
-      rgba(80, 162, 87, 0.045)
+      rgba(212, 175, 55, 0.12),
+      rgba(159, 110, 12, 0.055)
     );
 
   box-shadow:
+    0 0 20px
+      rgba(212, 175, 55, 0.055),
     inset
-    0
-    1px
-    0
-    rgba(255, 255, 255, 0.035);
+      0
+      1px
+      0
+      rgba(255, 245, 190, 0.08);
+
+  transition:
+    border-color 250ms ease,
+    background 250ms ease,
+    box-shadow 250ms ease;
 }
 
+
+/* Success check icon */
 
 .success svg {
   flex: 0 0 auto;
 
-  color: #88d88d;
+  color: #e3b934;
+
+  filter:
+    drop-shadow(
+      0
+      0
+      7px
+      rgba(227, 185, 52, 0.24)
+    );
 }
 
+
+/* Success message */
 
 .success span {
   display: flex;
@@ -565,16 +594,21 @@
 
   gap: 3px;
 
+  color: #d8bc5c;
+
   font-size: 0.65rem;
 
   line-height: 1.5;
 }
 
 
+/* Message received */
+
 .success strong {
-  color: #e8fae6;
+  color: #f4d769;
 
   font-size: 0.7rem;
+  font-weight: 850;
 }
 
 
@@ -1101,6 +1135,9 @@
 /* =========================================================
    LIGHT SUCCESS
    ========================================================= */
+/* =========================================================
+   LIGHT SUCCESS — PREMIUM GOLD
+   ========================================================= */
 
 :global(html:not(.dark):not([data-theme="dark"]))
   .success,
@@ -1112,26 +1149,81 @@
   .success,
 :global(.light)
   .success {
-  color: #376c39;
+  color: #8d6810;
 
   border-color:
-    rgba(66, 140, 70, 0.2);
+    rgba(177, 132, 28, 0.38);
 
   background:
+    radial-gradient(
+      circle at 8% 20%,
+      rgba(255, 223, 112, 0.18),
+      transparent 38%
+    ),
     linear-gradient(
       145deg,
-      rgba(236, 251, 235, 0.9),
-      rgba(218, 242, 218, 0.68)
+      rgba(255, 250, 229, 0.96),
+      rgba(247, 231, 184, 0.7)
     );
 
   box-shadow:
+    0
+    7px
+    20px
+    rgba(125, 91, 14, 0.07),
+    0
+    0
+    18px
+    rgba(202, 150, 24, 0.06),
     inset
     0
     1px
     0
-    rgba(255, 255, 255, 0.9);
+    rgba(255, 255, 255, 0.95);
 }
 
+
+/* Light mode icon */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .success svg,
+:global(html[data-theme="light"])
+  .success svg,
+:global(html.light)
+  .success svg,
+:global([data-theme="light"])
+  .success svg,
+:global(.light)
+  .success svg {
+  color: #b78313;
+
+  filter:
+    drop-shadow(
+      0
+      0
+      5px
+      rgba(183, 131, 19, 0.18)
+    );
+}
+
+
+/* Light mode normal text */
+
+:global(html:not(.dark):not([data-theme="dark"]))
+  .success span,
+:global(html[data-theme="light"])
+  .success span,
+:global(html.light)
+  .success span,
+:global([data-theme="light"])
+  .success span,
+:global(.light)
+  .success span {
+  color: #8b6b1c;
+}
+
+
+/* Light mode strong text */
 
 :global(html:not(.dark):not([data-theme="dark"]))
   .success strong,
@@ -1143,10 +1235,8 @@
   .success strong,
 :global(.light)
   .success strong {
-  color: #285c2b;
+  color: #75520a;
 }
-
-
 /* =========================================================
    MOBILE
    ========================================================= */

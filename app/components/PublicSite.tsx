@@ -20,11 +20,11 @@ import RoadmapFinalSection from "./roadmap/RoadmapFinalSection";
 import PricingMain from "./pricing/PricingMain";
 import MainContact from "./contact/MainContact";
 import MotionReveal from "./MotionReveal";
-
 import styless from "./Footer.module.css";
+import ChatbotButton from "./chatbot/ChatbotButton";
 
 
-import {
+import {  
   FaInstagram,
   FaLinkedinIn,
   FaTwitter,
@@ -886,30 +886,23 @@ export function PublicSite({
     contact: <Contact />,
   }[page];
 
-  return (
-    <main
-      className={
-        page === "home"
-          ? styles.homePage
-          : page === "courses"
-            ? "courses-page"
-          : page === "roadmap"
-            ? `${styles.homePage} roadmap-page-shell`
-             : page === "leaderboard"
-            ? `${styles.homePage} leaderboard-page-shell`
-                : page === "pricing"
-            ? `${styles.homePage} pricing-page-shell`
-            : page === "about"
-            ? `${styles.homePage} about-page-shell`
+ return (
+  <main
+    className={
+      page === "home"
+        ? styles.homePage
+        : page === "courses"
+          ? "courses-page"
           : undefined
+    }
+  >
+    <Header page={page} />
 
-      }
-    >
-      <Header page={page} />
+    {content}
 
-      {content}
+    <Footer />
 
-      <Footer />
-    </main>
-  );
+    <ChatbotButton />
+  </main>
+);
 }

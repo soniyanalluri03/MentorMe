@@ -1,0 +1,843 @@
+/* =========================================================
+   MENTORME FLOATING CHATBOT
+========================================================= */
+
+.mentorme-chatbot {
+  position: fixed;
+
+  right: 28px;
+  bottom: 28px;
+
+  z-index: 99999;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  gap: 14px;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   MAIN FLOATING ICON
+========================================================= */
+
+.mentorme-chat-trigger {
+  width: 66px;
+  height: 66px;
+
+  position: relative;
+
+  flex: 0 0 66px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(131, 88, 4, 0.72);
+
+  border-radius: 50%;
+
+  color: #0d2b49;
+
+  cursor: pointer;
+
+  pointer-events: auto;
+
+  background:
+    radial-gradient(
+      circle at 28% 20%,
+      rgba(255,255,255,.92),
+      transparent 29%
+    ),
+    linear-gradient(
+      145deg,
+      #fff1a6 0%,
+      #f4d65c 32%,
+      #d4af37 67%,
+      #b8860b 100%
+    );
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(255,255,255,.82),
+
+    inset 0 -3px 5px
+      rgba(100,62,0,.16),
+
+    0 10px 24px
+      rgba(126,85,12,.28),
+
+    0 0 28px
+      rgba(212,175,55,.18);
+
+  transition:
+    transform .28s ease,
+    box-shadow .28s ease,
+    filter .28s ease;
+}
+
+
+/* icon itself */
+
+.mentorme-chat-trigger-icon {
+  position: relative;
+
+  z-index: 5;
+
+  display: grid;
+  place-items: center;
+}
+
+
+/* hover */
+
+.mentorme-chat-trigger:hover {
+  transform:
+    translateY(-5px)
+    scale(1.055);
+
+  filter:
+    brightness(1.04);
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(255,255,255,.9),
+
+    0 15px 32px
+      rgba(126,85,12,.33),
+
+    0 0 38px
+      rgba(212,175,55,.27);
+}
+
+
+/* when chatbot is opened */
+
+.mentorme-chat-trigger--open {
+  transform:
+    rotate(90deg)
+    scale(.96);
+}
+
+
+/* =========================================================
+   PULSE
+========================================================= */
+
+.mentorme-chat-pulse {
+  position: absolute;
+
+  inset: -8px;
+
+  z-index: -1;
+
+  border:
+    1px solid
+    rgba(212,175,55,.54);
+
+  border-radius: 50%;
+
+  animation:
+    mentormeChatPulse
+    2.4s ease-out infinite;
+}
+
+
+@keyframes mentormeChatPulse {
+
+  0% {
+    opacity: .72;
+
+    transform:
+      scale(.82);
+  }
+
+  70% {
+    opacity: .15;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      scale(1.42);
+  }
+}
+
+
+/* =========================================================
+   SMALL ROTATING GOLD ORBIT
+========================================================= */
+
+.mentorme-chat-orbit {
+  position: absolute;
+
+  inset: -5px;
+
+  z-index: 2;
+
+  border-radius: 50%;
+
+  border:
+    1px solid transparent;
+
+  border-top-color:
+    rgba(255,235,144,.92);
+
+  border-right-color:
+    rgba(184,134,11,.7);
+
+  pointer-events: none;
+
+  animation:
+    mentormeChatOrbit
+    6s linear infinite;
+}
+
+
+@keyframes mentormeChatOrbit {
+
+  to {
+    transform:
+      rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   CHAT WINDOW
+========================================================= */
+
+.mentorme-chat-window {
+  width: 365px;
+  height: 480px;
+
+  position: absolute;
+
+  right: 0;
+  bottom: 82px;
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  border:
+    1px solid
+    rgba(184,137,34,.4);
+
+  border-radius: 25px;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transform:
+    translateY(22px)
+    scale(.92);
+
+  transform-origin:
+    bottom right;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.98),
+      rgba(244,232,251,.98) 52%,
+      rgba(255,247,221,.98)
+    );
+
+  box-shadow:
+    0 30px 75px
+      rgba(45,31,62,.24),
+
+    inset 0 1px 0
+      rgba(255,255,255,.8);
+
+  backdrop-filter:
+    blur(22px);
+
+  transition:
+    opacity .28s ease,
+    visibility .28s ease,
+    transform .4s
+      cubic-bezier(.22,1,.36,1);
+}
+
+
+.mentorme-chat-window--open {
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+
+  transform:
+    translateY(0)
+    scale(1);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.mentorme-chat-header {
+  min-height: 79px;
+
+  padding:
+    15px 17px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    space-between;
+
+  gap: 15px;
+
+  border-bottom:
+    1px solid
+    rgba(184,137,34,.2);
+
+  background:
+    linear-gradient(
+      125deg,
+      rgba(217,195,244,.84),
+      rgba(255,240,199,.86)
+    );
+}
+
+
+.mentorme-chat-identity {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+}
+
+
+.mentorme-chat-avatar {
+  width: 44px;
+  height: 44px;
+
+  flex: 0 0 44px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 14px;
+
+  color: #102b49;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff1a6,
+      #d4af37
+    );
+
+  box-shadow:
+    0 7px 17px
+      rgba(121,83,13,.2);
+}
+
+
+.mentorme-chat-identity > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.mentorme-chat-identity strong {
+  color: #142d4e;
+
+  font-size: .86rem;
+
+  font-weight: 900;
+}
+
+
+.mentorme-chat-identity div span {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  color: #607087;
+
+  font-size: .66rem;
+
+  font-weight: 750;
+}
+
+
+.mentorme-chat-identity div span i {
+  width: 7px;
+  height: 7px;
+
+  display: block;
+
+  border-radius: 50%;
+
+  background:
+    #45b975;
+
+  box-shadow:
+    0 0 8px
+      rgba(69,185,117,.55);
+}
+
+
+/* =========================================================
+   CLOSE
+========================================================= */
+
+.mentorme-chat-close {
+  width: 35px;
+  height: 35px;
+
+  flex: 0 0 35px;
+
+  display: grid;
+
+  place-items: center;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(98,70,122,.1);
+
+  border-radius: 50%;
+
+  color: #30425d;
+
+  cursor: pointer;
+
+  background:
+    rgba(255,255,255,.58);
+
+  transition:
+    transform .2s ease,
+    background .2s ease;
+}
+
+
+.mentorme-chat-close:hover {
+  transform:
+    rotate(8deg);
+
+  background:
+    rgba(255,255,255,.9);
+}
+
+
+/* =========================================================
+   MESSAGES
+========================================================= */
+
+.mentorme-chat-messages {
+  flex: 1;
+
+  min-height: 0;
+
+  overflow-y: auto;
+
+  padding:
+    21px 17px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+
+.mentorme-chat-message {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+}
+
+
+.mentorme-chat-message-avatar {
+  width: 31px;
+  height: 31px;
+
+  flex: 0 0 31px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 10px;
+
+  color: #102b49;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f5dc72,
+      #cb981b
+    );
+}
+
+
+.mentorme-chat-message > div {
+  max-width: 248px;
+
+  padding:
+    12px 14px;
+
+  border-radius:
+    7px 18px 18px 18px;
+
+  color: #334760;
+
+  background:
+    rgba(255,255,255,.8);
+
+  box-shadow:
+    0 8px 21px
+      rgba(67,45,91,.08);
+}
+
+
+.mentorme-chat-message p {
+  margin: 0;
+
+  font-size: .76rem;
+
+  font-weight: 650;
+
+  line-height: 1.58;
+}
+
+
+.mentorme-chat-message p + p {
+  margin-top: 7px;
+}
+
+
+/* =========================================================
+   QUICK ACTION BUTTONS
+========================================================= */
+
+.mentorme-chat-actions {
+  padding-left: 41px;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+}
+
+
+.mentorme-chat-actions button {
+  min-height: 34px;
+
+  padding:
+    0 11px;
+
+  border:
+    1px solid
+    rgba(184,137,34,.3);
+
+  border-radius: 999px;
+
+  color: #17375e;
+
+  cursor: pointer;
+
+  background:
+    rgba(255,255,255,.68);
+
+  font-size: .65rem;
+
+  font-weight: 820;
+
+  transition:
+    transform .2s ease,
+    background .2s ease,
+    border-color .2s ease;
+}
+
+
+.mentorme-chat-actions button:hover {
+  transform:
+    translateY(-2px);
+
+  border-color:
+    rgba(184,137,34,.55);
+
+  background:
+    rgba(244,214,92,.28);
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.mentorme-chat-input {
+  padding: 13px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0,1fr)
+    42px;
+
+  gap: 8px;
+
+  border-top:
+    1px solid
+    rgba(184,137,34,.18);
+}
+
+
+.mentorme-chat-input input {
+  width: 100%;
+  min-width: 0;
+
+  height: 43px;
+
+  padding:
+    0 14px;
+
+  outline: none;
+
+  border:
+    1px solid
+    rgba(90,66,119,.16);
+
+  border-radius: 13px;
+
+  color: #172d50;
+
+  background:
+    rgba(255,255,255,.74);
+
+  font-size: .76rem;
+}
+
+
+.mentorme-chat-input input:focus {
+  border-color:
+    rgba(184,137,34,.6);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(212,175,55,.09);
+}
+
+
+.mentorme-chat-input button {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+
+  place-items: center;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 12px;
+
+  color: #102b49;
+
+  cursor: pointer;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f7db67,
+      #c99415
+    );
+
+  transition:
+    transform .2s ease;
+}
+
+
+.mentorme-chat-input button:hover {
+  transform:
+    translateY(-2px);
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+html[data-theme="dark"]
+.mentorme-chat-window,
+html.dark
+.mentorme-chat-window {
+  border-color:
+    rgba(212,175,55,.4);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(12,39,67,.99),
+      rgba(7,27,48,.99)
+    );
+
+  box-shadow:
+    0 31px 78px
+      rgba(0,0,0,.48);
+}
+
+
+html[data-theme="dark"]
+.mentorme-chat-header,
+html.dark
+.mentorme-chat-header {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(31,69,104,.98),
+      rgba(15,41,70,.98)
+    );
+}
+
+
+html[data-theme="dark"]
+.mentorme-chat-identity strong,
+html.dark
+.mentorme-chat-identity strong {
+  color: #f4f8ff;
+}
+
+
+html[data-theme="dark"]
+.mentorme-chat-identity div span,
+html.dark
+.mentorme-chat-identity div span {
+  color: #aebed0;
+}
+
+
+html[data-theme="dark"]
+.mentorme-chat-close,
+html.dark
+.mentorme-chat-close {
+  color: #dbe7f5;
+
+  background:
+    rgba(255,255,255,.07);
+}
+
+
+html[data-theme="dark"]
+.mentorme-chat-message > div,
+html.dark
+.mentorme-chat-message > div {
+  color: #dce8f6;
+
+  background:
+    rgba(23,55,85,.92);
+}
+
+
+html[data-theme="dark"]
+.mentorme-chat-actions button,
+html.dark
+.mentorme-chat-actions button {
+  color: #eaf2ff;
+
+  background:
+    rgba(24,57,88,.84);
+
+  border-color:
+    rgba(212,175,55,.28);
+}
+
+
+html[data-theme="dark"]
+.mentorme-chat-input input,
+html.dark
+.mentorme-chat-input input {
+  color: #eef5ff;
+
+  background:
+    rgba(17,47,77,.92);
+
+  border-color:
+    rgba(212,175,55,.22);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .mentorme-chatbot {
+    right: 16px;
+    bottom: 18px;
+  }
+
+  .mentorme-chat-trigger {
+    width: 58px;
+    height: 58px;
+
+    flex-basis: 58px;
+  }
+
+  .mentorme-chat-window {
+    width:
+      calc(100vw - 32px);
+
+    max-width: 365px;
+
+    height: 455px;
+
+    bottom: 74px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  .mentorme-chat-pulse,
+  .mentorme-chat-orbit {
+    animation: none;
+  }
+
+  .mentorme-chat-window,
+  .mentorme-chat-trigger {
+    transition: none;
+  }
+}

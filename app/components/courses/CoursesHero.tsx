@@ -109,7 +109,7 @@ export default function CoursesHero() {
             <em className="text-4xl xl:text-6xl">future.</em>
           </h2>
 
-          <span className={styles.heroDescription}>
+          <span> className={styles.heroDescription}
             Frontend. Backend. Design. More paths ahead.
           </span>
         </header>

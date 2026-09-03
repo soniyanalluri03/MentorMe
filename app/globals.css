@@ -575,6 +575,8 @@ html[data-theme="light"] .home-page-background a {
   -webkit-backdrop-filter: blur(15px);
 }
 
+
+
 /* =========================================================
    GOLD / CREAM PILL
    LEVELS 1–10 FREE / WEEKLY XP
@@ -684,6 +686,103 @@ html[data-theme="light"] .home-page-background a {
 }
 
 /* =========================================================
+   AUTH PILLS — DARK MODE ONLY
+   Light mode and other pages remain unchanged
+========================================================= */
+
+/* GOLD */
+:where(
+  html.dark,
+  html[data-theme="dark"]
+)
+.auth-page
+.auth-fixed-pill.hj-highlight-pill--gold {
+  color: #f1d15a !important;
+
+  border-color:
+    rgba(212, 175, 55, 0.42) !important;
+
+  background:
+    rgba(8, 29, 50, 0.48) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.035),
+    0 8px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+:where(
+  html.dark,
+  html[data-theme="dark"]
+)
+.auth-page
+.auth-fixed-pill.hj-highlight-pill--gold svg {
+  color: #e6bf32 !important;
+  stroke: #e6bf32 !important;
+}
+
+
+/* PURPLE */
+:where(
+  html.dark,
+  html[data-theme="dark"]
+)
+.auth-page
+.auth-fixed-pill.hj-highlight-pill--purple {
+  color: #bb84ff !important;
+
+  border-color:
+    rgba(169, 117, 234, 0.42) !important;
+
+  background:
+    rgba(10, 27, 50, 0.48) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.035),
+    0 8px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+:where(
+  html.dark,
+  html[data-theme="dark"]
+)
+.auth-page
+.auth-fixed-pill.hj-highlight-pill--purple svg {
+  color: #a975ea !important;
+  stroke: #a975ea !important;
+}
+
+
+/* BLUE */
+:where(
+  html.dark,
+  html[data-theme="dark"]
+)
+.auth-page
+.auth-fixed-pill.hj-highlight-pill--blue {
+  color: #67d2ff !important;
+
+  border-color:
+    rgba(88, 164, 213, 0.44) !important;
+
+  background:
+    rgba(7, 29, 49, 0.48) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.035),
+    0 8px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+:where(
+  html.dark,
+  html[data-theme="dark"]
+)
+.auth-page
+.auth-fixed-pill.hj-highlight-pill--blue svg {
+  color: #58bce8 !important;
+  stroke: #58bce8 !important;
+}
+
+/* =========================================================
    REDUCED MOTION
    ========================================================= */
 
@@ -754,35 +853,58 @@ html[data-theme="light"] .home-page-background a {
   }
 }
 
+/* =========================================================
+   GLOBAL MENTORME LIGHT BACKGROUND
+   One background for all public/auth pages
+========================================================= */
+
 html[data-theme="light"],
+html.light,
 html:not(.dark):not([data-theme="dark"]) {
   min-height: 100%;
-  background: #f3ecfb;
+
+  background: #f4ecfb;
 }
 
 html[data-theme="light"] body,
+html.light body,
 html:not(.dark):not([data-theme="dark"]) body {
   min-height: 100vh;
 
   background:
+    /* LEFT — lavender */
     radial-gradient(
-      circle at 8% 16%,
-      rgba(218, 204, 247, 0.94) 0%,
-      rgba(236, 226, 249, 0.7) 26%,
-      transparent 50%
+      ellipse at 7% 38%,
+      rgba(203, 177, 239, 0.88) 0%,
+      rgba(222, 205, 244, 0.66) 24%,
+      rgba(238, 227, 248, 0.34) 42%,
+      transparent 61%
     ),
+
+    /* RIGHT — warm premium gold */
     radial-gradient(
-      circle at 88% 28%,
-      rgba(250, 224, 139, 0.52) 0%,
-      rgba(255, 246, 215, 0.34) 31%,
-      transparent 60%
+      ellipse at 91% 38%,
+      rgba(250, 221, 128, 0.48) 0%,
+      rgba(255, 239, 188, 0.34) 30%,
+      transparent 59%
     ),
+
+    /* SOFT WHITE CENTER */
     radial-gradient(
-      circle at 50% 72%,
-      rgba(255, 255, 255, 0.7) 0%,
-      transparent 52%
+      ellipse at 53% 48%,
+      rgba(255, 255, 255, 0.82) 0%,
+      rgba(255, 255, 255, 0.48) 32%,
+      transparent 61%
     ),
-    linear-gradient(110deg, #f3ecfb 0%, #fffaf5 50%, #fff8e8 100%);
+
+    /* BASE */
+    linear-gradient(
+      108deg,
+      #eee4fa 0%,
+      #f8f2fb 34%,
+      #fffaf4 64%,
+      #fff4d8 100%
+    );
 
   background-repeat: no-repeat;
   background-size: cover;
@@ -928,32 +1050,5 @@ html.dark body {
 .about-page-shell .footer {
   background: transparent !important;
   background-color: transparent !important;
-  background-image: none !important;
-}
-
-
-.about-page-shell .about-page::before,
-.about-page-shell .about-page::after {
-  background: none !important;
-  background-image: none !important;
-}
-/* =========================================================
-   CONTACT — REUSE EXACT HOME PAGE BACKGROUND
-   ========================================================= */
-
-.contact-page-shell .public-header-slot,
-.contact-page-shell .public-header,
-.contact-page-shell .contact-page,
-.contact-page-shell .contact-page > section,
-.contact-page-shell .footer {
-  background: transparent !important;
-  background-color: transparent !important;
-  background-image: none !important;
-}
-
-
-.contact-page-shell .contact-page::before,
-.contact-page-shell .contact-page::after {
-  background: none !important;
   background-image: none !important;
 }

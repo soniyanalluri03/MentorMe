@@ -219,19 +219,113 @@
 }
 
 /* =========================================================
-   NAVBAR AREA
-   Same treatment as Courses
+   ROADMAP NAVBAR AREA
+   Same navbar background treatment as Courses page
    ========================================================= */
 
+/*
+ * Navbar wrapper
+ * Let the Roadmap page-level purple/navy background
+ * remain visible behind the navbar.
+ */
 .roadmap-page .public-header-slot {
+  position: relative;
+
   background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+
+  border: 0 !important;
+
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+
+/*
+ * Actual navbar container
+ */
+.roadmap-page .public-header {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+
+  border-color: transparent !important;
+
+  box-shadow: none !important;
+  filter: none !important;
+
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+
+/*
+ * Prevent old/global navbar pseudo-elements
+ * from creating green/dark background layers.
+ */
+.roadmap-page .public-header-slot::before,
+.roadmap-page .public-header-slot::after,
+.roadmap-page .public-header::before,
+.roadmap-page .public-header::after {
+  background: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+
+  border: 0 !important;
+
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+
+/* =========================================================
+   DARK MODE — NAVBAR
+   Keep Roadmap background visible behind navbar
+   ========================================================= */
+
+:where(
+  html.dark,
+  html[data-theme="dark"],
+  body.dark,
+  body[data-theme="dark"]
+) .roadmap-page .public-header-slot,
+:where(
+  html.dark,
+  html[data-theme="dark"],
+  body.dark,
+  body[data-theme="dark"]
+) .roadmap-page .public-header {
+  background: transparent !important;
+  background-color: transparent !important;
   background-image: none !important;
 
   box-shadow: none !important;
 }
 
-.roadmap-page .public-header {
+
+/* =========================================================
+   LIGHT MODE — NAVBAR
+   Show the same purple → cream Roadmap background
+   behind navbar
+   ========================================================= */
+
+:where(
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"],
+  body.light,
+  body[data-theme="light"]
+) .roadmap-page .public-header-slot,
+:where(
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"],
+  body.light,
+  body[data-theme="light"]
+) .roadmap-page .public-header {
   background: transparent !important;
+  background-color: transparent !important;
   background-image: none !important;
 
   box-shadow: none !important;
@@ -257,4 +351,23 @@
   .roadmap-page {
     background-attachment: scroll;
   }
+}
+
+/* =========================================================
+   FINAL ROADMAP NAVBAR BACKGROUND OVERRIDE
+   ========================================================= */
+
+.roadmap-page .public-header-slot,
+.roadmap-page .public-header {
+  background:
+    transparent !important;
+
+  background-color:
+    transparent !important;
+
+  background-image:
+    none !important;
+
+  box-shadow:
+    none !important;
 }

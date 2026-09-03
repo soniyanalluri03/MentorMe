@@ -199,10 +199,10 @@ export default function LiveCommunity() {
 
 
           <h2 id="community-title">
-            See learners build, grow, and{" "}
+            See learners build, grow,{" "}
             <span className={styles.waveText}>
-              win—
-            </span>
+              and win
+            </span>{" "}
 
             <span
               className={styles.colorfulText}

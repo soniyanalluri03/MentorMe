@@ -1,0 +1,360 @@
+/* =========================================================
+   LEADERBOARD PAGE
+   Reuses the exact Home page background
+   ========================================================= */
+
+.leaderboard-page {
+  --navy: #08111f;
+  --navy-2: #0d1a2c;
+  --navy-3: #14243a;
+
+  --panel: rgba(14, 28, 47, 0.76);
+  --panel-strong: #0d1b2e;
+
+  --gold: #d4af37;
+  --gold-2: #f4df83;
+  --gold-3: #a97812;
+
+  --text: #f7f9fd;
+  --muted: #9eacc0;
+  --line: rgba(244, 223, 131, 0.16);
+
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  isolation: isolate;
+
+  /*
+   * Allow leaderboard cards/effects to extend vertically,
+   * but prevent horizontal page overflow.
+   */
+  overflow-x: hidden;
+  overflow-y: visible;
+
+  color: var(--text);
+
+  color-scheme: dark;
+
+  /*
+   * IMPORTANT:
+   * The outer .leaderboard-page-shell receives
+   * styles.homePage from PublicSite.tsx.
+   *
+   * Therefore this page itself must stay transparent.
+   */
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+
+  transition:
+    color 280ms ease;
+}
+
+
+/* =========================================================
+   GLOBAL LEADERBOARD RESET
+   ========================================================= */
+
+.leaderboard-page,
+.leaderboard-page * {
+  box-sizing: border-box;
+}
+
+
+.leaderboard-page h1,
+.leaderboard-page h2,
+.leaderboard-page h3,
+.leaderboard-page p {
+  margin-top: 0;
+}
+
+
+.leaderboard-page a {
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   DARK MODE
+   Home wrapper owns the actual page background
+   ========================================================= */
+
+:where(
+  html.dark,
+  html[data-theme="dark"],
+  body.dark,
+  body[data-theme="dark"]
+) .leaderboard-page {
+  --navy: #08111f;
+  --navy-2: #0d1a2c;
+  --navy-3: #14243a;
+
+  --panel: rgba(14, 28, 47, 0.76);
+  --panel-strong: #0d1b2e;
+
+  --gold: #d4af37;
+  --gold-2: #f4df83;
+  --gold-3: #a97812;
+
+  --text: #f7f9fd;
+  --muted: #9eacc0;
+  --line: rgba(244, 223, 131, 0.16);
+
+  color: var(--text);
+
+  color-scheme: dark;
+
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* =========================================================
+   LIGHT MODE
+   Home wrapper owns the actual page background
+   ========================================================= */
+
+:where(
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"],
+  body.light,
+  body[data-theme="light"]
+) .leaderboard-page {
+  --navy: #f7f3ed;
+  --navy-2: #ffffff;
+  --navy-3: #ece5f5;
+
+  --panel: rgba(255, 255, 255, 0.78);
+  --panel-strong: rgba(255, 255, 255, 0.94);
+
+  --gold: #b78313;
+  --gold-2: #d4af37;
+  --gold-3: #8e6810;
+
+  --text: #1b2435;
+  --muted: #667085;
+  --line: rgba(75, 61, 103, 0.14);
+
+  color: var(--text);
+
+  color-scheme: light;
+
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* =========================================================
+   REMOVE PAGE-LEVEL SECTION BACKGROUNDS
+
+   The Home background should run continuously through
+   the complete Leaderboard page.
+   ========================================================= */
+
+.leaderboard-page > section {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+
+  /*
+   * Do NOT globally remove all internal borders here.
+   * Leaderboard components may intentionally use them.
+   */
+
+  box-shadow: none !important;
+}
+
+
+/*
+ * Remove only old page-level background layers.
+ */
+
+.leaderboard-page > section::before,
+.leaderboard-page > section::after {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/*
+ * Prevent artificial visual gaps between
+ * page-level sections.
+ */
+
+.leaderboard-page > section + section {
+  margin-top: 0 !important;
+}
+
+
+/* =========================================================
+   LEADERBOARD PAGE SURFACE SAFETY
+
+   Only page/background containers are made transparent.
+   Individual leaderboard cards are NOT touched.
+   ========================================================= */
+
+.leaderboard-page .leaderboard,
+.leaderboard-page .leaderboardSection,
+.leaderboard-page .leaderboardPage,
+.leaderboard-page .hero,
+.leaderboard-page .heroSection {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* =========================================================
+   LEADERBOARD NAVBAR
+   Same navbar behavior as Courses
+
+   IMPORTANT:
+   Only remove the PAGE BACKGROUND from behind the navbar.
+
+   DO NOT:
+   - set border: 0
+   - set border-color: transparent
+   - remove ::before / ::after
+   - remove navbar box-shadow
+   - remove navbar backdrop-filter
+
+   navbar.css remains responsible for the actual design.
+   ========================================================= */
+
+.leaderboard-page-shell .public-header-slot {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+.leaderboard-page-shell .public-header {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* =========================================================
+   DARK MODE — NAVBAR
+
+   Keep navbar.css border/styling.
+   Only keep the surrounding surface transparent.
+   ========================================================= */
+
+:where(
+  html.dark,
+  html[data-theme="dark"],
+  body.dark,
+  body[data-theme="dark"]
+)
+.leaderboard-page-shell
+.public-header-slot {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+:where(
+  html.dark,
+  html[data-theme="dark"],
+  body.dark,
+  body[data-theme="dark"]
+)
+.leaderboard-page-shell
+.public-header {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* =========================================================
+   LIGHT MODE — NAVBAR
+
+   Keep navbar.css border/styling.
+   Home purple → cream background remains visible behind it.
+   ========================================================= */
+
+:where(
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"],
+  body.light,
+  body[data-theme="light"]
+)
+.leaderboard-page-shell
+.public-header-slot {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+:where(
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"],
+  body.light,
+  body[data-theme="light"]
+)
+.leaderboard-page-shell
+.public-header {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* =========================================================
+   FOOTER AREA
+   Continue the same Home background
+   ========================================================= */
+
+/*
+ * We don't force the actual Footer.module.css card styling
+ * away here.
+ *
+ * This only protects global footer wrappers if present.
+ */
+
+.leaderboard-page-shell .footer {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .leaderboard-page {
+    width: 100%;
+
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+}
+
+
+/* =========================================================
+   FINAL LEADERBOARD BACKGROUND SAFETY
+   ========================================================= */
+
+.leaderboard-page-shell .leaderboard-page {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+.leaderboard-page-shell .leaderboard-page > section {
+  background-color: transparent !important;
+  background-image: none !important;
+}

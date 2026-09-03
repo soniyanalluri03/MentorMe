@@ -14,6 +14,9 @@
 @import "../app/roadmap/roadmap.css";
 @import "../app/components/pricing/Pricing.module.css";
 @import "./styles/chatbot.css";
+@import "../app/leaderboard/leaderboard.css";
+@import "../app/about/about.css";
+@import "../app/contact/contact.css";
 /* =========================================================
    COMPLETE HOME PAGE BACKGROUND — LIGHT MODE
 ========================================================= */
@@ -885,12 +888,23 @@ html.dark body {
    LEADERBOARD — REUSE EXACT HOME PAGE BACKGROUND
 ========================================================= */
 
+
 .leaderboard-page-shell .public-header-slot,
+.leaderboard-page-shell .public-header,
+.leaderboard-page-shell .leaderboard-page,
+.leaderboard-page-shell .leaderboard-page > section,
 .leaderboard-page-shell .footer {
   background: transparent !important;
+  background-color: transparent !important;
   background-image: none !important;
 }
 
+
+.leaderboard-page-shell .leaderboard-page::before,
+.leaderboard-page-shell .leaderboard-page::after {
+  background: none !important;
+  background-image: none !important;
+}
 /* =========================================================
    PRICING — REUSE EXACT HOME PAGE BACKGROUND
 ========================================================= */
@@ -905,11 +919,41 @@ html.dark body {
 
 /* =========================================================
    ABOUT — REUSE EXACT HOME PAGE BACKGROUND
-========================================================= */
+   ========================================================= */
 
 .about-page-shell .public-header-slot,
+.about-page-shell .public-header,
 .about-page-shell .about-page,
+.about-page-shell .about-page > section,
 .about-page-shell .footer {
   background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+.about-page-shell .about-page::before,
+.about-page-shell .about-page::after {
+  background: none !important;
+  background-image: none !important;
+}
+/* =========================================================
+   CONTACT — REUSE EXACT HOME PAGE BACKGROUND
+   ========================================================= */
+
+.contact-page-shell .public-header-slot,
+.contact-page-shell .public-header,
+.contact-page-shell .contact-page,
+.contact-page-shell .contact-page > section,
+.contact-page-shell .footer {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+.contact-page-shell .contact-page::before,
+.contact-page-shell .contact-page::after {
+  background: none !important;
   background-image: none !important;
 }

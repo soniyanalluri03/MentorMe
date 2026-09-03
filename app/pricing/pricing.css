@@ -1,0 +1,334 @@
+/* =========================================================
+   PRICING PAGE
+   Reuses the exact Home page background
+   ========================================================= */
+
+.pricing-page {
+  --navy: #08111f;
+  --navy-2: #0d1a2c;
+  --navy-3: #14243a;
+
+  --panel: rgba(14, 28, 47, 0.76);
+  --panel-strong: #0d1b2e;
+
+  --gold: #d4af37;
+  --gold-2: #f4df83;
+  --gold-3: #a97812;
+
+  --text: #f7f9fd;
+  --muted: #9eacc0;
+  --line: rgba(244, 223, 131, 0.16);
+
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  isolation: isolate;
+
+  overflow-x: hidden;
+  overflow-y: visible;
+
+  color: var(--text);
+
+  color-scheme: dark;
+
+  /*
+   * IMPORTANT:
+   * The actual page background comes from
+   * styles.homePage on .pricing-page-shell.
+   */
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+
+  transition:
+    color 280ms ease;
+}
+
+
+/* =========================================================
+   PRICING PAGE RESET
+   ========================================================= */
+
+.pricing-page,
+.pricing-page * {
+  box-sizing: border-box;
+}
+
+
+.pricing-page h1,
+.pricing-page h2,
+.pricing-page h3,
+.pricing-page h4,
+.pricing-page p {
+  margin-top: 0;
+}
+
+
+.pricing-page a {
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   DARK MODE
+   Home wrapper owns the page background
+   ========================================================= */
+
+:where(
+  html.dark,
+  html[data-theme="dark"],
+  body.dark,
+  body[data-theme="dark"]
+) .pricing-page {
+  --navy: #08111f;
+  --navy-2: #0d1a2c;
+  --navy-3: #14243a;
+
+  --panel: rgba(14, 28, 47, 0.76);
+  --panel-strong: #0d1b2e;
+
+  --gold: #d4af37;
+  --gold-2: #f4df83;
+  --gold-3: #a97812;
+
+  --text: #f7f9fd;
+  --muted: #9eacc0;
+  --line: rgba(244, 223, 131, 0.16);
+
+  color: var(--text);
+
+  color-scheme: dark;
+
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* =========================================================
+   LIGHT MODE
+   Home wrapper owns the page background
+   ========================================================= */
+
+:where(
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"],
+  body.light,
+  body[data-theme="light"]
+) .pricing-page {
+  --navy: #f7f3ed;
+  --navy-2: #ffffff;
+  --navy-3: #ece5f5;
+
+  --panel: rgba(255, 255, 255, 0.78);
+  --panel-strong: rgba(255, 255, 255, 0.94);
+
+  --gold: #b78313;
+  --gold-2: #d4af37;
+  --gold-3: #8e6810;
+
+  --text: #1b2435;
+  --muted: #667085;
+  --line: rgba(75, 61, 103, 0.14);
+
+  color: var(--text);
+
+  color-scheme: light;
+
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* =========================================================
+   PAGE-LEVEL SECTIONS
+
+   Keep all major Pricing sections transparent so
+   the Home background remains continuous.
+
+   IMPORTANT:
+   This affects only direct page sections.
+   Internal pricing cards are left untouched.
+   ========================================================= */
+
+.pricing-page > section {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/*
+ * Remove old page-level background layers only.
+ */
+
+.pricing-page > section::before,
+.pricing-page > section::after {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/*
+ * Prevent visible section breaks caused by
+ * old public-page spacing/background rules.
+ */
+
+.pricing-page > section + section {
+  margin-top: 0 !important;
+}
+
+
+/* =========================================================
+   PRICING ROOT SAFETY
+
+   Keep the main Pricing page surfaces transparent.
+   Do NOT target individual cards/plans/features here.
+   ========================================================= */
+
+.pricing-page .pricingMain,
+.pricing-page .pricingPage,
+.pricing-page .pricingSection,
+.pricing-page .pricingHero {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* =========================================================
+   NAVBAR
+   Same behavior as Home / Roadmap / Leaderboard
+
+   Only the background is transparent.
+   navbar.css still controls:
+   - border
+   - blur
+   - shadows
+   - pseudo-elements
+   - hover styles
+   ========================================================= */
+
+.pricing-page-shell .public-header-slot {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+.pricing-page-shell .public-header {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* =========================================================
+   DARK MODE — NAVBAR
+   ========================================================= */
+
+:where(
+  html.dark,
+  html[data-theme="dark"],
+  body.dark,
+  body[data-theme="dark"]
+)
+.pricing-page-shell
+.public-header-slot {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+:where(
+  html.dark,
+  html[data-theme="dark"],
+  body.dark,
+  body[data-theme="dark"]
+)
+.pricing-page-shell
+.public-header {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* =========================================================
+   LIGHT MODE — NAVBAR
+   ========================================================= */
+
+:where(
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"],
+  body.light,
+  body[data-theme="light"]
+)
+.pricing-page-shell
+.public-header-slot {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+:where(
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"],
+  body.light,
+  body[data-theme="light"]
+)
+.pricing-page-shell
+.public-header {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* =========================================================
+   FOOTER
+   Continue the same Home background
+   ========================================================= */
+
+.pricing-page-shell .footer {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .pricing-page {
+    width: 100%;
+
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+}
+
+
+/* =========================================================
+   FINAL PRICING BACKGROUND SAFETY
+   ========================================================= */
+
+.pricing-page-shell .pricing-page {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+.pricing-page-shell .pricing-page > section {
+  background-color: transparent !important;
+  background-image: none !important;
+}

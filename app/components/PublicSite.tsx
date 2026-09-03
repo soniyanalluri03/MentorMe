@@ -23,14 +23,12 @@ import MotionReveal from "./MotionReveal";
 import styless from "./Footer.module.css";
 import ChatbotButton from "./chatbot/ChatbotButton";
 
-
 import {  
   FaInstagram,
   FaLinkedinIn,
   FaTwitter,
   FaWhatsapp,
 } from "react-icons/fa";
-
 import {
   FiArrowUpRight,
   FiMail,
@@ -310,8 +308,6 @@ function JourneyStrip() {
   );
 }
 
-
-
 const worlds = [
   [
     "01",
@@ -479,132 +475,25 @@ const leaders = [
 ];
 function Leaderboard() {
   return (
-    <>
-      <PageHero
-        tag="MENTORME LEADERBOARD"
-        title={
-          <>
-            Momentum deserves
-            <br />
-            <em>to be seen.</em>
-          </>
-        }
-        text="A friendly ranking of students turning consistent action into visible career progress."
-      />
-
-      <section className="section leaderboard">
-        <div className="leaderboard-head">
-          <div>
-            <span className="kicker">
-              THIS WEEK
-            </span>
-
-            <h2>Top learners</h2>
-          </div>
-
-          <div className="your-rank">
-            <small>
-              YOUR RANK
-            </small>
-
-            <b>#04</b>
-
-            <span>
-              ↑ 2 places this week
-            </span>
-          </div>
-        </div>
-
-        <div className="podium">
-          <article>
-            <span>02</span>
-
-            <i>KS</i>
-
-            <h3>
-              Kabir Shah
-            </h3>
-
-            <b>8,640 XP</b>
-          </article>
-
-          <article className="winner">
-            <span>01</span>
-
-            <i>AR</i>
-
-            <h3>
-              Ananya Rao
-            </h3>
-
-            <b>8,920 XP</b>
-          </article>
-
-          <article>
-            <span>03</span>
-
-            <i>MN</i>
-
-            <h3>
-              Meera Nair
-            </h3>
-
-            <b>8,410 XP</b>
-          </article>
-        </div>
-
-        <div className="leader-list">
-          {leaders.map(
-            (leader) => (
-              <article
-                className={
-                  leader[4] === "RS"
-                    ? "you"
-                    : ""
-                }
-                key={leader[0]}
-              >
-                <strong>
-                  {leader[0]}
-                </strong>
-
-                <i>{leader[4]}</i>
-
-                <div>
-                  <b>
-                    {leader[1]}{" "}
-
-                    {leader[4] ===
-                      "RS" && (
-                      <small>
-                        YOU
-                      </small>
-                    )}
-                  </b>
-
-                  <span>
-                    {leader[2]}
-                  </span>
-                </div>
-
-                <em>
-                  {leader[3]}
-                </em>
-              </article>
-            ),
-          )}
-        </div>
-      </section>
-    </>
+    <main className="leaderboard-page">
+      <LeaderboardExperience />
+    </main>
   );
 }
 
 function Contact() {
-  
   return (
-    <>
-      <MainContact/>
-    </>
+    <main className="contact-page">
+      <MainContact />
+    </main>
+  );
+}
+
+function About() {
+  return (
+    <main className="about-page">
+      <MainAbout />
+    </main>
   );
 }
 
@@ -880,21 +769,38 @@ export function PublicSite({
     home: <Home />,
     courses: <Courses />,
     roadmap: <Roadmap />,
-    leaderboard: <LeaderboardExperience />,
-    about: <MainAbout />,
+    leaderboard: <Leaderboard />,
+    about: <About />,
     pricing: <Pricing />,
     contact: <Contact />,
   }[page];
 
- return (
+return (
   <main
     className={
-      page === "home"
-        ? styles.homePage
-        : page === "courses"
-          ? "courses-page"
-          : undefined
-    }
+  page === "home"
+    ? styles.homePage
+
+    : page === "roadmap"
+      ? `${styles.homePage} roadmap-page-shell`
+
+    : page === "leaderboard"
+      ? `${styles.homePage} leaderboard-page-shell`
+
+    : page === "pricing"
+      ? `${styles.homePage} pricing-page-shell`
+
+    : page === "about"
+      ? `${styles.homePage} about-page-shell`
+
+    : page === "contact"
+      ? `${styles.homePage} contact-page-shell`
+
+    : page === "courses"
+      ? "courses-page"
+
+    : undefined
+}
   >
     <Header page={page} />
 

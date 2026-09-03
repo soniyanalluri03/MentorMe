@@ -1052,3 +1052,78 @@ html.dark body {
   background-color: transparent !important;
   background-image: none !important;
 }
+
+
+
+/* =========================================================
+   SHARED MENTORME ICONS
+========================================================= */
+
+.mm-shared-icon {
+  display: block;
+  flex: 0 0 auto;
+
+  color: #d4af37;
+  stroke: currentColor;
+
+  stroke-width: 2;
+}
+
+/* Sparkles */
+.mm-spark-icon {
+  filter:
+    drop-shadow(
+      0 0 4px rgba(212, 175, 55, 0.25)
+    );
+}
+
+/* Arrow */
+.mm-arrow-icon {
+  transition:
+    transform 0.25s ease;
+}
+
+.mm-arrow-icon:hover {
+  transform: translateX(3px);
+}
+
+
+/* =========================================================
+   LIGHT PAGES USE GLOBAL BACKGROUND
+   Decorative elements remain untouched
+========================================================= */
+
+:where(
+  html[data-theme="light"],
+  html.light,
+  html:not(.dark):not([data-theme="dark"])
+)
+.auth-page {
+  background: transparent !important;
+}
+
+.about-page-shell .about-page::before,
+.about-page-shell .about-page::after {
+  background: none !important;
+  background-image: none !important;
+}
+/* =========================================================
+   CONTACT — REUSE EXACT HOME PAGE BACKGROUND
+   ========================================================= */
+
+.contact-page-shell .public-header-slot,
+.contact-page-shell .public-header,
+.contact-page-shell .contact-page,
+.contact-page-shell .contact-page > section,
+.contact-page-shell .footer {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+.contact-page-shell .contact-page::before,
+.contact-page-shell .contact-page::after {
+  background: none !important;
+  background-image: none !important;
+}

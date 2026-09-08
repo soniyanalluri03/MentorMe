@@ -98,6 +98,9 @@ function Header({
   const [notice, setNotice] =
     useState(false);
 
+  const [mobileMenuOpen, setMobileMenuOpen] =
+  useState(false);
+
   const [navbarVisible, setNavbarVisible] =
     useState(true);
 
@@ -187,21 +190,31 @@ function Header({
             <MentorMeLogo />
           </Link>
 
-          <nav aria-label="Primary navigation">
-            {nav.map((item) => (
-              <Link
-                className={
-                  page === item.page
-                    ? "active"
-                    : ""
-                }
-                href={item.href}
-                key={item.page}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+          <nav
+  aria-label="Primary navigation"
+  className={
+    mobileMenuOpen
+      ? "is-open"
+      : ""
+  }
+>
+  {nav.map((item) => (
+    <Link
+      className={
+        page === item.page
+          ? "active"
+          : ""
+      }
+      href={item.href}
+      key={item.page}
+      onClick={() =>
+        setMobileMenuOpen(false)
+      }
+    >
+      {item.label}
+    </Link>
+  ))}
+</nav>
 
           <div className="header-actions">
             <div className="notice-wrap">
@@ -264,18 +277,60 @@ function Header({
               <span>Sign in</span>
             </Link>
           </div>
+<button
+  className={`mobile-menu ${
+    mobileMenuOpen
+      ? "is-open"
+      : ""
+  }`}
+  aria-label={
+    mobileMenuOpen
+      ? "Close menu"
+      : "Open menu"
+  }
+  aria-expanded={mobileMenuOpen}
+  type="button"
+  onClick={() =>
+    setMobileMenuOpen(
+      (current) => !current,
+    )
+  }
+>
+  {/* HAMBURGER */}
+  <svg
+    className="mobile-menu__icon mobile-menu__icon--hamburger"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <path d="M5 7H19" />
+    <path d="M5 12H19" />
+    <path d="M5 17H19" />
+  </svg>
 
-          <button
-            className="mobile-menu"
-            aria-label="Open menu"
-            type="button"
-          >
-            <span />
-            <span />
-            <span />
-          </button>
+  {/* CLOSE */}
+  <svg
+    className="mobile-menu__icon mobile-menu__icon--close"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <path d="M6 6L18 18" />
+    <path d="M18 6L6 18" />
+  </svg>
+</button>
         </div>
       </header>
+      <button
+  type="button"
+  aria-label="Close navigation"
+  className={`mobile-menu-backdrop ${
+    mobileMenuOpen
+      ? "is-open"
+      : ""
+  }`}
+  onClick={() =>
+    setMobileMenuOpen(false)
+  }
+/>
     </div>
   );
 }

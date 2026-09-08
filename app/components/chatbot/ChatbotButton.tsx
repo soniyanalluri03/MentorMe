@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import ChatMessage from "./ChatMessage";
+import { usePublicChat } from "./usePublicChat";
 import {
   Bot,
   Send,
@@ -9,6 +11,48 @@ import {
 
 export default function ChatbotButton() {
   const [open, setOpen] = useState(false);
+  const [input, setInput] = useState("");
+  const { messages, isSending, requiredField, send, clear } = usePublicChat(open);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const launcherRef = useRef<HTMLButtonElement>(null);
+  const messagesRef = useRef<HTMLDivElement>(null);
+  const latestRef = useRef<HTMLDivElement>(null);
+  const nearBottom = useRef(true);
+  const followReveal = useRef(true);
+  const revealLatest = useCallback(() => {
+    const container = messagesRef.current;
+    if (followReveal.current && container && latestRef.current) {
+      container.scrollTop = latestRef.current.offsetTop - 12;
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    // The approved shell starts visibility-hidden during its opening transition.
+    const focusTimer = window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 300);
+    return () => window.clearTimeout(focusTimer);
+  }, [open]);
+
+  useEffect(() => {
+    const container = messagesRef.current;
+    if (!open || !container || !nearBottom.current) return;
+    const latest = latestRef.current;
+    container.scrollTop = latest && !isSending ? latest.offsetTop - 12 : container.scrollHeight;
+  }, [messages, isSending, open]);
+
+  function close() {
+    setOpen(false);
+    launcherRef.current?.focus();
+  }
+
+  function submit(text: string) {
+    if (!text.trim() || text.trim().length > 2000 || isSending) return;
+    nearBottom.current = true;
+    followReveal.current = true;
+    setInput("");
+    void send(text);
+    inputRef.current?.focus();
+  }
 
   return (
     <div className="mentorme-chatbot">
@@ -21,6 +65,22 @@ export default function ChatbotButton() {
           open ? "mentorme-chat-window--open" : ""
         }`}
         aria-hidden={!open}
+        inert={!open}
+        id="mentorme-public-chat"
+        role="region"
+        aria-label="MentorME public assistant"
+        onTransitionEnd={(event) => {
+          if (open && event.target === event.currentTarget && event.propertyName === "transform"
+              && document.activeElement === launcherRef.current) {
+            inputRef.current?.focus({ preventScroll: true });
+          }
+        }}
+        onKeyDown={(event) => {
+          if (event.key === "Escape") {
+            event.stopPropagation();
+            close();
+          }
+        }}
       >
         {/* HEADER */}
 
@@ -48,7 +108,7 @@ export default function ChatbotButton() {
           <button
             type="button"
             className="mentorme-chat-close"
-            onClick={() => setOpen(false)}
+            onClick={close}
             aria-label="Close MentorME assistant"
           >
             <X size={18} />
@@ -57,56 +117,70 @@ export default function ChatbotButton() {
 
         {/* BODY */}
 
-        <div className="mentorme-chat-messages">
-          <div className="mentorme-chat-message">
-            <span className="mentorme-chat-message-avatar">
-              <Bot
-                size={16}
-                strokeWidth={1.9}
-              />
-            </span>
-
-            <div>
-              <p>
-                Hi! I&apos;m your MentorME
-                assistant.
-              </p>
-
-              <p>
-                What would you like help
-                with today?
-              </p>
+        <div className="mentorme-chat-tools">
+          <button type="button" onClick={() => {
+            const container = messagesRef.current;
+            if (container) container.scrollTop = container.scrollHeight;
+            nearBottom.current = true;
+          }}>Latest messages ↓</button>
+          <button type="button" disabled={isSending} onClick={() => {
+            setInput("");
+            nearBottom.current = true;
+            void clear();
+          }}>Clear chat</button>
+        </div>
+        <div
+          className="mentorme-chat-messages"
+          ref={messagesRef}
+          role="log"
+          aria-label="Conversation"
+          aria-live="polite"
+          aria-relevant="additions"
+          tabIndex={0}
+          onPointerDown={() => { followReveal.current = false; }}
+          onWheel={() => { followReveal.current = false; }}
+          onTouchMove={() => { followReveal.current = false; }}
+          onKeyDown={(event) => {
+            if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "].includes(event.key)) followReveal.current = false;
+          }}
+          onScroll={() => {
+            const container = messagesRef.current;
+            if (container) nearBottom.current = container.scrollHeight - container.scrollTop - container.clientHeight < 70;
+          }}
+        >
+          {messages.map((message, index) => (
+            <div key={message.id} ref={index === messages.length - 1 ? latestRef : undefined}>
+              <ChatMessage message={message} active={index === messages.length - 1} busy={isSending} onReply={submit} onReveal={revealLatest} />
             </div>
-          </div>
-
-          {/* QUICK ACTIONS */}
-
-          <div className="mentorme-chat-actions">
-            <button type="button">
-              Career tracks
-            </button>
-
-            <button type="button">
-              Explore roadmap
-            </button>
-
-            <button type="button">
-              Find my next step
-            </button>
-          </div>
+          ))}
+          {isSending && <div className="mentorme-chat-typing" role="status">MentorME is typing<span aria-hidden="true">…</span></div>}
         </div>
 
         {/* INPUT */}
 
-        <div className="mentorme-chat-input">
+        <form className="mentorme-chat-input" onSubmit={(event) => {
+          event.preventDefault();
+          submit(input);
+        }}>
           <input
+            ref={inputRef}
             type="text"
-            placeholder="Ask MentorME..."
+            inputMode={requiredField === "email" ? "email" : requiredField === "mobile" ? "tel" : "text"}
+            autoComplete="off"
+            maxLength={2000}
+            value={input}
+            onChange={(event) => setInput(event.target.value)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" && event.nativeEvent.isComposing) event.preventDefault();
+            }}
+            readOnly={isSending}
+            placeholder={requiredField ? `Your ${requiredField} (optional)...` : "Ask MentorME..."}
             aria-label="Ask MentorME"
           />
 
           <button
-            type="button"
+            type="submit"
+            disabled={isSending || !input.trim()}
             aria-label="Send message"
           >
             <Send
@@ -114,7 +188,7 @@ export default function ChatbotButton() {
               strokeWidth={2}
             />
           </button>
-        </div>
+        </form>
       </div>
 
       {/* =========================================
@@ -122,6 +196,7 @@ export default function ChatbotButton() {
       ========================================== */}
 
       <button
+        ref={launcherRef}
         type="button"
         className={`mentorme-chat-trigger ${
           open
@@ -137,6 +212,7 @@ export default function ChatbotButton() {
             : "Open MentorME assistant"
         }
         aria-expanded={open}
+        aria-controls="mentorme-public-chat"
       >
         <span
           className="mentorme-chat-pulse"

@@ -1,0 +1,2890 @@
+{
+  "version": "2026-09-03.3",
+  "entries": [
+    {
+      "id": "greeting",
+      "category": "conversation",
+      "title": "Hi! I'm your MentorME Assistant 👋",
+      "keywords": [
+        "Hi! I'm your MentorME Assistant 👋"
+      ],
+      "questions": [
+        "hi",
+        "hello",
+        "hey",
+        "good morning",
+        "good evening",
+        "good afternoon",
+        "hello there",
+        "hii",
+        "hlo"
+      ],
+      "short_answer": "Hi again! What would you like to explore?",
+      "detailed_answer": "I'm here to help you find a useful next step with MentorMe.",
+      "bullet_points": [],
+      "related_topics": [],
+      "cta_actions": [],
+      "route": null,
+      "priority": 10,
+      "sources": [
+        "app/components/about/AboutOverview.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "overview",
+      "category": "company_overview",
+      "title": "A clear path with MentorMe",
+      "keywords": [
+        "From confusion to confidence",
+        "platform",
+        "overview"
+      ],
+      "questions": [
+        "what is mentorme",
+        "what is mentor me",
+        "what do you guys do",
+        "what is this site",
+        "tell me about mentorme",
+        "what do you offer",
+        "what do you provide",
+        "what is this platform",
+        "mentorme",
+        "what mentor me",
+        "tell me mentorme",
+        "mentor me enti",
+        "what do u guys do",
+        "wat do you do",
+        "what do you do"
+      ],
+      "short_answer": "MentorMe gives you a structured path instead of leaving you to jump between random courses. You choose a direction, learn useful skills, practise them and build work you can show.",
+      "detailed_answer": "MentorMe connects the whole journey: career direction, focused lessons, practical missions, projects and visible proof. Each stage helps you see what to do next and how your work is moving you forward.",
+      "bullet_points": [
+        "Find a clear next step.",
+        "Build skills through focused learning and practical work.",
+        "Make progress visible through projects and milestones."
+      ],
+      "related_topics": [
+        "How it works",
+        "Career tracks",
+        "Explore roadmap",
+        "Start free"
+      ],
+      "cta_actions": [
+        {
+          "label": "About MentorMe",
+          "route": "/about",
+          "type": "navigate"
+        }
+      ],
+      "route": "/about",
+      "priority": 10,
+      "sources": [
+        "app/components/about/AboutOverview.tsx",
+        "app/components/about/aboutData.ts"
+      ],
+      "highlight": null,
+      "detail_bullets": [
+        "Start with career clarity and a learning plan.",
+        "Turn concepts into ability through missions and challenges.",
+        "Use projects, milestones and a portfolio to explain your progress."
+      ]
+    },
+    {
+      "id": "how_it_works",
+      "category": "how_it_works",
+      "title": "Learn, practice, build, prove",
+      "keywords": [
+        "Learn, practice, build, prove"
+      ],
+      "questions": [
+        "how does mentorme work",
+        "how does mentor me work",
+        "how it works",
+        "guided learning",
+        "guided missions",
+        "learning journey",
+        "what happens after joining",
+        "What happens after I sign up"
+      ],
+      "short_answer": "Choose a direction, then learn, practise, build and prove your skills one step at a time. The goal is to finish useful work and know what comes next.",
+      "detailed_answer": "You begin by choosing a direction and forming a learning plan. Focused lessons lead into missions and challenges, then projects and assessments help turn your learning into portfolio proof.",
+      "bullet_points": [
+        "Learn a concept through a focused lesson and example.",
+        "Apply it through practice and guided missions.",
+        "Build projects and show what you can do."
+      ],
+      "related_topics": [
+        "How levels work",
+        "Practice",
+        "Projects",
+        "Progress tracking"
+      ],
+      "cta_actions": [
+        {
+          "label": "Explore roadmap",
+          "route": "/roadmap",
+          "type": "navigate"
+        }
+      ],
+      "route": "/roadmap",
+      "priority": 10,
+      "sources": [
+        "app/components/courses/MentorMethod.tsx",
+        "app/components/home/HomeJourneySections.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "benefits",
+      "category": "student_benefits",
+      "title": "A useful next step",
+      "keywords": [
+        "A useful next step"
+      ],
+      "questions": [
+        "who is mentorme for",
+        "why should i use this",
+        "what will i get here",
+        "what do i get here",
+        "why use mentorme",
+        "student benefits",
+        "how can mentorme help my career",
+        "is it for beginners",
+        "Who is this for"
+      ],
+      "short_answer": "MentorMe is for students and learners who want a clearer career direction and a practical way to make progress. You can start with foundations and build toward work you can show.",
+      "detailed_answer": "If you feel unsure where to begin, the journey starts with direction and strengths. If you already have an interest, you can explore its track and use levels, practice and projects to build evidence of your skills.",
+      "bullet_points": [
+        "A connected learning sequence.",
+        "Practice and projects that demonstrate skills.",
+        "Visible milestones and portfolio evidence."
+      ],
+      "related_topics": [
+        "Find my next step",
+        "Career tracks",
+        "Start free"
+      ],
+      "cta_actions": [],
+      "route": null,
+      "priority": 10,
+      "sources": [
+        "app/components/about/AboutOverview.tsx",
+        "app/components/about/aboutData.ts",
+        "app/components/courses/CourseComparison.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "comparison",
+      "category": "student_benefits",
+      "title": "Beyond watching courses",
+      "keywords": [
+        "Beyond watching courses"
+      ],
+      "questions": [
+        "difference from courses",
+        "random courses",
+        "different from courses",
+        "random tutorials",
+        "why not youtube",
+        "traditional courses",
+        "how is it different"
+      ],
+      "short_answer": "MentorMe connects learning with practice and projects, so your next step is an outcome to complete. Progress is about what you can build and explain.",
+      "detailed_answer": "The learning system pairs focused concepts with deliberate practice, project work and assessments. Your portfolio grows with your progress, giving you visible evidence beyond course completion.",
+      "bullet_points": [
+        "One level at a time.",
+        "Practice after important concepts.",
+        "Projects and a portfolio that grow with your progress."
+      ],
+      "related_topics": [
+        "How it works",
+        "Practice",
+        "Portfolio"
+      ],
+      "cta_actions": [],
+      "route": null,
+      "priority": 10,
+      "sources": [
+        "app/components/courses/CourseComparison.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "tracks",
+      "category": "career_tracks",
+      "title": "Explore career directions",
+      "keywords": [
+        "career tracks",
+        "tracks",
+        "courses",
+        "career"
+      ],
+      "questions": [
+        "career tracks",
+        "career options",
+        "tracks",
+        "courses",
+        "career",
+        "what will i learn",
+        "available tracks",
+        "explore tracks",
+        "show career tracks",
+        "which courses do you offer",
+        "career track",
+        "available courses",
+        "planned tracks",
+        "career options available",
+        "how tracks are available"
+      ],
+      "short_answer": "You can start with Frontend Engineer and explore the other career directions being rolled out. Which one catches your interest?",
+      "detailed_answer": "Every track uses guided levels, practical missions, projects and portfolio proof. Frontend focuses on interfaces, Backend on services and data, UI/UX on product experiences, and Data Analyst on insights.",
+      "bullet_points": [
+        "Frontend Engineer: available.",
+        "Backend Developer: preview available; confirm current enrolment with the team.",
+        "UI/UX Designer: coming soon.",
+        "Data Analyst: planned."
+      ],
+      "related_topics": [
+        "Frontend",
+        "Backend",
+        "UI/UX Designer",
+        "Data Analyst",
+        "Help me choose",
+        "How tracks work",
+        "Explore roadmap"
+      ],
+      "cta_actions": [
+        {
+          "label": "View Career Tracks",
+          "route": "/courses",
+          "type": "navigate"
+        }
+      ],
+      "route": "/courses",
+      "priority": 10,
+      "sources": [
+        "app/components/courses/FeaturedTrack.tsx",
+        "app/components/courses/CareerTracksAndCTA.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "frontend",
+      "category": "career_tracks",
+      "title": "Frontend Engineer",
+      "keywords": [
+        "Frontend Engineer"
+      ],
+      "questions": [
+        "frontend",
+        "front end",
+        "frontend engineer",
+        "frontend developer",
+        "react",
+        "javascript",
+        "html",
+        "css",
+        "typescript",
+        "next js",
+        "ui engineering",
+        "i like frontend",
+        "i am interested in frontend"
+      ],
+      "short_answer": "Frontend Engineer is available and focuses on responsive web experiences. You learn through guided levels, practical missions and projects that build portfolio proof.",
+      "detailed_answer": "The Frontend skills listed are HTML and CSS, JavaScript, React, Next.js, TypeScript and UI engineering. The preview shows a responsive dashboard as an example; the exact project assignments and a full lesson-by-lesson syllabus are not published yet.",
+      "bullet_points": [
+        "HTML & CSS, JavaScript, React and Next.js.",
+        "TypeScript and UI engineering.",
+        "The featured track links to the 90-level roadmap."
+      ],
+      "related_topics": [
+        "What will I learn?",
+        "Roadmap",
+        "Projects",
+        "Start free"
+      ],
+      "cta_actions": [
+        {
+          "label": "Explore Frontend",
+          "route": "/courses",
+          "type": "navigate"
+        }
+      ],
+      "route": "/courses",
+      "priority": 10,
+      "sources": [
+        "app/components/courses/FeaturedTrack.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "backend",
+      "category": "career_tracks",
+      "title": "Backend Developer",
+      "keywords": [
+        "Backend Developer"
+      ],
+      "questions": [
+        "backend",
+        "back end",
+        "python",
+        "fastapi",
+        "postgresql",
+        "rest apis",
+        "system design"
+      ],
+      "short_answer": "Backend Developer appears in MentorMe's career-track catalog. You can preview secure APIs, reliable data and scalable services; I can also help you confirm current availability with the team.",
+      "detailed_answer": "The Backend preview lists Python, FastAPI, PostgreSQL, authentication, REST APIs and system design. Its featured track is coming soon, so check with the team before planning your enrolment.",
+      "bullet_points": [
+        "Python, FastAPI and PostgreSQL.",
+        "Authentication, REST APIs and system design."
+      ],
+      "related_topics": [
+        "What will I learn?",
+        "Projects",
+        "Explore roadmap",
+        "Talk to the team"
+      ],
+      "cta_actions": [
+        {
+          "label": "View track preview",
+          "route": "/courses",
+          "type": "navigate"
+        },
+        {
+          "label": "Confirm availability",
+          "route": "/contact",
+          "type": "navigate"
+        }
+      ],
+      "route": "/courses",
+      "priority": 10,
+      "sources": [
+        "app/components/courses/FeaturedTrack.tsx",
+        "app/components/courses/CareerTracksAndCTA.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "design",
+      "category": "career_tracks",
+      "title": "UI/UX Designer",
+      "keywords": [
+        "UI/UX Designer"
+      ],
+      "questions": [
+        "ui ux",
+        "ui/ux",
+        "designer",
+        "design",
+        "figma",
+        "prototyping",
+        "user research",
+        "UI/UX Designer",
+        "designing digital experiences",
+        "design user experiences",
+        "designing user experiences"
+      ],
+      "short_answer": "UI/UX Designer is coming soon. It's for exploring how research and design turn user problems into polished digital experiences.",
+      "detailed_answer": "The UI/UX preview lists user research, wireframes, Figma, prototyping, design systems and case studies. You can explore the direction now and ask the team about future availability.",
+      "bullet_points": [
+        "User research, wireframes and Figma.",
+        "Prototyping, design systems and case studies."
+      ],
+      "related_topics": [
+        "What will I learn?",
+        "How tracks work",
+        "Talk to the team"
+      ],
+      "cta_actions": [
+        {
+          "label": "View design preview",
+          "route": "/courses",
+          "type": "navigate"
+        }
+      ],
+      "route": "/courses",
+      "priority": 10,
+      "sources": [
+        "app/components/courses/FeaturedTrack.tsx",
+        "app/components/courses/CareerTracksAndCTA.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "data",
+      "category": "career_tracks",
+      "title": "Data Analyst",
+      "keywords": [
+        "Data Analyst"
+      ],
+      "questions": [
+        "data analyst",
+        "data analytics",
+        "data analysis",
+        "working with data",
+        "sql",
+        "analytics",
+        "visualisation",
+        "visualization",
+        "work with data",
+        "data"
+      ],
+      "short_answer": "Data Analyst is a planned MentorMe direction for turning information into dashboards, insights and useful decisions.",
+      "detailed_answer": "The planned track lists SQL, analytics and visualisation. Its exact syllabus, project assignments and enrolment date are not published yet, so the team can help you confirm the rollout.",
+      "bullet_points": [
+        "Explore SQL and analytics.",
+        "Connect dashboards and insights with business questions."
+      ],
+      "related_topics": [
+        "How tracks work",
+        "Career tracks",
+        "Talk to the team"
+      ],
+      "cta_actions": [
+        {
+          "label": "View Career Tracks",
+          "route": "/courses",
+          "type": "navigate"
+        }
+      ],
+      "route": "/courses",
+      "priority": 10,
+      "sources": [
+        "app/components/courses/CareerTracksAndCTA.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "ai",
+      "category": "career_tracks",
+      "title": "Interested in AI?",
+      "keywords": [
+        "Interested in AI?"
+      ],
+      "questions": [
+        "ai",
+        "artificial intelligence",
+        "machine learning",
+        "intelligent systems",
+        "ai ml",
+        "ai track",
+        "AI/intelligent systems",
+        "AI / intelligent systems"
+      ],
+      "short_answer": "MentorMe does not confirm a dedicated AI or machine-learning track yet. If intelligent systems interest you, you can explore the published technical tracks or ask the team about future plans.",
+      "detailed_answer": "An AI interest is a useful starting point, but I don't have a published MentorMe AI syllabus or enrolment date to share. Backend is a related technical direction you can compare, without treating it as an AI course.",
+      "bullet_points": [],
+      "related_topics": [
+        "Backend",
+        "Career tracks",
+        "Talk to the team"
+      ],
+      "cta_actions": [
+        {
+          "label": "Ask the team",
+          "route": "/contact",
+          "type": "navigate"
+        }
+      ],
+      "route": "/contact",
+      "priority": 10,
+      "sources": [
+        "app/components/courses/FeaturedTrack.tsx",
+        "app/components/courses/CareerTracksAndCTA.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "roadmap",
+      "category": "roadmap",
+      "title": "Your journey, up to 90 guided levels",
+      "keywords": [
+        "One journey, 90 guided levels"
+      ],
+      "questions": [
+        "roadmap",
+        "show roadmap",
+        "open roadmap",
+        "explore roadmap",
+        "is there a roadmap",
+        "what is the roadmap",
+        "how many levels",
+        "full journey",
+        "90 levels",
+        "ninety levels",
+        "course journey",
+        "full course journey"
+      ],
+      "short_answer": "MentorMe courses guide you step by step through up to 90 levels, combining learning with practice, assessments, projects, achievements and career preparation.",
+      "detailed_answer": "Each stage builds skills and visible proof progressively. You unlock meaningful milestones as you move through the journey, then complete the course and prepare for eligible internship opportunities.",
+      "bullet_points": [
+        "The full Pro journey includes all 90 guided levels and 12+ real projects.",
+        "Nine milestone certificates recognise progress during the Pro journey.",
+        "Complete the full course journey to earn your Course Completion Certificate."
+      ],
+      "related_topics": [
+        "How levels work",
+        "Checkpoints",
+        "Projects",
+        "Certificates",
+        "What happens after 90 levels?",
+        "Internship eligibility"
+      ],
+      "cta_actions": [
+        {
+          "label": "Open Roadmap",
+          "route": "/roadmap",
+          "type": "navigate"
+        }
+      ],
+      "route": "/roadmap",
+      "priority": 10,
+      "sources": [
+        "app/components/roadmap/roadmapData.ts",
+        "app/components/pricing/PricingData.ts",
+        "backend/app/knowledge/product_updates.md"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "levels",
+      "category": "levels",
+      "title": "One useful checkpoint at a time",
+      "keywords": [
+        "One useful checkpoint at a time"
+      ],
+      "questions": [
+        "levels",
+        "how levels work",
+        "first level",
+        "first five levels",
+        "what do i do first",
+        "what happens after a level",
+        "milestones",
+        "learning plan",
+        "level system"
+      ],
+      "short_answer": "Levels break your journey into manageable steps. You begin with career clarity, explore your strengths and goals, and build a learning plan before moving into deeper skills.",
+      "detailed_answer": "The first roadmap checkpoints cover career clarity, strength discovery, goal mapping, industry awareness and a learning plan. Later milestones bring together learning, practice, projects and evidence of progress.",
+      "bullet_points": [
+        "Career clarity and strength discovery.",
+        "Goal mapping and industry awareness.",
+        "A learning plan, followed by deeper skills and practical checkpoints."
+      ],
+      "related_topics": [
+        "Practice",
+        "Projects",
+        "Assessments",
+        "Certificates",
+        "Course completion",
+        "Internship eligibility"
+      ],
+      "cta_actions": [
+        {
+          "label": "See roadmap checkpoints",
+          "route": "/roadmap",
+          "type": "navigate"
+        }
+      ],
+      "route": "/roadmap",
+      "priority": 10,
+      "sources": [
+        "app/components/roadmap/roadmapData.ts",
+        "backend/app/knowledge/product_updates.md"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "projects",
+      "category": "projects",
+      "title": "Build work you can show",
+      "keywords": [
+        "Build work you can show"
+      ],
+      "questions": [
+        "projects",
+        "real projects",
+        "build projects",
+        "mini project",
+        "what projects",
+        "project gates",
+        "what projects will i do",
+        "what projects will i build"
+      ],
+      "short_answer": "The full Pro journey includes 12+ real projects to help you build portfolio proof. You work from realistic requirements toward something you can show and explain.",
+      "detailed_answer": "The roadmap moves from a guided mini project to larger real-world work, then polishing your strongest project into a case study. Exact assignments for each track are not published yet.",
+      "bullet_points": [
+        "Create working outcomes from realistic requirements.",
+        "Develop projects into clear portfolio case studies."
+      ],
+      "related_topics": [
+        "Portfolio",
+        "Certificates",
+        "Pro plan",
+        "Explore roadmap",
+        "Achievement certificates",
+        "Career readiness"
+      ],
+      "cta_actions": [],
+      "route": null,
+      "priority": 10,
+      "sources": [
+        "app/components/pricing/PricingData.ts",
+        "app/components/roadmap/roadmapData.ts",
+        "backend/app/knowledge/product_updates.md"
+      ],
+      "highlight": "Portfolio projects are included in Pro; they are not part of the Free plan."
+    },
+    {
+      "id": "practice",
+      "category": "practice",
+      "title": "Turn concepts into action",
+      "keywords": [
+        "Turn concepts into action"
+      ],
+      "questions": [
+        "practice",
+        "practise",
+        "exercises",
+        "practical learning",
+        "how do i practice",
+        "practical exercises"
+      ],
+      "short_answer": "Practice helps a new concept become something you can use. MentorMe pairs lessons with missions, challenges and focused repetition before bigger projects.",
+      "detailed_answer": "You apply each important concept in a practical task, revisit what needs work and build toward project requirements. The learning method connects practice with assessments and visible outcomes.",
+      "bullet_points": [
+        "Use the concepts you have just learned.",
+        "Apply them in practical tasks before bigger projects."
+      ],
+      "related_topics": [
+        "Projects",
+        "Challenges",
+        "How progress works",
+        "Explore roadmap"
+      ],
+      "cta_actions": [],
+      "route": null,
+      "priority": 10,
+      "sources": [
+        "app/components/courses/MentorMethod.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "assessments",
+      "category": "assessments",
+      "title": "Check your understanding",
+      "keywords": [
+        "Check your understanding"
+      ],
+      "questions": [
+        "assessments",
+        "assessment",
+        "tests",
+        "skill test",
+        "quizzes",
+        "exams",
+        "professional assessment"
+      ],
+      "short_answer": "Assessments help you check what you understand and where to improve. Free includes basic assessment, and Pro includes missions and assessments across the full journey.",
+      "detailed_answer": "You build from foundation checks toward practical skills and later professional assessment. The roadmap's professional assessment reviews readiness and helps identify final areas to improve.",
+      "bullet_points": [
+        "Validate understanding through tasks and skill checks.",
+        "Use later assessments to identify readiness and improvement areas."
+      ],
+      "related_topics": [
+        "Practice",
+        "Progress tracking",
+        "Certificates",
+        "Pro plan"
+      ],
+      "cta_actions": [],
+      "route": null,
+      "priority": 10,
+      "sources": [
+        "app/components/pricing/PricingData.ts",
+        "app/components/roadmap/roadmapData.ts",
+        "app/components/home/HomeJourneySections.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "progress",
+      "category": "progress",
+      "title": "See your progress",
+      "keywords": [
+        "See your progress"
+      ],
+      "questions": [
+        "progress",
+        "progress tracking",
+        "how is progress tracked",
+        "can i see my progress",
+        "readiness",
+        "how progress works",
+        "how progress work"
+      ],
+      "short_answer": "You can see progress through levels, completed missions, XP, projects and milestones. Progress tracking is included in Free.",
+      "detailed_answer": "MentorMe connects your learning progress with practical proof such as projects and certificates. Streaks and badges also illustrate momentum; sign in to check your own learner information.",
+      "bullet_points": [
+        "Track what you have completed and what comes next.",
+        "Build visible proof through projects and milestones."
+      ],
+      "related_topics": [
+        "XP",
+        "Streaks",
+        "Achievements",
+        "Leaderboard"
+      ],
+      "cta_actions": [],
+      "route": null,
+      "priority": 10,
+      "sources": [
+        "app/components/pricing/PricingData.ts",
+        "app/components/leaderboard/leaderboardData.ts",
+        "app/components/home/HomeJourneySections.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "xp",
+      "category": "xp",
+      "title": "Make effort visible",
+      "keywords": [
+        "Make effort visible"
+      ],
+      "questions": [
+        "xp",
+        "experience points",
+        "points",
+        "earn xp",
+        "what is xp"
+      ],
+      "short_answer": "XP makes effort visible across learning missions, practice, challenges and projects. The leaderboard highlights weekly XP alongside your overall journey level.",
+      "detailed_answer": "Weekly XP shows recent momentum, while your level describes progress through the wider journey. They measure different things, so a learner's weekly rank and level do not have to match.",
+      "bullet_points": [
+        "Weekly XP drives the public leaderboard ranking.",
+        "A journey level represents overall progress, so rank and level can differ."
+      ],
+      "related_topics": [
+        "Leaderboard",
+        "Streaks",
+        "Achievements"
+      ],
+      "cta_actions": [],
+      "route": null,
+      "priority": 10,
+      "sources": [
+        "app/components/leaderboard/leaderboardData.ts",
+        "app/components/home/HomeJourneySections.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "achievements",
+      "category": "achievements",
+      "title": "Celebrate useful milestones",
+      "keywords": [
+        "Celebrate useful milestones"
+      ],
+      "questions": [
+        "achievements",
+        "badges",
+        "rewards",
+        "unlock",
+        "milestone rewards"
+      ],
+      "short_answer": "Badges and milestones recognise progress as you learn, practise and build. They help you see how steady work is adding up.",
+      "detailed_answer": "The public journey shows achievements such as Project Builder and milestones for practice, portfolio proof and career readiness. The exact award rules are not published as a complete policy.",
+      "bullet_points": [
+        "Badges mark progress through stages.",
+        "Projects and portfolio proof make that progress tangible."
+      ],
+      "related_topics": [
+        "Certificates",
+        "XP",
+        "Portfolio"
+      ],
+      "cta_actions": [],
+      "route": null,
+      "priority": 10,
+      "sources": [
+        "app/components/leaderboard/leaderboardData.ts",
+        "app/components/home/HomeJourneySections.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "certificates",
+      "category": "certificates",
+      "title": "Certificates that mark your progress",
+      "keywords": [
+        "Certificates backed by progress"
+      ],
+      "questions": [
+        "certificates",
+        "certificate",
+        "certification",
+        "accredited",
+        "accreditation",
+        "certificate schedule",
+        "Certificates & achievements",
+        "do i get a certificate",
+        "do i get certificate",
+        "are there certificates",
+        "is there only one certificate",
+        "how many certificates can i earn",
+        "how many certificates"
+      ],
+      "short_answer": "MentorMe recognises progress throughout your journey — not only at the final level.",
+      "detailed_answer": "Milestone or achievement certificates recognise meaningful skill stages during learning. After successfully completing the full course journey, you receive a MentorMe Course Completion Certificate.",
+      "bullet_points": [
+        "Unlock milestone/achievement certificates during meaningful skill stages; the full Pro journey includes nine milestone certificates.",
+        "Complete the full course journey to receive your Course Completion Certificate.",
+        "Your certificates make progress and completed skills visible."
+      ],
+      "related_topics": [
+        "Milestone certificates",
+        "Course completion certificate",
+        "What happens after 90 levels?",
+        "Internship eligibility"
+      ],
+      "cta_actions": [],
+      "route": null,
+      "priority": 10,
+      "sources": [
+        "app/components/pricing/PricingData.ts",
+        "app/components/roadmap/roadmapData.ts",
+        "backend/app/knowledge/product_updates.md"
+      ],
+      "highlight": "These recognise your MentorMe learning. Ask the team about any specific external accreditation requirements."
+    },
+    {
+      "id": "portfolio",
+      "category": "portfolio",
+      "title": "Build proof of your skills",
+      "keywords": [
+        "Build proof of your skills"
+      ],
+      "questions": [
+        "portfolio",
+        "proof building",
+        "portfolio proof",
+        "case studies",
+        "show my work",
+        "evidence"
+      ],
+      "short_answer": "Your portfolio brings together projects that show what you can do. MentorMe helps you turn working outcomes into clear evidence of your skills.",
+      "detailed_answer": "At the portfolio checkpoint, you polish your strongest work and explain it through a project case study. Later career preparation helps you tell the story of that work in applications and professional conversations.",
+      "bullet_points": [
+        "Create practical working outcomes.",
+        "Polish your strongest work into a clear case study.",
+        "Use your portfolio story in career preparation."
+      ],
+      "related_topics": [
+        "Projects",
+        "Career readiness",
+        "Pro plan",
+        "Start free",
+        "Achievement certificates"
+      ],
+      "cta_actions": [],
+      "route": null,
+      "priority": 10,
+      "sources": [
+        "app/components/roadmap/roadmapData.ts",
+        "app/components/pricing/PricingData.ts",
+        "app/components/courses/CourseComparison.tsx",
+        "backend/app/knowledge/product_updates.md"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "leaderboard",
+      "category": "leaderboard",
+      "title": "Progress and consistency",
+      "keywords": [
+        "Progress and consistency"
+      ],
+      "questions": [
+        "leaderboard",
+        "rankings",
+        "ranking",
+        "rank",
+        "top learners",
+        "how does ranking work",
+        "how leaderboard works"
+      ],
+      "short_answer": "The leaderboard highlights weekly XP, with levels, streaks and badges alongside it. It's a way to see consistent effort turn into visible momentum.",
+      "detailed_answer": "Weekly XP highlights recent effort; journey levels reflect broader progress. Streaks and badges give extra context. The public ranking is a preview and doesn't show your live account results.",
+      "bullet_points": [
+        "Compare weekly momentum through XP.",
+        "See journey level, streak and achievement context."
+      ],
+      "related_topics": [
+        "XP",
+        "Streaks",
+        "Progress tracking"
+      ],
+      "cta_actions": [
+        {
+          "label": "Open Leaderboard",
+          "route": "/leaderboard",
+          "type": "navigate"
+        }
+      ],
+      "route": "/leaderboard",
+      "priority": 10,
+      "sources": [
+        "app/components/leaderboard/leaderboardData.ts"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "pricing",
+      "category": "pricing",
+      "title": "Choose your next step",
+      "keywords": [
+        "Choose your next step",
+        "prices",
+        "payment",
+        "pay"
+      ],
+      "questions": [
+        "pricing",
+        "price",
+        "cost",
+        "how much",
+        "plans",
+        "what plans do you have",
+        "take me to pricing",
+        "paid plans",
+        "pricing plans"
+      ],
+      "short_answer": "You can start with Free, choose Pro for the full journey, or explore the other levels of support.",
+      "detailed_answer": "Choose Free to try the foundation experience, or Pro for the full 90-level learning journey. Career Accelerator adds career support and is coming soon; Enterprise is tailored to institutions.",
+      "bullet_points": [
+        "Free: ₹0, foundation access; no card required.",
+        "Pro: from ₹2,000 per course, six months access; price varies by track.",
+        "Career Accelerator: coming soon.",
+        "Enterprise: custom pricing for institutions."
+      ],
+      "related_topics": [
+        "Free",
+        "Pro",
+        "Career Accelerator",
+        "Enterprise",
+        "Compare plans"
+      ],
+      "cta_actions": [
+        {
+          "label": "View Pricing",
+          "route": "/pricing",
+          "type": "navigate"
+        }
+      ],
+      "route": "/pricing",
+      "priority": 10,
+      "sources": [
+        "app/components/pricing/PricingData.ts",
+        "app/components/pricing/PricingCard.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "free_plan",
+      "category": "free_plan",
+      "title": "Start with foundation access",
+      "keywords": [
+        "Start with foundation access"
+      ],
+      "questions": [
+        "free",
+        "free plan",
+        "free version",
+        "is it free",
+        "is mentorme free",
+        "do i need to pay",
+        "can i try first",
+        "can i try it first",
+        "can i start without paying",
+        "what is included in free",
+        "is there a free option",
+        "is there a free plan",
+        "what can i try",
+        "payment required",
+        "is payment required"
+      ],
+      "short_answer": "Free costs ₹0 and lets you explore your direction and begin the foundation journey. No card is required.",
+      "detailed_answer": "Free includes career direction, a starter roadmap, foundation missions, basic assessment and progress tracking. You can upgrade to Pro later without restarting your journey.",
+      "bullet_points": [
+        "Career direction and a starter roadmap.",
+        "Foundation missions and basic assessment.",
+        "Progress tracking."
+      ],
+      "related_topics": [
+        "What can I try?",
+        "Free vs Pro",
+        "Start free"
+      ],
+      "cta_actions": [
+        {
+          "label": "Start free",
+          "route": "/signup",
+          "type": "navigate"
+        },
+        {
+          "label": "View Pricing",
+          "route": "/pricing",
+          "type": "navigate"
+        }
+      ],
+      "route": "/signup",
+      "priority": 10,
+      "sources": [
+        "app/components/pricing/PricingData.ts"
+      ],
+      "highlight": "Free does not include portfolio projects or access to all 90 levels."
+    },
+    {
+      "id": "free_levels",
+      "category": "free_plan",
+      "title": "Free-access details",
+      "keywords": [
+        "Free-access details"
+      ],
+      "questions": [
+        "how many free levels",
+        "free access details",
+        "free levels",
+        "five free levels",
+        "ten free levels",
+        "10 free levels",
+        "5 free levels"
+      ],
+      "short_answer": "Free gives you foundation access: career direction, a starter roadmap, foundation missions, basic assessment and progress tracking. The team can confirm the exact starter levels currently included.",
+      "detailed_answer": "You can try the foundation experience without a card and upgrade later. Check with the team for the current level-by-level entitlement before choosing a track.",
+      "bullet_points": [
+        "No payment card required to start.",
+        "Portfolio projects and the complete 90-level journey are part of Pro."
+      ],
+      "related_topics": [
+        "Free plan",
+        "Start free",
+        "Talk to the team"
+      ],
+      "cta_actions": [
+        {
+          "label": "Confirm free access",
+          "route": "/contact",
+          "type": "navigate"
+        },
+        {
+          "label": "View Pricing",
+          "route": "/pricing",
+          "type": "navigate"
+        }
+      ],
+      "route": "/contact",
+      "priority": 10,
+      "sources": [
+        "app/components/home/HomeJourneySections.tsx",
+        "app/components/courses/FeaturedTrack.tsx",
+        "app/components/roadmap/roadmapData.ts",
+        "app/components/pricing/PricingData.ts"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "pro_plan",
+      "category": "pro_plan",
+      "title": "Pro: the full journey",
+      "keywords": [
+        "Pro: the full journey"
+      ],
+      "questions": [
+        "pro",
+        "pro plan",
+        "pro cost",
+        "how much is pro",
+        "tell me about pro",
+        "what is included in pro",
+        "pro price",
+        "pro pricing",
+        "pro benefits",
+        "does pro include mentor sessions",
+        "what do i get with pro",
+        "how much is pro per month",
+        "full learning journey"
+      ],
+      "short_answer": "Pro starts from ₹2,000 per course with six months access. The price varies by career track.",
+      "detailed_answer": "With Pro, you can follow the full learning journey and turn practical work into portfolio proof. Here's what's included.",
+      "bullet_points": [
+        "Everything in Free and all 90 guided levels.",
+        "Missions, assessments and 12+ real projects.",
+        "Nine milestone certificates and portfolio proof building."
+      ],
+      "related_topics": [
+        "Compare plans",
+        "What's included?",
+        "Free vs Pro",
+        "Choose Pro"
+      ],
+      "cta_actions": [
+        {
+          "label": "Choose Pro",
+          "route": "/signup?plan=pro",
+          "type": "navigate"
+        }
+      ],
+      "route": "/signup?plan=pro",
+      "priority": 10,
+      "sources": [
+        "app/components/pricing/PricingData.ts",
+        "app/components/pricing/PricingCard.tsx",
+        "backend/app/knowledge/product_updates.md"
+      ],
+      "highlight": "Pro is priced per course with six months access. Exact mentor-session and interview-support availability depends on your course and progress.",
+      "detail_bullets": [
+        "All 90 guided levels, missions and assessments.",
+        "12+ real projects and nine milestone certificates.",
+        "Portfolio proof building, plus everything in Free.",
+        "From ₹2,000 per course with six months access; price varies by track."
+      ]
+    },
+    {
+      "id": "career_accelerator",
+      "category": "career_accelerator",
+      "title": "Career Accelerator — coming soon",
+      "keywords": [
+        "Career Accelerator — coming soon"
+      ],
+      "questions": [
+        "career accelerator",
+        "accelerator",
+        "live career guide sessions",
+        "resume support",
+        "career support",
+        "career accelerator availability",
+        "is career accelerator available"
+      ],
+      "short_answer": "Career Accelerator is coming soon. It adds mentor-led career preparation to the full Pro journey.",
+      "detailed_answer": "The planned support includes group mentor sessions, résumé and LinkedIn support, mock interviews, portfolio review and internship readiness. The price and launch date are not published yet.",
+      "bullet_points": [
+        "Group mentor sessions and portfolio review.",
+        "Résumé and LinkedIn support.",
+        "Mock interviews and internship readiness."
+      ],
+      "related_topics": [
+        "Pro vs Career Accelerator",
+        "Pro plan",
+        "Talk to the team"
+      ],
+      "cta_actions": [
+        {
+          "label": "Ask about availability",
+          "route": "/contact",
+          "type": "navigate"
+        }
+      ],
+      "route": "/contact",
+      "priority": 10,
+      "sources": [
+        "app/components/pricing/PricingData.ts"
+      ],
+      "highlight": "Price and launch date are not confirmed yet."
+    },
+    {
+      "id": "enterprise",
+      "category": "enterprise",
+      "title": "For colleges and institutions",
+      "keywords": [
+        "For colleges and institutions"
+      ],
+      "questions": [
+        "enterprise",
+        "institution",
+        "institutions",
+        "college",
+        "colleges",
+        "bulk learners",
+        "cohort access",
+        "training institutes",
+        "for an institution",
+        "for a college",
+        "enterprise enquiry"
+      ],
+      "short_answer": "Enterprise offers custom pricing for colleges, training institutes and organisations managing groups of learners.",
+      "detailed_answer": "Enterprise brings bulk learner access, cohort management, progress dashboards, institution reporting and dedicated support. The team can explain the package and confirm which career-support features are available for your cohort.",
+      "bullet_points": [
+        "Bulk learner access and cohort management.",
+        "Progress dashboards and institution reporting.",
+        "Dedicated support."
+      ],
+      "related_topics": [
+        "College partnership",
+        "Talk to the team",
+        "Compare plans"
+      ],
+      "cta_actions": [
+        {
+          "label": "Talk to our team",
+          "route": "/contact",
+          "type": "navigate"
+        }
+      ],
+      "route": "/contact",
+      "priority": 10,
+      "sources": [
+        "app/components/pricing/PricingData.ts"
+      ],
+      "highlight": "The package lists Career Accelerator access; the team can confirm rollout details for your institution."
+    },
+    {
+      "id": "upgrade",
+      "category": "frequently_asked_questions",
+      "title": "Continue when you upgrade",
+      "keywords": [
+        "Continue when you upgrade"
+      ],
+      "questions": [
+        "upgrade",
+        "change plans",
+        "switch plans",
+        "can i upgrade",
+        "upgrade from free",
+        "progress if i change plans"
+      ],
+      "short_answer": "Yes, you can upgrade from Free to Pro without restarting your journey. Your completed progress, milestones and certificates stay connected to your account.",
+      "detailed_answer": "When you change plans, the pricing FAQ says your completed work remains linked to your account. Pro unlocks the full journey; check the chosen track's current price before upgrading.",
+      "bullet_points": [],
+      "related_topics": [
+        "Pro plan",
+        "Choose Pro",
+        "Cancellation"
+      ],
+      "cta_actions": [
+        {
+          "label": "View Pricing",
+          "route": "/pricing",
+          "type": "navigate"
+        }
+      ],
+      "route": "/pricing",
+      "priority": 10,
+      "sources": [
+        "app/components/pricing/PricingData.ts"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "cancellation",
+      "category": "frequently_asked_questions",
+      "title": "Progress after cancellation",
+      "keywords": [
+        "Progress after cancellation"
+      ],
+      "questions": [
+        "cancel subscription",
+        "cancellation",
+        "if i cancel",
+        "cancel plan",
+        "what happens to my progress if i cancel",
+        "cancel my subscription"
+      ],
+      "short_answer": "Your completed progress and earned milestones remain preserved if you cancel. Access to paid-only learning content may depend on your active subscription.",
+      "detailed_answer": "The pricing FAQ confirms that completed progress and earned milestones remain preserved. For the cancellation steps or any billing-specific question, the team can guide you.",
+      "bullet_points": [],
+      "related_topics": [
+        "Talk to the team",
+        "Pricing",
+        "Upgrade"
+      ],
+      "cta_actions": [
+        {
+          "label": "Ask about your plan",
+          "route": "/contact",
+          "type": "navigate"
+        }
+      ],
+      "route": "/contact",
+      "priority": 10,
+      "sources": [
+        "app/components/pricing/PricingData.ts"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "internships",
+      "category": "career_guidance",
+      "title": "Internship opportunities with startups",
+      "keywords": [
+        "Prepare for opportunities"
+      ],
+      "questions": [
+        "internships",
+        "internship",
+        "job guarantee",
+        "guarantee",
+        "guaranteed job",
+        "placement",
+        "opportunities",
+        "do you provide internships",
+        "do you provide internship",
+        "will i get internship",
+        "will i get internship after the course",
+        "startup internship",
+        "startup internships",
+        "startup internship opportunities",
+        "internship opportunities",
+        "internship after course",
+        "internship after 90 levels",
+        "internship eligibility",
+        "am i eligible for internship",
+        "am i eligible for internships",
+        "are internships available",
+        "do you connect students with startups",
+        "career opportunities after mentor me",
+        "how eligibility works",
+        "tell me about internship"
+      ],
+      "short_answer": "After completing the full course journey and required milestones, you become eligible for MentorMe-supported internship opportunities with startups, where you can apply your skills in practical environments.",
+      "detailed_answer": "MentorMe plans to support startup internship opportunities for eligible learners who complete the course journey and required milestones. Each opportunity can have its own requirements, availability and selection process.",
+      "bullet_points": [
+        "Complete the full course journey and required milestones.",
+        "Explore startup opportunities that match your readiness and the opportunity's requirements."
+      ],
+      "related_topics": [
+        "How eligibility works",
+        "Career preparation",
+        "Course completion",
+        "Talk to MentorMe"
+      ],
+      "cta_actions": [],
+      "route": null,
+      "priority": 10,
+      "sources": [
+        "app/components/pricing/PricingData.ts",
+        "app/components/roadmap/roadmapData.ts",
+        "backend/app/knowledge/product_updates.md"
+      ],
+      "highlight": "Course completion does not guarantee internship selection, placement, salary or employment. Availability and selection depend on the opportunity and relevant requirements."
+    },
+    {
+      "id": "signup",
+      "category": "signup",
+      "title": "Start your journey",
+      "keywords": [
+        "Start your journey"
+      ],
+      "questions": [
+        "signup",
+        "sign up",
+        "register",
+        "join",
+        "how do i join",
+        "create account",
+        "start now",
+        "start free",
+        "try mentorme",
+        "start journey",
+        "i want to register",
+        "i am new here",
+        "i am ready to join",
+        "i am interested in joining",
+        "i want to join"
+      ],
+      "short_answer": "You can start through the Sign Up page, then explore your direction and begin the foundation journey. No card is required for Free.",
+      "detailed_answer": "Create your account on the Sign Up page and start with the foundation experience. You can explore career tracks and upgrade later without restarting.",
+      "bullet_points": [],
+      "related_topics": [
+        "Free plan",
+        "Career tracks",
+        "Talk to the team"
+      ],
+      "cta_actions": [
+        {
+          "label": "Start free / Sign Up",
+          "route": "/signup",
+          "type": "navigate"
+        }
+      ],
+      "route": "/signup",
+      "priority": 10,
+      "sources": [
+        "app/components/AuthPage.tsx",
+        "app/components/pricing/PricingData.ts"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "signin",
+      "category": "signin",
+      "title": "Welcome back",
+      "keywords": [
+        "Welcome back"
+      ],
+      "questions": [
+        "signin",
+        "sign in",
+        "login",
+        "log in",
+        "where do i sign in",
+        "existing account",
+        "forgot password",
+        "password reset"
+      ],
+      "short_answer": "Use Sign In to continue your MentorMe journey. If you need account help, the team can guide you.",
+      "detailed_answer": "The Sign In page is for returning students. I can help you find it, but I can't access your account or reset a password in this public chat.",
+      "bullet_points": [],
+      "related_topics": [
+        "Contact team",
+        "Start free"
+      ],
+      "cta_actions": [
+        {
+          "label": "Sign In",
+          "route": "/login",
+          "type": "navigate"
+        },
+        {
+          "label": "Account help",
+          "route": "/contact",
+          "type": "navigate"
+        }
+      ],
+      "route": "/login",
+      "priority": 10,
+      "sources": [
+        "app/components/AuthPage.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "demo",
+      "category": "demo",
+      "title": "Explore before you decide",
+      "keywords": [
+        "Explore before you decide"
+      ],
+      "questions": [
+        "demo",
+        "free demo",
+        "try it first",
+        "show me a demo"
+      ],
+      "short_answer": "You can explore MentorMe's career tracks, roadmap and plans here before joining. If you'd like a team follow-up, you can share optional contact details.",
+      "detailed_answer": "Browse the public pages without signing in, or start Free to try foundation access. Choose Request demo if you'd like to prepare contact details for this conversation.",
+      "bullet_points": [],
+      "related_topics": [
+        "Explore roadmap",
+        "Career tracks",
+        "Start free",
+        "Request demo"
+      ],
+      "cta_actions": [
+        {
+          "label": "Explore Career Tracks",
+          "route": "/courses",
+          "type": "navigate"
+        },
+        {
+          "label": "Start free",
+          "route": "/signup",
+          "type": "navigate"
+        }
+      ],
+      "route": "/courses",
+      "priority": 10,
+      "sources": [
+        "app/components/PublicSite.tsx",
+        "app/components/pricing/PricingData.ts"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "contact",
+      "category": "contact",
+      "title": "Talk to MentorMe",
+      "keywords": [
+        "Talk to MentorMe"
+      ],
+      "questions": [
+        "contact",
+        "contact team",
+        "contact the team",
+        "support",
+        "i need help",
+        "talk to team",
+        "talk to a human",
+        "who can i speak to",
+        "more information",
+        "question not answered"
+      ],
+      "short_answer": "The team can help with student questions, college or corporate partnerships, and general enquiries. Would you like guidance here or help reaching the team?",
+      "detailed_answer": "The published contact channels are hello@mentorme.in and +91 98765 43210. You can use the Contact page for student support, partnerships or general questions.",
+      "bullet_points": [
+        "The website footer lists hello@mentorme.in.",
+        "It also lists +91 98765 43210; these are the site's published contact details."
+      ],
+      "related_topics": [
+        "Chat with me",
+        "Ask the team",
+        "Request follow-up"
+      ],
+      "cta_actions": [
+        {
+          "label": "Contact Team",
+          "route": "/contact",
+          "type": "navigate"
+        }
+      ],
+      "route": "/contact",
+      "priority": 10,
+      "sources": [
+        "app/components/PublicSite.tsx",
+        "app/components/contact/contactData.ts"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "callback",
+      "category": "contact",
+      "title": "Optional contact details",
+      "keywords": [],
+      "questions": [
+        "request a callback",
+        "can someone call me",
+        "call me",
+        "contact me",
+        "reach out to me",
+        "someone to contact me",
+        "have someone call",
+        "email me",
+        "arrange a demo",
+        "talk to the team",
+        "talk to mentorme",
+        "ask the team",
+        "request follow-up",
+        "request demo",
+        "request a demo",
+        "book a demo",
+        "i want the team to call me",
+        "please call me",
+        "team call me",
+        "i want someone to contact me",
+        "request a call",
+        "send me details",
+        "can the team contact me",
+        "i need more information from team",
+        "talk to someone",
+        "speak to team"
+      ],
+      "short_answer": "I can help you prepare optional contact details for this conversation.",
+      "detailed_answer": "You can share an email and mobile number, skip either field, or cancel and keep chatting.",
+      "bullet_points": [],
+      "related_topics": [],
+      "cta_actions": [],
+      "route": null,
+      "priority": 10,
+      "sources": [
+        "app/components/contact/contactData.ts",
+        "backend/app/knowledge/product_updates.md"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "about",
+      "category": "about",
+      "title": "Why MentorMe exists",
+      "keywords": [
+        "Why MentorMe exists"
+      ],
+      "questions": [
+        "about",
+        "about mentorme",
+        "who built mentorme",
+        "who is the founder",
+        "founder",
+        "team",
+        "meet the team",
+        "mission"
+      ],
+      "short_answer": "MentorMe was built by working IT professionals who believe students should have a clear next step and practical work they can show.",
+      "detailed_answer": "Nalluri Soniya leads the product vision and learning experience. Talluri Jayanth helps shape the architecture and practical features. Dondamuri Sumanth works with the team on development, delivery and product decisions.",
+      "bullet_points": [
+        "Nalluri Soniya — Founder.",
+        "Talluri Jayanth — Co-Founder.",
+        "Dondamuri Sumanth — CEO."
+      ],
+      "related_topics": [
+        "MentorMe mission",
+        "How it works",
+        "Contact team"
+      ],
+      "cta_actions": [
+        {
+          "label": "Meet the team",
+          "route": "/about",
+          "type": "navigate"
+        }
+      ],
+      "route": "/about",
+      "priority": 10,
+      "sources": [
+        "app/components/about/aboutData.ts"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "discovery",
+      "category": "career_guidance",
+      "title": "Let's find one next step",
+      "keywords": [
+        "Let's find one next step"
+      ],
+      "questions": [
+        "what next",
+        "where do i begin",
+        "i m confused",
+        "im confused",
+        "i am confused",
+        "i don't know what to do",
+        "find my next step",
+        "where should i start",
+        "what is my next step",
+        "not sure",
+        "i do not know what to do",
+        "guide me",
+        "chat with me"
+      ],
+      "short_answer": "Let's narrow it down. What are you trying to figure out?",
+      "detailed_answer": "Pick the closest starting point. We can explore one step at a time, and you can change direction whenever you like.",
+      "bullet_points": [],
+      "related_topics": [
+        "Choose a career",
+        "Start learning",
+        "Build projects",
+        "Prepare for opportunities",
+        "Just exploring"
+      ],
+      "cta_actions": [],
+      "route": null,
+      "priority": 10,
+      "sources": [
+        "app/components/about/AboutOverview.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "choose_track",
+      "category": "career_guidance",
+      "title": "Find a direction that interests you",
+      "keywords": [
+        "Find a direction that interests you"
+      ],
+      "questions": [
+        "help me choose",
+        "choose career direction",
+        "which course should i select",
+        "which career to choose",
+        "i don't know what career to choose",
+        "learn a specific skill",
+        "choose a track",
+        "still not sure",
+        "choose a career",
+        "i do not know what to choose",
+        "I don't know what to choose",
+        "start learning"
+      ],
+      "short_answer": "What sounds most interesting to you?",
+      "detailed_answer": "You don't need to settle on a career today. Choose the kind of work that feels interesting and we can explore the published tracks together.",
+      "bullet_points": [],
+      "related_topics": [
+        "Building websites/apps",
+        "Working with data",
+        "AI/intelligent systems",
+        "Designing digital experiences",
+        "I'm still not sure"
+      ],
+      "cta_actions": [],
+      "route": null,
+      "priority": 10,
+      "sources": [
+        "app/components/courses/FeaturedTrack.tsx",
+        "app/components/courses/CareerTracksAndCTA.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "web_interest",
+      "category": "career_guidance",
+      "title": "Which part of web development?",
+      "keywords": [
+        "Which part of web development?"
+      ],
+      "questions": [
+        "building websites/apps",
+        "building websites",
+        "websites and apps",
+        "web development",
+        "build websites/apps"
+      ],
+      "short_answer": "Would you enjoy building the interfaces people use, or the services and data behind them?",
+      "detailed_answer": "Frontend focuses on responsive interfaces. Backend focuses on APIs, data and services. If user research and visual design appeal to you, you can also explore UI/UX.",
+      "bullet_points": [],
+      "related_topics": [
+        "Frontend",
+        "Backend",
+        "UI/UX Designer"
+      ],
+      "cta_actions": [],
+      "route": null,
+      "priority": 10,
+      "sources": [
+        "app/components/courses/FeaturedTrack.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "duration",
+      "category": "roadmap",
+      "title": "A journey with clear checkpoints",
+      "keywords": [
+        "A journey with clear checkpoints"
+      ],
+      "questions": [
+        "how long",
+        "duration",
+        "how long is the journey",
+        "how many months",
+        "how many weeks",
+        "finish the course",
+        "completion time"
+      ],
+      "short_answer": "MentorMe describes a 90-level journey, but a fixed completion time isn't published. Your pace can depend on your starting point and practice.",
+      "detailed_answer": "The full journey includes lessons, practice, assessments and projects. Pro's six months refers to access duration, so it isn't a promise that every learner finishes in that time.",
+      "bullet_points": [],
+      "related_topics": [
+        "Explore roadmap",
+        "Pro plan"
+      ],
+      "cta_actions": [],
+      "route": null,
+      "priority": 10,
+      "sources": [
+        "app/components/roadmap/roadmapData.ts",
+        "app/components/pricing/PricingCard.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "home",
+      "category": "navigation",
+      "title": "Explore MentorMe",
+      "keywords": [
+        "Explore MentorMe"
+      ],
+      "questions": [
+        "home",
+        "home page",
+        "go home",
+        "open home"
+      ],
+      "short_answer": "The Home page is a good place to explore the MentorMe journey.",
+      "detailed_answer": "Start with direction, see how practice and projects fit together, then explore the roadmap or career tracks.",
+      "bullet_points": [],
+      "related_topics": [
+        "What is MentorMe?",
+        "Career tracks"
+      ],
+      "cta_actions": [
+        {
+          "label": "Open Home",
+          "route": "/",
+          "type": "navigate"
+        }
+      ],
+      "route": "/",
+      "priority": 10,
+      "sources": [
+        "app/components/PublicSite.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "thanks",
+      "category": "conversation",
+      "title": "You're welcome",
+      "keywords": [
+        "You're welcome"
+      ],
+      "questions": [
+        "thanks",
+        "thank you",
+        "thank you so much",
+        "thx",
+        "thanks a lot",
+        "thank u"
+      ],
+      "short_answer": "You're welcome! Want to explore anything else before you go?",
+      "detailed_answer": "Happy to help. What would be useful to look at next?",
+      "bullet_points": [],
+      "related_topics": [],
+      "cta_actions": [],
+      "route": null,
+      "priority": 10,
+      "sources": [
+        "app/components/about/AboutOverview.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "bye",
+      "category": "conversation",
+      "title": "See you soon",
+      "keywords": [
+        "See you soon"
+      ],
+      "questions": [
+        "bye",
+        "goodbye",
+        "see you",
+        "see you later",
+        "I'm done",
+        "i am done"
+      ],
+      "short_answer": "See you soon! Come back whenever you'd like help with your next step.",
+      "detailed_answer": "Take care. You can return whenever you're ready.",
+      "bullet_points": [],
+      "related_topics": [
+        "Explore MentorMe again"
+      ],
+      "cta_actions": [],
+      "route": null,
+      "priority": 10,
+      "sources": [
+        "app/components/about/AboutOverview.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "okay",
+      "category": "conversation",
+      "title": "Whenever you're ready",
+      "keywords": [
+        "Whenever you're ready"
+      ],
+      "questions": [
+        "okay",
+        "ok",
+        "cool",
+        "great",
+        "got it",
+        "nice"
+      ],
+      "short_answer": "Sure. What would you like to explore next?",
+      "detailed_answer": "We can keep going from here. What catches your interest?",
+      "bullet_points": [],
+      "related_topics": [
+        "Career tracks",
+        "Explore roadmap",
+        "Pricing"
+      ],
+      "cta_actions": [],
+      "route": null,
+      "priority": 10,
+      "sources": [
+        "app/components/about/AboutOverview.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "unknown",
+      "category": "fallback",
+      "title": "Let's check with the team",
+      "keywords": [
+        "Let's check with the team"
+      ],
+      "questions": [
+        ""
+      ],
+      "short_answer": "I'm not completely sure about that from the MentorMe information I have. I can help with career tracks, the roadmap, plans or the learning journey, or help you reach the team.",
+      "detailed_answer": "I don't have enough confirmed information to answer that accurately. We can explore a related MentorMe topic or check with the team.",
+      "bullet_points": [],
+      "related_topics": [
+        "Career tracks",
+        "Explore roadmap",
+        "Pricing",
+        "Talk to the team"
+      ],
+      "cta_actions": [
+        {
+          "label": "Ask the team",
+          "route": "/contact",
+          "type": "navigate"
+        }
+      ],
+      "route": "/contact",
+      "priority": 10,
+      "sources": [
+        "app/components/about/AboutOverview.tsx"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "track_system",
+      "category": "career_tracks",
+      "title": "How tracks work",
+      "short_answer": "Each career track follows the same learning system: guided levels, practical missions, projects and proof.",
+      "detailed_answer": "The skill focus changes by track, while the method stays connected: learn, practise, build and prove. The full journey includes 90 levels, 12+ projects, nine milestone certificates and a career-ready portfolio.",
+      "questions": [
+        "how tracks work",
+        "how do tracks work",
+        "track system",
+        "how courses work"
+      ],
+      "keywords": [],
+      "bullet_points": [],
+      "related_topics": [
+        "Career tracks",
+        "How levels work",
+        "Projects",
+        "Help me choose"
+      ],
+      "sources": [
+        "app/components/courses/FeaturedTrack.tsx",
+        "app/components/courses/MentorMethod.tsx"
+      ],
+      "route": "/courses",
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "checkpoints",
+      "category": "roadmap",
+      "title": "Milestones along the way",
+      "short_answer": "Checkpoints bring together what you have learned and what you can demonstrate before the next stage.",
+      "detailed_answer": "The roadmap highlights foundation and practical-skills certificates, a mini project, real-world work, portfolio proof, professional assessment and career preparation.",
+      "questions": [
+        "checkpoints",
+        "roadmap milestones",
+        "what is a checkpoint"
+      ],
+      "keywords": [],
+      "bullet_points": [
+        "Level 40: guided mini project; Level 50: larger real-world project.",
+        "Level 60: portfolio proof; Level 70: professional assessment.",
+        "Level 80: career toolkit; Level 90: final readiness checkpoint."
+      ],
+      "related_topics": [
+        "How levels work",
+        "Certificate milestones",
+        "Projects",
+        "Career toolkit"
+      ],
+      "sources": [
+        "app/components/roadmap/roadmapData.ts"
+      ],
+      "route": "/roadmap",
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "lessons",
+      "category": "learning",
+      "title": "Learn with direction",
+      "short_answer": "Focused lessons and guided examples introduce the right concept before you put it into practice.",
+      "detailed_answer": "MentorMe connects each concept with missions and deliberate practice, then projects and assessments help you show that you can apply it.",
+      "questions": [
+        "lessons",
+        "guided learning lessons",
+        "what are lessons"
+      ],
+      "keywords": [],
+      "bullet_points": [],
+      "related_topics": [
+        "Missions",
+        "Practice",
+        "How it works"
+      ],
+      "sources": [
+        "app/components/courses/FeaturedTrack.tsx",
+        "app/components/courses/MentorMethod.tsx"
+      ],
+      "route": null,
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "missions",
+      "category": "learning",
+      "title": "Put a concept to work",
+      "short_answer": "Missions give you practical tasks that turn a lesson into something you can do.",
+      "detailed_answer": "Foundation missions are included in Free. Pro includes missions and assessments across the full 90-level journey, with practical work building toward project proof.",
+      "questions": [
+        "missions",
+        "guided missions explained",
+        "what are missions"
+      ],
+      "keywords": [],
+      "bullet_points": [],
+      "related_topics": [
+        "Challenges",
+        "Projects",
+        "Progress tracking"
+      ],
+      "sources": [
+        "app/components/courses/FeaturedTrack.tsx",
+        "app/components/courses/MentorMethod.tsx",
+        "app/components/pricing/PricingData.ts",
+        "app/components/pricing/PricingCard.tsx"
+      ],
+      "route": null,
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "challenges",
+      "category": "learning",
+      "title": "Build confidence through practice",
+      "short_answer": "Challenges help you apply concepts and practise deliberately before taking on larger projects.",
+      "detailed_answer": "The learning method pairs focused lessons with practical missions, challenges and repetition. Assessments and projects give you ways to check your progress.",
+      "questions": [
+        "challenges",
+        "code challenges",
+        "learning challenges"
+      ],
+      "keywords": [],
+      "bullet_points": [],
+      "related_topics": [
+        "Practice",
+        "Assessments",
+        "Projects"
+      ],
+      "sources": [
+        "app/components/courses/FeaturedTrack.tsx",
+        "app/components/courses/MentorMethod.tsx"
+      ],
+      "route": null,
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "streaks",
+      "category": "progress",
+      "title": "Steady effort adds up",
+      "short_answer": "Streaks highlight consistent activity alongside levels, XP and badges in the public learning experience.",
+      "detailed_answer": "The dashboard preview and leaderboard show day streaks as a sign of momentum. Exact reset rules, timezone rules and streak rewards are not published, so the team can confirm those details.",
+      "questions": [
+        "streaks",
+        "day streak",
+        "streak",
+        "how do streaks work"
+      ],
+      "keywords": [],
+      "bullet_points": [],
+      "related_topics": [
+        "XP",
+        "Leaderboard",
+        "Progress tracking"
+      ],
+      "sources": [
+        "app/components/home/HomeJourneySections.tsx",
+        "app/components/leaderboard/leaderboardData.ts"
+      ],
+      "route": null,
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "certificate_milestones",
+      "category": "certificates",
+      "title": "Achievements along your journey",
+      "short_answer": "You can unlock milestone or achievement certificates during meaningful skill checkpoints, before completing the full course. Pro includes nine milestone certificates.",
+      "detailed_answer": "Milestone certificates recognise demonstrated progress at a particular stage. The roadmap includes a Foundation certificate at Level 15 and a Practical skills certificate at Level 30; these differ from the Course Completion Certificate earned after the full journey.",
+      "questions": [
+        "certificate milestones",
+        "milestone certificates",
+        "foundation certificate",
+        "practical skills certificate",
+        "milestone certificate",
+        "achievement certificate",
+        "achievement certificates",
+        "what are milestone certificates",
+        "what are achievement certificates",
+        "do i get certificates before completing the course",
+        "when are certificates unlocked",
+        "how are they unlocked",
+        "how do milestone certificates unlock"
+      ],
+      "keywords": [],
+      "bullet_points": [
+        "Complete the learning and required work at each milestone.",
+        "Check your personal journey for the requirements and unlock status."
+      ],
+      "related_topics": [
+        "How are they unlocked?",
+        "Course completion certificate",
+        "Projects",
+        "How progress works"
+      ],
+      "sources": [
+        "app/components/roadmap/roadmapData.ts",
+        "app/components/pricing/PricingData.ts",
+        "app/components/pricing/PricingCard.tsx",
+        "backend/app/knowledge/product_updates.md"
+      ],
+      "route": null,
+      "priority": 70,
+      "highlight": "Exact unlocks can depend on your course and progress. Sign up or log in to see your personal journey.",
+      "cta_actions": [
+        {
+          "label": "Sign Up",
+          "route": "/signup",
+          "type": "navigate"
+        },
+        {
+          "label": "Sign In",
+          "route": "/login",
+          "type": "navigate"
+        }
+      ]
+    },
+    {
+      "id": "career_toolkit",
+      "category": "career_guidance",
+      "title": "Prepare your career story",
+      "short_answer": "The career toolkit helps you prepare your résumé, LinkedIn profile, portfolio story and professional introduction.",
+      "detailed_answer": "At Level 80, the roadmap brings your practical work into applications and professional conversations. The preceding professional assessment helps identify final improvement areas.",
+      "questions": [
+        "career toolkit",
+        "resume and linkedin",
+        "portfolio story",
+        "professional introduction"
+      ],
+      "keywords": [],
+      "bullet_points": [],
+      "related_topics": [
+        "Career readiness",
+        "Portfolio",
+        "Career Accelerator"
+      ],
+      "sources": [
+        "app/components/roadmap/roadmapData.ts"
+      ],
+      "route": null,
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "compare_plans",
+      "category": "pricing",
+      "title": "Choose the support you need",
+      "short_answer": "Free starts the foundation journey. Pro unlocks the full learning experience, while Career Accelerator adds career support and is coming soon. Enterprise serves institutions.",
+      "detailed_answer": "Compare the amount of learning and support you need. Start with foundations, choose the full journey for projects and certificates, or speak with the team about planned career support and institutional access.",
+      "questions": [
+        "compare plans",
+        "plan comparison",
+        "compare all plans"
+      ],
+      "keywords": [],
+      "bullet_points": [
+        "Free: ₹0, foundation access; no card required.",
+        "Pro: from ₹2,000 per course with six months access.",
+        "Career Accelerator: coming soon; price not published.",
+        "Enterprise: custom pricing."
+      ],
+      "related_topics": [
+        "Free vs Pro",
+        "Pro vs Career Accelerator",
+        "Pricing help",
+        "Enterprise"
+      ],
+      "sources": [
+        "app/components/pricing/PricingData.ts",
+        "app/components/pricing/PricingCard.tsx"
+      ],
+      "route": "/pricing",
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "free_vs_pro",
+      "category": "pricing",
+      "title": "Free or Pro?",
+      "short_answer": "Free helps you explore and build foundations. Pro adds the complete 90-level journey and portfolio proof.",
+      "detailed_answer": "Free includes direction, a starter roadmap, foundation missions, basic assessment and progress tracking. Pro adds all 90 levels, missions and assessments, 12+ projects, nine certificates and portfolio proof building.",
+      "questions": [
+        "free vs pro",
+        "compare free and pro",
+        "difference between free and pro"
+      ],
+      "keywords": [],
+      "bullet_points": [
+        "Free costs ₹0 with no card required.",
+        "Pro starts at ₹2,000 per course for six months access.",
+        "You can upgrade later without restarting."
+      ],
+      "related_topics": [
+        "Free plan",
+        "Pro plan",
+        "Choose Pro",
+        "Pricing help"
+      ],
+      "sources": [
+        "app/components/pricing/PricingData.ts",
+        "app/components/pricing/PricingCard.tsx"
+      ],
+      "route": "/pricing",
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "pro_vs_accelerator",
+      "category": "pricing",
+      "title": "Learning and career support",
+      "short_answer": "Pro provides the full structured learning journey. Career Accelerator is coming soon and adds mentor guidance, reviews and interview preparation.",
+      "detailed_answer": "Pro focuses on levels, missions, assessments, projects and certificates. Career Accelerator is planned to add group mentor sessions, résumé and LinkedIn support, mock interviews, portfolio review and internship readiness.",
+      "questions": [
+        "pro vs career accelerator",
+        "compare pro and career accelerator",
+        "difference between pro and career accelerator"
+      ],
+      "keywords": [],
+      "bullet_points": [
+        "Pro: from ₹2,000 per course, six months access.",
+        "Career Accelerator: price and launch date not published."
+      ],
+      "related_topics": [
+        "Pro plan",
+        "Career Accelerator",
+        "Talk to the team"
+      ],
+      "sources": [
+        "app/components/pricing/PricingData.ts",
+        "app/components/pricing/PricingCard.tsx"
+      ],
+      "route": "/pricing",
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "pricing_help",
+      "category": "career_guidance",
+      "title": "Find a plan that fits",
+      "short_answer": "What are you looking for?",
+      "detailed_answer": "You can start with Free, choose the full learning journey, explore career support, or ask about a package for your institution.",
+      "questions": [
+        "pricing help",
+        "help me choose a plan",
+        "which plan should i choose",
+        "guide me here"
+      ],
+      "keywords": [],
+      "bullet_points": [],
+      "related_topics": [
+        "Start free",
+        "Full learning journey",
+        "Career support",
+        "For an institution"
+      ],
+      "sources": [
+        "app/components/pricing/PricingData.ts",
+        "app/components/pricing/PricingCard.tsx"
+      ],
+      "route": null,
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "assistance",
+      "category": "career_guidance",
+      "title": "Let’s find the right help",
+      "short_answer": "Absolutely. I can guide you here, or help you prepare contact details for a team follow-up.",
+      "detailed_answer": "Choose guidance here to explore your options one question at a time. Choose the team if you want to prepare optional email and mobile details for this conversation.",
+      "questions": [
+        "can someone help me choose",
+        "personalized guidance",
+        "more assistance from the team"
+      ],
+      "keywords": [],
+      "bullet_points": [],
+      "related_topics": [
+        "Guide me here",
+        "Talk to the team"
+      ],
+      "sources": [
+        "app/components/pricing/PricingData.ts",
+        "app/components/pricing/PricingCard.tsx",
+        "app/components/contact/contactData.ts",
+        "app/components/PublicSite.tsx"
+      ],
+      "route": null,
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "signup_pro",
+      "category": "signup",
+      "title": "Choose Pro when you’re ready",
+      "short_answer": "You can choose Pro through the Sign Up page. It starts from ₹2,000 per course with six months access, and the price varies by track.",
+      "detailed_answer": "Pro includes the full 90-level journey, missions, assessments, 12+ projects, nine certificates and portfolio proof. Review the chosen track and current price before proceeding.",
+      "questions": [
+        "choose pro",
+        "start pro",
+        "join pro"
+      ],
+      "keywords": [],
+      "bullet_points": [],
+      "related_topics": [
+        "Pro plan",
+        "Free vs Pro",
+        "Talk to the team"
+      ],
+      "sources": [
+        "app/components/pricing/PricingData.ts",
+        "app/components/pricing/PricingCard.tsx"
+      ],
+      "route": "/signup?plan=pro",
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": [
+        {
+          "label": "Choose Pro",
+          "route": "/signup?plan=pro",
+          "type": "navigate"
+        }
+      ]
+    },
+    {
+      "id": "exploring",
+      "category": "career_guidance",
+      "title": "Take a look around",
+      "short_answer": "You can explore at your own pace. Would you like to see what MentorMe is, how the learning journey works, or which careers you can explore?",
+      "detailed_answer": "A useful starting point is the learning method: learn, practise, build and prove. Then compare tracks or look at the roadmap to see how those steps fit together.",
+      "questions": [
+        "just exploring",
+        "explore mentorme again"
+      ],
+      "keywords": [],
+      "bullet_points": [],
+      "related_topics": [
+        "What is MentorMe?",
+        "How it works",
+        "Career tracks",
+        "Explore roadmap"
+      ],
+      "sources": [
+        "app/components/home/HomeJourneySections.tsx"
+      ],
+      "route": null,
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "not_sure",
+      "category": "career_guidance",
+      "title": "Start with curiosity",
+      "short_answer": "That’s okay. You can explore a small part of the journey before choosing a direction. Would you like to look at the tracks or start with the foundation experience?",
+      "detailed_answer": "The foundation journey starts with career clarity, strengths and goal mapping. It gives you a way to think about your direction without needing a final career decision today.",
+      "questions": [
+        "I'm still not sure",
+        "i am still not sure",
+        "not sure yet"
+      ],
+      "keywords": [],
+      "bullet_points": [],
+      "related_topics": [
+        "Career tracks",
+        "Free plan",
+        "Find my next step",
+        "Talk to the team"
+      ],
+      "sources": [
+        "app/components/roadmap/roadmapData.ts",
+        "app/components/pricing/PricingData.ts",
+        "app/components/pricing/PricingCard.tsx"
+      ],
+      "route": null,
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "wellbeing",
+      "category": "conversation",
+      "title": "Ready to help",
+      "short_answer": "I'm here and ready to help you explore MentorMe. How can I help today?",
+      "detailed_answer": "Happy to help you work through your next step. What would you like to explore?",
+      "questions": [
+        "how are you",
+        "how r u"
+      ],
+      "keywords": [],
+      "bullet_points": [],
+      "related_topics": [],
+      "sources": [
+        "app/components/home/HomeJourneySections.tsx"
+      ],
+      "route": null,
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "mission",
+      "category": "company_overview",
+      "title": "Make the next step clear",
+      "short_answer": "MentorMe helps students turn career uncertainty into a clear path of learning, practice, projects and visible progress.",
+      "detailed_answer": "The team’s idea is to make the next useful step obvious. Small, repeated actions turn knowledge into skills, skills into proof and proof into confidence.",
+      "questions": [
+        "mentorme mission",
+        "company mission",
+        "what does mentorme believe",
+        "why mentorme",
+        "why does mentorme exist",
+        "what problem does mentorme solve"
+      ],
+      "keywords": [],
+      "bullet_points": [],
+      "related_topics": [
+        "About MentorMe",
+        "How it works",
+        "Find my next step"
+      ],
+      "sources": [
+        "app/components/about/aboutData.ts",
+        "app/components/about/AboutOverview.tsx",
+        "app/components/about/AboutProgress.tsx"
+      ],
+      "route": "/about",
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "partnerships",
+      "category": "contact",
+      "title": "Work with MentorMe",
+      "short_answer": "MentorMe welcomes college and corporate partnership enquiries through the team.",
+      "detailed_answer": "College partnerships focus on structured career-readiness journeys and practical outcomes. Corporate partnerships explore internships, talent opportunities and industry-ready pathways.",
+      "questions": [
+        "college partnership",
+        "corporate partnership",
+        "partnerships",
+        "partner with mentorme"
+      ],
+      "keywords": [],
+      "bullet_points": [],
+      "related_topics": [
+        "Enterprise",
+        "Talk to the team",
+        "Contact team"
+      ],
+      "sources": [
+        "app/components/contact/contactData.ts",
+        "app/components/PublicSite.tsx"
+      ],
+      "route": "/contact",
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "contact_hours",
+      "category": "contact",
+      "title": "Reach the team",
+      "short_answer": "The Contact page says the team usually responds within 1–2 business days.",
+      "detailed_answer": "You can find the published email and phone details on the Contact page. The stated 1–2 business days is a usual response window, not a guaranteed booking or immediate response.",
+      "questions": [
+        "response time",
+        "when will the team reply",
+        "how soon will someone respond"
+      ],
+      "keywords": [],
+      "bullet_points": [],
+      "related_topics": [
+        "Contact team",
+        "Talk to the team"
+      ],
+      "sources": [
+        "app/components/contact/ContactHero.tsx",
+        "app/components/contact/contactData.ts",
+        "app/components/PublicSite.tsx"
+      ],
+      "route": "/contact",
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "location",
+      "category": "company_overview",
+      "title": "Where MentorMe is based",
+      "short_answer": "MentorMe’s website lists Hyderabad, Telangana as its location.",
+      "detailed_answer": "A street address or visiting hours are not published here. The team can help with any location-specific enquiry.",
+      "questions": [
+        "where is mentorme located",
+        "location",
+        "hyderabad"
+      ],
+      "keywords": [],
+      "bullet_points": [],
+      "related_topics": [
+        "About MentorMe",
+        "Contact team"
+      ],
+      "sources": [
+        "app/components/PublicSite.tsx"
+      ],
+      "route": "/contact",
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "community",
+      "category": "company_overview",
+      "title": "See progress in action",
+      "short_answer": "The public community preview shows learning missions, projects, milestones and mentor feedback as examples of progress.",
+      "detailed_answer": "You can see examples of the work learners build and the kinds of milestones in the journey. The preview is illustrative; I cannot verify live learner counts or personal activity here.",
+      "questions": [
+        "community",
+        "learner community",
+        "live activity",
+        "how many students",
+        "active learners"
+      ],
+      "keywords": [],
+      "bullet_points": [],
+      "related_topics": [
+        "Projects",
+        "Achievements",
+        "Leaderboard"
+      ],
+      "sources": [
+        "app/components/home/LiveCommunity.tsx"
+      ],
+      "route": null,
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "public_access",
+      "category": "navigation",
+      "title": "Explore before joining",
+      "short_answer": "You can browse MentorMe’s career tracks, roadmap, leaderboard, pricing, About and Contact pages without signing in.",
+      "detailed_answer": "Use this assistant to explore the public information. Start Free when you want to begin the foundation journey, or use Sign In if you already have an account.",
+      "questions": [
+        "can i explore without signing in",
+        "do i need an account to browse",
+        "public pages"
+      ],
+      "keywords": [],
+      "bullet_points": [],
+      "related_topics": [
+        "Career tracks",
+        "Explore roadmap",
+        "Start free",
+        "Sign In"
+      ],
+      "sources": [
+        "app/components/PublicSite.tsx"
+      ],
+      "route": null,
+      "priority": 70,
+      "highlight": null,
+      "cta_actions": []
+    },
+    {
+      "id": "course_completion_certificate",
+      "category": "certificates",
+      "title": "Your Course Completion Certificate",
+      "keywords": [],
+      "questions": [
+        "course completion certificate",
+        "course certificate",
+        "final certificate",
+        "certificate after course",
+        "is there a final certificate",
+        "what certificate do i get after completing the course",
+        "when do i receive my course certificate",
+        "when do i get my course certificate",
+        "when do i receive my course completion certificate"
+      ],
+      "short_answer": "After successfully completing the full guided course journey, you receive a MentorMe Course Completion Certificate recognising that you completed the course.",
+      "detailed_answer": "Your Course Completion Certificate recognises completion of the full course journey. Milestone or achievement certificates recognise progress at meaningful stages along the way; Pro includes nine milestone certificates.",
+      "bullet_points": [
+        "Milestone certificates: earned during the journey.",
+        "Course Completion Certificate: received after successful completion of the full course."
+      ],
+      "related_topics": [
+        "What happens after completion?",
+        "Internship eligibility",
+        "Career preparation",
+        "Start journey"
+      ],
+      "cta_actions": [],
+      "route": null,
+      "priority": 70,
+      "sources": [
+        "backend/app/knowledge/product_updates.md"
+      ],
+      "highlight": null
+    },
+    {
+      "id": "course_completion",
+      "category": "career_guidance",
+      "title": "What comes after course completion",
+      "keywords": [],
+      "questions": [
+        "course completion",
+        "what happens after course",
+        "what happens after completing course",
+        "after completing course",
+        "after completing 90 levels",
+        "after 90 levels",
+        "what happens after 90 levels",
+        "after course completion",
+        "after i finish",
+        "what next after course",
+        "what happens at end",
+        "after completion",
+        "after finishing mentor me",
+        "what do i get after completion",
+        "what happens after i complete the course",
+        "what happens after i finish the course",
+        "what comes after course completion",
+        "what happens after completion",
+        "what happens after course completion"
+      ],
+      "short_answer": "Completing the full course journey earns your MentorMe Course Completion Certificate and makes you eligible for MentorMe-supported startup internship opportunities after the required milestones.",
+      "detailed_answer": "The journey builds skills and visible proof step by step: learn, practise, build projects, earn milestone achievements, develop portfolio proof and prepare for your career. Successful completion brings your Course Completion Certificate and eligibility to explore startup internship opportunities.",
+      "bullet_points": [
+        "Learn → Practice → Projects → Milestone achievements.",
+        "Portfolio / proof → Career preparation.",
+        "Course Completion Certificate → Internship eligibility / startup opportunities."
+      ],
+      "related_topics": [
+        "Internship eligibility",
+        "Course completion certificate",
+        "Career readiness",
+        "Mentor sessions",
+        "Start journey"
+      ],
+      "cta_actions": [],
+      "route": null,
+      "priority": 70,
+      "sources": [
+        "backend/app/knowledge/product_updates.md"
+      ],
+      "highlight": "Internship selection, placement, salary and employment are not guaranteed. Availability and selection depend on the opportunity and relevant requirements."
+    },
+    {
+      "id": "mentor_sessions",
+      "category": "career_guidance",
+      "title": "Mentor support as you progress",
+      "keywords": [],
+      "questions": [
+        "mentor",
+        "mentor session",
+        "mentor sessions",
+        "mentor support",
+        "talk to mentor",
+        "can i talk to mentor",
+        "can i talk to a mentor",
+        "when mentor unlocks",
+        "do i get mentor",
+        "do i get mentor support",
+        "live mentor",
+        "mentor guidance",
+        "are mentors available",
+        "when do mentor sessions unlock",
+        "will someone guide me",
+        "are mentor sessions part of the course",
+        "do mentors help during the journey",
+        "how mentor sessions work"
+      ],
+      "short_answer": "Mentor support is designed to unlock at meaningful stages of the learning journey, so you receive guidance when it becomes most useful.",
+      "detailed_answer": "Learners can unlock mentor sessions as they progress through appropriate stages of the course. Sessions are not necessarily available from the first level; your account/dashboard will show the exact unlock stage after you sign up or log in.",
+      "bullet_points": [
+        "Guidance unlocks during appropriate stages, rather than automatically at the first level.",
+        "Your selected course and progress determine exact availability."
+      ],
+      "related_topics": [
+        "How mentor sessions work",
+        "Interview preparation",
+        "Career readiness",
+        "Start free"
+      ],
+      "cta_actions": [
+        {
+          "label": "Sign Up",
+          "route": "/signup",
+          "type": "navigate"
+        },
+        {
+          "label": "Sign In",
+          "route": "/login",
+          "type": "navigate"
+        }
+      ],
+      "route": null,
+      "priority": 70,
+      "sources": [
+        "backend/app/knowledge/product_updates.md"
+      ],
+      "highlight": "Exact unlocks can depend on your course and progress. Sign up or log in to see your personal journey."
+    },
+    {
+      "id": "interview_preparation",
+      "category": "career_guidance",
+      "title": "Prepare for career conversations",
+      "keywords": [],
+      "questions": [
+        "interview",
+        "interview preparation",
+        "live interview",
+        "live interview preparation",
+        "mock interview",
+        "mock interviews",
+        "prepare for interview",
+        "career interview",
+        "interview support",
+        "when interview support unlocks",
+        "when will interview preparation unlock",
+        "do you prepare students for interviews",
+        "is interview preparation available",
+        "do you conduct live interview preparation"
+      ],
+      "short_answer": "As you progress toward career readiness, MentorMe can unlock live interview-preparation support at later stages of the journey.",
+      "detailed_answer": "Live interview-preparation support becomes relevant as you move toward career readiness. It can unlock at later stages; sign up or log in to see timing and availability in your personal journey.",
+      "bullet_points": [
+        "Build skills and portfolio proof before progressing toward interview preparation.",
+        "Check your personal journey for exact unlock timing and availability."
+      ],
+      "related_topics": [
+        "Career readiness",
+        "Mentor sessions",
+        "Internship opportunities",
+        "Course completion"
+      ],
+      "cta_actions": [
+        {
+          "label": "Sign Up",
+          "route": "/signup",
+          "type": "navigate"
+        },
+        {
+          "label": "Sign In",
+          "route": "/login",
+          "type": "navigate"
+        }
+      ],
+      "route": null,
+      "priority": 70,
+      "sources": [
+        "backend/app/knowledge/product_updates.md"
+      ],
+      "highlight": "Exact unlocks can depend on your course and progress. Sign up or log in to see your personal journey."
+    },
+    {
+      "id": "career_readiness",
+      "category": "career_guidance",
+      "title": "Build toward career readiness",
+      "keywords": [],
+      "questions": [
+        "career readiness",
+        "prepare for opportunities",
+        "job ready",
+        "career preparation",
+        "what career support do i get",
+        "what happens near the end of the course"
+      ],
+      "short_answer": "MentorMe connects learning, practice, projects and milestone achievements with portfolio proof and career preparation. Mentor sessions can unlock during the journey, followed by interview-preparation support at later stages.",
+      "detailed_answer": "You build a portfolio story and prepare your résumé, LinkedIn profile and professional introduction as you move toward career readiness. Course completion brings a Course Completion Certificate and eligibility for startup internship opportunities, subject to the opportunity's requirements.",
+      "bullet_points": [
+        "Build skills, projects and visible portfolio proof.",
+        "Unlock mentor guidance and later interview-preparation support as you progress.",
+        "Complete the journey and required milestones for internship eligibility."
+      ],
+      "related_topics": [
+        "Mentor sessions",
+        "Interview preparation",
+        "Internship opportunities",
+        "Career toolkit"
+      ],
+      "cta_actions": [],
+      "route": null,
+      "priority": 70,
+      "sources": [
+        "backend/app/knowledge/product_updates.md"
+      ],
+      "highlight": "Exact unlocks can depend on your course and progress. Sign up or log in to see your personal journey."
+    },
+    {
+      "id": "journey_unlocks",
+      "category": "roadmap",
+      "title": "See your personal journey",
+      "keywords": [],
+      "questions": [
+        "personal journey",
+        "my personal roadmap",
+        "my milestone status",
+        "my certificate status",
+        "my progress status",
+        "exact unlock level",
+        "what level do mentor sessions unlock",
+        "which level unlocks interview preparation",
+        "have i unlocked mentor sessions",
+        "have i earned my certificate",
+        "am i currently eligible for internships"
+      ],
+      "short_answer": "Exact unlocks can depend on your course and progress. Sign up or log in to see your personal journey.",
+      "detailed_answer": "Your account/dashboard will show your personal roadmap, milestone status and the exact unlock stages for mentor sessions and interview-preparation support. I can't inspect your account or confirm personal eligibility in this public chat.",
+      "bullet_points": [],
+      "related_topics": [
+        "Sign Up",
+        "Sign In",
+        "Explore roadmap",
+        "Talk to the team"
+      ],
+      "cta_actions": [
+        {
+          "label": "Sign Up",
+          "route": "/signup",
+          "type": "navigate"
+        },
+        {
+          "label": "Sign In",
+          "route": "/login",
+          "type": "navigate"
+        }
+      ],
+      "route": null,
+      "priority": 70,
+      "sources": [
+        "backend/app/knowledge/product_updates.md"
+      ],
+      "highlight": null
+    }
+  ]
+}

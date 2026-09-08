@@ -4,291 +4,156 @@
   initial-value: 0deg;
 }
 
-.section {
-  width: min(calc(100% - 40px), 1440px);
-  margin: 92px auto 0;
-  padding: clamp(38px, 4.4vw, 64px);
-
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-
-  border: 1px solid rgba(255, 255, 255, 0.075);
-  border-radius: 36px;
-
-  color: #f7f9fd;
-
-  background:
-    radial-gradient(
-      circle at 12% 8%,
-      rgba(75, 103, 143, 0.25),
-      transparent 31%
-    ),
-    radial-gradient(
-      circle at 90% 88%,
-      rgba(212, 175, 55, 0.09),
-      transparent 28%
-    ),
-    linear-gradient(
-      145deg,
-      #102039,
-      #091525 55%,
-      #050d17
-    );
-
-  box-shadow:
-    0 30px 82px rgba(0, 0, 0, 0.32),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-.section::before {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-  z-index: -4;
-
-  opacity: 0.1;
-
-  background-image:
-    linear-gradient(
-      rgba(255, 255, 255, 0.045) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.045) 1px,
-      transparent 1px
-    );
-
-  background-size: 54px 54px;
-}
-
-.ambientOne,
-.ambientTwo {
-  position: absolute;
-  z-index: -3;
-
-  border-radius: 50%;
-
-  filter: blur(42px);
-}
-
-.ambientOne {
-  width: 360px;
-  height: 360px;
-
-  left: -170px;
-  top: -170px;
-
-  background:
-    rgba(71, 105, 154, 0.18);
-}
-
-.ambientTwo {
-  width: 390px;
-  height: 390px;
-
-  right: -170px;
-  bottom: -210px;
-
-  background:
-    rgba(212, 175, 55, 0.11);
-}
-
-.heading {
-  display: grid;
-  grid-template-columns:
-    minmax(0, 1.2fr)
-    minmax(300px, 0.55fr);
-
-  align-items: end;
-  gap: clamp(38px, 5vw, 72px);
-}
-
-.kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-
-  color: #d9ba4d;
-
-  font-size: 0.68rem;
-  font-weight: 900;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-
-.heading h2 {
-  max-width: 980px;
-
-  margin: 16px 0 0;
-  padding-bottom: 0.18em;
-
-  overflow: visible;
-
-  line-height: 0.96;
-  letter-spacing: -0.052em;
-}
 
 /* =========================================================
-   COURSE COMPARISON ANIMATED HEADING
+   COURSE COMPARISON
+
+   globals.css owns:
+   - public-site background
+   - hj-first-five-heading
+   - hj-heading-wave
+   - shared heading <em>
+   - shared heading description
    ========================================================= */
 
-.headingLine {
-  display: block;
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.section {
+  position: relative;
+  isolation: isolate;
+
   width: 100%;
+  min-height: 100svh;
 
-  overflow: visible;
-
-  text-align: left;
-  white-space: nowrap;
-}
-
-.headingLinePrimary {
-  color: #f4f6ff;
-
-  font-size:
-    clamp(2.85rem, 4.15vw, 4.95rem);
-
-  line-height: 1;
-}
-
-.headingLineSecondary {
-  margin-top: 10px;
-  padding-bottom: 0.16em;
-
-  overflow: visible;
-
-  font-size:
-    clamp(2.35rem, 3.55vw, 4.2rem);
-
-  line-height: 1.18;
-}
-
-.headingWave {
-  display: inline-block;
-
-  padding-bottom: 0.12em;
-  margin-bottom: -0.12em;
-
-  overflow: visible;
-
-  color: transparent;
-
-  background:
-    linear-gradient(
-      90deg,
-      #f4f6ff 0%,
-      #f4f6ff 47%,
-      #d8b24b 49%,
-      #fff6d2 50%,
-      #d8b24b 51%,
-      #f4f6ff 53%,
-      #f4f6ff 100%
-    );
-
-  background-size: 260% 100%;
-  background-position: 0% 50%;
-
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  animation:
-    comparisonHeadingGoldWave
-    12s ease-in-out infinite;
-}
-
-.proofWord {
-  display: inline-block;
+  margin: 0;
 
   padding:
-    0.04em
-    0.04em
-    0.18em;
+    clamp(58px, 6vw, 96px)
+    clamp(24px, 5.5vw, 104px);
 
-  margin-bottom: -0.18em;
+  overflow: hidden;
 
-  overflow: visible;
-  vertical-align: baseline;
-
-  color: transparent;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-weight: 500;
-  font-style: italic;
-
-  background:
-    linear-gradient(
-      110deg,
-      #8f5cf7,
-      #b58cff 52%,
-      #f2d875
-    );
-
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  transform-origin: center;
-
-  animation:
-    comparisonMomentumBreath
-    3.8s ease-in-out infinite;
+  color: var(--text);
 }
 
 
-.heading p {
-  max-width: 610px;
-  margin: 0;
-  padding: 12px 16px;
+/* =========================================================
+   COURSE COMPARISON HEADING
+   Heading left + supporting copy right
+   ========================================================= */
 
-  color: #9fadc0;
+.comparisonHeading {
+  width: 100% !important;
+  max-width: 1500px !important;
 
-  font-size: 0.92rem;
-  line-height: 1.78;
+  margin: 0 auto !important;
 
-  border-radius: 24px;
+  display: grid !important;
 
-  background:
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(112, 215, 255, 0.12),
-      transparent 72%
+  grid-template-columns:
+    minmax(0, 1.35fr)
+    minmax(300px, 0.65fr);
+
+  align-items: end;
+
+  gap:
+    clamp(
+      40px,
+      6vw,
+      90px
     );
 
-  text-shadow:
-    0 0 18px rgba(112, 215, 255, 0.15);
+  text-align: left !important;
 }
+
+
+/* =========================================================
+   LEFT HEADING
+   ========================================================= */
+
+.comparisonHeading h2 {
+  width: 100%;
+  max-width: 980px !important;
+
+  margin: 0 !important;
+
+  text-align: left !important;
+}
+
+
+/* Keep gold wave exactly as global system */
+
+.comparisonHeading
+  :global(.hj-heading-wave) {
+  display: inline-block;
+}
+
+
+/* =========================================================
+   RIGHT DESCRIPTION
+   ========================================================= */
+
+.comparisonDescription {
+  width: 100% !important;
+  max-width: 520px !important;
+
+  margin:
+    0
+    0
+    8px
+    auto !important;
+
+  justify-self: end;
+
+  align-self: end;
+
+  text-align: left !important;
+}
+
+
+/* =========================================================
+   COMPARISON GRID
+   ========================================================= */
 
 .comparisonGrid {
-  margin-top: 42px;
-
   position: relative;
 
+  width: 100%;
+  max-width: 1500px;
+
+  margin: 42px auto 0;
+
   display: grid;
+
   grid-template-columns:
     minmax(0, 0.92fr)
     70px
     minmax(0, 1.08fr);
 
   align-items: stretch;
+
   gap: 18px;
 }
 
+
+/* =========================================================
+   SHARED CARD
+   ========================================================= */
+
 .traditionalCard,
 .mentorCard {
-  min-height: 540px;
-  padding: clamp(27px, 3.2vw, 43px);
-
   position: relative;
-  overflow: hidden;
   isolation: isolate;
+
+  min-height: 0;
+
+  padding:
+    clamp(24px, 2.7vw, 36px);
+
+  overflow: hidden;
 
   border-radius: 30px;
 
@@ -299,11 +164,30 @@
     filter 420ms ease;
 }
 
-/* Traditional card */
+
+/* Keep content above decorative layers */
+
+.cardHeader,
+.traditionalFlow,
+.mentorFlow,
+.traditionalMeter,
+.proofPanel,
+.pointList,
+.outcomeBadge,
+blockquote {
+  position: relative;
+  z-index: 3;
+}
+
+
+/* =========================================================
+   TRADITIONAL CARD
+   ========================================================= */
 
 .traditionalCard {
   border:
-    1px solid rgba(255, 255, 255, 0.075);
+    1px solid
+    rgba(255, 255, 255, 0.075);
 
   background:
     radial-gradient(
@@ -319,29 +203,38 @@
     );
 
   box-shadow:
-    0 24px 64px rgba(0, 0, 0, 0.24),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.04),
+    0 24px 64px
+      rgba(0, 0, 0, 0.24);
 
-  filter:
-    saturate(0.72);
+  filter: saturate(0.72);
 }
+
 
 .traditionalCard:hover {
-  transform:
-    translateY(-6px);
+  transform: translateY(-6px);
 
-  filter:
-    saturate(0.86);
+  filter: saturate(0.86);
 
   box-shadow:
-    0 30px 76px rgba(0, 0, 0, 0.32),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.05),
+    0 30px 76px
+      rgba(0, 0, 0, 0.32);
 }
+
+
+/* =========================================================
+   TRADITIONAL NOISE
+   ========================================================= */
 
 .traditionalNoise {
   position: absolute;
+
   inset: 0;
-  z-index: -1;
+
+  z-index: 1;
 
   opacity: 0.055;
 
@@ -354,37 +247,52 @@
     );
 
   animation:
-    traditionalScan 8s linear infinite;
+    traditionalScan
+    8s linear infinite;
 
   pointer-events: none;
 }
 
+
+/* =========================================================
+   TRADITIONAL DECORATIVE RINGS
+   ========================================================= */
+
 .traditionalCard::after {
   content: "";
+
+  position: absolute;
+
+  right: -135px;
+  bottom: -145px;
+
+  z-index: 0;
 
   width: 260px;
   height: 260px;
 
-  position: absolute;
-  right: -135px;
-  bottom: -145px;
-  z-index: -2;
-
   border:
-    1px solid rgba(130, 145, 166, 0.12);
+    1px solid
+    rgba(130, 145, 166, 0.12);
 
   border-radius: 50%;
 
   box-shadow:
-    0 0 0 45px rgba(130, 145, 166, 0.018),
-    0 0 0 90px rgba(130, 145, 166, 0.012);
+    0 0 0 45px
+      rgba(130, 145, 166, 0.018),
+    0 0 0 90px
+      rgba(130, 145, 166, 0.012);
+
+  pointer-events: none;
 }
 
-/* Mentor card */
+
+/* =========================================================
+   MENTORME CARD
+   ========================================================= */
 
 .mentorCard {
-  border:
-    1px solid transparent;
+  border: 1px solid transparent;
 
   background:
     linear-gradient(
@@ -405,10 +313,14 @@
     );
 
   box-shadow:
-    0 30px 78px rgba(0, 0, 0, 0.36),
-    0 0 38px rgba(212, 175, 55, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.08),
+    0 30px 78px
+      rgba(0, 0, 0, 0.36),
+    0 0 38px
+      rgba(212, 175, 55, 0.1);
 }
+
 
 .mentorCard:hover {
   transform:
@@ -416,20 +328,33 @@
     scale(1.012);
 
   box-shadow:
-    0 40px 96px rgba(0, 0, 0, 0.46),
-    0 0 56px rgba(212, 175, 55, 0.18),
-    0 0 100px rgba(72, 107, 158, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.1),
+    0 40px 96px
+      rgba(0, 0, 0, 0.46),
+    0 0 56px
+      rgba(212, 175, 55, 0.18),
+    0 0 100px
+      rgba(72, 107, 158, 0.12);
 }
+
+
+/* =========================================================
+   ROTATING GOLD BORDER
+   ========================================================= */
 
 .animatedBorder {
   position: absolute;
+
   inset: 0;
+
   z-index: 8;
 
   padding: 1.5px;
 
   border-radius: inherit;
+
+  pointer-events: none;
 
   background:
     conic-gradient(
@@ -451,23 +376,35 @@
     );
 
   -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0)
+      content-box,
     linear-gradient(#000 0 0);
 
   -webkit-mask-composite: xor;
+
+  mask:
+    linear-gradient(#000 0 0)
+      content-box,
+    linear-gradient(#000 0 0);
+
   mask-composite: exclude;
 
   animation:
     rotateComparisonBorder
     7s linear infinite;
-
-  pointer-events: none;
 }
+
+
+/* =========================================================
+   MENTOR SHINE
+   ========================================================= */
 
 .mentorShine {
   position: absolute;
+
   inset: -25%;
-  z-index: -1;
+
+  z-index: 1;
 
   background:
     linear-gradient(
@@ -483,7 +420,10 @@
 
   transition:
     transform 900ms ease;
+
+  pointer-events: none;
 }
+
 
 .mentorCard:hover .mentorShine {
   transform:
@@ -491,75 +431,103 @@
     rotate(8deg);
 }
 
-/* Shared card header */
+
+/* =========================================================
+   CARD HEADER
+   ========================================================= */
 
 .cardHeader {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
+
   gap: 18px;
 }
+
 
 .cardHeader h3 {
   margin: 8px 0 0;
 
   font-size:
-    clamp(1.35rem, 2vw, 1.8rem);
+    clamp(1.15rem, 1.6vw, 1.45rem);
 
   line-height: 1;
 }
+
 
 .traditionalCard .cardHeader h3 {
   color: #a7b0bd;
 }
 
+
 .mentorCard .cardHeader h3 {
   color: #f7f9fd;
 }
+
+
+/* =========================================================
+   EYEBROWS
+   ========================================================= */
 
 .traditionalEyebrow,
 .mentorEyebrow {
   font-size: 0.55rem;
   font-weight: 900;
+
   letter-spacing: 0.12em;
+
   text-transform: uppercase;
 }
+
 
 .traditionalEyebrow {
   color: #748397;
 }
 
+
 .mentorEyebrow {
   color: #e1c65f;
 }
 
+
+/* =========================================================
+   HEADER ICONS
+   ========================================================= */
+
 .traditionalIcon,
 .mentorIcon {
-  width: 52px;
-  height: 52px;
+  width: 46px;
+  height: 46px;
 
   display: grid;
+
   flex: 0 0 auto;
+
   place-items: center;
 
   border-radius: 16px;
 }
 
+
 .traditionalIcon {
   color: #718197;
 
   border:
-    1px solid rgba(255, 255, 255, 0.08);
+    1px solid
+    rgba(255, 255, 255, 0.08);
 
   background:
     rgba(255, 255, 255, 0.035);
 }
 
+
 .mentorIcon {
   color: #171307;
 
   border:
-    1px solid rgba(255, 241, 174, 0.58);
+    1px solid
+    rgba(255, 241, 174, 0.58);
 
   background:
     linear-gradient(
@@ -570,86 +538,119 @@
     );
 
   box-shadow:
-    0 13px 28px rgba(0, 0, 0, 0.24),
-    0 0 22px rgba(212, 175, 55, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.75),
+    0 13px 28px
+      rgba(0, 0, 0, 0.24),
+    0 0 22px
+      rgba(212, 175, 55, 0.12);
 
   animation:
     mentorIconFloat
     3.8s ease-in-out infinite;
 }
 
+
+/* =========================================================
+   QUOTES
+   ========================================================= */
+
 .traditionalCard blockquote,
 .mentorCard blockquote {
   margin:
-    clamp(42px, 4.8vw, 62px)
+    clamp(30px, 3.6vw, 44px)
     0
-    26px;
+    20px;
 
   font-size:
-    clamp(1.8rem, 2.6vw, 3rem);
+    clamp(1.55rem, 2.15vw, 2.35rem);
 
-  line-height: 1.1;
   font-weight: 650;
+
+  line-height: 1.08;
+
   letter-spacing: -0.045em;
 }
+
 
 .traditionalCard blockquote {
   color: #7d8a9b;
 }
 
+
 .mentorCard blockquote {
   color: #f5f7fb;
 
   text-shadow:
-    0 12px 36px rgba(0, 0, 0, 0.2);
+    0 12px 36px
+    rgba(0, 0, 0, 0.2);
 }
 
-/* Traditional flow */
+
+/* =========================================================
+   TRADITIONAL FLOW
+   ========================================================= */
 
 .traditionalFlow {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
+  margin-bottom: 16px;
 
-  margin-bottom: 20px;
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
 }
+
 
 .traditionalFlow > div {
   display: flex;
+
   align-items: center;
+
   gap: 8px;
 }
 
+
 .traditionalFlow span {
-  padding: 8px 10px;
-
-  border:
-    1px solid rgba(255, 255, 255, 0.08);
-
-  border-radius: 999px;
+  padding: 7px 9px;
 
   color: #8593a5;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+
+  border-radius: 999px;
 
   background:
     rgba(255, 255, 255, 0.035);
 
   font-size: 0.5rem;
   font-weight: 900;
+
   letter-spacing: 0.06em;
+
   text-transform: uppercase;
 }
+
 
 .traditionalFlow svg {
   color: #617185;
 }
 
+
+/* =========================================================
+   TRADITIONAL METER
+   ========================================================= */
+
 .traditionalMeter {
-  padding: 15px 16px;
+  padding: 12px 14px;
 
   border:
-    1px solid rgba(255, 255, 255, 0.07);
+    1px solid
+    rgba(255, 255, 255, 0.07);
 
   border-radius: 17px;
 
@@ -657,9 +658,13 @@
     rgba(255, 255, 255, 0.025);
 }
 
-.traditionalMeter > div:first-child {
+
+.traditionalMeter
+  > div:first-child {
   display: flex;
+
   justify-content: space-between;
+
   gap: 14px;
 
   color: #728196;
@@ -667,13 +672,16 @@
   font-size: 0.51rem;
 }
 
+
 .traditionalMeter strong {
   color: #929eae;
 }
 
+
 .traditionalTrack {
   height: 6px;
-  margin-top: 10px;
+
+  margin-top: 8px;
 
   overflow: hidden;
 
@@ -681,6 +689,7 @@
 
   background: #202b39;
 }
+
 
 .traditionalTrack i {
   width: 72%;
@@ -702,36 +711,49 @@
     5s ease-in-out infinite;
 }
 
-/* Mentor flow */
+
+/* =========================================================
+   MENTORME FLOW
+   ========================================================= */
 
 .mentorFlow {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
+  margin-bottom: 16px;
 
-  margin-bottom: 20px;
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
 }
+
 
 .mentorFlow > div {
   display: flex;
+
   align-items: center;
+
   gap: 8px;
 }
 
+
 .mentorFlow > div > span {
-  padding: 8px 10px;
+  padding: 7px 9px;
 
   display: inline-flex;
+
   align-items: center;
+
   gap: 6px;
 
+  color: #171307;
+
   border:
-    1px solid rgba(255, 241, 174, 0.5);
+    1px solid
+    rgba(255, 241, 174, 0.5);
 
   border-radius: 999px;
-
-  color: #171307;
 
   background:
     linear-gradient(
@@ -741,11 +763,14 @@
     );
 
   box-shadow:
-    0 7px 18px rgba(114, 78, 7, 0.2);
+    0 7px 18px
+    rgba(114, 78, 7, 0.2);
 
   font-size: 0.49rem;
   font-weight: 900;
+
   letter-spacing: 0.05em;
+
   text-transform: uppercase;
 
   animation:
@@ -753,29 +778,37 @@
     3.6s ease-in-out infinite;
 }
 
+
 .mentorFlow > div:nth-child(2) > span {
   animation-delay: 180ms;
 }
+
 
 .mentorFlow > div:nth-child(3) > span {
   animation-delay: 360ms;
 }
 
+
 .mentorFlow > div:nth-child(4) > span {
   animation-delay: 540ms;
 }
+
 
 .mentorFlow svg {
   color: #7b899c;
 }
 
-/* Mentor proof panel */
+
+/* =========================================================
+   PROOF PANEL
+   ========================================================= */
 
 .proofPanel {
-  padding: 17px 18px;
+  padding: 13px 15px;
 
   border:
-    1px solid rgba(244, 223, 131, 0.15);
+    1px solid
+    rgba(244, 223, 131, 0.15);
 
   border-radius: 19px;
 
@@ -787,44 +820,62 @@
     );
 
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.04);
 }
+
 
 .proofTop {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
+
   gap: 14px;
 }
 
+
 .proofTop > div {
   display: flex;
+
   align-items: center;
+
   gap: 8px;
 
   color: #f0d36d;
 }
+
 
 .proofTop span,
 .proofTop strong {
   font-size: 0.52rem;
 }
 
+
 .proofTop span {
   color: #8494aa;
 
   font-weight: 850;
+
   letter-spacing: 0.08em;
+
   text-transform: uppercase;
 }
+
 
 .proofTop strong {
   color: #f0d36d;
 }
 
+
+/* =========================================================
+   PROOF PROGRESS
+   ========================================================= */
+
 .proofTrack {
-  height: 7px;
-  margin-top: 13px;
+  height: 6px;
+
+  margin-top: 10px;
 
   overflow: hidden;
 
@@ -832,6 +883,7 @@
 
   background: #23344d;
 }
+
 
 .proofTrack i {
   width: 78%;
@@ -850,80 +902,109 @@
     );
 
   box-shadow:
-    0 0 13px rgba(212, 175, 55, 0.24);
+    0 0 13px
+    rgba(212, 175, 55, 0.24);
 
   animation:
     proofProgressGlow
     3.8s ease-in-out infinite;
 }
 
+
+/* =========================================================
+   PROOF STATS
+   ========================================================= */
+
 .proofStats {
-  margin-top: 15px;
+  margin-top: 11px;
 
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 6px;
 }
 
+
 .proofStats span {
-  padding: 10px 8px;
+  padding: 8px 7px;
 
   display: flex;
+
   flex-direction: column;
+
   gap: 4px;
 
+  color: #7f90a5;
+
   border:
-    1px solid rgba(255, 255, 255, 0.06);
+    1px solid
+    rgba(255, 255, 255, 0.06);
 
   border-radius: 13px;
-
-  color: #7f90a5;
 
   background:
     rgba(255, 255, 255, 0.025);
 
   font-size: 0.43rem;
   font-weight: 850;
+
   letter-spacing: 0.06em;
+
   text-transform: uppercase;
 }
+
 
 .proofStats b {
   color: #f2d56d;
 
-  font-size: 0.88rem;
+  font-size: 0.78rem;
 }
 
-/* Lists */
+
+/* =========================================================
+   POINT LIST
+   ========================================================= */
 
 .pointList {
+  margin: 17px 0 0;
+
   padding: 0;
-  margin: 22px 0 0;
 
   list-style: none;
 }
 
+
 .pointList li {
-  min-height: 50px;
-  padding: 13px 0;
+  min-height: 40px;
+
+  padding: 9px 0;
 
   display: flex;
-  align-items: center;
-  gap: 12px;
 
-  border-top:
-    1px solid rgba(255, 255, 255, 0.075);
+  align-items: center;
+
+  gap: 12px;
 
   color: #aab6c6;
 
-  font-size: 0.75rem;
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.075);
+
+  font-size: 0.7rem;
+
   line-height: 1.55;
 }
 
+
 .oldMark {
   color: #6d7d92;
+
   font-weight: 900;
 }
+
 
 .checkIcon {
   flex: 0 0 auto;
@@ -937,25 +1018,30 @@
     );
 }
 
-/* Center VS */
+
+/* =========================================================
+   VS COLUMN
+   ========================================================= */
 
 .vsColumn {
   position: relative;
 
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
-
-  gap: 13px;
 }
 
-.vsLine {
-  width: 1px;
 
+.vsLine {
   position: absolute;
+
   top: 20px;
   bottom: 20px;
+
+  width: 1px;
 
   background:
     linear-gradient(
@@ -966,22 +1052,26 @@
     );
 }
 
-.vsBadge {
-  width: 58px;
-  height: 58px;
 
+.vsBadge {
   position: relative;
+
   z-index: 3;
 
+  width: 52px;
+  height: 52px;
+
   display: grid;
+
   place-items: center;
 
+  color: #f1d978;
+
   border:
-    1px solid rgba(244, 223, 131, 0.44);
+    1px solid
+    rgba(244, 223, 131, 0.44);
 
   border-radius: 50%;
-
-  color: #f1d978;
 
   background:
     linear-gradient(
@@ -991,23 +1081,29 @@
     );
 
   box-shadow:
-    0 18px 38px rgba(0, 0, 0, 0.38),
-    0 0 30px rgba(212, 175, 55, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.1),
+    0 18px 38px
+      rgba(0, 0, 0, 0.38),
+    0 0 30px
+      rgba(212, 175, 55, 0.16);
 
   animation:
     vsPulse
     2.7s ease-in-out infinite;
 }
 
+
 .vsBadge::before {
   content: "";
 
   position: absolute;
+
   inset: -9px;
 
   border:
-    1px dashed rgba(244, 223, 131, 0.2);
+    1px dashed
+    rgba(244, 223, 131, 0.2);
 
   border-radius: 50%;
 
@@ -1016,43 +1112,41 @@
     9s linear infinite;
 }
 
+
 .vsBadge span {
   font-size: 0.68rem;
   font-weight: 950;
+
   letter-spacing: 0.08em;
 }
 
-.vsColumn small {
-  position: relative;
-  z-index: 3;
 
-  color: #718197;
-
-  font-size: 0.43rem;
-  font-weight: 900;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-/* Rich MentorMe decorations */
+/* =========================================================
+   MENTOR ORBIT
+   ========================================================= */
 
 .mentorOrbit {
-  width: 360px;
-  height: 360px;
-
   position: absolute;
-  right: -145px;
-  bottom: -170px;
-  z-index: -1;
+
+  right: -125px;
+  bottom: -145px;
+
+  z-index: 0;
+
+  width: 300px;
+  height: 300px;
 
   border:
-    1px solid rgba(244, 223, 131, 0.16);
+    1px solid
+    rgba(244, 223, 131, 0.16);
 
   border-radius: 50%;
 
   box-shadow:
-    0 0 0 46px rgba(212, 175, 55, 0.022),
-    0 0 0 92px rgba(212, 175, 55, 0.014);
+    0 0 0 46px
+      rgba(212, 175, 55, 0.022),
+    0 0 0 92px
+      rgba(212, 175, 55, 0.014);
 
   animation:
     mentorOrbitSpin
@@ -1061,88 +1155,115 @@
   pointer-events: none;
 }
 
+
 .mentorOrbit i {
+  position: absolute;
+
   width: 9px;
   height: 9px;
-
-  position: absolute;
 
   border-radius: 50%;
 
   background: #f4df83;
 
   box-shadow:
-    0 0 0 5px rgba(212, 175, 55, 0.08),
-    0 0 15px rgba(244, 223, 131, 0.58);
+    0 0 0 5px
+      rgba(212, 175, 55, 0.08),
+    0 0 15px
+      rgba(244, 223, 131, 0.58);
 }
+
 
 .mentorOrbit i:nth-child(1) {
   left: 48%;
   top: -5px;
 }
 
+
 .mentorOrbit i:nth-child(2) {
   right: 6%;
   bottom: 20%;
 }
+
 
 .mentorOrbit i:nth-child(3) {
   left: 5%;
   bottom: 25%;
 }
 
+
+/* =========================================================
+   OUTCOME BADGE
+   ========================================================= */
+
 .outcomeBadge {
   width: max-content;
   max-width: 100%;
 
-  margin-top: 17px;
-  padding: 11px 14px;
+  margin-top: 13px;
+
+  padding: 9px 12px;
 
   display: inline-flex;
+
   align-items: center;
+
   gap: 9px;
 
+  color: #f0d36d;
+
   border:
-    1px solid rgba(244, 223, 131, 0.18);
+    1px solid
+    rgba(244, 223, 131, 0.18);
 
   border-radius: 999px;
-
-  color: #f0d36d;
 
   background:
     rgba(212, 175, 55, 0.055);
 
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.04);
 }
+
 
 .outcomeBadge span {
   color: #c4cfdd;
 
-  font-size: 0.56rem;
+  font-size: 0.51rem;
   font-weight: 850;
+
   letter-spacing: 0.05em;
 }
 
-/* Decorative traditional path */
+
+/* =========================================================
+   BROKEN PATH
+   ========================================================= */
 
 .brokenPath {
+  position: absolute;
+
+  right: 24px;
+  bottom: 12px;
+
+  z-index: 2;
+
   width: 120px;
   height: 45px;
 
-  position: absolute;
-  right: 24px;
-  bottom: 20px;
-
   display: flex;
+
   align-items: center;
   justify-content: space-between;
 }
+
 
 .brokenPath::before {
   content: "";
 
   position: absolute;
+
   left: 7px;
   right: 7px;
   top: 50%;
@@ -1159,12 +1280,14 @@
     );
 }
 
+
 .brokenPath i {
+  position: relative;
+
+  z-index: 1;
+
   width: 7px;
   height: 7px;
-
-  position: relative;
-  z-index: 1;
 
   border-radius: 50%;
 
@@ -1173,130 +1296,17 @@
 
 
 /* =========================================================
-   LIGHT MODE — COMPARISON HEADING
+   LIGHT MODE — TRADITIONAL CARD
    ========================================================= */
 
-:global(html:not(.dark):not([data-theme="dark"])) .headingLinePrimary,
-:global(html[data-theme="light"]) .headingLinePrimary,
-:global(html.light) .headingLinePrimary,
-:global([data-theme="light"]) .headingLinePrimary,
-:global(.light) .headingLinePrimary {
-  color: #172d50;
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .headingWave,
-:global(html[data-theme="light"]) .headingWave,
-:global(html.light) .headingWave,
-:global([data-theme="light"]) .headingWave,
-:global(.light) .headingWave {
-  background:
-    linear-gradient(
-      90deg,
-      #172d50 0%,
-      #172d50 47%,
-      #c99b2f 49%,
-      #ffe7a4 50%,
-      #c99b2f 51%,
-      #172d50 53%,
-      #172d50 100%
-    );
-
-  background-size: 260% 100%;
-  background-position: 0% 50%;
-
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .proofWord,
-:global(html[data-theme="light"]) .proofWord,
-:global(html.light) .proofWord,
-:global([data-theme="light"]) .proofWord,
-:global(.light) .proofWord {
-  background:
-    linear-gradient(
-      110deg,
-      #7650d8,
-      #9d73f2 52%,
-      #b88922
-    );
-
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .heading p,
-:global(html[data-theme="light"]) .heading p,
-:global(html.light) .heading p,
-:global([data-theme="light"]) .heading p,
-:global(.light) .heading p {
-  color: #667085;
-
-  background:
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(118, 80, 216, 0.1),
-      transparent 72%
-    );
-
-  text-shadow:
-    0 0 14px rgba(118, 80, 216, 0.1);
-}
-
-/* Light mode */
-
-:global(html:not(.dark):not([data-theme="dark"])) .section,
-:global(html[data-theme="light"]) .section,
-:global([data-theme="light"]) .section,
-:global(.light) .section {
-  color: #182235;
-
-  border-color:
-    rgba(75, 61, 103, 0.14);
-
-  background:
-    radial-gradient(
-      circle at 12% 8%,
-      rgba(222, 212, 244, 0.84),
-      transparent 31%
-    ),
-    radial-gradient(
-      circle at 90% 82%,
-      rgba(212, 175, 55, 0.12),
-      transparent 27%
-    ),
-    linear-gradient(
-      145deg,
-      #f3eefb,
-      #fffaf1 55%,
-      #f7f3ed
-    );
-
-  box-shadow:
-    0 28px 74px rgba(61, 45, 88, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.92);
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .heading p,
-:global(html[data-theme="light"]) .heading p,
-:global([data-theme="light"]) .heading p,
-:global(.light) .heading p {
-  color: #667085;
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .kicker,
-:global(html[data-theme="light"]) .kicker,
-:global([data-theme="light"]) .kicker,
-:global(.light) .kicker {
-  color: #8e6810;
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .traditionalCard,
-:global(html[data-theme="light"]) .traditionalCard,
-:global([data-theme="light"]) .traditionalCard,
-:global(.light) .traditionalCard {
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.traditionalCard,
+:global(html[data-theme="light"])
+.traditionalCard,
+:global(html.light)
+.traditionalCard {
   border-color:
     rgba(75, 61, 103, 0.13);
 
@@ -1314,923 +1324,78 @@
     );
 
   box-shadow:
-    0 21px 56px rgba(61, 45, 88, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.85);
+
+  filter: saturate(0.78);
 }
 
-:global(html:not(.dark):not([data-theme="dark"])) .traditionalCard blockquote,
-:global(html[data-theme="light"]) .traditionalCard blockquote,
-:global([data-theme="light"]) .traditionalCard blockquote,
-:global(.light) .traditionalCard blockquote {
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.traditionalCard:hover,
+:global(html[data-theme="light"])
+.traditionalCard:hover,
+:global(html.light)
+.traditionalCard:hover {
+  box-shadow:
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.92);
+}
+
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.traditionalCard blockquote,
+:global(html[data-theme="light"])
+.traditionalCard blockquote,
+:global(html.light)
+.traditionalCard blockquote {
   color: #657184;
 }
 
-:global(html:not(.dark):not([data-theme="dark"])) .traditionalCard .pointList li,
-:global(html[data-theme="light"]) .traditionalCard .pointList li,
-:global([data-theme="light"]) .traditionalCard .pointList li,
-:global(.light) .traditionalCard .pointList li {
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.traditionalCard .pointList li,
+:global(html[data-theme="light"])
+.traditionalCard .pointList li,
+:global(html.light)
+.traditionalCard .pointList li {
   color: #596579;
 
   border-color:
     rgba(75, 61, 103, 0.1);
 }
 
-/* Keep MentorMe card dark and premium in light mode */
 
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard,
-:global(html[data-theme="light"]) .mentorCard,
-:global([data-theme="light"]) .mentorCard,
-:global(.light) .mentorCard {
-  color: #f7f9fd;
-
-  background:
-    linear-gradient(
-      132deg,
-      rgba(255, 241, 174, 0.16),
-      transparent 31%
-    ),
-    radial-gradient(
-      circle at 84% 10%,
-      rgba(212, 175, 55, 0.16),
-      transparent 36%
-    ),
-    linear-gradient(
-      160deg,
-      #1d385c,
-      #0f2138 61%,
-      #07111e
-    );
-
-  box-shadow:
-    0 28px 72px rgba(61, 45, 88, 0.2),
-    0 0 38px rgba(212, 175, 55, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.traditionalCard .cardHeader h3,
+:global(html[data-theme="light"])
+.traditionalCard .cardHeader h3,
+:global(html.light)
+.traditionalCard .cardHeader h3 {
+  color: #596579;
 }
 
-/* Animations */
-
-
-@keyframes comparisonHeadingGoldWave {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-@keyframes comparisonMomentumBreath {
-  0%,
-  100% {
-    transform: translateY(0) scale(1);
-
-    filter:
-      drop-shadow(
-        0 0 0 rgba(181, 140, 255, 0)
-      );
-  }
-
-  50% {
-    transform: translateY(-2px) scale(1.045);
-
-    filter:
-      drop-shadow(
-        0 8px 18px rgba(143, 92, 247, 0.2)
-      )
-      drop-shadow(
-        0 0 14px rgba(224, 189, 85, 0.14)
-      );
-  }
-}
-
-@keyframes rotateComparisonBorder {
-  to {
-    --comparison-border-angle: 360deg;
-  }
-}
-
-@keyframes mentorIconFloat {
-  0%,
-  100% {
-    transform:
-      translateY(0)
-      rotate(-4deg);
-  }
-
-  50% {
-    transform:
-      translateY(-6px)
-      rotate(3deg);
-  }
-}
-
-@keyframes mentorStepPulse {
-  0%,
-  100% {
-    filter: brightness(1);
-    transform: translateY(0);
-  }
-
-  50% {
-    filter: brightness(1.08);
-    transform: translateY(-2px);
-  }
-}
-
-@keyframes proofProgressGlow {
-  0%,
-  100% {
-    filter: brightness(1);
-  }
-
-  50% {
-    filter:
-      brightness(1.16)
-      drop-shadow(
-        0 0 8px
-        rgba(244, 223, 131, 0.35)
-      );
-  }
-}
-
-@keyframes watchTimeDrift {
-  0%,
-  100% {
-    width: 68%;
-  }
-
-  50% {
-    width: 78%;
-  }
-}
-
-@keyframes traditionalScan {
-  to {
-    transform: translateY(18px);
-  }
-}
-
-@keyframes mentorOrbitSpin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes vsPulse {
-  0%,
-  100% {
-    box-shadow:
-      0 18px 38px rgba(0, 0, 0, 0.38),
-      0 0 24px rgba(212, 175, 55, 0.14),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-
-  50% {
-    box-shadow:
-      0 18px 38px rgba(0, 0, 0, 0.38),
-      0 0 42px rgba(212, 175, 55, 0.28),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-}
-
-@keyframes vsRingSpin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Responsive */
-
-@media (max-width: 1100px) {
-  .heading {
-    grid-template-columns: 1fr;
-    gap: 22px;
-  }
-
-  .heading p {
-    max-width: 720px;
-  }
-
-  .comparisonGrid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .vsColumn {
-    min-height: 74px;
-  }
-
-  .vsLine {
-    width: auto;
-    height: 1px;
-
-    left: 20px;
-    right: 20px;
-    top: 50%;
-    bottom: auto;
-
-    background:
-      linear-gradient(
-        90deg,
-        transparent,
-        rgba(212, 175, 55, 0.42),
-        transparent
-      );
-  }
-
-  .vsColumn small {
-    display: none;
-  }
-}
-
-@media (max-width: 700px) {
-  .section {
-    width: calc(100% - 20px);
-    margin-top: 70px;
-    padding: 42px 18px 26px;
-    border-radius: 26px;
-  }
-
-  .heading h2 {
-    font-size:
-      clamp(2.7rem, 12vw, 4rem);
-  }
-
-  .traditionalCard,
-  .mentorCard {
-    min-height: auto;
-    padding: 28px 22px;
-    border-radius: 24px;
-  }
-
-  .traditionalCard blockquote,
-  .mentorCard blockquote {
-    margin:
-      48px 0 28px;
-
-    font-size:
-      clamp(1.65rem, 8vw, 2.4rem);
-  }
-
-  .proofStats {
-    grid-template-columns: 1fr;
-  }
-
-  .outcomeBadge {
-    border-radius: 17px;
-  }
-
-  .brokenPath {
-    display: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animatedBorder,
-  .mentorShine,
-  .mentorIcon,
-  .mentorFlow > div > span,
-  .proofTrack i,
-  .traditionalTrack i,
-  .traditionalNoise,
-  .mentorOrbit,
-  .vsBadge,
-  .vsBadge::before {
-    animation: none;
-  }
-
-  .traditionalCard,
-  .mentorCard {
-    transition: none;
-  }
-}
-
-/* =========================================================
-   EXTRA-COMPACT COMPARISON LAYOUT
-   ========================================================= */
-
-.section {
-  padding:
-    clamp(32px, 3.8vw, 54px);
-}
-
-.comparisonGrid {
-  margin-top: 34px;
-}
-
-.traditionalCard,
-.mentorCard {
-  min-height: 0;
-  padding:
-    clamp(24px, 2.7vw, 36px);
-}
-
-/* Compact card headings */
-.cardHeader h3 {
-  font-size:
-    clamp(1.15rem, 1.6vw, 1.45rem);
-}
-
-.traditionalIcon,
-.mentorIcon {
-  width: 46px;
-  height: 46px;
-}
-
-/* Reduce quote area */
-.traditionalCard blockquote,
-.mentorCard blockquote {
-  margin:
-    clamp(30px, 3.6vw, 44px)
-    0
-    20px;
-
-  font-size:
-    clamp(1.55rem, 2.15vw, 2.35rem);
-
-  line-height: 1.08;
-}
-
-/* Tighten both flows */
-.traditionalFlow,
-.mentorFlow {
-  margin-bottom: 16px;
-}
-
-.traditionalFlow span,
-.mentorFlow > div > span {
-  padding: 7px 9px;
-}
-
-/* Traditional meter */
-.traditionalMeter {
-  padding: 12px 14px;
-}
-
-.traditionalTrack {
-  margin-top: 8px;
-}
-
-/* Mentor proof panel */
-.proofPanel {
-  padding: 13px 15px;
-}
-
-.proofTrack {
-  height: 6px;
-  margin-top: 10px;
-}
-
-.proofStats {
-  margin-top: 11px;
-  gap: 6px;
-}
-
-.proofStats span {
-  padding: 8px 7px;
-}
-
-.proofStats b {
-  font-size: 0.78rem;
-}
-
-/* Compact feature lists */
-.pointList {
-  margin-top: 17px;
-}
-
-.pointList li {
-  min-height: 40px;
-  padding: 9px 0;
-
-  font-size: 0.7rem;
-}
-
-/* Compact outcome badge */
-.outcomeBadge {
-  margin-top: 13px;
-  padding: 9px 12px;
-}
-
-.outcomeBadge span {
-  font-size: 0.51rem;
-}
-
-/* Reduce decorative footprint */
-.mentorOrbit {
-  width: 300px;
-  height: 300px;
-
-  right: -125px;
-  bottom: -145px;
-}
-
-.brokenPath {
-  bottom: 12px;
-}
-
-/* Smaller center separator */
-.vsColumn {
-  gap: 9px;
-}
-
-.vsBadge {
-  width: 52px;
-  height: 52px;
-}
-
-/* Tablet */
-@media (max-width: 1100px) {
-  .vsColumn {
-    min-height: 62px;
-  }
-}
-
-/* Mobile */
-@media (max-width: 700px) {
-  .section {
-    padding:
-      34px 16px 22px;
-  }
-
-  .comparisonGrid {
-    margin-top: 28px;
-  }
-
-  .traditionalCard,
-  .mentorCard {
-    padding:
-      24px 19px;
-  }
-
-  .traditionalCard blockquote,
-  .mentorCard blockquote {
-    margin:
-      32px 0 20px;
-
-    font-size:
-      clamp(1.5rem, 7vw, 2rem);
-  }
-
-  .pointList li {
-    min-height: 38px;
-    padding: 8px 0;
-  }
-
-  .proofStats {
-    grid-template-columns:
-      repeat(3, 1fr);
-  }
-}
 
 /* =========================================================
    LIGHT MODE — MENTORME CARD
-   Premium cream + champagne-gold styling
-   Dark mode remains unchanged.
    ========================================================= */
 
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard,
-:global(html[data-theme="light"]) .mentorCard,
-:global([data-theme="light"]) .mentorCard,
-:global(.light) .mentorCard {
-  color: #20283a;
-
-  border-color: transparent;
-
-  background:
-    radial-gradient(
-      circle at 15% 8%,
-      rgba(255, 255, 255, 0.96),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 86% 88%,
-      rgba(186, 121, 8, 0.26),
-      transparent 37%
-    ),
-    linear-gradient(
-      145deg,
-      #fffdf6 0%,
-      #fff5d8 36%,
-      #f3d77f 68%,
-      #d49b20 100%
-    );
-
-  box-shadow:
-    0 34px 78px rgba(126, 78, 5, 0.22),
-    0 0 42px rgba(212, 175, 55, 0.2),
-    0 0 90px rgba(123, 88, 156, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 1),
-    inset -24px -30px 48px rgba(128, 76, 3, 0.09);
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard:hover,
-:global(html[data-theme="light"]) .mentorCard:hover,
-:global([data-theme="light"]) .mentorCard:hover,
-:global(.light) .mentorCard:hover {
-  box-shadow:
-    0 44px 96px rgba(126, 78, 5, 0.3),
-    0 0 60px rgba(212, 175, 55, 0.28),
-    0 0 112px rgba(123, 88, 156, 0.17),
-    inset 0 1px 0 rgba(255, 255, 255, 1);
-}
-
-/* Stronger rotating gold border */
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .animatedBorder,
-:global(html[data-theme="light"]) .mentorCard .animatedBorder,
-:global([data-theme="light"]) .mentorCard .animatedBorder,
-:global(.light) .mentorCard .animatedBorder {
-  padding: 2px;
-
-  background:
-    conic-gradient(
-      from var(--comparison-border-angle),
-      #744503,
-      #b87508,
-      #e9bd38,
-      #fff1a4,
-      #d4af37,
-      #8a5606,
-      #f6df78,
-      #744503
-    );
-
-  filter:
-    drop-shadow(
-      0 0 9px rgba(177, 111, 6, 0.34)
-    )
-    drop-shadow(
-      0 0 22px rgba(212, 175, 55, 0.16)
-    );
-}
-
-/* Warm cream shine */
-:global(html:not(.dark):not([data-theme="dark"])) .mentorShine,
-:global(html[data-theme="light"]) .mentorShine,
-:global([data-theme="light"]) .mentorShine,
-:global(.light) .mentorShine {
-  background:
-    linear-gradient(
-      110deg,
-      transparent 34%,
-      rgba(255, 255, 255, 0.7) 48%,
-      rgba(255, 238, 170, 0.24) 52%,
-      transparent 64%
-    );
-}
-
-/* Header */
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .mentorEyebrow,
-:global(html[data-theme="light"]) .mentorCard .mentorEyebrow,
-:global([data-theme="light"]) .mentorCard .mentorEyebrow,
-:global(.light) .mentorCard .mentorEyebrow {
-  color: #7d5207;
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .cardHeader h3,
-:global(html[data-theme="light"]) .mentorCard .cardHeader h3,
-:global([data-theme="light"]) .mentorCard .cardHeader h3,
-:global(.light) .mentorCard .cardHeader h3 {
-  color: #20283a;
-}
-
-/* Gold icon tile */
-:global(html:not(.dark):not([data-theme="dark"])) .mentorIcon,
-:global(html[data-theme="light"]) .mentorIcon,
-:global([data-theme="light"]) .mentorIcon,
-:global(.light) .mentorIcon {
-  color: #4e3102;
-
-  border-color:
-    rgba(126, 76, 3, 0.42);
-
-  background:
-    radial-gradient(
-      circle at 24% 18%,
-      rgba(255, 255, 255, 0.98),
-      transparent 34%
-    ),
-    linear-gradient(
-      145deg,
-      #fff7cf 0%,
-      #efd06b 48%,
-      #c4870d 100%
-    );
-
-  box-shadow:
-    7px 9px 0 rgba(95, 56, 2, 0.12),
-    0 19px 34px rgba(111, 67, 3, 0.23),
-    0 0 30px rgba(212, 175, 55, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 1);
-}
-
-/* Quote */
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard blockquote,
-:global(html[data-theme="light"]) .mentorCard blockquote,
-:global([data-theme="light"]) .mentorCard blockquote,
-:global(.light) .mentorCard blockquote {
-  color: #222b3e;
-
-  text-shadow:
-    0 2px 0 rgba(255, 255, 255, 0.52);
-}
-
-/* Mentor flow steps */
-:global(html:not(.dark):not([data-theme="dark"])) .mentorFlow > div > span,
-:global(html[data-theme="light"]) .mentorFlow > div > span,
-:global([data-theme="light"]) .mentorFlow > div > span,
-:global(.light) .mentorFlow > div > span {
-  color: #3d2702;
-
-  border-color:
-    rgba(128, 79, 4, 0.38);
-
-  background:
-    linear-gradient(
-      135deg,
-      #fff0a1,
-      #e5ba38 58%,
-      #bd7d0b
-    );
-
-  box-shadow:
-    0 8px 19px rgba(111, 67, 3, 0.17),
-    inset 0 1px 0 rgba(255, 255, 255, 0.68);
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .mentorFlow svg,
-:global(html[data-theme="light"]) .mentorFlow svg,
-:global([data-theme="light"]) .mentorFlow svg,
-:global(.light) .mentorFlow svg {
-  color: #8c6f39;
-}
-
-/* Proof panel */
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .proofPanel,
-:global(html[data-theme="light"]) .mentorCard .proofPanel,
-:global([data-theme="light"]) .mentorCard .proofPanel,
-:global(.light) .mentorCard .proofPanel {
-  border-color:
-    rgba(130, 79, 3, 0.24);
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.82),
-      rgba(255, 240, 194, 0.72)
-    );
-
-  box-shadow:
-    0 13px 28px rgba(111, 67, 3, 0.11),
-    inset 0 1px 0 rgba(255, 255, 255, 0.96);
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .proofTop > div,
-:global(html[data-theme="light"]) .mentorCard .proofTop > div,
-:global([data-theme="light"]) .mentorCard .proofTop > div,
-:global(.light) .mentorCard .proofTop > div {
-  color: #a16c0b;
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .proofTop span,
-:global(html[data-theme="light"]) .mentorCard .proofTop span,
-:global([data-theme="light"]) .mentorCard .proofTop span,
-:global(.light) .mentorCard .proofTop span {
-  color: #6f6876;
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .proofTop strong,
-:global(html[data-theme="light"]) .mentorCard .proofTop strong,
-:global([data-theme="light"]) .mentorCard .proofTop strong,
-:global(.light) .mentorCard .proofTop strong {
-  color: #805005;
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .proofTrack,
-:global(html[data-theme="light"]) .mentorCard .proofTrack,
-:global([data-theme="light"]) .mentorCard .proofTrack,
-:global(.light) .mentorCard .proofTrack {
-  background:
-    rgba(93, 68, 111, 0.14);
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .proofStats span,
-:global(html[data-theme="light"]) .mentorCard .proofStats span,
-:global([data-theme="light"]) .mentorCard .proofStats span,
-:global(.light) .mentorCard .proofStats span {
-  color: #6f6878;
-
-  border-color:
-    rgba(113, 76, 16, 0.14);
-
-  background:
-    rgba(255, 255, 255, 0.52);
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .proofStats b,
-:global(html[data-theme="light"]) .mentorCard .proofStats b,
-:global([data-theme="light"]) .mentorCard .proofStats b,
-:global(.light) .mentorCard .proofStats b {
-  color: #875708;
-}
-
-/* Feature list */
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .pointList li,
-:global(html[data-theme="light"]) .mentorCard .pointList li,
-:global([data-theme="light"]) .mentorCard .pointList li,
-:global(.light) .mentorCard .pointList li {
-  color: #545f72;
-
-  border-color:
-    rgba(116, 76, 15, 0.14);
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .checkIcon,
-:global(html[data-theme="light"]) .mentorCard .checkIcon,
-:global([data-theme="light"]) .mentorCard .checkIcon,
-:global(.light) .mentorCard .checkIcon {
-  color: #a66e09;
-
-  filter:
-    drop-shadow(
-      0 0 8px rgba(212, 175, 55, 0.18)
-    );
-}
-
-/* Outcome badge */
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .outcomeBadge,
-:global(html[data-theme="light"]) .mentorCard .outcomeBadge,
-:global([data-theme="light"]) .mentorCard .outcomeBadge,
-:global(.light) .mentorCard .outcomeBadge {
-  color: #8d5c07;
-
-  border-color:
-    rgba(126, 76, 3, 0.22);
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.62),
-      rgba(245, 221, 145, 0.56)
-    );
-
-  box-shadow:
-    0 9px 20px rgba(111, 67, 3, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.86);
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .outcomeBadge span,
-:global(html[data-theme="light"]) .mentorCard .outcomeBadge span,
-:global([data-theme="light"]) .mentorCard .outcomeBadge span,
-:global(.light) .mentorCard .outcomeBadge span {
-  color: #5d6676;
-}
-
-/* Light decorative orbit */
-:global(html:not(.dark):not([data-theme="dark"])) .mentorOrbit,
-:global(html[data-theme="light"]) .mentorOrbit,
-:global([data-theme="light"]) .mentorOrbit,
-:global(.light) .mentorOrbit {
-  border-color:
-    rgba(145, 91, 5, 0.16);
-
-  box-shadow:
-    0 0 0 46px rgba(212, 175, 55, 0.034),
-    0 0 0 92px rgba(212, 175, 55, 0.02);
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .mentorOrbit i,
-:global(html[data-theme="light"]) .mentorOrbit i,
-:global([data-theme="light"]) .mentorOrbit i,
-:global(.light) .mentorOrbit i {
-  background: #c98a10;
-
-  box-shadow:
-    0 0 0 5px rgba(212, 175, 55, 0.1),
-    0 0 15px rgba(173, 108, 6, 0.4);
-}
-
-/* =========================================================
-   FULL-BLEED / FULL-SCREEN COURSE COMPARISON SECTION
-   Removes the outer rounded container appearance.
-   ========================================================= */
-
-.section {
-  width: 100%;
-  max-width: none;
-  min-height: 100svh;
-
-  margin: 0;
-
-  padding:
-    clamp(52px, 5.5vw, 92px)
-    clamp(24px, 5.5vw, 104px);
-
-  border: 0;
-  border-radius: 0;
-
-  box-shadow: none;
-}
-
-.section::before {
-  border-radius: 0;
-}
-
-/* Keep the content aligned and readable on wide screens */
-.heading,
-.comparisonGrid {
-  width: 100%;
-  max-width: 1600px;
-  margin-inline: auto;
-}
-
-.comparisonGrid {
-  margin-top: 34px;
-}
-
-/* Light mode must also remain borderless and full width */
-:global(html:not(.dark):not([data-theme="dark"])) .section,
-:global(html[data-theme="light"]) .section,
-:global([data-theme="light"]) .section,
-:global(.light) .section {
-  width: 100%;
-  max-width: none;
-
-  margin: 0;
-
-  border: 0;
-  border-radius: 0;
-
-  box-shadow: none;
-}
-
-/* Large desktop spacing */
-@media (min-width: 1500px) {
-  .section {
-    padding-inline:
-      clamp(80px, 7vw, 150px);
-  }
-}
-
-/* Tablet */
-@media (max-width: 1100px) {
-  .section {
-    width: 100%;
-    min-height: auto;
-
-    margin: 0;
-
-    padding:
-      56px
-      clamp(24px, 5vw, 58px);
-
-    border: 0;
-    border-radius: 0;
-
-    box-shadow: none;
-  }
-
-  .comparisonGrid {
-    margin-top: 30px;
-  }
-}
-
-/* Mobile */
-@media (max-width: 700px) {
-  .section {
-    width: 100%;
-    min-height: auto;
-
-    margin: 0;
-
-    padding:
-      42px
-      17px
-      28px;
-
-    border: 0;
-    border-radius: 0;
-
-    box-shadow: none;
-  }
-
-  .comparisonGrid {
-    margin-top: 26px;
-  }
-}
-
-/* =========================================================
-   LIGHT MODE — PURPLE + CREAM MENTORME CARD
-   Replaces the heavy gold card surface while retaining
-   metallic-gold borders, icons and important accents.
-   ========================================================= */
-
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard,
-:global(html[data-theme="light"]) .mentorCard,
-:global([data-theme="light"]) .mentorCard,
-:global(.light) .mentorCard {
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.mentorCard,
+:global(html[data-theme="light"])
+.mentorCard,
+:global(html.light)
+.mentorCard {
   color: #20283a;
 
   border-color: transparent;
@@ -2256,63 +1421,116 @@
     );
 
   box-shadow:
-    0 34px 82px rgba(76, 48, 108, 0.22),
-    0 0 42px rgba(175, 141, 213, 0.17),
-    0 0 46px rgba(212, 175, 55, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 1),
-    inset -24px -30px 48px rgba(171, 139, 87, 0.045);
+    inset 0 1px 0 #ffffff,
+    inset -24px -30px 48px
+      rgba(171, 139, 87, 0.045);
 }
 
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard:hover,
-:global(html[data-theme="light"]) .mentorCard:hover,
-:global([data-theme="light"]) .mentorCard:hover,
-:global(.light) .mentorCard:hover {
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.mentorCard:hover,
+:global(html[data-theme="light"])
+.mentorCard:hover,
+:global(html.light)
+.mentorCard:hover {
   box-shadow:
-    0 44px 100px rgba(76, 48, 108, 0.29),
-    0 0 58px rgba(175, 141, 213, 0.23),
-    0 0 54px rgba(212, 175, 55, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 1);
+    inset 0 1px 0 #ffffff,
+    inset -24px -30px 48px
+      rgba(171, 139, 87, 0.05);
 }
 
-/* Softer purple-and-cream shine */
-:global(html:not(.dark):not([data-theme="dark"])) .mentorShine,
-:global(html[data-theme="light"]) .mentorShine,
-:global([data-theme="light"]) .mentorShine,
-:global(.light) .mentorShine {
-  background:
-    linear-gradient(
-      110deg,
-      transparent 34%,
-      rgba(255, 255, 255, 0.74) 47%,
-      rgba(226, 207, 247, 0.34) 52%,
-      transparent 65%
-    );
-}
 
-/* Header remains dark and readable */
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .mentorEyebrow,
-:global(html[data-theme="light"]) .mentorCard .mentorEyebrow,
-:global([data-theme="light"]) .mentorCard .mentorEyebrow,
-:global(.light) .mentorCard .mentorEyebrow {
+/* =========================================================
+   LIGHT MODE — MENTORME HEADER
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.mentorEyebrow,
+:global(html[data-theme="light"])
+.mentorEyebrow,
+:global(html.light)
+.mentorEyebrow {
   color: #865f12;
 }
 
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .cardHeader h3,
-:global(html[data-theme="light"]) .mentorCard .cardHeader h3,
-:global([data-theme="light"]) .mentorCard .cardHeader h3,
-:global(.light) .mentorCard .cardHeader h3,
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard blockquote,
-:global(html[data-theme="light"]) .mentorCard blockquote,
-:global([data-theme="light"]) .mentorCard blockquote,
-:global(.light) .mentorCard blockquote {
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.mentorCard .cardHeader h3,
+:global(html[data-theme="light"])
+.mentorCard .cardHeader h3,
+:global(html.light)
+.mentorCard .cardHeader h3,
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.mentorCard blockquote,
+:global(html[data-theme="light"])
+.mentorCard blockquote,
+:global(html.light)
+.mentorCard blockquote {
   color: #20283a;
 }
 
-/* Flow chips remain gold but less saturated */
-:global(html:not(.dark):not([data-theme="dark"])) .mentorFlow > div > span,
-:global(html[data-theme="light"]) .mentorFlow > div > span,
-:global([data-theme="light"]) .mentorFlow > div > span,
-:global(.light) .mentorFlow > div > span {
+
+/* =========================================================
+   LIGHT MODE — MENTOR ICON
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.mentorIcon,
+:global(html[data-theme="light"])
+.mentorIcon,
+:global(html.light)
+.mentorIcon {
+  color: #4e3102;
+
+  border-color:
+    rgba(126, 76, 3, 0.42);
+
+  background:
+    radial-gradient(
+      circle at 24% 18%,
+      rgba(255, 255, 255, 0.98),
+      transparent 34%
+    ),
+    linear-gradient(
+      145deg,
+      #fff7cf 0%,
+      #efd06b 48%,
+      #c4870d 100%
+    );
+
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    7px 9px 0
+      rgba(95, 56, 2, 0.12),
+    0 19px 34px
+      rgba(111, 67, 3, 0.23),
+    0 0 30px
+      rgba(212, 175, 55, 0.2);
+}
+
+
+/* =========================================================
+   LIGHT MODE — FLOW
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.mentorFlow > div > span,
+:global(html[data-theme="light"])
+.mentorFlow > div > span,
+:global(html.light)
+.mentorFlow > div > span {
   color: #3f2a05;
 
   border-color:
@@ -2327,15 +1545,37 @@
     );
 
   box-shadow:
-    0 8px 18px rgba(99, 61, 4, 0.13),
-    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.72),
+    0 8px 18px
+      rgba(99, 61, 4, 0.13);
 }
 
-/* Proof panel becomes cream with a slight lavender cast */
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .proofPanel,
-:global(html[data-theme="light"]) .mentorCard .proofPanel,
-:global([data-theme="light"]) .mentorCard .proofPanel,
-:global(.light) .mentorCard .proofPanel {
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.mentorFlow svg,
+:global(html[data-theme="light"])
+.mentorFlow svg,
+:global(html.light)
+.mentorFlow svg {
+  color: #8c6f39;
+}
+
+
+/* =========================================================
+   LIGHT MODE — PROOF PANEL
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.proofPanel,
+:global(html[data-theme="light"])
+.proofPanel,
+:global(html.light)
+.proofPanel {
   border-color:
     rgba(123, 91, 145, 0.18);
 
@@ -2352,15 +1592,70 @@
     );
 
   box-shadow:
-    0 13px 30px rgba(76, 48, 108, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.98);
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.98),
+    0 13px 30px
+      rgba(76, 48, 108, 0.1);
 }
 
-/* Proof stat boxes */
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .proofStats span,
-:global(html[data-theme="light"]) .mentorCard .proofStats span,
-:global([data-theme="light"]) .mentorCard .proofStats span,
-:global(.light) .mentorCard .proofStats span {
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.proofTop > div,
+:global(html[data-theme="light"])
+.proofTop > div,
+:global(html.light)
+.proofTop > div {
+  color: #97650d;
+}
+
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.proofTop span,
+:global(html[data-theme="light"])
+.proofTop span,
+:global(html.light)
+.proofTop span {
+  color: #6f6876;
+}
+
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.proofTop strong,
+:global(html[data-theme="light"])
+.proofTop strong,
+:global(html.light)
+.proofTop strong {
+  color: #805005;
+}
+
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.proofTrack,
+:global(html[data-theme="light"])
+.proofTrack,
+:global(html.light)
+.proofTrack {
+  background:
+    rgba(93, 68, 111, 0.14);
+}
+
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.proofStats span,
+:global(html[data-theme="light"])
+.proofStats span,
+:global(html.light)
+.proofStats span {
   color: #655f70;
 
   border-color:
@@ -2374,22 +1669,62 @@
     );
 }
 
-/* Feature list separators become purple-neutral */
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .pointList li,
-:global(html[data-theme="light"]) .mentorCard .pointList li,
-:global([data-theme="light"]) .mentorCard .pointList li,
-:global(.light) .mentorCard .pointList li {
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.proofStats b,
+:global(html[data-theme="light"])
+.proofStats b,
+:global(html.light)
+.proofStats b {
+  color: #875708;
+}
+
+
+/* =========================================================
+   LIGHT MODE — MENTOR LIST
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.mentorCard .pointList li,
+:global(html[data-theme="light"])
+.mentorCard .pointList li,
+:global(html.light)
+.mentorCard .pointList li {
   color: #566174;
 
   border-color:
     rgba(103, 77, 127, 0.13);
 }
 
-/* Outcome badge uses cream and purple instead of gold fill */
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard .outcomeBadge,
-:global(html[data-theme="light"]) .mentorCard .outcomeBadge,
-:global([data-theme="light"]) .mentorCard .outcomeBadge,
-:global(.light) .mentorCard .outcomeBadge {
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.checkIcon,
+:global(html[data-theme="light"])
+.checkIcon,
+:global(html.light)
+.checkIcon {
+  color: #a66e09;
+}
+
+
+/* =========================================================
+   LIGHT MODE — OUTCOME BADGE
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.outcomeBadge,
+:global(html[data-theme="light"])
+.outcomeBadge,
+:global(html.light)
+.outcomeBadge {
   color: #8a6212;
 
   border-color:
@@ -2403,462 +1738,497 @@
     );
 
   box-shadow:
-    0 9px 22px rgba(76, 48, 108, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.92),
+    0 9px 22px
+      rgba(76, 48, 108, 0.08);
 }
 
-/* Orbit becomes cream-purple, with gold nodes retained */
-:global(html:not(.dark):not([data-theme="dark"])) .mentorOrbit,
-:global(html[data-theme="light"]) .mentorOrbit,
-:global([data-theme="light"]) .mentorOrbit,
-:global(.light) .mentorOrbit {
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.outcomeBadge span,
+:global(html[data-theme="light"])
+.outcomeBadge span,
+:global(html.light)
+.outcomeBadge span {
+  color: #5d6676;
+}
+
+
+/* =========================================================
+   LIGHT MODE — ORBIT
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.mentorOrbit,
+:global(html[data-theme="light"])
+.mentorOrbit,
+:global(html.light)
+.mentorOrbit {
   border-color:
     rgba(128, 96, 154, 0.16);
 
   box-shadow:
-    0 0 0 46px rgba(226, 211, 242, 0.07),
-    0 0 0 92px rgba(249, 240, 220, 0.05);
+    0 0 0 46px
+      rgba(226, 211, 242, 0.07),
+    0 0 0 92px
+      rgba(249, 240, 220, 0.05);
 }
+
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.mentorOrbit i,
+:global(html[data-theme="light"])
+.mentorOrbit i,
+:global(html.light)
+.mentorOrbit i {
+  background: #c98a10;
+
+  box-shadow:
+    0 0 0 5px
+      rgba(212, 175, 55, 0.1),
+    0 0 15px
+      rgba(173, 108, 6, 0.4);
+}
+
 
 /* =========================================================
-   COURSE COMPARISON SECTION — USE SHARED COURSES BACKGROUND
-   Removes only the component-level outer background layers.
-   Cards, VS badge, animations, proof panels and interactions
-   remain unchanged.
+   LIGHT MODE — ROTATING BORDER
    ========================================================= */
 
-.section {
-  background: transparent;
-  box-shadow: none;
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.animatedBorder,
+:global(html[data-theme="light"])
+.animatedBorder,
+:global(html.light)
+.animatedBorder {
+  padding: 2px;
+
+  background:
+    conic-gradient(
+      from var(--comparison-border-angle),
+      #744503,
+      #b87508,
+      #e9bd38,
+      #fff1a4,
+      #d4af37,
+      #8a5606,
+      #f6df78,
+      #744503
+    );
+
+  filter:
+    drop-shadow(
+      0 0 9px
+      rgba(177, 111, 6, 0.34)
+    )
+    drop-shadow(
+      0 0 22px
+      rgba(212, 175, 55, 0.16)
+    );
 }
 
-.section::before {
-  content: none;
-  background: none;
-  background-image: none;
-}
-
-.ambientOne,
-.ambientTwo {
-  display: none;
-}
-
-/* Light mode */
-:global(html:not(.dark):not([data-theme="dark"])) .section,
-:global(html[data-theme="light"]) .section,
-:global([data-theme="light"]) .section,
-:global(.light) .section {
-  background: transparent;
-  box-shadow: none;
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .section::before,
-:global(html[data-theme="light"]) .section::before,
-:global([data-theme="light"]) .section::before,
-:global(.light) .section::before {
-  content: none;
-  background: none;
-  background-image: none;
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .ambientOne,
-:global(html:not(.dark):not([data-theme="dark"])) .ambientTwo,
-:global(html[data-theme="light"]) .ambientOne,
-:global(html[data-theme="light"]) .ambientTwo,
-:global([data-theme="light"]) .ambientOne,
-:global([data-theme="light"]) .ambientTwo,
-:global(.light) .ambientOne,
-:global(.light) .ambientTwo {
-  display: none;
-}
 
 /* =========================================================
-   FINAL COMPARISON HEADING + SECTION FIXES
+   LIGHT MODE — MENTOR SHINE
    ========================================================= */
 
-.heading,
-.heading > div,
-.heading h2,
-.headingLine,
-.headingLineSecondary,
-.headingWave,
-.proofWord {
-  overflow: visible;
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.mentorShine,
+:global(html[data-theme="light"])
+.mentorShine,
+:global(html.light)
+.mentorShine {
+  background:
+    linear-gradient(
+      110deg,
+      transparent 34%,
+      rgba(255, 255, 255, 0.74) 47%,
+      rgba(226, 207, 247, 0.34) 52%,
+      transparent 65%
+    );
 }
 
-/* Keep the component on the shared Courses page background */
-.section {
-  background: transparent !important;
-  background-image: none !important;
 
-  border: 0 !important;
-  box-shadow: none !important;
-  filter: none !important;
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes rotateComparisonBorder {
+  to {
+    --comparison-border-angle: 360deg;
+  }
 }
 
-.section::before,
-.section::after {
-  content: none !important;
-  display: none !important;
 
-  background: none !important;
-  background-image: none !important;
+@keyframes mentorIconFloat {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(-4deg);
+  }
 
-  box-shadow: none !important;
-  filter: none !important;
+  50% {
+    transform:
+      translateY(-6px)
+      rotate(3deg);
+  }
 }
 
-.ambientOne,
-.ambientTwo {
-  display: none !important;
+
+@keyframes mentorStepPulse {
+  0%,
+  100% {
+    filter: brightness(1);
+
+    transform: translateY(0);
+  }
+
+  50% {
+    filter: brightness(1.08);
+
+    transform: translateY(-2px);
+  }
 }
 
-/* Prevent light-mode card shadows from spilling into the next section */
-:global(html:not(.dark):not([data-theme="dark"])) .traditionalCard,
-:global(html[data-theme="light"]) .traditionalCard,
-:global(html.light) .traditionalCard,
-:global([data-theme="light"]) .traditionalCard,
-:global(.light) .traditionalCard {
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.85) !important;
+
+@keyframes proofProgressGlow {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+
+  50% {
+    filter:
+      brightness(1.16)
+      drop-shadow(
+        0 0 8px
+        rgba(244, 223, 131, 0.35)
+      );
+  }
 }
 
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard,
-:global(html[data-theme="light"]) .mentorCard,
-:global(html.light) .mentorCard,
-:global([data-theme="light"]) .mentorCard,
-:global(.light) .mentorCard {
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 1),
-    inset -24px -30px 48px rgba(171, 139, 87, 0.045) !important;
+
+@keyframes watchTimeDrift {
+  0%,
+  100% {
+    width: 68%;
+  }
+
+  50% {
+    width: 78%;
+  }
 }
 
-:global(html:not(.dark):not([data-theme="dark"])) .traditionalCard:hover,
-:global(html[data-theme="light"]) .traditionalCard:hover,
-:global(html.light) .traditionalCard:hover,
-:global([data-theme="light"]) .traditionalCard:hover,
-:global(.light) .traditionalCard:hover {
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+
+@keyframes traditionalScan {
+  to {
+    transform: translateY(18px);
+  }
 }
 
-:global(html:not(.dark):not([data-theme="dark"])) .mentorCard:hover,
-:global(html[data-theme="light"]) .mentorCard:hover,
-:global(html.light) .mentorCard:hover,
-:global([data-theme="light"]) .mentorCard:hover,
-:global(.light) .mentorCard:hover {
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 1),
-    inset -24px -30px 48px rgba(171, 139, 87, 0.05) !important;
+
+@keyframes mentorOrbitSpin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.comparisonGrid {
-  filter: none !important;
+
+@keyframes vsPulse {
+  0%,
+  100% {
+    box-shadow:
+      inset 0 1px 0
+        rgba(255, 255, 255, 0.1),
+      0 18px 38px
+        rgba(0, 0, 0, 0.38),
+      0 0 24px
+        rgba(212, 175, 55, 0.14);
+  }
+
+  50% {
+    box-shadow:
+      inset 0 1px 0
+        rgba(255, 255, 255, 0.1),
+      0 18px 38px
+        rgba(0, 0, 0, 0.38),
+      0 0 42px
+        rgba(212, 175, 55, 0.28);
+  }
 }
+
+
+@keyframes vsRingSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
 
 @media (max-width: 1100px) {
-  .headingLine {
-    white-space: normal;
+  .section {
+    min-height: auto;
+
+    padding:
+      56px
+      clamp(24px, 5vw, 58px);
   }
 
-  .heading p {
-    max-width: 720px;
+
+  .comparisonGrid {
+    margin-top: 36px;
+
+    grid-template-columns: 1fr;
+
+    gap: 18px;
   }
-}
-
-@media (max-width: 700px) {
-  .headingLine {
-    white-space: normal;
-  }
-
-  .headingLinePrimary {
-    font-size:
-      clamp(2.45rem, 11vw, 3.7rem);
-  }
-
-  .headingLineSecondary {
-    margin-top: 8px;
-
-    font-size:
-      clamp(2.1rem, 9.5vw, 3.25rem);
-  }
-
-  .heading p {
-    max-width: 100%;
-    padding: 10px 0;
-
-    font-size: 0.87rem;
-
-    background: none;
-    text-shadow: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .headingWave,
-  .proofWord {
-    animation: none;
-  }
-}
-
-/* =========================================================
-   FINAL SHARED COURSE HEADER
-   Uses the same heading class language as FeaturedTrack:
-   hj-main-heading / hj-heading-wave / seen-word
-   ========================================================= */
-
-.heading {
-  width: 100%;
-  max-width: 1600px;
-  margin-inline: auto;
-
-  display: grid;
+.comparisonHeading {
   grid-template-columns:
     minmax(0, 1.2fr)
-    minmax(300px, 0.55fr);
+    minmax(260px, 0.8fr);
 
-  align-items: end;
-  gap: clamp(38px, 5vw, 72px);
-
-  overflow: visible;
-  text-align: left;
+  gap: 30px;
 }
 
-.headingMain {
-  width: 100%;
-  min-width: 0;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  overflow: visible;
-  text-align: left;
+.comparisonDescription {
+  max-width: 420px !important;
 }
 
-.heading h2 {
-  width: 100%;
-  max-width: 980px;
+  .vsColumn {
+    min-height: 62px;
+  }
 
-  margin: 16px 0 0;
-  padding: 0 0 0.18em;
 
-  overflow: visible;
+  .vsLine {
+    width: auto;
+    height: 1px;
 
-  line-height: 0.96;
-  letter-spacing: -0.052em;
-  text-align: left;
-}
+    left: 20px;
+    right: 20px;
 
-.headingLine {
-  display: block;
-  width: 100%;
+    top: 50%;
+    bottom: auto;
 
-  overflow: visible;
-
-  text-align: left;
-  white-space: nowrap;
-}
-
-/*
-  Exactly equivalent to:
-  text-4xl xl:text-6xl
-*/
-.headingLineSecondary {
-  margin-top: 10px;
-  padding-bottom: 0.16em;
-
-  overflow: visible;
-
-  font-size: 2.25rem !important;
-  line-height: 1.18;
-
-  text-align: left;
-}
-
-.headingLineSecondary :global(.hj-main-heading),
-.headingLineSecondary :global(.hj-heading-wave),
-.headingLineSecondary :global(.seen-word) {
-  font-size: inherit !important;
-}
-
-.headingAside {
-  width: 100%;
-  min-width: 0;
-
-  margin: 0 !important;
-  padding: 0 !important;
-
-  display: flex !important;
-  flex-direction: column !important;
-
-  align-items: flex-start !important;
-  justify-content: flex-end !important;
-
-  text-align: left !important;
-}
-
-.headingAside:global(.hj-first-five-heading) {
-  margin-left: 0 !important;
-  margin-right: auto !important;
-
-  text-align: left !important;
-}
-
-.headingAside > span {
-  width: fit-content !important;
-  max-width: 610px !important;
-
-  margin: 0 !important;
-  padding: 12px 16px !important;
-
-  align-self: flex-start !important;
-
-  color: #9fadc0;
-
-  border-radius: 24px;
-
-  background:
-    radial-gradient(
-      circle at 35% 50%,
-      rgba(112, 215, 255, 0.12),
-      transparent 72%
-    );
-
-  font-size: 0.92rem;
-  font-weight: 700;
-  line-height: 1.78;
-
-  text-align: left !important;
-
-  text-shadow:
-    0 0 18px rgba(112, 215, 255, 0.15);
-}
-
-/* Light-mode supporting copy */
-
-:global(html:not(.dark):not([data-theme="dark"])) .headingAside > span,
-:global(html[data-theme="light"]) .headingAside > span,
-:global(html.light) .headingAside > span,
-:global([data-theme="light"]) .headingAside > span,
-:global(.light) .headingAside > span {
-  color: #667085;
-
-  background:
-    radial-gradient(
-      circle at 35% 50%,
-      rgba(118, 80, 216, 0.1),
-      transparent 72%
-    );
-
-  text-shadow:
-    0 0 14px rgba(118, 80, 216, 0.1);
-}
-
-/* XL = Tailwind xl:text-6xl */
-
-@media (min-width: 1280px) {
-  .headingLineSecondary {
-    font-size: 3.75rem !important;
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        rgba(212, 175, 55, 0.42),
+        transparent
+      );
   }
 }
 
-/* Tablet */
 
-@media (max-width: 1100px) {
-  .heading {
-    grid-template-columns: 1fr;
-    align-items: start;
-
-    gap: 22px;
-  }
-
-  .headingMain,
-  .headingAside {
-    width: 100%;
-  }
-
-  .headingAside > span {
-    max-width: 720px !important;
-  }
-
-  .headingLine {
-    white-space: normal;
-  }
-}
-
-/* Mobile */
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 700px) {
-  .heading {
-    display: flex;
-    flex-direction: column;
 
-    align-items: flex-start;
+  .comparisonHeading {
+  display: flex !important;
 
-    gap: 20px;
+  flex-direction: column;
 
-    text-align: left;
+  align-items: flex-start;
+
+  gap: 24px;
+}
+
+.comparisonHeading h2 {
+  max-width: 100% !important;
+
+  text-align: left !important;
+}
+
+.comparisonDescription {
+  width: 100% !important;
+  max-width: 620px !important;
+
+  margin: 0 !important;
+
+  align-self: flex-start;
+
+  text-align: left !important;
+}
+  .section {
+    padding:
+      46px
+      17px
+      36px;
   }
 
-  .headingMain {
-    width: 100%;
-  }
 
-  .heading h2 {
-    width: 100%;
+  .section
+    :global(.hj-first-five-heading) {
     max-width: 100%;
-
-    margin-left: 0;
-
-    text-align: left;
   }
 
-  .headingLine {
-    white-space: normal;
-    text-align: left;
+
+  .section
+    :global(.hj-first-five-heading)
+    > span {
+    max-width: 100%;
   }
 
-  .headingLineSecondary {
-    margin-top: 8px;
 
-    /*
-      Keep mobile readable while preserving the same
-      visual relationship as text-4xl.
-    */
-    font-size: clamp(2rem, 9.5vw, 2.6rem) !important;
+  .comparisonGrid {
+    margin-top: 30px;
   }
 
-  .headingAside {
+
+  .traditionalCard,
+  .mentorCard {
+    padding:
+      24px
+      19px;
+
+    border-radius: 24px;
+  }
+
+
+  .traditionalCard blockquote,
+  .mentorCard blockquote {
+    margin:
+      32px
+      0
+      20px;
+
+    font-size:
+      clamp(
+        1.5rem,
+        7vw,
+        2rem
+      );
+  }
+
+
+  .proofStats {
+    grid-template-columns:
+      repeat(3, 1fr);
+  }
+
+
+  .outcomeBadge {
+    border-radius: 17px;
+  }
+
+
+  .brokenPath {
+    display: none;
+  }
+
+
+  .mentorOrbit {
+    width: 260px;
+    height: 260px;
+
+    right: -130px;
+    bottom: -130px;
+
+    opacity: 0.55;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 460px) {
+  .section {
+    padding:
+      42px
+      12px
+      32px;
+  }
+
+
+  .traditionalCard,
+  .mentorCard {
+    padding:
+      22px
+      17px;
+  }
+
+
+  .traditionalFlow,
+  .mentorFlow {
+    gap: 6px;
+  }
+
+
+  .traditionalFlow > div,
+  .mentorFlow > div {
+    gap: 6px;
+  }
+
+
+  .proofStats span {
+    padding:
+      7px
+      5px;
+  }
+
+
+  .outcomeBadge {
     width: 100%;
 
-    align-items: flex-start !important;
+    justify-content: center;
 
-    text-align: left !important;
-  }
-
-  .headingAside > span {
-    width: 100% !important;
-    max-width: 100% !important;
-
-    padding: 10px 0 !important;
-
-    background: transparent;
-
-    font-size: 0.87rem;
-
-    text-align: left !important;
-    text-shadow: none;
+    text-align: center;
   }
 }
 
 
-.headingMain h2 {
-  width: 100%;
-  max-width: none;
-}
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
-.headingMain h2 > span:first-child {
-  display: inline-block;
-  white-space: nowrap;
+@media (prefers-reduced-motion: reduce) {
+  .animatedBorder,
+  .mentorIcon,
+  .mentorFlow > div > span,
+  .proofTrack i,
+  .traditionalTrack i,
+  .traditionalNoise,
+  .mentorOrbit,
+  .vsBadge,
+  .vsBadge::before {
+    animation: none;
+  }
+
+
+  .mentorShine {
+    transition: none;
+  }
+
+
+  .traditionalCard,
+  .mentorCard {
+    transition: none;
+  }
+
+
+  .traditionalCard:hover,
+  .mentorCard:hover {
+    transform: none;
+  }
 }

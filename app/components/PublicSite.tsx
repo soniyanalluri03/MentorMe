@@ -10,7 +10,7 @@ import CourseComparison from "./courses/CourseComparison";
 import CoursesHero from "./courses/CoursesHero";
 import FeaturedTrack from "./courses/FeaturedTrack";
 import MentorMethod from "./courses/MentorMethod";
-import styles from "../../app/home.module.css";
+
 import { LeaderboardExperience } from "./leaderboard/LeaderboardExperience";
 import MainAbout from "./about/MainAbout";
 import RoadmapHero from "./roadmap/RoadmapHero";
@@ -278,35 +278,6 @@ function Header({
   );
 }
 
-function JourneyStrip() {
-  const steps = [
-    "Confusion",
-    "Direction",
-    "Learning",
-    "Practice",
-    "Projects",
-    "Proof",
-    "Confidence",
-  ];
-
-  return (
-    <div className="journey-strip">
-      {steps.map(
-        (step, index) => (
-          <div key={step}>
-            <span>
-              {String(
-                index + 1,
-              ).padStart(2, "0")}
-            </span>
-
-            <b>{step}</b>
-          </div>
-        ),
-      )}
-    </div>
-  );
-}
 
 const worlds = [
   [
@@ -347,54 +318,10 @@ const worlds = [
   ],
 ];
 
-function WorldMap({
-  compact = false,
-}: {
-  compact?: boolean;
-}) {
-  return (
-    <div
-      className={`world-map ${
-        compact ? "compact" : ""
-      }`}
-    >
-      <div className="map-path" />
-
-      {worlds.map(
-        (world, index) => (
-          <article
-            key={world[1]}
-            className={`world world-${
-              index + 1
-            }`}
-          >
-            <span>{world[0]}</span>
-
-            <div>
-              <small>
-                {world[2]}
-              </small>
-
-              <h3>{world[1]}</h3>
-
-              <p>{world[3]}</p>
-            </div>
-
-            <b>
-              {index === 5
-                ? "★"
-                : index + 1}
-            </b>
-          </article>
-        ),
-      )}
-    </div>
-  );
-}
 
 export default function Courses() {
   return (
-    <main className="courses-page">
+    <main >
       <MotionReveal as="section" y={24} amount={0.06}><CoursesHero /></MotionReveal>
       <MotionReveal as="section" x={-18}><FeaturedTrack /></MotionReveal>
       {/* <CourseStats /> */}
@@ -406,19 +333,19 @@ export default function Courses() {
 }
 function Home() {
   return (
-    <>
+    <main  >
       <MotionReveal y={24} amount={0.06}>
         <LearningHero />
       </MotionReveal>
       <HomeJourneySections />
-    </>
+    </main>
   );
 }
 
 function Roadmap() {
   return (
     <>
-      <main className="roadmap-page">
+      <main>
       <MotionReveal as="section" y={24} amount={0.06}><RoadmapHero /></MotionReveal>
       <MotionReveal as="section" x={-18}><RoadmapStats /></MotionReveal>
       <MotionReveal as="section" x={18}><RoadmapJourney /></MotionReveal>
@@ -430,7 +357,7 @@ function Roadmap() {
 
 function Pricing() {
   return (
-    <main className="pricing-page">
+    <main >
       <PricingMain/>
     </main>
   );
@@ -475,7 +402,7 @@ const leaders = [
 ];
 function Leaderboard() {
   return (
-    <main className="leaderboard-page">
+    <main >
       <LeaderboardExperience />
     </main>
   );
@@ -483,7 +410,7 @@ function Leaderboard() {
 
 function Contact() {
   return (
-    <main className="contact-page">
+    <main >
       <MainContact />
     </main>
   );
@@ -491,36 +418,11 @@ function Contact() {
 
 function About() {
   return (
-    <main className="about-page">
+    <main >
       <MainAbout />
     </main>
   );
 }
-
-function PageHero({
-  tag,
-  title,
-  text,
-}: {
-  tag: string;
-  title: React.ReactNode;
-  text: string;
-}) {
-  return (
-    <section className="page-hero">
-      <span className="kicker">
-        {tag}
-      </span>
-
-      <h1>{title}</h1>
-
-      <p>{text}</p>
-
-      <div className="page-orb" />
-    </section>
-  );
-}
-
 
 
 const footerLinks = [
@@ -776,31 +678,8 @@ export function PublicSite({
   }[page];
 
 return (
-  <main
-    className={
-  page === "home"
-    ? styles.homePage
-
-    : page === "roadmap"
-      ? `${styles.homePage} roadmap-page-shell`
-
-    : page === "leaderboard"
-      ? `${styles.homePage} leaderboard-page-shell`
-
-    : page === "pricing"
-      ? `${styles.homePage} pricing-page-shell`
-
-    : page === "about"
-      ? `${styles.homePage} about-page-shell`
-
-    : page === "contact"
-      ? `${styles.homePage} contact-page-shell`
-
-    : page === "courses"
-      ? "courses-page"
-
-    : undefined
-}
+  <main className="public-site-page"
+   
   >
     <Header page={page} />
 

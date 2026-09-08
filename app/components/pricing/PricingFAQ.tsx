@@ -1,64 +1,37 @@
 "use client";
 
-import {
-  useState,
-} from "react";
+import Link from "next/link";
+import { useState } from "react";
 
-import {
-  HelpCircle,
-  Sparkles,
-} from "lucide-react";
-
-import {
-  pricingFAQs,
-} from "./PricingData";
+import { pricingFAQs } from "./PricingData";
 
 import styles from "./PricingFAQ.module.css";
 
 export default function PricingFAQ() {
-  const [
-    openIndex,
-    setOpenIndex,
-  ] = useState<
-    number | null
-  >(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const handleToggle = (
-    index: number,
-  ) => {
-    setOpenIndex(
-      (current) =>
-        current === index
-          ? null
-          : index,
+  const handleToggle = (index: number) => {
+    setOpenIndex((current) =>
+      current === index ? null : index
     );
   };
 
   return (
     <section
-      className={
-        styles.section
-      }
+      className={styles.section}
+      aria-labelledby="pricing-faq-heading"
     >
+      {/* =====================================================
+          SHARED GLOBAL HEADING
+      ===================================================== */}
+
       <header className="hj-first-five-heading">
-        <div
-          className={
-            styles.kicker
-          }
-        >
-          {/* <HelpCircle
-            size={15}
-          />
-
-          QUESTIONS, ANSWERED */}
-        </div>
-
-        <h2>
+        <h2 id="pricing-faq-heading">
           Frequently{" "}
 
           <span className="hj-heading-wave">
             asked
-          </span>{" "}
+          </span>
 
           <br />
 
@@ -68,127 +41,77 @@ export default function PricingFAQ() {
         </h2>
 
         <span>
-          Everything you need
-          to know before
-          choosing your
-          MentorMe plan.
+          Everything you need to know before choosing
+          your MentorMe plan.
         </span>
       </header>
 
-      <div
-        className={
-          styles.faqs
-        }
-      >
-        {pricingFAQs.map(
-          (
-            item,
-            index,
-          ) => {
-            const isOpen =
-              openIndex ===
-              index;
+      {/* =====================================================
+          FAQ LIST
+      ===================================================== */}
 
-            return (
-              <article
-                key={
-                  item.question
-                }
-                className={`${styles.item} ${
-                  isOpen
-                    ? styles.open
-                    : ""
-                }`}
+      <div className={styles.faqs}>
+        {pricingFAQs.map((item, index) => {
+          const isOpen = openIndex === index;
+
+          return (
+            <article
+              key={item.question}
+              className={`${styles.item} ${
+                isOpen ? styles.open : ""
+              }`}
+            >
+              <button
+                type="button"
+                className={styles.question}
+                onClick={() => handleToggle(index)}
+                aria-expanded={isOpen}
               >
-                <button
-                  type="button"
-                  className={
-                    styles.question
-                  }
-                  onClick={() =>
-                    handleToggle(
-                      index,
-                    )
-                  }
-                  aria-expanded={
-                    isOpen
-                  }
+                <span className={styles.number}>
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+
+                <strong>
+                  {item.question}
+                </strong>
+
+                <i
+                  className={styles.plus}
+                  aria-hidden="true"
                 >
-                  <span
-                    className={
-                      styles.number
-                    }
-                  >
-                    {String(
-                      index + 1,
-                    ).padStart(
-                      2,
-                      "0",
-                    )}
-                  </span>
+                  +
+                </i>
+              </button>
 
-                  <strong>
-                    {
-                      item.question
-                    }
-                  </strong>
-
-                  <i
-                    className={
-                      styles.plus
-                    }
-                    aria-hidden="true"
-                  >
-                    +
-                  </i>
-                </button>
-
-                <div
-                  className={
-                    styles.answerWrapper
-                  }
-                  aria-hidden={
-                    !isOpen
-                  }
-                >
-                  <div
-                    className={
-                      styles.answerInner
-                    }
-                  >
-                    <div
-                      className={
-                        styles.answer
-                      }
-                    >
-                      <p>
-                        {
-                          item.answer
-                        }
-                      </p>
-                    </div>
+              <div
+                className={styles.answerWrapper}
+                aria-hidden={!isOpen}
+              >
+                <div className={styles.answerInner}>
+                  <div className={styles.answer}>
+                    <p>
+                      {item.answer}
+                    </p>
                   </div>
                 </div>
-              </article>
-            );
-          },
-        )}
+              </div>
+            </article>
+          );
+        })}
       </div>
 
-      <div
-        className={
-          styles.footer
-        }
-      >
-        {/* <Sparkles
-          size={15}
-        /> */}
+      {/* =====================================================
+          FOOTER
+      ===================================================== */}
 
-        Still have a question?
+      <div className={styles.footer}>
+        <span>
+          Still have a question?
+        </span>
 
-        <a href="/contact">
+        <Link href="/contact">
           Talk to MentorMe →
-        </a>
+        </Link>
       </div>
     </section>
   );

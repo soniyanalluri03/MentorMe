@@ -7,7 +7,6 @@ import {
   CircleX,
   Code2,
   FolderCheck,
-  Sparkles,
   Target,
   Trophy,
 } from "lucide-react";
@@ -59,57 +58,44 @@ export default function CourseComparison() {
       className={styles.section}
       aria-labelledby="course-comparison-heading"
     >
-      <div
-        className={styles.ambientOne}
-        aria-hidden="true"
-      />
+      {/* =====================================================
+          SHARED GLOBAL HEADING
+      ===================================================== */}
 
-      <div
-        className={styles.ambientTwo}
-        aria-hidden="true"
-      />
+    <header
+  className={`hj-first-five-heading ${styles.comparisonHeading}`}
+>
+  {/* LEFT SIDE */}
+  <h2 id="course-comparison-heading">
+    Content gives information
+    <br />
 
-      <header className={styles.heading}>
-  {/* LEFT HEADING */}
+    <span className="hj-heading-wave text-4xl xl:text-6xl">
+      MentorMe creates
+    </span>{" "}
 
-  <div className={styles.headingMain}>
-    <div className={styles.kicker}>
-      {/* <Sparkles size={15} />
-      A different learning experience */}
-    </div>
+    <em className="text-4xl xl:text-6xl">
+      momentum.
+    </em>
+  </h2>
 
-    <h2 id="course-comparison-heading">
-      <span className="hj-main-heading">
-        Content gives information
-      </span>
-
-      <span
-        className={`${styles.headingLine} ${styles.headingLineSecondary} text-4xl xl:text-6xl`}
-      >
-        <span className="hj-main-heading hj-heading-wave">
-          MentorMe creates
-        </span>{" "}
-
-        <em className="seen-word">
-          momentum
-        </em>
-      </span>
-    </h2>
-  </div>
-
-  {/* RIGHT SUPPORTING COPY */}
-
-  <div
-    className={`${styles.headingAside} hj-first-five-heading`}
-  >
-    <span>
-      Compare passive course consumption with a
-      guided system built around practice.
-    </span>
-  </div>
+  {/* RIGHT SIDE */}
+  <span className={styles.comparisonDescription}>
+    Compare passive course consumption with a guided
+    system built around practice, projects and visible
+    proof.
+  </span>
 </header>
 
+      {/* =====================================================
+          COMPARISON
+      ===================================================== */}
+
       <div className={styles.comparisonGrid}>
+        {/* ===================================================
+            TRADITIONAL COURSE
+        =================================================== */}
+
         <article className={styles.traditionalCard}>
           <div
             className={styles.traditionalNoise}
@@ -122,7 +108,9 @@ export default function CourseComparison() {
                 Traditional course platform
               </span>
 
-              <h3>Content library</h3>
+              <h3>
+                Content library
+              </h3>
             </div>
 
             <div className={styles.traditionalIcon}>
@@ -137,20 +125,26 @@ export default function CourseComparison() {
           <div className={styles.traditionalFlow}>
             {traditionalFlow.map((step, index) => (
               <div key={step}>
-                <span>{step}</span>
+                <span>
+                  {step}
+                </span>
 
-                {index <
-                  traditionalFlow.length - 1 && (
-                    <ArrowRight size={15} />
-                  )}
+                {index < traditionalFlow.length - 1 && (
+                  <ArrowRight size={15} />
+                )}
               </div>
             ))}
           </div>
 
           <div className={styles.traditionalMeter}>
             <div>
-              <span>Measured by</span>
-              <strong>Watch time</strong>
+              <span>
+                Measured by
+              </span>
+
+              <strong>
+                Watch time
+              </strong>
             </div>
 
             <div className={styles.traditionalTrack}>
@@ -180,15 +174,26 @@ export default function CourseComparison() {
           </div>
         </article>
 
-        <div className={styles.vsColumn}>
+        {/* ===================================================
+            VS
+        =================================================== */}
+
+        <div
+          className={styles.vsColumn}
+          aria-hidden="true"
+        >
           <div className={styles.vsLine} />
 
           <div className={styles.vsBadge}>
-            <span>VS</span>
+            <span>
+              VS
+            </span>
           </div>
-
-
         </div>
+
+        {/* ===================================================
+            MENTORME
+        =================================================== */}
 
         <article className={styles.mentorCard}>
           <div
@@ -216,7 +221,9 @@ export default function CourseComparison() {
                 MentorMe career system
               </span>
 
-              <h3>Outcome engine</h3>
+              <h3>
+                Outcome engine
+              </h3>
             </div>
 
             <div className={styles.mentorIcon}>
@@ -243,10 +250,9 @@ export default function CourseComparison() {
                     {step.label}
                   </span>
 
-                  {index <
-                    mentorFlow.length - 1 && (
-                      <ArrowRight size={15} />
-                    )}
+                  {index < mentorFlow.length - 1 && (
+                    <ArrowRight size={15} />
+                  )}
                 </div>
               );
             })}
@@ -257,10 +263,14 @@ export default function CourseComparison() {
               <div>
                 <FolderCheck size={18} />
 
-                <span>Portfolio progress</span>
+                <span>
+                  Portfolio progress
+                </span>
               </div>
 
-              <strong>Verified</strong>
+              <strong>
+                Verified
+              </strong>
             </div>
 
             <div className={styles.proofTrack}>

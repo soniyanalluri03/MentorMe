@@ -76,11 +76,8 @@ const tracks: CareerTrack[] = [
   },
 ];
 
-const toneClasses: Record<
-  TrackTone,
-  string
-> = {
-  blue: styles.toneBlue,
+const toneClasses: Record<TrackTone, string> = {
+  blue: "",
   purple: styles.tonePurple,
   slate: styles.toneSlate,
 };
@@ -88,54 +85,41 @@ const toneClasses: Record<
 export default function CareerTracksAndCTA() {
   return (
     <>
+      {/* =====================================================
+          EXPANDING CAREER TRACKS
+      ===================================================== */}
+
       <section
         className={styles.tracksSection}
         aria-labelledby="expanding-career-tracks"
       >
-        <div
-          className={styles.tracksAmbient}
-          aria-hidden="true"
-        />
+        {/* ===================================================
+            SHARED GLOBAL HEADING
+        =================================================== */}
 
-        <div className={styles.sectionHeading}>
-          {/* LEFT HEADING */}
+        <header className="hj-first-five-heading">
+          <h2 id="expanding-career-tracks">
+            More career directions
+            <br />
 
-          <div className={styles.sectionHeadingMain}>
-            <div className={styles.kicker}>
-              {/* <Sparkles size={15} />
-              EXPANDING CAREER TRACKS */}
-            </div>
+            <span className="hj-heading-wave text-4xl xl:text-6xl">
+              The same proof-first
+            </span>{" "}
 
-            <h2 id="expanding-career-tracks">
-              <span className="hj-main-heading">
-                More career directions
-              </span>
+            <em className="text-4xl xl:text-6xl">
+              system.
+            </em>
+          </h2>
 
-              <span
-                className={`${styles.headingLine} ${styles.headingLineSecondary} text-4xl xl:text-6xl`}
-              >
-                <span className="hj-main-heading hj-heading-wave">
-                  The same proof-first
-                </span>{" "}
+          <span>
+            The same level-based roadmap, project gates,
+            milestone certificates and portfolio evidence.
+          </span>
+        </header>
 
-                <em className="seen-word">
-                  system
-                </em>
-              </span>
-            </h2>
-          </div>
-
-          {/* RIGHT SUPPORTING COPY */}
-
-          <div
-            className={`${styles.headingAside} hj-first-five-heading`}
-          >
-            <span>
-              The same level-based roadmap, project gates,
-              milestone certificates and portfolio evidence.
-            </span>
-          </div>
-        </div>
+        {/* ===================================================
+            CAREER CONSTELLATION
+        =================================================== */}
 
         <div className={styles.trackList}>
           <div
@@ -162,27 +146,45 @@ export default function CareerTracksAndCTA() {
 
             return (
               <article
-                className={`${styles.trackCard} ${isFeatured
-                  ? styles.trackCardFeatured
-                  : styles.trackCardSide
-                  } ${toneClasses[track.tone]}`}
                 key={track.number}
+                className={[
+                  styles.trackCard,
+                  isFeatured
+                    ? styles.trackCardFeatured
+                    : styles.trackCardSide,
+                  toneClasses[track.tone],
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
               >
+                {/* Animated metallic border */}
+
                 <div
                   className={styles.trackBorder}
                   aria-hidden="true"
                 />
+
+                {/* Ambient card glow */}
 
                 <div
                   className={styles.trackGlow}
                   aria-hidden="true"
                 />
 
+                {/* Top */}
+
                 <div className={styles.trackTop}>
                   <span className={styles.trackNumber}>
                     {track.number}
                   </span>
+
+                  <span className={styles.trackStatus}>
+                    <Sparkles size={12} />
+                    {track.status}
+                  </span>
                 </div>
+
+                {/* Icon */}
 
                 <div className={styles.trackIcon}>
                   <Icon
@@ -191,13 +193,23 @@ export default function CareerTracksAndCTA() {
                   />
                 </div>
 
+                {/* Content */}
+
                 <div className={styles.trackBody}>
-                  <small>{track.category}</small>
+                  <small>
+                    {track.category}
+                  </small>
 
-                  <h3>{track.title}</h3>
+                  <h3>
+                    {track.title}
+                  </h3>
 
-                  <p>{track.description}</p>
+                  <p>
+                    {track.description}
+                  </p>
                 </div>
+
+                {/* Skills */}
 
                 <div className={styles.skillList}>
                   {track.skills.map((skill) => (
@@ -206,6 +218,8 @@ export default function CareerTracksAndCTA() {
                     </span>
                   ))}
                 </div>
+
+                {/* Footer */}
 
                 <div className={styles.trackFooter}>
                   <span>
@@ -216,10 +230,15 @@ export default function CareerTracksAndCTA() {
                   <ArrowUpRight size={18} />
                 </div>
 
+                {/* Decorative mini roadmap */}
+
                 <div
                   className={styles.trackVisual}
                   aria-hidden="true"
                 >
+                  <span />
+                  <span />
+                  <span />
                   <b />
                 </div>
               </article>
@@ -228,14 +247,15 @@ export default function CareerTracksAndCTA() {
         </div>
       </section>
 
+      {/* =====================================================
+          FINAL CTA
+      ===================================================== */}
+
       <section
         className={styles.finalCta}
         aria-labelledby="career-journey-cta"
       >
-        <div
-          className={styles.ctaGrid}
-          aria-hidden="true"
-        />
+        {/* Decorative orbit */}
 
         <div
           className={styles.ctaOrbit}
@@ -246,72 +266,64 @@ export default function CareerTracksAndCTA() {
           <i />
         </div>
 
-        <div className={styles.ctaIcon}>
+        {/* CTA icon */}
+
+        <div
+          className={styles.ctaIcon}
+          aria-hidden="true"
+        >
           <Target
             size={38}
             strokeWidth={1.5}
           />
         </div>
-{/* 
-        <span className={styles.ctaEyebrow}>
-          Your first five levels are free
-        </span>
 
-        <h2 id="career-journey-cta">
-          <span className="hj-main-heading">
-            A career goal becomes real
-          </span>
+        {/* ===================================================
+            SHARED CTA HEADING
+        =================================================== */}
 
+        <header
+          className={`hj-first-five-heading ${styles.ctaHeading}`}
+        >
+          <div className="hj-gold-eyebrow">
+            <Sparkles
+              size={15}
+              className="mm-shared-icon mm-spark-icon"
+            />
 
-          <span
-            className={`${styles.ctaHeadingLine} ${styles.ctaHeadingSecondary}`}
-          >
-            <span className="hj-main-heading hj-heading-wave">
-              when the next step is
-            </span>{" "}
-
-
-            <em className={styles.ctaProofWord}>
-              visible
-            </em>
-          </span>
-        </h2>
-
-        <p>
-          Choose the Frontend Engineer track and
-          begin building measurable progress from
-          your very first level
-        </p> */}
-<header className="hj-first-five-heading pt-10">
-          <div className={styles.kicker}>
-            {/* <Sparkles size={15} /> */}
-            Your first five levels are free
+            YOUR FIRST FIVE LEVELS ARE FREE
           </div>
-          <h2>
-             A career goal becomes real
+
+          <h2 id="career-journey-cta">
+            A career goal becomes real
             <br />
 
             <span className="hj-heading-wave text-4xl xl:text-6xl">
               when the next step is
             </span>{" "}
 
-            <em className="text-4xl xl:text-6xl"> visible</em>
+            <em className="text-4xl xl:text-6xl">
+              visible.
+            </em>
           </h2>
+
           <span>
-            Choose the Frontend Engineer track and
-          begin building measurable progress from
-          your very first level
+            Choose the Frontend Engineer track and begin
+            building measurable progress from your very
+            first level.
           </span>
         </header>
-        <Link
-          className="navbar-sign-in mt-10"
-          href="/signup"
-        >
-          Explore your path
-          <ArrowRight size={18} />
-        </Link>
+
+        <div className="hj-action-row">
+          <Link
+            className="navbar-sign-in"
+            href="/signup"
+          >
+            Explore your path
+            <ArrowRight size={18} />
+          </Link>
+        </div>
       </section>
-      
     </>
   );
 }

@@ -64,21 +64,9 @@
 
   border: 0;
   border-radius: 0;
-
-  background: transparent;
-
   box-shadow: none;
 }
 
-
-/* No separate hero background */
-
-.hero::before,
-.hero::after {
-  content: none;
-
-  display: none;
-}
 
 
 /* =========================================================
@@ -102,10 +90,13 @@
   text-align: left;
 }
 
-
 /* =========================================================
-   ROADMAP SHARED HEADING
-   FORCE EVERYTHING LEFT
+   SHARED COURSES HERO HEADING
+
+   Typography / wave / em / description surface
+   come from globals.css.
+
+   CoursesHero only controls the left alignment and width.
    ========================================================= */
 
 .heroHeading {
@@ -118,62 +109,13 @@
     0
     0 !important;
 
-  padding: 0 !important;
-
-  display: flex !important;
-
-  flex-direction: column !important;
-
-  align-items:
-    flex-start !important;
-
-  justify-content:
-    flex-start !important;
-
   text-align:
     left !important;
 }
 
 
 /* =========================================================
-   KICKER
-   ========================================================= */
-
-.heroKicker {
-  width: fit-content;
-
-  max-width: 100%;
-
-  margin:
-    0
-    0
-    26px
-    0 !important;
-
-  padding: 0;
-
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content:
-    flex-start !important;
-
-  gap: 9px;
-
-  text-align:
-    left !important;
-}
-
-
-.heroKicker span {
-  text-align:
-    left;
-}
-
-
-/* =========================================================
-   MAIN HEADING
+   MAIN HEADING ALIGNMENT
    ========================================================= */
 
 .heroHeading h2 {
@@ -183,33 +125,13 @@
   margin:
     0 !important;
 
-  padding:
-    0
-    0
-    0.12em !important;
-
-  align-self:
-    flex-start !important;
-
   text-align:
     left !important;
-
-  overflow:
-    visible;
-
-  background:
-    transparent !important;
-
-  background-image:
-    none !important;
-
-  border: 0;
-
-  box-shadow: none;
 }
 
 
-/* Shared Roadmap animated word */
+/* Preserve the global gold wave.
+   Only control alignment here. */
 
 .heroHeading :global(.hj-heading-wave) {
   display:
@@ -220,20 +142,23 @@
 }
 
 
-/* future. */
 
-.heroHeading h2 em {
-  display:
-    inline-block;
+.heroDescription {
+  max-width:
+    610px !important;
+
+  margin-left:
+    0 !important;
+
+  margin-right:
+    0 !important;
+
+  align-self:
+    flex-start;
 
   text-align:
-    left;
+    left !important;
 }
-
-
-/* =========================================================
-   DESCRIPTION
-   ========================================================= */
 
 .heroDescription {
   width:
@@ -1882,48 +1807,6 @@
 }
 
 
-/* Light description */
-
-:global(
-  html:not(.dark):not(
-    [data-theme="dark"]
-  )
-)
-.heroDescription,
-
-:global(
-  html[data-theme="light"]
-)
-.heroDescription,
-
-:global(html.light)
-.heroDescription {
-  color:
-    #667085;
-
-  background:
-    radial-gradient(
-      circle at 38% 50%,
-      rgba(
-        118,
-        80,
-        216,
-        0.1
-      ),
-      transparent 72%
-    );
-
-  text-shadow:
-    0
-    0
-    14px
-    rgba(
-      118,
-      80,
-      216,
-      0.08
-    );
-}
 
 
 /* =========================================================
@@ -2984,21 +2867,19 @@
       flex-start;
   }
 
-
   .heroHeading {
-    width:
-      100%;
+  width:
+    100%;
 
-    max-width:
-      100%;
+  max-width:
+    100%;
 
-    align-items:
-      flex-start !important;
+  margin-left:
+    0 !important;
 
-    text-align:
-      left !important;
-  }
-
+  text-align:
+    left !important;
+}
 
   .heroHeading h2 {
     width:
@@ -3014,39 +2895,22 @@
       left !important;
   }
 
-
-  .heroKicker {
-    margin-bottom:
-      20px !important;
-
-    justify-content:
-      flex-start !important;
-
-    text-align:
-      left !important;
-  }
-
-
   .heroDescription {
-    width:
-      100% !important;
+  width:
+    100% !important;
 
-    max-width:
-      100% !important;
+  max-width:
+    100% !important;
 
-    margin-left:
-      0 !important;
+  margin-left:
+    0 !important;
 
-    padding:
-      10px
-      0 !important;
+  margin-right:
+    0 !important;
 
-    background:
-      transparent;
-
-    text-align:
-      left !important;
-  }
+  text-align:
+    left !important;
+}
 
 
   .stats {

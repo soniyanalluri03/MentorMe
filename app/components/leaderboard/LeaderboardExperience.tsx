@@ -11,10 +11,8 @@ import {
 import styles from "./LeaderboardExperience.module.css";
 import MotionReveal from "../MotionReveal";
 
-
 import {
   currentStudent,
-  leaderboardStudents,
   podiumStudents,
   rankingStudents,
   type LeaderboardStudent,
@@ -549,26 +547,27 @@ function MomentumCard({
         </div>
 
         <div className={styles.finalCopy}>
-          <div className={styles.finalEyebrowWrap}>
-            <div className="hj-gold-eyebrow">
-              {/* <SparkIcon />
-              WHERE CONSISTENCY BECOMES VISIBLE */}
-            </div>
-          </div>
-          <h2>
-            <span className="hj-display-heading">Your progress earns</span>{" "}
-            <span className="hj-heading-wave hj-display-heading">
-              the next
-            </span>{" "}
-            <em className="seen-word"> step</em>
-          </h2>
-          <div className="hj-first-five-heading">
-            <span>
-              Keep building momentum. Complete the next challenge, unlock new opportunities, and let every achievement move you closer to what’s next.
-            </span>
-          </div>
+  <header className="hj-first-five-heading">
+    <h2>
+      Your progress earns
+      <br />
 
-        </div>
+      <span className="hj-heading-wave text-4xl xl:text-6xl">
+        the next
+      </span>{" "}
+
+      <em className="text-4xl xl:text-6xl">
+        step.
+      </em>
+    </h2>
+
+    <span>
+      Keep building momentum. Complete the next challenge,
+      unlock new opportunities, and let every achievement
+      move you closer to what&apos;s next.
+    </span>
+  </header>
+</div>
 
         <div
           key={`stats-${student.rank}`}
@@ -620,41 +619,40 @@ export function LeaderboardExperience() {
 
 
       {/* HERO */}
+{/* HERO */}
 
-      <MotionReveal y={24} amount={0.06}>
-      <section className={styles.hero}>
-        <div className={styles.heroInner}>
-          <div className={styles.heroEyebrowWrap}>
-            <div className="hj-gold-eyebrow">
-              {/* <SparkIcon />
-              WHERE CONSISTENCY BECOMES VISIBLE */}
-            </div>
-          </div>
+<MotionReveal y={24} amount={0.06}>
+  <section
+    className={styles.hero}
+    aria-labelledby="leaderboard-hero-heading"
+  >
+    <div className={styles.heroInner}>
+      {/* =====================================================
+          SHARED GLOBAL HEADING
+      ===================================================== */}
 
-          <h1>
-            <span>Momentum deserves</span>
+      <header className="hj-first-five-heading">
+        <h2 id="leaderboard-hero-heading">
+          Momentum deserves
+          <br />
 
-            <span className={styles.heroSecondLine}>
-              <span className="hj-heading-wave">
-                to be
-              </span>{" "}
+          <span className="hj-heading-wave text-4xl xl:text-6xl">
+            to be
+          </span>{" "}
 
-              <em className="seen-word">
-                seen
-              </em>
-            </span>
-          </h1>
+          <em className="text-4xl xl:text-6xl">
+            seen.
+          </em>
+        </h2>
 
-          <div className="hj-first-five-heading">
-            <span>
-              Every mission, project and level leaves a
-              signal. Build proof, earn XP and watch
-              consistent effort become visible momentum.
-            </span>
-          </div>
+        <span>
+          Every mission, project and level leaves a signal.
+          Build proof, earn XP and watch consistent effort
+          become visible momentum.
+        </span>
+      </header>
 
-
-          <div className={styles.heroPills}>
+      <div className={styles.heroPills}>
             <span>
               <SparkIcon />
               WEEKLY XP
@@ -688,26 +686,24 @@ export function LeaderboardExperience() {
 
       <MotionReveal x={-18}>
       <section className={styles.leaderSection}>
-        <div className={styles.centerHeading}>
-          <h2>
-            <span className="hj-display-heading">
-              Top learners
-            </span>
+        <header className="hj-first-five-heading">
+  <h2>
+    Top learners
+    <br />
 
-            <span className="hj-heading-wave, hj-display-heading">
-              Built by
-            </span>{" "}
+    <span className="hj-heading-wave text-4xl xl:text-6xl">
+      Built by
+    </span>{" "}
 
-            <span className="seen-word">
-              consistency
-            </span>
-          </h2>
-          <div className="hj-first-five-heading"><span>
-            Consistency creates momentum. Momentum creates
-            proof.
-          </span></div>
+    <em className="text-4xl xl:text-6xl">
+      consistency.
+    </em>
+  </h2>
 
-        </div>
+  <span>
+    Consistency creates momentum. Momentum creates proof.
+  </span>
+</header>
 
         <div className={styles.podiumZone}>
           <PodiumGlobe />
@@ -726,11 +722,18 @@ export function LeaderboardExperience() {
           <div className={styles.attachedBoard}>
             <div className={styles.liveBoardTitle}>
               <h3>
-                <span className="hj-display-heading">Keep moving</span>
-                <span className="hj-heading-wave  hj-display-heading">
-                  Keep</span>{" "}
-                <em className="seen-word">climbing</em>
-              </h3>
+  <span className="hj-display-heading">
+    Keep moving
+  </span>
+
+  <span className="hj-heading-wave hj-display-heading">
+    Keep
+  </span>{" "}
+
+  <em className="seen-word">
+    climbing
+  </em>
+</h3>
 
               <div className={styles.liveBadge}>
                 <i />

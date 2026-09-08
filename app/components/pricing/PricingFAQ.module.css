@@ -1,354 +1,57 @@
-/* =========================================================
-   FAQ SECTION
-   ========================================================= */
-
 .section {
+  position: relative;
+
   width: 100%;
 
   padding:
-    clamp(
-      1.5rem,
-      2.5vw,
-      2.5rem
-    )
-    clamp(
-      1rem,
-      4vw,
-      4rem
-    )
-    clamp(
-      6rem,
-      9vw,
-      8rem
-    );
+    clamp(1.5rem, 2.5vw, 2.5rem)
+    clamp(1rem, 4vw, 4rem)
+    clamp(6rem, 9vw, 8rem);
 
-  background:
-    transparent !important;
+  overflow: visible;
 }
 
-
-/* =========================================================
-   HEADING
-   ========================================================= */
-
-.heading {
-  width:
-    min(
-      100%,
-      900px
-    );
-
-  margin:
-    0 auto;
-
-  text-align:
-    center;
-}
-
-
-/* =========================================================
-   KICKER
-   ========================================================= */
-
-.kicker {
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  gap:
-    9px;
-
-  margin:
-    0
-    auto
-    24px;
-
-  color:
-    #d9ba4d;
-
-  font-family:
-    var(--font-display),
-    sans-serif;
-
-  font-size:
-    0.72rem;
-
-  font-weight:
-    900;
-
-  line-height:
-    1.4;
-
-  letter-spacing:
-    0.14em;
-
-  text-align:
-    center;
-
-  text-transform:
-    uppercase;
-
-  text-shadow:
-    0
-    0
-    16px
-    rgba(
-      217,
-      186,
-      77,
-      0.16
-    );
-}
-
-
-.kicker svg {
-  flex:
-    0
-    0
-    auto;
-
-  color:
-    #f0d36d;
-
-  filter:
-    drop-shadow(
-      0
-      0
-      7px
-      rgba(
-        240,
-        211,
-        109,
-        0.24
-      )
-    );
-}
-
-
-/* =========================================================
-   LIGHT MODE — KICKER
-   ========================================================= */
-
-:global(
-  html:not(.dark):not(
-    [data-theme="dark"]
-  )
-) .kicker,
-:global(
-  html[data-theme="light"]
-) .kicker,
-:global(html.light)
-  .kicker {
-  color:
-    #8e6810;
-
-  text-shadow:
-    0
-    1px
-    0
-    rgba(
-      255,
-      255,
-      255,
-      0.8
-    ),
-    0
-    0
-    10px
-    rgba(
-      177,
-      132,
-      28,
-      0.1
-    );
-}
-
-
-:global(
-  html:not(.dark):not(
-    [data-theme="dark"]
-  )
-) .kicker svg,
-:global(
-  html[data-theme="light"]
-) .kicker svg,
-:global(html.light)
-  .kicker svg {
-  color:
-    #b78313;
-
-  filter:
-    drop-shadow(
-      0
-      0
-      5px
-      rgba(
-        177,
-        132,
-        28,
-        0.13
-      )
-    );
-}
-
-
-/* =========================================================
-   HEADING TEXT
-   ========================================================= */
-
-.heading h2 {
-  margin:
-    17px
-    0
-    0;
-
-  color:
-    #f7f9fd;
-
-  font-size:
-    clamp(
-      3rem,
-      5vw,
-      5rem
-    );
-
-  line-height:
-    1;
-
-  letter-spacing:
-    -0.055em;
-}
-
-
-.heading h2 em {
-  color:
-    transparent;
-
-  font-family:
-    Georgia,
-    serif;
-
-  font-weight:
-    500;
-
-  background:
-    linear-gradient(
-      110deg,
-      #8f5cf7,
-      #b58cff,
-      #e7ca67
-    );
-
-  background-clip:
-    text;
-
-  -webkit-background-clip:
-    text;
-
-  -webkit-text-fill-color:
-    transparent;
-}
-
-
-.heading p {
-  max-width:
-    630px;
-
-  margin:
-    19px
-    auto
-    0;
-
-  color:
-    #98a7b9;
-
-  font-size:
-    0.94rem;
-
-  line-height:
-    1.7;
-}
-
-
-/* =========================================================
-   FAQ LIST
-   ========================================================= */
 
 .faqs {
-  width:
-    min(
-      100%,
-      1000px
-    );
+  width: min(100%, 1000px);
 
   margin:
     40px
     auto
     0;
 
-  display:
-    grid;
+  display: grid;
 
-  gap:
-    12px;
+  gap: 12px;
 }
 
 
-/* =========================================================
-   FAQ ITEM
-   ========================================================= */
 
 .item {
-  overflow:
-    hidden;
+  overflow: hidden;
 
   border:
     1.5px
     solid
-    rgba(
-      212,
-      175,
-      55,
-      0.32
-    );
+    rgba(212, 175, 55, 0.32);
 
-  border-radius:
-    16px;
+  border-radius: 16px;
 
   background:
-    rgba(
-      8,
-      28,
-      48,
-      0.46
-    );
+    rgba(8, 28, 48, 0.46);
 
   box-shadow:
     inset
     0
     1px
     0
-    rgba(
-      255,
-      255,
-      255,
-      0.035
-    ),
+    rgba(255, 255, 255, 0.035),
+
     0
     0
     0
     1px
-    rgba(
-      212,
-      175,
-      55,
-      0.025
-    );
+    rgba(212, 175, 55, 0.025);
 
   backdrop-filter:
     blur(14px);
@@ -357,101 +60,52 @@
     blur(14px);
 
   transition:
-    transform
-      300ms ease,
-    border-color
-      420ms ease,
-    background
-      420ms ease,
-    box-shadow
-      420ms ease;
+    transform 300ms ease,
+    border-color 420ms ease,
+    background 420ms ease,
+    box-shadow 420ms ease;
 }
 
 
-/* =========================================================
-   FAQ HOVER
-   ========================================================= */
 
 .item:hover {
   transform:
     translateY(-2px);
 
   border-color:
-    rgba(
-      229,
-      197,
-      79,
-      0.52
-    );
+    rgba(229, 197, 79, 0.52);
 
   background:
-    rgba(
-      10,
-      32,
-      54,
-      0.56
-    );
+    rgba(10, 32, 54, 0.56);
 
   box-shadow:
     inset
     0
     1px
     0
-    rgba(
-      255,
-      255,
-      255,
-      0.045
-    ),
+    rgba(255, 255, 255, 0.045),
+
     0
     8px
     22px
-    rgba(
-      0,
-      0,
-      0,
-      0.1
-    ),
+    rgba(0, 0, 0, 0.1),
+
     0
     0
     16px
-    rgba(
-      212,
-      175,
-      55,
-      0.07
-    );
+    rgba(212, 175, 55, 0.07);
 }
 
 
-/* =========================================================
-   OPEN FAQ
-   ========================================================= */
-
 .item.open {
   border-color:
-    rgba(
-      238,
-      204,
-      80,
-      0.72
-    );
+    rgba(238, 204, 80, 0.72);
 
   background:
     linear-gradient(
       145deg,
-      rgba(
-        212,
-        175,
-        55,
-        0.045
-      ),
-      rgba(
-        12,
-        36,
-        60,
-        0.69
-      )
+      rgba(212, 175, 55, 0.045),
+      rgba(12, 36, 60, 0.69)
     );
 
   box-shadow:
@@ -459,82 +113,52 @@
     0
     1px
     0
-    rgba(
-      255,
-      255,
-      255,
-      0.055
-    ),
+    rgba(255, 255, 255, 0.055),
+
     0
     10px
     26px
-    rgba(
-      0,
-      0,
-      0,
-      0.12
-    ),
+    rgba(0, 0, 0, 0.12),
+
     0
     0
     21px
-    rgba(
-      212,
-      175,
-      55,
-      0.1
-    );
+    rgba(212, 175, 55, 0.1);
 }
 
 
-/* =========================================================
-   QUESTION BUTTON
-   ========================================================= */
 
 .question {
-  width:
-    100%;
+  width: 100%;
 
-  min-height:
-    76px;
+  min-height: 76px;
 
-  display:
-    grid;
+  display: grid;
 
   grid-template-columns:
     38px
-    minmax(
-      0,
-      1fr
-    )
+    minmax(0, 1fr)
     34px;
 
-  align-items:
-    center;
+  align-items: center;
 
-  gap:
-    15px;
+  gap: 15px;
 
   padding:
     0
     20px;
 
-  color:
-    inherit;
+  color: inherit;
 
-  border:
-    0;
+  border: 0;
 
-  background:
-    transparent;
+  background: transparent;
 
-  cursor:
-    pointer;
+  cursor: pointer;
 
-  text-align:
-    left;
+  text-align: left;
 
-  font:
-    inherit;
+  font: inherit;
 }
 
 
@@ -592,41 +216,25 @@
    ========================================================= */
 
 .plus {
-  width:
-    32px;
+  width: 32px;
+  height: 32px;
 
-  height:
-    32px;
+  display: grid;
 
-  display:
-    grid;
-
-  place-items:
-    center;
+  place-items: center;
 
   color:
     #d4af37;
 
   border:
-    1px
-    solid
-    rgba(
-      212,
-      175,
-      55,
-      0.28
-    );
+    1px solid
+    rgba(212, 175, 55, 0.28);
 
   border-radius:
     9px;
 
   background:
-    rgba(
-      212,
-      175,
-      55,
-      0.045
-    );
+    rgba(212, 175, 55, 0.045);
 
   font-size:
     1.1rem;
@@ -639,19 +247,17 @@
 
   transition:
     transform
-      420ms
-      cubic-bezier(
-        0.22,
-        1,
-        0.36,
-        1
-      ),
+    420ms
+    cubic-bezier(0.22, 1, 0.36, 1),
+
     background
-      320ms ease,
+    320ms ease,
+
     border-color
-      320ms ease,
+    320ms ease,
+
     box-shadow
-      320ms ease;
+    320ms ease;
 }
 
 
@@ -660,77 +266,51 @@
     rotate(45deg);
 
   border-color:
-    rgba(
-      238,
-      204,
-      80,
-      0.6
-    );
+    rgba(238, 204, 80, 0.6);
 
   background:
-    rgba(
-      212,
-      175,
-      55,
-      0.1
-    );
+    rgba(212, 175, 55, 0.1);
 
   box-shadow:
     0
     0
     10px
-    rgba(
-      212,
-      175,
-      55,
-      0.08
-    );
+    rgba(212, 175, 55, 0.08);
 }
 
 
 /* =========================================================
    ANSWER ANIMATION WRAPPER
-
-   grid-template-rows:
-   0fr  = closed
-   1fr  = open
-
-   This creates a smooth height animation.
    ========================================================= */
 
 .answerWrapper {
-  display:
-    grid;
+  display: grid;
 
   grid-template-rows:
     0fr;
 
-  opacity:
-    0;
+  opacity: 0;
 
-  visibility:
-    hidden;
+  visibility: hidden;
 
   transition:
     grid-template-rows
-      440ms
-      cubic-bezier(
-        0.22,
-        1,
-        0.36,
-        1
-      ),
+    440ms
+    cubic-bezier(0.22, 1, 0.36, 1),
+
     opacity
-      320ms ease,
+    320ms ease,
+
     visibility
-      440ms ease;
+    440ms ease;
 }
 
 
-/* OPEN ANSWER */
+/* =========================================================
+   OPEN ANSWER
+   ========================================================= */
 
-.item.open
-.answerWrapper {
+.item.open .answerWrapper {
   grid-template-rows:
     1fr;
 
@@ -742,22 +322,21 @@
 
   transition:
     grid-template-rows
-      440ms
-      cubic-bezier(
-        0.22,
-        1,
-        0.36,
-        1
-      ),
+    440ms
+    cubic-bezier(0.22, 1, 0.36, 1),
+
     opacity
-      380ms
-      80ms ease,
+    380ms
+    80ms ease,
+
     visibility
-      0ms linear;
+    0ms linear;
 }
 
 
-/* Required for grid height animation */
+/* =========================================================
+   ANSWER INNER
+   ========================================================= */
 
 .answerInner {
   min-height:
@@ -787,20 +366,15 @@
 
   transition:
     transform
-      420ms
-      cubic-bezier(
-        0.22,
-        1,
-        0.36,
-        1
-      ),
+    420ms
+    cubic-bezier(0.22, 1, 0.36, 1),
+
     opacity
-      320ms ease;
+    320ms ease;
 }
 
 
-.item.open
-.answer {
+.item.open .answer {
   transform:
     translateY(0);
 
@@ -809,17 +383,13 @@
 
   transition:
     transform
-      440ms
-      70ms
-      cubic-bezier(
-        0.22,
-        1,
-        0.36,
-        1
-      ),
+    440ms
+    70ms
+    cubic-bezier(0.22, 1, 0.36, 1),
+
     opacity
-      360ms
-      80ms ease;
+    360ms
+    80ms ease;
 }
 
 
@@ -873,12 +443,11 @@
 
   align-items:
     center;
+  justify-content:
+    center;
 
   flex-wrap:
     wrap;
-
-  justify-content:
-    center;
 
   gap:
     9px;
@@ -891,12 +460,9 @@
 
   font-weight:
     650;
-}
 
-
-.footer svg {
-  color:
-    #d5b849;
+  text-align:
+    center;
 }
 
 
@@ -911,80 +477,37 @@
     none;
 
   transition:
-    color
-      220ms ease;
+    color 220ms ease,
+    transform 220ms ease;
 }
 
 
 .footer a:hover {
   color:
     #f1d66f;
+
+  transform:
+    translateX(2px);
 }
 
 
 /* =========================================================
-   LIGHT MODE — HEADING
+   LIGHT MODE — FAQ ITEM
    ========================================================= */
 
 :global(
-  html:not(.dark):not(
-    [data-theme="dark"]
-  )
-) .heading h2,
-:global(
-  html[data-theme="light"]
-) .heading h2,
+  html:not(.dark):not([data-theme="dark"])
+)
+.item,
+:global(html[data-theme="light"])
+.item,
 :global(html.light)
-  .heading h2 {
-  color:
-    #172d50;
-}
-
-
-:global(
-  html:not(.dark):not(
-    [data-theme="dark"]
-  )
-) .heading p,
-:global(
-  html[data-theme="light"]
-) .heading p,
-:global(html.light)
-  .heading p {
-  color:
-    #667085;
-}
-
-
-/* =========================================================
-   LIGHT MODE — FAQ
-   ========================================================= */
-
-:global(
-  html:not(.dark):not(
-    [data-theme="dark"]
-  )
-) .item,
-:global(
-  html[data-theme="light"]
-) .item,
-:global(html.light)
-  .item {
+.item {
   border-color:
-    rgba(
-      177,
-      132,
-      28,
-      0.28
-    );
+    rgba(177, 132, 28, 0.28);
 
   background:
-    rgba(
-      255,
-      255,
-      255,
-      0.54
-    );
+    rgba(255, 255, 255, 0.54);
 
   box-shadow:
     inset
@@ -992,87 +515,54 @@
     1px
     0
     #ffffff,
+
     0
     5px
     16px
-    rgba(
-      72,
-      50,
-      98,
-      0.045
-    );
+    rgba(72, 50, 98, 0.045);
 }
 
 
 /* =========================================================
-   LIGHT MODE — HOVER
+   LIGHT MODE — FAQ HOVER
    ========================================================= */
 
 :global(
-  html:not(.dark):not(
-    [data-theme="dark"]
-  )
-) .item:hover,
-:global(
-  html[data-theme="light"]
-) .item:hover,
+  html:not(.dark):not([data-theme="dark"])
+)
+.item:hover,
+:global(html[data-theme="light"])
+.item:hover,
 :global(html.light)
-  .item:hover {
+.item:hover {
   border-color:
-    rgba(
-      177,
-      132,
-      28,
-      0.5
-    );
+    rgba(177, 132, 28, 0.5);
 
   background:
-    rgba(
-      255,
-      255,
-      255,
-      0.7
-    );
+    rgba(255, 255, 255, 0.7);
 }
 
 
 /* =========================================================
-   LIGHT MODE — OPEN
+   LIGHT MODE — OPEN FAQ
    ========================================================= */
 
 :global(
-  html:not(.dark):not(
-    [data-theme="dark"]
-  )
-) .item.open,
-:global(
-  html[data-theme="light"]
-) .item.open,
+  html:not(.dark):not([data-theme="dark"])
+)
+.item.open,
+:global(html[data-theme="light"])
+.item.open,
 :global(html.light)
-  .item.open {
+.item.open {
   border-color:
-    rgba(
-      177,
-      132,
-      28,
-      0.64
-    );
+    rgba(177, 132, 28, 0.64);
 
   background:
     linear-gradient(
       145deg,
-      rgba(
-        255,
-        255,
-        255,
-        0.84
-      ),
-      rgba(
-        248,
-        234,
-        193,
-        0.42
-      )
+      rgba(255, 255, 255, 0.84),
+      rgba(248, 234, 193, 0.42)
     );
 
   box-shadow:
@@ -1081,24 +571,16 @@
     1px
     0
     #ffffff,
+
     0
     10px
     25px
-    rgba(
-      72,
-      50,
-      98,
-      0.07
-    ),
+    rgba(72, 50, 98, 0.07),
+
     0
     0
     17px
-    rgba(
-      177,
-      132,
-      28,
-      0.09
-    );
+    rgba(177, 132, 28, 0.09);
 }
 
 
@@ -1107,15 +589,13 @@
    ========================================================= */
 
 :global(
-  html:not(.dark):not(
-    [data-theme="dark"]
-  )
-) .question strong,
-:global(
-  html[data-theme="light"]
-) .question strong,
+  html:not(.dark):not([data-theme="dark"])
+)
+.question strong,
+:global(html[data-theme="light"])
+.question strong,
 :global(html.light)
-  .question strong {
+.question strong {
   color:
     #273650;
 }
@@ -1126,15 +606,13 @@
    ========================================================= */
 
 :global(
-  html:not(.dark):not(
-    [data-theme="dark"]
-  )
-) .number,
-:global(
-  html[data-theme="light"]
-) .number,
+  html:not(.dark):not([data-theme="dark"])
+)
+.number,
+:global(html[data-theme="light"])
+.number,
 :global(html.light)
-  .number {
+.number {
   color:
     #987211;
 }
@@ -1145,15 +623,13 @@
    ========================================================= */
 
 :global(
-  html:not(.dark):not(
-    [data-theme="dark"]
-  )
-) .answer p,
-:global(
-  html[data-theme="light"]
-) .answer p,
+  html:not(.dark):not([data-theme="dark"])
+)
+.answer p,
+:global(html[data-theme="light"])
+.answer p,
 :global(html.light)
-  .answer p {
+.answer p {
   color:
     #59677b;
 }
@@ -1164,64 +640,37 @@
    ========================================================= */
 
 :global(
-  html:not(.dark):not(
-    [data-theme="dark"]
-  )
-) .plus,
-:global(
-  html[data-theme="light"]
-) .plus,
+  html:not(.dark):not([data-theme="dark"])
+)
+.plus,
+:global(html[data-theme="light"])
+.plus,
 :global(html.light)
-  .plus {
+.plus {
   color:
     #a77c10;
 
   border-color:
-    rgba(
-      177,
-      132,
-      28,
-      0.3
-    );
+    rgba(177, 132, 28, 0.3);
 
   background:
-    rgba(
-      212,
-      175,
-      55,
-      0.055
-    );
+    rgba(212, 175, 55, 0.055);
 }
 
 
 :global(
-  html:not(.dark):not(
-    [data-theme="dark"]
-  )
-) .item.open
-.plus,
-:global(
-  html[data-theme="light"]
-) .item.open
-.plus,
+  html:not(.dark):not([data-theme="dark"])
+)
+.item.open .plus,
+:global(html[data-theme="light"])
+.item.open .plus,
 :global(html.light)
-  .item.open
-.plus {
+.item.open .plus {
   border-color:
-    rgba(
-      177,
-      132,
-      28,
-      0.52
-    );
+    rgba(177, 132, 28, 0.52);
 
   background:
-    rgba(
-      212,
-      175,
-      55,
-      0.12
-    );
+    rgba(212, 175, 55, 0.12);
 }
 
 
@@ -1230,30 +679,26 @@
    ========================================================= */
 
 :global(
-  html:not(.dark):not(
-    [data-theme="dark"]
-  )
-) .footer,
-:global(
-  html[data-theme="light"]
-) .footer,
+  html:not(.dark):not([data-theme="dark"])
+)
+.footer,
+:global(html[data-theme="light"])
+.footer,
 :global(html.light)
-  .footer {
+.footer {
   color:
     #68758a;
 }
 
 
 :global(
-  html:not(.dark):not(
-    [data-theme="dark"]
-  )
-) .footer a,
-:global(
-  html[data-theme="light"]
-) .footer a,
+  html:not(.dark):not([data-theme="dark"])
+)
+.footer a,
+:global(html[data-theme="light"])
+.footer a,
 :global(html.light)
-  .footer a {
+.footer a {
   color:
     #8e6810;
 }
@@ -1263,35 +708,20 @@
    MOBILE
    ========================================================= */
 
-@media (
-  max-width: 700px
-) {
-  .kicker {
-    gap:
-      7px;
-
-    margin-bottom:
-      18px;
-
-    font-size:
-      0.62rem;
-
-    letter-spacing:
-      0.12em;
+@media (max-width: 700px) {
+  .section {
+    padding:
+      1.5rem
+      1rem
+      5rem;
   }
 
-  .kicker svg {
-    width:
-      14px;
-
-    height:
-      14px;
-  }
 
   .faqs {
     margin-top:
       32px;
   }
+
 
   .question {
     min-height:
@@ -1299,10 +729,7 @@
 
     grid-template-columns:
       28px
-      minmax(
-        0,
-        1fr
-      )
+      minmax(0, 1fr)
       31px;
 
     gap:
@@ -1313,10 +740,12 @@
       14px;
   }
 
+
   .number {
     font-size:
       0.6rem;
   }
+
 
   .question strong {
     font-size:
@@ -1326,6 +755,7 @@
       1.4;
   }
 
+
   .plus {
     width:
       30px;
@@ -1333,6 +763,7 @@
     height:
       30px;
   }
+
 
   .answer {
     padding:
@@ -1342,6 +773,7 @@
       52px;
   }
 
+
   .answer p {
     font-size:
       0.78rem;
@@ -1350,37 +782,29 @@
       1.7;
   }
 
+
   .footer {
     font-size:
       0.72rem;
-
-    text-align:
-      center;
   }
 }
 
 
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
 
-@media (
-  max-width: 430px
-) {
+@media (max-width: 430px) {
   .question {
     grid-template-columns:
       24px
-      minmax(
-        0,
-        1fr
-      )
+      minmax(0, 1fr)
       29px;
   }
+
 
   .question strong {
     font-size:
       0.82rem;
   }
+
 
   .answer {
     padding-left:
@@ -1389,23 +813,20 @@
 }
 
 
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
 
-@media (
-  prefers-reduced-motion:
-  reduce
-) {
+@media (prefers-reduced-motion: reduce) {
   .item,
   .answerWrapper,
   .answer,
-  .plus {
+  .plus,
+  .footer a {
     transition:
       none !important;
   }
 
-  .item:hover {
+
+  .item:hover,
+  .footer a:hover {
     transform:
       none;
   }

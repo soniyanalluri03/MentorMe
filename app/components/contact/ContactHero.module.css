@@ -1,32 +1,44 @@
 /* =========================================================
    CONTACT HERO
-   Dark mode  : contact-dark.png
-   Light mode : contact-light.png
 
-   Place images here:
-   public/images/contact/contact-dark.png
-   public/images/contact/contact-light.png
+   Shared styles come from globals.css:
+   - global page background
+   - hj-first-five-heading
+   - hj-heading-wave
+   - heading <em> gradient
+   - shared description
+   - hj-gold-eyebrow
+   - shared icons
+
+   This file owns only ContactHero-specific layout,
+   orbit, bottom gold curve and response badge.
+   ========================================================= */
+
+
+/* =========================================================
+   HERO
    ========================================================= */
 
 .hero {
+  position: relative;
+
+  isolation: isolate;
+
   width: 100%;
+
   min-height: 640px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
 
   padding:
     clamp(84px, 8vw, 132px)
     clamp(24px, 5.5vw, 104px)
     clamp(92px, 8vw, 126px);
 
-  position: relative;
-  isolation: isolate;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   overflow: hidden;
-
-  color: #f7f9fd;
 
   text-align: center;
 
@@ -35,40 +47,27 @@
     /
     0 0 14% 14%;
 
-  /* DARK MODE IMAGE */
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(4, 13, 24, 0.18) 0%,
-      rgba(5, 17, 30, 0.34) 46%,
-      rgba(6, 19, 34, 0.66) 100%
-    ),
-    linear-gradient(
-      90deg,
-      rgba(7, 23, 40, 0.24) 0%,
-      rgba(12, 28, 48, 0.06) 42%,
-      rgba(8, 20, 35, 0.24) 100%
-    ),
-    url("/images/contact/contact-dark.png");
-
-  background-size: cover;
-  background-position: center 48%;
-  background-repeat: no-repeat;
-
-  box-shadow:
-    0 34px 80px rgba(0, 0, 0, 0.24),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.07);
+  /*
+   * IMPORTANT:
+   * No page background is set here.
+   *
+   * globals.css owns the full public-site
+   * light/dark page background.
+   */
 }
 
+
 /* =========================================================
-   SUBTLE COLOR WASH
-   No blurred center oval.
+   SUBTLE CONTACT DECORATION
+
+   Decorative only — NOT the page background.
    ========================================================= */
 
 .hero::before {
   content: "";
 
   position: absolute;
+
   inset: 0;
 
   z-index: 0;
@@ -76,77 +75,100 @@
   background:
     radial-gradient(
       circle at 14% 18%,
-      rgba(82, 152, 211, 0.12),
+      rgba(82, 152, 211, 0.08),
       transparent 34%
     ),
     radial-gradient(
       circle at 86% 22%,
-      rgba(145, 103, 221, 0.09),
+      rgba(145, 103, 221, 0.06),
       transparent 35%
     );
 
   pointer-events: none;
 }
 
+
 /* =========================================================
    SHINY GOLD BOTTOM CURVE
-   Highlights only the wide U-shaped bottom edge.
    ========================================================= */
 
 .hero::after {
   content: "";
 
   position: absolute;
+
   inset: 0;
+
   z-index: 3;
 
-  border-radius: inherit;
-
   padding: 2px;
+
+  border-radius: inherit;
 
   background:
     linear-gradient(
       90deg,
+
       rgba(116, 76, 3, 0.12) 0%,
+
       #8f6208 12%,
+
       #d4af37 28%,
+
       #fff2a8 48%,
+
       #ffd85a 56%,
+
       #d4af37 72%,
+
       #8f6208 88%,
+
       rgba(116, 76, 3, 0.12) 100%
     );
 
-  background-size: 240% 100%;
-  background-position: 0% 50%;
+  background-size:
+    240% 100%;
+
+  background-position:
+    0% 50%;
 
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
 
-  -webkit-mask-composite: xor;
+  -webkit-mask-composite:
+    xor;
 
   mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
 
-  mask-composite: exclude;
+  mask-composite:
+    exclude;
 
-  clip-path: inset(70% 0 0 0);
+  clip-path:
+    inset(70% 0 0 0);
 
   filter:
     drop-shadow(
-      0 2px 5px
+      0
+      2px
+      5px
       rgba(255, 220, 99, 0.34)
     )
+
     drop-shadow(
-      0 6px 18px
+      0
+      6px
+      18px
       rgba(212, 175, 55, 0.2)
     );
 
-  opacity: 0.96;
+  opacity:
+    0.96;
 
-  pointer-events: none;
+  pointer-events:
+    none;
 
   animation:
     contactBottomGoldShine
@@ -155,103 +177,54 @@
     infinite;
 }
 
+
 /* =========================================================
-   CONTENT
+   HERO CONTENT
    ========================================================= */
 
 .heroContent {
+  position: relative;
+
+  z-index: 4;
+
   width: 100%;
   max-width: 1120px;
 
-  position: relative;
-  z-index: 4;
+  margin: 0 auto;
 
   display: flex;
-  flex-direction: column;
-  align-items: center;
 
-  margin-inline: auto;
+  flex-direction: column;
+
+  align-items: center;
 }
 
+
 /* =========================================================
-   KICKER
+   CONTACT-SPECIFIC SHARED HEADING WIDTH
    ========================================================= */
 
-.kicker {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.hero :global(.hj-first-five-heading) {
+  max-width: 1100px;
+}
 
-  gap: 9px;
 
+/* Give eyebrow spacing before heading */
+
+.hero :global(.hj-gold-eyebrow) {
   margin:
     0
     auto
     24px;
-
-  color: #f0d36d;
-
-  font-family:
-    var(--font-display),
-    sans-serif;
-
-  font-size: 0.68rem;
-  font-weight: 900;
-  line-height: 1.4;
-
-  letter-spacing: 0.14em;
-
-  text-align: center;
-  text-transform: uppercase;
-
-  text-shadow:
-    0 0 16px
-    rgba(217, 186, 77, 0.2);
 }
 
-.kicker svg {
-  flex: 0 0 auto;
 
-  color: #ffe481;
-
-  filter:
-    drop-shadow(
-      0 0 8px
-      rgba(240, 211, 109, 0.28)
-    );
-}
-
-/* =========================================================
-   SHARED HEADING
-   ========================================================= */
-
-.hero :global(.hj-first-five-heading) {
-  width: 100%;
-  max-width: 1100px;
-
-  margin-inline: auto;
-
-  text-align: center;
-}
-
-.hero :global(.hj-first-five-heading) h2 {
-  text-shadow:
-    0 8px 30px
-    rgba(0, 0, 0, 0.2);
-}
+/* Contact-specific description width only */
 
 .hero :global(.hj-first-five-heading) > span {
   max-width: 680px;
-
-  margin-left: auto !important;
-  margin-right: auto !important;
-
-  color: #d9e4f1;
-
-  text-shadow:
-    0 5px 22px
-    rgba(0, 0, 0, 0.24);
 }
+
 
 /* =========================================================
    RESPONSE BADGE
@@ -260,25 +233,29 @@
 .heroBadge {
   min-height: 43px;
 
-  margin-top: 30px;
+  margin-top:
+    30px;
 
   padding:
     0
     18px;
 
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
 
   gap: 9px;
 
-  color: #d8e3ef;
+  color:
+    #d8e3ef;
 
   border:
     1px solid
     rgba(244, 223, 131, 0.2);
 
-  border-radius: 999px;
+  border-radius:
+    999px;
 
   background:
     linear-gradient(
@@ -288,184 +265,180 @@
     );
 
   box-shadow:
-    inset 0 1px 0
-      rgba(255, 255, 255, 0.11),
-    0 12px 32px
-      rgba(0, 0, 0, 0.15);
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.11),
 
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+    0
+    12px
+    32px
+    rgba(0, 0, 0, 0.15);
 
-  font-size: 0.69rem;
-  font-weight: 750;
+  backdrop-filter:
+    blur(18px);
 
-  letter-spacing: 0.015em;
+  -webkit-backdrop-filter:
+    blur(18px);
+
+  font-family:
+    var(--font-display),
+    sans-serif;
+
+  font-size:
+    0.69rem;
+
+  font-weight:
+    750;
+
+  line-height:
+    1.4;
+
+  letter-spacing:
+    0.015em;
 }
+
 
 .heroBadge svg {
-  color: #f1d46a;
+  flex:
+    0
+    0
+    auto;
+
+  color:
+    #f1d46a;
 }
+
 
 /* =========================================================
    ORBIT
    ========================================================= */
 
 .orbit {
-  width: 470px;
-  height: 470px;
-
   position: absolute;
-  right: -205px;
-  top: 42px;
 
-  z-index: 2;
+  right:
+    -205px;
+
+  top:
+    42px;
+
+  z-index:
+    2;
+
+  width:
+    470px;
+
+  height:
+    470px;
 
   border:
     1px solid
     rgba(244, 223, 131, 0.13);
 
-  border-radius: 50%;
+  border-radius:
+    50%;
 
-  opacity: 0.5;
+  opacity:
+    0.5;
 
   box-shadow:
-    0 0 0 58px
-      rgba(212, 175, 55, 0.018),
-    0 0 0 116px
-      rgba(143, 92, 247, 0.014);
+    0
+    0
+    0
+    58px
+    rgba(212, 175, 55, 0.018),
+
+    0
+    0
+    0
+    116px
+    rgba(143, 92, 247, 0.014);
 
   animation:
     contactOrbitSpin
     24s
     linear
     infinite;
+
+  pointer-events:
+    none;
 }
+
+
+/* =========================================================
+   ORBIT POINTS
+   ========================================================= */
 
 .orbit i {
-  width: 8px;
-  height: 8px;
-
   position: absolute;
 
-  border-radius: 50%;
+  width:
+    8px;
 
-  background: #f4df83;
+  height:
+    8px;
+
+  border-radius:
+    50%;
+
+  background:
+    #f4df83;
 
   box-shadow:
-    0 0 0 5px
-      rgba(212, 175, 55, 0.07),
-    0 0 16px
-      rgba(244, 223, 131, 0.44);
+    0
+    0
+    0
+    5px
+    rgba(212, 175, 55, 0.07),
+
+    0
+    0
+    16px
+    rgba(244, 223, 131, 0.44);
 }
+
 
 .orbit i:nth-child(1) {
-  left: 49%;
-  top: -4px;
+  left:
+    49%;
+
+  top:
+    -4px;
 }
+
 
 .orbit i:nth-child(2) {
-  right: 7%;
-  bottom: 21%;
+  right:
+    7%;
+
+  bottom:
+    21%;
 }
+
 
 .orbit i:nth-child(3) {
-  left: 9%;
-  bottom: 26%;
+  left:
+    9%;
+
+  bottom:
+    26%;
 }
 
-/* =========================================================
-   EXPLICIT DARK MODE
-   ========================================================= */
-
-:global(html[data-theme="dark"])
-  .hero,
-:global(html.dark)
-  .hero,
-:global([data-theme="dark"])
-  .hero,
-:global(.dark)
-  .hero {
-  color: #f7f9fd;
-
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(4, 13, 24, 0.18) 0%,
-      rgba(5, 17, 30, 0.34) 46%,
-      rgba(6, 19, 34, 0.66) 100%
-    ),
-    linear-gradient(
-      90deg,
-      rgba(7, 23, 40, 0.24) 0%,
-      rgba(12, 28, 48, 0.06) 42%,
-      rgba(8, 20, 35, 0.24) 100%
-    ),
-    url("/images/contact/contact-dark.png");
-
-  background-size: cover;
-  background-position: center 48%;
-  background-repeat: no-repeat;
-}
 
 /* =========================================================
-   LIGHT MODE
+   LIGHT MODE — DECORATIVE WASH
    ========================================================= */
 
 :global(
   html:not(.dark):not([data-theme="dark"])
-) .hero,
+)
+.hero::before,
 :global(html[data-theme="light"])
-  .hero,
+.hero::before,
 :global(html.light)
-  .hero,
-:global([data-theme="light"])
-  .hero,
-:global(.light)
-  .hero {
-  color: #172d50;
-
-  /* LIGHT MODE IMAGE */
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(255, 250, 244, 0.06) 0%,
-      rgba(248, 241, 250, 0.13) 48%,
-      rgba(246, 238, 247, 0.28) 100%
-    ),
-    linear-gradient(
-      90deg,
-      rgba(239, 230, 248, 0.08) 0%,
-      rgba(255, 251, 244, 0.02) 46%,
-      rgba(245, 233, 222, 0.08) 100%
-    ),
-    url("/images/contact/contact-light.png");
-
-  background-size: cover;
-  background-position: center 48%;
-  background-repeat: no-repeat;
-
-  box-shadow:
-    0 34px 72px
-      rgba(72, 47, 104, 0.12),
-    inset 0 -1px 0
-      rgba(255, 255, 255, 0.9);
-}
-
-/* =========================================================
-   LIGHT MODE COLOR WASH
-   ========================================================= */
-
-:global(
-  html:not(.dark):not([data-theme="dark"])
-) .hero::before,
-:global(html[data-theme="light"])
-  .hero::before,
-:global(html.light)
-  .hero::before,
-:global([data-theme="light"])
-  .hero::before,
-:global(.light)
-  .hero::before {
+.hero::before {
   background:
     radial-gradient(
       circle at 14% 18%,
@@ -479,137 +452,77 @@
     );
 }
 
+
+/* =========================================================
+   LIGHT MODE — GOLD CURVE
+   ========================================================= */
+
 :global(
   html:not(.dark):not([data-theme="dark"])
-) .hero::after,
+)
+.hero::after,
 :global(html[data-theme="light"])
-  .hero::after,
+.hero::after,
 :global(html.light)
-  .hero::after,
-:global([data-theme="light"])
-  .hero::after,
-:global(.light)
-  .hero::after {
+.hero::after {
   background:
     linear-gradient(
       90deg,
+
       rgba(117, 73, 4, 0.18) 0%,
+
       #8d5e07 12%,
+
       #b78313 28%,
+
       #f0cf64 43%,
+
       #fff2ad 51%,
+
       #d39b17 67%,
+
       #8d5e07 86%,
+
       rgba(117, 73, 4, 0.18) 100%
     );
 
-  background-size: 240% 100%;
+  background-size:
+    240% 100%;
 
   filter:
     drop-shadow(
-      0 2px 4px
+      0
+      2px
+      4px
       rgba(154, 103, 12, 0.28)
     )
+
     drop-shadow(
-      0 6px 15px
+      0
+      6px
+      15px
       rgba(183, 131, 19, 0.16)
     );
 
-  opacity: 0.94;
+  opacity:
+    0.94;
 }
 
+
 /* =========================================================
-   LIGHT KICKER
+   LIGHT MODE — RESPONSE BADGE
    ========================================================= */
 
 :global(
   html:not(.dark):not([data-theme="dark"])
-) .kicker,
+)
+.heroBadge,
 :global(html[data-theme="light"])
-  .kicker,
+.heroBadge,
 :global(html.light)
-  .kicker,
-:global([data-theme="light"])
-  .kicker,
-:global(.light)
-  .kicker {
-  color: #8e6810;
-
-  text-shadow:
-    0 1px 0
-      rgba(255, 255, 255, 0.8),
-    0 0 10px
-      rgba(177, 132, 28, 0.12);
-}
-
-:global(
-  html:not(.dark):not([data-theme="dark"])
-) .kicker svg,
-:global(html[data-theme="light"])
-  .kicker svg,
-:global(html.light)
-  .kicker svg,
-:global([data-theme="light"])
-  .kicker svg,
-:global(.light)
-  .kicker svg {
-  color: #b78313;
-
-  filter:
-    drop-shadow(
-      0 0 5px
-      rgba(177, 132, 28, 0.12)
-    );
-}
-
-/* =========================================================
-   LIGHT DESCRIPTION
-   ========================================================= */
-
-:global(
-  html:not(.dark):not([data-theme="dark"])
-) .hero
-  :global(.hj-first-five-heading)
-  > span,
-:global(html[data-theme="light"])
-  .hero
-  :global(.hj-first-five-heading)
-  > span,
-:global(html.light)
-  .hero
-  :global(.hj-first-five-heading)
-  > span,
-:global([data-theme="light"])
-  .hero
-  :global(.hj-first-five-heading)
-  > span,
-:global(.light)
-  .hero
-  :global(.hj-first-five-heading)
-  > span {
-  color: #47556d;
-
-  text-shadow:
-    0 1px 0
-      rgba(255, 255, 255, 0.45);
-}
-
-/* =========================================================
-   LIGHT RESPONSE BADGE
-   ========================================================= */
-
-:global(
-  html:not(.dark):not([data-theme="dark"])
-) .heroBadge,
-:global(html[data-theme="light"])
-  .heroBadge,
-:global(html.light)
-  .heroBadge,
-:global([data-theme="light"])
-  .heroBadge,
-:global(.light)
-  .heroBadge {
-  color: #566278;
+.heroBadge {
+  color:
+    #566278;
 
   border-color:
     rgba(132, 98, 34, 0.2);
@@ -622,72 +535,89 @@
     );
 
   box-shadow:
-    inset 0 1px 0
-      #ffffff,
-    0 10px 28px
-      rgba(72, 48, 97, 0.08);
+    inset
+    0
+    1px
+    0
+    #ffffff,
+
+    0
+    10px
+    28px
+    rgba(72, 48, 97, 0.08);
 }
+
 
 :global(
   html:not(.dark):not([data-theme="dark"])
-) .heroBadge svg,
+)
+.heroBadge svg,
 :global(html[data-theme="light"])
-  .heroBadge svg,
+.heroBadge svg,
 :global(html.light)
-  .heroBadge svg,
-:global([data-theme="light"])
-  .heroBadge svg,
-:global(.light)
-  .heroBadge svg {
-  color: #987012;
+.heroBadge svg {
+  color:
+    #987012;
 }
 
+
 /* =========================================================
-   LIGHT ORBIT
+   LIGHT MODE — ORBIT
    ========================================================= */
 
 :global(
   html:not(.dark):not([data-theme="dark"])
-) .orbit,
+)
+.orbit,
 :global(html[data-theme="light"])
-  .orbit,
+.orbit,
 :global(html.light)
-  .orbit,
-:global([data-theme="light"])
-  .orbit,
-:global(.light)
-  .orbit {
+.orbit {
   border-color:
     rgba(142, 103, 20, 0.12);
 
-  opacity: 0.34;
+  opacity:
+    0.34;
 
   box-shadow:
-    0 0 0 58px
-      rgba(165, 121, 26, 0.014),
-    0 0 0 116px
-      rgba(143, 92, 247, 0.012);
+    0
+    0
+    0
+    58px
+    rgba(165, 121, 26, 0.014),
+
+    0
+    0
+    0
+    116px
+    rgba(143, 92, 247, 0.012);
 }
+
 
 :global(
   html:not(.dark):not([data-theme="dark"])
-) .orbit i,
+)
+.orbit i,
 :global(html[data-theme="light"])
-  .orbit i,
+.orbit i,
 :global(html.light)
-  .orbit i,
-:global([data-theme="light"])
-  .orbit i,
-:global(.light)
-  .orbit i {
-  background: #b78313;
+.orbit i {
+  background:
+    #b78313;
 
   box-shadow:
-    0 0 0 5px
-      rgba(183, 131, 19, 0.06),
-    0 0 13px
-      rgba(183, 131, 19, 0.24);
+    0
+    0
+    0
+    5px
+    rgba(183, 131, 19, 0.06),
+
+    0
+    0
+    13px
+    rgba(183, 131, 19, 0.24);
 }
+
 
 /* =========================================================
    TABLET
@@ -695,17 +625,16 @@
 
 @media (max-width: 1000px) {
   .hero {
-    min-height: 600px;
+    min-height:
+      600px;
 
     border-radius:
       0 0 47% 47%
       /
       0 0 12% 12%;
-
-    background-position:
-      center 48%;
   }
 }
+
 
 /* =========================================================
    MOBILE
@@ -713,7 +642,8 @@
 
 @media (max-width: 700px) {
   .hero {
-    min-height: 540px;
+    min-height:
+      540px;
 
     padding:
       72px
@@ -724,24 +654,20 @@
       0 0 46% 46%
       /
       0 0 8% 8%;
-
-    background-position:
-      58% center;
   }
 
-  .kicker {
-    gap: 7px;
 
-    margin-bottom: 18px;
+  .hero :global(.hj-gold-eyebrow) {
+    margin-bottom:
+      18px;
 
-    font-size: 0.6rem;
-    letter-spacing: 0.12em;
+    font-size:
+      0.6rem;
+
+    letter-spacing:
+      0.12em;
   }
 
-  .kicker svg {
-    width: 14px;
-    height: 14px;
-  }
 
   .heroBadge {
     width:
@@ -751,20 +677,84 @@
       11px
       14px;
 
-    font-size: 0.65rem;
-    line-height: 1.4;
+    font-size:
+      0.65rem;
   }
+
 
   .orbit {
-    width: 310px;
-    height: 310px;
+    width:
+      310px;
 
-    right: -205px;
-    top: 38px;
+    height:
+      310px;
 
-    opacity: 0.28;
+    right:
+      -205px;
+
+    top:
+      38px;
+
+    opacity:
+      0.28;
   }
 }
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 460px) {
+  .hero {
+    min-height:
+      500px;
+
+    padding:
+      66px
+      12px
+      78px;
+  }
+
+
+  .heroBadge {
+    border-radius:
+      16px;
+
+    text-align:
+      left;
+  }
+}
+
+
+/* =========================================================
+   GOLD CURVE ANIMATION
+   ========================================================= */
+
+@keyframes contactBottomGoldShine {
+  from {
+    background-position:
+      0% 50%;
+  }
+
+  to {
+    background-position:
+      240% 50%;
+  }
+}
+
+
+/* =========================================================
+   ORBIT ANIMATION
+   ========================================================= */
+
+@keyframes contactOrbitSpin {
+  to {
+    transform:
+      rotate(360deg);
+  }
+}
+
 
 /* =========================================================
    REDUCED MOTION
@@ -773,27 +763,7 @@
 @media (prefers-reduced-motion: reduce) {
   .orbit,
   .hero::after {
-    animation: none;
-  }
-}
-
-/* =========================================================
-   ANIMATION
-   ========================================================= */
-
-@keyframes contactBottomGoldShine {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  100% {
-    background-position: 240% 50%;
-  }
-}
-
-@keyframes contactOrbitSpin {
-  to {
-    transform:
-      rotate(360deg);
+    animation:
+      none;
   }
 }

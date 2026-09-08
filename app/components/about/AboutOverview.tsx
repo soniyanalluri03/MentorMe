@@ -23,24 +23,37 @@ export default function AboutOverview() {
       aria-labelledby="about-overview-heading"
     >
       <div className={styles.layout}>
-        <div className={styles.copy}>
-          <h2 id="about-overview-heading">
-            <span className="hj-main-heading">A career journey</span>
+        {/* =====================================================
+            COPY / SHARED GLOBAL HEADING
+        ===================================================== */}
 
-            <span className={`${styles.secondaryLine} text-4xl xl:text-6xl`}>
-              <span className="hj-main-heading hj-heading-wave">
+        <div className={styles.copy}>
+          <header className="hj-first-five-heading">
+            <h2 id="about-overview-heading">
+              A career journey
+              <br />
+
+              <span className="hj-heading-wave text-4xl xl:text-6xl">
                 with a next
               </span>{" "}
-              <em className="seen-word">step.</em>
-            </span>
-          </h2>
 
-          <p className={styles.description}>
-            There is already enough content on the internet. MentorMe helps you
-            focus on what actually matters by connecting direction, learning,
-            practice, projects and proof into one guided journey.
-          </p>
+              <em className="text-4xl xl:text-6xl">
+                step.
+              </em>
+            </h2>
+
+            <span>
+              There is already enough content on the internet.
+              MentorMe helps you focus on what actually matters
+              by connecting direction, learning, practice,
+              projects and proof into one guided journey.
+            </span>
+          </header>
         </div>
+
+        {/* =====================================================
+            SKILLS VISUAL
+        ===================================================== */}
 
         <div
           className={styles.skillsVisual}
@@ -50,6 +63,7 @@ export default function AboutOverview() {
             className={`${styles.orbit} ${styles.orbitOuter}`}
             aria-hidden="true"
           />
+
           <div
             className={`${styles.orbit} ${styles.orbitMiddle}`}
             aria-hidden="true"

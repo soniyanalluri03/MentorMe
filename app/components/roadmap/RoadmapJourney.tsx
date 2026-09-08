@@ -4,20 +4,10 @@ import { useState } from "react";
 
 import styles from "./RoadmapJourney.module.css";
 
-/*
- * Loads the shared global roadmap heading styles:
- * .hj-first-five-heading
- * .hj-heading-wave
- */
-import "./RoadmapHero.module.css";
-
-import {
-  roadmapCheckpoints,
-} from "./roadmapData";
+import { roadmapCheckpoints } from "./roadmapData";
 
 import JourneyAside from "./JourneyAside";
 import RoadmapTrack from "./RoadmapTrack";
-import { Sparkles } from "lucide-react";
 
 export default function RoadmapJourney() {
   const [activeCheckpoint, setActiveCheckpoint] =
@@ -28,12 +18,11 @@ export default function RoadmapJourney() {
       id="journey-map"
       className={styles.journeySection}
     >
-      <header className="hj-first-five-heading ">
-        <div className={styles.kicker}>
-          {/* <Sparkles size={15} />
-            YOUR ROAD TO CAREER READINESS */}
-        </div>
+      {/* =====================================================
+          GLOBAL SHARED HEADING
+      ===================================================== */}
 
+      <header className="hj-first-five-heading">
         <h2>
           Follow the path.
           <br />
@@ -42,7 +31,9 @@ export default function RoadmapJourney() {
             Unlock the
           </span>{" "}
 
-          <em className="text-4xl xl:text-6xl">proof.</em>
+          <em className="text-4xl xl:text-6xl">
+            proof.
+          </em>
         </h2>
 
         <span>
@@ -51,6 +42,10 @@ export default function RoadmapJourney() {
           the journey panel.
         </span>
       </header>
+
+      {/* =====================================================
+          JOURNEY CONTENT
+      ===================================================== */}
 
       <div className={styles.journeyLayout}>
         <JourneyAside

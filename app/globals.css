@@ -1,4 +1,5 @@
 ﻿@import "tailwindcss";
+
 @import "./styles/tokens.css";
 @import "./components/home/learning-hero-overrides.css";
 @import "./styles/base.css";
@@ -10,70 +11,318 @@
 @import "./styles/responsive.css";
 @import "./styles/leaderboard.css";
 @import "./styles/navbar.css";
-@import "../app/courses/courses.css";
-@import "../app/roadmap/roadmap.css";
+
 @import "../app/components/pricing/Pricing.module.css";
+
 @import "./styles/chatbot.css";
-@import "../app/leaderboard/leaderboard.css";
-@import "../app/about/about.css";
-@import "../app/contact/contact.css";
-/* =========================================================
-   COMPLETE HOME PAGE BACKGROUND — LIGHT MODE
-========================================================= */
 
-html[data-theme="light"] .home-page-background {
+
+/* =========================================================
+   ROOT
+   ========================================================= */
+
+html {
+  min-height: 100%;
+}
+
+
+/* =========================================================
+   GLOBAL PUBLIC BACKGROUND — LIGHT MODE
+
+   This is the ONLY public-site background.
+   ========================================================= */
+
+:where(
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"]
+) {
+  --public-site-background:
+    radial-gradient(
+      ellipse 48% 34% at 8% 8%,
+      rgba(180, 145, 232, 0.38) 0%,
+      rgba(209, 188, 239, 0.24) 48%,
+      transparent 78%
+    ),
+    radial-gradient(
+      ellipse 42% 30% at 90% 18%,
+      rgba(231, 190, 77, 0.16) 0%,
+      rgba(255, 237, 190, 0.12) 48%,
+      transparent 76%
+    ),
+    linear-gradient(
+      90deg,
+      #d8c4f3 0%,
+      #e3d3f6 22%,
+      #f1e8f7 34%,
+      #faf3f4 52%,
+      #fffaf0 72%,
+      #fbf1dc 100%
+    );
+
+  --public-site-background-size: 100% 100%;
+  --public-site-base: #f1e8f7;
+}
+
+
+/* =========================================================
+   GLOBAL PUBLIC BACKGROUND — DARK MODE
+
+   This is the ONLY public-site background.
+   ========================================================= */
+
+:where(
+  html.dark,
+  html[data-theme="dark"]
+) {
+  --public-site-background:
+    radial-gradient(
+      circle at 8% 50%,
+      rgba(69, 95, 135, 0.3),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 92% 50%,
+      rgba(212, 175, 55, 0.1),
+      transparent 30%
+    ),
+    linear-gradient(
+      90deg,
+      #112139 0%,
+      #091525 52%,
+      #050d17 100%
+    );
+
+  --public-site-background-size: cover;
+  --public-site-base: #091525;
+}
+
+
+/* =========================================================
+   BODY FALLBACK
+   ========================================================= */
+
+body {
   min-height: 100vh;
-  background:
-    radial-gradient(
-      circle at 8% 16%,
-      rgba(218, 204, 247, 0.94) 0%,
-      rgba(236, 226, 249, 0.7) 26%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 88% 28%,
-      rgba(250, 224, 139, 0.52) 0%,
-      rgba(255, 246, 215, 0.34) 31%,
-      transparent 60%
-    ),
-    radial-gradient(
-      circle at 50% 72%,
-      rgba(255, 255, 255, 0.7) 0%,
-      transparent 52%
-    ),
-    linear-gradient(110deg, #f3ecfb 0%, #fffaf5 50%, #fff8e8 100%);
-  background-repeat: no-repeat;
-  background-size: cover;
+
+  margin: 0;
+
+  background-color:
+    var(--public-site-base, #091525);
 }
 
-/* Remove separate backgrounds from every homepage section */
-html[data-theme="light"] .home-page-background .mh-root,
-html[data-theme="light"] .home-page-background .hj-root,
-html[data-theme="light"] .home-page-background section,
-html[data-theme="light"] .home-page-background .footer {
-  background: transparent !important;
-}
-
-/* Remove the previous white glow behind the book */
-html[data-theme="light"] .home-page-background .mh-light-center-wash {
-  display: none !important;
-}
-
-/* Remove bottom shades that can create section divisions */
-html[data-theme="light"] .home-page-background .mh-bottom-fade {
-  display: none !important;
-}
-
-/* Keep cards and visual components unchanged */
-html[data-theme="light"] .home-page-background article,
-html[data-theme="light"] .home-page-background button,
-html[data-theme="light"] .home-page-background a {
-  background-clip: padding-box;
-}
 
 /* =========================================================
-   SHARED HIGHLIGHT TEXT
-   Used across Roadmap / Career Tracks / Leaderboard / Home
+   PUBLIC SITE ROOT
+
+   PublicSite.tsx should use:
+   className="public-site-page"
+   ========================================================= */
+
+.public-site-page {
+  --navy: #08111f;
+  --navy-2: #0d1a2c;
+  --navy-3: #14243a;
+
+  --panel: rgba(14, 28, 47, 0.76);
+  --panel-strong: #0d1b2e;
+
+  --gold: #d4af37;
+  --gold-2: #f4df83;
+  --gold-3: #a97812;
+
+  --text: #f7f9fd;
+  --muted: #9eacc0;
+  --line: rgba(244, 223, 131, 0.16);
+
+  --purple: #8f5cf7;
+  --purple-soft: #b58cff;
+  --gold-soft: #f2d875;
+
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  isolation: isolate;
+
+  overflow-x: hidden;
+
+  color: var(--text);
+
+  background:
+    var(--public-site-background);
+
+  background-color:
+    var(--public-site-base);
+
+  background-repeat:
+    no-repeat;
+
+  background-size:
+    var(--public-site-background-size);
+
+  transition:
+    color 280ms ease,
+    background 280ms ease;
+}
+
+
+/* =========================================================
+   PUBLIC SITE — DARK VARIABLES
+   ========================================================= */
+
+:where(
+  html.dark,
+  html[data-theme="dark"]
+)
+.public-site-page {
+  --navy: #08111f;
+  --navy-2: #0d1a2c;
+  --navy-3: #14243a;
+
+  --panel: rgba(14, 28, 47, 0.76);
+  --panel-strong: #0d1b2e;
+
+  --gold: #d4af37;
+  --gold-2: #f4df83;
+  --gold-3: #a97812;
+
+  --text: #f7f9fd;
+  --muted: #9eacc0;
+  --line: rgba(244, 223, 131, 0.16);
+
+  --purple: #8f5cf7;
+  --purple-soft: #b58cff;
+  --gold-soft: #f2d875;
+
+  color: var(--text);
+
+  color-scheme: dark;
+}
+
+
+/* =========================================================
+   PUBLIC SITE — LIGHT VARIABLES
+   ========================================================= */
+
+:where(
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"]
+)
+.public-site-page {
+  --navy: #f7f3ed;
+  --navy-2: #ffffff;
+  --navy-3: #ece5f5;
+
+  --panel: rgba(255, 255, 255, 0.78);
+  --panel-strong: rgba(255, 255, 255, 0.94);
+
+  --gold: #b78313;
+  --gold-2: #d4af37;
+  --gold-3: #8e6810;
+
+  --text: #1b2435;
+  --muted: #667085;
+  --line: rgba(75, 61, 103, 0.14);
+
+  --purple: #7650d8;
+  --purple-soft: #9d73f2;
+  --gold-soft: #d2aa43;
+
+  color: var(--text);
+
+  color-scheme: light;
+}
+
+
+/* =========================================================
+   ALL PAGE WRAPPERS ARE TRANSPARENT
+
+   No Home / Roadmap / Courses / Pricing etc background.
+   ========================================================= */
+
+.public-site-page > main {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* =========================================================
+   ALL PAGE SECTIONS USE GLOBAL BACKGROUND
+   ========================================================= */
+
+.public-site-page section {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* =========================================================
+   NAVBAR AREA
+   Global background continues behind navbar
+   ========================================================= */
+
+.public-site-page > .public-header-slot {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+.public-site-page .public-header {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* =========================================================
+   FOOTER
+   Global background continues behind footer
+   ========================================================= */
+
+.public-site-page > footer {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* =========================================================
+   HOME ROOT COMPONENTS
+   ========================================================= */
+
+.public-site-page .mh-root,
+.public-site-page .hj-root,
+.public-site-page .hj-tracks,
+.public-site-page .hj-roadmap,
+.public-site-page .hj-evolution,
+.public-site-page .hj-dashboard-section,
+.public-site-page .hj-proof,
+.public-site-page .hj-final {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+
+/* Remove old Home fades / washes */
+
+.public-site-page .mh-light-center-wash,
+.public-site-page .mh-bottom-fade {
+  display: none !important;
+
+  background: none !important;
+  background-image: none !important;
+}
+
+
+/* =========================================================
+   SHARED MAIN HEADING BLOCK
+
+   Usage:
+   <header className="hj-first-five-heading">
    ========================================================= */
 
 .hj-first-five-heading {
@@ -88,14 +337,19 @@ html[data-theme="light"] .home-page-background a {
   text-align: center;
 }
 
-/* Eyebrow */
+
+/* Eyebrow paragraph */
 
 .hj-first-five-heading > p {
   margin: 0 0 24px;
 
-  color: var(--cyan, #70d7ff);
+  color:
+    var(--cyan, #70d7ff);
 
-  font: 950 clamp(0.9rem, 1.05vw, 1.08rem) var(--font-display, sans-serif);
+  font:
+    950
+    clamp(0.9rem, 1.05vw, 1.08rem)
+    var(--font-display, sans-serif);
 
   line-height: 1.4;
 
@@ -104,8 +358,10 @@ html[data-theme="light"] .home-page-background a {
   text-align: center;
   text-transform: uppercase;
 
-  text-shadow: 0 0 18px rgba(112, 215, 255, 0.16);
+  text-shadow:
+    0 0 18px rgba(112, 215, 255, 0.16);
 }
+
 
 /* Main heading */
 
@@ -115,94 +371,168 @@ html[data-theme="light"] .home-page-background a {
 
   margin: 0 auto;
 
-  padding: 0 0 0.14em;
+  padding:
+    0
+    0
+    0.14em;
 
   overflow: visible;
 
-  color: var(--text, #f4f6ff);
+  color:
+    var(--text, #f4f6ff);
 
-  font: 760 clamp(3.25rem, 5.25vw, 5.9rem) / 1.04
+  font:
+    760
+    clamp(3.25rem, 5.25vw, 5.9rem)
+    / 1.04
     var(--font-display, sans-serif);
 
-  letter-spacing: -0.052em;
+  letter-spacing:
+    -0.052em;
 
   text-align: center;
 
   text-wrap: balance;
 }
 
-/* Moving gold-wave word */
+
+/* =========================================================
+   SHARED MOVING GOLD WAVE WORD
+
+   Dark mode  -> white text + gold wave
+   Light mode -> navy text + gold wave
+
+   Usage:
+   <span className="hj-heading-wave">
+   ========================================================= */
 
 .hj-heading-wave {
   display: inline-block;
 
-  padding: 0 0.02em 0.08em;
+  padding:
+    0
+    0.02em
+    0.08em;
 
-  color: transparent;
+  /* Uses the current theme text colour. */
+  color: var(--text, #f4f6ff);
 
-  background: linear-gradient(
-    90deg,
-    #f4f6ff 0%,
-    #f4f6ff 47%,
+  /*
+   * Keep most of the word in the current theme text colour,
+   * while the gold band travels through the middle.
+   */
+  background:
+    linear-gradient(
+      90deg,
 
-    #d8b24b 49%,
-    #fff6d2 50%,
-    #d8b24b 51%,
+      var(--text, #f4f6ff) 0%,
+      var(--text, #f4f6ff) 42%,
 
-    #f4f6ff 53%,
-    #f4f6ff 100%
-  );
+      #b78313 46%,
+      #d4af37 48%,
+      #fff0a6 50%,
+      #d4af37 52%,
+      #b78313 54%,
 
-  background-size: 260% 100%;
-  background-position: 0% 50%;
+      var(--text, #f4f6ff) 58%,
+      var(--text, #f4f6ff) 100%
+    );
 
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background-size:
+    260% 100%;
 
-  animation: hjHeadingGoldWave 12s ease-in-out infinite;
+  background-position:
+    0% 50%;
+
+  background-repeat:
+    no-repeat;
+
+  background-clip:
+    text;
+
+  -webkit-background-clip:
+    text;
+
+  -webkit-text-fill-color:
+    transparent;
+
+  animation:
+    hjHeadingGoldWave
+    12s
+    ease-in-out
+    infinite;
+
+  will-change:
+    background-position;
 }
 
-/* Purple / gold italic word */
+
+/* =========================================================
+   SHARED ITALIC GRADIENT WORD
+   Used by <em> inside shared headings
+   ========================================================= */
 
 .hj-first-five-heading h2 em {
   display: inline-block;
 
-  margin: 0 0 -0.12em;
+  margin:
+    0
+    0
+    -0.12em;
 
-  padding: 0 0.08em 0.15em;
+  padding:
+    0
+    0.08em
+    0.15em;
 
   overflow: visible;
 
   color: transparent;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
   font-weight: 500;
   font-style: italic;
 
   line-height: 1.08;
 
-  background: linear-gradient(
-    110deg,
-    var(--purple, #8f5cf7),
-    var(--purple-soft, #b58cff) 52%,
-    var(--gold-soft, #f2d875)
-  );
+  background:
+    linear-gradient(
+      110deg,
+      var(--purple, #8f5cf7),
+      var(--purple-soft, #b58cff) 52%,
+      var(--gold-soft, #f2d875)
+    );
 
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background-clip:
+    text;
 
-  transform-origin: center;
+  -webkit-background-clip:
+    text;
 
-  animation: hjStepBreath 3.6s ease-in-out infinite;
+  -webkit-text-fill-color:
+    transparent;
 
-  will-change: transform, filter;
+  transform-origin:
+    center;
+
+  animation:
+    hjStepBreath
+    3.6s
+    ease-in-out
+    infinite;
+
+  will-change:
+    transform,
+    filter;
 }
 
+
 /* =========================================================
-   SHARED DESCRIPTION / FADED TEXT STRIP
+   SHARED DESCRIPTION STRIP
    ========================================================= */
 
 .hj-first-five-heading > span {
@@ -213,40 +543,53 @@ html[data-theme="light"] .home-page-background a {
   width: 100%;
   max-width: 960px;
 
-  margin: 28px auto 0;
+  margin:
+    28px
+    auto
+    0;
 
-  padding: 16px 28px;
+  padding:
+    16px
+    28px;
 
   box-sizing: border-box;
 
-  color: var(--muted, #b5c5d6);
+  color:
+    var(--muted, #b5c5d6);
 
-  font: 760 clamp(1.05rem, 1.22vw, 1.2rem) / 1.62 var(--font-sans, sans-serif);
+  font:
+    760
+    clamp(1.05rem, 1.22vw, 1.2rem)
+    / 1.62
+    var(--font-sans, sans-serif);
 
   text-align: center;
 
-  border-radius: 999px;
+  border-radius:
+    999px;
 
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(112, 215, 255, 0.12),
-    transparent 72%
-  );
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(112, 215, 255, 0.12),
+      transparent 72%
+    );
 
-  text-shadow: 0 0 18px rgba(112, 215, 255, 0.15);
+  text-shadow:
+    0 0 18px rgba(112, 215, 255, 0.15);
 }
 
+
 /* =========================================================
-   LIGHT MODE
+   SHARED HEADING — LIGHT MODE
    ========================================================= */
 
 :where(
-    html:not(.dark):not([data-theme="dark"]),
-    html.light,
-    html[data-theme="light"]
-  )
-  .hj-first-five-heading
-  > p {
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"]
+)
+.hj-first-five-heading > p {
   color: #0f5e83;
 
   text-shadow:
@@ -254,412 +597,734 @@ html[data-theme="light"] .home-page-background a {
     0 0 12px rgba(43, 105, 140, 0.12);
 }
 
+
 :where(
-    html:not(.dark):not([data-theme="dark"]),
-    html.light,
-    html[data-theme="light"]
-  )
-  .hj-first-five-heading
-  h2 {
-  color: #172d50;
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"]
+)
+.hj-first-five-heading h2 em {
+  background:
+    linear-gradient(
+      110deg,
+      #7650d8,
+      #9d73f2 52%,
+      #d2aa43
+    );
+
+  background-clip:
+    text;
+
+  -webkit-background-clip:
+    text;
+
+  -webkit-text-fill-color:
+    transparent;
 }
 
-:where(
-    html:not(.dark):not([data-theme="dark"]),
-    html.light,
-    html[data-theme="light"]
-  )
-  .hj-heading-wave {
-  background: linear-gradient(
-    90deg,
-    #172d50 0%,
-    #172d50 47%,
-    #c99b2f 49%,
-    #ffe7a4 50%,
-    #c99b2f 51%,
-    #172d50 53%,
-    #172d50 100%
-  );
-
-  background-size: 260% 100%;
-  background-position: 0% 50%;
-
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 
 :where(
-    html:not(.dark):not([data-theme="dark"]),
-    html.light,
-    html[data-theme="light"]
-  )
-  .hj-first-five-heading
-  h2
-  em {
-  background: linear-gradient(110deg, #7650d8, #9d73f2 52%, #d2aa43);
-
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-:where(
-    html:not(.dark):not([data-theme="dark"]),
-    html.light,
-    html[data-theme="light"]
-  )
-  .hj-first-five-heading
-  > span {
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"]
+)
+.hj-first-five-heading > span {
   color: #263a59;
 
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(118, 80, 216, 0.11),
-    transparent 72%
-  );
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(118, 80, 216, 0.11),
+      transparent 72%
+    );
 
-  text-shadow: 0 0 14px rgba(118, 80, 216, 0.1);
+  text-shadow:
+    0 0 14px rgba(118, 80, 216, 0.1);
 }
 
+
 /* =========================================================
-   SHARED ANIMATIONS
+   SHARED HEADING ANIMATIONS
    ========================================================= */
 
 @keyframes hjHeadingGoldWave {
   0%,
   100% {
-    background-position: 0% 50%;
+    background-position:
+      0% 50%;
   }
 
   50% {
-    background-position: 100% 50%;
+    background-position:
+      100% 50%;
   }
 }
+
 
 @keyframes hjStepBreath {
   0%,
   100% {
-    transform: translateY(0) scale(1);
+    transform:
+      translateY(0)
+      scale(1);
 
-    filter: drop-shadow(0 0 0 rgba(181, 140, 255, 0));
+    filter:
+      drop-shadow(
+        0
+        0
+        0
+        rgba(181, 140, 255, 0)
+      );
   }
 
   50% {
-    transform: translateY(-2px) scale(1.055);
+    transform:
+      translateY(-2px)
+      scale(1.055);
 
-    filter: drop-shadow(0 8px 18px rgba(143, 92, 247, 0.22))
-      drop-shadow(0 0 15px rgba(224, 189, 85, 0.2));
+    filter:
+      drop-shadow(
+        0
+        8px
+        18px
+        rgba(143, 92, 247, 0.22)
+      )
+      drop-shadow(
+        0
+        0
+        15px
+        rgba(224, 189, 85, 0.2)
+      );
   }
 }
+
 
 /* =========================================================
-   MOBILE
-   ========================================================= */
+   GLOBAL GRADIENT WORD
 
-@media (max-width: 700px) {
-  .hj-first-five-heading {
-    max-width: 100%;
-  }
-
-  .hj-first-five-heading > p {
-    margin-bottom: 18px;
-
-    font-size: 0.62rem;
-
-    letter-spacing: 0.15em;
-  }
-
-  .hj-first-five-heading h2 {
-    font-size: clamp(2.8rem, 13vw, 4.2rem);
-
-    line-height: 1;
-  }
-
-  .hj-first-five-heading > span {
-    margin-top: 22px;
-
-    padding: 10px 8px;
-
-    border-radius: 0;
-
-    font-size: 0.88rem;
-
-    background: transparent;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hj-heading-wave,
-  .hj-first-five-heading h2 em {
-    animation: none !important;
-  }
-}
-
-/* =========================================================
-   GLOBAL PURPLE → GOLD ITALIC WORD
-   Reusable:
-   mapped. / seen. / consistency. / going. / proof. etc.
+   Usage:
+   className="hj-gradient-word"
    ========================================================= */
 
 .hj-gradient-word {
   display: inline-block;
 
-  margin: 0 -0.06em -0.12em 0.02em;
+  margin:
+    0
+    -0.06em
+    -0.12em
+    0.02em;
 
-  padding: 0.03em 0.12em 0.16em 0.06em;
+  padding:
+    0.03em
+    0.12em
+    0.16em
+    0.06em;
 
   overflow: visible;
 
   color: transparent;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
   font-weight: 500;
   font-style: italic;
 
   line-height: 1.08;
 
-  background: linear-gradient(
-    110deg,
-    var(--purple, #8f5cf7) 0%,
-    var(--purple-soft, #b58cff) 52%,
-    var(--gold-soft, #f2d875) 100%
-  );
+  background:
+    linear-gradient(
+      110deg,
+      var(--purple, #8f5cf7) 0%,
+      var(--purple-soft, #b58cff) 52%,
+      var(--gold-soft, #f2d875) 100%
+    );
 
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background-clip:
+    text;
 
-  transform-origin: center;
+  -webkit-background-clip:
+    text;
 
-  animation: hjGradientWordBreath 3.6s ease-in-out infinite;
+  -webkit-text-fill-color:
+    transparent;
 
-  will-change: transform, filter;
+  transform-origin:
+    center;
+
+  animation:
+    hjGradientWordBreath
+    3.6s
+    ease-in-out
+    infinite;
+
+  will-change:
+    transform,
+    filter;
 }
 
-/* =========================================================
-   LIGHT MODE
-   ========================================================= */
 
 :where(
-    html:not(.dark):not([data-theme="dark"]),
-    html.light,
-    html[data-theme="light"]
-  )
-  .hj-gradient-word {
-  background: linear-gradient(110deg, #7650d8 0%, #9d73f2 52%, #d2aa43 100%);
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"]
+)
+.hj-gradient-word {
+  background:
+    linear-gradient(
+      110deg,
+      #7650d8 0%,
+      #9d73f2 52%,
+      #d2aa43 100%
+    );
 
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background-clip:
+    text;
+
+  -webkit-background-clip:
+    text;
+
+  -webkit-text-fill-color:
+    transparent;
 }
 
-/* =========================================================
-   GLOBAL SEEN WORD STYLE
-   Purple → Lavender → Gold italic effect
 
-   Usage:
-   <span className="seen-word">seen.</span>
-   <span className="seen-word">consistency.</span>
-   <span className="seen-word">mapped.</span>
+@keyframes hjGradientWordBreath {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter:
+      drop-shadow(
+        0
+        0
+        0
+        rgba(181, 140, 255, 0)
+      );
+  }
+
+  50% {
+    transform:
+      translateY(-2px)
+      scale(1.055);
+
+    filter:
+      drop-shadow(
+        0
+        8px
+        18px
+        rgba(143, 92, 247, 0.22)
+      )
+      drop-shadow(
+        0
+        0
+        15px
+        rgba(224, 189, 85, 0.2)
+      );
+  }
+}
+
+
+/* =========================================================
+   GLOBAL SEEN WORD
    ========================================================= */
 
 .seen-word {
   display: inline-block;
 
-  margin: 0 -0.06em -0.12em 0.02em;
+  margin:
+    0
+    -0.06em
+    -0.12em
+    0.02em;
 
-  padding: 0.03em 0.12em 0.16em 0.06em;
+  padding:
+    0.03em
+    0.12em
+    0.16em
+    0.06em;
 
   overflow: visible;
 
   color: transparent;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
   font-weight: 500;
   font-style: italic;
 
   line-height: 1.08;
 
-  background: linear-gradient(110deg, #8f5cf7 0%, #b58cff 52%, #f2d875 100%);
+  background:
+    linear-gradient(
+      110deg,
+      #8f5cf7 0%,
+      #b58cff 52%,
+      #f2d875 100%
+    );
 
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background-clip:
+    text;
 
-  transform-origin: center;
+  -webkit-background-clip:
+    text;
 
-  animation: seenWordBreath 3.6s ease-in-out infinite;
+  -webkit-text-fill-color:
+    transparent;
 
-  will-change: transform, filter;
+  transform-origin:
+    center;
+
+  animation:
+    seenWordBreath
+    3.6s
+    ease-in-out
+    infinite;
+
+  will-change:
+    transform,
+    filter;
 }
 
-/* =========================================================
-   SEEN WORD ANIMATION
-   ========================================================= */
 
 @keyframes seenWordBreath {
   0%,
   100% {
-    transform: translateY(0) scale(1);
+    transform:
+      translateY(0)
+      scale(1);
 
-    filter: drop-shadow(0 0 0 rgba(181, 140, 255, 0))
-      drop-shadow(0 0 0 rgba(224, 189, 85, 0));
+    filter:
+      drop-shadow(
+        0
+        0
+        0
+        rgba(181, 140, 255, 0)
+      )
+      drop-shadow(
+        0
+        0
+        0
+        rgba(224, 189, 85, 0)
+      );
   }
 
   50% {
-    transform: translateY(-2px) scale(1.055);
+    transform:
+      translateY(-2px)
+      scale(1.055);
 
-    filter: drop-shadow(0 8px 18px rgba(143, 92, 247, 0.22))
-      drop-shadow(0 0 15px rgba(224, 189, 85, 0.2));
+    filter:
+      drop-shadow(
+        0
+        8px
+        18px
+        rgba(143, 92, 247, 0.22)
+      )
+      drop-shadow(
+        0
+        0
+        15px
+        rgba(224, 189, 85, 0.2)
+      );
   }
 }
 
+
 /* =========================================================
    GLOBAL LARGE DISPLAY HEADING
-   Same size/color as "Momentum deserves"
    ========================================================= */
 
 .hj-display-heading {
-  color: var(--text, #102b51);
+  color:
+    var(--text, #102b51);
 
-  font-size: clamp(3.2rem, 5.45vw, 6.5rem);
+  font-size:
+    clamp(
+      3.2rem,
+      5.45vw,
+      6.5rem
+    );
 
-  font-weight: 700;
+  font-weight:
+    700;
 
-  line-height: 0.98;
-  letter-spacing: -0.065em;
+  line-height:
+    0.98;
+
+  letter-spacing:
+    -0.065em;
 }
 
-:where(html.dark, html[data-theme="dark"], [data-theme="dark"])
-  .hj-display-heading {
-  color: #f6f7fc;
+
+:where(
+  html.dark,
+  html[data-theme="dark"]
+)
+.hj-display-heading {
+  color:
+    #f6f7fc;
 }
+
 
 /* =========================================================
-   GLOBAL HIGHLIGHT PILLS
-   Base
+   GLOBAL GOLD EYEBROW
+
+   Usage:
+   <div className="hj-gold-eyebrow">
+   ========================================================= */
+
+.hj-gold-eyebrow {
+  width:
+    max-content;
+
+  max-width:
+    100%;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    10px;
+
+  color:
+    #9a6a0b;
+
+  font-family:
+    var(--font-display),
+    sans-serif;
+
+  font-size:
+    0.82rem;
+
+  font-weight:
+    900;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    0.12em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.hj-gold-eyebrow svg {
+  width:
+    18px;
+
+  height:
+    18px;
+
+  flex:
+    0 0 auto;
+
+  color:
+    #d5a513;
+}
+
+
+:where(
+  html.dark,
+  html[data-theme="dark"]
+)
+.hj-gold-eyebrow {
+  color:
+    #f0cd55;
+}
+
+
+:where(
+  html.dark,
+  html[data-theme="dark"]
+)
+.hj-gold-eyebrow svg {
+  color:
+    #f0cd55;
+}
+
+
+/* =========================================================
+   GLOBAL HIGHLIGHT PILLS CONTAINER
+
+   Usage:
+   <div className="hj-highlight-pills">
+   ========================================================= */
+
+.hj-highlight-pills {
+  width: 100%;
+
+  margin-top:
+    26px;
+
+  position: relative;
+  z-index: 3;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 11px;
+}
+
+
+/* =========================================================
+   GLOBAL HIGHLIGHT PILL BASE
    ========================================================= */
 
 .hj-highlight-pill {
   min-height: 38px;
 
+  position: relative;
+
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
+
   gap: 8px;
 
-  padding: 0 16px;
+  padding:
+    0
+    16px;
 
-  border: 1px solid transparent;
+  overflow: hidden;
 
-  border-radius: 999px;
+  isolation: isolate;
 
-  font-family: var(--font-display), sans-serif;
+  border:
+    1px solid transparent;
 
-  font-size: 0.58rem;
-  font-weight: 900;
+  border-radius:
+    999px;
 
-  line-height: 1;
+  font-family:
+    var(--font-display),
+    sans-serif;
 
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
+  font-size:
+    0.58rem;
+
+  font-weight:
+    900;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    0.11em;
+
+  text-transform:
+    uppercase;
+
+  cursor:
+    default;
 
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.95),
-    0 9px 22px rgba(72, 50, 98, 0.07);
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.95),
 
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+    0
+    9px
+    22px
+    rgba(72, 50, 98, 0.07);
+
+  backdrop-filter:
+    blur(15px);
+
+  -webkit-backdrop-filter:
+    blur(15px);
+
+  transition:
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 300ms ease,
+    color 300ms ease,
+    background 300ms ease,
+    box-shadow 300ms ease;
 }
 
 
+.hj-highlight-pill:hover {
+  transform:
+    translateY(-4px);
+}
+
 
 /* =========================================================
-   GOLD / CREAM PILL
-   LEVELS 1–10 FREE / WEEKLY XP
+   PILL LIGHT SWEEP
+   ========================================================= */
+
+.hj-highlight-pill::before {
+  content: "";
+
+  width: 70px;
+  height: 120%;
+
+  position: absolute;
+
+  left: -100px;
+  top: -10%;
+  z-index: -1;
+
+  transform:
+    skewX(-22deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 243, 181, 0.14),
+      transparent
+    );
+
+  transition:
+    left 650ms ease;
+
+  pointer-events: none;
+}
+
+
+.hj-highlight-pill:hover::before {
+  left:
+    calc(100% + 35px);
+}
+
+
+/* =========================================================
+   GOLD PILL
    ========================================================= */
 
 .hj-highlight-pill--gold {
-  color: #8b650d;
+  color:
+    #8b650d;
 
-  border-color: rgba(177, 132, 28, 0.25);
+  border-color:
+    rgba(177, 132, 28, 0.25);
 
-  background: linear-gradient(
-    145deg,
-    rgba(255, 253, 244, 0.96),
-    rgba(248, 232, 184, 0.56)
-  );
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 253, 244, 0.96),
+      rgba(248, 232, 184, 0.56)
+    );
 }
+
 
 .hj-highlight-pill--gold svg {
-  color: #b78313;
+  color:
+    #b78313;
 }
 
+
 /* =========================================================
-   PURPLE / LAVENDER PILL
-   FULL 90-LEVEL PREVIEW / ACTIVE STREAKS
+   PURPLE PILL
    ========================================================= */
 
 .hj-highlight-pill--purple {
-  color: #7750cf;
+  color:
+    #7750cf;
 
-  border-color: rgba(143, 92, 247, 0.24);
+  border-color:
+    rgba(143, 92, 247, 0.24);
 
-  background: linear-gradient(
-    145deg,
-    rgba(250, 247, 255, 0.96),
-    rgba(233, 221, 252, 0.72)
-  );
+  background:
+    linear-gradient(
+      145deg,
+      rgba(250, 247, 255, 0.96),
+      rgba(233, 221, 252, 0.72)
+    );
 }
+
 
 .hj-highlight-pill--purple svg {
-  color: #8f5cf7;
+  color:
+    #8f5cf7;
 }
 
+
 /* =========================================================
-   BLUE / CYAN PILL
-   100+ OPPORTUNITIES / LIVE RANKING
+   BLUE PILL
    ========================================================= */
 
 .hj-highlight-pill--blue {
-  color: #0f6487;
+  color:
+    #0f6487;
 
-  border-color: rgba(61, 158, 196, 0.24);
-
-  background: linear-gradient(
-    145deg,
-    rgba(250, 254, 255, 0.97),
-    rgba(220, 244, 250, 0.72)
-  );
-}
-
-.hj-highlight-pill--blue svg {
-  color: #2385ad;
-}
-
-/* =========================================================
-   DARK MODE — PILLS
-   ========================================================= */
-
-:where(html.dark, html[data-theme="dark"], [data-theme="dark"])
-  .hj-highlight-pill--gold {
-  color: #f0d36d;
-
-  border-color: rgba(244, 223, 131, 0.32);
+  border-color:
+    rgba(61, 158, 196, 0.24);
 
   background:
-    linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(255, 255, 255, 0.02)),
+    linear-gradient(
+      145deg,
+      rgba(250, 254, 255, 0.97),
+      rgba(220, 244, 250, 0.72)
+    );
+}
+
+
+.hj-highlight-pill--blue svg {
+  color:
+    #2385ad;
+}
+
+
+/* =========================================================
+   DARK MODE PILLS
+   ========================================================= */
+
+:where(
+  html.dark,
+  html[data-theme="dark"]
+)
+.hj-highlight-pill--gold {
+  color:
+    #f0d36d;
+
+  border-color:
+    rgba(244, 223, 131, 0.32);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(212, 175, 55, 0.1),
+      rgba(255, 255, 255, 0.02)
+    ),
     rgba(13, 32, 52, 0.68);
 }
 
-:where(html.dark, html[data-theme="dark"], [data-theme="dark"])
-  .hj-highlight-pill--purple {
-  color: #c5a9ff;
 
-  border-color: rgba(181, 140, 255, 0.3);
+:where(
+  html.dark,
+  html[data-theme="dark"]
+)
+.hj-highlight-pill--purple {
+  color:
+    #c5a9ff;
+
+  border-color:
+    rgba(181, 140, 255, 0.3);
 
   background:
     linear-gradient(
@@ -670,11 +1335,17 @@ html[data-theme="light"] .home-page-background a {
     rgba(13, 32, 52, 0.68);
 }
 
-:where(html.dark, html[data-theme="dark"], [data-theme="dark"])
-  .hj-highlight-pill--blue {
-  color: #81d7ef;
 
-  border-color: rgba(80, 213, 236, 0.28);
+:where(
+  html.dark,
+  html[data-theme="dark"]
+)
+.hj-highlight-pill--blue {
+  color:
+    #81d7ef;
+
+  border-color:
+    rgba(80, 213, 236, 0.28);
 
   background:
     linear-gradient(
@@ -685,19 +1356,346 @@ html[data-theme="light"] .home-page-background a {
     rgba(13, 32, 52, 0.68);
 }
 
+
+/* =========================================================
+   GLOBAL ACTION ROW
+
+   Usage:
+   <div className="hj-action-row">
+   ========================================================= */
+
+.hj-action-row {
+  width: 100%;
+
+  margin-top:
+    30px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 14px;
+}
+
+
+.hj-action-row .navbar-sign-in,
+.hj-action-row .mh-button {
+  min-width:
+    220px;
+
+  min-height:
+    54px;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+}
+
+
+/* =========================================================
+   GLOBAL BUTTON
+
+   Usage:
+   className="mh-button"
+   ========================================================= */
+
+.mh-button {
+  min-height:
+    54px;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    18px;
+
+  padding:
+    0
+    23px;
+
+  border-radius:
+    12px;
+
+  font-family:
+    var(--font-display),
+    sans-serif;
+
+  font-size:
+    0.84rem;
+
+  font-weight:
+    820;
+
+  line-height:
+    1;
+
+  text-decoration:
+    none;
+
+  white-space:
+    nowrap;
+
+  cursor:
+    pointer;
+
+  transition:
+    transform 250ms ease,
+    border-color 250ms ease,
+    box-shadow 250ms ease,
+    background 250ms ease,
+    color 250ms ease;
+}
+
+
+/* =========================================================
+   GLOBAL SECONDARY BUTTON
+
+   Usage:
+   className="mh-button mh-button--secondary"
+   ========================================================= */
+
+.mh-button--secondary {
+  position: relative;
+
+  isolation:
+    isolate;
+
+  overflow:
+    hidden;
+
+  color:
+    #1a2c49;
+
+  border:
+    1px solid
+    rgba(83, 61, 120, 0.2);
+
+  background:
+    rgba(255, 255, 255, 0.62);
+
+  backdrop-filter:
+    blur(14px);
+
+  -webkit-backdrop-filter:
+    blur(14px);
+
+  box-shadow:
+    inset
+    0
+    1px
+    0
+    #ffffff,
+
+    0
+    12px
+    28px
+    rgba(74, 55, 109, 0.12);
+}
+
+
+.mh-button--secondary:hover {
+  transform:
+    translateY(-4px);
+
+  border-color:
+    rgba(180, 143, 34, 0.5);
+
+  background:
+    rgba(255, 255, 255, 0.85);
+
+  box-shadow:
+    inset
+    0
+    1px
+    0
+    #ffffff,
+
+    0
+    16px
+    32px
+    rgba(74, 55, 109, 0.16);
+}
+
+
+.mh-button--secondary > span {
+  transition:
+    transform 220ms ease;
+}
+
+
+.mh-button--secondary:hover > span {
+  transform:
+    translate(3px, -2px);
+}
+
+
+/* =========================================================
+   DARK MODE — SECONDARY BUTTON
+   ========================================================= */
+
+:where(
+  html.dark,
+  html[data-theme="dark"]
+)
+.mh-button--secondary {
+  color:
+    #f2f7ff;
+
+  border-color:
+    rgba(101, 182, 238, 0.25);
+
+  background:
+    rgba(12, 40, 70, 0.68);
+
+  box-shadow:
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.1),
+
+    0
+    15px
+    32px
+    rgba(0, 0, 0, 0.28);
+}
+
+
+:where(
+  html.dark,
+  html[data-theme="dark"]
+)
+.mh-button--secondary:hover {
+  border-color:
+    rgba(244, 223, 131, 0.38);
+
+  background:
+    rgba(18, 50, 83, 0.86);
+}
+
+
+/* =========================================================
+   GLOBAL SECONDARY BUTTON GOLD LOOP
+   ========================================================= */
+
+@property --mh-secondary-loop-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+
+.mh-button--secondary::after {
+  content: "";
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  z-index:
+    3;
+
+  padding:
+    2px;
+
+  border-radius:
+    inherit;
+
+  pointer-events:
+    none;
+
+  background:
+    conic-gradient(
+      from var(--mh-secondary-loop-angle),
+
+      transparent 0deg,
+      transparent 280deg,
+
+      rgba(96, 66, 0, 0) 288deg,
+
+      #604200 304deg,
+      #765407 318deg,
+      #b8860b 330deg,
+      #d4af37 338deg,
+      #8a620d 348deg,
+
+      transparent 360deg
+    );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  -webkit-mask-composite:
+    xor;
+
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  mask-composite:
+    exclude;
+
+  filter:
+    drop-shadow(
+      0
+      0
+      5px
+      rgba(111, 79, 8, 0.42)
+    );
+
+  animation:
+    mhSecondaryGoldLoop
+    4s
+    linear
+    infinite;
+}
+
+
+@keyframes mhSecondaryGoldLoop {
+  from {
+    --mh-secondary-loop-angle:
+      0deg;
+  }
+
+  to {
+    --mh-secondary-loop-angle:
+      360deg;
+  }
+}
+
+
 /* =========================================================
    AUTH PILLS — DARK MODE ONLY
-   Light mode and other pages remain unchanged
-========================================================= */
+   ========================================================= */
+
 
 /* GOLD */
+
 :where(
   html.dark,
   html[data-theme="dark"]
 )
 .auth-page
 .auth-fixed-pill.hj-highlight-pill--gold {
-  color: #f1d15a !important;
+  color:
+    #f1d15a !important;
 
   border-color:
     rgba(212, 175, 55, 0.42) !important;
@@ -706,9 +1704,18 @@ html[data-theme="light"] .home-page-background a {
     rgba(8, 29, 50, 0.48) !important;
 
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.035),
-    0 8px 20px rgba(0, 0, 0, 0.08) !important;
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.035),
+
+    0
+    8px
+    20px
+    rgba(0, 0, 0, 0.08) !important;
 }
+
 
 :where(
   html.dark,
@@ -716,19 +1723,24 @@ html[data-theme="light"] .home-page-background a {
 )
 .auth-page
 .auth-fixed-pill.hj-highlight-pill--gold svg {
-  color: #e6bf32 !important;
-  stroke: #e6bf32 !important;
+  color:
+    #e6bf32 !important;
+
+  stroke:
+    #e6bf32 !important;
 }
 
 
 /* PURPLE */
+
 :where(
   html.dark,
   html[data-theme="dark"]
 )
 .auth-page
 .auth-fixed-pill.hj-highlight-pill--purple {
-  color: #bb84ff !important;
+  color:
+    #bb84ff !important;
 
   border-color:
     rgba(169, 117, 234, 0.42) !important;
@@ -737,9 +1749,18 @@ html[data-theme="light"] .home-page-background a {
     rgba(10, 27, 50, 0.48) !important;
 
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.035),
-    0 8px 20px rgba(0, 0, 0, 0.08) !important;
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.035),
+
+    0
+    8px
+    20px
+    rgba(0, 0, 0, 0.08) !important;
 }
+
 
 :where(
   html.dark,
@@ -747,19 +1768,24 @@ html[data-theme="light"] .home-page-background a {
 )
 .auth-page
 .auth-fixed-pill.hj-highlight-pill--purple svg {
-  color: #a975ea !important;
-  stroke: #a975ea !important;
+  color:
+    #a975ea !important;
+
+  stroke:
+    #a975ea !important;
 }
 
 
 /* BLUE */
+
 :where(
   html.dark,
   html[data-theme="dark"]
 )
 .auth-page
 .auth-fixed-pill.hj-highlight-pill--blue {
-  color: #67d2ff !important;
+  color:
+    #67d2ff !important;
 
   border-color:
     rgba(88, 164, 213, 0.44) !important;
@@ -768,9 +1794,18 @@ html[data-theme="light"] .home-page-background a {
     rgba(7, 29, 49, 0.48) !important;
 
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.035),
-    0 8px 20px rgba(0, 0, 0, 0.08) !important;
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.035),
+
+    0
+    8px
+    20px
+    rgba(0, 0, 0, 0.08) !important;
 }
+
 
 :where(
   html.dark,
@@ -778,352 +1813,298 @@ html[data-theme="light"] .home-page-background a {
 )
 .auth-page
 .auth-fixed-pill.hj-highlight-pill--blue svg {
-  color: #58bce8 !important;
-  stroke: #58bce8 !important;
+  color:
+    #58bce8 !important;
+
+  stroke:
+    #58bce8 !important;
 }
+
+
+/* =========================================================
+   SHARED MENTORME ICONS
+   ========================================================= */
+
+.mm-shared-icon {
+  display:
+    block;
+
+  flex:
+    0
+    0
+    auto;
+
+  color:
+    #d4af37;
+
+  stroke:
+    currentColor;
+
+  stroke-width:
+    2;
+}
+
+
+/* Sparkles */
+
+.mm-spark-icon {
+  filter:
+    drop-shadow(
+      0
+      0
+      4px
+      rgba(212, 175, 55, 0.25)
+    );
+}
+
+
+/* Arrow */
+
+.mm-arrow-icon {
+  transition:
+    transform 0.25s ease;
+}
+
+
+.mm-arrow-icon:hover {
+  transform:
+    translateX(3px);
+}
+
+
+/* =========================================================
+   GLOBAL MAIN HEADING
+   ========================================================= */
+
+.hj-main-heading {
+  display:
+    inline-block;
+
+  color:
+    var(--text, #f4f6ff);
+
+  font:
+    760
+    clamp(3.25rem, 5.25vw, 5.9rem)
+    / 1.04
+    var(--font-display, sans-serif);
+
+  letter-spacing:
+    -0.052em;
+
+  text-wrap:
+    balance;
+}
+
+
+:where(
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"]
+)
+.hj-main-heading {
+  color:
+    #172d50;
+}
+
+
+:where(
+  html.dark,
+  html[data-theme="dark"]
+)
+.hj-main-heading {
+  color:
+    #f4f6ff;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .public-site-page {
+    background-size:
+      cover;
+  }
+
+
+  .hj-first-five-heading {
+    max-width:
+      100%;
+  }
+
+
+  .hj-first-five-heading > p {
+    margin-bottom:
+      18px;
+
+    font-size:
+      0.62rem;
+
+    letter-spacing:
+      0.15em;
+  }
+
+
+  .hj-first-five-heading h2 {
+    font-size:
+      clamp(
+        2.8rem,
+        13vw,
+        4.2rem
+      );
+
+    line-height:
+      1;
+  }
+
+
+  .hj-first-five-heading > span {
+    margin-top:
+      22px;
+
+    padding:
+      10px
+      8px;
+
+    border-radius:
+      0;
+
+    font-size:
+      0.88rem;
+
+    background:
+      transparent;
+  }
+
+
+  .hj-gold-eyebrow {
+    font-size:
+      0.68rem;
+
+    letter-spacing:
+      0.1em;
+  }
+
+
+  .hj-gold-eyebrow svg {
+    width:
+      16px;
+
+    height:
+      16px;
+  }
+
+
+  .hj-main-heading {
+    font-size:
+      clamp(
+        2.8rem,
+        13vw,
+        4.2rem
+      );
+
+    line-height:
+      1;
+  }
+
+
+  .hj-highlight-pills {
+    margin-top:
+      22px;
+
+    gap:
+      8px;
+  }
+
+
+  .hj-highlight-pill {
+    min-height:
+      35px;
+
+    padding:
+      0
+      12px;
+
+    font-size:
+      0.5rem;
+
+    letter-spacing:
+      0.08em;
+  }
+
+
+  .hj-action-row {
+    width:
+      100%;
+
+    display:
+      grid;
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .hj-action-row .navbar-sign-in,
+  .hj-action-row .mh-button {
+    width:
+      100%;
+
+    min-width:
+      0;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 460px) {
+  .hj-highlight-pills {
+    width:
+      min(100%, 300px);
+
+    margin:
+      22px
+      auto
+      0;
+
+    display:
+      grid;
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .hj-highlight-pill {
+    width:
+      100%;
+  }
+}
+
 
 /* =========================================================
    REDUCED MOTION
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .seen-word {
-    animation: none !important;
-  }
-}
-
-/* =========================================================
-   GLOBAL GOLD EYEBROW / TAGLINE
-   ========================================================= */
-
-.hj-gold-eyebrow {
-  width: max-content;
-  max-width: 100%;
-
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-
-  color: #9a6a0b;
-
-  font-family: var(--font-display), sans-serif;
-
-  font-size: 0.82rem;
-  font-weight: 900;
-
-  line-height: 1;
-
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.hj-gold-eyebrow svg {
-  width: 18px;
-  height: 18px;
-
-  flex: 0 0 auto;
-
-  color: #d5a513;
-}
-
-/* DARK MODE */
-
-:where(html.dark, html[data-theme="dark"], [data-theme="dark"])
-  .hj-gold-eyebrow {
-  color: #f0cd55;
-}
-
-:where(html.dark, html[data-theme="dark"], [data-theme="dark"])
-  .hj-gold-eyebrow
-  svg {
-  color: #f0cd55;
-}
-
-/* MOBILE */
-
-@media (max-width: 700px) {
-  .hj-gold-eyebrow {
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
+  .hj-heading-wave,
+  .hj-first-five-heading h2 em,
+  .hj-gradient-word,
+  .seen-word,
+  .mh-button--secondary::after {
+    animation:
+      none !important;
   }
 
-  .hj-gold-eyebrow svg {
-    width: 16px;
-    height: 16px;
+
+  .hj-highlight-pill,
+  .hj-highlight-pill::before {
+    transition:
+      none !important;
   }
-}
-
-/* =========================================================
-   GLOBAL MENTORME LIGHT BACKGROUND
-   One background for all public/auth pages
-========================================================= */
-
-html[data-theme="light"],
-html.light,
-html:not(.dark):not([data-theme="dark"]) {
-  min-height: 100%;
-
-  background: #f4ecfb;
-}
-
-html[data-theme="light"] body,
-html.light body,
-html:not(.dark):not([data-theme="dark"]) body {
-  min-height: 100vh;
-
-  background:
-    /* LEFT — lavender */
-    radial-gradient(
-      ellipse at 7% 38%,
-      rgba(203, 177, 239, 0.88) 0%,
-      rgba(222, 205, 244, 0.66) 24%,
-      rgba(238, 227, 248, 0.34) 42%,
-      transparent 61%
-    ),
-
-    /* RIGHT — warm premium gold */
-    radial-gradient(
-      ellipse at 91% 38%,
-      rgba(250, 221, 128, 0.48) 0%,
-      rgba(255, 239, 188, 0.34) 30%,
-      transparent 59%
-    ),
-
-    /* SOFT WHITE CENTER */
-    radial-gradient(
-      ellipse at 53% 48%,
-      rgba(255, 255, 255, 0.82) 0%,
-      rgba(255, 255, 255, 0.48) 32%,
-      transparent 61%
-    ),
-
-    /* BASE */
-    linear-gradient(
-      108deg,
-      #eee4fa 0%,
-      #f8f2fb 34%,
-      #fffaf4 64%,
-      #fff4d8 100%
-    );
-
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
-/* =========================================================
-   GLOBAL MENTORME DARK BACKGROUND
-   Same dark background style as Career Tracks
-   ========================================================= */
-
-html[data-theme="dark"],
-html.dark {
-  min-height: 100%;
-
-  background: #07131f;
-}
-
-html[data-theme="dark"] body,
-html.dark body {
-  min-height: 100vh;
-
-  background:
-    radial-gradient(
-      circle at 18% 22%,
-      rgba(40, 70, 108, 0.34) 0%,
-      rgba(21, 43, 70, 0.22) 28%,
-      transparent 52%
-    ),
-    radial-gradient(
-      circle at 82% 30%,
-      rgba(17, 43, 67, 0.24) 0%,
-      transparent 48%
-    ),
-    radial-gradient(
-      circle at 50% 78%,
-      rgba(8, 25, 43, 0.22) 0%,
-      transparent 55%
-    ),
-    linear-gradient(115deg, #11243a 0%, #0a1929 48%, #06121e 100%);
-
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
-.hj-main-heading {
-  display: inline-block;
-
-  color: var(--text, #f4f6ff);
-
-  font: 760 clamp(3.25rem, 5.25vw, 5.9rem) / 1.04
-    var(--font-display, sans-serif);
-
-  letter-spacing: -0.052em;
-
-  text-wrap: balance;
-}
-
-/* LIGHT MODE */
-:where(
-    html:not(.dark):not([data-theme="dark"]),
-    html.light,
-    html[data-theme="light"]
-  )
-  .hj-main-heading {
-  color: #172d50;
-}
-
-/* DARK MODE */
-:where(html.dark, html[data-theme="dark"]) .hj-main-heading {
-  color: #f4f6ff;
-}
-
-@media (max-width: 700px) {
-  .hj-main-heading {
-    font-size: clamp(2.8rem, 13vw, 4.2rem);
-
-    line-height: 1;
-  }
-}
-
-/* =========================================================
-   ROADMAP — REUSE THE EXACT HOME PAGE ROOT BACKGROUND
-   The actual Home background now comes from styles.homePage
-   applied in PublicSite.tsx. Do not recreate a second gradient.
-========================================================= */
-
-.roadmap-page-shell .public-header-slot,
-.roadmap-page-shell .roadmap-page,
-.roadmap-page-shell .roadmap-page section,
-.roadmap-page-shell .footer {
-  background: transparent !important;
-  background-image: none !important;
-}
-
-.roadmap-page-shell .roadmap-page::before,
-.roadmap-page-shell .roadmap-page::after {
-  background: none !important;
-}
-
-/* =========================================================
-   LEADERBOARD — REUSE EXACT HOME PAGE BACKGROUND
-========================================================= */
-
-
-.leaderboard-page-shell .public-header-slot,
-.leaderboard-page-shell .public-header,
-.leaderboard-page-shell .leaderboard-page,
-.leaderboard-page-shell .leaderboard-page > section,
-.leaderboard-page-shell .footer {
-  background: transparent !important;
-  background-color: transparent !important;
-  background-image: none !important;
-}
-
-
-.leaderboard-page-shell .leaderboard-page::before,
-.leaderboard-page-shell .leaderboard-page::after {
-  background: none !important;
-  background-image: none !important;
-}
-/* =========================================================
-   PRICING — REUSE EXACT HOME PAGE BACKGROUND
-========================================================= */
-
-.pricing-page-shell .public-header-slot,
-.pricing-page-shell .pricing-page,
-.pricing-page-shell .pricing-page section,
-.pricing-page-shell .footer {
-  background: transparent !important;
-  background-image: none !important;
-}
-
-/* =========================================================
-   ABOUT — REUSE EXACT HOME PAGE BACKGROUND
-   ========================================================= */
-
-.about-page-shell .public-header-slot,
-.about-page-shell .public-header,
-.about-page-shell .about-page,
-.about-page-shell .about-page > section,
-.about-page-shell .footer {
-  background: transparent !important;
-  background-color: transparent !important;
-  background-image: none !important;
-}
-
-
-
-/* =========================================================
-   SHARED MENTORME ICONS
-========================================================= */
-
-.mm-shared-icon {
-  display: block;
-  flex: 0 0 auto;
-
-  color: #d4af37;
-  stroke: currentColor;
-
-  stroke-width: 2;
-}
-
-/* Sparkles */
-.mm-spark-icon {
-  filter:
-    drop-shadow(
-      0 0 4px rgba(212, 175, 55, 0.25)
-    );
-}
-
-/* Arrow */
-.mm-arrow-icon {
-  transition:
-    transform 0.25s ease;
-}
-
-.mm-arrow-icon:hover {
-  transform: translateX(3px);
-}
-
-
-/* =========================================================
-   LIGHT PAGES USE GLOBAL BACKGROUND
-   Decorative elements remain untouched
-========================================================= */
-
-:where(
-  html[data-theme="light"],
-  html.light,
-  html:not(.dark):not([data-theme="dark"])
-)
-.auth-page {
-  background: transparent !important;
-}
-
-.about-page-shell .about-page::before,
-.about-page-shell .about-page::after {
-  background: none !important;
-  background-image: none !important;
-}
-/* =========================================================
-   CONTACT — REUSE EXACT HOME PAGE BACKGROUND
-   ========================================================= */
-
-.contact-page-shell .public-header-slot,
-.contact-page-shell .public-header,
-.contact-page-shell .contact-page,
-.contact-page-shell .contact-page > section,
-.contact-page-shell .footer {
-  background: transparent !important;
-  background-color: transparent !important;
-  background-image: none !important;
-}
-
-
-.contact-page-shell .contact-page::before,
-.contact-page-shell .contact-page::after {
-  background: none !important;
-  background-image: none !important;
 }

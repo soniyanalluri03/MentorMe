@@ -25,11 +25,7 @@ export default function Pricing() {
     );
 
   return (
-    <main
-      className={
-        styles.pricingPage
-      }
-    >
+    <main>
       <MotionReveal as="section" y={24} amount={0.06}>
         <PricingHero />
       </MotionReveal>

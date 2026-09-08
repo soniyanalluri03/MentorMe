@@ -51,11 +51,6 @@ export default function PricingCard({
           : ""
       }`}
     >
-      {/* ===================================================
-          TOP ROW
-          Icon + badge
-          =================================================== */}
-
       <div
         className={
           styles.cardTopRow

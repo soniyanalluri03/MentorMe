@@ -1,7 +1,4 @@
-import {
-  BadgeCheck,
-  Sparkles,
-} from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 import BillingToggle from "./BillingToggle";
 import PricingCard from "./PricingCard";
@@ -14,14 +11,11 @@ import {
 import styles from "./PricingPlans.module.css";
 
 interface PricingPlansProps {
-  billingCycle:
-    BillingCycle;
+  billingCycle: BillingCycle;
 
-  onBillingChange:
-    (
-      value:
-        BillingCycle,
-    ) => void;
+  onBillingChange: (
+    value: BillingCycle
+  ) => void;
 }
 
 export default function PricingPlans({
@@ -31,93 +25,68 @@ export default function PricingPlans({
   return (
     <section
       id="pricing-plans"
-      className={
-        styles.section
-      }
+      className={styles.section}
+      aria-labelledby="pricing-plans-heading"
     >
+      {/* =====================================================
+          SHARED GLOBAL HEADING
+      ===================================================== */}
+
       <header className="hj-first-five-heading">
-                <div
-                className={
-                  styles.kicker
-                }
-              >
-                {/* <BadgeCheck
-            size={15}
-          />
-      
-                 CHOOSE YOUR ACCESS */}
-              </div>
-             
-      
-              <h2>
-                Different 
-                
-      
-                {" "}<span className="hj-heading-wave "
-                >
-                  levels of
-                </span>{" "}
-      
-                <em className="text-4xl xl:text-6xl">
-                  support.
-                </em>
-              </h2>
-      
-                <span>
-                  Choose monthly for
-          flexibility or annual
-          billing for the best
-          value.
-                </span>
-       </header>
+        <h2 id="pricing-plans-heading">
+          Different{" "}
 
-      <div
-        className={
-          styles.toggle
-        }
-      >
+          <span className="hj-heading-wave text-4xl xl:text-6xl">
+            levels of
+          </span>{" "}
+
+          <em className="text-4xl xl:text-6xl">
+            support.
+          </em>
+        </h2>
+
+        <span>
+          Choose monthly for flexibility or annual billing
+          for the best value.
+        </span>
+      </header>
+
+      {/* =====================================================
+          BILLING TOGGLE
+      ===================================================== */}
+
+      <div className={styles.toggle}>
         <BillingToggle
-          value={
-            billingCycle
-          }
-          onChange={
-            onBillingChange
-          }
+          value={billingCycle}
+          onChange={onBillingChange}
         />
       </div>
 
-      <div
-        className={
-          styles.grid
-        }
-      >
-        {pricingPlans.map(
-          (plan) => (
-            <PricingCard
-              key={plan.id}
-              plan={plan}
-              billingCycle={
-                billingCycle
-              }
-            />
-          ),
-        )}
+      {/* =====================================================
+          PRICING CARDS
+      ===================================================== */}
+
+      <div className={styles.grid}>
+        {pricingPlans.map((plan) => (
+          <PricingCard
+            key={plan.id}
+            plan={plan}
+            billingCycle={billingCycle}
+          />
+        ))}
       </div>
 
-      <div
-        className={
-          styles.securityNote
-        }
-      >
-        <Sparkles
-          size={14}
-        />
+      {/* =====================================================
+          SECURITY / PROGRESS NOTE
+      ===================================================== */}
 
-        Your progress,
-        certificates and
-        completed milestones
-        remain connected to
-        your account.
+      <div className={styles.securityNote}>
+        <Sparkles size={14} />
+
+        <span>
+          Your progress, certificates and completed
+          milestones remain connected to your account.
+        </span>
       </div>
     </section>
   );

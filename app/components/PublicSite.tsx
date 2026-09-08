@@ -10,7 +10,7 @@ import CourseComparison from "./courses/CourseComparison";
 import CoursesHero from "./courses/CoursesHero";
 import FeaturedTrack from "./courses/FeaturedTrack";
 import MentorMethod from "./courses/MentorMethod";
-import styles from "../../app/home.module.css";
+
 import { LeaderboardExperience } from "./leaderboard/LeaderboardExperience";
 import MainAbout from "./about/MainAbout";
 import RoadmapHero from "./roadmap/RoadmapHero";
@@ -23,14 +23,12 @@ import MotionReveal from "./MotionReveal";
 import styless from "./Footer.module.css";
 import ChatbotButton from "./chatbot/ChatbotButton";
 
-
 import {  
   FaInstagram,
   FaLinkedinIn,
   FaTwitter,
   FaWhatsapp,
 } from "react-icons/fa";
-
 import {
   FiArrowUpRight,
   FiMail,
@@ -335,37 +333,6 @@ function Header({
   );
 }
 
-function JourneyStrip() {
-  const steps = [
-    "Confusion",
-    "Direction",
-    "Learning",
-    "Practice",
-    "Projects",
-    "Proof",
-    "Confidence",
-  ];
-
-  return (
-    <div className="journey-strip">
-      {steps.map(
-        (step, index) => (
-          <div key={step}>
-            <span>
-              {String(
-                index + 1,
-              ).padStart(2, "0")}
-            </span>
-
-            <b>{step}</b>
-          </div>
-        ),
-      )}
-    </div>
-  );
-}
-
-
 
 const worlds = [
   [
@@ -406,54 +373,10 @@ const worlds = [
   ],
 ];
 
-function WorldMap({
-  compact = false,
-}: {
-  compact?: boolean;
-}) {
-  return (
-    <div
-      className={`world-map ${
-        compact ? "compact" : ""
-      }`}
-    >
-      <div className="map-path" />
-
-      {worlds.map(
-        (world, index) => (
-          <article
-            key={world[1]}
-            className={`world world-${
-              index + 1
-            }`}
-          >
-            <span>{world[0]}</span>
-
-            <div>
-              <small>
-                {world[2]}
-              </small>
-
-              <h3>{world[1]}</h3>
-
-              <p>{world[3]}</p>
-            </div>
-
-            <b>
-              {index === 5
-                ? "★"
-                : index + 1}
-            </b>
-          </article>
-        ),
-      )}
-    </div>
-  );
-}
 
 export default function Courses() {
   return (
-    <main className="courses-page">
+    <main >
       <MotionReveal as="section" y={24} amount={0.06}><CoursesHero /></MotionReveal>
       <MotionReveal as="section" x={-18}><FeaturedTrack /></MotionReveal>
       {/* <CourseStats /> */}
@@ -465,19 +388,19 @@ export default function Courses() {
 }
 function Home() {
   return (
-    <>
+    <main  >
       <MotionReveal y={24} amount={0.06}>
         <LearningHero />
       </MotionReveal>
       <HomeJourneySections />
-    </>
+    </main>
   );
 }
 
 function Roadmap() {
   return (
     <>
-      <main className="roadmap-page">
+      <main>
       <MotionReveal as="section" y={24} amount={0.06}><RoadmapHero /></MotionReveal>
       <MotionReveal as="section" x={-18}><RoadmapStats /></MotionReveal>
       <MotionReveal as="section" x={18}><RoadmapJourney /></MotionReveal>
@@ -489,7 +412,7 @@ function Roadmap() {
 
 function Pricing() {
   return (
-    <main className="pricing-page">
+    <main >
       <PricingMain/>
     </main>
   );
@@ -534,159 +457,27 @@ const leaders = [
 ];
 function Leaderboard() {
   return (
-    <>
-      <PageHero
-        tag="MENTORME LEADERBOARD"
-        title={
-          <>
-            Momentum deserves
-            <br />
-            <em>to be seen.</em>
-          </>
-        }
-        text="A friendly ranking of students turning consistent action into visible career progress."
-      />
-
-      <section className="section leaderboard">
-        <div className="leaderboard-head">
-          <div>
-            <span className="kicker">
-              THIS WEEK
-            </span>
-
-            <h2>Top learners</h2>
-          </div>
-
-          <div className="your-rank">
-            <small>
-              YOUR RANK
-            </small>
-
-            <b>#04</b>
-
-            <span>
-              ↑ 2 places this week
-            </span>
-          </div>
-        </div>
-
-        <div className="podium">
-          <article>
-            <span>02</span>
-
-            <i>KS</i>
-
-            <h3>
-              Kabir Shah
-            </h3>
-
-            <b>8,640 XP</b>
-          </article>
-
-          <article className="winner">
-            <span>01</span>
-
-            <i>AR</i>
-
-            <h3>
-              Ananya Rao
-            </h3>
-
-            <b>8,920 XP</b>
-          </article>
-
-          <article>
-            <span>03</span>
-
-            <i>MN</i>
-
-            <h3>
-              Meera Nair
-            </h3>
-
-            <b>8,410 XP</b>
-          </article>
-        </div>
-
-        <div className="leader-list">
-          {leaders.map(
-            (leader) => (
-              <article
-                className={
-                  leader[4] === "RS"
-                    ? "you"
-                    : ""
-                }
-                key={leader[0]}
-              >
-                <strong>
-                  {leader[0]}
-                </strong>
-
-                <i>{leader[4]}</i>
-
-                <div>
-                  <b>
-                    {leader[1]}{" "}
-
-                    {leader[4] ===
-                      "RS" && (
-                      <small>
-                        YOU
-                      </small>
-                    )}
-                  </b>
-
-                  <span>
-                    {leader[2]}
-                  </span>
-                </div>
-
-                <em>
-                  {leader[3]}
-                </em>
-              </article>
-            ),
-          )}
-        </div>
-      </section>
-    </>
+    <main >
+      <LeaderboardExperience />
+    </main>
   );
 }
 
 function Contact() {
-  
   return (
-    <>
-      <MainContact/>
-    </>
+    <main >
+      <MainContact />
+    </main>
   );
 }
 
-function PageHero({
-  tag,
-  title,
-  text,
-}: {
-  tag: string;
-  title: React.ReactNode;
-  text: string;
-}) {
+function About() {
   return (
-    <section className="page-hero">
-      <span className="kicker">
-        {tag}
-      </span>
-
-      <h1>{title}</h1>
-
-      <p>{text}</p>
-
-      <div className="page-orb" />
-    </section>
+    <main >
+      <MainAbout />
+    </main>
   );
 }
-
 
 
 const footerLinks = [
@@ -935,21 +726,15 @@ export function PublicSite({
     home: <Home />,
     courses: <Courses />,
     roadmap: <Roadmap />,
-    leaderboard: <LeaderboardExperience />,
-    about: <MainAbout />,
+    leaderboard: <Leaderboard />,
+    about: <About />,
     pricing: <Pricing />,
     contact: <Contact />,
   }[page];
 
- return (
-  <main
-    className={
-      page === "home"
-        ? styles.homePage
-        : page === "courses"
-          ? "courses-page"
-          : undefined
-    }
+return (
+  <main className="public-site-page"
+   
   >
     <Header page={page} />
 

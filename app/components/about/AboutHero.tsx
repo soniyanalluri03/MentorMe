@@ -1,19 +1,20 @@
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+
 import { careerStages } from "./aboutData";
 import styles from "./AboutHero.module.css";
 
 export default function AboutHero() {
   return (
-    <section className={styles.hero} aria-labelledby="about-hero-heading">
-      <div className={styles.heroGlow} aria-hidden="true" />
-
+    <section
+      className={styles.hero}
+      aria-labelledby="about-hero-heading"
+    >
       <div className={styles.content}>
-        <header className="hj-first-five-heading ">
-          <div className={styles.kicker}>
-            {/* <Sparkles size={15} />
-            WHY MENTORME EXISTS */}
-          </div>
+        {/* =====================================================
+            SHARED GLOBAL HEADING
+        ===================================================== */}
 
+        <header className="hj-first-five-heading">
           <h2 id="about-hero-heading">
             Stop scrolling.
             <br />
@@ -22,25 +23,45 @@ export default function AboutHero() {
               Start building your
             </span>{" "}
 
-            <em className="text-4xl xl:text-6xl">future.</em>
+            <em className="text-4xl xl:text-6xl">
+              future.
+            </em>
           </h2>
 
           <span>
-            MentorMe turns career uncertainty into a clear path of skills,
-            practice, projects and visible progress — so you always know what
-            to do next.
+            MentorMe turns career uncertainty into a clear
+            path of skills, practice, projects and visible
+            progress — so you always know what to do next.
           </span>
         </header>
 
-        <div className={styles.careerFlow} aria-label="MentorMe career journey">
+        {/* =====================================================
+            CAREER FLOW
+        ===================================================== */}
+
+        <div
+          className={styles.careerFlow}
+          aria-label="MentorMe career journey"
+        >
           {careerStages.map((stage, index) => (
-            <div className={styles.flowItem} key={stage.number}>
+            <div
+              className={styles.flowItem}
+              key={stage.number}
+            >
               <div
-                className={`${styles.stage} ${index === 2 ? styles.stageActive : ""
-                  }`}
+                className={`${styles.stage} ${
+                  index === 2
+                    ? styles.stageActive
+                    : ""
+                }`}
               >
-                <span>{stage.number}</span>
-                <strong>{stage.label}</strong>
+                <span>
+                  {stage.number}
+                </span>
+
+                <strong>
+                  {stage.label}
+                </strong>
               </div>
 
               {index < careerStages.length - 1 && (
@@ -49,6 +70,7 @@ export default function AboutHero() {
                   aria-hidden="true"
                 >
                   <i />
+
                   <ArrowRight size={14} />
                 </div>
               )}

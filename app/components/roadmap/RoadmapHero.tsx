@@ -1,7 +1,5 @@
 import Link from "next/link";
 import styles from "./RoadmapHero.module.css";
-import { CosmicLink } from "./RoadmapUI";
-import { Sparkles } from "lucide-react";
 
 export default function RoadmapHero() {
   return (
@@ -15,13 +13,12 @@ export default function RoadmapHero() {
       />
 
       <div className={styles.heroContent}>
+        {/* =====================================================
+            SHARED GLOBAL HEADING
+        ===================================================== */}
 
-        <header className="hj-first-five-heading pt-10">
-          <div className={styles.kicker}>
-            {/* <Sparkles size={15} />
-            THE MENTORME 90-LEVEL JOURNEY */}
-          </div>
-          <h2>
+        <header className="hj-first-five-heading">
+          <h2 id="roadmap-hero-heading">
             Every next step.
             <br />
 
@@ -29,8 +26,11 @@ export default function RoadmapHero() {
               Already
             </span>{" "}
 
-            <em className="text-4xl xl:text-6xl">mapped.</em>
+            <em className="text-4xl xl:text-6xl">
+              mapped.
+            </em>
           </h2>
+
           <span>
             Explore the complete journey from career
             discovery to practical projects,
@@ -39,21 +39,44 @@ export default function RoadmapHero() {
           </span>
         </header>
 
+
+        {/* =====================================================
+            SHARED GLOBAL PILLS
+        ===================================================== */}
+
         <div
-          className={styles.heroPills}
+          className="hj-highlight-pills"
           aria-label="Roadmap highlights"
         >
-          <span>LEVELS 1–10 FREE</span>
-          <span>FULL 90-LEVEL PREVIEW</span>
-          <span>100+ OPPORTUNITIES</span>
+          <span className="hj-highlight-pill hj-highlight-pill--gold">
+            LEVELS 1–10 FREE
+          </span>
+
+          <span className="hj-highlight-pill hj-highlight-pill--purple">
+            FULL 90-LEVEL PREVIEW
+          </span>
+
+          <span className="hj-highlight-pill hj-highlight-pill--blue">
+            100+ OPPORTUNITIES
+          </span>
         </div>
 
-        <div className={styles.heroActions}>
 
-          <Link href="#journey-map" className="navbar-sign-in">Explore the roadmap</Link>
+        {/* =====================================================
+            SHARED GLOBAL ACTION BUTTONS
+        ===================================================== */}
+
+        <div className="hj-action-row">
           <Link
-            className="mh-button mh-button--secondary"
+            href="#journey-map"
+            className="navbar-sign-in"
+          >
+            Explore the roadmap
+          </Link>
+
+          <Link
             href="/courses"
+            className="mh-button mh-button--secondary"
           >
             Choose a career track
             <span>↗</span>

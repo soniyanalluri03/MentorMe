@@ -1,78 +1,150 @@
+/* =========================================================
+   ABOUT OVERVIEW
+
+   Shared styles come from globals.css:
+   - hj-first-five-heading
+   - hj-heading-wave
+   - heading <em> gradient
+   - shared heading description
+
+   This file only contains AboutOverview-specific layout
+   and Skills visual styling.
+   ========================================================= */
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
 .section {
+  position: relative;
+
   width: 100%;
-  padding: clamp(58px, 6vw, 92px) clamp(24px, 5.5vw, 104px);
-  background: transparent;
+
+  padding:
+    clamp(3.625rem, 6vw, 5.75rem)
+    clamp(1.5rem, 5.5vw, 6.5rem);
+
+  overflow: visible;
 }
+
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
 
 .layout {
   width: 100%;
   max-width: 1500px;
-  margin-inline: auto;
+
+  margin: 0 auto;
+
   display: grid;
-  grid-template-columns: minmax(0, 1.22fr) minmax(430px, 0.78fr);
+
+  grid-template-columns:
+    minmax(0, 1.22fr)
+    minmax(430px, 0.78fr);
+
   align-items: center;
-  gap: clamp(42px, 5vw, 78px);
+
+  gap:
+    clamp(
+      42px,
+      5vw,
+      78px
+    );
 }
+
+
+/* =========================================================
+   COPY
+   ========================================================= */
 
 .copy {
   min-width: 0;
 }
 
-.copy h2 {
+
+/* =========================================================
+   ABOUT OVERVIEW HEADING ALIGNMENT
+
+   Typography still comes from globals.css.
+   We only change alignment because this is a two-column block.
+   ========================================================= */
+
+.copy :global(.hj-first-five-heading) {
   max-width: 900px;
-  margin: 17px 0 0;
-  overflow: visible;
-  line-height: 0.98;
-  letter-spacing: -0.052em;
+
+  margin:
+    0;
+
+  text-align:
+    left;
 }
 
-.secondaryLine {
-  display: block;
-  margin-top: 10px;
-  padding-bottom: 0.14em;
-  overflow: visible;
-  line-height: 1.16;
+
+.copy :global(.hj-first-five-heading) h2 {
+  max-width: 900px;
+
+  margin:
+    0;
+
+  text-align:
+    left;
 }
 
-.secondaryLine :global(.hj-main-heading),
-.secondaryLine :global(.hj-heading-wave),
-.secondaryLine :global(.seen-word) {
-  font-size: inherit !important;
-}
 
-.description {
+/* Shared description — AboutOverview-specific alignment */
+
+.copy :global(.hj-first-five-heading) > span {
   max-width: 720px;
-  margin: 28px 0 0;
-  padding: 13px 16px;
-  color: #9fadc0;
-  border-radius: 24px;
-  background:
-    radial-gradient(
-      circle at 30% 50%,
-      rgba(112, 215, 255, 0.11),
-      transparent 72%
-    );
-  font-size: 0.92rem;
-  font-weight: 700;
-  line-height: 1.78;
+
+  margin-left:
+    0;
+
+  margin-right:
+    0;
+
+  text-align:
+    left;
 }
+
+
+/* =========================================================
+   SKILLS VISUAL
+   ========================================================= */
 
 .skillsVisual {
-  width: 100%;
-  min-height: 470px;
   position: relative;
+
+  width: 100%;
+
+  min-height: 470px;
+
   display: grid;
+
   place-items: center;
+
   isolation: isolate;
 }
 
+
+/* =========================================================
+   VISUAL AMBIENT GLOW
+   ========================================================= */
+
 .skillsVisual::before {
   content: "";
+
+  position: absolute;
+
+  z-index: -2;
+
   width: 360px;
   height: 360px;
-  position: absolute;
-  z-index: -2;
+
   border-radius: 50%;
+
   background:
     radial-gradient(
       circle,
@@ -80,61 +152,112 @@
       rgba(143, 92, 247, 0.06),
       transparent 74%
     );
-  filter: blur(38px);
+
+  filter:
+    blur(38px);
+
+  pointer-events:
+    none;
 }
+
+
+/* =========================================================
+   ORBITS
+   ========================================================= */
 
 .orbit {
   position: absolute;
+
   border-radius: 50%;
 }
+
 
 .orbitOuter {
   width: 380px;
   height: 380px;
-  border: 1px dashed rgba(112, 215, 255, 0.24);
-  animation: orbitSpin 24s linear infinite;
+
+  border:
+    1px dashed
+    rgba(112, 215, 255, 0.24);
+
+  animation:
+    orbitSpin
+    24s
+    linear
+    infinite;
 }
+
 
 .orbitMiddle {
   width: 280px;
   height: 280px;
-  border: 1px solid rgba(212, 175, 55, 0.28);
-  animation: orbitSpinReverse 18s linear infinite;
+
+  border:
+    1px solid
+    rgba(212, 175, 55, 0.28);
+
+  animation:
+    orbitSpinReverse
+    18s
+    linear
+    infinite;
 }
+
 
 .orbit::before {
   content: "";
-  width: 8px;
-  height: 8px;
+
   position: absolute;
+
   left: 50%;
   top: -4px;
-  transform: translateX(-50%);
+
+  width: 8px;
+  height: 8px;
+
+  transform:
+    translateX(-50%);
+
   border-radius: 50%;
-  background: #f4df83;
-  box-shadow: 0 0 15px rgba(244, 223, 131, 0.55);
+
+  background:
+    #f4df83;
+
+  box-shadow:
+    0
+    0
+    15px
+    rgba(244, 223, 131, 0.55);
 }
 
+
 /* =========================================================
-   DARK MODE DEFAULT
-   CENTER CORE = GOLD
-   SKILL CHIPS = NAVY BLUE
-========================================================= */
+   CENTER CORE — DARK MODE DEFAULT
+   ========================================================= */
 
 .core {
+  position: relative;
+
+  z-index: 3;
+
   width: 170px;
   height: 170px;
-  position: relative;
-  z-index: 3;
+
   isolation: isolate;
+
   overflow: hidden;
 
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
-  border: 1px solid rgba(255, 240, 167, 0.72);
+  border:
+    1px solid
+    rgba(255, 240, 167, 0.72);
+
   border-radius: 50%;
 
   background:
@@ -152,57 +275,128 @@
     );
 
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.72),
-    inset 0 -3px 6px rgba(104, 67, 0, 0.18),
-    0 22px 50px rgba(0, 0, 0, 0.28),
-    0 0 24px rgba(212, 175, 55, 0.18);
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.72),
+
+    inset
+    0
+    -3px
+    6px
+    rgba(104, 67, 0, 0.18),
+
+    0
+    22px
+    50px
+    rgba(0, 0, 0, 0.28),
+
+    0
+    0
+    24px
+    rgba(212, 175, 55, 0.18);
 }
 
-/* Premium moving gold rim shared by light and dark modes. */
+
+/* =========================================================
+   MOVING GOLD RIM
+   ========================================================= */
+
 .core::before {
   content: "";
+
   position: absolute;
+
   inset: 0;
+
   z-index: 0;
+
   padding: 2px;
+
   border-radius: inherit;
+
   background:
     conic-gradient(
       from 0deg,
+
       transparent 0deg 205deg,
+
       #7b4b02 226deg,
+
       #d4af37 254deg,
+
       #fff0a7 278deg,
+
       #ffffff 286deg,
+
       #e4b92e 298deg,
+
       #8b5704 320deg,
+
       transparent 342deg 360deg
     );
+
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
+
+  -webkit-mask-composite:
+    xor;
+
   mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
-  mask-composite: exclude;
+
+  mask-composite:
+    exclude;
+
   filter:
-    drop-shadow(0 0 4px rgba(212, 175, 55, 0.62))
-    drop-shadow(0 0 10px rgba(212, 175, 55, 0.2));
-  pointer-events: none;
-  animation: coreGoldOrbit 6.5s linear infinite;
+    drop-shadow(
+      0
+      0
+      4px
+      rgba(212, 175, 55, 0.62)
+    )
+
+    drop-shadow(
+      0
+      0
+      10px
+      rgba(212, 175, 55, 0.2)
+    );
+
+  pointer-events:
+    none;
+
+  animation:
+    coreGoldOrbit
+    6.5s
+    linear
+    infinite;
 }
 
-/* A restrained highlight passes across the gold surface. */
+
+/* =========================================================
+   CENTER GOLD SWEEP
+   ========================================================= */
+
 .core::after {
   content: "";
-  width: 48%;
-  height: 155%;
+
   position: absolute;
+
   left: -80%;
   top: -28%;
+
   z-index: 1;
-  transform: rotate(18deg);
+
+  width: 48%;
+  height: 155%;
+
+  transform:
+    rotate(18deg);
+
   background:
     linear-gradient(
       90deg,
@@ -212,52 +406,108 @@
       rgba(255, 225, 105, 0.14),
       transparent
     );
-  filter: blur(1px);
-  pointer-events: none;
-  animation: coreGoldSweep 5.2s ease-in-out infinite;
+
+  filter:
+    blur(1px);
+
+  pointer-events:
+    none;
+
+  animation:
+    coreGoldSweep
+    5.2s
+    ease-in-out
+    infinite;
 }
+
 
 .core > * {
   position: relative;
+
   z-index: 2;
 }
 
+
+/* =========================================================
+   CORE TEXT
+   ========================================================= */
+
 .core small {
-  color: #5a4108;
-  font-size: 0.52rem;
-  font-weight: 900;
-  letter-spacing: 0.18em;
+  color:
+    #5a4108;
+
+  font-size:
+    0.52rem;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.18em;
 }
+
 
 .core strong {
-  margin-top: 7px;
-  color: #102b49;
-  font-size: 1.9rem;
-  font-weight: 950;
+  margin-top:
+    7px;
+
+  color:
+    #102b49;
+
+  font-size:
+    1.9rem;
+
+  font-weight:
+    950;
 }
+
 
 .core em {
-  margin-top: 5px;
-  color: #654600;
-  font-family: Georgia, serif;
-  font-size: 0.9rem;
+  margin-top:
+    5px;
+
+  color:
+    #654600;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size:
+    0.9rem;
 }
 
-.skillChip {
-  min-height: 40px;
-  padding: 0 13px;
 
+/* =========================================================
+   SKILL CHIP
+   ========================================================= */
+
+.skillChip {
   position: absolute;
+
   z-index: 4;
 
+  min-height: 40px;
+
   display: inline-flex;
+
   align-items: center;
+
   gap: 8px;
 
-  color: #f4f8ff;
+  padding:
+    0
+    13px;
 
-  border: 1px solid rgba(212, 175, 55, 0.38);
-  border-radius: 999px;
+  color:
+    #f4f8ff;
+
+  border:
+    1px solid
+    rgba(212, 175, 55, 0.38);
+
+  border-radius:
+    999px;
 
   background:
     linear-gradient(
@@ -268,60 +518,170 @@
     );
 
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 12px 28px rgba(0, 0, 0, 0.25),
-    0 0 18px rgba(37, 91, 141, 0.14);
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.08),
 
-  font-size: 0.66rem;
-  font-weight: 850;
+    0
+    12px
+    28px
+    rgba(0, 0, 0, 0.25),
+
+    0
+    0
+    18px
+    rgba(37, 91, 141, 0.14);
+
+  font-size:
+    0.66rem;
+
+  font-weight:
+    850;
 }
+
 
 .skillChip svg {
-  color: #f4d65c;
+  color:
+    #f4d65c;
 }
+
 
 /* =========================================================
-   LIGHT MODE
-   CENTER CORE = NAVY BLUE
-   SKILL CHIPS = GOLD
-========================================================= */
+   SKILL POSITIONS
+   ========================================================= */
 
-:global(html:not(.dark):not([data-theme="dark"])) .orbitOuter,
-:global(html[data-theme="light"]) .orbitOuter,
-:global(html.light) .orbitOuter,
-:global([data-theme="light"]) .orbitOuter,
-:global(.light) .orbitOuter {
-  border-color: rgba(71, 91, 111, 0.42);
+.skill1 {
+  left: 2%;
+  top: 26%;
 }
 
-:global(html:not(.dark):not([data-theme="dark"])) .orbitMiddle,
-:global(html[data-theme="light"]) .orbitMiddle,
-:global(html.light) .orbitMiddle,
-:global([data-theme="light"]) .orbitMiddle,
-:global(.light) .orbitMiddle {
-  border-color: rgba(132, 84, 5, 0.52);
+
+.skill2 {
+  left: 50%;
+  top: 3%;
+
+  transform:
+    translateX(-50%);
+}
+
+
+.skill3 {
+  right: 1%;
+  top: 28%;
+}
+
+
+.skill4 {
+  left: 3%;
+  bottom: 20%;
+}
+
+
+.skill5 {
+  right: 4%;
+  bottom: 19%;
+}
+
+
+/* =========================================================
+   LIGHT MODE — ORBITS
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.orbitOuter,
+:global(html[data-theme="light"])
+.orbitOuter,
+:global(html.light)
+.orbitOuter,
+:global([data-theme="light"])
+.orbitOuter,
+:global(.light)
+.orbitOuter {
+  border-color:
+    rgba(71, 91, 111, 0.42);
+}
+
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.orbitMiddle,
+:global(html[data-theme="light"])
+.orbitMiddle,
+:global(html.light)
+.orbitMiddle,
+:global([data-theme="light"])
+.orbitMiddle,
+:global(.light)
+.orbitMiddle {
+  border-color:
+    rgba(132, 84, 5, 0.52);
+
   box-shadow:
-    inset 0 0 14px rgba(168, 112, 10, 0.04),
-    0 0 10px rgba(168, 112, 10, 0.06);
+    inset
+    0
+    0
+    14px
+    rgba(168, 112, 10, 0.04),
+
+    0
+    0
+    10px
+    rgba(168, 112, 10, 0.06);
 }
 
-:global(html:not(.dark):not([data-theme="dark"])) .orbit::before,
-:global(html[data-theme="light"]) .orbit::before,
-:global(html.light) .orbit::before,
-:global([data-theme="light"]) .orbit::before,
-:global(.light) .orbit::before {
-  background: #b47a0b;
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.orbit::before,
+:global(html[data-theme="light"])
+.orbit::before,
+:global(html.light)
+.orbit::before,
+:global([data-theme="light"])
+.orbit::before,
+:global(.light)
+.orbit::before {
+  background:
+    #b47a0b;
+
   box-shadow:
-    0 0 4px rgba(121, 76, 3, 0.62),
-    0 0 10px rgba(212, 175, 55, 0.28);
+    0
+    0
+    4px
+    rgba(121, 76, 3, 0.62),
+
+    0
+    0
+    10px
+    rgba(212, 175, 55, 0.28);
 }
 
-:global(html:not(.dark):not([data-theme="dark"])) .core,
-:global(html[data-theme="light"]) .core,
-:global(html.light) .core,
-:global([data-theme="light"]) .core,
-:global(.light) .core {
-  border: 1px solid rgba(212, 175, 55, 0.66);
+
+/* =========================================================
+   LIGHT MODE — CORE
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.core,
+:global(html[data-theme="light"])
+.core,
+:global(html.light)
+.core,
+:global([data-theme="light"])
+.core,
+:global(.light)
+.core {
+  border:
+    1px solid
+    rgba(212, 175, 55, 0.66);
 
   background:
     radial-gradient(
@@ -337,61 +697,143 @@
     );
 
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.12),
-    0 20px 46px rgba(23, 58, 91, 0.22),
-    0 0 22px rgba(212, 175, 55, 0.10);
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.12),
+
+    0
+    20px
+    46px
+    rgba(23, 58, 91, 0.22),
+
+    0
+    0
+    22px
+    rgba(212, 175, 55, 0.1);
 }
 
-:global(html:not(.dark):not([data-theme="dark"])) .core::before,
-:global(html[data-theme="light"]) .core::before,
-:global(html.light) .core::before,
-:global([data-theme="light"]) .core::before,
-:global(.light) .core::before {
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.core::before,
+:global(html[data-theme="light"])
+.core::before,
+:global(html.light)
+.core::before,
+:global([data-theme="light"])
+.core::before,
+:global(.light)
+.core::before {
   filter:
-    drop-shadow(0 0 3px rgba(121, 76, 3, 0.58))
-    drop-shadow(0 0 9px rgba(212, 175, 55, 0.34));
+    drop-shadow(
+      0
+      0
+      3px
+      rgba(121, 76, 3, 0.58)
+    )
+
+    drop-shadow(
+      0
+      0
+      9px
+      rgba(212, 175, 55, 0.34)
+    );
 }
 
-:global(html:not(.dark):not([data-theme="dark"])) .core::after,
-:global(html[data-theme="light"]) .core::after,
-:global(html.light) .core::after,
-:global([data-theme="light"]) .core::after,
-:global(.light) .core::after {
-  opacity: 0.72;
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.core::after,
+:global(html[data-theme="light"])
+.core::after,
+:global(html.light)
+.core::after,
+:global([data-theme="light"])
+.core::after,
+:global(.light)
+.core::after {
+  opacity:
+    0.72;
 }
 
-:global(html:not(.dark):not([data-theme="dark"])) .core small,
-:global(html[data-theme="light"]) .core small,
-:global(html.light) .core small,
-:global([data-theme="light"]) .core small,
-:global(.light) .core small {
-  color: #9fb0c5;
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.core small,
+:global(html[data-theme="light"])
+.core small,
+:global(html.light)
+.core small,
+:global([data-theme="light"])
+.core small,
+:global(.light)
+.core small {
+  color:
+    #9fb0c5;
 }
 
-:global(html:not(.dark):not([data-theme="dark"])) .core strong,
-:global(html[data-theme="light"]) .core strong,
-:global(html.light) .core strong,
-:global([data-theme="light"]) .core strong,
-:global(.light) .core strong {
-  color: #f7f9fd;
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.core strong,
+:global(html[data-theme="light"])
+.core strong,
+:global(html.light)
+.core strong,
+:global([data-theme="light"])
+.core strong,
+:global(.light)
+.core strong {
+  color:
+    #f7f9fd;
 }
 
-:global(html:not(.dark):not([data-theme="dark"])) .core em,
-:global(html[data-theme="light"]) .core em,
-:global(html.light) .core em,
-:global([data-theme="light"]) .core em,
-:global(.light) .core em {
-  color: #f4d65c;
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.core em,
+:global(html[data-theme="light"])
+.core em,
+:global(html.light)
+.core em,
+:global([data-theme="light"])
+.core em,
+:global(.light)
+.core em {
+  color:
+    #f4d65c;
 }
 
-:global(html:not(.dark):not([data-theme="dark"])) .skillChip,
-:global(html[data-theme="light"]) .skillChip,
-:global(html.light) .skillChip,
-:global([data-theme="light"]) .skillChip,
-:global(.light) .skillChip {
-  color: #102b49;
 
-  border: 1px solid rgba(145, 94, 2, 0.5);
+/* =========================================================
+   LIGHT MODE — SKILL CHIPS
+   ========================================================= */
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.skillChip,
+:global(html[data-theme="light"])
+.skillChip,
+:global(html.light)
+.skillChip,
+:global([data-theme="light"])
+.skillChip,
+:global(.light)
+.skillChip {
+  color:
+    #102b49;
+
+  border:
+    1px solid
+    rgba(145, 94, 2, 0.5);
 
   background:
     radial-gradient(
@@ -408,393 +850,203 @@
     );
 
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.78),
-    inset 0 -2px 4px rgba(111, 69, 0, 0.12),
-    0 11px 25px rgba(121, 83, 13, 0.18);
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.78),
+
+    inset
+    0
+    -2px
+    4px
+    rgba(111, 69, 0, 0.12),
+
+    0
+    11px
+    25px
+    rgba(121, 83, 13, 0.18);
 }
 
-:global(html:not(.dark):not([data-theme="dark"])) .skillChip svg,
-:global(html[data-theme="light"]) .skillChip svg,
-:global(html.light) .skillChip svg,
-:global([data-theme="light"]) .skillChip svg,
-:global(.light) .skillChip svg {
-  color: #102b49;
+
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.skillChip svg,
+:global(html[data-theme="light"])
+.skillChip svg,
+:global(html.light)
+.skillChip svg,
+:global([data-theme="light"])
+.skillChip svg,
+:global(.light)
+.skillChip svg {
+  color:
+    #102b49;
 }
 
-/* =========================================================
-   LIGHT DESCRIPTION
-========================================================= */
-
-:global(html:not(.dark):not([data-theme="dark"])) .description,
-:global(html[data-theme="light"]) .description,
-:global(html.light) .description,
-:global([data-theme="light"]) .description,
-:global(.light) .description {
-  color: #667085;
-
-  background:
-    radial-gradient(
-      circle at 30% 50%,
-      rgba(118, 80, 216, 0.1),
-      transparent 72%
-    );
-}
-
-/* =========================================================
-   POSITIONS
-========================================================= */
-
-.skill1 {
-  left: 2%;
-  top: 26%;
-}
-
-.skill2 {
-  left: 50%;
-  top: 3%;
-  transform: translateX(-50%);
-}
-
-.skill3 {
-  right: 1%;
-  top: 28%;
-}
-
-.skill4 {
-  left: 3%;
-  bottom: 20%;
-}
-
-.skill5 {
-  right: 4%;
-  bottom: 19%;
-}
 
 /* =========================================================
    ANIMATIONS
-========================================================= */
+   ========================================================= */
 
 @keyframes orbitSpin {
   to {
-    transform: rotate(360deg);
+    transform:
+      rotate(360deg);
   }
 }
+
 
 @keyframes orbitSpinReverse {
   to {
-    transform: rotate(-360deg);
+    transform:
+      rotate(-360deg);
   }
 }
 
+
 @keyframes coreGoldOrbit {
   to {
-    transform: rotate(360deg);
+    transform:
+      rotate(360deg);
   }
 }
+
 
 @keyframes coreGoldSweep {
   0%,
   18% {
-    left: -80%;
-    opacity: 0;
+    left:
+      -80%;
+
+    opacity:
+      0;
   }
 
   35% {
-    opacity: 0.8;
+    opacity:
+      0.8;
   }
 
   58%,
   100% {
-    left: 132%;
-    opacity: 0;
+    left:
+      132%;
+
+    opacity:
+      0;
   }
 }
 
+
 /* =========================================================
-   RESPONSIVE
-========================================================= */
+   TABLET
+   ========================================================= */
 
 @media (max-width: 1050px) {
   .layout {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      1fr;
   }
+
+
+  .copy :global(.hj-first-five-heading) {
+    margin:
+      0
+      auto;
+
+    text-align:
+      center;
+  }
+
+
+  .copy :global(.hj-first-five-heading) h2 {
+    margin:
+      0
+      auto;
+
+    text-align:
+      center;
+  }
+
+
+  .copy :global(.hj-first-five-heading) > span {
+    margin-left:
+      auto;
+
+    margin-right:
+      auto;
+
+    text-align:
+      center;
+  }
+
 
   .skillsVisual {
-    max-width: 560px;
-    margin-inline: auto;
-  }
-}
+    max-width:
+      560px;
 
-@media (max-width: 700px) {
-  .section {
-    padding: 52px 17px;
-  }
-
-  .skillsVisual {
-    min-height: 390px;
-    transform: scale(0.88);
-  }
-
-  .description {
-    padding: 10px 0;
-    background: transparent;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .orbit {
-    animation: none;
-  }
-
-  .core::before,
-  .core::after {
-    animation: none;
+    margin:
+      0
+      auto;
   }
 }
 
 
 /* =========================================================
-   CAREER FLOW — CLEAN CONNECTOR ALIGNMENT
-========================================================= */
+   MOBILE
+   ========================================================= */
 
-.connector {
-  width: 132px;
-  height: 22px;
-
-  position: relative;
-
-  flex: 0 0 132px;
-
-  margin: 0 18px;
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  overflow: hidden;
-}
-
-
-/* Actual Lucide arrow */
-
-.connector svg {
-  position: relative;
-  z-index: 5;
-
-  width: 16px;
-  height: 16px;
-
-  flex: 0 0 auto;
-
-  color: #9a6a08;
-  stroke: currentColor;
-  stroke-width: 2.2;
-}
-
-
-/* subtle line behind it */
-
-.connector::before {
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  right: 20px;
-  top: 50%;
-
-  height: 1.5px;
-
-  transform: translateY(-50%);
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(154, 106, 8, 0.16),
-      rgba(154, 106, 8, 0.48),
-      rgba(154, 106, 8, 0.3)
-    );
-
-  border-radius: 999px;
-}
-
-
-/* REMOVE old fake arrow */
-
-.connector::after {
-  content: none !important;
-  display: none !important;
-}
-
-
-/* moving gold streak */
-
-.connector i {
-  width: 30px;
-  height: 2px;
-
-  position: absolute;
-
-  left: 2px;
-  top: 50%;
-
-  z-index: 3;
-
-  transform: translateY(-50%);
-
-  border-radius: 999px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      #765006 25%,
-      #b78312 55%,
-      #e0b83f 78%,
-      transparent 100%
-    );
-
-  box-shadow:
-    0 0 3px rgba(155, 104, 8, 0.22);
-
-  animation:
-    careerConnectorTravel
-    2s
-    ease-in-out
-    infinite;
-}
-
-
-/* remove old glowing dot */
-
-.connector i::before,
-.connector i::after {
-  content: none !important;
-  display: none !important;
-}
-
-
-@keyframes careerConnectorTravel {
-  0% {
-    left: 2px;
-    opacity: 0;
+@media (max-width: 700px) {
+  .section {
+    padding:
+      3.25rem
+      1.0625rem;
   }
 
-  15% {
-    opacity: 1;
-  }
 
-  80% {
-    opacity: 1;
-  }
+  .skillsVisual {
+    min-height:
+      390px;
 
-  100% {
-    left: calc(100% - 52px);
-    opacity: 0;
+    transform:
+      scale(0.88);
   }
 }
 
 
-/* STATIC LINE — subtle medium gold */
-:global(html:not(.dark):not([data-theme="dark"])) .connector::before,
-:global(html[data-theme="light"]) .connector::before,
-:global(html.light) .connector::before {
-  height: 2px;
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
 
-  background:
-    linear-gradient(
-      90deg,
-      rgba(116, 76, 5, 0.20) 0%,
-      rgba(135, 91, 8, 0.38) 45%,
-      rgba(116, 76, 5, 0.24) 100%
-    ) !important;
+@media (max-width: 460px) {
+  .section {
+    padding:
+      3rem
+      0.75rem;
+  }
+
+
+  .skillsVisual {
+    min-height:
+      360px;
+
+    transform:
+      scale(0.78);
+  }
 }
 
 
-/* ARROW — DARK GOLD */
-:global(html:not(.dark):not([data-theme="dark"])) .connector svg,
-:global(html[data-theme="light"]) .connector svg,
-:global(html.light) .connector svg {
-  color: #6f4700 !important;
-  stroke: #6f4700 !important;
-  stroke-width: 2.4 !important;
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
-  filter:
-    drop-shadow(
-      0 0 2px rgba(80, 48, 0, 0.22)
-    ) !important;
-}
-
-
-/* MOVING STREAK — MUCH DARKER THAN THE LINE */
-:global(html:not(.dark):not([data-theme="dark"])) .connector i,
-:global(html[data-theme="light"]) .connector i,
-:global(html.light) .connector i {
-  width: 38px !important;
-  height: 4px !important;
-
-  top: 50% !important;
-  left: 0;
-
-  transform: translateY(-50%) !important;
-
-  border-radius: 999px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      #2f1b00 10%,
-      #4b2c00 28%,
-      #684000 48%,
-      #8a5a05 68%,
-      #b07c18 84%,
-      transparent 100%
-    ) !important;
-
-  box-shadow:
-    0 0 2px rgba(47, 27, 0, 0.34),
-    0 0 5px rgba(104, 64, 0, 0.20) !important;
-
-  opacity: 0;
-
-  animation:
-    careerConnectorDarkTravel
-    1.55s
-    linear
-    infinite !important;
-}
-
-
-/* No dots / no extra glow */
-.connector i::before,
-.connector i::after {
-  content: none !important;
-  display: none !important;
-}
-
-
-/* MOVEMENT */
-@keyframes careerConnectorDarkTravel {
-  0% {
-    left: 0;
-    opacity: 0;
-  }
-
-  8% {
-    opacity: 1;
-  }
-
-  20% {
-    opacity: 1;
-  }
-
-  82% {
-    opacity: 1;
-  }
-
-  100% {
-    left: calc(100% - 58px);
-    opacity: 0;
+@media (prefers-reduced-motion: reduce) {
+  .orbit,
+  .core::before,
+  .core::after {
+    animation:
+      none;
   }
 }

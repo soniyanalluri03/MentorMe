@@ -11,6 +11,10 @@ export default function ContactHero() {
       className={styles.hero}
       aria-labelledby="contact-heading"
     >
+      {/* =====================================================
+          DECORATIVE ORBIT
+      ===================================================== */}
+
       <div
         className={styles.orbit}
         aria-hidden="true"
@@ -21,9 +25,17 @@ export default function ContactHero() {
       </div>
 
       <div className={styles.heroContent}>
+        {/* =====================================================
+            SHARED GLOBAL HEADING
+        ===================================================== */}
+
         <header className="hj-first-five-heading">
-          <div className={styles.kicker}>
-            <Sparkles size={15} />
+          <div className="hj-gold-eyebrow">
+            <Sparkles
+              size={15}
+              className="mm-shared-icon mm-spark-icon"
+            />
+
             GET IN TOUCH
           </div>
 
@@ -46,9 +58,16 @@ export default function ContactHero() {
           </span>
         </header>
 
+        {/* =====================================================
+            RESPONSE BADGE
+        ===================================================== */}
+
         <div className={styles.heroBadge}>
           <Mail size={15} />
-          We usually respond within 1–2 business days
+
+          <span>
+            We usually respond within 1–2 business days
+          </span>
         </div>
       </div>
     </section>

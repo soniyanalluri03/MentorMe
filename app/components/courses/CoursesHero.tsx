@@ -3,7 +3,6 @@
 import {
   BadgeCheck,
   Code2,
-  Sparkles,
   Trophy,
   type LucideIcon,
 } from "lucide-react";
@@ -11,7 +10,6 @@ import {
 import { useState } from "react";
 
 import styles from "./CoursesHero.module.css";
-import roadmapHeroStyles from "../roadmap/RoadmapHero.module.css";
 
 type ViewKey = "track" | "project" | "level";
 
@@ -79,26 +77,19 @@ export default function CoursesHero() {
   const CurrentIcon = currentView.icon;
 
   return (
-    <section className={styles.hero}>
+    <section
+      className={styles.hero}
+      aria-labelledby="courses-hero-heading"
+    >
       {/* ===================================================
           LEFT CONTENT
-          =================================================== */}
+      =================================================== */}
 
       <div className={styles.copy}>
         <header
           className={`hj-first-five-heading ${styles.heroHeading}`}
         >
-          <div
-            className={`${roadmapHeroStyles.kicker} ${styles.heroKicker}`}
-          >
-            {/* <Sparkles size={15} />
-
-            <span>
-              FIND YOUR DIRECTION. START WITH CLARITY.
-            </span> */}
-          </div>
-
-          <h2>
+          <h2 id="courses-hero-heading">
             Choose your path
             <br />
 
@@ -106,17 +97,19 @@ export default function CoursesHero() {
               grow your
             </span>{" "}
 
-            <em className="text-4xl xl:text-6xl">future.</em>
+            <em className="text-4xl xl:text-6xl">
+              future.
+            </em>
           </h2>
 
-          <span> className={styles.heroDescription}
+          <span className={styles.heroDescription}>
             Frontend. Backend. Design. More paths ahead.
           </span>
         </header>
 
         {/* =================================================
             HERO STATS
-            ================================================= */}
+        ================================================= */}
 
         <div className={styles.stats}>
           <article>
@@ -138,7 +131,7 @@ export default function CoursesHero() {
 
       {/* ===================================================
           RIGHT VISUAL
-          =================================================== */}
+      =================================================== */}
 
       <div className={styles.visual}>
         <div
@@ -151,15 +144,20 @@ export default function CoursesHero() {
 
         {/* =================================================
             MAIN DASHBOARD
-            ================================================= */}
+        ================================================= */}
 
         <article
           key={activeView}
           className={styles.dashboard}
         >
           <div className={styles.dashboardTop}>
-            <span>MENTORME / CAREER SYSTEM</span>
-            <b>{currentView.value}</b>
+            <span>
+              MENTORME / CAREER SYSTEM
+            </span>
+
+            <b>
+              {currentView.value}
+            </b>
           </div>
 
           <div className={styles.status}>
@@ -174,22 +172,35 @@ export default function CoursesHero() {
             />
           </div>
 
-          <small>INTERACTIVE JOURNEY</small>
+          <small>
+            INTERACTIVE JOURNEY
+          </small>
 
-          <h3>{currentView.title}</h3>
+          <h3>
+            {currentView.title}
+          </h3>
 
-          <p>{currentView.description}</p>
+          <p>
+            {currentView.description}
+          </p>
 
           <div className={styles.tags}>
             {currentView.tags.map((tag) => (
-              <span key={tag}>{tag}</span>
+              <span key={tag}>
+                {tag}
+              </span>
             ))}
           </div>
 
           <div className={styles.progressCard}>
             <div>
-              <span>Journey progress</span>
-              <b>{currentView.progressLabel}</b>
+              <span>
+                Journey progress
+              </span>
+
+              <b>
+                {currentView.progressLabel}
+              </b>
             </div>
 
             <div className={styles.progressTrack}>
@@ -204,11 +215,12 @@ export default function CoursesHero() {
 
         {/* =================================================
             FLOATING SELECTORS
-            ================================================= */}
+        ================================================= */}
 
         <div className={styles.selectorGrid}>
           {views.map((item) => {
             const ItemIcon = item.icon;
+
             const isActive =
               item.key === activeView;
 
@@ -226,20 +238,21 @@ export default function CoursesHero() {
                 }
                 aria-pressed={isActive}
               >
-                <span
-                  className={styles.selectorIcon}
-                >
+                <span className={styles.selectorIcon}>
                   <ItemIcon
                     size={19}
                     strokeWidth={1.8}
                   />
                 </span>
 
-                <span
-                  className={styles.selectorCopy}
-                >
-                  <small>{item.label}</small>
-                  <strong>{item.title}</strong>
+                <span className={styles.selectorCopy}>
+                  <small>
+                    {item.label}
+                  </small>
+
+                  <strong>
+                    {item.title}
+                  </strong>
                 </span>
 
                 <i

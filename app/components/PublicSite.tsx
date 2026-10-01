@@ -554,10 +554,7 @@ const socialLinks = [
  function Footer() {
   return (
     <footer className={styless.footer}>
-      <div
-        className={styless.footerGlow}
-        aria-hidden="true"
-      />
+      
 
       <div className={styless.footerInner}>
         {/* =====================================================

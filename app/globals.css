@@ -283,10 +283,7 @@ body {
    Global background continues behind footer
    ========================================================= */
 
-.public-site-page > footer {
-  background-color: transparent !important;
-  background-image: none !important;
-}
+
 
 
 /* =========================================================

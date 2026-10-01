@@ -43,17 +43,57 @@
 
 
 /* =========================================================
-   SHARED HEADING
+   CAREER TRACKS SHARED HEADING
+   Matches the centered Final CTA heading treatment.
    ========================================================= */
 
 .tracksSection :global(.hj-first-five-heading) {
-  max-width: 1120px;
+  position: relative;
+
+  z-index: 4;
+
+  width: 100%;
+  max-width: 1160px;
+
+  margin:
+    0
+    auto;
+
+  text-align: center;
 }
+
+
+.tracksSection :global(.hj-first-five-heading) h2 {
+  width: 100%;
+  max-width: 1160px;
+
+  margin:
+    0
+    auto;
+
+  text-align: center;
+}
+
+
+.tracksSection
+  :global(.hj-first-five-heading)
+  :global(.hj-heading-wave) {
+  display: inline-block;
+}
+
 
 .tracksSection
   :global(.hj-first-five-heading)
   > span {
-  max-width: 820px;
+  width: 100%;
+  max-width: 760px;
+
+  margin:
+    28px
+    auto
+    0;
+
+  text-align: center;
 }
 
 
@@ -1130,6 +1170,7 @@
 
 /* =========================================================
    CTA HEADING
+   Same centered heading system as career tracks heading.
    ========================================================= */
 
 .ctaHeading {
@@ -1137,7 +1178,32 @@
 
   z-index: 4;
 
+  width: 100%;
   max-width: 1160px;
+
+  margin:
+    0
+    auto;
+
+  text-align: center;
+}
+
+
+.ctaHeading h2 {
+  width: 100%;
+  max-width: 1160px;
+
+  margin:
+    0
+    auto;
+
+  text-align: center;
+}
+
+
+.ctaHeading
+  :global(.hj-heading-wave) {
+  display: inline-block;
 }
 
 
@@ -1151,7 +1217,15 @@
 
 
 .ctaHeading > span {
+  width: 100%;
   max-width: 760px;
+
+  margin:
+    28px
+    auto
+    0;
+
+  text-align: center;
 }
 
 

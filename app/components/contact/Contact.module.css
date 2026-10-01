@@ -3,16 +3,22 @@
    ========================================================= */
 
 .page {
+  position: relative;
+
   width: 100%;
   min-height: 100svh;
 
-  position: relative;
+  /* public-header-slot reserves 108px.
+     Pull the Contact page behind it. */
+  margin-top: -108px;
+
+  padding: 0;
+
   overflow: hidden;
 
   color: #f7f9fd;
 
   background: transparent;
-  background-image: none;
 }
 
 
@@ -21,14 +27,14 @@
    ========================================================= */
 
 .contactSection {
+  position: relative;
+
   width: 100%;
 
   padding:
     clamp(30px, 3vw, 48px)
     clamp(24px, 5.5vw, 104px)
     clamp(72px, 8vw, 120px);
-
-  position: relative;
 
   background: transparent;
 }
@@ -53,17 +59,12 @@
   align-items: stretch;
 
   gap:
-    clamp(
-      26px,
-      4vw,
-      58px
-    );
+    clamp(26px, 4vw, 58px);
 }
 
 
 /* =========================================================
-   IMPORTANT
-   MOTIONREVEAL WRAPPERS MUST ALSO STRETCH
+   MOTION REVEAL WRAPPERS
    ========================================================= */
 
 .contactLayout > * {
@@ -77,9 +78,6 @@
 }
 
 
-/*
- * ContactTypes / ContactForm root
- */
 .contactLayout > * > * {
   width: 100%;
   min-width: 0;
@@ -95,22 +93,27 @@
 
 :global(
   html:not(.dark):not([data-theme="dark"])
-) .page,
+)
+.page,
 :global(html[data-theme="light"])
-  .page,
+.page,
 :global(html.light)
-  .page,
-:global([data-theme="light"])
-  .page,
-:global(.light)
-  .page {
+.page {
   color: #182235;
 }
 
 
 /* =========================================================
    TABLET
+   Navbar slot becomes 100px
    ========================================================= */
+
+@media (max-width: 1180px) {
+  .page {
+    margin-top: -100px;
+  }
+}
+
 
 @media (max-width: 1050px) {
   .contactSection {
@@ -120,21 +123,20 @@
       80px;
   }
 
+
   .contactLayout {
     grid-template-columns: 1fr;
 
     gap: 34px;
   }
 
-  /*
-   * Once stacked, each card can return to
-   * its own natural height.
-   */
+
   .contactLayout > * {
     height: auto;
 
     display: block;
   }
+
 
   .contactLayout > * > * {
     height: auto;
@@ -144,7 +146,15 @@
 
 /* =========================================================
    MOBILE
+   Navbar slot becomes 90px
    ========================================================= */
+
+@media (max-width: 760px) {
+  .page {
+    margin-top: -90px;
+  }
+}
+
 
 @media (max-width: 700px) {
   .contactSection {
@@ -153,6 +163,7 @@
       17px
       58px;
   }
+
 
   .contactLayout {
     gap: 26px;

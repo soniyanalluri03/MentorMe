@@ -190,35 +190,26 @@ export default function LiveCommunity() {
     >
       <div className={styles.shell}>
         <header
-          className={styles.heading}
+          className={`hj-first-five-heading ${styles.communityHeading}`}
         >
-          <div className="hj-kicker">
-            {/* <Sparkles size={15} />
-            LIVE COMMUNITY. REAL PROGRESS. */}
-          </div>
-
-
           <h2 id="community-title">
-            See learners build, grow,{" "}
-            <span className={styles.waveText}>
+            See learners build, grow
+            <br />
+
+            <span className="hj-heading-wave text-4xl xl:text-6xl">
               and win
             </span>{" "}
 
-            <span
-              className={styles.colorfulText}
-            >
-              together
-            </span>
+            <em className="text-4xl xl:text-6xl">
+              together.
+            </em>
           </h2>
-          <div className="hj-first-five-heading">
-            <span>
-              A living stream of projects,
-              milestones, mentor feedback, and
-              momentum from the Mentor Me
-              community
-            </span>
-          </div>
 
+          <span>
+            A living stream of projects, milestones,
+            mentor feedback and momentum from the
+            MentorMe community.
+          </span>
         </header>
       </div>
 
@@ -241,8 +232,8 @@ export default function LiveCommunity() {
         >
           <div
             className={`${styles.track} ${visible && !reducedMotion
-                ? styles.running
-                : ""
+              ? styles.running
+              : ""
               }`}
           >
             {[0, 1].map((group) => (

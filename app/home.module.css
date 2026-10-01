@@ -38,7 +38,7 @@
 :global(html:not(.dark):not([data-theme="dark"])) .homePage,
 :global(html[data-theme="light"]) .homePage,
 :global(html.light) .homePage {
-  color: #1b2435;
+  color: #172d50;
 
   background:
     /* Strong lavender glow on the left */

@@ -1,25 +1,42 @@
 /* =========================================================
    MENTORME METHOD SECTION
+
+   globals.css owns:
+   - public-site background
+   - hj-first-five-heading
+   - hj-heading-wave
+   - shared heading <em>
+   - shared heading description
+
+   This file owns only MentorMethod-specific layout,
+   process line and cards grid.
+   ========================================================= */
+
+
+/* =========================================================
+   SECTION
    ========================================================= */
 
 .section {
+  position: relative;
+  isolation: isolate;
+
   width: 100%;
   max-width: none;
   min-height: 100svh;
 
   margin: 0;
+
   padding:
     clamp(52px, 5.5vw, 92px)
     clamp(24px, 5.5vw, 104px);
 
-  position: relative;
   overflow: hidden;
-  isolation: isolate;
+
+  color: #f7f9fd;
 
   border: 0;
   border-radius: 0;
-
-  color: #f7f9fd;
 
   background: transparent;
   background-image: none;
@@ -27,9 +44,11 @@
   box-shadow: none;
 }
 
+
 .section::before,
 .section::after {
   content: none;
+
   display: none;
 
   background: none;
@@ -38,195 +57,71 @@
   box-shadow: none;
 }
 
+
 .ambient {
   display: none;
 }
 
-/* =========================================================
-   HEADING LAYOUT
-   ========================================================= */
-
-.heading {
-  width: 100%;
-  max-width: 1600px;
-
-  margin-inline: auto;
-
-  display: grid;
-  grid-template-columns:
-    minmax(0, 1.2fr)
-    minmax(300px, 0.55fr);
-
-  align-items: end;
-  gap: clamp(38px, 5vw, 72px);
-}
-
-.headingCopy {
-  width: 100%;
-  max-width: 980px;
-}
-
-.kicker {
-  color: #d9ba4d;
- width: max-content;
-
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.68rem;
-  font-weight: 900;
-  letter-spacing: 0.15em;
-  line-height: 1.4;
-  text-transform: uppercase;
-}
-
-.heading h2 {
-  margin: 16px 0 0;
-
-  line-height: 0.96;
-  letter-spacing: -0.052em;
-}
 
 /* =========================================================
-   ANIMATED HEADING
+   MENTOR METHOD SHARED HEADING
+   Matches Career Tracks + CTA
    ========================================================= */
 
-.headingLine {
-  display: block;
+.methodHeading {
+  position: relative;
+
+  z-index: 4;
+
   width: 100%;
+  max-width: 1160px;
 
-  text-align: left;
-  white-space: nowrap;
+  margin:
+    0
+    auto;
+
+  text-align: center;
 }
 
-.headingLinePrimary {
-  color: #f4f6ff;
 
-  font-size:
-    clamp(2.85rem, 4.15vw, 4.95rem);
+.methodHeading h2 {
+  width: 100%;
+  max-width: 1160px;
 
-  line-height: 1;
+  margin:
+    0
+    auto;
+
+  text-align: center;
 }
 
-.headingLineSecondary {
-  margin-top: 10px;
 
-  padding-bottom: 0.14em;
-
-  font-size:
-    clamp(2.35rem, 3.55vw, 4.2rem);
-
-  line-height: 1.18;
-
-  overflow: visible;
-}
-
-.headingWave {
+.methodHeading
+  :global(.hj-heading-wave) {
   display: inline-block;
-
-  color: transparent;
-
-  background:
-    linear-gradient(
-      90deg,
-      #f4f6ff 0%,
-      #f4f6ff 47%,
-      #d8b24b 49%,
-      #fff6d2 50%,
-      #d8b24b 51%,
-      #f4f6ff 53%,
-      #f4f6ff 100%
-    );
-
-  background-size: 260% 100%;
-  background-position: 0% 50%;
-
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  animation:
-    mentorMethodGoldWave
-    12s ease-in-out infinite;
 }
 
-.proofWord {
-  display: inline-block;
 
-  padding:
-    0.04em
-    0.03em
-    0.16em;
+.methodHeading > span {
+  width: 100%;
+  max-width: 760px;
 
-  margin-bottom: -0.16em;
+  margin:
+    28px
+    auto
+    0;
 
-  overflow: visible;
-  vertical-align: baseline;
-
-  color: transparent;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-weight: 500;
-  font-style: italic;
-
-  background:
-    linear-gradient(
-      110deg,
-      #8f5cf7,
-      #b58cff 52%,
-      #f2d875
-    );
-
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  transform-origin: center;
-
-  animation:
-    mentorMethodProofBreath
-    3.8s ease-in-out infinite;
+  text-align: center;
 }
 
-/* =========================================================
-   INTRO COPY
-   ========================================================= */
-
-.intro {
-  max-width: 610px;
-  margin: 0;
-
-  padding: 12px 16px;
-
-  color: #9fadc0;
-
-  font-size: 0.92rem;
-  line-height: 1.78;
-
-  border-radius: 24px;
-
-  background:
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(112, 215, 255, 0.12),
-      transparent 72%
-    );
-
-  text-shadow:
-    0 0 18px rgba(112, 215, 255, 0.15);
-}
 
 /* =========================================================
    PROCESS LINE
    ========================================================= */
 
 .processLine {
-  width: min(100%, 680px);
-  max-width: 1600px;
+  width:
+    min(100%, 680px);
 
   margin:
     42px
@@ -234,6 +129,7 @@
     0;
 
   display: grid;
+
   grid-template-columns:
     auto minmax(30px, 1fr)
     auto minmax(30px, 1fr)
@@ -241,15 +137,19 @@
     auto;
 
   align-items: center;
+
   gap: 10px;
 
   color: #7f90a5;
 
   font-size: 0.51rem;
   font-weight: 900;
+
   letter-spacing: 0.1em;
+
   text-transform: uppercase;
 }
+
 
 .processLine i {
   height: 1px;
@@ -262,6 +162,7 @@
       rgba(212, 175, 55, 0.18)
     );
 }
+
 
 /* =========================================================
    CARDS GRID
@@ -277,21 +178,30 @@
     0;
 
   display: grid;
+
   grid-template-columns:
     repeat(4, minmax(0, 1fr));
 
   gap: 18px;
 }
 
+
 /* =========================================================
    LIGHT MODE
    ========================================================= */
 
-:global(html:not(.dark):not([data-theme="dark"])) .section,
-:global(html[data-theme="light"]) .section,
-:global(html.light) .section,
-:global([data-theme="light"]) .section,
-:global(.light) .section {
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.section,
+:global(html[data-theme="light"])
+.section,
+:global(html.light)
+.section,
+:global([data-theme="light"])
+.section,
+:global(.light)
+.section {
   color: #182235;
 
   background: transparent;
@@ -300,129 +210,22 @@
   box-shadow: none;
 }
 
-:global(html:not(.dark):not([data-theme="dark"])) .headingLinePrimary,
-:global(html[data-theme="light"]) .headingLinePrimary,
-:global(html.light) .headingLinePrimary,
-:global([data-theme="light"]) .headingLinePrimary,
-:global(.light) .headingLinePrimary {
-  color: #172d50;
-}
 
-:global(html:not(.dark):not([data-theme="dark"])) .headingWave,
-:global(html[data-theme="light"]) .headingWave,
-:global(html.light) .headingWave,
-:global([data-theme="light"]) .headingWave,
-:global(.light) .headingWave {
-  background:
-    linear-gradient(
-      90deg,
-      #172d50 0%,
-      #172d50 47%,
-      #c99b2f 49%,
-      #ffe7a4 50%,
-      #c99b2f 51%,
-      #172d50 53%,
-      #172d50 100%
-    );
-
-  background-size: 260% 100%;
-  background-position: 0% 50%;
-
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .proofWord,
-:global(html[data-theme="light"]) .proofWord,
-:global(html.light) .proofWord,
-:global([data-theme="light"]) .proofWord,
-:global(.light) .proofWord {
-  background:
-    linear-gradient(
-      110deg,
-      #7650d8,
-      #9d73f2 52%,
-      #b88922
-    );
-
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .intro,
-:global(html[data-theme="light"]) .intro,
-:global(html.light) .intro,
-:global([data-theme="light"]) .intro,
-:global(.light) .intro {
-  color: #667085;
-
-  background:
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(118, 80, 216, 0.1),
-      transparent 72%
-    );
-
-  text-shadow:
-    0 0 14px rgba(118, 80, 216, 0.1);
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .kicker,
-:global(html[data-theme="light"]) .kicker,
-:global(html.light) .kicker,
-:global([data-theme="light"]) .kicker,
-:global(.light) .kicker {
-  color: #8e6810;
-}
-
-:global(html:not(.dark):not([data-theme="dark"])) .processLine,
-:global(html[data-theme="light"]) .processLine,
-:global(html.light) .processLine,
-:global([data-theme="light"]) .processLine,
-:global(.light) .processLine {
+:global(
+  html:not(.dark):not([data-theme="dark"])
+)
+.processLine,
+:global(html[data-theme="light"])
+.processLine,
+:global(html.light)
+.processLine,
+:global([data-theme="light"])
+.processLine,
+:global(.light)
+.processLine {
   color: #768195;
 }
 
-/* =========================================================
-   ANIMATIONS
-   ========================================================= */
-
-@keyframes mentorMethodGoldWave {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-@keyframes mentorMethodProofBreath {
-  0%,
-  100% {
-    transform: translateY(0) scale(1);
-
-    filter:
-      drop-shadow(
-        0 0 0 rgba(181, 140, 255, 0)
-      );
-  }
-
-  50% {
-    transform: translateY(-2px) scale(1.045);
-
-    filter:
-      drop-shadow(
-        0 8px 18px rgba(143, 92, 247, 0.2)
-      )
-      drop-shadow(
-        0 0 14px rgba(224, 189, 85, 0.14)
-      );
-  }
-}
 
 /* =========================================================
    LARGE SCREENS
@@ -434,6 +237,7 @@
       clamp(80px, 7vw, 150px);
   }
 }
+
 
 /* =========================================================
    TABLET
@@ -448,32 +252,28 @@
       clamp(24px, 5vw, 58px);
   }
 
-  .heading {
-    grid-template-columns: 1fr;
-    gap: 22px;
-  }
 
-  .headingCopy {
+  .methodHeading {
     max-width: 100%;
   }
 
-  .headingLine {
-    white-space: normal;
+
+  .methodHeading h2 {
+    max-width: 100%;
   }
 
-  .intro {
-    max-width: 720px;
+
+  .methodHeading > span {
+    max-width: 760px;
   }
 
-  .processLine {
-    margin-inline: 0;
-  }
 
   .grid {
     grid-template-columns:
       repeat(2, minmax(0, 1fr));
   }
 }
+
 
 /* =========================================================
    MOBILE
@@ -489,384 +289,50 @@
       28px;
   }
 
-  .heading {
-    gap: 18px;
-  }
 
-  .heading h2 {
-    letter-spacing: -0.045em;
-  }
-
-  .headingLine {
-    white-space: normal;
-  }
-
-  .headingLinePrimary {
-    font-size:
-      clamp(2.45rem, 11vw, 3.7rem);
-  }
-
-  .headingLineSecondary {
-    margin-top: 8px;
-
-    font-size:
-      clamp(2.1rem, 9.5vw, 3.25rem);
-  }
-
-  .intro {
+  .methodHeading {
     max-width: 100%;
-    padding: 10px 0;
-
-    font-size: 0.87rem;
-
-    background: none;
-    text-shadow: none;
   }
+
+
+  .methodHeading h2 {
+    max-width: 100%;
+  }
+
+
+  .methodHeading > span {
+    width: 100%;
+    max-width: 100%;
+  }
+
 
   .processLine {
     display: none;
   }
 
+
   .grid {
-    grid-template-columns: 1fr;
-
     margin-top: 34px;
-  }
-}
 
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-  .headingWave,
-  .proofWord {
-    animation: none;
-  }
-}
-
-/* =========================================================
-   FIX HEADING DESCENDER / ITALIC TEXT CLIPPING
-   ========================================================= */
-
-.heading,
-.headingCopy,
-.heading h2,
-.headingLine,
-.headingLineSecondary {
-  overflow: visible;
-}
-
-.heading h2 {
-  padding-bottom: 0.16em;
-}
-
-.headingLineSecondary {
-  line-height: 1.18;
-  padding-bottom: 0.14em;
-}
-
-.headingWave,
-.proofWord {
-  padding-bottom: 0.14em;
-  margin-bottom: -0.14em;
-
-  overflow: visible;
-  vertical-align: baseline;
-}
-
-
-/* =========================================================
-   FINAL MENTOR METHOD SHARED HEADER
-   Matches Courses / FeaturedTrack / Comparison / Career Tracks.
-   Uses:
-   hj-main-heading
-   hj-heading-wave
-   seen-word
-   hj-first-five-heading
-   ========================================================= */
-
-.heading {
-  width: 100%;
-  max-width: 1600px;
-
-  margin-inline: auto;
-
-  display: grid;
-  grid-template-columns:
-    minmax(0, 1.2fr)
-    minmax(300px, 0.55fr);
-
-  align-items: end;
-  gap: clamp(38px, 5vw, 72px);
-
-  overflow: visible;
-
-  text-align: left;
-}
-
-.headingCopy {
-  width: 100%;
-  max-width: 980px;
-  min-width: 0;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  overflow: visible;
-
-  text-align: left;
-}
-
-.kicker {
-  width: max-content;
-  max-width: 100%;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
-
-  gap: 8px;
-
-  color: #d9ba4d;
-
-  font-size: 0.68rem;
-  font-weight: 900;
-  letter-spacing: 0.15em;
-  line-height: 1.4;
-  text-transform: uppercase;
-
-  text-align: left;
-}
-
-.heading h2 {
-  width: 100%;
-  max-width: 980px;
-
-  margin: 16px 0 0;
-  padding: 0 0 0.18em;
-
-  overflow: visible;
-
-  line-height: 0.96;
-  letter-spacing: -0.052em;
-
-  text-align: left;
-}
-
-.headingLine {
-  display: block;
-  width: 100%;
-
-  overflow: visible;
-
-  text-align: left;
-  white-space: nowrap;
-}
-
-/*
-  Same size language used across the previous sections:
-  text-4xl xl:text-6xl
-*/
-.headingLineSecondary {
-  margin-top: 10px;
-  padding-bottom: 0.16em;
-
-  overflow: visible;
-
-  font-size: 2.25rem !important;
-  line-height: 1.18;
-
-  text-align: left;
-}
-
-.headingLineSecondary :global(.hj-main-heading),
-.headingLineSecondary :global(.hj-heading-wave),
-.headingLineSecondary :global(.seen-word) {
-  font-size: inherit !important;
-}
-
-/* =========================================================
-   SUPPORT COPY
-   ========================================================= */
-
-.headingAside {
-  width: 100%;
-  min-width: 0;
-
-  margin: 0 !important;
-  padding: 0 !important;
-
-  display: flex !important;
-  flex-direction: column !important;
-
-  align-items: flex-start !important;
-  justify-content: flex-end !important;
-
-  text-align: left !important;
-}
-
-.headingAside:global(.hj-first-five-heading) {
-  margin-left: 0 !important;
-  margin-right: auto !important;
-
-  text-align: left !important;
-}
-
-.headingAside > span {
-  width: fit-content !important;
-  max-width: 610px !important;
-
-  margin: 0 !important;
-  margin-left: 0 !important;
-  margin-right: auto !important;
-
-  padding: 12px 16px !important;
-
-  align-self: flex-start !important;
-
-  color: #9fadc0;
-
-  border-radius: 24px;
-
-  background:
-    radial-gradient(
-      circle at 35% 50%,
-      rgba(112, 215, 255, 0.12),
-      transparent 72%
-    );
-
-  font-size: 0.92rem;
-  font-weight: 700;
-  line-height: 1.78;
-
-  text-align: left !important;
-
-  text-shadow:
-    0 0 18px rgba(112, 215, 255, 0.15);
-}
-
-/* =========================================================
-   LIGHT MODE — SHARED HEADER SUPPORT COPY
-   ========================================================= */
-
-:global(html:not(.dark):not([data-theme="dark"])) .headingAside > span,
-:global(html[data-theme="light"]) .headingAside > span,
-:global(html.light) .headingAside > span,
-:global([data-theme="light"]) .headingAside > span,
-:global(.light) .headingAside > span {
-  color: #667085;
-
-  background:
-    radial-gradient(
-      circle at 35% 50%,
-      rgba(118, 80, 216, 0.1),
-      transparent 72%
-    );
-
-  text-shadow:
-    0 0 14px rgba(118, 80, 216, 0.1);
-}
-
-/* Tailwind xl:text-6xl equivalent */
-@media (min-width: 1280px) {
-  .headingLineSecondary {
-    font-size: 3.75rem !important;
-  }
-}
-
-/* =========================================================
-   TABLET HEADER
-   ========================================================= */
-
-@media (max-width: 1100px) {
-  .heading {
     grid-template-columns: 1fr;
-    align-items: start;
-
-    gap: 22px;
-  }
-
-  .headingCopy,
-  .headingAside {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .headingAside > span {
-    max-width: 720px !important;
-  }
-
-  .headingLine {
-    white-space: normal;
   }
 }
 
+
 /* =========================================================
-   MOBILE HEADER
+   SMALL MOBILE
    ========================================================= */
 
-@media (max-width: 700px) {
-  .heading {
-    display: flex;
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    gap: 18px;
-
-    text-align: left;
+@media (max-width: 460px) {
+  .section {
+    padding:
+      38px
+      12px
+      26px;
   }
 
-  .headingCopy {
-    width: 100%;
-    max-width: 100%;
-  }
 
-  .heading h2 {
-    width: 100%;
-    max-width: 100%;
-
-    margin-left: 0;
-
-    letter-spacing: -0.045em;
-
-    text-align: left;
-  }
-
-  .headingLine {
-    white-space: normal;
-
-    text-align: left;
-  }
-
-  .headingLineSecondary {
-    margin-top: 8px;
-
-    font-size:
-      clamp(2rem, 9.5vw, 2.6rem) !important;
-  }
-
-  .headingAside {
-    width: 100%;
-
-    align-items: flex-start !important;
-
-    text-align: left !important;
-  }
-
-  .headingAside > span {
-    width: 100% !important;
-    max-width: 100% !important;
-
-    padding: 10px 0 !important;
-
-    background: transparent;
-
-    font-size: 0.87rem;
-
-    text-align: left !important;
-    text-shadow: none;
+  .grid {
+    gap: 14px;
   }
 }

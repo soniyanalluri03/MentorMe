@@ -42,49 +42,40 @@
 
 /* =========================================================
    COURSE COMPARISON HEADING
-   Heading left + supporting copy right
+   Same centered shared heading style as CareerTracks CTA
    ========================================================= */
 
 .comparisonHeading {
-  width: 100% !important;
-  max-width: 1500px !important;
+  position: relative;
 
-  margin: 0 auto !important;
+  z-index: 4;
 
-  display: grid !important;
+  width: 100%;
+  max-width: 1160px !important;
 
-  grid-template-columns:
-    minmax(0, 1.35fr)
-    minmax(300px, 0.65fr);
+  margin:
+    0
+    auto !important;
 
-  align-items: end;
+  display: block !important;
 
-  gap:
-    clamp(
-      40px,
-      6vw,
-      90px
-    );
-
-  text-align: left !important;
+  text-align: center !important;
 }
 
-
-/* =========================================================
-   LEFT HEADING
-   ========================================================= */
 
 .comparisonHeading h2 {
   width: 100%;
-  max-width: 980px !important;
+  max-width: 1160px !important;
 
-  margin: 0 !important;
+  margin:
+    0
+    auto !important;
 
-  text-align: left !important;
+  text-align: center !important;
 }
 
 
-/* Keep gold wave exactly as global system */
+/* Keep shared gold-wave effect from globals.css */
 
 .comparisonHeading
   :global(.hj-heading-wave) {
@@ -92,25 +83,20 @@
 }
 
 
-/* =========================================================
-   RIGHT DESCRIPTION
-   ========================================================= */
+/* Same centered description treatment */
 
 .comparisonDescription {
+  display: block;
+
   width: 100% !important;
-  max-width: 520px !important;
+  max-width: 760px !important;
 
   margin:
-    0
-    0
-    8px
-    auto !important;
+    28px
+    auto
+    0 !important;
 
-  justify-self: end;
-
-  align-self: end;
-
-  text-align: left !important;
+  text-align: center !important;
 }
 
 
@@ -1998,17 +1984,7 @@ blockquote {
 
     gap: 18px;
   }
-.comparisonHeading {
-  grid-template-columns:
-    minmax(0, 1.2fr)
-    minmax(260px, 0.8fr);
 
-  gap: 30px;
-}
-
-.comparisonDescription {
-  max-width: 420px !important;
-}
 
   .vsColumn {
     min-height: 62px;
@@ -2041,33 +2017,6 @@ blockquote {
    ========================================================= */
 
 @media (max-width: 700px) {
-
-  .comparisonHeading {
-  display: flex !important;
-
-  flex-direction: column;
-
-  align-items: flex-start;
-
-  gap: 24px;
-}
-
-.comparisonHeading h2 {
-  max-width: 100% !important;
-
-  text-align: left !important;
-}
-
-.comparisonDescription {
-  width: 100% !important;
-  max-width: 620px !important;
-
-  margin: 0 !important;
-
-  align-self: flex-start;
-
-  text-align: left !important;
-}
   .section {
     padding:
       46px

@@ -850,7 +850,7 @@
 :global(html[data-theme="light"]) .section,
 :global([data-theme="light"]) .section,
 :global(.light) .section {
-  color: #1b2435;
+  color: #172d50;
   border-color: rgba(72, 57, 98, 0.14);
   background:
     radial-gradient(
@@ -882,7 +882,7 @@
 :global(html[data-theme="light"]) .detailIdentity h3,
 :global([data-theme="light"]) .detailIdentity h3,
 :global(.light) .detailIdentity h3 {
-  color: #1b2435;
+  color: #172d50;
 }
 :global(html:not(.dark):not([data-theme="dark"])) .kicker,
 :global(html[data-theme="light"]) .kicker,
@@ -2268,3 +2268,107 @@
     animation: none;
   }
 }
+
+/* =========================================================
+   FEATURED TRACK SHARED HEADING
+   Matches Course Comparison / Mentor Method / Career Tracks.
+   ========================================================= */
+
+.featuredHeading {
+  position: relative;
+
+  z-index: 4;
+
+  width: 100%;
+  max-width: 1160px;
+
+  margin:
+    0
+    auto;
+
+  text-align: center;
+}
+
+
+.featuredHeading h2 {
+  width: 100%;
+  max-width: 1160px;
+
+  margin:
+    0
+    auto;
+
+  text-align: center;
+}
+
+
+.featuredHeading
+  :global(.hj-heading-wave) {
+  display: inline-block;
+}
+
+
+.featuredHeading > span {
+  width: 100%;
+  max-width: 760px;
+
+  margin:
+    28px
+    auto
+    0;
+
+  text-align: center;
+}
+
+
+.featuredHeading .trackCounter {
+  margin:
+    22px
+    auto
+    0;
+}
+
+
+/* =========================================================
+   FEATURED TRACK SHARED HEADING — RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1120px) {
+  .featuredHeading {
+    max-width: 100%;
+  }
+
+
+  .featuredHeading h2 {
+    max-width: 100%;
+  }
+
+
+  .featuredHeading > span {
+    max-width: 760px;
+  }
+}
+
+
+@media (max-width: 860px) {
+  .featuredHeading {
+    max-width: 100%;
+  }
+
+
+  .featuredHeading h2 {
+    max-width: 100%;
+  }
+
+
+  .featuredHeading > span {
+    width: 100%;
+    max-width: 100%;
+  }
+
+
+  .featuredHeading .trackCounter {
+    margin-top: 18px;
+  }
+}
+

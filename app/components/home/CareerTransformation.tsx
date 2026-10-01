@@ -268,34 +268,27 @@ export default function CareerTransformation() {
 
       <div className={styles.shell}>
         <header
-          className={styles.heading}
-        >
-          <div className="hj-kicker">
-            {/* <Sparkles size={15} />
-            YOUR JOURNEY. YOUR TRANSFORMATION. */}
-          </div>
+  className={`hj-first-five-heading ${styles.transformationHeading}`}
+>
+  <h2 id="transformation-title text-4xl xl:text-6xl">
+    <span className=" text-4xl xl:text-6xl">
+      From {" "}
+    </span>
 
-          <h2 id="transformation-title">
-            <span className={styles.headingWave}>
-              From Beginner to
-            </span>{" "}
-            <span className={styles.careerReady}>
-              Career Ready
-            </span>
-          </h2>
+    <span className="hj-heading-wave text-4xl xl:text-6xl">
+      Beginner to Career
+    </span>{" "}
 
-          <div
-            className={styles.titleRule}
-            aria-hidden="true"
-          />
-          <div className="hj-first-five-heading">
-            <span>
-              See how clear direction, consistent
-              practice, and real proof turn uncertainty
-              into opportunity.
-            </span>
-          </div>
-        </header>
+    <em className="text-4xl xl:text-6xl">
+      Ready.
+    </em>
+  </h2>
+
+  <span>
+    See how clear direction, consistent practice,
+    and real proof turn uncertainty into opportunity.
+  </span>
+</header>
 
         <div className={styles.cards}>
           {stages.map((stage, index) => (

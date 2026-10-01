@@ -8,7 +8,6 @@ import {
   Code2,
   Palette,
   ServerCog,
-  Sparkles,
   Trophy,
   type LucideIcon,
 } from "lucide-react";
@@ -166,61 +165,47 @@ export default function FeaturedTrack() {
         aria-hidden="true"
       />
 
-      <header className={styles.heading}>
-        <div>
-          <div className={styles.kicker}>
-            {/* <Sparkles size={15} />
-            Career tracks */}
-          </div>
+      {/* Shared centered heading */}
+      <header
+        className={`hj-first-five-heading ${styles.featuredHeading}`}
+      >
+        <h2 id="featured-track-heading">
+          Find the path that
+          <br />
 
-          <h2 id="featured-track-heading">
-            <span
-              className="hj-main-heading"
-            >
-              Find the path that
-            </span>
-            <span
-  className={`${styles.headingLine} ${styles.headingLineSecondary} text-4xl xl:text-6xl`}
->
-  <span className="hj-main-heading hj-heading-wave">
-    fits your
-  </span>{" "}
+          <span className="hj-heading-wave text-4xl xl:text-6xl">
+            fits your
+          </span>{" "}
 
-  <em className="seen-word">
-    ambition
-  </em>
-</span>
-          </h2>
-        </div>
+          <em className="text-4xl xl:text-6xl">
+            ambition.
+          </em>
+        </h2>
 
-        <div className="hj-first-five-heading">
-          <span >
-            Every track follows one system: guided
-            levels, practical missions, real projects
-            and visible proof
+        <span>
+          Every track follows one system: guided levels,
+          practical missions, real projects and visible proof.
+        </span>
+
+        <div
+          className={styles.trackCounter}
+          aria-label={`Track ${activeIndex + 1} of ${tracks.length}`}
+        >
+          <span>
+            {String(activeIndex + 1).padStart(
+              2,
+              "0",
+            )}
           </span>
 
-          <div
-            className={styles.trackCounter}
-            aria-label={`Track ${activeIndex + 1} of ${tracks.length
-              }`}
-          >
-            <span>
-              {String(activeIndex + 1).padStart(
-                2,
-                "0",
-              )}
-            </span>
+          <i aria-hidden="true" />
 
-            <i aria-hidden="true" />
-
-            <span>
-              {String(tracks.length).padStart(
-                2,
-                "0",
-              )}
-            </span>
-          </div>
+          <span>
+            {String(tracks.length).padStart(
+              2,
+              "0",
+            )}
+          </span>
         </div>
       </header>
 
@@ -239,12 +224,13 @@ export default function FeaturedTrack() {
             <button
               key={track.id}
               type="button"
-              className={`${styles.trackCard} ${position === "active"
+              className={`${styles.trackCard} ${
+                position === "active"
                   ? styles.trackCardActive
                   : position === "previous"
                     ? styles.trackCardPrevious
                     : styles.trackCardNext
-                }`}
+              }`}
               onClick={() =>
                 setActiveIndex(index)
               }
@@ -253,7 +239,6 @@ export default function FeaturedTrack() {
               <span className={styles.cardNumber}>
                 {track.number}
               </span>
-
 
               <span className={styles.cardIcon}>
                 <TrackIcon
@@ -309,8 +294,6 @@ export default function FeaturedTrack() {
           </div>
 
           <div>
-
-
             <h3>
               {activeTrack.title}{" "}
               <span>{activeTrack.accent}.</span>

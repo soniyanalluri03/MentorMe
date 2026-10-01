@@ -4905,3 +4905,154 @@ html.light .hj-root .hj-kicker svg {
     height: 14px;
   }
 }
+
+/* =========================================================
+   HOME JOURNEY — UNIFIED SHARED HEADINGS
+   Matches Featured Track / Mentor Method / Course Comparison
+   / Career Tracks heading treatment.
+   ========================================================= */
+
+.hj-root .hj-home-heading,
+.hj-root .hj-roadmap .hj-first-five-heading,
+.hj-root .hj-evolution-heading {
+  position: relative;
+
+  z-index: 4;
+
+  width: 100%;
+  max-width: 1160px;
+
+  margin:
+    0
+    auto;
+
+  text-align: center;
+}
+
+
+.hj-root .hj-home-heading h2,
+.hj-root .hj-roadmap .hj-first-five-heading h2,
+.hj-root .hj-evolution-heading h2 {
+  width: 100%;
+  max-width: 1160px;
+
+  margin:
+    0
+    auto;
+
+  text-align: center;
+}
+
+
+.hj-root .hj-home-heading .hj-heading-wave,
+.hj-root .hj-roadmap .hj-first-five-heading .hj-heading-wave,
+.hj-root .hj-evolution-heading .hj-heading-wave {
+  display: inline-block;
+}
+
+
+.hj-root .hj-roadmap .hj-first-five-heading > span,
+.hj-root .hj-evolution-heading > span {
+  width: 100%;
+  max-width: 760px;
+
+  margin:
+    28px
+    auto
+    0;
+
+  text-align: center;
+}
+
+
+.hj-root .hj-evolution-heading {
+  transform: none;
+}
+
+
+.hj-root .hj-evolution-heading h2 {
+  font:
+    760
+    clamp(3.25rem, 5.25vw, 5.9rem)
+    / 1.04
+    var(--font-display),
+    sans-serif;
+
+  letter-spacing: -0.052em;
+}
+
+
+.hj-root .hj-intro-layout {
+  display: grid;
+  place-items: center;
+}
+
+
+.hj-root .hj-home-heading {
+  padding:
+    70px
+    0
+    22px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 820px) {
+  .hj-root .hj-home-heading,
+  .hj-root .hj-roadmap .hj-first-five-heading,
+  .hj-root .hj-evolution-heading {
+    max-width: 100%;
+  }
+
+
+  .hj-root .hj-home-heading h2,
+  .hj-root .hj-roadmap .hj-first-five-heading h2,
+  .hj-root .hj-evolution-heading h2 {
+    max-width: 100%;
+  }
+
+
+  .hj-root .hj-roadmap .hj-first-five-heading > span,
+  .hj-root .hj-evolution-heading > span {
+    max-width: 760px;
+  }
+
+
+  .hj-root .hj-home-heading {
+    padding:
+      58px
+      0
+      22px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 560px) {
+  .hj-root .hj-home-heading,
+  .hj-root .hj-roadmap .hj-first-five-heading,
+  .hj-root .hj-evolution-heading {
+    max-width: 100%;
+  }
+
+
+  .hj-root .hj-home-heading h2,
+  .hj-root .hj-roadmap .hj-first-five-heading h2,
+  .hj-root .hj-evolution-heading h2 {
+    max-width: 100%;
+  }
+
+
+  .hj-root .hj-roadmap .hj-first-five-heading > span,
+  .hj-root .hj-evolution-heading > span {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+

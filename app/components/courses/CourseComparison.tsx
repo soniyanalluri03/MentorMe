@@ -62,10 +62,9 @@ export default function CourseComparison() {
           SHARED GLOBAL HEADING
       ===================================================== */}
 
-    <header
+  <header
   className={`hj-first-five-heading ${styles.comparisonHeading}`}
 >
-  {/* LEFT SIDE */}
   <h2 id="course-comparison-heading">
     Content gives information
     <br />
@@ -79,8 +78,7 @@ export default function CourseComparison() {
     </em>
   </h2>
 
-  {/* RIGHT SIDE */}
-  <span className={styles.comparisonDescription}>
+  <span>
     Compare passive course consumption with a guided
     system built around practice, projects and visible
     proof.

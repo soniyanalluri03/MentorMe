@@ -78,11 +78,10 @@
     88px
     minmax(0, 1fr);
 
-  align-items:
-    center;
+  /* Both cards use the same row height */
+  align-items: stretch;
 
-  gap:
-    18px;
+  gap: 18px;
 }
 
 
@@ -93,11 +92,19 @@
 .progressCard {
   position: relative;
 
-  min-height:
-    390px;
+  width: 100%;
+  height: 100%;
 
-  padding:
-    30px;
+  min-height: 410px;
+
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  isolation: isolate;
 
   overflow:
     hidden;
@@ -373,25 +380,23 @@
 
 .progressCard > p {
   margin:
-    14px
+    auto
     0
     0;
 
-  color:
-    #aebbd0;
+  padding-top: 14px;
+
+  color: #aebbd0;
 
   font-family:
     var(--font-sans),
     sans-serif;
 
-  font-size:
-    0.75rem;
+  font-size: 0.75rem;
 
-  font-weight:
-    550;
+  font-weight: 550;
 
-  line-height:
-    1.6;
+  line-height: 1.6;
 }
 
 

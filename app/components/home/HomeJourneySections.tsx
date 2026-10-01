@@ -12,7 +12,6 @@ import {
   useRef,
   useState,
 } from "react";
-import { Sparkles } from "lucide-react";
 
 
 const processSteps = [
@@ -290,20 +289,21 @@ export function HomeJourneySections() {
           </div>
 
           <div className="hj-intro-layout">
-            <header className="hj-heading" data-reveal>
-              <div className="hj-kicker">
-            {/* <Sparkles size={15} />
-            CHOOSE YOUR DIRECTION */}
-          </div>
-              
+            <header
+              className="hj-first-five-heading hj-home-heading"
+              data-reveal
+            >
               <h2>
-                <span className="hj-heading-line hj-heading-line--primary">
-                  Choose the path that fits you
-                </span>
-                <span className="hj-heading-line hj-heading-line--secondary">
-                  <span className="hj-heading-wave">Build the proof that opens</span>{" "}
-                  <em>doors</em>
-                </span>
+                Choose the path that fits you
+                <br />
+
+                <span className="hj-heading-wave text-4xl xl:text-6xl">
+                  Build the proof that opens
+                </span>{" "}
+
+                <em className="text-4xl xl:text-6xl">
+                  doors.
+                </em>
               </h2>
             </header>
           </div>
@@ -508,24 +508,26 @@ export function HomeJourneySections() {
         <div className="hj-evolution-orb hj-evolution-orb-b" />
 
         <div className="hj-shell">
-          <header className="hj-evolution-heading" data-reveal>
-            
-            <div className="hj-kicker">
-            {/* <Sparkles size={15} />
-            WHAT HAPPENS AFTER LEVEL FIVE? */}
-          </div>
-            <h2 className="hj-evolution-title">
-              <span>Your journey keeps moving.</span>
-              <span>
-              <span className="hj-heading-wave">
+          <header
+            className="hj-first-five-heading hj-evolution-heading"
+            data-reveal
+          >
+            <h2>
+              Your journey keeps moving.
+              <br />
+
+              <span className="hj-heading-wave text-4xl xl:text-6xl">
                 Every milestone unlocks
               </span>{" "}
-              <em>more</em>
-            </span>
+
+              <em className="text-4xl xl:text-6xl">
+                more.
+              </em>
             </h2>
+
             <span>
               Follow the road from guided learning to XP, projects, mentor
-              feedback, portfolio proof, and real career opportunities
+              feedback, portfolio proof, and real career opportunities.
             </span>
           </header>
 

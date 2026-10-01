@@ -3,7 +3,6 @@ import {
   BookOpen,
   Code2,
   Dumbbell,
-  Sparkles,
 } from "lucide-react";
 
 import HighlightCard from "@/app/components/courses/ui/highlight-card";
@@ -47,51 +46,37 @@ export default function MentorMethod() {
       className={styles.section}
       aria-labelledby="mentor-method-heading"
     >
-      <div
-        className={styles.ambient}
-        aria-hidden="true"
-      />
+      {/* =====================================================
+          SHARED GLOBAL HEADING
+      ===================================================== */}
 
-      <div className={styles.heading}>
-  {/* LEFT HEADING */}
-
-  <div className={styles.headingCopy}>
-    <div className={styles.kicker}>
-      {/* <Sparkles size={15} />
-      MENTOR METHOD */}
-    </div>
-
-    <h2 id="mentor-method-heading">
-      <span className="hj-main-heading">
-        Learning becomes powerful
-      </span>
-
-      <span
-        className={`${styles.headingLine} ${styles.headingLineSecondary} text-4xl xl:text-6xl`}
+      <header
+        className={`hj-first-five-heading ${styles.methodHeading}`}
       >
-        <span className="hj-main-heading hj-heading-wave">
-          when progress becomes
-        </span>{" "}
+        <h2 id="mentor-method-heading">
+          Learning becomes powerful
+          <br />
 
-        <em className="seen-word">
-          proof
-        </em>
-      </span>
-    </h2>
-  </div>
+          <span className="hj-heading-wave text-4xl xl:text-6xl">
+            when progress becomes
+          </span>{" "}
 
-  {/* RIGHT SUPPORTING COPY */}
+          <em className="text-4xl xl:text-6xl">
+            proof.
+          </em>
+        </h2>
 
-  <div
-    className={`${styles.headingAside} hj-first-five-heading`}
-  >
-    <span>
-      Every level moves you through one repeatable
-      system. Learn with direction.
-      
-    </span>
-  </div>
-</div>
+        <span>
+          Every level moves you through one repeatable
+          system. Learn with direction, practice with
+          purpose, build real work and prove your progress.
+        </span>
+      </header>
+
+      {/* =====================================================
+          PROCESS LINE
+      ===================================================== */}
+
       <div className={styles.processLine}>
         <span>Learn</span>
         <i aria-hidden="true" />
@@ -104,6 +89,10 @@ export default function MentorMethod() {
 
         <span>Prove</span>
       </div>
+
+      {/* =====================================================
+          METHOD CARDS
+      ===================================================== */}
 
       <div className={styles.grid}>
         {steps.map((step) => {

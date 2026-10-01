@@ -97,25 +97,27 @@ export default function CareerTracksAndCTA() {
             SHARED GLOBAL HEADING
         =================================================== */}
 
-        <header className="hj-first-five-heading">
-          <h2 id="expanding-career-tracks">
-            More career directions
-            <br />
+        <header
+  className={`hj-first-five-heading ${styles.tracksHeading}`}
+>
+  <h2 id="expanding-career-tracks">
+    More career directions
+    <br />
 
-            <span className="hj-heading-wave text-4xl xl:text-6xl">
-              The same proof-first
-            </span>{" "}
+    <span className="hj-heading-wave text-4xl xl:text-6xl">
+      The same proof-first
+    </span>{" "}
 
-            <em className="text-4xl xl:text-6xl">
-              system.
-            </em>
-          </h2>
+    <em className="text-4xl xl:text-6xl">
+      system.
+    </em>
+  </h2>
 
-          <span>
-            The same level-based roadmap, project gates,
-            milestone certificates and portfolio evidence.
-          </span>
-        </header>
+  <span>
+    The same level-based roadmap, project gates,
+    milestone certificates and portfolio evidence.
+  </span>
+</header>
 
         {/* ===================================================
             CAREER CONSTELLATION

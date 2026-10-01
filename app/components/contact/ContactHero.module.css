@@ -9,32 +9,31 @@
    - shared description
    - hj-gold-eyebrow
    - shared icons
-
-   This file owns only ContactHero-specific layout,
-   orbit, bottom gold curve and response badge.
    ========================================================= */
 
 
 /* =========================================================
    HERO
+   Pull upward behind navbar so hero image starts at top
    ========================================================= */
 
 .hero {
   position: relative;
-
   isolation: isolate;
 
   width: 100%;
+  min-height: 760px;
 
-  min-height: 640px;
+  /* Pull hero behind desktop navbar */
+  margin-top: -124px;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
+  /* Navbar height + normal hero content spacing */
   padding:
-    clamp(84px, 8vw, 132px)
+    calc(124px + clamp(72px, 7vw, 110px))
     clamp(24px, 5.5vw, 104px)
     clamp(92px, 8vw, 126px);
 
@@ -46,43 +45,47 @@
     0 0 48% 48%
     /
     0 0 14% 14%;
-
-  /*
-   * IMPORTANT:
-   * No page background is set here.
-   *
-   * globals.css owns the full public-site
-   * light/dark page background.
-   */
 }
 
 
 /* =========================================================
-   SUBTLE CONTACT DECORATION
-
-   Decorative only — NOT the page background.
+   DARK MODE HERO IMAGE
    ========================================================= */
 
 .hero::before {
   content: "";
 
   position: absolute;
-
   inset: 0;
 
   z-index: 0;
 
-  background:
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(5, 13, 23, 0.08) 0%,
+      rgba(5, 13, 23, 0.18) 58%,
+      rgba(5, 13, 23, 0.3) 100%
+    ),
     radial-gradient(
       circle at 14% 18%,
       rgba(82, 152, 211, 0.08),
       transparent 34%
     ),
-    radial-gradient(
-      circle at 86% 22%,
-      rgba(145, 103, 221, 0.06),
-      transparent 35%
-    );
+    url("/images/contact/contact-dark.png");
+
+  background-size:
+    cover,
+    cover,
+    cover;
+
+  background-position:
+    center,
+    center,
+    center top;
+
+  background-repeat:
+    no-repeat;
 
   pointer-events: none;
 }
@@ -96,7 +99,6 @@
   content: "";
 
   position: absolute;
-
   inset: 0;
 
   z-index: 3;
@@ -108,43 +110,30 @@
   background:
     linear-gradient(
       90deg,
-
       rgba(116, 76, 3, 0.12) 0%,
-
       #8f6208 12%,
-
       #d4af37 28%,
-
       #fff2a8 48%,
-
       #ffd85a 56%,
-
       #d4af37 72%,
-
       #8f6208 88%,
-
       rgba(116, 76, 3, 0.12) 100%
     );
 
-  background-size:
-    240% 100%;
-
-  background-position:
-    0% 50%;
+  background-size: 240% 100%;
+  background-position: 0% 50%;
 
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
 
-  -webkit-mask-composite:
-    xor;
+  -webkit-mask-composite: xor;
 
   mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
 
-  mask-composite:
-    exclude;
+  mask-composite: exclude;
 
   clip-path:
     inset(70% 0 0 0);
@@ -156,7 +145,6 @@
       5px
       rgba(255, 220, 99, 0.34)
     )
-
     drop-shadow(
       0
       6px
@@ -164,11 +152,9 @@
       rgba(212, 175, 55, 0.2)
     );
 
-  opacity:
-    0.96;
+  opacity: 0.96;
 
-  pointer-events:
-    none;
+  pointer-events: none;
 
   animation:
     contactBottomGoldShine
@@ -193,15 +179,13 @@
   margin: 0 auto;
 
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
 }
 
 
 /* =========================================================
-   CONTACT-SPECIFIC SHARED HEADING WIDTH
+   SHARED HEADING WIDTH
    ========================================================= */
 
 .hero :global(.hj-first-five-heading) {
@@ -209,7 +193,9 @@
 }
 
 
-/* Give eyebrow spacing before heading */
+/* =========================================================
+   EYEBROW
+   ========================================================= */
 
 .hero :global(.hj-gold-eyebrow) {
   margin:
@@ -219,7 +205,9 @@
 }
 
 
-/* Contact-specific description width only */
+/* =========================================================
+   DESCRIPTION WIDTH
+   ========================================================= */
 
 .hero :global(.hj-first-five-heading) > span {
   max-width: 680px;
@@ -233,29 +221,25 @@
 .heroBadge {
   min-height: 43px;
 
-  margin-top:
-    30px;
+  margin-top: 30px;
 
   padding:
     0
     18px;
 
   display: inline-flex;
-
   align-items: center;
   justify-content: center;
 
   gap: 9px;
 
-  color:
-    #d8e3ef;
+  color: #d8e3ef;
 
   border:
     1px solid
     rgba(244, 223, 131, 0.2);
 
-  border-radius:
-    999px;
+  border-radius: 999px;
 
   background:
     linear-gradient(
@@ -266,48 +250,35 @@
 
   box-shadow:
     inset
+      0
+      1px
+      0
+      rgba(255, 255, 255, 0.11),
     0
-    1px
-    0
-    rgba(255, 255, 255, 0.11),
+      12px
+      32px
+      rgba(0, 0, 0, 0.15);
 
-    0
-    12px
-    32px
-    rgba(0, 0, 0, 0.15);
-
-  backdrop-filter:
-    blur(18px);
-
-  -webkit-backdrop-filter:
-    blur(18px);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 
   font-family:
     var(--font-display),
     sans-serif;
 
-  font-size:
-    0.69rem;
+  font-size: 0.69rem;
+  font-weight: 750;
 
-  font-weight:
-    750;
+  line-height: 1.4;
 
-  line-height:
-    1.4;
-
-  letter-spacing:
-    0.015em;
+  letter-spacing: 0.015em;
 }
 
 
 .heroBadge svg {
-  flex:
-    0
-    0
-    auto;
+  flex: 0 0 auto;
 
-  color:
-    #f1d46a;
+  color: #f1d46a;
 }
 
 
@@ -318,43 +289,33 @@
 .orbit {
   position: absolute;
 
-  right:
-    -205px;
+  right: -205px;
+  top: 150px;
 
-  top:
-    42px;
+  z-index: 2;
 
-  z-index:
-    2;
-
-  width:
-    470px;
-
-  height:
-    470px;
+  width: 470px;
+  height: 470px;
 
   border:
     1px solid
     rgba(244, 223, 131, 0.13);
 
-  border-radius:
-    50%;
+  border-radius: 50%;
 
-  opacity:
-    0.5;
+  opacity: 0.5;
 
   box-shadow:
     0
+      0
+      0
+      58px
+      rgba(212, 175, 55, 0.018),
     0
-    0
-    58px
-    rgba(212, 175, 55, 0.018),
-
-    0
-    0
-    0
-    116px
-    rgba(143, 92, 247, 0.014);
+      0
+      0
+      116px
+      rgba(143, 92, 247, 0.014);
 
   animation:
     contactOrbitSpin
@@ -362,8 +323,7 @@
     linear
     infinite;
 
-  pointer-events:
-    none;
+  pointer-events: none;
 }
 
 
@@ -374,61 +334,46 @@
 .orbit i {
   position: absolute;
 
-  width:
-    8px;
+  width: 8px;
+  height: 8px;
 
-  height:
-    8px;
+  border-radius: 50%;
 
-  border-radius:
-    50%;
-
-  background:
-    #f4df83;
+  background: #f4df83;
 
   box-shadow:
     0
+      0
+      0
+      5px
+      rgba(212, 175, 55, 0.07),
     0
-    0
-    5px
-    rgba(212, 175, 55, 0.07),
-
-    0
-    0
-    16px
-    rgba(244, 223, 131, 0.44);
+      0
+      16px
+      rgba(244, 223, 131, 0.44);
 }
 
 
 .orbit i:nth-child(1) {
-  left:
-    49%;
-
-  top:
-    -4px;
+  left: 49%;
+  top: -4px;
 }
 
 
 .orbit i:nth-child(2) {
-  right:
-    7%;
-
-  bottom:
-    21%;
+  right: 7%;
+  bottom: 21%;
 }
 
 
 .orbit i:nth-child(3) {
-  left:
-    9%;
-
-  bottom:
-    26%;
+  left: 9%;
+  bottom: 26%;
 }
 
 
 /* =========================================================
-   LIGHT MODE — DECORATIVE WASH
+   LIGHT MODE HERO IMAGE
    ========================================================= */
 
 :global(
@@ -439,17 +384,32 @@
 .hero::before,
 :global(html.light)
 .hero::before {
-  background:
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(250, 243, 244, 0.06) 58%,
+      rgba(241, 232, 247, 0.14) 100%
+    ),
     radial-gradient(
       circle at 14% 18%,
       rgba(156, 120, 207, 0.055),
       transparent 34%
     ),
-    radial-gradient(
-      circle at 86% 22%,
-      rgba(196, 147, 51, 0.045),
-      transparent 35%
-    );
+    url("/images/contact/contact-light.png");
+
+  background-size:
+    cover,
+    cover,
+    cover;
+
+  background-position:
+    center,
+    center,
+    center top;
+
+  background-repeat:
+    no-repeat;
 }
 
 
@@ -468,26 +428,17 @@
   background:
     linear-gradient(
       90deg,
-
       rgba(117, 73, 4, 0.18) 0%,
-
       #8d5e07 12%,
-
       #b78313 28%,
-
       #f0cf64 43%,
-
       #fff2ad 51%,
-
       #d39b17 67%,
-
       #8d5e07 86%,
-
       rgba(117, 73, 4, 0.18) 100%
     );
 
-  background-size:
-    240% 100%;
+  background-size: 240% 100%;
 
   filter:
     drop-shadow(
@@ -496,7 +447,6 @@
       4px
       rgba(154, 103, 12, 0.28)
     )
-
     drop-shadow(
       0
       6px
@@ -504,8 +454,7 @@
       rgba(183, 131, 19, 0.16)
     );
 
-  opacity:
-    0.94;
+  opacity: 0.94;
 }
 
 
@@ -521,8 +470,7 @@
 .heroBadge,
 :global(html.light)
 .heroBadge {
-  color:
-    #566278;
+  color: #566278;
 
   border-color:
     rgba(132, 98, 34, 0.2);
@@ -536,15 +484,14 @@
 
   box-shadow:
     inset
+      0
+      1px
+      0
+      #ffffff,
     0
-    1px
-    0
-    #ffffff,
-
-    0
-    10px
-    28px
-    rgba(72, 48, 97, 0.08);
+      10px
+      28px
+      rgba(72, 48, 97, 0.08);
 }
 
 
@@ -556,8 +503,7 @@
 .heroBadge svg,
 :global(html.light)
 .heroBadge svg {
-  color:
-    #987012;
+  color: #987012;
 }
 
 
@@ -576,21 +522,19 @@
   border-color:
     rgba(142, 103, 20, 0.12);
 
-  opacity:
-    0.34;
+  opacity: 0.34;
 
   box-shadow:
     0
+      0
+      0
+      58px
+      rgba(165, 121, 26, 0.014),
     0
-    0
-    58px
-    rgba(165, 121, 26, 0.014),
-
-    0
-    0
-    0
-    116px
-    rgba(143, 92, 247, 0.012);
+      0
+      0
+      116px
+      rgba(143, 92, 247, 0.012);
 }
 
 
@@ -602,20 +546,18 @@
 .orbit i,
 :global(html.light)
 .orbit i {
-  background:
-    #b78313;
+  background: #b78313;
 
   box-shadow:
     0
+      0
+      0
+      5px
+      rgba(183, 131, 19, 0.06),
     0
-    0
-    5px
-    rgba(183, 131, 19, 0.06),
-
-    0
-    0
-    13px
-    rgba(183, 131, 19, 0.24);
+      0
+      13px
+      rgba(183, 131, 19, 0.24);
 }
 
 
@@ -625,13 +567,24 @@
 
 @media (max-width: 1000px) {
   .hero {
-    min-height:
-      600px;
+    min-height: 700px;
+
+    margin-top: -110px;
+
+    padding:
+      calc(110px + 68px)
+      24px
+      90px;
 
     border-radius:
       0 0 47% 47%
       /
       0 0 12% 12%;
+  }
+
+
+  .orbit {
+    top: 128px;
   }
 }
 
@@ -642,13 +595,14 @@
 
 @media (max-width: 700px) {
   .hero {
-    min-height:
-      540px;
+    min-height: 620px;
+
+    margin-top: -88px;
 
     padding:
-      72px
+      calc(88px + 58px)
       17px
-      88px;
+      82px;
 
     border-radius:
       0 0 46% 46%
@@ -658,14 +612,11 @@
 
 
   .hero :global(.hj-gold-eyebrow) {
-    margin-bottom:
-      18px;
+    margin-bottom: 18px;
 
-    font-size:
-      0.6rem;
+    font-size: 0.6rem;
 
-    letter-spacing:
-      0.12em;
+    letter-spacing: 0.12em;
   }
 
 
@@ -677,26 +628,18 @@
       11px
       14px;
 
-    font-size:
-      0.65rem;
+    font-size: 0.65rem;
   }
 
 
   .orbit {
-    width:
-      310px;
+    width: 310px;
+    height: 310px;
 
-    height:
-      310px;
+    right: -205px;
+    top: 110px;
 
-    right:
-      -205px;
-
-    top:
-      38px;
-
-    opacity:
-      0.28;
+    opacity: 0.28;
   }
 }
 
@@ -707,22 +650,21 @@
 
 @media (max-width: 460px) {
   .hero {
-    min-height:
-      500px;
+    min-height: 590px;
+
+    margin-top: -82px;
 
     padding:
-      66px
+      calc(82px + 54px)
       12px
-      78px;
+      74px;
   }
 
 
   .heroBadge {
-    border-radius:
-      16px;
+    border-radius: 16px;
 
-    text-align:
-      left;
+    text-align: left;
   }
 }
 
@@ -733,13 +675,11 @@
 
 @keyframes contactBottomGoldShine {
   from {
-    background-position:
-      0% 50%;
+    background-position: 0% 50%;
   }
 
   to {
-    background-position:
-      240% 50%;
+    background-position: 240% 50%;
   }
 }
 
@@ -750,8 +690,7 @@
 
 @keyframes contactOrbitSpin {
   to {
-    transform:
-      rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -763,7 +702,6 @@
 @media (prefers-reduced-motion: reduce) {
   .orbit,
   .hero::after {
-    animation:
-      none;
+    animation: none;
   }
 }

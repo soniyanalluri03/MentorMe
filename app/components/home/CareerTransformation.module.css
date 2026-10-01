@@ -23,115 +23,53 @@
 }
 
 /* =====================================================
-   HEADING
+   CAREER TRANSFORMATION SHARED HEADING
+   Matches the shared heading system used across the site.
+   Keeps the complete title on one line where space allows.
 ===================================================== */
 
-.heading {
-  max-width: 940px;
-  margin: 0 auto clamp(3.2rem, 5vw, 4.8rem);
-  text-align: center;
-}
-
-.heading > p:first-child {
-  margin: 0 0 0.8rem;
-  color: #34759a;
-  font-size: 0.78rem;
-  font-weight: 900;
-  letter-spacing: 0.2em;
-}
-
-.heading h2 {
-  margin: 0;
-  color: #102d52;
-  font-size: clamp(2.5rem, 4.6vw, 4.7rem);
-  line-height: 1.02;
-  letter-spacing: -0.055em;
-}
-
-.careerReady {
-  color: transparent;
-  font-family: Georgia, "Times New Roman", serif;
-  font-style: italic;
-  font-weight: 500;
-
-  background: linear-gradient(
-    105deg,
-    #7c4ce0,
-    #a877e8 48%,
-    #d5aa43
-  );
-
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.headingWave {
-  display: inline-block;
-  color: inherit;
-  padding-bottom: 0.14em;
-  margin-bottom: -0.14em;
-  line-height: 1.08;
-  overflow: visible;
-  background: linear-gradient(
-    90deg,
-    currentColor 0%,
-    currentColor 47%,
-    #c99b2f 49%,
-    #ffe7a4 50%,
-    #c99b2f 51%,
-    currentColor 53%,
-    currentColor 100%
-  );
-
-  background-size: 260% 100%;
-  background-position: 0% 50%;
-
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  animation: careerHeadingGoldWave 12s ease-in-out infinite;
-}
-
-@keyframes careerHeadingGoldWave {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-.titleRule {
-  display: none;
-}
-
-.subtitle {
+.transformationHeading {
   position: relative;
-  display: block;
+  z-index: 4;
+
   width: 100%;
-  max-width: 960px;
+  max-width: 1320px;
 
-  margin: 28px auto 0;
-  padding: 16px 28px;
-  box-sizing: border-box;
-
-  color: var(--muted);
-  font: 700 clamp(1rem, 1.15vw, 1.14rem) / 1.7
-    var(--font-sans), sans-serif;
+  margin:
+    0
+    auto
+    clamp(3.2rem, 5vw, 4.8rem);
 
   text-align: center;
-  border-radius: 999px;
+}
 
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(112, 215, 255, 0.12),
-    transparent 72%
-  );
+.transformationHeading h2 {
+  width: 100%;
+  max-width: none;
 
-  text-shadow: 0 0 18px rgba(112, 215, 255, 0.15);
+  margin:
+    0
+    auto;
+
+  text-align: center;
+  white-space: nowrap;
+}
+
+.transformationHeading
+  :global(.hj-heading-wave) {
+  display: inline-block;
+}
+
+.transformationHeading > span {
+  width: 100%;
+  max-width: 760px;
+
+  margin:
+    28px
+    auto
+    0;
+
+  text-align: center;
 }
 
 /* =====================================================
@@ -652,13 +590,12 @@
   
 }
 
-:global([data-theme="dark"]) .heading h2,
+:global([data-theme="dark"]) .transformationHeading h2,
 :global([data-theme="dark"]) .card h3,
 :global([data-theme="dark"]) .cta strong {
   color: #f5f7ff;
 }
 
-:global([data-theme="dark"]) .subtitle,
 :global([data-theme="dark"]) .card li,
 :global([data-theme="dark"]) .cta span {
   color: #b9c6d8;
@@ -747,6 +684,21 @@
 @media (max-width: 860px) {
   .section {
     padding: 4.5rem 0;
+  }
+
+  .transformationHeading {
+    max-width: 100%;
+    margin-bottom: 2.8rem;
+  }
+
+  .transformationHeading h2 {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .transformationHeading > span {
+    width: 100%;
+    max-width: 100%;
   }
 
   .shell {

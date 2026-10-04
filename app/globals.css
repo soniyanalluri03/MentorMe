@@ -16,7 +16,6 @@
 
 @import "./styles/chatbot.css";
 
-
 /* =========================================================
    ROOT
    ========================================================= */
@@ -25,6 +24,59 @@ html {
   min-height: 100%;
 }
 
+/* =========================================================
+   GLOBAL THEME VARIABLES
+   ========================================================= */
+
+:root {
+  --text: #f7f9fd;
+  --muted: #9eacc0;
+
+  --gold: #d4af37;
+  --gold-2: #f4df83;
+  --gold-3: #a97812;
+
+  --purple: #8f5cf7;
+  --purple-soft: #b58cff;
+  --gold-soft: #f2d875;
+
+  color-scheme: dark;
+}
+
+:where(html:not([data-theme="dark"]), html.light, html[data-theme="light"]) {
+  --text: #172d50;
+  --muted: #667085;
+
+  --gold: #b78313;
+  --gold-2: #d4af37;
+  --gold-3: #8e6810;
+
+  --purple: #7650d8;
+  --purple-soft: #9d73f2;
+  --gold-soft: #d2aa43;
+
+  color-scheme: light;
+}
+
+:where(html.dark:not([data-theme="light"]), html[data-theme="dark"]) {
+  --text: #f7f9fd;
+  --muted: #9eacc0;
+
+  --gold: #d4af37;
+  --gold-2: #f4df83;
+  --gold-3: #a97812;
+
+  --purple: #8f5cf7;
+  --purple-soft: #b58cff;
+  --gold-soft: #f2d875;
+
+  color-scheme: dark;
+}
+
+html,
+body {
+  color: var(--text);
+}
 
 /* =========================================================
    GLOBAL PUBLIC BACKGROUND — LIGHT MODE
@@ -64,39 +116,25 @@ html {
   --public-site-base: #f1e8f7;
 }
 
-
 /* =========================================================
    GLOBAL PUBLIC BACKGROUND — DARK MODE
 
    This is the ONLY public-site background.
    ========================================================= */
 
-:where(
-  html.dark,
-  html[data-theme="dark"]
-) {
+:where(html.dark, html[data-theme="dark"]) {
   --public-site-background:
-    radial-gradient(
-      circle at 8% 50%,
-      rgba(69, 95, 135, 0.3),
-      transparent 34%
-    ),
+    radial-gradient(circle at 8% 50%, rgba(69, 95, 135, 0.3), transparent 34%),
     radial-gradient(
       circle at 92% 50%,
       rgba(212, 175, 55, 0.1),
       transparent 30%
     ),
-    linear-gradient(
-      90deg,
-      #112139 0%,
-      #091525 52%,
-      #050d17 100%
-    );
+    linear-gradient(90deg, #112139 0%, #091525 52%, #050d17 100%);
 
   --public-site-background-size: cover;
   --public-site-base: #091525;
 }
-
 
 /* =========================================================
    BODY FALLBACK
@@ -107,10 +145,8 @@ body {
 
   margin: 0;
 
-  background-color:
-    var(--public-site-base, #091525);
+  background-color: var(--public-site-base, #091525);
 }
-
 
 /* =========================================================
    PUBLIC SITE ROOT
@@ -150,33 +186,24 @@ body {
 
   color: var(--text);
 
-  background:
-    var(--public-site-background);
+  background: var(--public-site-background);
 
-  background-color:
-    var(--public-site-base);
+  background-color: var(--public-site-base);
 
-  background-repeat:
-    no-repeat;
+  background-repeat: no-repeat;
 
-  background-size:
-    var(--public-site-background-size);
+  background-size: var(--public-site-background-size);
 
   transition:
     color 280ms ease,
     background 280ms ease;
 }
 
-
 /* =========================================================
    PUBLIC SITE — DARK VARIABLES
    ========================================================= */
 
-:where(
-  html.dark,
-  html[data-theme="dark"]
-)
-.public-site-page {
+:where(html.dark, html[data-theme="dark"]) .public-site-page {
   --navy: #08111f;
   --navy-2: #0d1a2c;
   --navy-3: #14243a;
@@ -201,17 +228,16 @@ body {
   color-scheme: dark;
 }
 
-
 /* =========================================================
    PUBLIC SITE — LIGHT VARIABLES
    ========================================================= */
 
 :where(
-  html:not(.dark):not([data-theme="dark"]),
-  html.light,
-  html[data-theme="light"]
-)
-.public-site-page {
+    html:not(.dark):not([data-theme="dark"]),
+    html.light,
+    html[data-theme="light"]
+  )
+  .public-site-page {
   --navy: #f7f3ed;
   --navy-2: #ffffff;
   --navy-3: #ece5f5;
@@ -236,7 +262,6 @@ body {
   color-scheme: light;
 }
 
-
 /* =========================================================
    ALL PAGE WRAPPERS ARE TRANSPARENT
 
@@ -249,7 +274,6 @@ body {
   background-image: none !important;
 }
 
-
 /* =========================================================
    ALL PAGE SECTIONS USE GLOBAL BACKGROUND
    ========================================================= */
@@ -258,7 +282,6 @@ body {
   background-color: transparent !important;
   background-image: none !important;
 }
-
 
 /* =========================================================
    NAVBAR AREA
@@ -271,20 +294,15 @@ body {
   background-image: none !important;
 }
 
-
 .public-site-page .public-header {
   background-color: transparent !important;
   background-image: none !important;
 }
 
-
 /* =========================================================
    FOOTER
    Global background continues behind footer
    ========================================================= */
-
-
-
 
 /* =========================================================
    HOME ROOT COMPONENTS
@@ -303,7 +321,6 @@ body {
   background-image: none !important;
 }
 
-
 /* Remove old Home fades / washes */
 
 .public-site-page .mh-light-center-wash,
@@ -313,7 +330,6 @@ body {
   background: none !important;
   background-image: none !important;
 }
-
 
 /* =========================================================
    SHARED MAIN HEADING BLOCK
@@ -334,19 +350,14 @@ body {
   text-align: center;
 }
 
-
 /* Eyebrow paragraph */
 
 .hj-first-five-heading > p {
   margin: 0 0 24px;
 
-  color:
-    var(--cyan, #70d7ff);
+  color: var(--cyan, #70d7ff);
 
-  font:
-    950
-    clamp(0.9rem, 1.05vw, 1.08rem)
-    var(--font-display, sans-serif);
+  font: 950 clamp(0.9rem, 1.05vw, 1.08rem) var(--font-display, sans-serif);
 
   line-height: 1.4;
 
@@ -355,10 +366,8 @@ body {
   text-align: center;
   text-transform: uppercase;
 
-  text-shadow:
-    0 0 18px rgba(112, 215, 255, 0.16);
+  text-shadow: 0 0 18px rgba(112, 215, 255, 0.16);
 }
-
 
 /* Main heading */
 
@@ -368,30 +377,21 @@ body {
 
   margin: 0 auto;
 
-  padding:
-    0
-    0
-    0.14em;
+  padding: 0 0 0.14em;
 
   overflow: visible;
 
-  color:
-    var(--text, #f4f6ff);
+  color: var(--text, #f4f6ff);
 
-  font:
-    760
-    clamp(3.25rem, 5.25vw, 5.9rem)
-    / 1.04
+  font: 760 clamp(3.25rem, 5.25vw, 5.9rem) / 1.04
     var(--font-display, sans-serif);
 
-  letter-spacing:
-    -0.052em;
+  letter-spacing: -0.052em;
 
   text-align: center;
 
   text-wrap: balance;
 }
-
 
 /* =========================================================
    SHARED MOVING GOLD WAVE WORD
@@ -405,65 +405,62 @@ body {
 
 .hj-heading-wave {
   display: inline-block;
+  padding: 0 0.02em 0.08em;
+  color: transparent !important;
 
-  padding:
-    0
-    0.02em
-    0.08em;
+  background: linear-gradient(
+    90deg,
+    #f7f9fd 0%,
+    #f7f9fd 42%,
+    #b78313 46%,
+    #d4af37 48%,
+    #ffe7a4 50%,
+    #d4af37 52%,
+    #b78313 54%,
+    #f7f9fd 58%,
+    #f7f9fd 100%
+  ) !important;
 
-  /* Uses the current theme text colour. */
-  color: var(--text, #f4f6ff);
+  background-size: 160% 100% !important;
+  background-position: 0% 50%;
+  background-repeat: no-repeat !important;
 
-  /*
-   * Keep most of the word in the current theme text colour,
-   * while the gold band travels through the middle.
-   */
-  background:
-    linear-gradient(
-      90deg,
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
 
-      var(--text, #f4f6ff) 0%,
-      var(--text, #f4f6ff) 42%,
-
-      #b78313 46%,
-      #d4af37 48%,
-      #fff0a6 50%,
-      #d4af37 52%,
-      #b78313 54%,
-
-      var(--text, #f4f6ff) 58%,
-      var(--text, #f4f6ff) 100%
-    );
-
-  background-size:
-    260% 100%;
-
-  background-position:
-    0% 50%;
-
-  background-repeat:
-    no-repeat;
-
-  background-clip:
-    text;
-
-  -webkit-background-clip:
-    text;
-
-  -webkit-text-fill-color:
-    transparent;
-
-  animation:
-    hjHeadingGoldWave
-    12s
-    ease-in-out
-    infinite;
-
-  will-change:
-    background-position;
+  animation: hjHeadingGoldWave 6s ease-in-out infinite !important;
+  will-change: background-position;
 }
 
 
+:where(
+  html:not(.dark):not([data-theme="dark"]),
+  html.light,
+  html[data-theme="light"]
+)
+.hj-heading-wave {
+  background: linear-gradient(
+    90deg,
+    #172d50 0%,
+    #172d50 42%,
+    #b78313 46%,
+    #d4af37 48%,
+    #ffe7a4 50%,
+    #d4af37 52%,
+    #b78313 54%,
+    #172d50 58%,
+    #172d50 100%
+  ) !important;
+
+  background-size: 160% 100% !important;
+  background-position: 0% 50%;
+  background-repeat: no-repeat !important;
+
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
 /* =========================================================
    SHARED ITALIC GRADIENT WORD
    Used by <em> inside shared headings
@@ -472,61 +469,40 @@ body {
 .hj-first-five-heading h2 em {
   display: inline-block;
 
-  margin:
-    0
-    0
-    -0.12em;
+  margin: 0 0 -0.12em;
 
-  padding:
-    0
-    0.08em
-    0.15em;
+  padding: 0 0.08em 0.15em;
 
   overflow: visible;
 
   color: transparent;
 
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+  font-family: Georgia, "Times New Roman", serif;
 
   font-weight: 500;
   font-style: italic;
 
   line-height: 1.08;
 
-  background:
-    linear-gradient(
-      110deg,
-      var(--purple, #8f5cf7),
-      var(--purple-soft, #b58cff) 52%,
-      var(--gold-soft, #f2d875)
-    );
+  background: linear-gradient(
+    110deg,
+    var(--purple, #8f5cf7),
+    var(--purple-soft, #b58cff) 52%,
+    var(--gold-soft, #f2d875)
+  );
 
-  background-clip:
-    text;
+  background-clip: text;
 
-  -webkit-background-clip:
-    text;
+  -webkit-background-clip: text;
 
-  -webkit-text-fill-color:
-    transparent;
+  -webkit-text-fill-color: transparent;
 
-  transform-origin:
-    center;
+  transform-origin: center;
 
-  animation:
-    hjStepBreath
-    3.6s
-    ease-in-out
-    infinite;
+  animation: hjStepBreath 3.6s ease-in-out infinite;
 
-  will-change:
-    transform,
-    filter;
+  will-change: transform, filter;
 }
-
 
 /* =========================================================
    SHARED DESCRIPTION STRIP
@@ -540,53 +516,40 @@ body {
   width: 100%;
   max-width: 960px;
 
-  margin:
-    28px
-    auto
-    0;
+  margin: 28px auto 0;
 
-  padding:
-    16px
-    28px;
+  padding: 16px 28px;
 
   box-sizing: border-box;
 
-  color:
-    var(--muted, #b5c5d6);
+  color: var(--muted, #b5c5d6);
 
-  font:
-    760
-    clamp(1.05rem, 1.22vw, 1.2rem)
-    / 1.62
-    var(--font-sans, sans-serif);
+  font: 760 clamp(1.05rem, 1.22vw, 1.2rem) / 1.62 var(--font-sans, sans-serif);
 
   text-align: center;
 
-  border-radius:
-    999px;
+  border-radius: 999px;
 
-  background:
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(112, 215, 255, 0.12),
-      transparent 72%
-    );
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(112, 215, 255, 0.12),
+    transparent 72%
+  );
 
-  text-shadow:
-    0 0 18px rgba(112, 215, 255, 0.15);
+  text-shadow: 0 0 18px rgba(112, 215, 255, 0.15);
 }
-
 
 /* =========================================================
    SHARED HEADING — LIGHT MODE
    ========================================================= */
 
 :where(
-  html:not(.dark):not([data-theme="dark"]),
-  html.light,
-  html[data-theme="light"]
-)
-.hj-first-five-heading > p {
+    html:not(.dark):not([data-theme="dark"]),
+    html.light,
+    html[data-theme="light"]
+  )
+  .hj-first-five-heading
+  > p {
   color: #0f5e83;
 
   text-shadow:
@@ -594,51 +557,40 @@ body {
     0 0 12px rgba(43, 105, 140, 0.12);
 }
 
-
 :where(
-  html:not(.dark):not([data-theme="dark"]),
-  html.light,
-  html[data-theme="light"]
-)
-.hj-first-five-heading h2 em {
-  background:
-    linear-gradient(
-      110deg,
-      #7650d8,
-      #9d73f2 52%,
-      #d2aa43
-    );
+    html:not(.dark):not([data-theme="dark"]),
+    html.light,
+    html[data-theme="light"]
+  )
+  .hj-first-five-heading
+  h2
+  em {
+  background: linear-gradient(110deg, #7650d8, #9d73f2 52%, #d2aa43);
 
-  background-clip:
-    text;
+  background-clip: text;
 
-  -webkit-background-clip:
-    text;
+  -webkit-background-clip: text;
 
-  -webkit-text-fill-color:
-    transparent;
+  -webkit-text-fill-color: transparent;
 }
 
-
 :where(
-  html:not(.dark):not([data-theme="dark"]),
-  html.light,
-  html[data-theme="light"]
-)
-.hj-first-five-heading > span {
+    html:not(.dark):not([data-theme="dark"]),
+    html.light,
+    html[data-theme="light"]
+  )
+  .hj-first-five-heading
+  > span {
   color: #263a59;
 
-  background:
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(118, 80, 216, 0.11),
-      transparent 72%
-    );
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(118, 80, 216, 0.11),
+    transparent 72%
+  );
 
-  text-shadow:
-    0 0 14px rgba(118, 80, 216, 0.1);
+  text-shadow: 0 0 14px rgba(118, 80, 216, 0.1);
 }
-
 
 /* =========================================================
    SHARED HEADING ANIMATIONS
@@ -647,54 +599,29 @@ body {
 @keyframes hjHeadingGoldWave {
   0%,
   100% {
-    background-position:
-      0% 50%;
+    background-position: 0% 50%;
   }
 
   50% {
-    background-position:
-      100% 50%;
+    background-position: 100% 50%;
   }
 }
-
 
 @keyframes hjStepBreath {
   0%,
   100% {
-    transform:
-      translateY(0)
-      scale(1);
+    transform: translateY(0) scale(1);
 
-    filter:
-      drop-shadow(
-        0
-        0
-        0
-        rgba(181, 140, 255, 0)
-      );
+    filter: drop-shadow(0 0 0 rgba(181, 140, 255, 0));
   }
 
   50% {
-    transform:
-      translateY(-2px)
-      scale(1.055);
+    transform: translateY(-2px) scale(1.055);
 
-    filter:
-      drop-shadow(
-        0
-        8px
-        18px
-        rgba(143, 92, 247, 0.22)
-      )
-      drop-shadow(
-        0
-        0
-        15px
-        rgba(224, 189, 85, 0.2)
-      );
+    filter: drop-shadow(0 8px 18px rgba(143, 92, 247, 0.22))
+      drop-shadow(0 0 15px rgba(224, 189, 85, 0.2));
   }
 }
-
 
 /* =========================================================
    GLOBAL GRADIENT WORD
@@ -706,126 +633,71 @@ body {
 .hj-gradient-word {
   display: inline-block;
 
-  margin:
-    0
-    -0.06em
-    -0.12em
-    0.02em;
+  margin: 0 -0.06em -0.12em 0.02em;
 
-  padding:
-    0.03em
-    0.12em
-    0.16em
-    0.06em;
+  padding: 0.03em 0.12em 0.16em 0.06em;
 
   overflow: visible;
 
   color: transparent;
 
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+  font-family: Georgia, "Times New Roman", serif;
 
   font-weight: 500;
   font-style: italic;
 
   line-height: 1.08;
 
-  background:
-    linear-gradient(
-      110deg,
-      var(--purple, #8f5cf7) 0%,
-      var(--purple-soft, #b58cff) 52%,
-      var(--gold-soft, #f2d875) 100%
-    );
+  background: linear-gradient(
+    110deg,
+    var(--purple, #8f5cf7) 0%,
+    var(--purple-soft, #b58cff) 52%,
+    var(--gold-soft, #f2d875) 100%
+  );
 
-  background-clip:
-    text;
+  background-clip: text;
 
-  -webkit-background-clip:
-    text;
+  -webkit-background-clip: text;
 
-  -webkit-text-fill-color:
-    transparent;
+  -webkit-text-fill-color: transparent;
 
-  transform-origin:
-    center;
+  transform-origin: center;
 
-  animation:
-    hjGradientWordBreath
-    3.6s
-    ease-in-out
-    infinite;
+  animation: hjGradientWordBreath 3.6s ease-in-out infinite;
 
-  will-change:
-    transform,
-    filter;
+  will-change: transform, filter;
 }
-
 
 :where(
-  html:not(.dark):not([data-theme="dark"]),
-  html.light,
-  html[data-theme="light"]
-)
-.hj-gradient-word {
-  background:
-    linear-gradient(
-      110deg,
-      #7650d8 0%,
-      #9d73f2 52%,
-      #d2aa43 100%
-    );
+    html:not(.dark):not([data-theme="dark"]),
+    html.light,
+    html[data-theme="light"]
+  )
+  .hj-gradient-word {
+  background: linear-gradient(110deg, #7650d8 0%, #9d73f2 52%, #d2aa43 100%);
 
-  background-clip:
-    text;
+  background-clip: text;
 
-  -webkit-background-clip:
-    text;
+  -webkit-background-clip: text;
 
-  -webkit-text-fill-color:
-    transparent;
+  -webkit-text-fill-color: transparent;
 }
-
 
 @keyframes hjGradientWordBreath {
   0%,
   100% {
-    transform:
-      translateY(0)
-      scale(1);
+    transform: translateY(0) scale(1);
 
-    filter:
-      drop-shadow(
-        0
-        0
-        0
-        rgba(181, 140, 255, 0)
-      );
+    filter: drop-shadow(0 0 0 rgba(181, 140, 255, 0));
   }
 
   50% {
-    transform:
-      translateY(-2px)
-      scale(1.055);
+    transform: translateY(-2px) scale(1.055);
 
-    filter:
-      drop-shadow(
-        0
-        8px
-        18px
-        rgba(143, 92, 247, 0.22)
-      )
-      drop-shadow(
-        0
-        0
-        15px
-        rgba(224, 189, 85, 0.2)
-      );
+    filter: drop-shadow(0 8px 18px rgba(143, 92, 247, 0.22))
+      drop-shadow(0 0 15px rgba(224, 189, 85, 0.2));
   }
 }
-
 
 /* =========================================================
    GLOBAL SEEN WORD
@@ -834,143 +706,72 @@ body {
 .seen-word {
   display: inline-block;
 
-  margin:
-    0
-    -0.06em
-    -0.12em
-    0.02em;
+  margin: 0 -0.06em -0.12em 0.02em;
 
-  padding:
-    0.03em
-    0.12em
-    0.16em
-    0.06em;
+  padding: 0.03em 0.12em 0.16em 0.06em;
 
   overflow: visible;
 
   color: transparent;
 
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+  font-family: Georgia, "Times New Roman", serif;
 
   font-weight: 500;
   font-style: italic;
 
   line-height: 1.08;
 
-  background:
-    linear-gradient(
-      110deg,
-      #8f5cf7 0%,
-      #b58cff 52%,
-      #f2d875 100%
-    );
+  background: linear-gradient(110deg, #8f5cf7 0%, #b58cff 52%, #f2d875 100%);
 
-  background-clip:
-    text;
+  background-clip: text;
 
-  -webkit-background-clip:
-    text;
+  -webkit-background-clip: text;
 
-  -webkit-text-fill-color:
-    transparent;
+  -webkit-text-fill-color: transparent;
 
-  transform-origin:
-    center;
+  transform-origin: center;
 
-  animation:
-    seenWordBreath
-    3.6s
-    ease-in-out
-    infinite;
+  animation: seenWordBreath 3.6s ease-in-out infinite;
 
-  will-change:
-    transform,
-    filter;
+  will-change: transform, filter;
 }
-
 
 @keyframes seenWordBreath {
   0%,
   100% {
-    transform:
-      translateY(0)
-      scale(1);
+    transform: translateY(0) scale(1);
 
-    filter:
-      drop-shadow(
-        0
-        0
-        0
-        rgba(181, 140, 255, 0)
-      )
-      drop-shadow(
-        0
-        0
-        0
-        rgba(224, 189, 85, 0)
-      );
+    filter: drop-shadow(0 0 0 rgba(181, 140, 255, 0))
+      drop-shadow(0 0 0 rgba(224, 189, 85, 0));
   }
 
   50% {
-    transform:
-      translateY(-2px)
-      scale(1.055);
+    transform: translateY(-2px) scale(1.055);
 
-    filter:
-      drop-shadow(
-        0
-        8px
-        18px
-        rgba(143, 92, 247, 0.22)
-      )
-      drop-shadow(
-        0
-        0
-        15px
-        rgba(224, 189, 85, 0.2)
-      );
+    filter: drop-shadow(0 8px 18px rgba(143, 92, 247, 0.22))
+      drop-shadow(0 0 15px rgba(224, 189, 85, 0.2));
   }
 }
-
 
 /* =========================================================
    GLOBAL LARGE DISPLAY HEADING
    ========================================================= */
 
 .hj-display-heading {
-  color:
-    var(--text, #102b51);
+  color: var(--text, #102b51);
 
-  font-size:
-    clamp(
-      3.2rem,
-      5.45vw,
-      6.5rem
-    );
+  font-size: clamp(3.2rem, 5.45vw, 6.5rem);
 
-  font-weight:
-    700;
+  font-weight: 700;
 
-  line-height:
-    0.98;
+  line-height: 0.98;
 
-  letter-spacing:
-    -0.065em;
+  letter-spacing: -0.065em;
 }
 
-
-:where(
-  html.dark,
-  html[data-theme="dark"]
-)
-.hj-display-heading {
-  color:
-    #f6f7fc;
+:where(html.dark, html[data-theme="dark"]) .hj-display-heading {
+  color: #f6f7fc;
 }
-
 
 /* =========================================================
    GLOBAL GOLD EYEBROW
@@ -980,82 +781,50 @@ body {
    ========================================================= */
 
 .hj-gold-eyebrow {
-  width:
-    max-content;
+  width: max-content;
 
-  max-width:
-    100%;
+  max-width: 100%;
 
-  display:
-    inline-flex;
+  display: inline-flex;
 
-  align-items:
-    center;
+  align-items: center;
 
-  justify-content:
-    center;
+  justify-content: center;
 
-  gap:
-    10px;
+  gap: 10px;
 
-  color:
-    #9a6a0b;
+  color: #9a6a0b;
 
-  font-family:
-    var(--font-display),
-    sans-serif;
+  font-family: var(--font-display), sans-serif;
 
-  font-size:
-    0.82rem;
+  font-size: 0.82rem;
 
-  font-weight:
-    900;
+  font-weight: 900;
 
-  line-height:
-    1;
+  line-height: 1;
 
-  letter-spacing:
-    0.12em;
+  letter-spacing: 0.12em;
 
-  text-transform:
-    uppercase;
+  text-transform: uppercase;
 }
-
 
 .hj-gold-eyebrow svg {
-  width:
-    18px;
+  width: 18px;
 
-  height:
-    18px;
+  height: 18px;
 
-  flex:
-    0 0 auto;
+  flex: 0 0 auto;
 
-  color:
-    #d5a513;
+  color: #d5a513;
 }
 
-
-:where(
-  html.dark,
-  html[data-theme="dark"]
-)
-.hj-gold-eyebrow {
-  color:
-    #f0cd55;
+:where(html.dark, html[data-theme="dark"]) .hj-gold-eyebrow {
+  color: #f0cd55;
 }
 
-
-:where(
-  html.dark,
-  html[data-theme="dark"]
-)
-.hj-gold-eyebrow svg {
-  color:
-    #f0cd55;
+:where(html.dark, html[data-theme="dark"]) .hj-gold-eyebrow svg {
+  color: #f0cd55;
 }
-
 
 /* =========================================================
    GLOBAL HIGHLIGHT PILLS CONTAINER
@@ -1067,8 +836,7 @@ body {
 .hj-highlight-pills {
   width: 100%;
 
-  margin-top:
-    26px;
+  margin-top: 26px;
 
   position: relative;
   z-index: 3;
@@ -1082,7 +850,6 @@ body {
 
   gap: 11px;
 }
-
 
 /* =========================================================
    GLOBAL HIGHLIGHT PILL BASE
@@ -1100,59 +867,37 @@ body {
 
   gap: 8px;
 
-  padding:
-    0
-    16px;
+  padding: 0 16px;
 
   overflow: hidden;
 
   isolation: isolate;
 
-  border:
-    1px solid transparent;
+  border: 1px solid transparent;
 
-  border-radius:
-    999px;
+  border-radius: 999px;
 
-  font-family:
-    var(--font-display),
-    sans-serif;
+  font-family: var(--font-display), sans-serif;
 
-  font-size:
-    0.58rem;
+  font-size: 0.58rem;
 
-  font-weight:
-    900;
+  font-weight: 900;
 
-  line-height:
-    1;
+  line-height: 1;
 
-  letter-spacing:
-    0.11em;
+  letter-spacing: 0.11em;
 
-  text-transform:
-    uppercase;
+  text-transform: uppercase;
 
-  cursor:
-    default;
+  cursor: default;
 
   box-shadow:
-    inset
-    0
-    1px
-    0
-    rgba(255, 255, 255, 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 9px 22px rgba(72, 50, 98, 0.07);
 
-    0
-    9px
-    22px
-    rgba(72, 50, 98, 0.07);
+  backdrop-filter: blur(15px);
 
-  backdrop-filter:
-    blur(15px);
-
-  -webkit-backdrop-filter:
-    blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 
   transition:
     transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -1162,12 +907,9 @@ body {
     box-shadow 300ms ease;
 }
 
-
 .hj-highlight-pill:hover {
-  transform:
-    translateY(-4px);
+  transform: translateY(-4px);
 }
-
 
 /* =========================================================
    PILL LIGHT SWEEP
@@ -1185,143 +927,102 @@ body {
   top: -10%;
   z-index: -1;
 
-  transform:
-    skewX(-22deg);
+  transform: skewX(-22deg);
 
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 243, 181, 0.14),
-      transparent
-    );
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 243, 181, 0.14),
+    transparent
+  );
 
-  transition:
-    left 650ms ease;
+  transition: left 650ms ease;
 
   pointer-events: none;
 }
 
-
 .hj-highlight-pill:hover::before {
-  left:
-    calc(100% + 35px);
+  left: calc(100% + 35px);
 }
-
 
 /* =========================================================
    GOLD PILL
    ========================================================= */
 
 .hj-highlight-pill--gold {
-  color:
-    #8b650d;
+  color: #8b650d;
 
-  border-color:
-    rgba(177, 132, 28, 0.25);
+  border-color: rgba(177, 132, 28, 0.25);
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255, 253, 244, 0.96),
-      rgba(248, 232, 184, 0.56)
-    );
+  background: linear-gradient(
+    145deg,
+    rgba(255, 253, 244, 0.96),
+    rgba(248, 232, 184, 0.56)
+  );
 }
-
 
 .hj-highlight-pill--gold svg {
-  color:
-    #b78313;
+  color: #b78313;
 }
-
 
 /* =========================================================
    PURPLE PILL
    ========================================================= */
 
 .hj-highlight-pill--purple {
-  color:
-    #7750cf;
+  color: #7750cf;
 
-  border-color:
-    rgba(143, 92, 247, 0.24);
+  border-color: rgba(143, 92, 247, 0.24);
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(250, 247, 255, 0.96),
-      rgba(233, 221, 252, 0.72)
-    );
+  background: linear-gradient(
+    145deg,
+    rgba(250, 247, 255, 0.96),
+    rgba(233, 221, 252, 0.72)
+  );
 }
-
 
 .hj-highlight-pill--purple svg {
-  color:
-    #8f5cf7;
+  color: #8f5cf7;
 }
-
 
 /* =========================================================
    BLUE PILL
    ========================================================= */
 
 .hj-highlight-pill--blue {
-  color:
-    #0f6487;
+  color: #0f6487;
 
-  border-color:
-    rgba(61, 158, 196, 0.24);
+  border-color: rgba(61, 158, 196, 0.24);
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(250, 254, 255, 0.97),
-      rgba(220, 244, 250, 0.72)
-    );
+  background: linear-gradient(
+    145deg,
+    rgba(250, 254, 255, 0.97),
+    rgba(220, 244, 250, 0.72)
+  );
 }
-
 
 .hj-highlight-pill--blue svg {
-  color:
-    #2385ad;
+  color: #2385ad;
 }
-
 
 /* =========================================================
    DARK MODE PILLS
    ========================================================= */
 
-:where(
-  html.dark,
-  html[data-theme="dark"]
-)
-.hj-highlight-pill--gold {
-  color:
-    #f0d36d;
+:where(html.dark, html[data-theme="dark"]) .hj-highlight-pill--gold {
+  color: #f0d36d;
 
-  border-color:
-    rgba(244, 223, 131, 0.32);
+  border-color: rgba(244, 223, 131, 0.32);
 
   background:
-    linear-gradient(
-      145deg,
-      rgba(212, 175, 55, 0.1),
-      rgba(255, 255, 255, 0.02)
-    ),
+    linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(255, 255, 255, 0.02)),
     rgba(13, 32, 52, 0.68);
 }
 
+:where(html.dark, html[data-theme="dark"]) .hj-highlight-pill--purple {
+  color: #c5a9ff;
 
-:where(
-  html.dark,
-  html[data-theme="dark"]
-)
-.hj-highlight-pill--purple {
-  color:
-    #c5a9ff;
-
-  border-color:
-    rgba(181, 140, 255, 0.3);
+  border-color: rgba(181, 140, 255, 0.3);
 
   background:
     linear-gradient(
@@ -1332,17 +1033,10 @@ body {
     rgba(13, 32, 52, 0.68);
 }
 
+:where(html.dark, html[data-theme="dark"]) .hj-highlight-pill--blue {
+  color: #81d7ef;
 
-:where(
-  html.dark,
-  html[data-theme="dark"]
-)
-.hj-highlight-pill--blue {
-  color:
-    #81d7ef;
-
-  border-color:
-    rgba(80, 213, 236, 0.28);
+  border-color: rgba(80, 213, 236, 0.28);
 
   background:
     linear-gradient(
@@ -1352,7 +1046,6 @@ body {
     ),
     rgba(13, 32, 52, 0.68);
 }
-
 
 /* =========================================================
    GLOBAL ACTION ROW
@@ -1364,8 +1057,7 @@ body {
 .hj-action-row {
   width: 100%;
 
-  margin-top:
-    30px;
+  margin-top: 30px;
 
   display: flex;
 
@@ -1377,25 +1069,18 @@ body {
   gap: 14px;
 }
 
-
 .hj-action-row .navbar-sign-in,
 .hj-action-row .mh-button {
-  min-width:
-    220px;
+  min-width: 220px;
 
-  min-height:
-    54px;
+  min-height: 54px;
 
-  display:
-    inline-flex;
+  display: inline-flex;
 
-  align-items:
-    center;
+  align-items: center;
 
-  justify-content:
-    center;
+  justify-content: center;
 }
-
 
 /* =========================================================
    GLOBAL BUTTON
@@ -1405,49 +1090,33 @@ body {
    ========================================================= */
 
 .mh-button {
-  min-height:
-    54px;
+  min-height: 54px;
 
-  display:
-    inline-flex;
+  display: inline-flex;
 
-  align-items:
-    center;
+  align-items: center;
 
-  justify-content:
-    center;
+  justify-content: center;
 
-  gap:
-    18px;
+  gap: 18px;
 
-  padding:
-    0
-    23px;
+  padding: 0 23px;
 
-  border-radius:
-    12px;
+  border-radius: 12px;
 
-  font-family:
-    var(--font-display),
-    sans-serif;
+  font-family: var(--font-display), sans-serif;
 
-  font-size:
-    0.84rem;
+  font-size: 0.84rem;
 
-  font-weight:
-    820;
+  font-weight: 820;
 
-  line-height:
-    1;
+  line-height: 1;
 
-  text-decoration:
-    none;
+  text-decoration: none;
 
-  white-space:
-    nowrap;
+  white-space: nowrap;
 
-  cursor:
-    pointer;
+  cursor: pointer;
 
   transition:
     transform 250ms ease,
@@ -1456,7 +1125,6 @@ body {
     background 250ms ease,
     color 250ms ease;
 }
-
 
 /* =========================================================
    GLOBAL SECONDARY BUTTON
@@ -1468,122 +1136,66 @@ body {
 .mh-button--secondary {
   position: relative;
 
-  isolation:
-    isolate;
+  isolation: isolate;
 
-  overflow:
-    hidden;
+  overflow: hidden;
 
-  color:
-    #1a2c49;
+  color: #1a2c49;
 
-  border:
-    1px solid
-    rgba(83, 61, 120, 0.2);
+  border: 1px solid rgba(83, 61, 120, 0.2);
 
-  background:
-    rgba(255, 255, 255, 0.62);
+  background: rgba(255, 255, 255, 0.62);
 
-  backdrop-filter:
-    blur(14px);
+  backdrop-filter: blur(14px);
 
-  -webkit-backdrop-filter:
-    blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
   box-shadow:
-    inset
-    0
-    1px
-    0
-    #ffffff,
-
-    0
-    12px
-    28px
-    rgba(74, 55, 109, 0.12);
+    inset 0 1px 0 #ffffff,
+    0 12px 28px rgba(74, 55, 109, 0.12);
 }
-
 
 .mh-button--secondary:hover {
-  transform:
-    translateY(-4px);
+  transform: translateY(-4px);
 
-  border-color:
-    rgba(180, 143, 34, 0.5);
+  border-color: rgba(180, 143, 34, 0.5);
 
-  background:
-    rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.85);
 
   box-shadow:
-    inset
-    0
-    1px
-    0
-    #ffffff,
-
-    0
-    16px
-    32px
-    rgba(74, 55, 109, 0.16);
+    inset 0 1px 0 #ffffff,
+    0 16px 32px rgba(74, 55, 109, 0.16);
 }
-
 
 .mh-button--secondary > span {
-  transition:
-    transform 220ms ease;
+  transition: transform 220ms ease;
 }
-
 
 .mh-button--secondary:hover > span {
-  transform:
-    translate(3px, -2px);
+  transform: translate(3px, -2px);
 }
-
 
 /* =========================================================
    DARK MODE — SECONDARY BUTTON
    ========================================================= */
 
-:where(
-  html.dark,
-  html[data-theme="dark"]
-)
-.mh-button--secondary {
-  color:
-    #f2f7ff;
+:where(html.dark, html[data-theme="dark"]) .mh-button--secondary {
+  color: #f2f7ff;
 
-  border-color:
-    rgba(101, 182, 238, 0.25);
+  border-color: rgba(101, 182, 238, 0.25);
 
-  background:
-    rgba(12, 40, 70, 0.68);
+  background: rgba(12, 40, 70, 0.68);
 
   box-shadow:
-    inset
-    0
-    1px
-    0
-    rgba(255, 255, 255, 0.1),
-
-    0
-    15px
-    32px
-    rgba(0, 0, 0, 0.28);
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 15px 32px rgba(0, 0, 0, 0.28);
 }
 
+:where(html.dark, html[data-theme="dark"]) .mh-button--secondary:hover {
+  border-color: rgba(244, 223, 131, 0.38);
 
-:where(
-  html.dark,
-  html[data-theme="dark"]
-)
-.mh-button--secondary:hover {
-  border-color:
-    rgba(244, 223, 131, 0.38);
-
-  background:
-    rgba(18, 50, 83, 0.86);
+  background: rgba(18, 50, 83, 0.86);
 }
-
 
 /* =========================================================
    GLOBAL SECONDARY BUTTON GOLD LOOP
@@ -1595,325 +1207,204 @@ body {
   initial-value: 0deg;
 }
 
-
 .mh-button--secondary::after {
   content: "";
 
-  position:
-    absolute;
+  position: absolute;
 
-  inset:
-    0;
+  inset: 0;
 
-  z-index:
-    3;
+  z-index: 3;
 
-  padding:
-    2px;
+  padding: 2px;
 
-  border-radius:
-    inherit;
+  border-radius: inherit;
 
-  pointer-events:
-    none;
+  pointer-events: none;
 
-  background:
-    conic-gradient(
-      from var(--mh-secondary-loop-angle),
+  background: conic-gradient(
+    from var(--mh-secondary-loop-angle),
+    transparent 0deg,
+    transparent 280deg,
 
-      transparent 0deg,
-      transparent 280deg,
+    rgba(96, 66, 0, 0) 288deg,
 
-      rgba(96, 66, 0, 0) 288deg,
+    #604200 304deg,
+    #765407 318deg,
+    #b8860b 330deg,
+    #d4af37 338deg,
+    #8a620d 348deg,
 
-      #604200 304deg,
-      #765407 318deg,
-      #b8860b 330deg,
-      #d4af37 338deg,
-      #8a620d 348deg,
-
-      transparent 360deg
-    );
+    transparent 360deg
+  );
 
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
 
-  -webkit-mask-composite:
-    xor;
+  -webkit-mask-composite: xor;
 
   mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
 
-  mask-composite:
-    exclude;
+  mask-composite: exclude;
 
-  filter:
-    drop-shadow(
-      0
-      0
-      5px
-      rgba(111, 79, 8, 0.42)
-    );
+  filter: drop-shadow(0 0 5px rgba(111, 79, 8, 0.42));
 
-  animation:
-    mhSecondaryGoldLoop
-    4s
-    linear
-    infinite;
+  animation: mhSecondaryGoldLoop 4s linear infinite;
 }
-
 
 @keyframes mhSecondaryGoldLoop {
   from {
-    --mh-secondary-loop-angle:
-      0deg;
+    --mh-secondary-loop-angle: 0deg;
   }
 
   to {
-    --mh-secondary-loop-angle:
-      360deg;
+    --mh-secondary-loop-angle: 360deg;
   }
 }
-
 
 /* =========================================================
    AUTH PILLS — DARK MODE ONLY
    ========================================================= */
 
-
 /* GOLD */
 
-:where(
-  html.dark,
-  html[data-theme="dark"]
-)
-.auth-page
-.auth-fixed-pill.hj-highlight-pill--gold {
-  color:
-    #f1d15a !important;
+:where(html.dark, html[data-theme="dark"])
+  .auth-page
+  .auth-fixed-pill.hj-highlight-pill--gold {
+  color: #f1d15a !important;
 
-  border-color:
-    rgba(212, 175, 55, 0.42) !important;
+  border-color: rgba(212, 175, 55, 0.42) !important;
 
-  background:
-    rgba(8, 29, 50, 0.48) !important;
+  background: rgba(8, 29, 50, 0.48) !important;
 
   box-shadow:
-    inset
-    0
-    1px
-    0
-    rgba(255, 255, 255, 0.035),
-
-    0
-    8px
-    20px
-    rgba(0, 0, 0, 0.08) !important;
+    inset 0 1px 0 rgba(255, 255, 255, 0.035),
+    0 8px 20px rgba(0, 0, 0, 0.08) !important;
 }
 
+:where(html.dark, html[data-theme="dark"])
+  .auth-page
+  .auth-fixed-pill.hj-highlight-pill--gold
+  svg {
+  color: #e6bf32 !important;
 
-:where(
-  html.dark,
-  html[data-theme="dark"]
-)
-.auth-page
-.auth-fixed-pill.hj-highlight-pill--gold svg {
-  color:
-    #e6bf32 !important;
-
-  stroke:
-    #e6bf32 !important;
+  stroke: #e6bf32 !important;
 }
-
 
 /* PURPLE */
 
-:where(
-  html.dark,
-  html[data-theme="dark"]
-)
-.auth-page
-.auth-fixed-pill.hj-highlight-pill--purple {
-  color:
-    #bb84ff !important;
+:where(html.dark, html[data-theme="dark"])
+  .auth-page
+  .auth-fixed-pill.hj-highlight-pill--purple {
+  color: #bb84ff !important;
 
-  border-color:
-    rgba(169, 117, 234, 0.42) !important;
+  border-color: rgba(169, 117, 234, 0.42) !important;
 
-  background:
-    rgba(10, 27, 50, 0.48) !important;
+  background: rgba(10, 27, 50, 0.48) !important;
 
   box-shadow:
-    inset
-    0
-    1px
-    0
-    rgba(255, 255, 255, 0.035),
-
-    0
-    8px
-    20px
-    rgba(0, 0, 0, 0.08) !important;
+    inset 0 1px 0 rgba(255, 255, 255, 0.035),
+    0 8px 20px rgba(0, 0, 0, 0.08) !important;
 }
 
+:where(html.dark, html[data-theme="dark"])
+  .auth-page
+  .auth-fixed-pill.hj-highlight-pill--purple
+  svg {
+  color: #a975ea !important;
 
-:where(
-  html.dark,
-  html[data-theme="dark"]
-)
-.auth-page
-.auth-fixed-pill.hj-highlight-pill--purple svg {
-  color:
-    #a975ea !important;
-
-  stroke:
-    #a975ea !important;
+  stroke: #a975ea !important;
 }
-
 
 /* BLUE */
 
-:where(
-  html.dark,
-  html[data-theme="dark"]
-)
-.auth-page
-.auth-fixed-pill.hj-highlight-pill--blue {
-  color:
-    #67d2ff !important;
+:where(html.dark, html[data-theme="dark"])
+  .auth-page
+  .auth-fixed-pill.hj-highlight-pill--blue {
+  color: #67d2ff !important;
 
-  border-color:
-    rgba(88, 164, 213, 0.44) !important;
+  border-color: rgba(88, 164, 213, 0.44) !important;
 
-  background:
-    rgba(7, 29, 49, 0.48) !important;
+  background: rgba(7, 29, 49, 0.48) !important;
 
   box-shadow:
-    inset
-    0
-    1px
-    0
-    rgba(255, 255, 255, 0.035),
-
-    0
-    8px
-    20px
-    rgba(0, 0, 0, 0.08) !important;
+    inset 0 1px 0 rgba(255, 255, 255, 0.035),
+    0 8px 20px rgba(0, 0, 0, 0.08) !important;
 }
 
+:where(html.dark, html[data-theme="dark"])
+  .auth-page
+  .auth-fixed-pill.hj-highlight-pill--blue
+  svg {
+  color: #58bce8 !important;
 
-:where(
-  html.dark,
-  html[data-theme="dark"]
-)
-.auth-page
-.auth-fixed-pill.hj-highlight-pill--blue svg {
-  color:
-    #58bce8 !important;
-
-  stroke:
-    #58bce8 !important;
+  stroke: #58bce8 !important;
 }
-
 
 /* =========================================================
    SHARED MENTORME ICONS
    ========================================================= */
 
 .mm-shared-icon {
-  display:
-    block;
+  display: block;
 
-  flex:
-    0
-    0
-    auto;
+  flex: 0 0 auto;
 
-  color:
-    #d4af37;
+  color: #d4af37;
 
-  stroke:
-    currentColor;
+  stroke: currentColor;
 
-  stroke-width:
-    2;
+  stroke-width: 2;
 }
-
 
 /* Sparkles */
 
 .mm-spark-icon {
-  filter:
-    drop-shadow(
-      0
-      0
-      4px
-      rgba(212, 175, 55, 0.25)
-    );
+  filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.25));
 }
-
 
 /* Arrow */
 
 .mm-arrow-icon {
-  transition:
-    transform 0.25s ease;
+  transition: transform 0.25s ease;
 }
-
 
 .mm-arrow-icon:hover {
-  transform:
-    translateX(3px);
+  transform: translateX(3px);
 }
-
 
 /* =========================================================
    GLOBAL MAIN HEADING
    ========================================================= */
 
 .hj-main-heading {
-  display:
-    inline-block;
+  display: inline-block;
 
-  color:
-    var(--text, #f4f6ff);
+  color: var(--text, #f4f6ff);
 
-  font:
-    760
-    clamp(3.25rem, 5.25vw, 5.9rem)
-    / 1.04
+  font: 760 clamp(3.25rem, 5.25vw, 5.9rem) / 1.04
     var(--font-display, sans-serif);
 
-  letter-spacing:
-    -0.052em;
+  letter-spacing: -0.052em;
 
-  text-wrap:
-    balance;
+  text-wrap: balance;
 }
-
 
 :where(
-  html:not(.dark):not([data-theme="dark"]),
-  html.light,
-  html[data-theme="light"]
-)
-.hj-main-heading {
-  color:
-    #172d50;
+    html:not(.dark):not([data-theme="dark"]),
+    html.light,
+    html[data-theme="light"]
+  )
+  .hj-main-heading {
+  color: #172d50;
 }
 
-
-:where(
-  html.dark,
-  html[data-theme="dark"]
-)
-.hj-main-heading {
-  color:
-    #f4f6ff;
+:where(html.dark, html[data-theme="dark"]) .hj-main-heading {
+  color: #f4f6ff;
 }
-
 
 /* =========================================================
    MOBILE
@@ -1921,139 +1412,88 @@ body {
 
 @media (max-width: 700px) {
   .public-site-page {
-    background-size:
-      cover;
+    background-size: cover;
   }
-
 
   .hj-first-five-heading {
-    max-width:
-      100%;
+    max-width: 100%;
   }
-
 
   .hj-first-five-heading > p {
-    margin-bottom:
-      18px;
+    margin-bottom: 18px;
 
-    font-size:
-      0.62rem;
+    font-size: 0.62rem;
 
-    letter-spacing:
-      0.15em;
+    letter-spacing: 0.15em;
   }
-
 
   .hj-first-five-heading h2 {
-    font-size:
-      clamp(
-        2.8rem,
-        13vw,
-        4.2rem
-      );
+    font-size: clamp(2.8rem, 13vw, 4.2rem);
 
-    line-height:
-      1;
+    line-height: 1;
   }
-
 
   .hj-first-five-heading > span {
-    margin-top:
-      22px;
+    margin-top: 22px;
 
-    padding:
-      10px
-      8px;
+    padding: 10px 8px;
 
-    border-radius:
-      0;
+    border-radius: 0;
 
-    font-size:
-      0.88rem;
+    font-size: 0.88rem;
 
-    background:
-      transparent;
+    background: transparent;
   }
-
 
   .hj-gold-eyebrow {
-    font-size:
-      0.68rem;
+    font-size: 0.68rem;
 
-    letter-spacing:
-      0.1em;
+    letter-spacing: 0.1em;
   }
-
 
   .hj-gold-eyebrow svg {
-    width:
-      16px;
+    width: 16px;
 
-    height:
-      16px;
+    height: 16px;
   }
-
 
   .hj-main-heading {
-    font-size:
-      clamp(
-        2.8rem,
-        13vw,
-        4.2rem
-      );
+    font-size: clamp(2.8rem, 13vw, 4.2rem);
 
-    line-height:
-      1;
+    line-height: 1;
   }
-
 
   .hj-highlight-pills {
-    margin-top:
-      22px;
+    margin-top: 22px;
 
-    gap:
-      8px;
+    gap: 8px;
   }
-
 
   .hj-highlight-pill {
-    min-height:
-      35px;
+    min-height: 35px;
 
-    padding:
-      0
-      12px;
+    padding: 0 12px;
 
-    font-size:
-      0.5rem;
+    font-size: 0.5rem;
 
-    letter-spacing:
-      0.08em;
+    letter-spacing: 0.08em;
   }
-
 
   .hj-action-row {
-    width:
-      100%;
+    width: 100%;
 
-    display:
-      grid;
+    display: grid;
 
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
   }
-
 
   .hj-action-row .navbar-sign-in,
   .hj-action-row .mh-button {
-    width:
-      100%;
+    width: 100%;
 
-    min-width:
-      0;
+    min-width: 0;
   }
 }
-
 
 /* =========================================================
    SMALL MOBILE
@@ -2061,47 +1501,34 @@ body {
 
 @media (max-width: 460px) {
   .hj-highlight-pills {
-    width:
-      min(100%, 300px);
+    width: min(100%, 300px);
 
-    margin:
-      22px
-      auto
-      0;
+    margin: 22px auto 0;
 
-    display:
-      grid;
+    display: grid;
 
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
   }
-
 
   .hj-highlight-pill {
-    width:
-      100%;
+    width: 100%;
   }
 }
-
 
 /* =========================================================
    REDUCED MOTION
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .hj-heading-wave,
   .hj-first-five-heading h2 em,
   .hj-gradient-word,
   .seen-word,
   .mh-button--secondary::after {
-    animation:
-      none !important;
+    animation: none !important;
   }
-
 
   .hj-highlight-pill,
   .hj-highlight-pill::before {
-    transition:
-      none !important;
+    transition: none !important;
   }
 }

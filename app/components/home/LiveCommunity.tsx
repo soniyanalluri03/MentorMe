@@ -190,8 +190,8 @@ export default function LiveCommunity() {
     >
       <div className={styles.shell}>
         <header
-          className={`hj-first-five-heading ${styles.communityHeading}`}
-        >
+  className={`hj-first-five-heading ${styles.methodHeading}`}
+>
           <h2 id="community-title">
             See learners build, grow
             <br />

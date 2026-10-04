@@ -6,12 +6,9 @@ import {
   type ReactNode,
 } from "react";
 
-import { CSSProperties } from "react";
 import { useHomeJourneyState } from "./useHomeJourneyState";
 
-type HomeJourneyContextValue = ReturnType<
-  typeof useHomeJourneyState
->;
+type HomeJourneyContextValue = ReturnType<typeof useHomeJourneyState>;
 
 const HomeJourneyContext =
   createContext<HomeJourneyContextValue | null>(null);
@@ -25,18 +22,7 @@ export function HomeJourneyProvider({
 
   return (
     <HomeJourneyContext.Provider value={journey}>
-      <div
-        className="hj-root"
-        ref={journey.rootRef}
-        style={
-          {
-            "--process-progress": `${journey.processProgress}%`,
-            "--spark-progress": `${journey.sparkProgress}%`,
-          } as CSSProperties
-        }
-      >
-        {children}
-      </div>
+      {children}
     </HomeJourneyContext.Provider>
   );
 }

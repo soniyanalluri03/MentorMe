@@ -4,13 +4,13 @@ import {useEffect,useRef,useState,} from "react";
 import { MentorMeLogo } from "./MentorMeLogo";
 import { ThemeToggle } from "./ThemeToggle";
 import { LearningHero } from "./home/LearningHero";
-import { HomeJourneySections } from "./home/HomeJourneySections";
 import CareerTracksAndCTA from "./courses/CareerTracksAndCTA";
 import CourseComparison from "./courses/CourseComparison";
 import CoursesHero from "./courses/CoursesHero";
 import FeaturedTrack from "./courses/FeaturedTrack";
 import MentorMethod from "./courses/MentorMethod";
 
+import { HomeJourneyProvider } from  "./home/HomeJourneyContext";
 import { LeaderboardExperience } from "./leaderboard/LeaderboardExperience";
 import MainAbout from "./about/MainAbout";
 import RoadmapHero from "./roadmap/RoadmapHero";
@@ -22,7 +22,7 @@ import MainContact from "./contact/MainContact";
 import MotionReveal from "./MotionReveal";
 import styless from "./Footer.module.css";
 import ChatbotButton from "./chatbot/ChatbotButton";
-
+import "./home/HomeJourneySections.css";
 import {  
   FaInstagram,
   FaLinkedinIn,
@@ -36,6 +36,11 @@ import {
   FiPhone,
 } from "react-icons/fi";
 import { FaX, FaXTwitter } from "react-icons/fa6";
+import CareerJourney from "./home/CareerJourney";
+import FirstFiveLevels from "./home/FirstFiveLevels";
+import JourneyEvolution from "./home/JourneyEvolution";
+import CareerTransformation from "./home/CareerTransformation";
+import LiveCommunity from "./home/LiveCommunity";
 
 
 type Page =
@@ -387,16 +392,39 @@ export default function Courses() {
     </main>
   );
 }
+// function Home() {
+//   return (
+//     <main  >
+//       <MotionReveal y={24} amount={0.06}>
+//         <LearningHero />
+//       </MotionReveal>
+//       <HomeJourneySections />
+//     </main>
+//   );
+// }
 function Home() {
   return (
-    <main  >
+    <main>
       <MotionReveal y={24} amount={0.06}>
         <LearningHero />
       </MotionReveal>
-      <HomeJourneySections />
+
+     <HomeJourneyProvider>
+  <div className="hj-root">
+    <CareerJourney />
+    <FirstFiveLevels />
+    <JourneyEvolution />
+    <CareerTransformation />
+
+    <MotionReveal x={18} amount={0.08}>
+      <LiveCommunity />
+    </MotionReveal>
+  </div>
+</HomeJourneyProvider>
     </main>
   );
 }
+
 
 function Roadmap() {
   return (

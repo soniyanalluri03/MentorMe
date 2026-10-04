@@ -35,6 +35,7 @@ import {
   FiMapPin,
   FiPhone,
 } from "react-icons/fi";
+import { FaX, FaXTwitter } from "react-icons/fa6";
 
 
 type Page =
@@ -531,12 +532,12 @@ const contactDetails = [
 const socialLinks = [
   {
     name: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/in/mentorme2026/",
     icon: FaLinkedinIn,
   },
   {
     name: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/mentor_me__/",
     icon: FaInstagram,
   },
   {
@@ -546,8 +547,8 @@ const socialLinks = [
   },
   {
     name: "Twitter",
-    href: "#",
-    icon: FaTwitter,
+    href: "https://x.com/mentor_me__",
+    icon: FaXTwitter,
   },
 ];
 

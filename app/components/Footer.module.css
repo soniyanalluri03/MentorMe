@@ -1046,145 +1046,6 @@
 }
 
 
-/* =========================================================
-   LIGHT MODE
-   Keep premium dark footer for visual contrast
-========================================================= */
-
-:global(html:not(.dark):not([data-theme="dark"]))
-  .footer,
-:global(html[data-theme="light"])
-  .footer,
-:global(html.light)
-.footer {
-  width: 100%;
-
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-
-  padding:
-    clamp(52px, 5vw, 72px)
-    clamp(30px, 5vw, 88px)
-    22px;
-
-  color: #f6f8fc;
-
-  border-top:
-    1px solid
-    rgba(212, 175, 55, 0.22);
-
-  background:
-    radial-gradient(
-      circle at 7% 16%,
-      rgba(48, 116, 180, 0.28),
-      transparent 31%
-    ),
-    radial-gradient(
-      circle at 87% 84%,
-      rgba(128, 76, 205, 0.15),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 70% -15%,
-      rgba(212, 175, 55, 0.08),
-      transparent 30%
-    ),
-    linear-gradient(
-      132deg,
-      #102a46 0%,
-      #0a1d32 40%,
-      #071522 72%,
-      #050d16 100%
-    );
-}
-
-
-:global(html:not(.dark):not([data-theme="dark"]))
-  .brandText,
-:global(html[data-theme="light"])
-  .brandText,
-:global(html.light)
-  .brandText {
-  color: #a9bacb;
-}
-
-
-:global(html:not(.dark):not([data-theme="dark"]))
-  .columnTitle,
-:global(html[data-theme="light"])
-  .columnTitle,
-:global(html.light)
-  .columnTitle,
-:global(html:not(.dark):not([data-theme="dark"]))
-  .brandTag,
-:global(html[data-theme="light"])
-  .brandTag,
-:global(html.light)
-  .brandTag {
-  color: #e4c75a;
-}
-
-
-:global(html:not(.dark):not([data-theme="dark"]))
-  .pageLinks a,
-:global(html[data-theme="light"])
-  .pageLinks a,
-:global(html.light)
-  .pageLinks a {
-  color: #aab9c9;
-}
-
-
-:global(html:not(.dark):not([data-theme="dark"]))
-  .contactItem strong,
-:global(html[data-theme="light"])
-  .contactItem strong,
-:global(html.light)
-  .contactItem strong {
-  color: #bcc9d7;
-}
-
-
-:global(html:not(.dark):not([data-theme="dark"]))
-  .contactItem span,
-:global(html[data-theme="light"])
-  .contactItem span,
-:global(html.light)
-  .contactItem span {
-  color: #74889e;
-}
-
-
-:global(html:not(.dark):not([data-theme="dark"]))
-  .socialLink,
-:global(html[data-theme="light"])
-  .socialLink,
-:global(html.light)
-  .socialLink {
-  color: #a7b9cb;
-}
-
-
-:global(html:not(.dark):not([data-theme="dark"]))
-  .ctaColumn h3,
-:global(html[data-theme="light"])
-  .ctaColumn h3,
-:global(html.light)
-  .ctaColumn h3 {
-  color: #ffffff;
-}
-
-
-:global(html:not(.dark):not([data-theme="dark"]))
-  .ctaColumn p,
-:global(html[data-theme="light"])
-  .ctaColumn p,
-:global(html.light)
-  .ctaColumn p {
-  color: #9bacc0;
-}
-
 
 /* =========================================================
    TABLET
@@ -1441,4 +1302,19 @@
   border-top:
     1px solid
     rgba(212, 175, 55, 0.22);
+}
+
+
+/* FOOTER LOGO — ALWAYS USE DARK VARIANT */
+
+.footer :global(.brand-logo--dark) {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+.footer :global(.brand-logo--light) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: scale(0.96) !important;
 }

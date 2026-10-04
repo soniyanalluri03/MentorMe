@@ -2,3 +2,146 @@
 @media(max-width:700px){.public-header{height:72px;padding:0 18px}.brand-word{display:none}.header-actions .btn,.header-actions .icon-btn:not(.bell){display:none}.hero{padding:55px 20px}.hero h1{font-size:3.8rem}.hero-actions{align-items:flex-start;flex-direction:column}.hero-visual{height:430px;border-radius:44% 56% 40% 60%}.level-card{width:75%;left:3%;padding:18px}.level-title strong{font-size:3.2rem}.reward-card{width:53%;right:0}.chip-one{display:none}.journey-strip{grid-template-columns:repeat(4,1fr);padding:17px}.journey-strip div:nth-child(even):after{display:none}.section{padding:80px 20px}.tracks,.proof-grid,.pricing-grid,.compare-grid{grid-template-columns:1fr}.track-main{grid-row:auto}.map-preview{padding:75px 20px}.world{width:78%}.proof-grid .project-proof{grid-row:auto}.final-cta{padding:85px 20px}.footer{grid-template-columns:1fr}.footer>div{justify-content:flex-start;flex-wrap:wrap}.page-hero{padding:90px 20px;min-height:500px}.page-hero h1{font-size:3.7rem}.page-orb{opacity:.4}.course-feature{gap:40px}.course-visual{padding:35px;min-height:390px}.code-window b{font-size:2.4rem}.metric-row{gap:17px}.story{grid-template-columns:1fr}.story-number{font-size:6rem}.premium{transform:none}.preserved{margin:-55px 20px 70px}.contact-grid{gap:35px}.field-row{grid-template-columns:1fr}.auth-page{grid-template-columns:1fr}.auth-visual{display:none}.auth-form{padding:25px 20px;min-height:100vh}.choice-grid{grid-template-columns:1fr}.sidebar{bottom:65px;width:64px}.sidebar nav a span,.sidebar nav a b,.side-bottom span{display:none}.sidebar .brand-mark{width:42px}.student-main{margin-left:64px;width:calc(100% - 64px)}.student-top{height:78px;padding:0 15px}.student-meta b,.student-meta span:first-child{display:none}.dashboard{padding:22px 14px 90px}.welcome{align-items:flex-start}.weekly{display:none}.welcome h2{font-size:1.8rem}.continue-card{grid-template-columns:1fr;padding:25px}.level-disc{margin-bottom:30px}.continue-copy h2{font-size:1.7rem}.dash-grid{grid-template-columns:1fr 1fr}.daily,.project-card{grid-column:1/-1}.mentor-card,.achievement-card{grid-column:1/-1}.mobile-bottom{position:fixed;bottom:0;left:0;right:0;height:66px;background:#fff;display:flex;justify-content:space-around;z-index:30;border-top:1px solid #d4dbd4}.mobile-bottom a{display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:1rem}.mobile-bottom small{font-size:.5rem}.journey-head{padding:24px 18px}.journey-head h2{font-size:2rem}.journey-layout{display:block}.level-map{padding:35px 12px 80px;overflow:hidden}.journey-line{left:121px}.journey-world>header{margin-left:190px}.journey-world h3{font-size:1.3rem}.nodes{width:250px}.level-node{margin-left:85px!important}.level-panel{padding:25px 18px}.product-placeholder{padding:70px 25px}.product-placeholder h2{font-size:3.3rem}.placeholder-lines i{width:29%;height:170px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 .public-header nav{gap:22px;font-size:.8rem}.public-header nav a{white-space:nowrap}
+
+
+/* =========================================================
+   HOME — MOBILE RESPONSIVE FIX
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .public-site-page > main,
+  .public-site-page .mh-root,
+  .public-site-page .hj-root,
+  .public-site-page .hj-shell,
+  .public-site-page .hj-road-game,
+  .public-site-page .hj-road-checkpoints {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .public-site-page .hj-shell {
+    padding-inline: 14px;
+  }
+
+  .public-site-page .hj-road-game {
+    margin-top: 32px;
+    min-height: 1120px;
+    border-radius: 26px;
+  }
+
+  .public-site-page .hj-road-checkpoints {
+    left: 0;
+    right: 0;
+  }
+
+  /* Center every journey card without killing its animation */
+.public-site-page .hj-road-point,
+.public-site-page .hj-road-point-1,
+.public-site-page .hj-road-point-2,
+.public-site-page .hj-road-point-3,
+.public-site-page .hj-road-point-4,
+.public-site-page .hj-road-point-5,
+.public-site-page .hj-road-point-6,
+.public-site-page .hj-road-point-7 {
+  left: 0 !important;
+  right: 0 !important;
+  width: min(330px, calc(100% - 24px)) !important;
+  max-width: calc(100% - 24px) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+  .public-site-page .hj-road-point > div {
+    min-width: 0;
+  }
+
+  .public-site-page .hj-road-point strong {
+    white-space: nowrap;
+  }
+
+  .public-site-page .hj-road-point small {
+    white-space: normal;
+  }
+
+  /* Keep connectors centered with the cards */
+  .public-site-page .hj-road-point::after {
+    left: 50%;
+  }
+}
+
+@media (max-width: 430px) {
+  .public-site-page .hj-shell {
+    padding-inline: 10px;
+  }
+
+  .public-site-page .hj-road-game {
+    min-height: 1060px;
+    margin-top: 26px;
+    border-radius: 24px;
+  }
+
+.public-site-page .hj-road-point,
+.public-site-page .hj-road-point-1,
+.public-site-page .hj-road-point-2,
+.public-site-page .hj-road-point-3,
+.public-site-page .hj-road-point-4,
+.public-site-page .hj-road-point-5,
+.public-site-page .hj-road-point-6,
+.public-site-page .hj-road-point-7 {
+  left: 0 !important;
+  right: 0 !important;
+  width: min(310px, calc(100% - 20px)) !important;
+  max-width: calc(100% - 20px) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+    /* Center the final Career Ready card without breaking its animation */
+  .public-site-page .hj-road-finish {
+  left: 0 !important;
+  right: 0 !important;
+  top: auto !important;
+  bottom: 20px !important;
+  width: min(calc(100% - 20px), 280px) !important;
+  max-width: calc(100% - 20px) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box;
+}
+
+
+  .public-site-page .hj-road-point > div {
+    min-width: 0;
+  }
+
+
+  /* LearningHero visual — stop pushing it outside the phone */
+  .public-site-page .mh-root,
+  .public-site-page .mh-inner,
+  .public-site-page .mh-visual {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .public-site-page .mh-inner {
+    padding-inline: 12px;
+  }
+
+  .public-site-page .mh-visual {
+    height: 500px;
+    overflow: hidden;
+  }
+
+  .public-site-page .mh-canvas {
+    inset: 0 -45px -20px !important;
+  }
+
+  .public-site-page .mh-halo {
+    width: 340px;
+    height: 340px;
+  }
+}

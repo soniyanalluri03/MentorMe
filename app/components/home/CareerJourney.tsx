@@ -3,7 +3,7 @@
 import MotionReveal from "../MotionReveal";
 import { processSteps } from "./homeJourneyData";
 import { useHomeJourney } from "./HomeJourneyContext";
-
+import  "./CareerJourney.module.css";
 export default function CareerJourney() {
   const {
     activeStep,

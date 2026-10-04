@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import {useEffect,useRef,useState,} from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { MentorMeLogo } from "./MentorMeLogo";
 import { ThemeToggle } from "./ThemeToggle";
 import { LearningHero } from "./home/LearningHero";
@@ -9,8 +9,8 @@ import CourseComparison from "./courses/CourseComparison";
 import CoursesHero from "./courses/CoursesHero";
 import FeaturedTrack from "./courses/FeaturedTrack";
 import MentorMethod from "./courses/MentorMethod";
+import { HomeJourneyProvider, useHomeJourney } from "./home/HomeJourneyContext";
 
-import { HomeJourneyProvider } from  "./home/HomeJourneyContext";
 import { LeaderboardExperience } from "./leaderboard/LeaderboardExperience";
 import MainAbout from "./about/MainAbout";
 import RoadmapHero from "./roadmap/RoadmapHero";
@@ -392,6 +392,34 @@ export default function Courses() {
     </main>
   );
 }
+function HomeJourneyContent() {
+  const {
+    rootRef,
+    processProgress,
+    sparkProgress,
+  } = useHomeJourney();
+
+  return (
+    <div
+      className="hj-root"
+      ref={rootRef}
+      style={{
+        "--process-progress": `${processProgress}%`,
+        "--spark-progress": `${sparkProgress}%`,
+      } as CSSProperties}
+    >
+      <CareerJourney />
+      <FirstFiveLevels />
+      <JourneyEvolution />
+      <CareerTransformation />
+
+      <MotionReveal x={18} amount={0.08}>
+        <LiveCommunity />
+      </MotionReveal>
+    </div>
+  );
+}
+
 // function Home() {
 //   return (
 //     <main  >
@@ -409,18 +437,9 @@ function Home() {
         <LearningHero />
       </MotionReveal>
 
-     <HomeJourneyProvider>
-  <div className="hj-root">
-    <CareerJourney />
-    <FirstFiveLevels />
-    <JourneyEvolution />
-    <CareerTransformation />
-
-    <MotionReveal x={18} amount={0.08}>
-      <LiveCommunity />
-    </MotionReveal>
-  </div>
-</HomeJourneyProvider>
+      <HomeJourneyProvider>
+        <HomeJourneyContent />
+      </HomeJourneyProvider>
     </main>
   );
 }
